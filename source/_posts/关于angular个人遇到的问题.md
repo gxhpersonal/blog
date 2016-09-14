@@ -1,7 +1,7 @@
 ---
 title: 关于angular个人遇到的问题
 date: 2016-09-14 15:50:50
-tags: angular
+tags:
 categories: angular
 ---
 ### 关于ng-if
