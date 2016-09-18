@@ -326,7 +326,7 @@ Hexo部署到GitHub上的文件，是.md（你的博文）转化之后的.html�
 ### 5.2 我的博客搭建流程
 
 1. github创建仓库，blog
-2. 在本地新建的/blog文件夹中运行Git Bash,输入git init(意思是在当前文件夹下创建git环境与github联系起来[个人观点，哈哈]);
+2. 在本地新建的/blog文件夹中运行Git Bash,输入git init(在当前目录新建一个Git代码库);
 3. 接着命令行输入git remote add origin https://github.com/用户名/仓库名.git
 4. 依次执行git add .、git commit -m "..."、git push origin master提交网站相关的文件；
 PS: 我是在gh-pages分支上改的，所以提交代码时会提示github上没有master分支，然后点击确定会帮你创建一个master分支，就可以提交成功了；
