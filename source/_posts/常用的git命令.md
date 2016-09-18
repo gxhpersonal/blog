@@ -13,11 +13,11 @@ categories: git
 
 ### 新建代码库
 
-```sh
+```css
 //在当前目录新建一个git代码库
 $ git init
 ```
-```sh
+```css
 //克隆一个项目
 $ git clone https://github.com/gxhpersonal/blog.git
 ```
@@ -25,7 +25,7 @@ $ git clone https://github.com/gxhpersonal/blog.git
 ### 配置
 Git的设置文件为`.gitconfig`，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。
 
-```sh
+```css
 // 设置提交代码时的用户信息
 git config --global user.name "gxhpersonal"
 git config --global user.email "991158744@qq.com"
@@ -33,6 +33,6 @@ git config --global user.email "991158744@qq.com"
 
 ### 增加/删除文件
 
-`
+```css
 //添加当前目录的所有文件到暂存区
-`
+```
