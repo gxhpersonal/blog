@@ -5,7 +5,7 @@ tags:
 categories: swiper
 ---
 
-需求环境：swiper.css, swiper.js, 如果用jquery的话，可以用jquery.js和swiper.jquery.js
+需求环境：移动端环境，swiper.css, swiper.js, 如果用jquery的话，可以用jquery.js和swiper.jquery.js
 以前也用过swiper做轮播，但是好多参数都不清楚，所以在这总结一下,有新的发现会更新
 ```html
 <!DOCTYPE html>
