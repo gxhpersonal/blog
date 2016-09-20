@@ -22,7 +22,7 @@ categories: swiper
     .swiper-container {
     width: 100%;
     height: 300px;
-} 
+}
   </style>
 
    <div class="swiper-container">
@@ -45,7 +45,7 @@ categories: swiper
 
    <script src="jquery.js"></script>
    <script src="swiper.jquery.js"></script>
-   <script>        
+   <script>
   var mySwiper = new Swiper ('.swiper-container', {
     // direction: 'vertical',
     loop: true,
@@ -64,7 +64,7 @@ categories: swiper
     autoplayDisableOnInteraction : false,
     // 如果需要滚动条
     // scrollbar: '.swiper-scrollbar',
-  })     
+  })
   </script>
 </body>
 </html>
