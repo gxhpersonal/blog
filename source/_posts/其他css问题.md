@@ -59,6 +59,8 @@ var w = window.innerWidth,
         h = window.innerHeight;  //获取窗口的高度与宽度(不包含工具条与滚动条):
     $('#js_orderConWrap').height(h - $('.cm-header-wrap').height());  //内部元素的高度 = 窗口高度 - 头部或底部的高度(如果有)
 
+//既然都在h5了，所以还要考虑APP环境，在APP环境下头部是不会用h5的，所以需要判断h5和APP环境；
+
 2.弹层显示，禁止背景滚动
 //关闭滚动条
         $(document).on('touchmove',function(e){
@@ -67,4 +69,7 @@ var w = window.innerWidth,
             }
 })
 ```
-    
+  
+### 低版本浏览器不支持空标签处理
+> 在遇到低版本浏览器需要空标签时，会遇到空标签无法显示的问题，需要给这个标签加上一个透明的背景图片,这就是经常会看到有些网站背景图片就是一个1*1图片；
+background-image:http://www.huizuche.com/Content/Images/background-transparent.png no-repeat;
