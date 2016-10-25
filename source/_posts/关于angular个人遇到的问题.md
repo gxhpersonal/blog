@@ -21,8 +21,6 @@ element[0].focus();
 ### ng-repeat遍历数组
 > ng-repeat遍历数组时，需要在 v in xxx 后面加上 track by $index；
 
-### 数组和对象的解决
-> 如果在一个大的数组里有很多对象，想要获取到对象身上的某一个字段，就需要 var一个变量，把需要的字段以“data[0].xxx.xxx”的形式取到赋给定义好的变量，然后再用 $scope.xxx 的方法把这个变量的值绑定到angular中
 
 ### 输出当前点击的对象属性值
 ```html
