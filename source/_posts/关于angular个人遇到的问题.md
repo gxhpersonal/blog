@@ -68,36 +68,39 @@ window.location.href="/xxx/xxx   (如果想要传ID或什么东西过去)  ?id="
 
 ### 倒计时
 ```javascript
+        //后台会传一个时间戳给你，只需要把这个时间戳转换为倒计时就行
+       $scope.daojishi = function (activityendtime) {
         var time = $scope.time = {};
-        console.log(activityendtime)
-        time.endTime = new Date($scope.activityendtime);
-        console.log(time.endTime);
         var count = function () {
-            time.nowTime = new Date();
             //计算剩下毫秒数
-            time.t = time.endTime.getTime() - time.nowTime.getTime();
+            time.t = activityendtime;
             time.d = Math.floor(time.t / 1000 / 60 / 60 / 24);
             time.h = Math.floor(time.t / 1000 / 60 / 60 % 24);
             time.m = Math.floor(time.t / 1000 / 60 % 60) < 10 ? '0' + Math.floor(time.t / 1000 / 60 % 60) : Math.floor(time.t / 1000 / 60 % 60);
             time.s = Math.floor(time.t / 1000 % 60) < 10 ? '0' + Math.floor(time.t / 1000 % 60) : Math.floor(time.t / 1000 % 60);
-            $scope.Residualtime = time.d + ":" + time.h + ":" + time.m + ":" + time.s;
             if (time.t <= 0) {
                 $scope.endShow = true;
+                $scope.overhtml = "活动已结束！";
                 $scope.endActivity = true;
+                $scope.timeOver = true;
                 if (time.h < 0) {
                     time.h = '0';
                     time.m = '00';
                     time.s = '00';
                 }
                 $(".count-down").hide();
+            } else {
+                activityendtime = (time.t - 1000);
             }
+            $scope.Residualtime = time.d + ":" + time.h + ":" + time.m + ":" + time.s;
         };
-
         count();
         var stop = $interval(count, 1000);
         $scope.$on('$destroy', function () {
             $interval.cancel(stop);
         });
+    }
+    $scope.daojishi（$scope.activityendtime）
 ```
 
 ### 字符串拼接
