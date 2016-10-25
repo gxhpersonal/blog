@@ -105,3 +105,9 @@ window.location.href="/xxx/xxx   (如果想要传ID或什么东西过去)  ?id="
 
 ### 字符串拼接
 > angular中需要拼接字符串和变量时，用ng-xx方法，“”中写 字符串{{变量}} ，就会解析为字符串
+
+### angularJS全局API
+> angular.lowercase()	转换字符串为小写
+angular.uppercase()	转换字符串为大写
+angular.isString()	判断给定的对象是否为字符串，如果是返回 true。
+angular.isNumber()	判断给定的对象是否为数字，如果是返回 true。
