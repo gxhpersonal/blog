@@ -69,7 +69,3 @@ var w = window.innerWidth,
             }
 })
 ```
-  
-### 低版本浏览器不支持空标签处理
-> 在遇到低版本浏览器需要空标签时，会遇到空标签无法显示的问题，需要给这个标签加上一个透明的背景图片,这就是经常会看到有些网站背景图片就是一个1*1图片；
-background-image:http://www.huizuche.com/Content/Images/background-transparent.png no-repeat;
