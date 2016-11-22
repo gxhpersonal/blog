@@ -1,0 +1,5 @@
+表单添加name属性，在angular里可以用来表单验证，
+$scope.name.$invalid     值为true     表单未通过验证
+$scope.name.$valid        值为true     表单通过验证
+可以给最外层的form标签加个name属性，然后submit时check  form标签name.$valid是否为true,true则通过
+button禁止提交：   ng-disabled="name.$invalid"
