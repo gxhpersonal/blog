@@ -12,6 +12,7 @@ categories: angular
 <p>姓名为 {{ lastName | uppercase }}</p>
 ```
 > 2. lowercase 过滤器将字符串格式化为小写：
+> 
 ```html
 <p>姓名为 {{ lastName | lowercase }}</p>
 ```
