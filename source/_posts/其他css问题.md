@@ -69,3 +69,5 @@ var w = window.innerWidth,
             }
 })
 ```
+### 自定义光标
+> cursor: url(/路径/cursor.cur),auto;        后缀似乎必须为cur
