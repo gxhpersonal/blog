@@ -111,3 +111,13 @@ window.location.href="/xxx/xxx   (如果想要传ID或什么东西过去)  ?id="
 angular.uppercase()	转换字符串为大写
 angular.isString()	判断给定的对象是否为字符串，如果是返回 true。
 angular.isNumber()	判断给定的对象是否为数字，如果是返回 true。
+
+###ng-bind-html=""
+当想要呈现的后台文本中有HTML标签的时候，使用ng-bind-html来代替ng-bind，就能正常的使用想用的HTML标签了。但要注意文本中如果使用到符号的话，注意要转义符号。
+但要注意文本中如果使用到符号的话,注意要转义符号
+如: (1)  大于符号（>）   ---> &gt;
+      (2)  小于符号（<）   ---> &lt;
+否则系统报错
+要使用：$sanitize服务
+在angular.module中配置sanitize服务：var myApp = angular.module('myApp', ['ngSanitize']);
+<script src="../js/angular-sanitize.js"></script>
