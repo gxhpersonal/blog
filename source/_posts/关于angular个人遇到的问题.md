@@ -121,3 +121,12 @@ angular.isNumber()	判断给定的对象是否为数字，如果是返回 true�
 要使用：$sanitize服务
 在angular.module中配置sanitize服务：var myApp = angular.module('myApp', ['ngSanitize']);
 <script src="../js/angular-sanitize.js"></script>
+
+###angular自带遍历方法  angular.forEach
+```javascript
+var objs =[{a:1},{a:2}];
+angular.forEach(objs, function(data,index,array){
+        //data等价于array[index]
+        console.log(data.a+'='+array[index].a);
+});
+```
