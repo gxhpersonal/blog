@@ -8,6 +8,13 @@ categories: html
 ### 标签变为可编辑
 > contenteditable=true
 
+### localstorage
+```javascript
+var storage = JSON.parse(window.localStorage.getItem("CdlformData")) || {};  //从本地取localstorage数据
+storage["DistributionType"] = id;    //localstorage数据设置key = value;
+window.localStorage.setItem('CdlformData',  JSON.stringify(storage));   // 设置好的数据存到localstorage
+```
+
 ### h5 video标签
 >自定义播放/暂停,放大，缩小按钮
 ```html
