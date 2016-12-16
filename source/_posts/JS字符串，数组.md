@@ -84,3 +84,11 @@ toUpperCase 方法对非字母字符不会产生影响。
 ### .join()方法
 > arrayObject.join(separator)
 > 参数用来指定要使用的分隔符，默认为逗号
+
+###判断电话号码
+```javascript
+validateMobile: function (str) {
+            var reg = /^1[3-8]\d{9}$/;
+            return reg.test(str);
+        }
+```
