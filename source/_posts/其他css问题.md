@@ -71,3 +71,14 @@ var w = window.innerWidth,
 ```
 ### 自定义光标
 > cursor: url(/路径/cursor.cur),auto;        后缀似乎必须为cur
+
+### input标签
+> IE：不管该行有没有文字，光标高度与font-size一致。
+
+FF：该行有文字时，光标高度与font-size一致。该行无文字时，光标高度与input的height一致。
+
+Chrome：该行无文字时，光标高度与line-height一致；该行有文字时，光标高度从input顶部到文字底部(这两种情况都是在有设定line-height的时候)，如果没有line-height，则是与font-size一致。
+
+解决的方案：
+
+给input的height设定一个较小的高度，然后用padding去填充，基本上可以解决所有浏览器的问题
