@@ -78,3 +78,7 @@ deploy:
 
 # 多说热评文章 true 或者 false
 # duoshuo_hotartical: true
+
+search:
+  path: search.xml
+  field: post
