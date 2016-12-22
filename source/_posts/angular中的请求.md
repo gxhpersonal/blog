@@ -16,6 +16,7 @@ var promise = $http({
 promise.then(function(resp){}, function(resp){})
 ```
 
+
 $http请求的配置对象
 $http()接受的配置对象可以包含以下属性:
 
