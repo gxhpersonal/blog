@@ -41,3 +41,6 @@ $scope.names = [
   </li>
 </ul>
 ```
+
+###limitTo过滤器：用来控制显示在页面的数量
+ng-repeat:v in data | limitTo:15
