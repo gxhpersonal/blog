@@ -8,6 +8,16 @@ categories: js
 ### encodeURIComponent函数
 1.encodeURIComponent() 函数可把字符串作为 URI 组件进行编码。
 * 请注意 encodeURIComponent() 函数 与 encodeURI() 函数的区别之处，前者假定它的参数是 URI 的一部分（比如        协议、主机名、路径或查询字符串）。因此 encodeURIComponent() 函数将转义用于分隔 URI 各个部分的标点符号。
+
+###超出指定字符数显示省略号
+console.log($(".friend_detail p").text().length)
+    var str = $(".friend_detail p").text();
+    var s = str;
+    if (str.length > 6) {
+        s = str.substring(0,6) + "...";
+    }
+    $(".friend_detail p").text(s);
+
 ###APP环境登录判断
         //登录拦截主方法，url:登录成功后跳转链接
         CheckLoginAndGoNext: function (url) {
