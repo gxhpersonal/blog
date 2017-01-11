@@ -131,3 +131,16 @@ angular.forEach(objs, function(data,index,array){
         console.log(data.a+'='+array[index].a);
 });
 ```
+
+### angularJS懒加载
+
+引入  angular-img-lazy-load.min.js
+
+src-lazy="{{list.ProductImgs}}"
+
+var hzcApp = angular.module("hzc_app", ['img-lazy-load']);
+> 下面这个包含在controller中
+hzcApp.constant('imgLazyLoadConf', {
+                tolerance: 50,
+                detectElement: true
+      })
