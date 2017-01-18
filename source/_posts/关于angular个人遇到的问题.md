@@ -146,3 +146,19 @@ hzcApp.constant('imgLazyLoadConf', {
       })
 
 ### directive
+2 . 在AngularJS中，操作DOM一般在指令中完成，事件监听机制是在对于已经静态生成的dom绑定事件，而如果在指令中动态生成了DOM节点，动态生成的节点不会被JS事件监听
+angular.module('myapp',[])
+.directive('myText',function($compile){
+    var template:'<div ng-click="hello()">Hi everyone</div>',
+    return{
+        restrict:'A',
+        link:function(scope,ele,attr){
+             ele.on("click", function() {
+                scope.$apply(function() {
+                    var content = $compile(template)(scope);
+                    element.append(content);
+               })
+            });
+        }
+    }
+}
