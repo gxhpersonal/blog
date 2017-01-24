@@ -25,6 +25,7 @@ vertical-align只适用于行内块元素
    text-overflow: ellipsis;
    overflow: hidden;
 }
+
 p{
     overflow: hidden;                //超出部分隐藏
     text-overflow: ellipsis;         //显示省略号来修饰被剪掉的文本
