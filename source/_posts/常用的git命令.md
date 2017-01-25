@@ -89,3 +89,13 @@ Git的设置文件为`.gitconfig`，它可以在用户主目录下（全局配�
 
 	//删除分支
 	$ git branch -d [branch-name]
+
+### 指定某个commit到指定的分支
+1.执行git log -3 --graph test，查看test分支下的commit:
+ 
+注：commit 后面的hash值代表某个commit，这里把”2e1ada53819d46557b24ee7376dc61d37a06939d“这个commit提交到master。
+2.执行git checkout master，切换到master分支。
+
+3.执行 git cherry-pick 2e1ada53819d46557b24ee7376dc61d37a06939d，该commit便被提交到了master分支。
+ 
+到此，”2e1ada53819d46557b24ee7376dc61d37a06939d“这个commit便被提交到了master分支。
