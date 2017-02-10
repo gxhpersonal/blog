@@ -8,6 +8,9 @@ categories: js
 ### Ajax跨域问题解决
 [http://www.cnblogs.com/pandang/p/5341250.html]()
 
+### 警告，确认，信息输入弹窗
+alert confirm prompt
+
 ### encodeURIComponent函数
 1.encodeURIComponent() 函数可把字符串作为 URI 组件进行编码。
 * 请注意 encodeURIComponent() 函数 与 encodeURI() 函数的区别之处，前者假定它的参数是 URI 的一部分（比如        协议、主机名、路径或查询字符串）。因此 encodeURIComponent() 函数将转义用于分隔 URI 各个部分的标点符号。
