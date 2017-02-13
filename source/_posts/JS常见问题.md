@@ -8,6 +8,7 @@ categories: js
 ### Ajax跨域问题解决
 [http://www.cnblogs.com/pandang/p/5341250.html]()
 
+
 ### 警告，确认，信息输入弹窗
 alert confirm prompt
 
