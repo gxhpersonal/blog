@@ -5,4 +5,7 @@ tags:
 categories: js
 ---
 
+### let
+let和var类似，let必须先声明后使用，否则会报错；
+
 ### Promise
