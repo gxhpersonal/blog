@@ -5,8 +5,9 @@ tags:
 categories: js
 ---
 
-### let
+### let  const
 let和var类似，let必须先声明后使用，否则会报错；
+let声明变量，const声明常量；
 ```
 function kuai(){
   let n = 5;
