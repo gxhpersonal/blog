@@ -8,6 +8,16 @@ categories: css
 ### flex布局
 1.意为弹性布局，块元素：display:flex;行内元素：display:inline-flex;
 2.不同内核浏览器需要加前缀区分，如：display:-webkit-flex; /*Safari*/ 
+3.设为flex布局后，子元素的float,clear,vertical-align属性将失效。
+4.flex属性：
+1）flex-direction:row（默认值）：主轴为水平方向，起点在左端。
+                  row-reverse：主轴为水平方向，起点在右端。
+                  column：主轴为垂直方向，起点在上沿。
+                  column-reverse：主轴为垂直方向，起点在下沿
+2)flex-wrap属性: nowrap（默认）：不换行。
+                wrap：换行，第一行在上方。
+                wrap-reverse：换行，第一行在下方。
+3)flex-flow：属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。
 
 ### 清除所有a标签在点击时出现的特效
 > 清除所有a标签在点击时出现的特效：a{ -webkit-tap-highlight-color:rgba(255,0,0,0);}
