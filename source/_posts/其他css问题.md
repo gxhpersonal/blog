@@ -6,6 +6,8 @@ categories: css
 ---
 
 ### flex布局
+1.意为弹性布局，块元素：display:flex;行内元素：display:inline-flex;
+2.不同内核浏览器需要加前缀区分，如：display:-webkit-flex; /*Safari*/ 
 
 ### 清除所有a标签在点击时出现的特效
 > 清除所有a标签在点击时出现的特效：a{ -webkit-tap-highlight-color:rgba(255,0,0,0);}
