@@ -92,3 +92,8 @@ validateMobile: function (str) {
             return reg.test(str);
         }
 ```
+
+### .substr()方法
+string.substr(star,length)
+第一个参数要抽取的字串的起始下标，如果是负数，倒数，
+第二个参数表示字串字符数
