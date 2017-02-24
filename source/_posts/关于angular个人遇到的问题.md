@@ -7,6 +7,25 @@ categories: angular
 ### 关于ng-if
 > 当一个元素需要隐藏和显示时，用ng-if的话，会出现其中包含的元素身上的方法无法正确调用的现象，所以，当元素中有方法时，最好使用 ng-show 和 ng-hide
 
+###动态插入的标签元素带有angular语法不执行解决
+```
+var uploadInfo = '上传成功！<a ng-click="quitTo('customer')">点击</a>跳转到客户列表界面';
+angular.element('.modal-body').append(uploadInfo);
+```
+将uploadInfo变量通过$compile进行处理，
+var ele = $compile(uploadInfo)($scope);
+angular.element('.modal-body').append(ele);
+
+###依赖注入
+AngularJS提供了一种非常简单的解决方法，即将依赖作为一个数组传入，数组的最后一个元素是一个函数，所有的依赖项作为它的参数。
+```
+app.controller('MainCtrl', ['$scope', '$timeout', function($scope, $timeout){
+    $timeout(function(){
+        console.log($scope);
+    }, 1000);
+}]);
+```
+
 ### 获取input焦点
 ```javascript
 var myApp = angular.module('myApp',[]);
@@ -19,9 +38,8 @@ element[0].focus();
 ```
 
 ### ng-repeat遍历数组
-> ng-repeat遍历数组时，需要在 v in xxx 后面加上 track by $index；
+> ng-repeat遍历数组时，数组中有2个以上的相同数字，需要在 v in xxx 后面加上 track by $index；
 > [详细解释：](http://blog.csdn.net/rangqiwei/article/details/38020667)
-
 
 ### 输出当前点击的对象属性值
 ```html
