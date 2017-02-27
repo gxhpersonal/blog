@@ -50,6 +50,9 @@ Git的设置文件为`.gitconfig`，它可以在用户主目录下（全局配�
 	//提交工作区自上次commit之后的变化，直接到仓库区
 	$ git commit -a
 
+### 新建的分支push到远程服务器上
+    $ git push -u origin [分支名]
+
 ### 远程代码取到本地
 
 	$ git pull
