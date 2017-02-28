@@ -8,6 +8,15 @@ categories: js
 ### Ajax跨域问题解决
 [http://www.cnblogs.com/pandang/p/5341250.html]()
 
+### JS判断浏览器种类IE，FF，Opera,Safari,chrome...
+[http://www.jb51.net/article/50464.htm]()
+
+//基本原理就是根据浏览器的userAgent判断
+var userAgent = navigator.userAgent; 
+//例如：
+if (userAgent.indexOf("Safari") > -1) {
+        return "Safari";
+} //判断是否Safari浏览器
 
 ### 警告，确认，信息输入弹窗
 alert confirm prompt
