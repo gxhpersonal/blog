@@ -8,6 +8,9 @@ categories: html
 ### 标签变为可编辑
 > contenteditable=true
 
+###textarea标签问题
+加边框在移动端会出现双边框
+
 ### localstorage
 ```javascript
 var storage = JSON.parse(window.localStorage.getItem("CdlformData")) || {};  //从本地取localstorage数据
