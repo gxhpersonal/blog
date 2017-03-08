@@ -106,3 +106,11 @@ Chrome：该行无文字时，光标高度与line-height一致；该行有文字
 	运行代码发现，IE显示正常，火狐、谷歌浏览器却不支持，所以不建议使用writing-mode属性。
 2.对文字对象宽度设置只能排下一个文字的宽度距离，让文字一行排不下两个文字使其文字自动换行，就形成了竖立排版需求。
 3.利用html br换行标签实现文字换行，对每个文字后加上换行br标签让其竖列排版。
+
+### ios下input样式问题
+1.ios下如果想要禁用input,input设置为readonly仍然会呼起键盘，所以必须设置disabled属性。
+2.ios下设置为disabled属性，input表单背景颜色会变灰，透明度会降低，所以，必须设置
+	input:disabled{
+       opacity:1;
+       bakcground:#fff;
+	}
