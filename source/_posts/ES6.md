@@ -26,3 +26,4 @@ ES6中let，class和const声明的变量不再与顶层对象的属性关联
 
 
 ### Promise
+
