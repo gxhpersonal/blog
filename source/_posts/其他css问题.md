@@ -114,3 +114,6 @@ Chrome：该行无文字时，光标高度与line-height一致；该行有文字
        opacity:1;
        bakcground:#fff;
 	}
+
+### css3滤镜效果：-webkit-filter
+[http://www.css88.com/html5-demo/-webkit-filter/index.html]()
