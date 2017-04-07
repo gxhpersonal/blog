@@ -117,3 +117,18 @@ Chrome：该行无文字时，光标高度与line-height一致；该行有文字
 
 ### css3滤镜效果：-webkit-filter
 [http://www.css88.com/html5-demo/-webkit-filter/index.html]()
+
+### 字体抗锯齿效果
+Webkit在自己的引擎中支持了这一效果。
+-webkit-font-smoothing
+它有三个属性值：
+none ------ 对低像素的文本比较好
+subpixel-antialiased------默认值
+antialiased ------抗锯齿很好 
+.icon {
+
+-webkit-font-smoothing: antialiased;
+
+-moz-osx-font-smoothing: grayscale;  //Gecko也推出了自己的抗锯齿效果的非标定义
+
+}
