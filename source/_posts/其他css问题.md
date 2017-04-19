@@ -132,3 +132,5 @@ antialiased ------抗锯齿很好
 -moz-osx-font-smoothing: grayscale;  //Gecko也推出了自己的抗锯齿效果的非标定义
 
 }
+
+### 弹层出现禁用背景body滚动条
