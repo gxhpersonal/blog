@@ -97,3 +97,6 @@ validateMobile: function (str) {
 string.substr(star,length)
 第一个参数要抽取的字串的起始下标，如果是负数，倒数，
 第二个参数表示字串字符数
+
+### string.substring()方法
+返回介于两个指定下标之间的字符，取第一个参数，不取第二个参数，第二个参数不填，则返回到结尾；
