@@ -180,3 +180,7 @@ angular.module('myapp',[])
         }
     }
 }
+
+### $timeout $apply
+$timeout会帮你调用$apply()，让你不需要手动地调用它
+$apply会吧我们的代码wrapped到了$scope.$apply()中，它会自动触发$rootScope.$digest()，从而让watchers被触发用以更新view
