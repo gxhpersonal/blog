@@ -85,6 +85,12 @@ toUpperCase 方法对非字母字符不会产生影响。
 > arrayObject.join(separator)
 > 参数用来指定要使用的分隔符，默认为逗号
 
+### .push(),.pop(),.unshift(),.shift()方法
+.push()方法在当前数组末尾添加新元素，返回值为新数组长度；
+.pop()方法删除当前数组最后一个元素并返回这个元素；
+.unshift()方法向数组开始位置添加元素；
+.shift() 方法用于把数组的第一个元素从其中删除，并返回第一个元素的值
+
 ###判断电话号码
 ```javascript
 validateMobile: function (str) {
