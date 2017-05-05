@@ -97,6 +97,8 @@ validateMobile: function (str) {
             var reg = /^1[3-8]\d{9}$/;
             return reg.test(str);
         }
+//邮箱验证
+var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
 ```
 
 ### .substr()方法
