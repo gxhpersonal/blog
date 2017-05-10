@@ -134,3 +134,9 @@ antialiased ------抗锯齿很好
 }
 
 ### 弹层出现禁用背景body滚动条
+height:100%;overscroll:hidden;
+touch-action:none;//禁止触发默认的手势操作。
+pan-x：可以在父级元素(the nearest ancestor)内进行水平移动的手势操作。
+pan-y：可以在父级元素内进行垂直移动的手势操作。
+manipulation：允许手势水平/垂直平移或持续的缩放。任何auto属性支持的额外操作都不支持；
+注：touch-action只支持具有行内块，块级的元素
