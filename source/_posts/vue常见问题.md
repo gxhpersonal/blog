@@ -9,3 +9,6 @@ categories: vue
 在style标签中加入scoped语句
 <style scoped></style>
 
+css支持scss语法：
+<style lang="scss"></style>
+
