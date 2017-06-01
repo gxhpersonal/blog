@@ -140,3 +140,10 @@ pan-x：可以在父级元素(the nearest ancestor)内进行水平移动的手�
 pan-y：可以在父级元素内进行垂直移动的手势操作。
 manipulation：允许手势水平/垂直平移或持续的缩放。任何auto属性支持的额外操作都不支持；
 注：touch-action只支持具有行内块，块级的元素
+
+### CSS控制输入文本大小写
+> text-transform：none；capitalize；uppercase；lowercase；inherit；
+none默认。定义带有小写字母和大写字母的标准的文本。
+capitalize文本中的每个单词以大写字母开头。
+uppercase定义仅有大写字母。lowercase定义无大写字母，仅有小写字母。
+inherit规定应该从父元素继承 text-transform 属性的值。
