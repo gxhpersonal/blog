@@ -143,7 +143,7 @@ manipulation：允许手势水平/垂直平移或持续的缩放。任何auto属
 
 ### CSS控制输入文本大小写
 > text-transform：none；capitalize；uppercase；lowercase；inherit；
-none默认。定义带有小写字母和大写字母的标准的文本。
+>none默认。定义带有小写字母和大写字母的标准的文本。
 capitalize文本中的每个单词以大写字母开头。
 uppercase定义仅有大写字母。lowercase定义无大写字母，仅有小写字母。
 inherit规定应该从父元素继承 text-transform 属性的值。
