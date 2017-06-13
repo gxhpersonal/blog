@@ -34,6 +34,9 @@ console.log($(".friend_detail p").text().length)
     }
     $(".friend_detail p").text(s);
 
+### 移动端input被输入法挡住
+scrollIntoView(alignWithTop)
+
 ### 通过身份证号得到生日，性别，年龄
 ```
 <script>
