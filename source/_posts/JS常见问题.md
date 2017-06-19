@@ -37,6 +37,12 @@ console.log($(".friend_detail p").text().length)
 ### 移动端input被输入法挡住
 scrollIntoView(alignWithTop)
 
+### JS监听动画完成事件
+tt.addEventListener("webkitAnimationEnd", function(){ //动画结束时事件 
+this.className = this.className.replace('change', ' '); 
+console.log(2); 
+}, false); 
+
 ### 通过身份证号得到生日，性别，年龄
 ```
 <script>
