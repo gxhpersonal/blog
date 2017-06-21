@@ -1,9 +1,15 @@
-﻿---
+---
 title: 判断android和ios
 date: 2016-09-14 18:07:27
 tags:
 categories: JS
 ---
+
+### 与APP交互
+很多时候APP中会嵌套H5的页面，这个时候与APP的交互就显得尤为重要，一般我们与APP交互会在window对象下构造一个共用函数，并且需要时返回指定约定的值，APP那边会根据约定的值去执行相应的操作，从而达到交互的目的；
+```javascript
+//如：window.nativeBack = function(){return 1}
+```
 
 ### 判断android和ios
 ```javascript
