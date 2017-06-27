@@ -11,6 +11,13 @@ categories: html
 ###textarea标签问题
 加边框在移动端会出现双边框
 
+### img标签中的图片无法显示
+1、让这个图片元素隐藏：
+onerror="this.style.display='none'"/>
+2、用默认的图片替换：
+* 控制onerror事件只触发一次，需要增加这句话：this.onerror=null;
+onerror="this.src='默认图片的url地址;this.onerror=null'"/>
+
 ### localstorage
 ```javascript
 var storage = JSON.parse(window.localStorage.getItem("CdlformData")) || {};  //从本地取localstorage数据

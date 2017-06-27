@@ -41,6 +41,10 @@ element[0].focus();
 > ng-repeat遍历数组时，数组中有2个以上的相同数字，需要在 v in xxx 后面加上 track by $index；
 > [详细解释：](http://blog.csdn.net/rangqiwei/article/details/38020667)
 
+### ng-repeat遍历对象
+> ng-repeat="(key,value) in feesWays"
+> 这种方式可以把接口数据对象格式的字段分离成键和值；
+
 ### 输出当前点击的对象属性值
 ```html
 <!doctype html>
