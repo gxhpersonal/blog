@@ -16,5 +16,6 @@ css支持scss语法：
 <style lang="scss"></style>
 ```
 
-###
+### v-for遍历数据问题
+> 在vue中用v-for必须搭配v-bind:key="key"来使用；
 
