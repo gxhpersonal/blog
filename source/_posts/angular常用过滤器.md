@@ -54,3 +54,4 @@ return function (text) {
 };
 
 <p ng-bind-html="currentWork.description | to_trusted"></p>
+其中$sce是angularJS自带的安全处理模块，$sce.trustAsHtml(input)方法便是将数据内容以html的形式进行解析并返回。将此过滤器添加到ng-bind-html所绑定的数据中，便实现了在数据加载时对于html标签的自动转义。
