@@ -44,3 +44,13 @@ $scope.names = [
 
 ###limitTo过滤器：用来控制显示在页面的数量
 ng-repeat:v in data | limitTo:15
+
+###angularJS中的ng-bind-html指令和$sce服务
+把$sce封装成一个过滤器就可以在模板上随时调用了
+
+app.filter('to_trusted', ['$sce', function ($sce) {
+return function (text) {
+    return $sce.trustAsHtml(text);
+};
+
+<p ng-bind-html="currentWork.description | to_trusted"></p>
