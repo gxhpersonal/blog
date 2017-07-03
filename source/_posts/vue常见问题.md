@@ -19,3 +19,5 @@ css支持scss语法：
 ### v-for遍历数据问题
 > 在vue中用v-for必须搭配v-bind:key="key"来使用；
 
+### props:{}用来接收父组件传过来的数据
+
