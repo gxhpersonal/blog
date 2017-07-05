@@ -21,3 +21,6 @@ css支持scss语法：
 
 ### props:{}用来接收父组件传过来的数据
 
+### 引入模块和引入文件
+*引入模块：import webview from "../../common/webview.js";
+*引入文件：import "../../filter/webpFilter.js";

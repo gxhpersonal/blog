@@ -27,3 +27,10 @@ ES6中let，class和const声明的变量不再与顶层对象的属性关联
 
 ### Promise
 
+### export default {}为模块指定默认输出
+export default function () {
+  console.log('foo');
+}
+其他模块加载该模块时，import命令可以为该匿名函数指定任意名字
+import customName from './export-default';
+
