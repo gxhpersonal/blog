@@ -34,3 +34,18 @@ export default function () {
 其他模块加载该模块时，import命令可以为该匿名函数指定任意名字
 import customName from './export-default';
 
+### ES6支持方法简写
+```javascript
+var a{
+  points:function(){
+     return this;
+  }
+}
+* ES6可以简写为
+var a{
+   points(){
+     return this;
+   }
+}
+```
+
