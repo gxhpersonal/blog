@@ -42,6 +42,9 @@ tt.addEventListener("webkitAnimationEnd", function(){ //动画结束时事件
 this.className = this.className.replace('change', ' '); 
 }, false); 
 
+### 元素scrollTop属性
+> 只有元素设置了overflow样式，且不为hidden时才会生效，jquery对象要加下标[index]，否则找不到此属性；
+
 ### 通过身份证号得到生日，性别，年龄
 ```
 <script>
