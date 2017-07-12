@@ -25,6 +25,29 @@ css支持scss语法：
 *引入模块：import webview from "../../common/webview.js";
 *引入文件：import "../../filter/webpFilter.js";
 
+### vue中的index索引值问题
+vue 中$index $key 已经移除了
+之前可以这样:
+```
+<ul id="example">
+    <li v-for="item in items">
+        {{$index}}
+        {{$key}}
+    </li>
+</ul>
+```
+现在已经移除,如果还用的话就会报错:Uncaught ReferenceError: $index is not defined;
+
+现在这样写:
+```
+<ul id="example">
+    <li v-for="(item,index) in items">
+        {{item}}
+        {{index}}
+    </li>
+</ul>
+```
+第一个参数是值,第二个参数是索引;目的是为了保持和原生的一致;
 
 ### vue微信分享
 ```javascript
