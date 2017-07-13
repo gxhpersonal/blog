@@ -188,3 +188,18 @@ angular.module('myapp',[])
 ### $timeout $apply
 $timeout会帮你调用$apply()，让你不需要手动地调用它
 $apply会吧我们的代码wrapped到了$scope.$apply()中，它会自动触发$rootScope.$digest()，从而让watchers被触发用以更新view
+
+### ng-click方法函数中的this指向问题
+> this指向当前controller中的$scope
+> 比如：this.value = $scope.value;
+```
+ng-click中的this的特性在ng-repeat中非常好用。
+比如用ng-repeat遍历出一个列表：
+<div ng-click="change()" ng-repeat="item in items">{{item.value}}</div>
+然后你想给他们绑定一个统一的函数change()方法，点击之后只会把自己的值改变，此时this就是指向当前的子scope：
+$scope.change = function(){
+    this.item.value = 'new value';
+    //由于是ng-repeat出来的，所以这里this指向的scope是上面那个案例中$scope的子集。
+    //即this.$parent === $scope;
+}
+```
