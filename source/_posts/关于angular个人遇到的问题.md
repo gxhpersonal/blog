@@ -204,4 +204,4 @@ $scope.change = function(){
 }
 ```
 
-### 
+### angular.cope()复制数组或对象
