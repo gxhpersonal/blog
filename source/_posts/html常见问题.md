@@ -20,11 +20,13 @@ onerror="this.src='默认图片的url地址;this.onerror=null'"/>
 
 ### input标签在chrome浏览器下背景颜色变黄色的问题
 如图
-![](http://https://cdn-qiniu-activity1.huizuche.com/TIM%E6%88%AA%E5%9B%BE20170718165325.png)
+![](http://ota5i8p1g.bkt.clouddn.com/input.png)
 
 解决方法：
 >方法一：
+```
  <input type="text"  autocomplete="off">，没错，就是给input标签设置禁用自动完成属性；出现黄色背景就是因为启用了自动完成属性；
+```
 >方法二：
  -webkit-box-shadow: 0 0 0px 1000px white inset；  没错，就是给input设置内置阴影！而且一定要大，至少要比你的input本身大！不过，box-shadow是很慢的！而且，如果你的input是用图片做背景or，是没有办法做这么干的！
 
