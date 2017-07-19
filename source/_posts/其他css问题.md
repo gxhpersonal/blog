@@ -147,3 +147,15 @@ manipulation：允许手势水平/垂直平移或持续的缩放。任何auto属
 capitalize文本中的每个单词以大写字母开头。
 uppercase定义仅有大写字母。lowercase定义无大写字母，仅有小写字母。
 inherit规定应该从父元素继承 text-transform 属性的值。
+
+### 控制input标签的placeholder属性实现获取焦点显示暗文，失去焦点隐藏(其实就是改变placeholder中的文字颜色)
+```
+    &::-webkit-input-placeholder { color:transparent; }
+    &:-moz-placeholder { color:transparent; }
+    &::-moz-placeholder { color:transparent; }
+    &:-ms-input-placeholder { color:transparent;}
+    &:focus::-webkit-input-placeholder { color:#9fb0bf; }
+    &:focus:-moz-placeholder { color:#9fb0bf; }
+    &:focus::-moz-placeholder { color:#9fb0bf; }
+    &:focus:-ms-input-placeholder { color:#9fb0bf; }
+```
