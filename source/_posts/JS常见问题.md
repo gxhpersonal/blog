@@ -45,6 +45,12 @@ this.className = this.className.replace('change', ' ');
 ### 元素scrollTop属性
 > 只有元素设置了overflow样式，且不为hidden时才会生效，jquery对象要加下标[index]，否则找不到此属性；
 
+### 点击input，textarea表单全选内容
+```
+select() 方法用于选择该元素中的文本。
+<input type="text" onclick="this.select()" value="点击全选">
+```
+
 ### 通过身份证号得到生日，性别，年龄
 ```
 <script>
