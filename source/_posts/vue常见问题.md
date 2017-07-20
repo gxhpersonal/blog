@@ -16,8 +16,10 @@ css支持scss语法：
 <style lang="scss"></style>
 ```
 
-### v-for遍历数据问题
-> 在vue中用v-for必须搭配v-bind:key="key"来使用；
+### v-for遍历数据中的v-bind:key（:key）问题
+> 在vue中用v-for最好搭配v-bind:key="key"来使用；
+> key的作用主要是为了高效的更新虚拟DOM
+我们知道，vue和react都实现了一套虚拟DOM，使我们可以不直接操作DOM元素，只操作数据便可以重新渲染页面。而隐藏在背后的原理便是其高效的Diff算法。
 
 ### props:{}用来接收父组件传过来的数据
 
