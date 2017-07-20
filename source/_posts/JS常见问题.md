@@ -51,6 +51,44 @@ select() 方法用于选择该元素中的文本。
 <input type="text" onclick="this.select()" value="点击全选">
 ```
 
+### JS处理Range
+>所谓"Range"，是指HTML文档中任意一段内容。一个Range的起始点和结束点位置任意，甚至起始点和结束点可以是一样的（也就是空Range）。最常见的Range是用户文本选择范围(user text selection)。当用户选择了页面上的某一段文字后，你就可以把这个选择转为Range。当然，你也可以直接用程序定义Range
+>举几个常用的处理Range的方法：
+1.获取用户选中的文本：
+```
+var oBtn = document.getElementById("button");
+oBtn.onclick = function() {
+    var userSelection, text;
+    if (window.getSelection) { 
+        //现代浏览器
+        userSelection = window.getSelection();
+    } else if (document.selection) { 
+        //IE浏览器 考虑到Opera，应该放在后面
+        userSelection = document.selection.createRange();
+    }
+    if (!(text = userSelection.text)) {
+        text = userSelection;
+    }
+    alert(text);
+};
+```
+2.点击表单内容全选：
+```
+function SelectText(name) {
+	if(obj.createTextRange){//IE浏览器
+    var range = obj.createTextRange();              
+    range.moveEnd("character",结束序号);
+    range.moveStart("character", 起始序号);
+    range.select();
+}else{//非IE浏览器
+    obj.setSelectionRange(起始序号, 结束序号);
+    obj.focus();
+}
+}
+```
+其他详见张鑫旭博客：
+[http://www.zhangxinxu.com/wordpress/2011/04/js-range-html%E6%96%87%E6%A1%A3%E6%96%87%E5%AD%97%E5%86%85%E5%AE%B9%E9%80%89%E4%B8%AD%E3%80%81%E5%BA%93%E5%8F%8A%E5%BA%94%E7%94%A8%E4%BB%8B%E7%BB%8D/]()
+
 ### 通过身份证号得到生日，性别，年龄
 ```
 <script>
