@@ -27,6 +27,14 @@ css支持scss语法：
 *引入模块：import webview from "../../common/webview.js";
 *引入文件：import "../../filter/webpFilter.js";
 
+### vue数据绑定支持JS表达式(以后v-for的时候再也不用先在JS中处理一遍数据再绑定了)
+```
+{{ number + 1 }}
+{{ ok ? 'YES' : 'NO' }}
+{{ message.split('').reverse().join('') }}
+<div v-bind:id="'list-' + id"></div>
+```
+
 ### vue中的index索引值问题
 vue 中$index $key 已经移除了
 之前可以这样:
