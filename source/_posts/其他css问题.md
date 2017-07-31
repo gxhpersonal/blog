@@ -159,3 +159,7 @@ inherit规定应该从父元素继承 text-transform 属性的值。
     &:focus::-moz-placeholder { color:#9fb0bf; }
     &:focus:-ms-input-placeholder { color:#9fb0bf; }
 ```
+
+### will-change提高页面滚动、动画等渲染性能css3
+参考张鑫旭blog:
+[http://www.zhangxinxu.com/wordpress/2015/11/css3-will-change-improve-paint/]()
