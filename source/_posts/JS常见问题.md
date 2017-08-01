@@ -45,12 +45,6 @@ this.className = this.className.replace('change', ' ');
 ### 元素scrollTop属性
 > 只有元素设置了overflow样式，且不为hidden时才会生效，jquery对象要加下标[index]，否则找不到此属性；
 
-### 点击input，textarea表单全选内容
-```
-select() 方法用于选择该元素中的文本。
-<input type="text" onclick="this.select()" value="点击全选">
-```
-
 ### JS处理Range
 >所谓"Range"，是指HTML文档中任意一段内容。一个Range的起始点和结束点位置任意，甚至起始点和结束点可以是一样的（也就是空Range）。最常见的Range是用户文本选择范围(user text selection)。当用户选择了页面上的某一段文字后，你就可以把这个选择转为Range。当然，你也可以直接用程序定义Range
 >举几个常用的处理Range的方法：
