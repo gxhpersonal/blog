@@ -2,7 +2,7 @@
 title: JS常见问题
 date: 2016-12-26 13:37:16
 tags:
-categories: js
+categories: JS
 ---
 
 ### Ajax跨域问题解决

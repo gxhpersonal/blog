@@ -2,7 +2,7 @@
 title: JS字符串控制
 date: 2016-11-30 18:27:25
 tags:
-categories: js
+categories: JS
 ---
 ### 字符串大小写互转
 toLocaleUpperCase 方法
