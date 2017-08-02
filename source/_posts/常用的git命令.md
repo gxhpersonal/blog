@@ -102,3 +102,32 @@ Git的设置文件为`.gitconfig`，它可以在用户主目录下（全局配�
 3.执行 git cherry-pick 2e1ada53819d46557b24ee7376dc61d37a06939d，该commit便被提交到了master分支。
  
 到此，”2e1ada53819d46557b24ee7376dc61d37a06939d“这个commit便被提交到了master分支。
+
+### git提交GitHub代码不再需要每次commit输入username和password解决
+1.在命令行输入命令:
+```
+git config --global credential.helper store
+```
+☞ 这一步会在用户目录下的.gitconfig文件最后添加:
+```
+ [credential]
+     helper = store
+```
+2.现在push你的代码 (git push), 这时会让你输入用户名密码, 这一步输入的用户名密码会被记住, 下次再push代码时就不用输入用户名密码啦!
+☞这一步会在用户目录下生成文件.git-credential 用来记录用户名密码的信息.
+☞ git config --global 命令实际上在操作用户目录下的.gitconfig文件, 我们cat一下此文件(cat .gitconfig), 其内容如下:
+```
+[user]
+ name = alice
+ email = alice@aol.com
+[push]
+ default = simple
+[credential]
+ helper = store
+```
+* 拓展：
+```
+git config --global user.email "alice@aol.com" 操作的就是上面的email
+git config --global push.default matching 操作的就是上面的push段中的default字段
+git config --global credential.helper store 操作的就是上面最后一行的值
+```
