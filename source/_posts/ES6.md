@@ -49,3 +49,6 @@ var a{
 }
 ```
 
+### export,export default的异同
+*export在js中可以有多个，export default只能出现一个；
+
