@@ -5,7 +5,8 @@ tags:
 categories: css
 ---
 
-### flex布局
+### flex布局	
+[更多参见阮老师blog](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool)
 1.意为弹性布局，块元素：display:flex;行内元素：display:inline-flex;
 2.不同内核浏览器需要加前缀区分，如：display:-webkit-flex; /*Safari*/ 
 3.设为flex布局后，子元素的float,clear,vertical-align属性将失效。
@@ -18,6 +19,8 @@ categories: css
                 wrap：换行，第一行在上方。
                 wrap-reverse：换行，第一行在下方。
 3)flex-flow：属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。
+4)justify-content:flex-start | flex-end | center | space-between | space-around
+5)align-items: flex-start | flex-end | center | baseline | stretch;
 
 ### 清除所有a标签在点击时出现的特效
 > 清除所有a标签在点击时出现的特效：a{ -webkit-tap-highlight-color:rgba(255,0,0,0);}
