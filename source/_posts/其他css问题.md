@@ -166,3 +166,7 @@ inherit规定应该从父元素继承 text-transform 属性的值。
 ### will-change提高页面滚动、动画等渲染性能css3
 参考张鑫旭blog:
 [http://www.zhangxinxu.com/wordpress/2015/11/css3-will-change-improve-paint/]()
+
+
+### 支持webkit内核浏览器的滚动条样式自定义
+>::-webkit-scrollbar{/* 1 */} /*滚动条垂直方向的宽度与水平方向的高度*/ ::-webkit-scrollbar-button{/* 2 */} /*滚动条按钮*/ ::-webkit-scrollbar-track{/* 3 */} /*滚动条轨道*/ ::-webkit-scrollbar-track-piece{/* 4 */} /*滚动条垂直方向轨道件*/ ::-webkit-scrollbar-thumb{/* 5 */} /*滚动条轨道上的按钮*/ ::-webkit-scrollbar-corner{/* 6 */} /*滚动条轨道上的滚动角*/ 
