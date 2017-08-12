@@ -60,7 +60,7 @@ Number(value)——把给定的值转换成数字（可以是整数或浮点数�
 ### 数组去重
 1.利用空数组+空对象push法：
 ```
-function removeArrSame(arr){
+function removeArrSame1(arr){
 	var tmp = {};
 	var newA = [];
 	for(var i=0;i<arr.length;i++){
@@ -70,6 +70,18 @@ function removeArrSame(arr){
 	}
  }	
  return newA;
+}
+```
+2.new一个新数组push方法：
+```
+function removeArrSame2(arr){
+	var newA = [];
+	for(var i=0;i<arr.length;i++){
+		if(newA.indexOf(arr[i]) === -1){
+			newA.push(arr[i])
+		}
+	}
+	return newA;
 }
 ```
 
