@@ -33,6 +33,13 @@ vertical-align只适用于行内块元素
 ### img标签和同级div之间的间隙处理
 > 给img标签设置 vertical-align:top;display:block;
 
+### 在移动端手机APP中禁止长按来阻止其他手机自带默认事件（如：iPhone的3Dtouch）
+```
+    touch-callout: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+```
 ### 文本超出后显示省略号
 > p{
    width:40px;
@@ -52,41 +59,6 @@ p{
     -moz-box-orient: vertical;        //支持火狐的写法
 } 
 
-### ios在fixed布局下出现bug问题
-软键盘唤起后，页面的fixed 元素将失效（即无法浮动，也可以理解为变成了absolute定位），所以当页面超过一屏且滚动时，失效的 fixed 元素就会跟随滚动了。
-这便是 iOS 上 fixed 元素和输入框的 bug 。其中不仅限于 type=text 的输入框，凡是软键盘（比如时间日期选择、select 选择等等）被唤起，都会遇到同样地问题。
-解决方法：
-    将原 body 滚动的区域域移到 main 内部，而 header 和footer 的样式不变。
-.main{
-    position: absolute;
-    top: 50px;
-    bottom: 34px;
-    overflow-y: scroll;
-}
-.main  .content {
-    height: 2000px;
-}
-
-这样布局可能会是的滚动失去原来的流畅，加以下代码，恢复之前丝滑般的滚动：
-    -webkit-overflow-scrolling: touch;
-
-这样的布局在h5是行不通的，所以需要用JS来控制内部滚动元素的高度：
-```javascript
-1. 内部滚动
-var w = window.innerWidth,
-        h = window.innerHeight;  //获取窗口的高度与宽度(不包含工具条与滚动条):
-    $('#js_orderConWrap').height(h - $('.cm-header-wrap').height());  //内部元素的高度 = 窗口高度 - 头部或底部的高度(如果有)
-
-//既然都在h5了，所以还要考虑APP环境，在APP环境下头部是不会用h5的，所以需要判断h5和APP环境；
-
-2.弹层显示，禁止背景滚动
-//关闭滚动条
-        $(document).on('touchmove',function(e){
-            if($('.app-popup-container').css('display') === 'block'){
-                e.preventDefault();
-            }
-})
-```
 ### 自定义光标
 > cursor: url(/路径/cursor.cur),auto;        后缀似乎必须为cur
 
@@ -170,3 +142,39 @@ inherit规定应该从父元素继承 text-transform 属性的值。
 
 ### 支持webkit内核浏览器的滚动条样式自定义
 >::-webkit-scrollbar{/* 1 */} /*滚动条垂直方向的宽度与水平方向的高度*/ ::-webkit-scrollbar-button{/* 2 */} /*滚动条按钮*/ ::-webkit-scrollbar-track{/* 3 */} /*滚动条轨道*/ ::-webkit-scrollbar-track-piece{/* 4 */} /*滚动条垂直方向轨道件*/ ::-webkit-scrollbar-thumb{/* 5 */} /*滚动条轨道上的按钮*/ ::-webkit-scrollbar-corner{/* 6 */} /*滚动条轨道上的滚动角*/ 
+
+### ios在fixed布局下出现bug问题
+软键盘唤起后，页面的fixed 元素将失效（即无法浮动，也可以理解为变成了absolute定位），所以当页面超过一屏且滚动时，失效的 fixed 元素就会跟随滚动了。
+这便是 iOS 上 fixed 元素和输入框的 bug 。其中不仅限于 type=text 的输入框，凡是软键盘（比如时间日期选择、select 选择等等）被唤起，都会遇到同样地问题。
+解决方法：
+    将原 body 滚动的区域域移到 main 内部，而 header 和footer 的样式不变。
+.main{
+    position: absolute;
+    top: 50px;
+    bottom: 34px;
+    overflow-y: scroll;
+}
+.main  .content {
+    height: 2000px;
+}
+
+这样布局可能会是的滚动失去原来的流畅，加以下代码，恢复之前丝滑般的滚动：
+    -webkit-overflow-scrolling: touch;
+
+这样的布局在h5是行不通的，所以需要用JS来控制内部滚动元素的高度：
+```javascript
+1. 内部滚动
+var w = window.innerWidth,
+        h = window.innerHeight;  //获取窗口的高度与宽度(不包含工具条与滚动条):
+    $('#js_orderConWrap').height(h - $('.cm-header-wrap').height());  //内部元素的高度 = 窗口高度 - 头部或底部的高度(如果有)
+
+//既然都在h5了，所以还要考虑APP环境，在APP环境下头部是不会用h5的，所以需要判断h5和APP环境；
+
+2.弹层显示，禁止背景滚动
+//关闭滚动条
+        $(document).on('touchmove',function(e){
+            if($('.app-popup-container').css('display') === 'block'){
+                e.preventDefault();
+            }
+})
+```
