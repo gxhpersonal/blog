@@ -26,6 +26,21 @@ ES6中let，class和const声明的变量不再与顶层对象的属性关联
 
 
 ### Promise
+```
+var promise = new Promise(function (resolve, reject) {
+        console.log('resolve');
+		//成功回调
+        resolve();
+		//失败回调
+		reject();
+    })
+    promise.then(function () {
+        console.log('success')
+    }, function () {
+        console.log('fail')
+    })
+    console.log('justgo')
+```
 
 ### export default {}为模块指定默认输出
 export default function () {
