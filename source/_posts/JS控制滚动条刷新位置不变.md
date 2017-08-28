@@ -39,6 +39,7 @@ categories: JS
    }     
 </script>
 ```
+
 然后在html页面中设置<body id=body   onscroll=SetCookie("scroll",body.scrollTop);   onload="scrollback();">就可以在刷新或提交后滚动条的位置保持不变了。
 
 上面的是通用的解决方法，在.net中还可以用<pages maintainScrollPositionOnPostBack="true">这个配置，更容易
