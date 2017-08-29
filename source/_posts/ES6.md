@@ -70,3 +70,15 @@ var a{
 3.通过export方式导出，在导入时要加{ }，export default则不需要
 4.export能直接导出变量表达式，export default不行。
 
+### ES6的箭头函数
+ES6中的箭头函数写法更加简单，表达更加简洁，简化回调函数
+```
+ var func = v => v+1;
+等于：
+ var func = function(v){return v+1}
+
+var result = [1,2,1,3,4].sort((a,b)=>a-b)
+等于：
+var result = [1,2,1,3,4].sort(function(a,b){return a-b})
+```
+
