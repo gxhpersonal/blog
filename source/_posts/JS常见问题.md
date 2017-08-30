@@ -189,3 +189,7 @@ alert (IdCard('142223198503226111',3));
             });
         },
         //登录拦截 结束
+
+###时间格式转换
+>console中截的图，直接字面意思理解使用就好
+![时间格式转换](http://ota5i8p1g.bkt.clouddn.com/timeFormat.png)
