@@ -82,3 +82,11 @@ var result = [1,2,1,3,4].sort((a,b)=>a-b)
 var result = [1,2,1,3,4].sort(function(a,b){return a-b})
 ```
 
+### 数组去重
+```
+var arr = [1,1,2,3,4,5,66,5,6];
+console.log(new Set(arr))
+//此时console出来的是一个对象，
+console.log(array.from(new Set(arr)))
+//此时console出来的是去重之后的数组
+

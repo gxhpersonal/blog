@@ -83,6 +83,22 @@ function SelectText(name) {
 其他详见张鑫旭博客：
 [http://www.zhangxinxu.com/wordpress/2011/04/js-range-html%E6%96%87%E6%A1%A3%E6%96%87%E5%AD%97%E5%86%85%E5%AE%B9%E9%80%89%E4%B8%AD%E3%80%81%E5%BA%93%E5%8F%8A%E5%BA%94%E7%94%A8%E4%BB%8B%E7%BB%8D/]()
 
+
+### window.location
+> 返回（当前页面的）整个 URL：
+console.log(location.href)
+
+返回当前 URL 的路径名：
+console.log(location.pathname);
+
+加载一个新的文档：
+window.location.assign("http://www.w3school.com.cn")
+
+  ● location.hostname 返回 web 主机的域名
+  ● location.pathname 返回当前页面的路径和文件名
+  ● location.port 返回 web 主机的端口 （80 或 443）
+  ● location.protocol 返回所使用的 web 协议（http:// 或 https://）
+
 ### 通过身份证号得到生日，性别，年龄
 ```
 <script>
