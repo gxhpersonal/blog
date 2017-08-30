@@ -86,6 +86,7 @@ function SelectText(name) {
 ### 通过身份证号得到生日，性别，年龄
 ```
 <script>
+//参数UUserCard是身份证号，参数num用来判断要获取什么信息,只取18位身份证号；
 function IdCard(UUserCard,num){
    if(num==1){
        //获取出生日期
@@ -93,7 +94,7 @@ function IdCard(UUserCard,num){
     return birth;
    }
    if(num==2){
-       //获取性别
+       //获取性别（其原理就是取身份证第17位除以2，余数1是男，否则是女）
        if (parseInt(UUserCard.substr(16, 1)) % 2 == 1) {
            //男
      return "男";
@@ -103,7 +104,7 @@ function IdCard(UUserCard,num){
        }
    }
    if(num==3){
-        //获取年龄
+        //获取年龄（年龄=当前年-身份证7至10位数字，如果月比当前月小或者月与当前月相等&&日比当前日小于等于，则年龄+1）
         var myDate = new Date();
         var month = myDate.getMonth() + 1;
         var day = myDate.getDate();
