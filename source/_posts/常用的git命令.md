@@ -26,6 +26,10 @@ Git的设置文件为`.gitconfig`，它可以在用户主目录下（全局配�
 	git config --global user.name "gxhpersonal"
 	git config --global user.email "991158744@qq.com"
 
+### 查看信息
+	//显示有变更的文件
+	$ git status
+
 
 ### 增加/删除文件
 
@@ -131,3 +135,5 @@ git config --global user.email "alice@aol.com" 操作的就是上面的email
 git config --global push.default matching 操作的就是上面的push段中的default字段
 git config --global credential.helper store 操作的就是上面最后一行的值
 ```
+
+###更多
