@@ -59,6 +59,9 @@ vue 中$index $key 已经移除了
 ```
 第一个参数是值,第二个参数是索引;目的是为了保持和原生的一致;
 
+### 鼠标右键事件
+@contextmenu.prevent="alert('您点击的是鼠标右键')"
+
 ### vue微信分享
 ```javascript
 1.页面中引入微信文件
