@@ -89,4 +89,18 @@ console.log(new Set(arr))
 //此时console出来的是一个对象，
 console.log(array.from(new Set(arr)))
 //此时console出来的是去重之后的数组
+```
+
+### 字符串拼接
+```
+ES5:
+var func = function(v){
+	console.log('name '+v)
+}
+func('jone')
+
+ES6:
+var func = v => console.log(`name ${v}`)
+func('jone')
+```
 
