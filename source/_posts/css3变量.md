@@ -1,7 +1,7 @@
 ---
 title: css3变量
 date: 2016-11-27 16:52:40
-tags:
+tags: css
 categories: css
 ---
 一、变量是个好东西

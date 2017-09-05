@@ -1,7 +1,7 @@
 ---
 title: angular中的请求
 date: 2016-11-28 15:14:32
-tags:
+tags: angular
 categories: angular
 ---
 ## $http

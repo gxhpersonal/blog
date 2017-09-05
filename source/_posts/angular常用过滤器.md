@@ -1,7 +1,7 @@
 ---
 title: angular常用过滤器
 date: 2016-09-27 11:30:40
-tags:
+tags: angular
 categories: angular
 ---
 ## 一。表达式中添加过滤器
