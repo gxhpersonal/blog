@@ -1,7 +1,7 @@
 ---
 title: JS常见问题
 date: 2016-12-26 13:37:16
-tags:
+tags: JS
 categories: JS
 ---
 

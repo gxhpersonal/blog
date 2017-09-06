@@ -1,7 +1,7 @@
 ---
 title: 常用的git命令
 date: 2016-09-18 15:48:19
-tags:
+tags: git
 categories: git
 ---
 

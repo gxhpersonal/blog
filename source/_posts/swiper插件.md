@@ -1,7 +1,7 @@
 ---
 title: swiper插件
 date: 2016-09-19 14:50:11
-tags:
+tags: swiper
 categories: swiper
 ---
 

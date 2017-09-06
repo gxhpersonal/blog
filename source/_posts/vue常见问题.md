@@ -1,7 +1,7 @@
 ---
 title: vue常见问题
 date: 2017-02-22 11:34:59
-tags:
+tags: vue
 categories: vue
 ---
 
@@ -17,6 +17,7 @@ css支持scss语法：
 ```
 
 ### v-for遍历数据中的v-bind:key（:key）问题
+> ***tips:*** 2.2.0+ 的版本里，当在组件中使用 v-for 时，key 现在是必须的。
 > 在vue中用v-for最好搭配v-bind:key="key"来使用；
 > key的作用主要是为了高效的更新虚拟DOM
 我们知道，vue和react都实现了一套虚拟DOM，使我们可以不直接操作DOM元素，只操作数据便可以重新渲染页面。而隐藏在背后的原理便是其高效的Diff算法。
@@ -184,8 +185,8 @@ export default {
 import wechat from "../../common/wechat.js";
 wechat.setWxConfig();
 wechat.wxShare({ 
-shareTitle: "惠租车-驾照全球通国家查询", 
-descContent: "[驾照全球通]全球自驾200国，顶级车行认证！", 
+shareTitle: "这是微信分享的标题", 
+descContent: "这是微信分享的描述文案", 
 lineLink: location.href, 
-imgUrl: "https://cdn-qiniu-app1.huizuche.com/2.6/logo_share.jpg" });
+imgUrl: "这是微信分享的图片" });
 ```
