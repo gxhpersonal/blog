@@ -6,14 +6,19 @@ categories: angular
 ---
 ## $http
 angular提供了$http服务来同服务端进行通信，$http服务队浏览器的XMLHttpRequest对象进行了封装，让我们可以以ajax的方式来从服务器请求数据。
-$http服务是一个接受一个参数的函数，参数的类型是对象，用来配置生成的http的请求，该函数返回一个promise对象（关于promise规范，可以看看这篇文章）
+$http服务是一个接受一个参数的函数，参数的类型是对象，用来配置生成的http的请求，该函数返回一个promise对象（promise对象是一个构造函数ES6的对象）
 
 ```
 var promise = $http({
   method:'GET',
   url:'/api/user.json'
 });
-promise.then(function(resp){}, function(resp){})
+promise.then(
+	function(resp){
+		//success状态为resolved时调用（即异步操作成功）
+	}, function(resp){
+		//failure可选，状态为rejected时调用（失败）
+	})
 ```
 
 

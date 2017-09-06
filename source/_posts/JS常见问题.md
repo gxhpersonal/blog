@@ -9,7 +9,6 @@ categories: JS
 [http://www.cnblogs.com/pandang/p/5341250.html]()
 
 ### JS判断浏览器种类IE，FF，Opera,Safari,chrome...
-[http://www.jb51.net/article/50464.htm]()
 
 //基本原理就是根据浏览器的userAgent判断
 var userAgent = navigator.userAgent; 
@@ -85,9 +84,6 @@ function SelectText(name) {
 
 
 ### window.location
-> 返回（当前页面的）整个 URL：
-console.log(location.href)
-
 返回当前 URL 的路径名：
 console.log(location.pathname);
 
@@ -136,75 +132,11 @@ alert (IdCard('142223198503226111',3));
 ```
 
 ###APP环境登录判断
-        //登录拦截主方法，url:登录成功后跳转链接
-        CheckLoginAndGoNext: function (url) {
-            if (!url) {
-                url = window.location.href;
-            }
-            window.hzch5.CheckLogin(url);
-        },
-
-        //登录拦截 第一步：check登录状态
-        CheckLogin: function (url) {
-            if (!url) {
-                url = window.location.href;
-            }
-            $.ajax({
-                url: "http://"+window.location.host+"/Account/UserLoginStatus", type: "POST", dataType: "json", success: function (data) {
-                    if (data.success) {
-                        window.location = url;
-                    }
-                    else {
-                        window.hzch5.ToLoginPage(url);
-                    }
-                }
-            });
-        },
-          //登录拦截 第二步：未登录跳转登录界面（H5/APP)
-        ToLoginPage: function (url) {
-            if (!url) {
-                url = window.location.href;
-            }
-            if (navigator.userAgent.indexOf("hzc-ios") > -1 || navigator.userAgent.indexOf("hzc-android") > -1) {
-                var cver = window.hzch5.getCookie("cver"); //app版本号
-                var token = window.hzch5.getCookie("token");
-                if (cver) {//2.4版本
-                    var token = window.hzch5.getCookie("token");
-                    if (token) {
-                        //根据token同步APP登录状态
-                        window.hzch5.checkLoginByToken(token, url);
-                        return false;
-                    }
-                    document.location = "WINDOW:HZC:LOGIN";                   
-                }
-                else {//小于2.4版本
-                document.location = "http://" + window.location.host + "/Account/userLogin?returnurl=" + encodeURIComponent(url);
-                }
-            }
-            else {
-                document.location = "http://" + window.location.host + "/Account/userLogin?returnurl=" + encodeURIComponent(url);
-            }
-        },
-          //登录拦截 第三步  APP登录状态同步
-        checkLoginByToken: function (token, url) {
-            if (!url) {
-                url = window.location.href;
-            }
-            if (!token) {
-                token = window.hzch5.getCookie("token");
-            }
-            $.ajax({
-                url: "http://" + window.location.host + "/Account/UserLoginAuto", type: "POST", dataType: "json", data: { token: token }, success: function (data) {
-                    if (data.success) {
-                        document.location = "http://" + window.location.host + "/Account/userLogin?returnurl=" + encodeURIComponent(url);
-                    }
-                    else {                      
-                        document.location = "WINDOW:HZC:LOGIN";
-                    }
-                }
-            });
-        },
-        //登录拦截 结束
+```
+url = 函数传入的参数值
+1.调接口，判断登录态，未登录，跳转登录
+2.已登录，window.location = window.location.href || url;
+```
 
 ###时间格式转换
 >console中截的图，直接字面意思理解使用就好
