@@ -30,6 +30,10 @@ categories: css
 vertical-align:text-bottom；
 vertical-align只适用于行内块元素
 
+### css实现禁止点击事件
+> pointer-events: none;
+> 阻止点击事件，变为默认光标，阻止触发hover，active，阻止JS点击事件
+
 ### img标签和同级div之间的间隙处理
 > 给img标签设置 vertical-align:top;display:block;
 
