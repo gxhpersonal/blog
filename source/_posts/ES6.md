@@ -6,7 +6,7 @@ categories: JS
 ---
 
 ### let  const
-let和var类似，let必须先声明后使用，否则会报错；
+let和var类似，let必须先声明后使用，否则会报错，let不存在变量提升；
 let声明变量，const声明常量；
 ```
 function kuai(){
