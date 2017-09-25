@@ -155,3 +155,26 @@ $scope.change = function(){
 ```
 
 ### angular.cope()复制数组或对象
+
+
+### ng-bind-html绑定接口获取的html，数据处理
+```
+.filter('to_trusted', ['$sce', function ($sce) {
+    return function (text) {
+      return $sce.trustAsHtml(text);
+    }
+  }])
+  .directive('compileHtml', function ($compile) {
+    return {
+      restrict: 'A',
+      replace: true,
+      link: function (scope, ele, attrs) {
+        scope.$watch(function () { return scope.$eval(attrs.compile); },
+          function (html) {
+            ele.html(html);
+            $compile(ele.contents())(scope);
+          });
+      }
+    };
+  });
+```
