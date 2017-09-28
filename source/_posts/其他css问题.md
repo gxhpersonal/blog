@@ -45,6 +45,7 @@ vertical-align只适用于行内块元素
     user-select: none;
 ```
 ### 文本超出后显示省略号
+```
 > p{
    width:40px;
    white-space: nowrap;
@@ -62,6 +63,7 @@ p{
     -webkit-box-orient: vertical;    //规定框的子元素应该被水平或垂直排列
     -moz-box-orient: vertical;        //支持火狐的写法
 } 
+```
 
 ### 自定义光标
 > cursor: url(/路径/cursor.cur),auto;        后缀似乎必须为cur
@@ -93,6 +95,21 @@ Chrome：该行无文字时，光标高度与line-height一致；该行有文字
        opacity:1;
        bakcground:#fff;
 	}
+
+### -webkit-overflow-scrolling
+> 用来控制元素在移动设备上是否使用滚动回弹效果.
+> 兼容安卓和IOS的写法如下
+```
+-webkit-overflow-scrolling: touch; /* 当手指从触摸屏上移开，会保持一段时间的滚动 */ 
+-webkit-overflow-scrolling: auto; /* 当手指从触摸屏上移开，滚动会立即停止 */ 
+```
+> Bug
+>当你给一个元素设置过position:absolute;或者position:relative;后再增加-webkit-overflow-scrolling: touch;属性后，你会发现，滑动几次后可滚动区域会卡主，不能在滑动，这时给元素增加个z-index值就可以了。
+```
+-webkit-overflow-scrolling: touch; 
+position:absolute; 
+z-index:1; 
+```
 
 ### css3滤镜效果：-webkit-filter
 [http://www.css88.com/html5-demo/-webkit-filter/index.html]()
