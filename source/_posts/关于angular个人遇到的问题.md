@@ -4,8 +4,6 @@ date: 2016-09-14 15:50:50
 tags: angular
 categories: angular
 ---
-### 关于ng-if
-> 当一个元素需要隐藏和显示时，用ng-if的话，会出现其中包含的元素身上的方法无法正确调用的现象，所以，当元素中有方法时，最好使用 ng-show 和 ng-hide
 
 ###动态插入的标签元素带有angular语法不执行解决
 ```
@@ -44,11 +42,6 @@ element[0].focus();
 ### ng-repeat遍历对象
 > ng-repeat="(key,value) in feesWays"
 > 这种方式可以把接口数据对象格式的字段分离成键和值；
-
-### 跳转页面
-> $scope.tiaozhuan = function(number){
-window.location.href="/xxx/xxx   (如果想要传ID或什么东西过去)  ?id=" + number;
-}
 
 ### 倒计时
 ```javascript
@@ -107,13 +100,14 @@ angular.forEach(objs, function(data,index,array){
 引入  angular-img-lazy-load.min.js
 
 src-lazy="{{list.ProductImgs}}"
-
+```
 var hzcApp = angular.module("hzc_app", ['img-lazy-load']);
 > 下面这个包含在controller中
 hzcApp.constant('imgLazyLoadConf', {
                 tolerance: 50,
                 detectElement: true
       })
+```
 
 ### directive
 2 . 在AngularJS中，操作DOM一般在指令中完成，事件监听机制是在对于已经静态生成的dom绑定事件，而如果在指令中动态生成了DOM节点，动态生成的节点不会被JS事件监听
