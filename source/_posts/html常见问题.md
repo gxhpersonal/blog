@@ -36,4 +36,6 @@ onerror="this.src='默认图片的url地址;this.onerror=null'"/>
 var storage = JSON.parse(window.localStorage.getItem("Data")) || {};  //从本地取localstorage数据
 storage["typeId"] = id;    //localstorage数据设置key = value;
 window.localStorage.setItem('Data',JSON.stringify(storage));   // 设置好的数据存到localstorage
+JSON.parse()将字符串转换为对象
+JSON.stringify()将对象转换为字符串
 ```
