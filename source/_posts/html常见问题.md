@@ -39,3 +39,11 @@ window.localStorage.setItem('Data',JSON.stringify(storage));   // 设置好的�
 JSON.parse()将字符串转换为对象
 JSON.stringify()将对象转换为字符串
 ```
+
+
+###a标签href属性多功能
+```
+1、<a href="tel:400-888-6633">拨打电话<a>
+2、<a href="sms:19956321564">发送短信<a>
+3、<a href="mailto:mail@mail.com">发送邮件<a>
+```
