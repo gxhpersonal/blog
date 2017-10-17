@@ -75,7 +75,7 @@ export default {
 
     setWxConfig: function () {
         Vue.http.options.emulateJSON = true;
-        Vue.http.get('/Api/Activity/GetWeixinAPIConfig?url=' + window.location.href).then(response => {
+        Vue.http.get('/Api/Activity/GetWeixinAPIConfig?url=' + encodeURIComponent(window.location.href)).then(response => {
             let weixinConfigData = response.body;
             wx.config({
                 debug: false,
