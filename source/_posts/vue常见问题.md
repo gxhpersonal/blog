@@ -74,8 +74,17 @@ import vueResource from 'vue-resource';
 export default {
 
     setWxConfig: function () {
+		//判断环境，因为二次分享Android和ios有不同的bug//测试发现只有设置了路由会有问题，#/在微信中会被截断
+		var href;
+		if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+            href = encodeURIComponent(window.location.href);
+        } else if (navigator.userAgent.match(/android/i)) {
+            href = window.location.href;
+        } else {
+            href = window.location.href;
+        }
         Vue.http.options.emulateJSON = true;
-        Vue.http.get('/Api/Activity/GetWeixinAPIConfig?url=' + encodeURIComponent(window.location.href)).then(response => {
+        Vue.http.get('/Api/Activity/GetWeixinAPIConfig?url=' + href).then(response => {
             let weixinConfigData = response.body;
             wx.config({
                 debug: false,
