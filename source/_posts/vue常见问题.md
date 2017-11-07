@@ -65,6 +65,8 @@ vue 中$index $key 已经移除了
 ### 鼠标右键事件
 @contextmenu.prevent="alert('您点击的是鼠标右键')"
 
+### 深入理解vue
+
 ### vue微信分享
 ```javascript
 1.页面中引入微信文件
