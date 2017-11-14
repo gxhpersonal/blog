@@ -101,6 +101,7 @@ Chrome：该行无文字时，光标高度与line-height一致；该行有文字
 	input:disabled{
        opacity:1;
        bakcground:#fff;
+       -webkit-text-fill-color:#2e3d4c;//这个属性可以解决IOS字体颜色变淡的问题
 	}
 
 ### -webkit-overflow-scrolling
