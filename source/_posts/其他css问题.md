@@ -98,11 +98,18 @@ Chrome：该行无文字时，光标高度与line-height一致；该行有文字
 ### ios下input样式问题
 1.ios下如果想要禁用input,input设置为readonly仍然会呼起键盘，所以必须设置disabled属性。
 2.ios下设置为disabled属性，input表单背景颜色会变灰，透明度会降低，所以，必须设置
+```
 	input:disabled{
        opacity:1;
        bakcground:#fff;
-       -webkit-text-fill-color:#2e3d4c;//这个属性可以解决IOS字体颜色变淡的问题
+       -webkit-text-fill-color:#2e3d4c;//字体颜色填充这个属性可以解决IOS字体颜色变淡的问题
 	}
+
+题外话：（设置渐变字体）
+	background: -webkit-linear-gradient(top,#fc0,#f30 50%,#c00 51%,#600);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+```
 
 ### -webkit-overflow-scrolling
 > 用来控制元素在移动设备上是否使用滚动回弹效果.
