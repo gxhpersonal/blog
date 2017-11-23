@@ -11,11 +11,6 @@ categories: vue
 <style scoped></style>
 ```
 
-css支持scss语法：
-```
-<style lang="scss"></style>
-```
-
 ### v-for遍历数据中的v-bind:key（:key）问题
 > ***tips:*** 2.2.0+ 的版本里，当在组件中使用 v-for 时，key 现在是必须的。
 > 在vue中用v-for最好搭配v-bind:key="key"来使用；
