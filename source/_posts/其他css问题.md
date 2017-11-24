@@ -35,7 +35,7 @@ vertical-align只适用于行内块元素
 > 阻止点击事件，变为默认光标，阻止触发hover，active，阻止JS点击事件
 
 ### img标签和同级div之间的间隙处理
-> 给img标签设置 vertical-align:top;display:block;
+> 给img标签设置 vertical-align:middle;display:block;
 
 ### 在移动端手机APP中禁止长按来阻止其他手机自带默认事件（如：iPhone的3Dtouch）
 ```
