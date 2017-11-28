@@ -75,7 +75,7 @@ import vueResource from 'vue-resource';
 export default {
 
     setWxConfig: function () {
-		//判断环境，因为二次分享Android和ios有不同的bug//测试发现只有设置了路由会有问题，#/在微信中会被截断
+		//判断环境，因为二次分享Android和ios有不同的bug//测试发现只有设置了路由会有问题，#/在微信中会被截断，导致分享链接和传入API的链接不一样
 		var href;
 		if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
             href = encodeURIComponent(window.location.href);
