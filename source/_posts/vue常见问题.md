@@ -22,7 +22,7 @@ categories: vue
 ### props:{}用来接收父组件传过来的数据
 * 父组件：
 
-![](../image/parentComponets2.png)
+<img src="../image/parentComponets2.png" class="full-image" />
 ![](http://images2015.cnblogs.com/blog/1059788/201701/1059788-20170109190812838-1696763381.png)
 
 ### 引入模块和引入文件
