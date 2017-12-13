@@ -21,8 +21,11 @@ categories: vue
 
 ### props:{}用来接收父组件传过来的数据
 * 父组件：
-![](../../img/parentComponets2.png)
-![](../../img/parentComponets1.png)
+![](http://ota5i8p1g.bkt.clouddn.com/parentComponets2.png)
+![](http://ota5i8p1g.bkt.clouddn.com/parentComponent1.png)
+* 子组件：
+![](http://ota5i8p1g.bkt.clouddn.com/childComponets.png)
+![](http://ota5i8p1g.bkt.clouddn.com/childCpmponents2.png)
 
 ### 引入模块和引入文件
 *引入模块：import webview from "../../common/webview.js";
