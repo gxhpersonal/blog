@@ -19,13 +19,23 @@ categories: vue
 > example: <el-carousel-item v-for="(item, index) in items" :key="index"></el-carousel-item>
 我们知道，vue和react都实现了一套虚拟DOM，使我们可以不直接操作DOM元素，只操作数据便可以重新渲染页面。而隐藏在背后的原理便是其高效的Diff算法。
 
-### props:{}用来接收父组件传过来的数据
+### 父组件与子组件互传数据
+1. props:{}用来接收父组件传过来的数据
 * 父组件：
 ![](http://ota5i8p1g.bkt.clouddn.com/parentComponets2.png)
 ![](http://ota5i8p1g.bkt.clouddn.com/parentComponent1.png)
 * 子组件：
 ![](http://ota5i8p1g.bkt.clouddn.com/childComponets.png)
 ![](http://ota5i8p1g.bkt.clouddn.com/childCpmponents2.png)
+
+2. this.$emit(自定义事件名，数据)向父组件传递数据
+* 子组件：
+![](http://ota5i8p1g.bkt.clouddn.com/child1.png)
+![](http://ota5i8p1g.bkt.clouddn.com/child2.png)
+
+* 父组件
+![](http://ota5i8p1g.bkt.clouddn.com/parent1.png)
+![](http://ota5i8p1g.bkt.clouddn.com/parent2.png)
 
 ### 引入模块和引入文件
 *引入模块：import webview from "../../common/webview.js";
