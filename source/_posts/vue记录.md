@@ -37,6 +37,19 @@ categories: vue
 ![](http://ota5i8p1g.bkt.clouddn.com/parent1.png)
 ![](http://ota5i8p1g.bkt.clouddn.com/parent2.png)
 
+### this.$set()设置对象的属性
+```
+var vm = new Vue({
+el:'#app',
+data:{
+  arr:[1,2,3];
+}
+})
+vm.arr[0] = 4;//这样操作数据，dom不会更新数据
+vm.$set(vm.arr,0,4) //这样dom数据才会改变
+```
+
+
 ### 引入模块和引入文件
 *引入模块：import webview from "../../common/webview.js";
 *引入文件：import "../../filter/webpFilter.js";
