@@ -105,3 +105,11 @@ var func = v => console.log(`name ${v}`)
 func('jone')
 ```
 
+### ES6支持变量作为对象key，如：
+```
+let a = 'aaa';
+let b = 'bbb';
+let c = {[a]:'this is key a',[b]:'this is key b'};
+console.log(c)
+```
+
