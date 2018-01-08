@@ -37,7 +37,7 @@ categories: vue
 ![](http://ota5i8p1g.bkt.clouddn.com/parent1.png)
 ![](http://ota5i8p1g.bkt.clouddn.com/parent2.png)
 
-### this.$set()设置对象的属性
+### this.$set()设置对象的属性，这个方法主要用于避开 Vue 不能检测属性被添加的限制
 ```
 var vm = new Vue({
 el:'#app',
