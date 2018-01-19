@@ -30,6 +30,8 @@ float:left;
 * ![4](http://ota5i8p1g.bkt.clouddn.com/target.png)
 * ![5](http://p0.qhimg.com/t01f0f792cd49f8c934.png)
 * ![2018合格的前端](http://ota5i8p1g.bkt.clouddn.com/2018%E5%90%88%E6%A0%BC%E5%89%8D%E7%AB%AF%E8%AF%84%E8%AE%BA.png)
+* ![论敬业](http://ota5i8p1g.bkt.clouddn.com/funny.png)
+* ![论浏览器](http://ota5i8p1g.bkt.clouddn.com/funny2.png)
 {% raw %}
 </div>
 {% endraw %}
