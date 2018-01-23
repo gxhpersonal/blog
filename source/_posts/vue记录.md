@@ -49,7 +49,6 @@ vm.arr[0] = 4;//这样操作数据，dom不会更新数据
 vm.$set(vm.arr,0,4) //这样dom数据才会改变
 ```
 
-
 ### 引入模块和引入文件
 *引入模块：import webview from "../../common/webview.js";
 *引入文件：import "../../filter/webpFilter.js";
@@ -99,7 +98,7 @@ Action 可以包含任意异步操作。
 
 ### vue微信分享
 ```javascript
-1.页面中引入微信文件
+1.页面中引入微信分享JS文件
 <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 
 2.//微信分享方法相关配置
