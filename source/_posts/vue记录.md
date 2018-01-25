@@ -88,6 +88,24 @@ vue 中$index $key 已经移除了
 ### 鼠标右键事件
 @contextmenu.prevent="alert('您点击的是鼠标右键')"
 
+### 在所有ajax完成后执行
+这个时候用promise.all最合适了，比如：
+```
+let p1=new Promise(function(resolve,reject){ 
+resolve(42)
+});
+let p2=new Promise(function(resolve,reject){ 
+resolve(43)
+});
+let p3=new Promise(function(resolve,reject){ 
+resolve(44)
+});
+let p4=Promise.all([p1,p2,p3]);
+p4.then(function(v){
+这个里面就是你需要做的事情
+})
+```
+
 ### 深入理解vue
 当你把一个普通的 JavaScript 对象传给 Vue 实例的 data 选项，Vue 将遍历此对象所有的属性，并使用 Object.defineProperty 把这些属性全部转为 getter/setter。
 每个组件实例都有相应的 watcher 实例对象，它会在组件渲染的过程中把属性记录为依赖，之后当依赖项的 setter 被调用时，会通知 watcher 重新计算，从而致使它关联的组件得以更新。
