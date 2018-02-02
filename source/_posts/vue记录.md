@@ -37,6 +37,8 @@ categories: vue
 ![](http://ota5i8p1g.bkt.clouddn.com/parent1.png)
 ![](http://ota5i8p1g.bkt.clouddn.com/parent2.png)
 
+`1this.$emit(自定义事件,[])用来触发自定义事件increment1(或者函数名吧)，[]为参数`
+
 ### this.$set()设置对象的属性，这个方法主要用于避开 Vue 不能检测属性被添加的限制
 ```
 var vm = new Vue({
