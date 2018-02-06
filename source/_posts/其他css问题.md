@@ -8,7 +8,7 @@ categories: css
 ### flex布局	
 [更多参见阮老师blog](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool)
 1.意为弹性布局，块元素：display:flex;行内元素：display:inline-flex;
-2.不同内核浏览器需要加前缀区分，如：display:-webkit-flex; /*Safari*/ 
+2.不同内核浏览器需要加前缀区分，如：display:-webkit-flex; /*Safari*/  `旧版display:-webkit-box`
 3.设为flex布局后，子元素的float,clear,vertical-align属性将失效。
 4.flex属性：
 1）flex-direction:row（默认值）：主轴为水平方向，起点在左端。
