@@ -120,8 +120,15 @@ Action 可以包含任意异步操作。
 1.路由组件之间跳转不会刷新vuex中mutation的值，就是说，vuex会保存上次存储过的值，所以要在每次路由跳转到指定页面时，给vuex中的值初始化一次，保证不会把上次的记录的值带过来（待定验证）
 2.可以直接把从vuex中取的数据传给后台，不会把vue自定义的东西带过去；
 
-### vue-cli
-快速构建单页应用的脚手架
+### vue-router
+<router-link>组件使用
+```
+<router-link v-if="!item.isSubmit" :to="'claimOrder?orderNo='+item.orderno+'&caroid='+$route.query.caroid+'&id='+item.id+'&Ins='+$route.query.Ins" class="btn">继续上传</router-link>
+```
+<router-link> 比起写死的 <a href="..."> 会好一些，理由如下：
+无论是 HTML5 history 模式还是 hash 模式，它的表现行为一致，所以，当你要切换路由模式，或者在 IE9 降级使用 hash 模式，无须作任何变动。
+在 HTML5 history 模式下，router-link 会守卫点击事件，让浏览器不再重新加载页面。
+当你在 HTML5 history 模式下使用 base 选项之后，所有的 to 属性都不需要写（基路径）了。
 
 ### vue微信分享
 ```javascript
