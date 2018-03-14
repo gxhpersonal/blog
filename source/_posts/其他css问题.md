@@ -104,7 +104,7 @@ Chrome：该行无文字时，光标高度与line-height一致；该行有文字
        bakcground:#fff;
        -webkit-text-fill-color:#2e3d4c;//字体颜色填充这个属性可以解决IOS字体颜色变淡的问题
 	}
-
+然而，设置了-webkit-text-fill-color属性还是会有问题，placeholder字体颜色也会跟着改变，所以placeholder也要设置-webkit-text-fill-color值
 题外话：（设置渐变字体）
 	background: -webkit-linear-gradient(top,#fc0,#f30 50%,#c00 51%,#600);
     -webkit-background-clip: text;
