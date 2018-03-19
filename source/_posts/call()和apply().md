@@ -7,7 +7,6 @@ categories: JS
 
 ### call()和apply()
 
-
 > 1、方法定义
 call方法: 
 语法：call([thisObj[,arg1[, arg2[,   [,.argN]]]]]) 
