@@ -7,6 +7,11 @@ categories: swiper
 
 需求环境：移动端环境，swiper.css, swiper.js, 如果用jquery的话，可以用jquery.js和swiper.jquery.js
 以前也用过swiper做轮播，但是好多参数都不清楚，所以在这总结一下,有新的发现会更新
+
+* 动态获取接口数据来轮播有问题，loop为true时，循环滚动第一帧会被跳过，暂时解决方案是加setTimeout，vue环境，可以用nextTick
+*  Vue.nextTick(function () {
+*    // DOM 更新了
+*  })
 ```html
 <!DOCTYPE html>
 <html lang="en">
