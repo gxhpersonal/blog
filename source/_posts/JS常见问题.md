@@ -95,6 +95,17 @@ window.location.assign("http://www.w3school.com.cn")
   ● location.port 返回 web 主机的端口 （80 或 443）
   ● location.protocol 返回所使用的 web 协议（http:// 或 https://）
 
+### console玩法
+```
+console.groupCollapsed('这里是外面');
+  console.log('这里是里面');
+console.groupEnd();
+
+  小区别：
+  - console.group 默认是展开状态
+  - console.groupCollapsed 默认是收起状态
+```
+
 ### 通过身份证号得到生日，性别，年龄
 ```
 <script>
