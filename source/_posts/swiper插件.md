@@ -72,6 +72,11 @@ categories: swiper
     // 如果需要滚动条
     // scrollbar: '.swiper-scrollbar',
   })
+//
+//一张图停止轮播，如果只有一个slide就销毁swiper //因为loop为true时会在图片前后各加一个slide所以最少为3
+        if (swiper.slides.length <= 3) {
+          swiper.destroy();
+        }
   </script>
 </body>
 </html>
