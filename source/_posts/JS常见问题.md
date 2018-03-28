@@ -158,3 +158,17 @@ url = 函数传入的参数值
 通过点击当前tab要控制侧边栏的导航tab，因为两个tab中的同级元素很多，所以可以根据他们的id来分别控制；
 给点击的tab元素设置不同的id,`如：current1`，给被控制的元素设置id，`如：nav-current1`,与点击的元素id对应就好，然后就可以根据`nav-xxx`
 来对应元素进行操作
+
+### JS实现滚动显示，停止滚动隐藏
+```
+var timer;
+window.onscroll = function () {
+   $('.div').hide()
+   if (timer){
+      clearTimeout(timer)
+   }
+   timer = setTimeout(function () {
+      $('.div').show()
+   }, 1000)
+}
+```
