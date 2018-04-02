@@ -130,6 +130,8 @@ Action 可以包含任意异步操作。
 在 HTML5 history 模式下，router-link 会守卫点击事件，让浏览器不再重新加载页面。
 当你在 HTML5 history 模式下使用 base 选项之后，所有的 to 属性都不需要写（基路径）了。
 
+### 组件
+
 ### vue微信分享
 ```javascript
 1.页面中引入微信分享JS文件
