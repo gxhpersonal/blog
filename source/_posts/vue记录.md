@@ -131,6 +131,7 @@ Action 可以包含任意异步操作。
 当你在 HTML5 history 模式下使用 base 选项之后，所有的 to 属性都不需要写（基路径）了。
 
 ### 组件
+单文件组件：你完全可以自定义一个组件名，然后在父级组件中import组件，并且在components: {}中声明一下
 
 ### vue微信分享
 ```javascript
