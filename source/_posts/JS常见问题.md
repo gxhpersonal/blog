@@ -82,6 +82,19 @@ function SelectText(name) {
 其他详见张鑫旭博客：
 [http://www.zhangxinxu.com/wordpress/2011/04/js-range-html%E6%96%87%E6%A1%A3%E6%96%87%E5%AD%97%E5%86%85%E5%AE%B9%E9%80%89%E4%B8%AD%E3%80%81%E5%BA%93%E5%8F%8A%E5%BA%94%E7%94%A8%E4%BB%8B%E7%BB%8D/]()
 
+### clipboard.js实现移动端复制功能(！！！重中之重：iOS下要给点击的元素加onclick=""或者cursor：pointer，总之就是让iOS可以识别到这个元素可点击)
+```
+<p class="J-browserLink" style="cursor: pointer;">点击复制1</p>
+<script src="https://cdn.bootcss.com/clipboard.js/1.6.0/clipboard.js"></script>
+var clipboard1 = new Clipboard(".J-browserLink", {
+	text: function () {
+		return $(".J-browserLink").html()
+	}
+})
+clipboard1.on("success", function (t) {
+	alert('复制成功');
+})
+```
 
 ### window.location
 返回当前 URL 的路径名：
