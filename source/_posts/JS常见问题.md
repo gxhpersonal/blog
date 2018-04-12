@@ -91,7 +91,7 @@ var clipboard1 = new Clipboard(".J-browserLink", {
 		return $(".J-browserLink").html()
 	}
 })
-clipboard1.on("success", function (t) {
+clipboard1.on("success", function () {
 	alert('复制成功');
 })
 ```
