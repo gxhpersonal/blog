@@ -166,6 +166,12 @@ url = 函数传入的参数值
 >console中截的图，直接字面意思理解使用就好
 ![时间格式转换](http://ota5i8p1g.bkt.clouddn.com/timeFormat.png)
 
+>Date 对象方法
+每个get方法都有对应的一个set方法，如：
+getFullYear() 对应 setFullYear()
+getMonth() 对应 setMonth()
+getTime() 对应 setTime() //返回 1970 年 1 月 1 日至今的毫秒数  和  	以毫秒设置 Date 对象。
+
 ###多个同类型元素控制别的同类型的元素
 举个栗子：
 通过点击当前tab要控制侧边栏的导航tab，因为两个tab中的同级元素很多，所以可以根据他们的id来分别控制；
