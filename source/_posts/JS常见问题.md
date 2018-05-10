@@ -25,7 +25,7 @@ alert confirm prompt
 * 请注意 encodeURIComponent() 函数 与 encodeURI() 函数的区别之处，前者假定它的参数是 URI 的一部分（比如        协议、主机名、路径或查询字符串）。因此 encodeURIComponent() 函数将转义用于分隔 URI 各个部分的标点符号。
 2.decodeURIComponent() 对 encodeURIComponent() 函数编码的 URI 进行解码
 
-###超出指定字符数显示省略号
+### 超出指定字符数显示省略号
 console.log($(".friend_detail p").text().length)
     var str = $(".friend_detail p").text();
     var s = str;
@@ -156,14 +156,14 @@ alert (IdCard('142223198503226111',3));
 </script>
 ```
 
-###APP环境登录判断
+### APP环境登录判断
 ```
 url = 函数传入的参数值
 1.调接口，判断登录态，未登录，跳转登录
 2.已登录，window.location = window.location.href || url;
 ```
 
-###时间格式转换
+### 时间格式转换
 >console中截的图，直接字面意思理解使用就好
 ![时间格式转换](http://ota5i8p1g.bkt.clouddn.com/timeFormat.png)
 
@@ -173,7 +173,7 @@ getFullYear() 对应 setFullYear()
 getMonth() 对应 setMonth()
 getTime() 对应 setTime() //返回 1970 年 1 月 1 日至今的毫秒数  和  	以毫秒设置 Date 对象。
 
-###多个同类型元素控制别的同类型的元素
+### 多个同类型元素控制别的同类型的元素
 举个栗子：
 通过点击当前tab要控制侧边栏的导航tab，因为两个tab中的同级元素很多，所以可以根据他们的id来分别控制；
 给点击的tab元素设置不同的id,`如：current1`，给被控制的元素设置id，`如：nav-current1`,与点击的元素id对应就好，然后就可以根据`nav-xxx`
