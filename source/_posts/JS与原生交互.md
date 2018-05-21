@@ -22,3 +22,5 @@ let returnDate = new Date(newDate)
 document.body.addEventListener('touchstart', function () { })
 ```
 如上，要给body或者点击的元素加touchstart事件，来触发:active伪元素
+
+### IOS支持3D touch的手机如果页面有a标签长按会触发3D touch并且跳转浏览器
