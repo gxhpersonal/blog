@@ -24,3 +24,30 @@ document.body.addEventListener('touchstart', function () { })
 如上，要给body或者点击的元素加touchstart事件，来触发:active伪元素
 
 ### IOS支持3D touch的手机如果页面有a标签长按会触发3D touch并且跳转浏览器
+
+### 与原生交互方法
+```
+imgesPreview: function (data) {
+    if (Basic.isAppVersionAbove && Basic.isAppVersionAbove("2.4.7")) {
+      //IOS
+      if (
+        window.webkit &&
+        window.webkit.messageHandlers &&
+        window.webkit.messageHandlers.imgesPreview
+      ) {
+		//如果传入的data为空，ios要传一个空字符串""
+        window.webkit.messageHandlers.imgesPreview.postMessage(JSON.stringify(data));
+        return true;
+      }
+      //Android
+      if (window.AndroidCall && window.AndroidCall.imgesPreview) {
+        window.AndroidCall.imgesPreview(JSON.stringify(data));
+        return true;
+      }
+    }
+    return false;
+  }
+
+//调用：
+Webview.imgesPreview(dataObj);
+```
