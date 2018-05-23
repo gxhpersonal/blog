@@ -51,3 +51,33 @@ imgesPreview: function (data) {
 //调用：
 Webview.imgesPreview(dataObj);
 ```
+
+### ios下滚动背景body导致弹层中滚动条失效
+```
+//其中fixed为一个class给body设置fixed样式
+fixedHelper: (function(bodyCls) {
+   var scrollTop;
+            return {
+                afterOpen: function() {
+                    scrollTop = document.scrollingElement.scrollTop;
+                    document.body.classList.add(bodyCls);
+                    document.body.style.top = -scrollTop + 'px';
+                },
+                beforeClose: function() {
+                    document.body.classList.remove(bodyCls);
+                    // scrollTop lost after set position:fixed, restore it back.
+                    document.scrollingElement.scrollTop = scrollTop;
+                }
+            };         
+})('fixed')
+```
+
+### 拦截Android自带的物理返回键
+```
+//拦截安卓回退按钮
+    history.pushState(null, null, location.href);
+    window.addEventListener("popstate", function(event) {
+      history.pushState(null, null, location.href);
+      //此处加入回退时你要执行的代码
+    });
+```
