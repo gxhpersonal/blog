@@ -59,6 +59,7 @@ fixedHelper: (function(bodyCls) {
    var scrollTop;
             return {
                 afterOpen: function() {
+					//document.scrollingElement 返回滚动文档的 Element 对象的引用
                     scrollTop = document.scrollingElement.scrollTop;
                     document.body.classList.add(bodyCls);
                     document.body.style.top = -scrollTop + 'px';
