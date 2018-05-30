@@ -82,3 +82,17 @@ fixedHelper: (function(bodyCls) {
       //此处加入回退时你要执行的代码
     });
 ```
+
+### js监测手机浏览器是否切换到后台应用
+> 这个功能常见作用于在浏览器h5页面唤醒app（前提是已安装app）浏览器就会被切换到后台装态
+```
+//这时候
+document.webkitVisibilityState=='hidden'表示已挂起 'visible'表示已切换到前台）
+document.addEventListener('webkitvisibilitychange', function() {
+    if (document.webkitVisibilityState == 'hidden') {
+
+    }
+  });
+```
+> 好吧，其实并没有说得很么卵用（至少目前的我是这么认为的），因为产品逻辑都会说，如果没有安装app要跳转下载页面，这时候就尴尬了，因为浏览器并没有改变webkitVisibilityState的值，所以无法走进这个方法（只有浏览器切换前后台才会改变）
+> 好记性不如markdown
