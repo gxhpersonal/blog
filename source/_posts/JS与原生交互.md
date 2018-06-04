@@ -83,6 +83,24 @@ fixedHelper: (function(bodyCls) {
     });
 ```
 ### 在app里用JS写滑动手势
+```
+$("body").on("touchstart", function (e) {
+            e.preventDefault();
+            startX = e.originalEvent.changedTouches[0].pageX,
+                startY = e.originalEvent.changedTouches[0].pageY;
+        });
+        $("body").on("touchmove", function (e) {
+            e.preventDefault();
+            moveEndX = e.originalEvent.changedTouches[0].pageX,
+                moveEndY = e.originalEvent.changedTouches[0].pageY,
+                X = moveEndX - startX,
+                Y = moveEndY - startY;
+
+            if (Math.abs(X) > Math.abs(Y) && X > 0) {
+                // alert("left 2 right");
+                $(".show").hide()
+            }
+```
 
 ### js监测手机浏览器是否切换到后台应用
 > 这个功能常见作用于在浏览器h5页面唤醒app（前提是已安装app）浏览器就会被切换到后台装态
