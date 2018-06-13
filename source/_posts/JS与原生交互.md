@@ -6,7 +6,7 @@ categories: Native
 ---
 
 ### iOS中时间格式
-ios不支持时间格式如：new Date(2018-01-24)格式转换,会抛出NaN,所以要转换成`/`格式的，如：
+ios不支持时间格式如：new Date(2018-01-24)或者 new Date(2018.01.24)格式转换,会抛出NaN,所以要转换成`/`格式的，如：
 ```
 let date = 2018-02-12;
 let newDate = date.replace(/-/g,'/');
