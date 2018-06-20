@@ -6,7 +6,6 @@ categories: vue
 ---
 
 ### 如何让css只在当前组件起作用
-在style标签中加入scoped语句
 这样写其他组件引用当前组件时当前组件中的css无法作用在其他组件
 ```
 <style scoped></style>
