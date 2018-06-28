@@ -133,6 +133,46 @@ Action 可以包含任意异步操作。
 ### 组件
 单文件组件：你完全可以自定义一个组件名，然后在父级组件中import组件，并且在components: {}中声明一下
 
+### 在v-html中使用filters 的三种方法
+1.在vue实例上定义全局方法
+```
+Vue.prototype.highlight= function (sTitle) {
+  // to do
+};
+然后所有组件都可以使用方法
+v-html="highlight(option.title)"
+```
+2.使用 $options.filters
+```
+v-html="$options.filters.highlight(option.title)"
+var appMain= new Vue({
+    el: '#appMain',
+    filters:{
+      highlight: function(msg) {
+          return msg.replace(/\n/g, "<br>") ;
+      }
+    },
+    data: {
+     return{}
+   }
+})
+```
+3.computed 计算属性
+```
+var appMain= new Vue({
+      el: '#appMain',
+      computed :{
+         content： function (msg) {
+			return msg.replace("\n", "<br>")
+          },
+      },
+      data: {
+        content: "XXXXX"
+     }
+}）
+页面上：
+<div>{{content}}</div>
+```
 
 ### vue微信分享
 ```javascript
