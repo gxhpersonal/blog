@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Blog station
+title: 郭雪辉 博客
 subtitle: 天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。
 description: 天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。
 author: 郭雪辉
@@ -74,7 +74,7 @@ deploy:
   branch: gh-pages
 
 # 百度分享服务
-# baidushare: true
+baidushare: true
 
 # 多说热评文章 true 或者 false
 # duoshuo_hotartical: true
