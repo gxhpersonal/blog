@@ -20,13 +20,16 @@ categories: vue
 > 非懒加载写法：
 
 ```
-import Index from '@/page/index/index';
+//require.ensure() 是webpack中用来代码分割,把每个js大包打包成不同文件，缩小文件体积；
+const commentOrder = resolve => {
+    require.ensure([], () => resolve(require('../components/userComment/comment.vue')), '/commentOrder')
+}
 export default new Router({  
     routes: [    
         { 
-            path: '/', 
-            name: 'Index',     
-            component: Index 
+            path: '/commentOrder', 
+            name: 'commentOrder',     
+            component: {commentOrder:commentOrder} 
         }
     ]
 })
@@ -34,14 +37,18 @@ export default new Router({
 > 路由懒加载写法：
 
 ```
+const commentOrder = resolve => {
+    require.ensure([], () => resolve(require('../components/userComment/comment.vue')), '/commentOrder')
+}
 export default new Router({
   routes: [    
         { 
-            path: '/', 
-            name: 'Index', 
-            component: resolve => require(['@/view/index/index'], resolve) 
+            path: '/commentOrder', 
+            name: 'commentOrder', 
+            component: {commentOrder:commentOrder}
         }
    ]
 })
 ```
+文中提到的require.ensure()详细见<http://www.css88.com/doc/webpack2/guides/code-splitting-require/>
 
