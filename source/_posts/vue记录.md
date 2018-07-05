@@ -1,5 +1,5 @@
 ---
-title: vue常见问题
+title: vue记录
 date: 2017-02-22 11:34:59
 tags: vue
 categories: vue
@@ -111,24 +111,6 @@ p4.then(function(v){
 ### 深入理解vue
 当你把一个普通的 JavaScript 对象传给 Vue 实例的 data 选项，Vue 将遍历此对象所有的属性，并使用 Object.defineProperty 把这些属性全部转为 getter/setter。
 每个组件实例都有相应的 watcher 实例对象，它会在组件渲染的过程中把属性记录为依赖，之后当依赖项的 setter 被调用时，会通知 watcher 重新计算，从而致使它关联的组件得以更新。
-
-### vuex中Action和mutation的区别
-Action 提交的是 mutation，而不是直接变更状态。
-Action 可以包含任意异步操作。
-
-### vuex使用注意
-1.路由组件之间跳转不会刷新vuex中mutation的值，就是说，vuex会保存上次存储过的值，所以要在每次路由跳转到指定页面时，给vuex中的值初始化一次，保证不会把上次的记录的值带过来（待定验证）
-2.可以直接把从vuex中取的数据传给后台，不会把vue自定义的东西带过去；
-
-### vue-router
-<router-link>组件使用
-```
-<router-link v-if="!item.isSubmit" :to="'claimOrder?orderNo='+item.orderno+'&caroid='+$route.query.caroid+'&id='+item.id+'&Ins='+$route.query.Ins" class="btn">继续上传</router-link>
-```
-<router-link> 组件比起写死的 `<a href="..."></a>`会好一些，理由如下：
-无论是 HTML5 history 模式还是 hash 模式，它的表现行为一致，所以，当你要切换路由模式，或者在 IE9 降级使用 hash 模式，无须作任何变动。
-在 HTML5 history 模式下，router-link 会守卫点击事件，让浏览器不再重新加载页面。
-当你在 HTML5 history 模式下使用 base 选项之后，所有的 to 属性都不需要写（基路径）了。
 
 ### 组件
 单文件组件：你完全可以自定义一个组件名，然后在父级组件中import组件，并且在components: {}中声明一下
