@@ -18,6 +18,7 @@ categories: vue
 
 ### 路由懒加载
 > 非懒加载写法：
+
 ```
 import Index from '@/page/index/index';
 export default new Router({  
@@ -31,6 +32,7 @@ export default new Router({
 })
 ```
 > 路由懒加载写法：
+
 ```
 export default new Router({
   routes: [    
