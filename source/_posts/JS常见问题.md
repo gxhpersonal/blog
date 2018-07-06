@@ -214,3 +214,17 @@ function stopBodyScroll (isFixed) {
   }
 }
 ```
+
+### js获取链接中的参数
+```
+//name为参数名，queryString为链接
+getParameterByName: function (name,queryString) {
+  name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+  if (!queryString) {
+      queryString = location.search;
+  }
+  var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+  results = regex.exec(queryString);
+  return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+```
