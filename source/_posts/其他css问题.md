@@ -213,3 +213,17 @@ var w = window.innerWidth,
             }
 })
 ```
+
+### 页面加滤镜
+```
+//高斯模糊
+filter: blur(px)；
+//转换为灰度图像
+filter: grayscale(100%);
+-webkit-filter: grayscale(100%);
+-moz-filter: grayscale(100%);
+-ms-filter: grayscale(100%);
+-o-filter: grayscale(100%);
+filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+-webkit-filter: grayscale(1);    
+```
