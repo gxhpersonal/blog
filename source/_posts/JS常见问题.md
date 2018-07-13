@@ -109,6 +109,39 @@ window.location.assign("http://www.w3school.com.cn")
   ● location.port 返回 web 主机的端口 （80 或 443）
   ● location.protocol 返回所使用的 web 协议（http:// 或 https://）
 
+### app内返回不刷新导致订单状态没有更新解决，强制刷新
+```
+JumpUrlForReturn: function (url) {
+    //定义页面展示时触发事件
+    window.onpageshow = function (event) {
+        //从缓存中读取页面时触发
+        if (event.persisted && WebStorage.forceRefresh) {
+            WebStorage.removeItem("forceRefresh")
+            window.location.reload(true);//强制刷新                  
+        }
+    }
+
+    //兼容不支持onpageshow: event.persisted 
+    var refresh = hzch5.getParameterByName("refresh");
+    var curl = window.location.href;
+    if (curl.indexOf("?") > -1) {
+        if (refresh && refresh != "" && curl.indexOf("refresh") > -1) {
+            curl = curl.replace("refresh=" + refresh, "refresh=" + Math.random());
+        }
+        else {
+            curl += "&refresh=" + Math.random();
+        }
+    }
+    else {
+        curl += "?refresh=" + Math.random();
+    }
+    window.history.replaceState("", window.document.title, curl);
+    //End 兼容不支持onpageshow: event.persisted 
+
+    url && (window.location.href = url);
+}
+```
+
 ### console玩法
 ```
 console.groupCollapsed('这里是外面');
