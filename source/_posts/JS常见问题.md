@@ -25,6 +25,18 @@ alert confirm prompt
 * 请注意 encodeURIComponent() 函数 与 encodeURI() 函数的区别之处，前者假定它的参数是 URI 的一部分（比如        协议、主机名、路径或查询字符串）。因此 encodeURIComponent() 函数将转义用于分隔 URI 各个部分的标点符号。
 2.decodeURIComponent() 对 encodeURIComponent() 函数编码的 URI 进行解码
 
+### escape() encodeURI() encodeURIComponent()
+escape() 方法：
+
+采用ISO Latin字符集对指定的字符串进行编码。所有的空格符、标点符号、特殊字符以及其他非ASCII字符都将被转化成%xx格式的字符编码（xx等于该字符在字符集表里面的编码的16进制数字）。比如，空格符对应的编码是%20。unescape方法与此相反。不会被此方法编码的字符： @ * / +
+
+encodeURI() 方法：
+把URI字符串采用UTF-8编码格式转化成escape格式的字符串。不会被此方法编码的字符：! @ # $& * ( ) = : / ; ? + '
+
+encodeURIComponent() 方法：
+
+把URI字符串采用UTF-8编码格式转化成escape格式的字符串。与encodeURI()相比，这个方法将对更多的字符进行编码，比如 / 等字符。所以如果字符串里面包含了URI的几个部分的话，不能用这个方法来进行编码，否则 / 字符被编码之后URL将显示错误。不会被此方法编码的字符：! * ( ) 
+
 ### 超出指定字符数显示省略号
 console.log($(".friend_detail p").text().length)
     var str = $(".friend_detail p").text();
