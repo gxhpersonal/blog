@@ -159,6 +159,7 @@ var appMain= new Vue({
 
 ### 文件上传（支持PDF格式文件上传）以文件流的形式上传到接口
 ```
+<input type="file" id="CarDamageFile" class="g-core-image-upload-form" value="" accept="image/gif,image/jpeg,image/jpg,image/png,application/pdf" data-type="back-page" name="Pictures" multiple="multiple" @change="imagechanged($event,Udata[7])" />
 //文件上传
 imagechanged(e, data) {
 //参数e为当前上传的表单，data为要处理的数据
