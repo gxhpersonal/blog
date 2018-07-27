@@ -37,7 +37,25 @@ categories: vue
 * 父组件
 ![](http://ota5i8p1g.bkt.clouddn.com/parent1.png)
 ![](http://ota5i8p1g.bkt.clouddn.com/parent2.png)
-
+或者父组件中：
+```
+data(){
+	return{
+		a:'',
+		b:''
+	}
+},
+mounted(){
+	//两种接收的方式    
+	var _this = this;
+	Event.$on('transferUser',function(a){
+		_this.a=a;
+	});
+	Event.$on('transferUser',function(b){
+		this.b = b;
+	}.bind(this))
+}
+```
 `1this.$emit(自定义事件,[])用来触发自定义事件increment1(或者函数名吧)，[]为参数`
 
 ### this.$set()设置对象的属性，这个方法主要用于避开 Vue 不能检测属性被添加的限制
