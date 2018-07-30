@@ -414,3 +414,6 @@ descContent: "这是微信分享的描述文案",
 lineLink: location.href, 
 imgUrl: "这是微信分享的图片" });
 ```
+### vue.js源码分析
+Object.create(null)和{}区别；
+二者都是创建一个对象，前者去掉了原型链，后者保留原型链
