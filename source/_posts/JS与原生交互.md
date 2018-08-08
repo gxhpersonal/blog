@@ -11,6 +11,8 @@ ios不支持时间格式如：new Date(2018-01-24)或者 new Date(2018.01.24)格
 let date = 2018-02-12;
 let newDate = date.replace(/-/g,'/');
 let returnDate = new Date(newDate)
+加时分秒：
+例如：2018/10/10 12:34:59支持
 ```
 
 ### iOS11.XX以上的iPhone注意
