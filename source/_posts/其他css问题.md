@@ -44,6 +44,14 @@ vertical-align只适用于行内块元素
     -webkit-user-select: none;
     user-select: none;
 ```
+
+### 处理激活状态文字移动问题
+```
+margin-top:-1px;
+margin-bottom:1px;
+padding-top:1px;
+```
+
 ### 文本超出后显示省略号
 ```
 > p{
