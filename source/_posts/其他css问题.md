@@ -235,3 +235,6 @@ filter: grayscale(100%);
 filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
 -webkit-filter: grayscale(1);    
 ```
+
+### mask
+css的mask属性允许使用者通过部分或者完全隐藏一个元素的可见区域。这种效果可以通过遮罩或者裁切特定区域的图片。
