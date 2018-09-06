@@ -312,3 +312,11 @@ getParameterByName: function (name,queryString) {
   return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 ```
+
+### 递归
+function a(m){
+  if(m == 1){
+    return 1;
+ }
+ return a(m-1) + m
+}
