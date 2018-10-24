@@ -241,3 +241,8 @@ css的mask属性允许使用者通过部分或者完全隐藏一个元素的可�
 
 ### clip 图像裁剪
 clip:rect(0px,0px,0px,0px)四个值分别对应上右下左
+
+### 滚动动画
+html, body { scroll-behavior:smooth; }
+凡是需要滚动的地方都加一句scroll-behavior:smooth就好了！
+如：<a href="#">返回顶部</a>
