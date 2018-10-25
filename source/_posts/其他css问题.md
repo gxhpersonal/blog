@@ -246,3 +246,12 @@ clip:rect(0px,0px,0px,0px)四个值分别对应上右下左
 html, body { scroll-behavior:smooth; }
 凡是需要滚动的地方都加一句scroll-behavior:smooth就好了！
 如：<a href="#">返回顶部</a>
+> js处理：
+> target.scrollIntoView({
+    behavior: "smooth"
+});
+我们随便打开一个有链接的页面，把首个链接滚动到屏幕外，然后控制台输入类似下面代码，我们就可以看到页面平滑滚动定位了：
+
+document.links[0].scrollIntoView({
+    behavior: "smooth"
+});
