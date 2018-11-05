@@ -255,3 +255,18 @@ html, body { scroll-behavior:smooth; }
 document.links[0].scrollIntoView({
     behavior: "smooth"
 });
+
+### box-shadow添加多个不同的阴影
+> 用逗号分隔即可
+> 如：
+> box-shadow: 0 3px 3px 0 rgba(243,132,0, 0.35), 0 -6px 2px 0 rgba(244, 149, 0,0.35) inset;
+
+### 背景色渐变
+/* 渐变轴为45度，从蓝色渐变到红色 */
+linear-gradient(45deg, blue, red);
+
+/* 从右下到左上、从蓝色渐变到红色 */
+linear-gradient(to left top, blue, red);
+
+/* 从下到上，从蓝色开始渐变、到高度40%位置是绿色渐变开始、最后以红色结束 */
+linear-gradient(0deg, blue, green 40%, red);
