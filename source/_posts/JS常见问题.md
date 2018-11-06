@@ -321,8 +321,7 @@ function a(m){
  return a(m-1) + m
 }
 
-{% codeblock %}
-<style>
+{% style %}
 .text-popup {
     animation: textPopup 1s;
     color: red;
@@ -342,8 +341,8 @@ function a(m){
         transform: translateY(-50px);    
     }
 }
-</style>
-<script>
+{% style %}
+    {% script %}
 var fnTextPopup = function (arr, options) {
     // arr参数是必须的
     if (!arr || !arr.length) {
@@ -375,5 +374,4 @@ var fnTextPopup = function (arr, options) {
 };
 
 fnTextPopup(['富强', '民主', '文明', '和谐', '自由', '平等', '公正', '法治', '爱国', '敬业', '诚信', '友善']);
-</script>
-{% endcodeblock %}
+{% script %}
