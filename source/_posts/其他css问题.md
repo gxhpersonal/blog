@@ -270,3 +270,22 @@ linear-gradient(to left top, blue, red);
 
 /* 从下到上，从蓝色开始渐变、到高度40%位置是绿色渐变开始、最后以红色结束 */
 linear-gradient(0deg, blue, green 40%, red);
+
+### iphoenX适配问题(利用media限制iPhone X屏幕尺寸)
+```
+// css部分，利用media做你想要的适配，我这里通过一个白色div留出安全距离防挡
+@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+  .adapt {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 34px;
+    background: #fff;
+  }
+}
+
+作者：wilson_biubiubiu
+链接：https://juejin.im/post/5be92ae2e51d4572fd18c4c6
+来源：掘金
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+```

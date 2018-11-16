@@ -175,6 +175,42 @@ var appMain= new Vue({
 <div>{{content}}</div>
 ```
 
+### vue路由频繁切换的时候，会有部分白屏问题，下拉后恢复正常(用于同一个页面，点击导航栏切换不同路由)
+```
+mounted() {
+   this.setPosition(); 
+},
+method:{
+  setPosition() {
+      var oTop = $(".page-center").offset().top;
+        //获取导航栏的高度，此高度用于保证内容的平滑过渡
+        var martop = $('.page-center').outerHeight();
+        var sTop = 0;
+        // 监听页面的滚动
+        $(window).scroll(function () {
+            // 获取页面向上滚动的距离
+            sTop = $(this).scrollTop();
+            // 当导航栏到达屏幕顶端
+            if (sTop >= oTop) {
+                // 修改导航栏position属性，使之固定在屏幕顶端
+                $(".page-center").css({ "position": "fixed", "top": "0" });
+                // 修改内容的margin-top值，保证平滑过渡
+                $(".page-bottom").css({ "margin-top": martop });
+            } else {
+                // 当导航栏脱离屏幕顶端时，回复原来的属性
+                $(".page-center").css({ "position": "static" });
+                $(".page-bottom").css({ "margin-top": "0" });
+            }
+        });
+    },  
+}
+
+作者：wilson_biubiubiu
+链接：https://juejin.im/post/5be92ae2e51d4572fd18c4c6
+来源：掘金
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+```
+
 ### 文件上传（支持PDF格式文件上传）以文件流的形式上传到接口
 ```
 <input type="file" id="CarDamageFile" class="g-core-image-upload-form" value="" accept="image/gif,image/jpeg,image/jpg,image/png,application/pdf" data-type="back-page" name="Pictures" multiple="multiple" @change="imagechanged($event,Udata[7])" />
