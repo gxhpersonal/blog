@@ -320,3 +320,7 @@ function a(m){
  }
  return a(m-1) + m
 }
+
+### canvas图片跨域
+因为生成图片时，生成图片路径和已有图片路径不同，可以把图片转为base64
+canvas.toDataURL(type, encoderOptions);
