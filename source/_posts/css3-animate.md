@@ -77,6 +77,14 @@ d.一些复杂的情况，把动画预先写好， 在配置项的onLeave afterL
 
 <canvas id="canvas" style="position:fixed;width:100%;height:100%;background:#000;" width="1920" height="1080"></canvas>
 <script>
+window.requestAnimFrame = (function () {
+return window.requestAnimationFrame ||
+window.webkitRequestAnimationFrame ||
+window.mozRequestAnimationFrame ||
+function (callback) {
+window.setTimeout(callback, 1000 / 60);
+};
+})();
 var can = document.getElementById('canvas');
 var cxt = can.getContext('2d');
 can.width = window.screen.width;
