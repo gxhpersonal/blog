@@ -75,33 +75,32 @@ b.正常状态下采用一种动画(可选)
 c.在section拥有active类的情况下彩另外一种动画
 d.一些复杂的情况，把动画预先写好， 在配置项的onLeave afterLoad回调函数中通过添加类名
 
-<canvas id="canvas" style="position:absolute;width:100%;height:100%;background:#000;" width="1920" height="1080"></canvas>
+<canvas id="canvas" style="position:fixed;width:100%;height:100%;background:#000;" width="1920" height="1080"></canvas>
 <script>
 var can = document.getElementById('canvas');
 var cxt = can.getContext('2d');
 can.width = window.screen.width;
 can.height = window.screen.height;
-var size = 14; //字体大小
-var cols = can.width / size; //多少列数字
+var size = 14;
+var cols = can.width / size; 
 var y = [];
-for (var i = 0; i < cols; i++)y[i] = 0;//存储每列数字的y坐标
-
+for (var i = 0; i < cols; i++)y[i] = 0;
 (function draw() {
-	cxt.fillStyle = 'rgba(0,0,0,.1)';
-	cxt.fillRect(0, 0, can.width, can.height);  //每次都画一个0.1透明度的遮盖层
-	cxt.fillStyle = '#33ff00';
-	cxt.font = 'bold ' + size + 'px Microsoft yahei'; //规定字体样式
-	for (var i = 0; i < cols; i++) //循环给每一行添加数组
-	{
-		var s = Math.floor(Math.random() * 10) + ''; //生成一个0~9随机数
-		var textX = i * size; // 文字x坐标
-		var textY = y[i]; //文字 y坐标
-		cxt.fillText(s, textX, textY); // 绘制文字
-		y[i] += size; // y坐标逐渐增加
-		if (y[i] >= can.height && Math.random() >= 0.9) {
-			y[i] = 0;
-		};//y坐标到头之后回0，Mat.random()的作用是让每一行不一定同时回去
-	}
-	requestAnimFrame(draw);
+cxt.fillStyle = 'rgba(0,0,0,.1)';
+cxt.fillRect(0, 0, can.width, can.height);
+cxt.fillStyle = '#33ff00';
+cxt.font = 'bold ' + size + 'px Microsoft yahei';
+for (var i = 0; i < cols; i++)
+{
+var s = Math.floor(Math.random() * 10) + ''; 
+var textX = i * size; 
+var textY = y[i];
+cxt.fillText(s, textX, textY); 
+y[i] += size; 
+if (y[i] >= can.height && Math.random() >= 0.9) {
+y[i] = 0;
+};
+}
+requestAnimFrame(draw);
 })()		  		
 </script>
