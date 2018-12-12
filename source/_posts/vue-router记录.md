@@ -52,3 +52,5 @@ export default new Router({
 ```
 文中提到的require.ensure()详细见<http://www.css88.com/doc/webpack2/guides/code-splitting-require/>
 
+### this.$router.xxx访问路由
+
