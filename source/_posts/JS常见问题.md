@@ -324,3 +324,6 @@ function a(m){
 ### canvas图片跨域
 因为生成图片时，生成图片路径和已有图片路径不同，可以把图片转为base64
 canvas.toDataURL(type, encoderOptions);
+
+### 常用正则
+1.邮箱：/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/
