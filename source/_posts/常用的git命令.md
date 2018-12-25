@@ -138,4 +138,9 @@ git config --global push.default matching 操作的就是上面的push段中的d
 git config --global credential.helper store 操作的就是上面最后一行的值
 ```
 
-###更多
+### 更多
+
+
+### git bisect 命令
+它的原理很简单，就是将代码提交的历史，按照两分法不断缩小定位。所谓"两分法"，就是将代码历史一分为二，确定问题出在前半部分，还是后半部分，不断执行这个过程，直到范围缩小到某一次代码提交。
+[阮一峰老师博客](http://www.ruanyifeng.com/blog/2018/12/git-bisect.html)
