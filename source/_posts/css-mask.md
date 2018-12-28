@@ -4,7 +4,9 @@ date: 2018-12-28 15:19:20
 tags: other
 categories: other
 ---
-
+> mask-position: 0px 0px;//设置遮罩层的位置
+> mask-size: 100%;//设置遮罩层的大小
+> mask-image：url() //设置遮罩层的图像。
 <style>
 @keyframes mask {
 0% {
