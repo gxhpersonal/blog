@@ -4,9 +4,7 @@ date: 2018-12-28 15:19:20
 tags: other
 categories: other
 ---
-<html lang="en">
 
-<head>
 <style>
 @keyframes mask {
 0% {
@@ -39,10 +37,7 @@ background: black url("http://www.kkkk1000.com/images/1534750163.jpg");
 animation: mask 5s linear infinite forwards;
 }
 </style>
-</head>
 
 <body>
 <div class="mask"> </div>
 </body>
-
-</html>
