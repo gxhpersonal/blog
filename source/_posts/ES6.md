@@ -25,7 +25,7 @@ ES5中的顶层变量属性和全局变量挂钩，被认为是JS最大的败笔
 ES6中let，class和const声明的变量不再与顶层对象的属性关联
 
 
-### Promise
+### Promise(主要解决异步回调地狱的问题)
 ```
 var promise = new Promise(function (resolve, reject) {
         console.log('resolve');
@@ -41,6 +41,7 @@ var promise = new Promise(function (resolve, reject) {
     })
     console.log('justgo')
 ```
+> Promise.prototype.then()第一个函数参数为resolve执行函数，第二个函数参数为reject执行函数
 
 ### export default {}为模块指定默认输出
 export default function () {
@@ -113,3 +114,47 @@ let c = {[a]:'this is key a',[b]:'this is key b'};
 console.log(c)
 ```
 
+### 生成器函数指定下一次调用 next() 时会生成什么 value
+```
+function* greeter(){
+  yeild "hello"
+  yeild "how are you"
+  yeild "good bye"
+}
+const greet = greeter();
+console.log(greet.next().value);
+// 'Hi'
+console.log(greet.next().value);
+// 'How are you?'
+console.log(greet.next().value);
+// 'Bye'
+console.log(greet.next().value);
+// undefined
+or
+使用生成器生成无限个值：
+function* idCreator() {
+  let i = 0;
+  while (true)
+    yield i++;
+}
+const ids = idCreator();
+console.log(ids.next().value);
+// 0
+console.log(ids.next().value);
+// 1
+console.log(ids.next().value);
+// 2
+// etc...
+```
+
+### Async/Await
+在掌握了 promise 的用法后，你可能也会喜欢 async await，它只是一种基于 promise 的“语法糖”。在下面的示例中，我们创建了一个 async 函数，并 await greeter promise。
+const greeter = new Promise((res, rej) => {
+  setTimeout(() => res('Hello world!'), 2000);
+})
+async function myFunc() {
+  const greeting = await greeter;
+  console.log(greeting);
+}
+myFunc();
+// 'Hello world!'
