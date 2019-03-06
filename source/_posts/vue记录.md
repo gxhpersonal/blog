@@ -23,8 +23,8 @@ categories: vue
 ### 父组件与子组件互传数据
 1. props:{}用来接收父组件传过来的数据
 * 父组件：
-![](http://ota5i8p1g.bkt.clouddn.com/parentComponets2.png)
-![](http://ota5i8p1g.bkt.clouddn.com/parentComponent1.png)
+![](../../img/childComponets.png)
+![](../../img/childCpmponents2.png)
 * 子组件：
 ![](http://ota5i8p1g.bkt.clouddn.com/childComponets.png)
 ![](http://ota5i8p1g.bkt.clouddn.com/childCpmponents2.png)
