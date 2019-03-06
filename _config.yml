@@ -64,7 +64,7 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: next
-avatar: /images/avatar.png
+avatar: http://www.guoxh.com/blog/img/vue/avatar.png
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
