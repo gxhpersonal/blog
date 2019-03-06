@@ -149,6 +149,7 @@ console.log(ids.next().value);
 
 ### Async/Await
 在掌握了 promise 的用法后，你可能也会喜欢 async await，它只是一种基于 promise 的“语法糖”。在下面的示例中，我们创建了一个 async 函数，并 await greeter promise。
+```ES6
 const greeter = new Promise((res, rej) => {
   setTimeout(() => res('Hello world!'), 2000);
 })
@@ -158,3 +159,4 @@ async function myFunc() {
 }
 myFunc();
 // 'Hello world!'
+```
