@@ -4,8 +4,8 @@ date: 2016-11-22 13:44:16
 tags:
 categories: blog
 ---
-### NEXT主题官方文档，操作扩展都非常详细，有兴趣可以看一看    
-[http://theme-next.iissnan.com/theme-settings.html]()
+### NEXT主题官方文档，操作扩展都非常详细，有兴趣可以看一看 
+[NEXT主题配置](http://theme-next.iissnan.com/theme-settings.html)   
 <h2 id="配置"><a name="t4"></a>配置</h2>
 <p>首先我们看看 <code>站点配置文件</code> 的配置 <code>F:\hexo\_config.yml</code> 。</p>
 <pre class="prettyprint" name="code"><code class="hljs avrasm has-numbering"><span class="hljs-preprocessor"># Hexo Configuration</span>
