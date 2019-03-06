@@ -23,20 +23,18 @@ categories: vue
 ### 父组件与子组件互传数据
 1. props:{}用来接收父组件传过来的数据
 * 父组件：
-![](http://www.guoxh.com/blog/img/childCpmponents.png)
-![](http://www.guoxh.com/blog/img/childCpmponents2.png)
+![](http://www.guoxh.com/blog/img/vue/propParentDOM.png)
 * 子组件：
-![](http://ota5i8p1g.bkt.clouddn.com/childComponets.png)
-![](http://ota5i8p1g.bkt.clouddn.com/childCpmponents2.png)
+![](http://www.guoxh.com/blog/img/vue/propChildDOM.png)
 
 2. this.$emit(自定义事件名，数据)向父组件传递数据
 * 子组件：
-![](http://ota5i8p1g.bkt.clouddn.com/child1.png)
-![](http://ota5i8p1g.bkt.clouddn.com/child2.png)
+![](http://www.guoxh.com/blog/img/vue/$emitChildDOM.png)
+![](http://www.guoxh.com/blog/img/vue/$emitChildJS.png)
 
 * 父组件
-![](http://ota5i8p1g.bkt.clouddn.com/parent1.png)
-![](http://ota5i8p1g.bkt.clouddn.com/parent2.png)
+![](http://www.guoxh.com/blog/img/vue/$emitParentDOM.png)
+![](http://www.guoxh.com/blog/img/vue/$emitParentJS.png)
 或者父组件中：
 ```
 data(){
