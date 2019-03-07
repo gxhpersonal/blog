@@ -29,6 +29,19 @@ scrollpercent: true
 5. 修改文章底部的那个带#号的标签
 修改模板/themes/hexo-theme-next/layout/_macro/post.swig，
 搜索 rel="tag">#，将 # 换成<i class="fa fa-tag"></i>
+
+6. 增加本地搜索功能
+1> 在你站点的根目录下
+$ npm install hexo-generator-searchdb --save
+2> 打开 Hexo 站点配置文件 _config.yml,添加配置
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
+3> 打开 themes/next/_config.yml ,搜索关键字 local_search ,enable 设置为 true：
+local_search:
+  enable: true
 ```
 
 ### 我们再看看 `站点配置文件` 的配置 `F:\hexo\_config.yml`
