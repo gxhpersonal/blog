@@ -7,7 +7,17 @@ categories: blog
 ### NEXT主题官方文档，操作扩展都非常详细，有兴趣可以看一看 
 [NEXT主题配置](http://theme-next.iissnan.com/theme-settings.html)   
 <h2 id="配置"><a name="t4"></a>配置</h2>
-<p>首先我们看看 <code>站点配置文件</code> 的配置 <code>F:\hexo\_config.yml</code> 。</p>
+
+<p>首先我们看看 <code>主题配置文件</code> 的配置 <code>F:\hexo\themes\next\_config.yml</code> 。</p>
+```
+//把页面中的动画效果取消，把enable改为对应的false改为true，然后hexo d -g，再进主页，问题就解决了，下面的length参数对应的是文章预览的文本长度，可以自己设置。
+auto_excerpt:
+  enable: false
+  length: 150
+```
+
+<p>我们再看看 <code>站点配置文件</code> 的配置 <code>F:\hexo\_config.yml</code> 。</p>
+```
 <pre class="prettyprint" name="code"><code class="hljs avrasm has-numbering"><span class="hljs-preprocessor"># Hexo Configuration</span>
 <span class="hljs-preprocessor">## Docs: https://hexo.io/docs/configuration.html</span>
 <span class="hljs-preprocessor">## Source: https://github.com/hexojs/hexo/</span>
@@ -84,3 +94,4 @@ categories: blog
 <span class="hljs-label">type:</span> git 
   repository: https://github<span class="hljs-preprocessor">.com</span>/imwillxue/imwillxue<span class="hljs-preprocessor">.github</span><span class="hljs-preprocessor">.com</span><span class="hljs-preprocessor">.git</span> 
   branch: master</code></pre>
+  ```
