@@ -22,6 +22,9 @@ NexT 使用的是 [Font Awesome](http://fontawesome.dashgame.com/) 提供的图�
 搜索关键字 scrollpercent ,把 false 改为 true。
 # Scroll percent label in b2t button
 scrollpercent: true
+
+4. 添加顶部加载条
+打开 themes/next/_config.yml ，搜索关键字 pace ,设置为 true ,可以更换加载样式：
 ```
 
 ### 我们再看看 `站点配置文件` 的配置 `F:\hexo\_config.yml`
