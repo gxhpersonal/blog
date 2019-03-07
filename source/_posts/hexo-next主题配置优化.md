@@ -17,6 +17,11 @@ auto_excerpt:
 
 2. 设置菜单项的显示文本和图标
 NexT 使用的是 [Font Awesome](http://fontawesome.dashgame.com/) 提供的图标， Font Awesome 提供了 600+ 的图标，可以满足绝大的多数的场景，同时无须担心在 Retina 屏幕下图标模糊的问题。
+
+3. 浏览页面的时候显示当前浏览进度
+搜索关键字 scrollpercent ,把 false 改为 true。
+# Scroll percent label in b2t button
+scrollpercent: true
 ```
 
 ### 我们再看看 `站点配置文件` 的配置 `F:\hexo\_config.yml`
