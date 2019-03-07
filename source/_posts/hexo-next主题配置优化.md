@@ -25,6 +25,10 @@ scrollpercent: true
 
 4. 添加顶部加载条
 打开 themes/next/_config.yml ，搜索关键字 pace ,设置为 true ,可以更换加载样式：
+
+5. 修改文章底部的那个带#号的标签
+修改模板/themes/hexo-theme-next/layout/_macro/post.swig，
+搜索 rel="tag">#，将 # 换成<i class="fa fa-tag"></i>
 ```
 
 ### 我们再看看 `站点配置文件` 的配置 `F:\hexo\_config.yml`
