@@ -1,7 +1,7 @@
 ---
 title: hexo强力搭建github博客
 date: 2016-09-14 16:28:35
-tags:
+tags: blog
 categories: blog
 ---
 
