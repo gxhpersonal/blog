@@ -33,9 +33,7 @@ categories: blog
           repo: '{{ theme.gitalk.repo }}',
           owner: '{{ theme.gitalk.githubID }}',
           admin: ['{{ theme.gitalk.adminUser }}'],
-          id: location.pathname,
-          distractionFreeMode: '{{ theme.gitalk.distractionFreeMode }}'
-        })
+          id: location.pathname        })
         gitalk.render('gitalk-container')           
        </script>
 {% endif %}
@@ -53,4 +51,53 @@ categories: blog
 ### 5.修改layout/_third-party/comments/index.swig，在最后一行添加内容：
 ```
 {% include 'gitalk.swig' %}
+```
+
+### 6.在主题配置文件next/_config.yml中添加如下内容：
+```
+gitalk:
+  enable: true
+  githubID: github帐号ID  # 例：gxhpersonal 
+  repo: 仓库名称   # 例：gxhpersonal.github.io
+  ClientID: Client ID #上面申请的授权应用id
+  ClientSecret: Client Secret #上面申请的授权应用Secret
+  adminUser: github帐号 #指定可初始化评论账户 例：gxhpersonal 
+```
+
+#### 以上
+
+#### 以下为可能遇到的问题
+
+### Error Not Found
+检查自己的配置项字段是否正确，如：
+1> repo：gxhpersonal.github.io后面不能加path路径
+2> 主题配置文件next/_config.yml中的字段要和/layout/_third-party/comments/gitalk.swig文件中的引用字段对应
+
+### Error: Validation Failed
+由于 Github 限制 labal 长度不能超过 50引起的
+具体解决是通过MD5加密ID来缩短labal长度
+1> 创建`md5.min.js`文件在 \themes\next\source\js\src\md5.min.js[官网GitHub](https://github.com/blueimp/JavaScript-MD5/blob/master/js/md5.min.js)
+2> 修改gitalk.swig文件
+```
+  {% if page.comments && theme.gitalk.enable %}
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+  + <script src="/js/src/md5.min.js"></script>
+
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '{{ theme.gitalk.ClientID }}',
+          clientSecret: '{{ theme.gitalk.ClientSecret }}',
+          repo: '{{ theme.gitalk.repo }}',
+          owner: '{{ theme.gitalk.githubID }}',
+          admin: ['{{ theme.gitalk.adminUser }}'],     
+          
+          -     id: location.pathname,
+          +     id: md5(location.pathname),
+
+          })
+        gitalk.render('gitalk-container')           
+       </script>
+{% endif %}
 ```
