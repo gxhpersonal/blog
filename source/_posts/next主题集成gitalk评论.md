@@ -65,7 +65,7 @@ gitalk:
 ```
 
 #### 以上
-
+***
 #### 以下为可能遇到的问题
 
 ### Error Not Found
@@ -83,7 +83,7 @@ gitalk:
   <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
   <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 
-  + <script src="/js/src/md5.min.js"></script>
+  ``引入文件 <script src="/js/src/md5.min.js"></script>``
 
    <script type="text/javascript">
         var gitalk = new Gitalk({
@@ -93,8 +93,8 @@ gitalk:
           owner: '{{ theme.gitalk.githubID }}',
           admin: ['{{ theme.gitalk.adminUser }}'],     
           
-          -     id: location.pathname,
-          +     id: md5(location.pathname),
+          ``删除配置     id: location.pathname,``
+          ``添加配置     id: md5(location.pathname),``
 
           })
         gitalk.render('gitalk-container')           
