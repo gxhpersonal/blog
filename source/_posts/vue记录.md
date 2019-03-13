@@ -451,6 +451,3 @@ imgUrl: "这是微信分享的图片" });
 ### vue.js源码分析
 1.Object.create(null)和{}区别；
  二者都是创建一个对象，前者去掉了原型链，后者保留原型链
-2.目前，Vue 的反应系统是使用 Object.defineProperty 的 getter 和 setter。 但是，Vue 3 将使用 ES2015 Proxy 作为其观察者机制。 这消除了以前存在的警告，使速度加倍，并节省了一半的内存开销。
-
-为了继续支持 IE11，Vue 3 将发布一个支持旧观察者机制和新 Proxy 版本的构建。
