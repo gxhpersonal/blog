@@ -27,7 +27,7 @@ document.body.addEventListener('touchstart', function () { })
 
 ### IOS支持3D touch的手机如果页面有a标签长按会触发3D touch并且跳转浏览器
 
-### 与原生交互方法
+### 与原生交互方法定义
 ```
 imgesPreview: function (data) {
     if (Basic.isAppVersionAbove && Basic.isAppVersionAbove("2.4.7")) {
@@ -106,9 +106,9 @@ $("body").on("touchstart", function (e) {
 
 ### js监测手机浏览器是否切换到后台应用
 > 这个功能常见作用于在浏览器h5页面唤醒app（前提是已安装app）浏览器就会被切换到后台装态
-```
-//这时候
-document.webkitVisibilityState=='hidden'表示已挂起 'visible'表示已切换到前台）
+```javascript
+/*这时候
+document.webkitVisibilityState=='hidden'表示已挂起 'visible'表示已切换到前台）*/
 document.addEventListener('webkitvisibilitychange', function() {
     if (document.webkitVisibilityState == 'hidden') {
 
@@ -116,4 +116,50 @@ document.addEventListener('webkitvisibilitychange', function() {
   });
 ```
 > 好吧，其实并没有说得很么卵用（至少目前的我是这么认为的），因为产品逻辑都会说，如果没有安装app要跳转下载页面，这时候就尴尬了，因为浏览器并没有改变webkitVisibilityState的值，所以无法走进这个方法（只有浏览器切换前后台才会改变）
+
+### 非app环境打开页面自动提示/自动跳转app中对应页面，未成功跳转则跳转app下载页
+```javascript
+//指定链接提示跳转/下载APP
+if (!util.isApp()) {
+  var timeout;
+  function openApp() {
+    if (location.pathname == "/") {
+      //如果是首页，打开app首页
+      window.location = "appname://";
+    } else {
+      //其他页面链接加参数后面
+      window.location =
+        "appname://?openType=H5&urlEncode=" +
+        encodeURIComponent(location.href) +
+        "&url=" +
+        location.href;
+    }
+  }
+
+  var dates = Date.now();
+  if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+    //ios设备
+    //执行打开app方法
+    openApp();
+    //未打开app执行下面的方法跳转下载
+    timeout = setTimeout(function() {
+      if (Date.now() - dates < 1800) {
+        window.location = "https://itunes.apple.com/cn/app";
+      }
+    }, 1500);
+  } else if (navigator.userAgent.match(/android/i)) {
+    //Android设备
+    //执行打开app方法
+    openApp();
+    //未打开app执行下面的方法跳转下载
+    timeout = setTimeout(function() {
+      if (Date.now() - dates < 1800) {
+        window.location = "http://a.app.qq.com/o/simple.jsp";
+      }
+    }, 1500);
+  }
+}
+```
+
+
 > 好记性不如markdown
