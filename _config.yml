@@ -97,7 +97,7 @@ live2d:
     use: live2d-widget-model-wanko
   display:
     position: left
-    width: 150
-    height: 300
+    width: 50
+    height: 100
   mobile:
-    show: true
+    show: false
