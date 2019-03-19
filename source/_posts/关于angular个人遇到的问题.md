@@ -56,11 +56,9 @@ element[0].focus();
             time.m = Math.floor(time.t / 1000 / 60 % 60) < 10 ? '0' + Math.floor(time.t / 1000 / 60 % 60) : Math.floor(time.t / 1000 / 60 % 60);
             time.s = Math.floor(time.t / 1000 % 60) < 10 ? '0' + Math.floor(time.t / 1000 % 60) : Math.floor(time.t / 1000 % 60);
             if (time.t <= 0) {
-                $scope.endShow = true;
                 $scope.overhtml = "活动已结束！";
-                $scope.endActivity = true;
-                $scope.timeOver = true;
                 $interval.cancel(stop);
+                return false;
             } else {
                 activityendtime = (time.t - 1000);
             }
@@ -205,3 +203,22 @@ status:http响应状态码
 headers:头信息
 config:生成原始请求的设置对象
 statusText:http响应状态的文本
+
+### $http配置为form data 提交:
+```js
+$http({
+        method: 'POST',
+        url: '/user/',
+        /*$.param() 方法创建数组或对象的序列化表示形式，
+        例如：{mobile:134****2345,email:a@qw.com} 改为 mobile:134****2345&email=a@qw.com*/
+        data: $.param($scope.formData), 
+        // 设置post为formdata表单提交，而不是默认的json提交
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' } 
+    }).success(function(data) {
+        console.log(data);
+    });
+```
+
+### 获得ng-model里的value
+ng-model="name", $scope.name拿不到值是因为原型继承，具体可以百度，解决方法是使用对象属性取值，ng-model="model.name"; $scope.model ={}; 
+$scope.model.name这个时候就是双向绑定了。
