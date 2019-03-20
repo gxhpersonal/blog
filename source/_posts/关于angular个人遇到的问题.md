@@ -222,3 +222,24 @@ $http({
 ### 获得ng-model里的value
 ng-model="name", $scope.name拿不到值是因为原型继承，具体可以百度，解决方法是使用对象属性取值，ng-model="model.name"; $scope.model ={}; 
 $scope.model.name这个时候就是双向绑定了。
+
+### 指令写图片懒加载
+先用一个小的图片占位，图片加载完毕显示需要加载的图片；
+html：src为默认显示的图片，lazy-src为需要懒加载的图片
+```html
+<img image-lazy-load src=""  lazy-src="default.jpg" alt=""/>
+```
+```js
+app.directive('imageLazyLoad', function() {
+   return {
+       // A = attribute, E = Element, C = Class and M = HTML Comment
+       restrict: 'A',
+       link: function(scope, ele, attrs){
+           ele[0].src = 'default.jpg';   //默认
+           ele[0].onload =function (ev) {  //图片onload完毕
+               ele[0].src = attrs.lazySrc;
+           }
+       }
+   };
+});
+```
