@@ -316,8 +316,11 @@ imagechanged(e, data) {
 ### vue微信分享
 
 1.页面中引入微信分享JS文件
+```html
 <script src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
-> 1.4.0版本原有的 wx.onMenuShareTimeline、wx.onMenuShareAppMessage、wx.onMenuShareQQ、wx.onMenuShareQZone 接口，即将废弃。请尽快迁移使用客户端6.7.2及JSSDK 1.4.0以上版本支持的 wx.updateAppMessageShareData、updateTimelineShareData 接口。
+```
+> 原有的 wx.onMenuShareTimeline、wx.onMenuShareAppMessage、wx.onMenuShareQQ、wx.onMenuShareQZone 接口，即将废弃。
+请尽快迁移使用客户端6.7.2及JSSDK 1.4.0以上版本支持的 wx.updateAppMessageShareData、updateTimelineShareData 接口。
 
 2.微信分享方法相关配置
 ```javascript
