@@ -443,6 +443,55 @@ imgUrl: "这是微信分享的图片" });
 ```
 > 附录：[获取权限签名的算法](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421141115)
 
+### vue-resource实现vue异步请求
+```html
+<script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
+```
+```js
+var vm = new Vue({
+  el: '#app',
+  data: {
+    todos: [
+      { text: '学习 JavaScript' },
+      { text: '学习 Vue' },
+      { text: '整个牛项目' }
+    ],
+    tftext: "这是一段24px大小的字体"
+  },
+  created() {
+    //get请求
+    this.$http.get("/api/getapi").then(function (data) {
+      // console.log(data)
+    })
+    //post请求
+    this.$http.post("/api/postapi",
+      { mobile: 18435133760 },
+      {
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+        emulateJSON: true
+      }
+    ).then(function (data) {
+      console.log(data)
+    })
+  },
+  mounted() {
+    console.log(this.todos)
+  }
+})
+```
+* 上面例子中
+get请求很好懂，如果要加参数，直接在api链接后面拼上即可，
+而post中有几个注意点：
+post(url, [body], [options])
+1.post中第一个参数为请求的目标api url;
+2.第二个参数为作为请求体发送的数据，类型可以为Object, FormData, string
+3.第三个参数很多，较常用的有headers:请求头、emulateJSON:设置请求体的类型为application/x-www-form-urlencoded
+4.如果要改为formdata提交，第三个参数加
+{
+headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+emulateJSON: true
+}
+即可
 
 ### vue.js源码分析
 1.Object.create(null)和{}区别；
