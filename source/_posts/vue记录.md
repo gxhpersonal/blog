@@ -83,7 +83,7 @@ vm.$set(vm.arr,0,4) //这样dom数据才会改变
 ### vue中的index索引值问题
 vue 中$index $key 已经移除了
 之前可以这样:
-```
+```html
 <ul id="example">
     <li v-for="item in items">
         {{$index}}
@@ -94,7 +94,7 @@ vue 中$index $key 已经移除了
 现在已经移除,如果还用的话就会报错:Uncaught ReferenceError: $index is not defined;
 
 现在这样写:
-```
+```html
 <ul id="example">
     <li v-for="(item,index) in items">
         {{item}}
@@ -109,7 +109,7 @@ vue 中$index $key 已经移除了
 
 ### 在所有ajax完成后执行
 这个时候用promise.all最合适了，比如：
-```
+```es6
 let p1=new Promise(function(resolve,reject){ 
 resolve(42)
 });
@@ -134,7 +134,7 @@ p4.then(function(v){
 
 ### 在v-html中使用filters 的三种方法
 1.在vue实例上定义全局方法
-```
+```js
 Vue.prototype.highlight= function (sTitle) {
   // to do
 };
@@ -142,7 +142,7 @@ Vue.prototype.highlight= function (sTitle) {
 v-html="highlight(option.title)"
 ```
 2.使用 $options.filters
-```
+```js
 v-html="$options.filters.highlight(option.title)"
 var appMain= new Vue({
     el: '#appMain',
@@ -157,7 +157,7 @@ var appMain= new Vue({
 })
 ```
 3.computed 计算属性
-```
+```js
 var appMain= new Vue({
       el: '#appMain',
       computed :{
@@ -174,7 +174,7 @@ var appMain= new Vue({
 ```
 
 ### vue路由频繁切换的时候，会有部分白屏问题，下拉后恢复正常(用于同一个页面，点击导航栏切换不同路由)
-```
+```js
 mounted() {
    this.setPosition(); 
 },
@@ -203,16 +203,18 @@ method:{
     },  
 }
 
-作者：wilson_biubiubiu
-链接：https://juejin.im/post/5be92ae2e51d4572fd18c4c6
-来源：掘金
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+参考自：[https://juejin.im/post/5be92ae2e51d4572fd18c4c6](https://juejin.im/post/5be92ae2e51d4572fd18c4c6)
 ```
 
 ### 文件上传（支持PDF格式文件上传）以文件流的形式上传到接口
-```
+```html
 <input type="file" id="CarDamageFile" class="g-core-image-upload-form" value="" accept="image/gif,image/jpeg,image/jpg,image/png,application/pdf" data-type="back-page" name="Pictures" multiple="multiple" @change="imagechanged($event,Udata[7])" />
+```
+```js
 //文件上传
+wrongTip(data){
+  console.log(data)
+},
 imagechanged(e, data) {
 //参数e为当前上传的表单，data为要处理的数据
     var that = this,
@@ -238,12 +240,12 @@ imagechanged(e, data) {
       render = new FileReader();
     if (res.type != "application/pdf" && res.size / 1024 > 10240) {
       that.wrongTip(
-        "索赔材料仅限pdf. jpg .gif .png格式，单个图片大小不超过10M，单个PDF大小不超过4.5M，每项最多上传5张。"
+        "材料仅限pdf. jpg .gif .png格式，单个图片大小不超过10M，单个PDF大小不超过4.5M，每项最多上传5张。"
       );
       return;
     } else if (res.type == "application/pdf" && res.size / 1024 > 4608) {
       that.wrongTip(
-        "索赔材料仅限pdf. jpg .gif .png格式，单个图片大小不超过10M，单个PDF大小不超过4.5M，每项最多上传5张。"
+        "材料仅限pdf. jpg .gif .png格式，单个图片大小不超过10M，单个PDF大小不超过4.5M，每项最多上传5张。"
       );
       return;
     } else {
@@ -254,7 +256,6 @@ imagechanged(e, data) {
           var formData = new FormData();
           var index = this.index;
           var _fileName = res.name;
-          //convertBase64UrlToBlob函数是将base64编码转换为Blob
           formData.append("fileUrl", res);
           formData.append("fileName", _fileName);
           Sdata.loading = true;
@@ -313,11 +314,13 @@ imagechanged(e, data) {
 ```
 
 ### vue微信分享
-```javascript
-1.页面中引入微信分享JS文件
-<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 
-2.//微信分享方法相关配置
+1.页面中引入微信分享JS文件
+<script src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+> 1.4.0版本原有的 wx.onMenuShareTimeline、wx.onMenuShareAppMessage、wx.onMenuShareQQ、wx.onMenuShareQZone 接口，即将废弃。请尽快迁移使用客户端6.7.2及JSSDK 1.4.0以上版本支持的 wx.updateAppMessageShareData、updateTimelineShareData 接口。
+
+2.微信分享方法相关配置
+```javascript
 import Vue from 'vue';
 import vueResource from 'vue-resource';
 export default {
@@ -333,6 +336,7 @@ export default {
             href = window.location.href;
         }
         Vue.http.options.emulateJSON = true;
+        //下面请求接口来获取所需参数
         Vue.http.get('/Api/Activity/GetWeixinAPIConfig?url=' + href).then(response => {
             let weixinConfigData = response.body;
             wx.config({
@@ -343,9 +347,8 @@ export default {
                 signature: weixinConfigData.signature,// 必填，签名
                 jsApiList: [
                     'checkJsApi',
-                    'onMenuShareTimeline',
-                    'onMenuShareAppMessage',
-                    'onMenuShareQQ',
+                    'updateAppMessageShareData',
+                    'updateTimelineShareData',
                     'onMenuShareWeibo',
                     'hideMenuItems',
                     'showMenuItems',
@@ -383,9 +386,9 @@ export default {
         });
     },
     wxShare(obj) {
-        wx.ready(function () {
-			// 分享给朋友
-            wx.onMenuShareAppMessage({
+        wx.ready(function () { ////需在用户可能点击分享按钮前就先调用
+			      // “分享给朋友”及“分享到QQ”
+            wx.updateAppMessageShareData({
                 title: obj.shareTitle,
                 desc: obj.descContent,
                 link: obj.lineLink,
@@ -403,8 +406,8 @@ export default {
                     //  alert(JSON.stringify(res));
                 }
             });
-			// 分享到朋友圈
-            wx.onMenuShareTimeline({
+			    // “分享到朋友圈”及“分享到QQ空间”
+            wx.updateTimelineShareData({
                 title: obj.shareTitle,
                 desc: obj.descContent,
                 link: obj.lineLink,
@@ -422,19 +425,6 @@ export default {
                     // alert(JSON.stringify(res));
                 }
             });
-
-            wx.onMenuShareQQ({
-                title: obj.shareTitle,
-                desc: obj.descContent,
-                link: obj.lineLink,
-                imgUrl: obj.imgUrl,
-                success: function () {
-                    // 用户确认分享后执行的回调函数
-                },
-                cancel: function () {
-                    // 用户取消分享后执行的回调函数
-                }
-            });
         });
     }
 }
@@ -448,6 +438,9 @@ descContent: "这是微信分享的描述文案",
 lineLink: location.href, 
 imgUrl: "这是微信分享的图片" });
 ```
+> 附录：[获取权限签名的算法](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421141115)
+
+
 ### vue.js源码分析
 1.Object.create(null)和{}区别；
  二者都是创建一个对象，前者去掉了原型链，后者保留原型链
