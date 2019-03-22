@@ -465,7 +465,7 @@ var vm = new Vue({
     })
     //post请求
     this.$http.post("/api/postapi",
-      { mobile: 18435133760 },
+      { mobile: xxxxxxxxx },
       {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
         emulateJSON: true
