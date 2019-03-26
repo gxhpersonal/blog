@@ -25,18 +25,18 @@ class request {
     Get(obj) {
         //封装一层promise，一来可以把接口数据.then出去，二来解决嵌套请求的回调问题
         return new Promise((resolve, reject) => {
-            //利用ES5的浅拷贝Object.assign自动增删传入的对象
-            let params = Object.assign({}, {
-                method: "get",
-                //设置请求头来区分请求数据类型，formdata || json
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-                }
-            }, obj)
-            params.url = this.urlMap[process.env.NODE_ENV] + obj.url;
             //发起axios请求
             Vue.axios(
-                params
+                //利用ES5的浅拷贝Object.assign自动增删传入的对象
+                Object.assign({}, {
+                    method: "get",
+                    //设置请求头来区分请求数据类型，formdata || json
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+                    },
+                    //`baseURL` 将自动加在 `url` 前面，除非 `url` 是一个绝对 URL
+                    baseURL: this.urlMap[process.env.NODE_ENV]
+                }, obj)
             ).then((res) => {
                 resolve(res.data)
             }).catch((e) => {
@@ -48,15 +48,14 @@ class request {
     Post(obj) {
         //封装一层promise，一来可以把接口数据.then出去，二来解决嵌套请求的回调问题
         return new Promise((resolve, reject) => {
-            let params = Object.assign({}, {
-                method: "post",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-                }
-            }, obj)
-            params.url = this.urlMap[process.env.NODE_ENV] + obj.url;
             Vue.axios(
-                params
+                Object.assign({}, {
+                    method: "post",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+                    },
+                    baseURL: this.urlMap[process.env.NODE_ENV]
+                }, obj)
             ).then((res) => {
                 resolve(res.data)
             }).catch((e) => {
