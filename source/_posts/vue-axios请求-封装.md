@@ -54,7 +54,19 @@ class request {
                     headers: {
                         "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
                     },
-                    baseURL: this.urlMap[process.env.NODE_ENV]
+                    baseURL: this.urlMap[process.env.NODE_ENV],
+                    // `transformRequest` 允许在向服务器发送前，修改请求数据
+                    // 只能用在 'PUT', 'POST' 和 'PATCH' 这几个请求方法
+                    // 后面数组中的函数必须返回一个字符串，或 ArrayBuffer，或 Stream
+                    transformRequest: [(data) => {
+                        // 对 data 进行form-data处理
+                        let rData = ''
+                        for (let i in data) {
+                            rData += encodeURIComponent(i) + '=' + encodeURIComponent(data[i]) + '&'
+                        }
+                        //字符串最后多了个&符号，截取掉
+                        return rData.substr(0,rData.length-1)
+                    }]
                 }, obj)
             ).then((res) => {
                 resolve(res.data)
