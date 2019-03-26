@@ -1,0 +1,139 @@
+---
+title: vue-axios请求+封装
+date: 2019-03-26 11:40:19
+tags: vue
+categories: vue
+---
+
+### axios实现vue异步请求 + 封装
+> 安装axios && vue-axios : npm install --save axios vue-axios
+#### 1.封装不同类型的请求（get,post..）,`api/helpers.js`配置:
+```js
+import Vue from "vue";
+import axios from "axios";
+import VueAxios from "vue-axios";
+Vue.use(VueAxios, axios);
+class request {
+    constructor() {
+        //定义请求接口地址对象，一个是开发环境地址，另一个就是线上地址
+        this.urlMap = {
+            development: '/dev',
+            production: '/product'
+        }
+    }
+    //get请求
+    Get(obj) {
+        //封装一层promise，一来可以把接口数据.then出去，二来解决嵌套请求的回调问题
+        return new Promise((resolve, reject) => {
+            //利用ES5的浅拷贝Object.assign自动增删传入的对象
+            let params = Object.assign({}, {
+                method: "get",
+                //设置请求头来区分请求数据类型，formdata || json
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+                }
+            }, obj)
+            params.url = this.urlMap[process.env.NODE_ENV] + obj.url;
+            //发起axios请求
+            Vue.axios(
+                params
+            ).then((res) => {
+                resolve(res.data)
+            }).catch((e) => {
+                reject(e)
+            })
+        })
+    }
+    //post请求
+    Post(obj) {
+        //封装一层promise，一来可以把接口数据.then出去，二来解决嵌套请求的回调问题
+        return new Promise((resolve, reject) => {
+            let params = Object.assign({}, {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+                }
+            }, obj)
+            params.url = this.urlMap[process.env.NODE_ENV] + obj.url;
+            Vue.axios(
+                params
+            ).then((res) => {
+                resolve(res.data)
+            }).catch((e) => {
+                reject(e)
+            })
+        })
+    }
+}
+export {
+    request
+}
+```
+
+#### 2.具体某接口的请求封装：api/indexApi.js配置：
+```js
+import {request} from '../js/helper';
+class homeApi extends request {
+    //构造器
+    constructor() {
+        //调用super方法，使子类自己的this对象得到父类同样的实例属性和方法
+        super()
+    }
+    //其中的this指向子类的实例，因为上面已经完成对父类的继承
+    getList(data, handle) {
+        this.Get({ url: '/List?page=' + data.pageId }).then((res) => {
+            handle(res)
+        }).catch((e) => {
+
+        })
+    }
+    getOther(data, handle) {
+        //data:'mobile='+data.mobile是form-data数据类型，{data:{mobile:xxxxxxx}}为json类型
+        this.Post({ url: '/getOther' ,data:'mobile='+data.mobile}).then((res) => {
+            handle(res)
+        }).catch((e) => {
+
+        })
+    }
+}
+export {
+    homeApi
+}
+```
+
+#### 3.封装后的具体应用：app.vue:
+```html
+<template>
+  <div class="login-wrap">121212</div>
+</template>
+
+<script>
+import {homeApi} from "../assets/api/indexApi";
+const Api = new homeApi()
+export default {
+  data() {
+    return {};
+  },
+  mounted() {
+    //get请求
+    Api.getList(
+      {
+        pageId: 1
+      },
+      res => {
+        console.log(res)
+      }
+    );
+    //post请求
+    Api.getOther(
+      {
+        mobile:XXXXXXXX
+      },
+      (res)=>{
+        console.log(res)
+      }
+    )
+  }
+};
+</script>
+```
