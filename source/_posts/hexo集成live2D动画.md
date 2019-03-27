@@ -57,6 +57,12 @@ live2d:
   log: false #是否在控制台显示日志
   model:
     use: live2d-widget-model-wanko #安装的模型包名称
+  display:  #设置位置和宽高（设置的宽高*2为实际像素，如：50=100px）
+    position: left 
+    width: 50
+    height: 100
+  mobile:
+    show: false #是否在移动端上显示
 ```
 #### hexo d -g执行即可
 [插件GitHub地址](https://github.com/EYHN/hexo-helper-live2d)
