@@ -10,6 +10,8 @@ categories: vue
 1.页面中引入微信分享JS文件 或者 执行`npm install weixin-js-sdk --save`命令安装js包
 ```html
 <script src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+<!-- or -->
+`npm install weixin-js-sdk --save`安装
 ```
 > 原有的 wx.onMenuShareTimeline、wx.onMenuShareAppMessage、wx.onMenuShareQQ、wx.onMenuShareQZone 接口，即将废弃。
 请尽快迁移使用客户端6.7.2及JSSDK 1.4.0以上版本支持的 wx.updateAppMessageShareData、updateTimelineShareData 接口。
@@ -18,7 +20,7 @@ categories: vue
 ```javascript
 // 微信分享
 import wx from "weixin-js-sdk";
-//请求封装见vue-axios请求-封装
+//请求封装见[vue-axios请求-封装](http://www.guoxh.com/blog/2019/03/26/vue-axios%E8%AF%B7%E6%B1%82-%E5%B0%81%E8%A3%85/)
 import { request } from '../js/request';
 
 const requestget = new request();
