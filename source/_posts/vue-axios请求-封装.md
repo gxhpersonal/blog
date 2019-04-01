@@ -156,3 +156,4 @@ export也可以写成export default XXX,
 ```import homeApi from "../assets/api/indexApi";```
 `export`可以写多个，`export default`只能写一个，所以这就是为什么`export`输出的是对象，而`export default`输出的是变量或者类，
 然后引用`import`的时候也同理使用`export`输出时，引用的是对象，而使用`export default`输出时，引用的是变量或者类
+`export`可以只输出需要用到的方法，`export default`则是全部输出
