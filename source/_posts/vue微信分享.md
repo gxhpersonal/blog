@@ -28,63 +28,61 @@ const requestget = new request();
 let href;
 var ua = window.navigator.userAgent.toLowerCase();
 if (ua.match(/MicroMessenger/i) == 'micromessenger') {
-     if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
-    href = encodeURIComponent(window.location.href);
-} else if (navigator.userAgent.match(/android/i)) {
-    href = window.location.href;
-} else {
-    href = window.location.href;
-}		
-requestget.Get({ url: '/getWxConfig', data: { "url": href } }).then((data) => {
-    weixinConfigData = data.data;
-    wx.config({
-        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-        appId: weixinConfigData.appid,// 必填，公众号的唯一标识
-        timestamp: weixinConfigData.timestamp,// 必填，生成签名的时间戳
-        nonceStr: weixinConfigData.noncestr,// 必填，生成签名的随机串
-        signature: weixinConfigData.signature,// 必填，签名
-        jsApiList: [
-            'checkJsApi',
-            'updateAppMessageShareData',
-            'updateTimelineShareData',
-            'onMenuShareTimeline',
-            'onMenuShareAppMessage',
-            'onMenuShareQQ',
-            'onMenuShareWeibo',
-            'hideMenuItems',
-            'showMenuItems',
-            'hideAllNonBaseMenuItem',
-            'showAllNonBaseMenuItem',
-            'translateVoice',
-            'startRecord',
-            'stopRecord',
-            'onRecordEnd',
-            'playVoice',
-            'pauseVoice',
-            'stopVoice',
-            'uploadVoice',
-            'downloadVoice',
-            'chooseImage',
-            'previewImage',
-            'uploadImage',
-            'downloadImage',
-            'getNetworkType',
-            'openLocation',
-            'getLocation',
-            'hideOptionMenu',
-            'showOptionMenu',
-            'closeWindow',
-            'scanQRCode',
-            'chooseWXPay',
-            'openProductSpecificView',
-            'addCard',
-            'chooseCard',
-            'openCard'
-        ]
-    });
-}).catch((e) => {
+    if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+        href = encodeURIComponent(window.location.href);
+    } else {
+        href = window.location.href;
+    }		
+    requestget.Get({ url: '/getWxConfig', data: { "url": href } }).then((data) => {
+        weixinConfigData = data.data;
+        wx.config({
+            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+            appId: weixinConfigData.appid,// 必填，公众号的唯一标识
+            timestamp: weixinConfigData.timestamp,// 必填，生成签名的时间戳
+            nonceStr: weixinConfigData.noncestr,// 必填，生成签名的随机串
+            signature: weixinConfigData.signature,// 必填，签名
+            jsApiList: [
+                'checkJsApi',
+                'updateAppMessageShareData',
+                'updateTimelineShareData',
+                'onMenuShareTimeline',
+                'onMenuShareAppMessage',
+                'onMenuShareQQ',
+                'onMenuShareWeibo',
+                'hideMenuItems',
+                'showMenuItems',
+                'hideAllNonBaseMenuItem',
+                'showAllNonBaseMenuItem',
+                'translateVoice',
+                'startRecord',
+                'stopRecord',
+                'onRecordEnd',
+                'playVoice',
+                'pauseVoice',
+                'stopVoice',
+                'uploadVoice',
+                'downloadVoice',
+                'chooseImage',
+                'previewImage',
+                'uploadImage',
+                'downloadImage',
+                'getNetworkType',
+                'openLocation',
+                'getLocation',
+                'hideOptionMenu',
+                'showOptionMenu',
+                'closeWindow',
+                'scanQRCode',
+                'chooseWXPay',
+                'openProductSpecificView',
+                'addCard',
+                'chooseCard',
+                'openCard'
+            ]
+        });
+    }).catch((e) => {
 
-})
+    })
 }
 
 class wechatShareApi {
