@@ -159,4 +159,5 @@ async function myFunc() {
 }
 myFunc();
 // 'Hello world!'
+// 可以看到，async创建的函数体内，加了await的函数，即使它是异步的，也会等他先执行完
 ```
