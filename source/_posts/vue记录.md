@@ -54,6 +54,23 @@ mounted(){
 	}.bind(this))
 }
 ```
+```js
+//使用watch侦听器,监听props中的数据实现控制当前子组件内容
+props: ["orderInfo"],
+  data: function() {
+    return {
+      yetOrder: false
+    };
+  },
+  watch: {
+    orderInfo: function(newVal, oldVal) {
+      // newVal 为改变后的值
+      if (newVal.reserve_id && newVal.reserve_id != 0) {
+        this.yetOrder = true;
+      }
+    }
+  },
+```
 `1this.$emit(自定义事件,[])用来触发自定义事件increment1(或者函数名吧)，[]为参数`
 
 ### this.$set()设置对象的属性，这个方法主要用于避开 Vue 不能检测属性被添加的限制
