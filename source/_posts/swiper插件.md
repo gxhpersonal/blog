@@ -5,6 +5,113 @@ tags: swiper
 categories: swiper
 ---
 
+### vue中使用swiper
+```html
+<!--！！！！重中之重：swiper不能用v-show或者v-if来控制显示隐藏，这样初始化时不会添加swiper-slide-active这个类名，没有这个类名，就无法动态控制显示哪一个slide,也就是参数initialSlide，用visibility: hidden来控制显示隐藏-->
+<!--下面这个swiper实现了fixed布局下的swiper-->
+<section class="swiper-box" :class="{'hidden':!showEqSwiper}">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" v-for="(v,i) in Data" :key="i">
+            <img :src="v.image_url" alt>
+            <h4>{{v.title}}</h4>
+            <p>{{v.description}}</p>
+          </div>
+        </div>
+      </div>
+      <!--关闭按钮-->
+      <img class="close-swiper" src="./img/eq-close.png" alt @click="showEqSwiper = false">
+    </section>
+```
+```js
+`$ npm install swiper`
+import Swiper from "swiper";
+export default {
+mounted() {
+    //轮播
+    new Swiper(".swiper-container", {
+      observer: true,
+      //将observe应用于Swiper的父元素。当Swiper的父元素变化时，例如window.resize，Swiper更新
+      observeParents: true,
+      //centeredSlides设定为true时，active slide会居中，而不是默认状态下的居左。
+      centeredSlides: true,
+      //设置slider容器能够同时显示的slides数量(carousel模式)。默认：1
+      slidesPerView: "auto"
+    });
+  },
+  methods: {
+    //这个方法用来控制 swiper显示并且切换到指定slide
+    EqSwiper(v) {
+      let that = this;
+      let curIndex = v;
+      this.showEqSwiper = true;
+      new Swiper(".swiper-container", {
+        centeredSlides: true,
+        slidesPerView: "auto",
+        //initialSlide设定初始化时slide的索引。
+        initialSlide: curIndex
+      });
+    }
+  }
+}
+
+```
+```css
+.swiper-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  &.hidden {
+    visibility: hidden;
+  }
+  .swiper-container {
+    padding: 0 1.38rem;
+    .swiper-wrapper {
+      display: flex;
+      transition-property: transform;
+    }
+    .swiper-slide {
+      width: 16rem;
+      display: flex;
+      flex-shrink: 0;
+      flex-direction: column;
+      align-items: center;
+      background: #fff;
+      border-radius: 0.38rem;
+      margin: 0 0.35rem;
+      img {
+        border-radius: 0.38rem 0.38rem 0 0;
+      }
+      h4 {
+        font-size: 1rem;
+        font-weight: bold;
+        color: rgba(34, 34, 34, 1);
+        margin-top: 1.9rem;
+      }
+      p {
+        font-size: 0.7rem;
+        font-weight: bold;
+        color: rgba(102, 102, 102, 1);
+        margin-top: 0.63rem;
+        padding-bottom: 1.7rem;
+      }
+    }
+  }
+  .close-swiper {
+    width: 0.72rem;
+    margin-top: 1.75rem;
+    margin-left: 9rem;
+  }
+}
+```
+
+### 移动端单文件中使用swiper
 需求环境：移动端环境，swiper.css, swiper.js, 如果用jquery的话，可以用jquery.js和swiper.jquery.js
 以前也用过swiper做轮播，但是好多参数都不清楚，所以在这总结一下,有新的发现会更新
 
