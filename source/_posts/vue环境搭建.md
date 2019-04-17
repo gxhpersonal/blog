@@ -38,3 +38,13 @@ npm install --save-dev node-sass
 ### vue打包静态资源js，css路径不对的解决办法
 打开config/index.js，将其中的build配置下的assetsPublicPath值改为’./’
 
+### 路由找不到 || 文件路径找不到报错解决
+```js
+//新建一个notFound.vue文件来指向*所有路径
+const router = new VueRouter({
+  mode: 'history',
+  routes: [
+    { path: '*', component: NotFoundComponent }
+  ]
+})
+```
