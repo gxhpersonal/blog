@@ -11,8 +11,12 @@ $ npm install --global vue-cli
 ```
 
 ### 2.创建一个基于 webpack 模板的新项目
-```
+```cmd
+cli2.X快速构建项目：
 $ vue init webpack vue-project
+
+cli3.0快速构建项目：
+vue create vue-project；
 ```
 
 ### 3.安装依赖
