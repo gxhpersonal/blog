@@ -25,7 +25,11 @@ categories: swiper
 ```
 ```js
 `$ npm install swiper`
+//这种引入方式有bug，再微信PC端浏览器打不开，在部分老机型也打不开，比如iPhone6：
 import Swiper from "swiper";
+//另一种就是直接引入cdn文件（放在index.html中，当然这种是全局的）：
+//而且如果想下载swiper.js到本地，还是会报错。。。暂时没找到原因；
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
 export default {
 mounted() {
     //轮播
