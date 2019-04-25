@@ -8,7 +8,7 @@ categories: vue
 ### 如何让css只在当前组件起作用
 这样写其他组件引用当前组件时当前组件中的css无法作用在其他组件（个人认为中小项目不需要加这个属性，因为组件之间的调用会很少很少）
 同级组件不加scope如果有相同类名，会相互影响（同级当前组件优先级高）
-```
+```css
 <style scoped></style>
 ```
 
@@ -36,7 +36,7 @@ categories: vue
 ![](http://www.guoxh.com/blog/img/vue/$emitParentDOM.png)
 ![](http://www.guoxh.com/blog/img/vue/$emitParentJS.png)
 或者父组件中：
-```
+```js
 data(){
 	return{
 		a:'',
@@ -155,7 +155,7 @@ p4.then(function(v){
 Vue.prototype.highlight= function (sTitle) {
   // to do
 };
-然后所有组件都可以使用方法
+//然后所有组件都可以使用方法
 v-html="highlight(option.title)"
 ```
 2.使用 $options.filters
@@ -221,6 +221,36 @@ method:{
 }
 
 参考自：[https://juejin.im/post/5be92ae2e51d4572fd18c4c6](https://juejin.im/post/5be92ae2e51d4572fd18c4c6)
+```
+
+### vue中实现接口刷新，页面不刷新，这样变相的做到了返回定位到之前位置，并且不会有缓存数据：
+
+
+### vue中利用qrcodejs2插件前端生成二维码
+1.安装qrcodejs2插件，在控制台输入：
+```npm
+npm install qrcodejs2 --save
+```
+2.template or 入口文件 引入插件：
+```js
+import QRCode from "qrcodejs2";
+```
+3.html中加标签：
+```html
+<div id="qrcode"></div>
+```
+4.生成二维码：
+```js
+//如果是props传入的二维码地址：
+props: ["qrCodeLink"],
+watch: {
+  qrCodeLink(newValue, oldValue) {
+    //生成二维码
+    new QRCode(document.getElementById("qrcode"), newValue);
+  }
+}
+//如果是写死的，或者不是父组件传来的，直接new就好：
+new QRCode(document.getElementById("qrcode"), qrCodeLink);
 ```
 
 ### vue-resource实现vue异步请求
