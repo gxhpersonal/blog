@@ -225,7 +225,14 @@ method:{
 
 ### vue中实现接口刷新，页面不刷新，这样变相的做到了返回定位到之前位置，并且不会有缓存数据：
 > 目前实在没找到bug，只能在项目中出真知，手动微微无奈😔？很慌
+当组件在 <keep-alive> 内被切换，它的 `activated` 和 `deactivated` 这两个生命周期钩子函数将会被对应执行。
 
+引用上面句话，在 <keep-alive> 组件内把请求放在`activated`生命周期中，就可以做到刷新数据不刷新页面
+
+`activated`钩子在 `keep-alive` 组件激活时调用(进入当前组件)
+`deactivated`钩子在 `keep-alive` 组件停用时调用(离开当前组件)
+
+> 在 2.2.0 及其更高版本中，activated 和 deactivated 将会在 <keep-alive> 树内的所有嵌套组件中触发。
 
 ### vue中利用qrcodejs2插件前端生成二维码
 1.安装qrcodejs2插件，在控制台输入：
