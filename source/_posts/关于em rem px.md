@@ -8,8 +8,25 @@ categories: css
 
 ### js操作rem
 ```html
-<script>
-(function(f,i){var h=document,d=window,b=h.documentElement,e=document.createElement("style"),c;function g(){var j=b.getBoundingClientRect().width;i=i||540;j>i&&(j=i);var k=j*100/f;e.innerHTML="html{font-size:"+k+"px;}"}if(b.firstElementChild){b.firstElementChild.appendChild(e)}else{var a=h.createElement("div");a.appendChild(e);h.write(a.innerHTML);a=null}g();d.addEventListener("resize",function(){clearTimeout(c);c=setTimeout(g,300)},false);d.addEventListener("pageshow",function(j){if(j.persisted){clearTimeout(c);c=setTimeout(g,300)}},false)})(750,750);
+<style>html{font-size:100px;}</style>
+<script> 
+    //屏幕适应 
+    (function (win, doc) {
+        if (!win.addEventListener) return;
+        var html = document.documentElement;
+        function setFont() {
+            var html = document.documentElement;
+            var k = 750;
+            html.style.fontSize = html.clientWidth / k * 40 + "px";
+        }
+        setFont();
+        setTimeout(function () {
+            setFont();
+        }, 300);
+        doc.addEventListener('DOMContentLoaded', setFont, false);
+        win.addEventListener('resize', setFont, false);
+        win.addEventListener('load', setFont, false);
+    })(window, document);
 </script>
 ```
 
