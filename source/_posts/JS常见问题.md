@@ -9,7 +9,7 @@ categories: JS
 [https://www.zhangxinxu.com/wordpress/2018/07/navigator-do-not-track-api/]()
 
 ### 五种方法去除字符串最后的逗号
-```
+```html
 <script>
     window.onload=function() {
         var obj = {name: "xxx", age: 30, sex: "female"};//定义一个object对象
@@ -19,13 +19,13 @@ categories: JS
             //str += item + ","//将obj对象的属性遍历出来，并且追加到str字符中。
         }
         //第一种方法、将字符串中最后一个元素","逗号去掉，
-        //str = str.substring(0, str.lastIndexOf(','));
+        str = str.substring(0, str.lastIndexOf(','));
 
         //第二种方法、将字符串中最后一个元素","逗号去掉，
-        //str = (str.substring(str.length - 1) == ',') ? str.substring(0, str.length - 1) : str;
+        str = (str.substring(str.length - 1) == ',') ? str.substring(0, str.length - 1) : str;
 
         //第三种方法、将字符串中最后一个元素","逗号去掉，
-        //var str=str.substring(0,str.length-1);//3、将字符串中最后一个元素","逗号去掉，
+        var str=str.substring(0,str.length-1);//3、将字符串中最后一个元素","逗号去掉，
 
         //第四种方法、将字符串中最后一个元素","逗号去掉，
         var reg=/,$/gi;
