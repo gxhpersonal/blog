@@ -68,13 +68,16 @@ alert confirm prompt
 escape() 方法：
 
 采用ISO Latin字符集对指定的字符串进行编码。所有的空格符、标点符号、特殊字符以及其他非ASCII字符都将被转化成%xx格式的字符编码（xx等于该字符在字符集表里面的编码的16进制数字）。比如，空格符对应的编码是%20。unescape方法与此相反。不会被此方法编码的字符： @ * / +
+* 对应的解码方法：unescape()
 
 encodeURI() 方法：
 把URI字符串采用UTF-8编码格式转化成escape格式的字符串。不会被此方法编码的字符：! @ # $& * ( ) = : / ; ? + '
+* 对应的解码方法：decodeURI()
 
 encodeURIComponent() 方法：
 
 把URI字符串采用UTF-8编码格式转化成escape格式的字符串。与encodeURI()相比，这个方法将对更多的字符进行编码，比如 / 等字符。所以如果字符串里面包含了URI的几个部分的话，不能用这个方法来进行编码，否则 / 字符被编码之后URL将显示错误。不会被此方法编码的字符：! * ( ) 
+* 对应的解码方法：decodeURIComponent()
 
 ### 超出指定字符数显示省略号
 console.log($(".friend_detail p").text().length)
@@ -327,3 +330,4 @@ canvas.toDataURL(type, encoderOptions);
 
 ### 常用正则
 1.邮箱：/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/
+2.手机号：/^1[3|4|5|6|7|8|9][0-9]{9}$/
