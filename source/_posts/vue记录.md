@@ -261,6 +261,11 @@ watch: {
 new QRCode(document.getElementById("qrcode"), qrCodeLink);
 ```
 
+### 链接不改，版本迭代会导致再微信内浏览器中页面缓存为旧页面
+详细：见[解决方法](https://www.jianshu.com/p/cce9511c0914)
+其中：
+设置nginx的缓存机制；直接将nginx的缓存设置成`{expires-1;}`，设置成永远不缓存；如果没有nginx，其他apache什么的通用这个方法。
+
 ### vue-resource实现vue异步请求
 ```html
 <script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
