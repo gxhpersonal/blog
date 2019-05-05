@@ -37,11 +37,13 @@ categories: JS
 </script>
 //最后一种用css解决
 <span ng-repeat="v in carNaP.sflb">{{v.Label}}<i>、</i></span>
+<style>
 span:last-child{
    i{
      display:none;
     }
 }
+</style>
 ```
 
 ### Ajax跨域问题解决
@@ -55,9 +57,6 @@ var userAgent = navigator.userAgent;
 if (userAgent.indexOf("Safari") > -1) {
         return "Safari";
 } //判断是否Safari浏览器
-
-### 警告，确认，信息输入弹窗
-alert confirm prompt
 
 ### encodeURIComponent()和decodeURIComponent()函数
 1.encodeURIComponent() 函数可把字符串作为 URI 组件进行编码。
@@ -196,17 +195,6 @@ JumpUrlForReturn: function (url) {
 }
 ```
 
-### console玩法
-```
-console.groupCollapsed('这里是外面');
-  console.log('这里是里面');
-console.groupEnd();
-
-  小区别：
-  - console.group 默认是展开状态
-  - console.groupCollapsed 默认是收起状态
-```
-
 ### 通过身份证号得到生日，性别，年龄
 ```
 <script>
@@ -251,9 +239,6 @@ url = 函数传入的参数值
 ```
 
 ### 时间格式转换
->console中截的图，直接字面意思理解使用就好
-![时间格式转换](http://ota5i8p1g.bkt.clouddn.com/timeFormat.png)
-
 >Date 对象方法
 每个get方法都有对应的一个set方法，如：
 getFullYear() 对应 setFullYear()
