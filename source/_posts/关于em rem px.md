@@ -17,7 +17,8 @@ categories: css
         function setFont() {
             var html = document.documentElement;
             var k = 750;
-            html.style.fontSize = html.clientWidth / k * 40 + "px";
+            var clientW = html.clientWidth > 750 ? 750 : html.clientWidth;
+            html.style.fontSize = clientW / k * 40 + "px";
         }
         setFont();
         setTimeout(function () {
