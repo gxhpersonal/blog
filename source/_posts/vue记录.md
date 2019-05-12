@@ -261,6 +261,38 @@ watch: {
 new QRCode(document.getElementById("qrcode"), qrCodeLink);
 ```
 
+### vue订单列表倒计时（这种方式适合vue单组件，即一个组件为一个订单，不需要遍历可以直接操作，父级组件已经遍历好，方便快捷暴力）
+```js
+let that = this;
+let nowTime = new Date().getTime();
+//expire_time为接口返回截止时间的时间戳
+let endDate = v.expire_time * 1000 - nowTime;
+// let endDate = 10000;
+if (endDate > 0) {
+  let stop = setInterval(() => {
+    //days | hour 分别表示天和小时
+    //days = Math.floor(time.t / 1000 / 60 / 60 / 24);
+    //hour = Math.floor(time.t / 1000 / 60 / 60 % 24);
+    let minute = Math.floor((endDate / 1000 / 60) % 60);
+    let second = Math.floor((endDate / 1000) % 60);
+    let min = minute < 10 ? "0" + minute : minute;
+    let sec = second < 10 ? "0" + second : second;
+    if (endDate <= 0) {
+      //如果倒计时结束，直接改变当前订单的状态
+      that.overTime = true;
+      clearInterval(stop);
+      return false;
+    } else {
+      endDate -= 1000;
+    }
+    that.lastTime = time.m + ":" + time.s;
+  }, 1000);
+} else {
+  //
+  that.overTime = true;
+}
+```
+
 ### 链接不改，版本迭代会导致再微信内浏览器中页面缓存为旧页面
 详细：见[解决方法](https://www.jianshu.com/p/cce9511c0914)
 其中：
