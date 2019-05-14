@@ -42,6 +42,11 @@ res.find((v) => {
         orderList: this.data.orderList
         })
     }, 1000);
+    } else {
+       v.status = -1;
+       this.setData({
+         orderList: this.data.orderList
+    })
     }
 })
 ```
