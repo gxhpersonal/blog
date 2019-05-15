@@ -56,3 +56,25 @@ find() 方法为数组中的每个元素都调用一次函数执行：
 如果没有符合条件的元素返回 undefined
 注意: find() 对于空数组，函数是不会执行的。
 注意: find() 并没有改变数组的原始值。
+
+
+### 摇一摇实现相应操作
+```js
+onShow: function() {
+    //重力加速度
+    wx.onAccelerometerChange(function (res) {
+        //console.log(res.x)
+        //console.log(res.y)
+        // console.log(res.z)
+        //可以自定义大小，来决定摇晃什么程度触发方法
+        if (res.x > .7 && res.y > .7) {
+            wx.showToast({
+                title: '摇一摇成功',
+                icon: 'success',
+                duration: 2000
+            })
+        }
+    })
+}
+
+```
