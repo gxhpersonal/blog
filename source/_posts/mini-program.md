@@ -80,3 +80,28 @@ onShow: function() {
 ```
 
 ### web-view正确使用
+小程序页面：
+```wxml
+<navigator wx:for="{{imgUrlNew}}" wx:key="index" url="/pages/webview/webview?skipUrl={{item.url}}">
+     <image src='{{item.img}}' mode="widthFix"></image>
+     <text>{{item.name}}</text>
+</navigator>
+```
+封装webview的页面：
+```wxml
+<!-- webview.wxml -->
+<web-view src="{{skipUrl}}"></web-view>
+```
+然后在webview.js中：
+```wxjs
+data: {
+id:'',
+imgUrl:''
+},
+onLoad: function (options) {
+    //获取到链接中的webview链接参数
+    this.setData({
+      skipUrl: options.skipUrl
+    })
+  },
+```
