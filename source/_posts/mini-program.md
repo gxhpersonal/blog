@@ -105,3 +105,27 @@ onLoad: function (options) {
     })
   },
 ```
+
+### 环境判断
+```js
+//__wxConfig这个内置对象在小程序官方文档没查到，所以慎用，自测可以
+let version = __wxConfig.envVersion;
+if (!version) version = __wxConfig.platform;
+// console.log('版本号', version)
+switch (version) {
+    case 'devtools': //开发版
+    return 'https://svip-api-test.jia-expo.com';
+    break;
+    case 'develop': //真机调试版
+    return 'https://svip-api-test.jia-expo.com';
+    break;
+    case 'trial': //体验版
+    return 'https://svip-api-test.jia-expo.com';
+    break;
+    case 'release': //正式版
+    return 'https://svip-api.51jiabo.com';
+    break;
+    default:
+    return 'https://svip-api.51jiabo.com';
+}
+```
