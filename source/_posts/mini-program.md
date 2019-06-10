@@ -129,3 +129,16 @@ switch (version) {
     return 'https://svip-api.51jiabo.com';
 }
 ```
+
+### 自定义tabbar
+和自定义组件相同
+特别注意要在自定义组件中定义：
+```js
+/**
+ * 组件的对外属性，是属性名到属性设置的映射表
+ */
+properties: {
+    //在这里初始化定义对外的数据
+  selected: Number
+},
+```
