@@ -142,3 +142,4 @@ properties: {
   selected: Number
 },
 ```
+* 不要把自定义tabbar文件夹放在最外层，否则会导致全局引用
