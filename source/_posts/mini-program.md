@@ -143,3 +143,20 @@ properties: {
 },
 ```
 * 不要把自定义tabbar文件夹放在最外层，否则会导致全局引用
+
+### swiper指示点样式控制
+```css
+.wx-swiper-dots{
+  position: absolute;
+  bottom: 50rpx;
+}
+.swiper-box .wx-swiper-dot::before{
+    content: '';
+    flex-grow: 1; 
+    background: rgba(255,255,255,0.8);
+    border-radius: 8rpx
+}
+.swiper-box .wx-swiper-dot-active::before{
+    background:rgba(244,0,0,0.8);   
+}
+```
