@@ -160,3 +160,36 @@ properties: {
     background:rgba(244,0,0,0.8);   
 }
 ```
+
+### 父子自定义组件传参+时间绑定
+子组件：
+```html
+<view class="close" bindtap='onClose'></view>
+```
+```js
+/**
+ * 组件的方法列表
+ */
+methods: {
+    onClose(){
+        //triggerEvent方法参数：事件名、detail对象和事件选项
+        this.triggerEvent("closeReserve",{"name":"我是子组件传给父组件的数据"})
+    }
+}
+```
+父组件：
+```html
+<hot-goods-popup wx:if="{{reserveSuccess}}" bindcloseReserve="closeReserve" />
+```
+```js
+/**
+ * 组件的方法列表
+ */
+methods: {
+    closeReserve(){
+        this.setData({
+        reserveSuccess: false
+        })
+    }
+}
+```
