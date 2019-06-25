@@ -8,6 +8,8 @@ categories: JS
 > stringObject.split(separator,howm)
 > separator: 必需，字符串或正则表达式，以这个字符对应要操作的字符串中的字符分割
 > howm: 可选，返回数组的最大长度
+> 注 以多个字符分割字符串 正则搞定：
+> stringObject.split(/[-,./]/)
 
 ### .splice()方法
 > array.splice(index,howmany,item1,.....,itemX);
