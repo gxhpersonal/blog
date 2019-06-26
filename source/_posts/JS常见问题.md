@@ -78,15 +78,6 @@ encodeURIComponent() 方法：
 把URI字符串采用UTF-8编码格式转化成escape格式的字符串。与encodeURI()相比，这个方法将对更多的字符进行编码，比如 / 等字符。所以如果字符串里面包含了URI的几个部分的话，不能用这个方法来进行编码，否则 / 字符被编码之后URL将显示错误。不会被此方法编码的字符：! * ( ) 
 * 对应的解码方法：decodeURIComponent()
 
-### 超出指定字符数显示省略号
-console.log($(".friend_detail p").text().length)
-    var str = $(".friend_detail p").text();
-    var s = str;
-    if (str.length > 6) {
-        s = str.substring(0,6) + "...";
-    }
-    $(".friend_detail p").text(s);
-
 ### 移动端input被输入法挡住
 scrollIntoView(alignWithTop)
 
@@ -102,7 +93,7 @@ this.className = this.className.replace('change', ' ');
 >所谓"Range"，是指HTML文档中任意一段内容。一个Range的起始点和结束点位置任意，甚至起始点和结束点可以是一样的（也就是空Range）。最常见的Range是用户文本选择范围(user text selection)。当用户选择了页面上的某一段文字后，你就可以把这个选择转为Range。当然，你也可以直接用程序定义Range
 >举几个常用的处理Range的方法：
 1.获取用户选中的文本：
-```
+```JS
 var oBtn = document.getElementById("button");
 oBtn.onclick = function() {
     var userSelection, text;
@@ -120,7 +111,7 @@ oBtn.onclick = function() {
 };
 ```
 2.点击表单内容全选：
-```
+```JS
 function SelectText(name) {
 	if(obj.createTextRange){//IE浏览器
     var range = obj.createTextRange();              
@@ -137,9 +128,10 @@ function SelectText(name) {
 [http://www.zhangxinxu.com/wordpress/2011/04/js-range-html%E6%96%87%E6%A1%A3%E6%96%87%E5%AD%97%E5%86%85%E5%AE%B9%E9%80%89%E4%B8%AD%E3%80%81%E5%BA%93%E5%8F%8A%E5%BA%94%E7%94%A8%E4%BB%8B%E7%BB%8D/]()
 
 ### clipboard.js实现移动端复制功能(！！！重中之重：iOS下要给点击的元素加onclick=""或者cursor：pointer，总之就是让iOS可以识别到这个元素可点击)
-```
+```HTML
 <p class="J-browserLink" style="cursor: pointer;">点击复制1</p>
 <script src="https://cdn.bootcss.com/clipboard.js/1.6.0/clipboard.js"></script>
+<script>
 var clipboard1 = new Clipboard(".J-browserLink", {
 	text: function () {
 		return $(".J-browserLink").html()
@@ -148,6 +140,7 @@ var clipboard1 = new Clipboard(".J-browserLink", {
 clipboard1.on("success", function () {
 	alert('复制成功');
 })
+</script>
 ```
 
 ### window.location
@@ -163,7 +156,7 @@ window.location.assign("http://www.w3school.com.cn")
   ● location.protocol 返回所使用的 web 协议（http:// 或 https://）
 
 ### app内返回不刷新导致订单状态没有更新解决，强制刷新
-```
+```js
 JumpUrlForReturn: function (url) {
     //定义页面展示时触发事件
     window.onpageshow = function (event) {
@@ -196,7 +189,7 @@ JumpUrlForReturn: function (url) {
 ```
 
 ### 通过身份证号得到生日，性别，年龄
-```
+```html
 <script>
 //参数UUserCard是身份证号，参数num用来判断要获取什么信息,只取18位身份证号；
 function IdCard(UUserCard,num){
@@ -252,7 +245,7 @@ getTime() 对应 setTime() //返回 1970 年 1 月 1 日至今的毫秒数  和 
 来对应元素进行操作
 
 ### JS实现滚动显示，停止滚动隐藏
-```
+```js
 var timer;
 window.onscroll = function () {
    $('.div').hide()
@@ -268,7 +261,7 @@ window.onscroll = function () {
 ### JS兼容H5手机实现弹窗出现禁止背景滚动
 既然我们要阻止页面滚动，那么何不将其固定在视窗（即position: fixed），这样它就无法滚动了，当蒙层关闭时再释放。
 当然还有一些细节要考虑，将页面固定视窗后，内容会回头最顶端，这里我们需要记录一下，同步top值。
-```
+```js
 let bodyEl = document.body
 let top = 0
 
@@ -288,7 +281,7 @@ function stopBodyScroll (isFixed) {
 ```
 
 ### js获取链接中的参数
-```
+```js
 //name为参数名，queryString为链接
 getParameterByName: function (name,queryString) {
   name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
