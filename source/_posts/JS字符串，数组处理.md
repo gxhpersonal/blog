@@ -34,26 +34,24 @@ categories: JS
 .unshift()方法向数组开始位置添加元素；
 .shift() 方法用于把数组的第一个元素从其中删除，并返回第一个元素的值
 
-### .substr()方法
-string.substr(star,length)
-第一个参数要抽取的字串的起始下标，如果是负数，倒数，
-第二个参数表示字串字符数
-
-### string.substring()方法
-返回介于两个指定下标之间的字符，取第一个参数，不取第二个参数，第二个参数不填，则返回到结尾；
-
 ### toLocaleString()方法
 toLocaleString()除了可以数组转字符串，如：[1,2,3,4].toLocaleString() //'1,2,3,4'
 还可以：
 数字(不能是字符串)转为千分位格式 let num = 123456789;num..toLocaleString('en-US') //123,456,789
 
-
-### 字符串转换数字类型方法
-1.parseInt(),parseFloat()
-js提供了parseInt()和parseFloat()两个转换函数。前者把值转换成整数，后者把值转换成浮点数。只有对String类型调用这些方法，这两个函数才能正确运行；对其他类型返回的都是NaN(Not a Number)。
-
-2.Number()
-Number(value)——把给定的值转换成数字（可以是整数或浮点数）；
+### flat() 方法
+> 会按照一个可指定的深度(默认值为1)递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回
+* 大白话就是，flat()可以把一个多层嵌套的数组转换成一个只有一层的数组
+* 例子：
+```js
+let arr = [1,2,[3,4,5,[6,7,8]]];
+arr.flat(2)
+// [1,2,3,4,5,6,7,8]
+arr.flat(1)
+// [1,2,3,4,5,[6,7,8]]
+arr.flat()
+// [1,2,3,4,5,[6,7,8]]
+```
 
 ### 数组去重
 1.利用空数组+空对象push法：
@@ -82,6 +80,21 @@ function removeArrSame2(arr){
 	return newA;
 }
 ```
+
+### .substr()方法
+string.substr(star,length)
+第一个参数要抽取的字串的起始下标，如果是负数，倒数，
+第二个参数表示字串字符数
+
+### string.substring()方法
+返回介于两个指定下标之间的字符，取第一个参数，不取第二个参数，第二个参数不填，则返回到结尾；
+
+### 字符串转换数字类型方法
+1.parseInt(),parseFloat()
+js提供了parseInt()和parseFloat()两个转换函数。前者把值转换成整数，后者把值转换成浮点数。只有对String类型调用这些方法，这两个函数才能正确运行；对其他类型返回的都是NaN(Not a Number)。
+
+2.Number()
+Number(value)——把给定的值转换成数字（可以是整数或浮点数）；
 
 ### 字符串大小写互转
 
