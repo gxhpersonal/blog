@@ -141,7 +141,29 @@ properties: {
     //在这里初始化定义对外的数据
   selected: Number
 },
+// 在tabbar页面要调用getTabBar()方法，来高亮选择，以兼容某些安卓手机
+onLoad(){
+    if (typeof this.getTabBar === 'function' &&
+      this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 0
+      })
+    }
+}
 ```
+官方文档给的tabbar示例中有个css方法：
+padding-bottom: env(safe-area-inset-bottom);
+这个方法是用来兼容全面屏手机，如iPhoneX，XR,XS等，会在底部留下安全距离，但是引发另一个问题，就是滚动时页面会暴露在tabbar下面，像这样：
+![](http://www.guoxh.com/blog/img/blog/min-p.png)
+其实如果不是这种凸出来的，加个`background`就搞定了，相当于挡住了下面的页面，而像上面这种就不能简简单单`background`了,
+这时候可以取个巧，利用背景渐变来达到效果：
+```css
+.tab-bar{
+    padding-bottom: env(safe-area-inset-bottom);
+    background-image: linear-gradient(transparent 35%,#fff 35%)
+}
+```
+
 * 不要把自定义tabbar文件夹放在最外层，否则会导致全局引用
 
 ### swiper指示点样式控制
