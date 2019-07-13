@@ -182,6 +182,7 @@ padding-bottom: env(safe-area-inset-bottom);
     background:rgba(244,0,0,0.8);   
 }
 ```
+swiper-item一张时，真机调试出现不显示的情况，暂时处理为一张时不用swiper
 
 ### 父子自定义组件传参+时间绑定
 子组件：
