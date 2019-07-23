@@ -223,3 +223,15 @@ methods: {
 ### 小程序中不支持时间格式为 - 或者 . 的转换必须转换为 / 格式
 例如：new Date("2019-07-05 12:00:00".replace(/-/g, "/"));
 只有这样可以得到正确的时间格式，其他转换可能也行，但是没试
+
+### 去除button默认样式
+```css
+button::after{
+  border:none;
+}
+button{
+  outline:none;
+  border:none;
+  list-style: none;
+}
+```
