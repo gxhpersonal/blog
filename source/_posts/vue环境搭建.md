@@ -42,6 +42,96 @@ npm install --save-dev node-sass
 ### vue打包静态资源js，css路径不对的解决办法
 打开config/index.js，将其中的build配置下的assetsPublicPath值改为’./’
 
+### 不同环境配置不同api域名
+1.安装cross-env
+```npm
+npm i --save-dev cross-env
+```
+
+2.修改各环境下的参数
+在config/目录下添加test.env.js
+修改prod.env.js里的内容，修改后的内容如下：
+```js
+'use strict'
+module.exports = {
+ NODE_ENV: '"production"',
+ EVN_CONFIG:'"prod"',
+ API_ROOT:'"https://这里是正式域名.com"'
+}
+```
+
+3.修改test.env.js文件内容，如下：
+```js
+'use strict'
+module.exports = {
+ NODE_ENV: '"testing"',
+ EVN_CONFIG:'"test"',
+ API_ROOT:'"https://这里是测试域名test.com/"'
+}
+```
+
+4.对dev.env.js文件内容进行修改，修改后的内容如下:
+```js
+'use strict'
+const merge = require('webpack-merge')
+const prodEnv = require('./prod.env')
+
+module.exports = merge(prodEnv, {
+  NODE_ENV: '"development"',
+  VN_CONFIG: '"dev"',
+  API_ROOT: '"https://ticket-api.jia-expo.com/"'
+ })
+```
+> dev环境配制了服务代理，API_ROOT是配制的代理地址
+
+5.修改项目package.json文件
+```json
+"scripts": {
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "start": "npm run dev",
+    "build": "node build/build.js",
+    "build:test": "cross-env NODE_ENV=production env_config=test node build/build.js",
+    "build:prod": "cross-env NODE_ENV=production env_config=prod node build/build.js"
+  },
+```
+
+6.修改config/index.js
+```js
+build: {
+    // 添加test prod 环境的配制
+    prodEnv: require('./prod.env'),
+    testEnv: require('./test.env'),
+```
+
+7.在webpackage.prod.conf.js中使用构建环境参数
+```js
+// 个性env常量的定义
+const env = config.build[process.env.env_config + 'Env']
+```
+
+8.调整build/build.js　
+```js
+'use strict'
+require('./check-versions')()
+// process.env.NODE_ENV = 'production'  // 注释掉的代码
+const ora = require('ora')
+const rm = require('rimraf')
+const path = require('path')
+const chalk = require('chalk')
+const webpack = require('webpack')
+const config = require('../config')
+const webpackConfig = require('./webpack.prod.conf')
+// 修改spinner的定义
+// const spinner = ora('building for production...')
+var spinner = ora('building for ' + process.env.NODE_ENV + ' of ' + process.env.env_config+ ' mode...' )
+spinner.start()
+//其它内容不需要做任何调整 ...
+```
+
+9.大功告成
+执行`npm run build:test`打包的就是测试环境
+执行`npm run build:prod`打包的就是生产环境
+
 
 ## 下面是我遇到的一些问题：
 ### 路由找不到 || 文件路径找不到报错解决
