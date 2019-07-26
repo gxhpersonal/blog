@@ -129,6 +129,7 @@ spinner.start()
 ```
 
 9.大功告成
+request中就可以区分接口域名了变量：process.env.API_ROOT
 执行`npm run build:test`打包的就是测试环境
 执行`npm run build:prod`打包的就是生产环境
 
