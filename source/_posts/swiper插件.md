@@ -40,7 +40,11 @@ mounted() {
       //centeredSlides设定为true时，active slide会居中，而不是默认状态下的居左。
       centeredSlides: true,
       //设置slider容器能够同时显示的slides数量(carousel模式)。默认：1
-      slidesPerView: "auto"
+      slidesPerView: "auto",
+      //分页器使用，如果要自定义样式，style不能加scope属性！！！！！！！！！重中之重。。。让我搞半天
+      pagination: {
+        el: ".prepay-swiper-pagination"
+      }
     });
   },
   methods: {
