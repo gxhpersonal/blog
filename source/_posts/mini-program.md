@@ -183,6 +183,16 @@ padding-bottom: env(safe-area-inset-bottom);
 }
 ```
 swiper-item一张时，真机调试出现不显示的情况，暂时处理为一张时不用swiper
+找到解决方法了，哈哈哈哈哈哈哈，e，
+每次更新数据的时候(数组的长度可能减小),所以记得:
+```html
+<swiper current="{{current}}">
+```
+```js
+this.setData({
+    current:0 // current的值不能大于list.length,所以每次更新数据的时候重置为0
+})
+```
 
 ### 父子自定义组件传参+时间绑定
 子组件：

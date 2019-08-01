@@ -234,6 +234,9 @@ method:{
 
 > 在 2.2.0 及其更高版本中，activated 和 deactivated 将会在 <keep-alive> 树内的所有嵌套组件中触发。
 
+* 因为用到了缓存，所以缓存组件中的vdom都会缓存，导致更新数据时vdom没有更新，暂时想到的办法是
+`deactivated`周期加个`v-if`来清除不想缓存的vdom，`activated`周期再显示出来
+
 ### vue中利用qrcodejs2插件前端生成二维码
 1.安装qrcodejs2插件，在控制台输入：
 ```npm
