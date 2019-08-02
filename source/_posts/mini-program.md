@@ -99,9 +99,9 @@ id:'',
 imgUrl:''
 },
 onLoad: function (options) {
-    //获取到链接中的webview链接参数
+    //获取到链接中的webview链接参数,传入的链接要encode，否则如果链接有其他字符会被截断，然后赋值时再decode
     this.setData({
-      skipUrl: options.skipUrl
+      skipUrl: decodeURIComponent(options.skipUrl)
     })
   },
 ```
