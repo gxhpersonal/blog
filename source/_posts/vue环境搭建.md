@@ -134,6 +134,20 @@ request中就可以区分接口域名了变量：process.env.API_ROOT
 执行`npm run build:prod`打包的就是生产环境
 
 
+### 兼容低版本安卓ios系统，ios8以下
+修改package.json文件中的`browserslist`配置项：
+```json
+"browserslist": [
+  "> 1%",
+  "last 2 versions",
+  "not ie <= 8",
+  "iOS >= 6",
+  "Android > 4.1",
+  "Firefox > 20"
+]
+```
+
+
 ## 下面是我遇到的一些问题：
 ### 路由找不到 || 文件路径找不到报错解决
 ```js
