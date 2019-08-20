@@ -185,7 +185,7 @@ var appMain= new Vue({
       data: {
         content: "XXXXX"
      }
-}）
+})
 页面上：
 <div>{{content}}</div>
 ```
