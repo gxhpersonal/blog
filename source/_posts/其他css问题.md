@@ -21,6 +21,8 @@ categories: css
 3)flex-flow：属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。
 4)justify-content:flex-start | flex-end | center | space-between | space-around
 5)align-items: flex-start | flex-end | center | baseline | stretch;
+6)当使用了`flex-direction:column`之后,未定宽的元素会自动适应宽度为100%；给元素加个非默认值`align-self:stretch`外的值就可以
+
 
 ### 清除所有a标签在点击时出现的特效
 > 清除所有a标签在点击时出现的特效：a{ -webkit-tap-highlight-color:rgba(255,0,0,0);}
