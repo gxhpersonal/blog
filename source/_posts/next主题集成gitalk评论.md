@@ -78,7 +78,7 @@ gitalk:
 具体解决是通过MD5加密ID来缩短labal长度
 1> 创建`md5.min.js`文件在 \themes\next\source\js\src\md5.min.js[官网GitHub](https://github.com/blueimp/JavaScript-MD5/blob/master/js/md5.min.js)
 2> 修改gitalk.swig文件
-```
+```html
   {% if page.comments && theme.gitalk.enable %}
   <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
   <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
