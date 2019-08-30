@@ -19,16 +19,16 @@ categories: other
         text-align: center;
     }
 
-    .container h1 {
+    .canvas-only-container h1 {
         padding-top: 50px;
     }
 
-    .container #result {
+    .canvas-only-container #result {
         padding-top: 50px;
         color: red;
     }
 
-    #canvas {
+    #canvasOnly {
         width: 240px;
         height: 137px;
         background: url('http://www.guoxh.com/blog/img/blog/special.jpg');
@@ -39,17 +39,15 @@ categories: other
 </style>
 
 <body>
-    <div class="container">
+    <div class="canvas-only-container">
         <h1>刮奖</h1>
-        <div id="canvas">
-            <canvas id="mask" width="240" height="137"></canvas>
-        </div>
+        <div id="canvasOnly"><canvas id="maskOnlyOne" width="240" height="137"></canvas></div>
         <h3 id="result"></h3>
     </div>
 </body>
 
 <script>
-    var canvas = document.getElementById('mask');
+    var canvas = document.getElementById('maskOnlyOne');
     var context = canvas.getContext("2d");
     context.fillStyle = "#d1d1d1";
     context.fillRect(0, 0, 240, 137);
