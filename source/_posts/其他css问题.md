@@ -232,7 +232,7 @@ var w = window.innerWidth,
 ```
 
 ### 页面加滤镜
-```
+```css
 //高斯模糊
 filter: blur(px)；
 //转换为灰度图像
