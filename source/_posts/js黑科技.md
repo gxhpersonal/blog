@@ -27,6 +27,10 @@ console.log(1 & 123)  // 1
 ### 2.获取url参数最简写法
 ```js
 q={};location.search.replace(/([^?&=]+)=([^&]+)/g,(_,k,v)=>q[k]=v);q;
+// 额，js有原生api直接取值：
+new URL('https://www.guoxh.com/blog?a=123').searchParams.get('a'); // 123
+// or
+new URLSearchParams('?a=123').get('a'); // 123
 ```
 
 ### 3.返回一个键盘？
