@@ -215,14 +215,14 @@ inherit规定应该从父元素继承 text-transform 属性的值。
 
 这样的布局在h5是行不通的，所以需要用JS来控制内部滚动元素的高度：
 ```javascript
-1. 内部滚动
+// 1. 内部滚动
 var w = window.innerWidth,
         h = window.innerHeight;  //获取窗口的高度与宽度(不包含工具条与滚动条):
     $('#js_orderConWrap').height(h - $('.cm-header-wrap').height());  //内部元素的高度 = 窗口高度 - 头部或底部的高度(如果有)
 
 //既然都在h5了，所以还要考虑APP环境，在APP环境下头部是不会用h5的，所以需要判断h5和APP环境；
 
-2.弹层显示，禁止背景滚动
+// 2.弹层显示，禁止背景滚动
 //关闭滚动条
         $(document).on('touchmove',function(e){
             if($('.app-popup-container').css('display') === 'block'){
