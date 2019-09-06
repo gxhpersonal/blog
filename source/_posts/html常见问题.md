@@ -55,3 +55,13 @@ JSON.stringify()将对象转换为字符串
 使用a标签的target="_blank"属性，或者window.open(url)在新窗口中打开页面时，会存在潜在的安全问题。为什么呢？这个锅是一个叫opener的全局对象的锅。
 通过在a标签上添加这个noopener属性，可以将新打开窗口的opner置为空
 可解决除IE外的安全问题，和所有现代浏览器的性能问题
+
+### 利用css3 @media 媒体查询方法实现 引用不同link标签
+```html
+    <!-- 使用： -->
+    <!-- mediatype: all || print || screen || speech -->
+    <link rel="stylesheet" media="mediatype and|not|only (media feature)" href="mystylesheet.css">
+    <!-- 具体示例: -->
+    <link rel="stylesheet" media="screen and (max-width:750px)" href="./css/index.css">
+    <link rel="stylesheet" media="screen and (min-width:750px)" href="./css/indexPC.css">
+```
