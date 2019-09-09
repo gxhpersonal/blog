@@ -78,9 +78,6 @@ encodeURIComponent() 方法：
 把URI字符串采用UTF-8编码格式转化成escape格式的字符串。与encodeURI()相比，这个方法将对更多的字符进行编码，比如 / 等字符。所以如果字符串里面包含了URI的几个部分的话，不能用这个方法来进行编码，否则 / 字符被编码之后URL将显示错误。不会被此方法编码的字符：! * ( ) 
 * 对应的解码方法：decodeURIComponent()
 
-### 移动端input被输入法挡住
-scrollIntoView(alignWithTop)
-
 ### JS监听动画完成事件
 tt.addEventListener("webkitAnimationEnd", function(){ //动画结束时事件 
 this.className = this.className.replace('change', ' '); 
