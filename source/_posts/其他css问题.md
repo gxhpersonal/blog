@@ -105,29 +105,6 @@ Chrome：该行无文字时，光标高度与line-height一致；该行有文字
 2.对文字对象宽度设置只能排下一个文字的宽度距离，让文字一行排不下两个文字使其文字自动换行，就形成了竖立排版需求。
 3.利用html br换行标签实现文字换行，对每个文字后加上换行br标签让其竖列排版。
 
-### ios下input样式问题
-1.ios下如果想要禁用input,input设置为readonly仍然会呼起键盘，所以必须设置disabled属性。
-2.ios下设置为disabled属性，input表单背景颜色会变灰，透明度会降低，所以，必须设置
-```css
-	input:disabled{
-       opacity:1;
-       bakcground:#fff;
-       -webkit-text-fill-color:#2e3d4c;//字体颜色填充这个属性可以解决IOS字体颜色变淡的问题
-	}
-```
-然而，设置了-webkit-text-fill-color属性还是会有问题，placeholder字体颜色也会跟着改变，所以placeholder也要设置-webkit-text-fill-color值
-```css
-题外话：（设置渐变字体）
-	background: -webkit-linear-gradient(top,#fc0,#f30 50%,#c00 51%,#600);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-```
-> 如果想设置渐变字体，要保证这个标签中只有要设置的文本，不能有其他标签，否则在PC浏览器正常，而在iOS中显示不出来
-
-3.没错，iOS下就是各种坑，
-user-select：none 控制着用户能否选中文本
-一般都不想被复制，所以全局使用这个属性，就会导致在ios中，input无法定位光标，无法输入；所以慎用，或者局部使用，或者给表单单独加个user-select: auto;默认值
-
 ### -webkit-overflow-scrolling
 > 用来控制元素在移动设备上是否使用滚动回弹效果.
 > 兼容安卓和IOS的写法如下
