@@ -262,6 +262,8 @@ watch: {
 }
 //如果是写死的，或者不是父组件传来的，直接new就好：
 new QRCode(document.getElementById("qrcode"), qrCodeLink);
+// 如果是点击生成二维码，会存在点一次生成一次的情况，所以要每次清除掉上次生成的二维码
+document.getElementById(id).innerHTML = "";
 ```
 
 ### vue订单列表倒计时（这种方式适合vue单组件，即一个组件为一个订单，不需要遍历可以直接操作，父级组件已经遍历好，方便快捷暴力）
