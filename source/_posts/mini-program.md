@@ -243,6 +243,11 @@ button{
   outline:none;
   border:none;
   list-style: none;
+  padding:0;
+  line-height: normal;
+  margin: 0rpx;
+  background-color: #fff;
+  border-radius: 0rpx;
 }
 ```
 
