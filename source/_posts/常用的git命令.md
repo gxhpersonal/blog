@@ -66,6 +66,7 @@ Git的设置文件为`.gitconfig`，它可以在用户主目录下（全局配�
 
 ### 分支
 
+```git
 	 //列出所有本地分支
 	$ git branch
 
@@ -98,6 +99,7 @@ Git的设置文件为`.gitconfig`，它可以在用户主目录下（全局配�
 
 	//删除远程分支
 	$ git push origin :[branch-name]
+```
 
 ### 指定某个commit到指定的分支
 1.执行git log -3 --graph test，查看test分支下的commit:
