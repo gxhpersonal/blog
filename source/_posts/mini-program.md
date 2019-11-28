@@ -257,4 +257,4 @@ button{
 
 ### wx.chooseImage中使用wx.showLoading
 
-wx.chooseImage方法中使用wx.showLoading会导致wx.showLoading不显示，微信客户端bug，初步方案为加个setTimeout方法可以解决，时间必须设置300ms以上
+* wx.chooseImage方法中使用wx.showLoading会导致wx.showLoading不显示，微信客户端bug，初步方案为加个setTimeout方法可以解决，时间必须设置300ms以上
