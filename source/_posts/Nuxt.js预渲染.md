@@ -21,17 +21,17 @@ page目录下的.vue文件中加下面代码：
 export default {
   head() {
 		return {
-			title: "家博会_智能家居_京东森图里官网",
+			title: "title",
 			meta: [
 				{
 					hid: "description",
 					name: "description",
-					content: "京东森图里家博会由北京展览馆、京东华墨展览联合打造的时尚、智能、科技、现代的家居消费类展会，采用线上线下"
+					content: "desc"
 				},
 				{
 					hid: "keywords",
 					name: "keywords",
-					content: "家博会_智能家居展_家具展会_京东森图里家博会"
+					content: "key"
 				}
 			]
 		};
