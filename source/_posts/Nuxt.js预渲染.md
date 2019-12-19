@@ -50,3 +50,5 @@ export default {
     }
   }
 ```
+
+4.插件引用
