@@ -5,6 +5,7 @@ tags: Nuxt
 categories: Nuxt
 ---
 
+## 个人认为这个框架很鸡肋，起初以为它可以做到SSR，事实too young too naive,这个框架还是相当于封装了个prerender-spa-plugin插件，要想做到SSR还是得用node；
 ### nuxt基于vuejs的seo优化
 
 一、css单独打包
