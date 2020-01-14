@@ -50,6 +50,7 @@ new Vue({
   router,
   render: h => h(App),
   mounted () {
+    //dispatchEvent() 方法给节点分派一个合成事件
     document.dispatchEvent(new Event('render-event'))
   }
 }).$mount('#app')
