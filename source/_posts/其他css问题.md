@@ -23,6 +23,7 @@ categories: css
 5)align-items: flex-start | flex-end | center | baseline | stretch;
 6)当使用了`flex-direction:column`之后,未定宽的元素会自动适应宽度为100%；给元素加个非默认值`align-self:stretch`外的值就可以
 
+### grid布局
 
 ### 清除所有a标签在点击时出现的特效
 > 清除所有a标签在点击时出现的特效：a{ -webkit-tap-highlight-color:rgba(255,0,0,0);}
@@ -94,7 +95,7 @@ Chrome：该行无文字时，光标高度与line-height一致；该行有文字
 
 解决的方案：
 
-给input的height设定一个较小的高度，然后用padding去填充，基本上可以解决所有浏览器的问题
+给input的height设定一个较小的高度（或者不设置高度），然后用padding去填充，基本上可以解决所有浏览器的问题
 
 ### 文字竖排排列显示方案
 1.writing-mode:lr-tb或writing-mode:tb-rl
