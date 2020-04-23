@@ -251,6 +251,23 @@ button{
 }
 ```
 
+### canvas不能wx:if隐藏，否则会获取不到元素，可以使用fixed+top:-9999rpx实现
+
+### canvas 2d生成背景图片不遮挡文字：使用await
+```js
+const bgImg = canvas.createImage();
+      bgImg.src = 'https://img.hxjbcdn.com/52c52ebb-4aba-4768-9b2b-4272604ac366.png';
+      let bgImgPo = await new Promise((resolve, reject) => {
+        bgImg.onload = () => {
+          resolve(bgImg)
+        }
+        bgImg.onerror = (e) => {
+          reject(e)
+        }
+      });
+      ctx.drawImage(bgImgPo, 0, 0, 257, 389)
+```
+
 ### 分享图片华为手机不支持本地图片，会有50%概率读取不到，亲测，放在cdn上是可以的
 
 ### js canvas生成二维码，华为手机显示不出来，亲测，调用两边draw方法就可以成功
