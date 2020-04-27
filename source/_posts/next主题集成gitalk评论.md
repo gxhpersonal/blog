@@ -11,7 +11,7 @@ categories: blog
 > 官网：[https://gitalk.github.io/](https://gitalk.github.io/)
 
 ### 1.在自己的GitHub中注册一个开放授权的gitalk应用
-![](http://www.guoxh.com/blog/img/blog/.png)
+![](http://www.guoxh.com/blog/img/blog/register.png)
 > 参数说明：
   Application name： # 应用名称，随意
   Homepage URL： # 网站URL，如https://gxhpersonal.github.io
