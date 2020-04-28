@@ -9,8 +9,10 @@ categories: blog
 > 本文参考[https://asdfv1929.github.io/2018/01/20/gitalk/](https://asdfv1929.github.io/2018/01/20/gitalk/)
 > gitalk：一个基于 Github Issue 和 Preact 开发的评论插件
 > 官网：[https://gitalk.github.io/](https://gitalk.github.io/)
+> 官方GitHub：[https://github.com/gitalk/gitalk/blob/master/readme-cn.md](https://github.com/gitalk/gitalk/blob/master/readme-cn.md)
 
 ### 1.在自己的GitHub中注册一个开放授权的gitalk应用
+[注册链接](https://github.com/settings/applications/new)
 ![](http://www.guoxh.com/blog/img/blog/register.png)
 > 参数说明：
   Application name： # 应用名称，随意

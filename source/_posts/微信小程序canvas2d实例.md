@@ -100,11 +100,11 @@ getPost(e) {
       //背景图必须这样用await异步，否则背景图会把背景图上的文字遮盖，待老夫研究原理再补充
       ctx.drawImage(bgImgPo, 0, 0, 257, 389)
       //用户昵称
-      ctx.font = "14px 微软雅黑"
+      ctx.font = "normal bold 14px sans-serif";
       ctx.fillStyle = "#FFFFFF"
       ctx.fillText(`${nickname}邀您参加`, 42, 24)
       //参与
-      ctx.font = "12px 微软雅黑"
+      ctx.font = "normal bold 14px sans-serif";
       ctx.fillStyle = "#FFFFFF"
       ctx.strokeStyle = "#4B32A9"
       ctx.strokeText('长按识别二维码参与', 75, 373)
@@ -173,3 +173,5 @@ const bgImg = canvas.createImage();
       });
       ctx.drawImage(bgImgPo, 0, 0, 257, 389)
 ```
+
+## 设置ctx.font = "normal bold 14px sans-serif";一定要写全，或者不要写微信没有的字体，虽然我不知道微信没有什么字体，所以我就抄网上的，一定要记住，不然安卓会闪退/(ㄒoㄒ)/~~
