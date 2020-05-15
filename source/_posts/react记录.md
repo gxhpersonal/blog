@@ -7,3 +7,73 @@ categories: React
 
 ### 打包后路径不对解决
 执行`npm run build`后发现打包文件路径错误，在package.json文件最外层添加`"homepage": "./"`
+
+### react集成预渲染方案，解决首屏白屏问题+seo问题
+1.安装单页应用预渲染插件：
+```npm
+npm install prerender-spa-plugin --save-dev
+```
+
+2.安装自定义配置插件（此工具可以自定义配置webpack插件）
+
+1) 安装插件
+```npm
+npm install react-app-rewired --save-dev
+```
+> [插件官网](https://github.com/timarney/react-app-rewired/blob/HEAD/README_zh.md)
+> 此工具可以在不 'eject' 也不创建额外 react-scripts 的情况下修改 create-react-app 内置的 webpack 配置，然后你将拥有 create-react-app 的一切特性，且可以根据你的需要去配置 webpack 的 plugins, loaders 等。
+> 使用了 react-app-rewired 之后，等于你得到了项目的配置权，但这表示你的项目将无法得到 CRA 提供的配置“保证”，希望你知道自己要做什么。
+
+2) 在根目录中创建一个 config-overrides.js 文件
+```js
++-- your-project
+|   +-- config-overrides.js  //新增
+|   +-- node_modules
+|   +-- package.json
+|   +-- public
+|   +-- README.md
+|   +-- src
+```
+文件中添加`prerender-spa-plugin`插件的配置项：
+```js
+/* config-overrides.js */
+const PrerenderSPAPlugin = require('prerender-spa-plugin');
+const path = require('path');
+
+module.exports = (config, env) => {
+  if (env === 'production') {
+    config.plugins = config.plugins.concat([
+      new PrerenderSPAPlugin({
+        routes: ['/'],  //路由地址，要生成静态文件的路由添加在数组中
+        staticDir: path.join(__dirname, 'build'),  //staticDir是使用哪个文件夹作为模板目录默认build
+      }),
+    ]);
+  }
+
+  return config;
+};
+```
+
+3) 替换 package.json 中 scripts 执行部分
+
+```json
+  /* package.json */
+
+  "scripts": {
+-   "start": "react-scripts start",
++   "start": "react-app-rewired start",
+-   "build": "react-scripts build",
++   "build": "react-app-rewired build",
+-   "test": "react-scripts test --env=jsdom",
++   "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-scripts eject"
+}
+```
+* 注意：不用替换 eject 部分。工具中没有针对 eject 的配置替换，执行了 eject 命令会让工具失去作用（能找到这个插件我也相信你知道 eject 是干嘛的）。
+* react-scripts 是 create-react-app 的一个核心包，一些脚本和工具的默认配置都集成在里面，而 react-scripts eject 命令执行后会将封装在 create-react-app 中的配置全部反编译到当前项目，这样用户就能完全取得 webpack 文件的控制权。所以，eject 命令存在的意义就是更改 webpack 配置存在
+
+
+3.执行`npm run build`打包后打开`build/index.html`文件会发现所有dom都已经加入了，bingo！
+
+
+### react集成TDK
