@@ -76,4 +76,48 @@ module.exports = (config, env) => {
 3.执行`npm run build`打包后打开`build/index.html`文件会发现所有dom都已经加入了，bingo！
 
 
-### react集成TDK
+### react集成TDK（2020.5.15大佬插件竟然1万3千多赞，惊呆）
+非常简单
+1.安装`react-helmet`插件：
+```npm
+npm install react-helmet --save-dev
+```
+打包构建用，不在生产环境使用，所以加到`devDependencies`配置项下就可以
+
+2.引入插件，模板中加入`Helmet`标签即可：
+```js
+import React from "react";
+import {Helmet} from "react-helmet";
+
+class Application extends React.Component {
+  render () {
+    return (
+        <div className="application">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>title</title>
+                <meta name="keywords" content="keywords" />
+                <meta name="description" content="description" />
+            </Helmet>
+            ...
+        </div>
+    );
+  }
+};
+```
+* 注意：嵌套或后继组件将覆盖重复的更改：
+```js
+<Parent>
+    <Helmet>
+        <title>My Title</title>
+        <meta name="description" content="Helmet application" />
+    </Helmet>
+
+    <Child>
+        <Helmet>
+            <title>Nested Title</title>
+            <meta name="description" content="Nested component" />
+        </Helmet>
+    </Child>
+</Parent>
+```
