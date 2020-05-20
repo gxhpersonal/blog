@@ -77,6 +77,7 @@ module.exports = (config, env) => {
 
 
 ### react集成TDK（2020.5.15大佬插件竟然1万3千多赞，惊呆）
+[传送门官方地址](https://github.com/nfl/react-helmet)
 非常简单
 1.安装`react-helmet`插件：
 ```npm
