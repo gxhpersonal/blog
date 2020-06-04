@@ -114,19 +114,19 @@ if (!version) version = __wxConfig.platform;
 // console.log('版本号', version)
 switch (version) {
     case 'devtools': //开发版
-    return 'https://svip-api-test.jia-expo.com';
+    return 'https://xxx.com';
     break;
     case 'develop': //真机调试版
-    return 'https://svip-api-test.jia-expo.com';
+    return 'https://xxx.com';
     break;
     case 'trial': //体验版
-    return 'https://svip-api-test.jia-expo.com';
+    return 'https://xxx.com';
     break;
     case 'release': //正式版
-    return 'https://svip-api.51jiabo.com';
+    return 'https://bbb.com';
     break;
     default:
-    return 'https://svip-api.51jiabo.com';
+    return 'https://bbb.com';
 }
 ```
 
@@ -228,7 +228,7 @@ methods: {
 ```
 
 
-### 自定义组件中不建议使用标签选择器，手机调试会看到警告提醒，page中可以使用
+### 自定义组件中css不建议使用标签选择器，手机调试会看到警告提醒，page中可以使用
 
 ### 小程序中不支持时间格式为 - 或者 . 的转换必须转换为 / 格式
 例如：new Date("2019-07-05 12:00:00".replace(/-/g, "/"));
@@ -258,3 +258,26 @@ button{
 ### wx.chooseImage中使用wx.showLoading
 
 * wx.chooseImage方法中使用wx.showLoading会导致wx.showLoading不显示，微信客户端bug，初步方案为加个setTimeout方法可以解决，时间必须设置300ms以上
+
+### 自定义组件中获取canvas2d元素与page中获取方法不同：
+pages中：
+```js
+wx.createSelectorQuery().select('#canvas').fields({
+    node: true,
+    size: true,
+}).exec((res) => {
+    const canvas = res[0].node;
+    const ctx = canvas.getContext('2d');
+})
+```
+自定义组件中：
+```js
+wx.createSelectorQuery().in(this).select('#canvas').fields({
+    node: true,
+    size: true,
+}).exec((res) => {
+    const canvas = res[0].node;
+    const ctx = canvas.getContext('2d');
+})
+```
+区别在于组件中要先调用`.in(this)`方法获取当前实例，才能再选择canvas
