@@ -8,64 +8,12 @@ categories: 微信小程序
 ### 禁止下拉
 app.json中window下加enablePullDownRefresh:false
 
-### 订单列表倒计时
-```js
-//添加倒计时参数res为接口返回数据列表
-res.find((v) => {
-    let nowTime = new Date().getTime();
-    //expire_time为接口返回截止时间的时间戳
-    let endDate = v.expire_time * 1000 - nowTime;
-    if (endDate > 0) {
-    //倒计时
-    let stop = setInterval(() => {
-        //days | hour 分别表示天和小时
-        //days = Math.floor(time.t / 1000 / 60 / 60 / 24);
-        //hour = Math.floor(time.t / 1000 / 60 / 60 % 24);
-        let minute = Math.floor((endDate / 1000 / 60) % 60);
-        let second = Math.floor((endDate / 1000) % 60);
-        let min = minute < 10 ? "0" + minute : minute;
-        let sec = second < 10 ? "0" + second : second;
-        if (endDate <= 0) {
-        //如果倒计时结束，改变当前订单状态，重新赋值orderList数据即可
-        v.status = -1;
-        this.setData({
-            orderList: this.data.orderList
-        })
-        clearInterval(stop);
-        return false;
-        } else {
-        endDate -= 1000;
-        }
-        v.goods_time = min + ":" + sec;
-        //每秒重新赋值orderList数据
-        this.setData({
-        orderList: this.data.orderList
-        })
-    }, 1000);
-    } else {
-       v.status = -1;
-       this.setData({
-         orderList: this.data.orderList
-    })
-    }
-})
-```
-> find() 方法返回通过测试（函数内判断）的数组的第一个元素的值。
-find() 方法为数组中的每个元素都调用一次函数执行：
-当数组中的元素在测试条件时返回 true 时, find() 返回符合条件的元素，之后的值不会再调用执行函数。
-如果没有符合条件的元素返回 undefined
-注意: find() 对于空数组，函数是不会执行的。
-注意: find() 并没有改变数组的原始值。
-
-
 ### 摇一摇实现相应操作
 ```js
 onShow: function() {
     //重力加速度
     wx.onAccelerometerChange(function (res) {
-        //console.log(res.x)
-        //console.log(res.y)
-        // console.log(res.z)
+        //console.log(res)
         //可以自定义大小，来决定摇晃什么程度触发方法
         if (res.x > .7 && res.y > .7) {
             wx.showToast({
@@ -76,34 +24,6 @@ onShow: function() {
         }
     })
 }
-
-```
-
-### web-view正确使用
-小程序页面：
-```wxml
-<navigator wx:for="{{imgUrlNew}}" wx:key="index" url="/pages/webview/webview?skipUrl={{item.url}}">
-     <image src='{{item.img}}' mode="widthFix"></image>
-     <text>{{item.name}}</text>
-</navigator>
-```
-封装webview的页面：
-```wxml
-<!-- webview.wxml -->
-<web-view src="{{skipUrl}}"></web-view>
-```
-然后在webview.js中：
-```wxjs
-data: {
-id:'',
-imgUrl:''
-},
-onLoad: function (options) {
-    //获取到链接中的webview链接参数,传入的链接要encode，否则如果链接有其他字符会被截断，然后赋值时再decode
-    this.setData({
-      skipUrl: decodeURIComponent(options.skipUrl)
-    })
-  },
 ```
 
 ### 环境判断
@@ -164,7 +84,7 @@ padding-bottom: env(safe-area-inset-bottom);
 }
 ```
 
-* 不要把自定义tabbar文件夹放在最外层，否则会导致全局引用
+* !!!不要把自定义tabbar文件夹放在最外层，否则会导致全局引用
 
 ### swiper指示点样式控制
 ```css
@@ -193,40 +113,6 @@ this.setData({
     current:0 // current的值不能大于list.length,所以每次更新数据的时候重置为0
 })
 ```
-
-### 父子自定义组件传参+时间绑定
-子组件：
-```html
-<view class="close" bindtap='onClose'></view>
-```
-```js
-/**
- * 组件的方法列表
- */
-methods: {
-    onClose(){
-        //triggerEvent方法参数：事件名、detail对象和事件选项
-        this.triggerEvent("closeReserve",{"name":"我是子组件传给父组件的数据"})
-    }
-}
-```
-父组件：
-```html
-<hot-goods-popup wx:if="{{reserveSuccess}}" bindcloseReserve="closeReserve" />
-```
-```js
-/**
- * 组件的方法列表
- */
-methods: {
-    closeReserve(){
-        this.setData({
-        reserveSuccess: false
-        })
-    }
-}
-```
-
 
 ### 自定义组件中css不建议使用标签选择器，手机调试会看到警告提醒，page中可以使用
 
@@ -280,4 +166,4 @@ wx.createSelectorQuery().in(this).select('#canvas').fields({
     const ctx = canvas.getContext('2d');
 })
 ```
-区别在于组件中要先调用`.in(this)`方法获取当前实例，才能再选择canvas
+* 区别在于组件中要先调用`.in(this)`方法获取当前实例，才能再选择canvas
