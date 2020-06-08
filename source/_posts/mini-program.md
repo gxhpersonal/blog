@@ -167,3 +167,21 @@ wx.createSelectorQuery().in(this).select('#canvas').fields({
 })
 ```
 * 区别在于组件中要先调用`.in(this)`方法获取当前实例，才能再选择canvas
+
+### scroll-view 组件子元素高度不够无法刷新解决办法
+[传送门](https://developers.weixin.qq.com/community/develop/article/doc/000a806cc2c4b0055c0a6a7735b013)
+```html
+<scroll-view  ...>
+  <block wx:for="{{dataList}}" wx:key="index">
+    <view>{{item.id}}</view>
+  </block>
+  <view style="width:2rpx;height:2rpx;bottom:-2rpx;position:absolute;" />
+</scroll-view>
+```
+```html
+<scroll-view ...>
+  <view style="width:100%;height:100%;padding-bottom: 20vw;">
+  </view>
+</scroll-view>
+```
+原理都相同，加个空`view标签`撑起内容高度，我试了第二种实现了，第一种没实现
