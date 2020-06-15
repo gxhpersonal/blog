@@ -85,19 +85,8 @@ display: -webkit-box; 必须结合的属性 ，将对象作为弹性伸缩盒子
 text-overflow，可以用来多行文本的情况下，用省略号“...”隐藏超出范围的文本 。
 ```
 
-### 自定义光标
+### 自定义鼠标指针
 > cursor: url(/路径/cursor.cur),auto;        后缀似乎必须为cur
-
-### input标签
-> IE：不管该行有没有文字，光标高度与font-size一致。
-
-FF：该行有文字时，光标高度与font-size一致。该行无文字时，光标高度与input的height一致。
-
-Chrome：该行无文字时，光标高度与line-height一致；该行有文字时，光标高度从input顶部到文字底部(这两种情况都是在有设定line-height的时候)，如果没有line-height，则是与font-size一致。
-
-解决的方案：
-
-给input的height设定一个较小的高度（或者不设置高度），然后用padding去填充，基本上可以解决所有浏览器的问题
 
 ### 文字竖排排列显示方案
 1.writing-mode:lr-tb或writing-mode:tb-rl
@@ -134,11 +123,8 @@ none ------ 对低像素的文本比较好
 subpixel-antialiased------默认值
 antialiased ------抗锯齿很好 
 .icon {
-
 -webkit-font-smoothing: antialiased;
-
 -moz-osx-font-smoothing: grayscale;  //Gecko也推出了自己的抗锯齿效果的非标定义
-
 }
 
 ### 弹层出现禁用背景body滚动条
@@ -149,67 +135,12 @@ pan-y：可以在父级元素内进行垂直移动的手势操作。
 manipulation：允许手势水平/垂直平移或持续的缩放。任何auto属性支持的额外操作都不支持；
 注：touch-action只支持具有行内块，块级的元素
 
-### CSS控制输入文本大小写
-> text-transform：none；capitalize；uppercase；lowercase；inherit；
->none默认。定义带有小写字母和大写字母的标准的文本。
-capitalize文本中的每个单词以大写字母开头。
-uppercase定义仅有大写字母。lowercase定义无大写字母，仅有小写字母。
-inherit规定应该从父元素继承 text-transform 属性的值。
-
-### 控制input标签的placeholder属性实现获取焦点显示暗文，失去焦点隐藏(其实就是改变placeholder中的文字颜色)
-```
-    &::-webkit-input-placeholder { color:transparent; }
-    &:-moz-placeholder { color:transparent; }
-    &::-moz-placeholder { color:transparent; }
-    &:-ms-input-placeholder { color:transparent;}
-    &:focus::-webkit-input-placeholder { color:#9fb0bf; }
-    &:focus:-moz-placeholder { color:#9fb0bf; }
-    &:focus::-moz-placeholder { color:#9fb0bf; }
-    &:focus:-ms-input-placeholder { color:#9fb0bf; }
-```
-
 ### will-change提高页面滚动、动画等渲染性能css3
 参考张鑫旭blog:
 [http://www.zhangxinxu.com/wordpress/2015/11/css3-will-change-improve-paint/]()
 
 ### 支持webkit内核浏览器的滚动条样式自定义
 >::-webkit-scrollbar{/* 1 */} /*滚动条垂直方向的宽度与水平方向的高度*/ ::-webkit-scrollbar-button{/* 2 */} /*滚动条按钮*/ ::-webkit-scrollbar-track{/* 3 */} /*滚动条轨道*/ ::-webkit-scrollbar-track-piece{/* 4 */} /*滚动条垂直方向轨道件*/ ::-webkit-scrollbar-thumb{/* 5 */} /*滚动条轨道上的按钮*/ ::-webkit-scrollbar-corner{/* 6 */} /*滚动条轨道上的滚动角*/ 
-
-### ios在fixed布局下出现bug问题
-软键盘唤起后，页面的fixed 元素将失效（即无法浮动，也可以理解为变成了absolute定位），所以当页面超过一屏且滚动时，失效的 fixed 元素就会跟随滚动了。
-这便是 iOS 上 fixed 元素和输入框的 bug 。其中不仅限于 type=text 的输入框，凡是软键盘（比如时间日期选择、select 选择等等）被唤起，都会遇到同样地问题。
-解决方法：
-    将原 body 滚动的区域域移到 main 内部，而 header 和footer 的样式不变。
-.main{
-    position: absolute;
-    top: 50px;
-    bottom: 34px;
-    overflow-y: scroll;
-}
-.main  .content {
-    height: 2000px;
-}
-
-这样布局可能会是的滚动失去原来的流畅，加以下代码，恢复之前丝滑般的滚动：
-    -webkit-overflow-scrolling: touch;
-
-这样的布局在h5是行不通的，所以需要用JS来控制内部滚动元素的高度：
-```javascript
-// 1. 内部滚动
-var w = window.innerWidth,
-        h = window.innerHeight;  //获取窗口的高度与宽度(不包含工具条与滚动条):
-    $('#js_orderConWrap').height(h - $('.cm-header-wrap').height());  //内部元素的高度 = 窗口高度 - 头部或底部的高度(如果有)
-
-//既然都在h5了，所以还要考虑APP环境，在APP环境下头部是不会用h5的，所以需要判断h5和APP环境；
-
-// 2.弹层显示，禁止背景滚动
-//关闭滚动条
-        $(document).on('touchmove',function(e){
-            if($('.app-popup-container').css('display') === 'block'){
-                e.preventDefault();
-            }
-})
-```
 
 ### 页面加滤镜
 ```css
@@ -278,7 +209,6 @@ linear-gradient(0deg, blue, green 40%, red);
 1.父级元素不能有任何overflow:visible以为的overflow设置，否则没有粘滞效果。因为改变了滚动容器（即使没有出现滚动条）。因此，如果你的position:sticky无效，看看是不是某一个祖先元素设置了overflow:hidden，移除之即可。
 2.同一个父容器中的sticky元素，如果定位值相等，则会重叠；如果属于不同父元素，则会鸠占鹊巢，挤开原来的元素，形成依次占位的效果。
 3.sticky定位，不仅可以设置top，基于滚动容器上边缘定位；还可以设置bottom，也就是相对底部粘滞。如果是水平滚动，也可以设置left和right值。
-
 
 ### css设置暗黑模式
 ```css
