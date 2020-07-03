@@ -20,7 +20,7 @@ build: {
 page目录下的.vue文件中加下面代码：
 ```js
 export default {
-  head() {
+	head() {
 		return {
 			title: "title",
 			meta: [
@@ -38,12 +38,11 @@ export default {
 		};
 	}
 }
-
 ```
 
 三、修改局域网配置
 在package.json中新添加
-```
+```json
 "config": {
     "nuxt": {
       "host": "127.0.0.1",
@@ -88,3 +87,6 @@ env: {
 这样，本地、测试、生产环境就都有了，执行对应命令即可如：npm run dev, npm run test, npm run generate
 
 3.在axios等请求中就可以使用不同的`process.env.BASE_URL`来使用接口域名
+
+六、asyncData 方法
+* 你可能想要在服务器端获取并渲染数据。Nuxt.js添加了asyncData方法使得你能够在渲染组件之前异步获取数据。
