@@ -5,6 +5,7 @@ tags: 微信小程序
 categories: 微信小程序
 ---
 
+### 生命周期执行顺序：onLoad > onShow > onReady
 ### 禁止下拉
 app.json中window下加enablePullDownRefresh:false
 
