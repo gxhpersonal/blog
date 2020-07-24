@@ -186,3 +186,5 @@ wx.createSelectorQuery().in(this).select('#canvas').fields({
 </scroll-view>
 ```
 原理都相同，加个空`view标签`撑起内容高度，我试了第二种实现了，第一种没实现
+
+svroll-view下拉刷新有时会莫名抖动2020.07.24
