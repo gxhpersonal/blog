@@ -76,10 +76,15 @@ props: ["orderInfo"],
 ### 祖孙组件之间传递数据和绑定方法（祖组件传递给孙组件的数据不能与父组件公用，否则会传递失败，孙组件拿不到数据）
 1.祖组件向下传递数据到孙组件：
 祖组件：
+```html
 <son :data="data" @pay="pay"></son>
+```
 父组件：（必经过父组件）
+```html
 <grand-son v-bind="$attrs" v-on="$listeners"></grand-son>
+```
 孙组件：
+```html
 <div @click="pay(payData)">{{payData}}</div>
 <script>
   export default{
@@ -91,6 +96,7 @@ props: ["orderInfo"],
     }
   }
 </script>
+```
 
 ### this.$set()设置对象的属性，这个方法主要用于避开 Vue 不能检测属性被添加的限制
 ```
