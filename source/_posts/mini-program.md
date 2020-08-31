@@ -115,8 +115,6 @@ this.setData({
 })
 ```
 
-### 自定义组件中css不建议使用标签选择器，手机调试会看到警告提醒，page中可以使用
-
 ### 小程序中不支持时间格式为 - 或者 . 的转换必须转换为 / 格式
 例如：new Date("2019-07-05 12:00:00".replace(/-/g, "/"));
 只有这样可以得到正确的时间格式，其他转换可能也行，但是没试
@@ -146,7 +144,11 @@ button{
 
 * wx.chooseImage方法中使用wx.showLoading会导致wx.showLoading不显示，微信客户端bug，初步方案为加个setTimeout方法可以解决，时间必须设置300ms以上
 
-### 自定义组件中获取canvas2d元素与page中获取方法不同：
+### 自定义组件
+
+#### 自定义组件中css不建议使用标签选择器，手机调试会看到警告提醒，page中可以使用
+
+#### 自定义组件中获取canvas2d元素与page中获取方法不同：
 pages中：
 ```js
 wx.createSelectorQuery().select('#canvas').fields({
@@ -168,6 +170,31 @@ wx.createSelectorQuery().in(this).select('#canvas').fields({
 })
 ```
 * 区别在于组件中要先调用`.in(this)`方法获取当前实例，才能再选择canvas
+
+#### 自定义组件监听数据变化
+属性值的改变情况可以使用 observer 来监听。目前，在新版本基础库中不推荐使用这个字段，而是使用 Component 构造器的 observers 字段代替，它更加强大且性能更好。
+```js
+Component({
+  properties: {
+    min: {
+      type: Number,
+      value: 0,
+      observer: function(newVal, oldVal) {
+        // 属性值变化时执行 不推荐
+      }
+    }
+  },
+  observers: {
+    //推荐这种方式监听
+    "data": function (data) {
+      this.setData({
+        allData: data
+      })
+      this.formateData(this.data.allData)
+    }
+  },
+})
+```
 
 ### scroll-view 组件子元素高度不够无法刷新解决办法
 [传送门](https://developers.weixin.qq.com/community/develop/article/doc/000a806cc2c4b0055c0a6a7735b013)
