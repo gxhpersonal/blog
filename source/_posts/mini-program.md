@@ -217,3 +217,22 @@ Component({
 svroll-view下拉刷新有时会莫名抖动2020.07.24
 
 ### 用npm包时，先检查根目录是否有package.json文件，没有新建一个，再npm install
+
+### list页跳转detail页，detail页操作数据后，list做到不刷新同步数据
+非常简单，利用小程序中自带方法`getCurrentPages()`可以获取上个页面数据方法的特性：
+```js
+// 在detail调用列表页方法，以实现不刷新页面改变状态
+let page = getCurrentPages();
+if (page.length >= 2 && page[page.length - 2].route == "pages/list/list") {
+  //如果上个页面为list页
+  let preData = page[page.length - 2];
+  let arg = {
+    resultFlag: res.infoMap.resultFlag,
+    id: item.id,
+    type: type,
+    count: res.infoMap.count
+  };
+  //调用list方法更新数据
+  preData.detailSetFave(arg)
+}
+```
