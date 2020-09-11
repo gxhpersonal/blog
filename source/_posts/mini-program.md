@@ -233,6 +233,6 @@ if (page.length >= 2 && page[page.length - 2].route == "pages/list/list") {
     count: res.infoMap.count
   };
   //调用list方法更新数据
-  preData.detailSetFave(arg)
+  preData.detailSetData(arg)
 }
 ```
