@@ -73,6 +73,22 @@ props: ["orderInfo"],
 ```
 `1this.$emit(自定义事件,[])用来触发自定义事件increment1(或者函数名吧)，[]为参数`
 
+##### 父组件调用子组件方法
+父组件：
+```html
+<!-- 更换手机号 -->
+<!-- ref="changePhone"是子组件在父组件中的名字 -->
+<change-phone ref="changePhone"></change-phone>
+```
+```js
+switchPhone() {
+  //this.$refs.changePhone 获取子组件实例
+  //this.$refs.changePhone.switchPhone("这是实参") 在父组件的方法中调用子组件的方法
+  this.$refs.changePhone.switchPhone("这是实参");
+},
+```
+
+
 ### 祖孙组件之间传递数据和绑定方法（祖组件传递给孙组件的数据不能与父组件公用，否则会传递失败，孙组件拿不到数据）
 1.祖组件向下传递数据到孙组件：
 祖组件：
