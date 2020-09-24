@@ -36,6 +36,13 @@ export default new VueRouter({
 ```
 > 路由懒加载写法：
 
+1.利用ES6 promise和webpack2动态import实现异步组件懒加载：
+
+```js
+const Foo = () => import('./Foo.vue')
+```
+
+2.利用webpack1中的 `require.ensure()`
 ```js
 //require.ensure() 是webpack中用来代码分割,把每个js大包打包成不同文件，缩小文件体积；
 const commentOrder = resolve => {
