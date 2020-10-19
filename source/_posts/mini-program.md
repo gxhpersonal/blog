@@ -236,3 +236,21 @@ if (page.length >= 2 && page[page.length - 2].route == "pages/list/list") {
   preData.detailSetData(arg)
 }
 ```
+
+### wx.setNavigationBarTitle方法不区分页面，导致异步请求未完成返回会显示在前一个页面
+```js
+//处理方法就是在异步请求之前和之后分别记录当前页面路由，如果一致才设置tabbarText
+let page = getCurrentPages();
+let currentRoute = page[page.length - 1].route;
+setTimeout(()=>{
+  //定时器模拟异步请求
+  let page2 = getCurrentPages();
+  let currentRoute2 = page2[page2.length - 1].route;
+  if (currentRoute == currentRoute2) {
+    wx.setNavigationBarTitle({
+      title: res.result.goods_name
+    })
+  }
+},1000)
+//哪有人要说了，直接在前一个页面重新set一下不就好了，但是你要知道我们无法知道异步请求成功时间，所以不可靠
+```
