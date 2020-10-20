@@ -97,3 +97,23 @@ var w = window.innerWidth,
 ```css
  caret-color: red;
 ```
+
+### 修改 chrome 记住密码后自动填充表单的黄色背景
+```css
+/* chrome表单自动填充后，input文本框的背景会变成黄色的，通过审查元素可以看到这是由于chrome会默认给自动填充的in
+put表单加上input:-webkit-autofill私有属性，然后对其赋予以下样式： */
+{
+background-color: rgb(250,255,189) !important;
+background-image: none !important;
+color: rgb(0,0,0) !important;
+}
+
+/* 对chrome默认定义的background-color，background-image，color使用important是不能提高其优先级的，但是
+其他属性可使用。*/
+
+/* 使用足够大的纯色内阴影来覆盖input输入框的黄色背景，处理如下 */
+input:-webkit-autofill,textarea:-webkit-autofill,select:-webkit-autofill{
+-webkit-box-shadow: 000px 1000px white inset;
+border: 1px solid #CCC !important;
+}
+```
