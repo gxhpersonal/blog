@@ -40,7 +40,7 @@ vertical-align只适用于行内块元素
 > 阻止点击事件，变为默认光标，阻止触发hover，active，阻止JS点击事件
 > none:
 元素永远不会成为鼠标事件的target。但是，当其后代元素的pointer-events属性指定其他值时，鼠标事件可以指向后代元素，在这种情况下，鼠标事件将在捕获或冒泡阶段触发父元素的事件侦听器。
-* 扩展：如果有一个公共组件，里面有个可移动元素，父元素设置`pointer-events: none;`，并且子元素设置`pointer-events: auto;`，可以实现子元素移动同时父元素不可点击并且不影响被父元素遮盖的元素点击事件
+* 扩展：如果有一个公共组件，里面有个可移动元素，父元素设置`pointer-events: none;`，并且子元素设置`pointer-events: auto;`，可以实现子元素移动同时父元素不可点击并且不影响被父元素遮盖的元素点击事件，比如小程序里可拖动组件如果全屏拖动必须area标签设置全屏，然后下面的元素就无法选中。
 
 ### img标签和同级div之间的间隙处理
 > 给img标签设置 vertical-align:middle;display:block;
