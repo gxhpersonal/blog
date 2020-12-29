@@ -70,8 +70,9 @@ avatar: http://www.guoxh.com/blog/img/avatar.png
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: https://github.com/gxhpersonal/blog.git
+  repo: https://github.com/gxhpersonal/blog.git
   branch: gh-pages
+  token: 6fc256b41272ffbd476ed24a63b1b9fd84922e88
 
 # 百度分享服务
 baidushare: true
