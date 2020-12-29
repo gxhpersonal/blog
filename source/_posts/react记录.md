@@ -8,6 +8,44 @@ categories: React
 ### 打包后路径不对解决
 执行`npm run build`后发现打包文件路径错误，在package.json文件最外层添加`"homepage": "./"`
 
+### 安装依赖（sass）
+```npm
+$ npm install node-sass --save
+```
+
+### css添加浏览器前缀
+修改`package.json`文件中的
+```json
+"browserslist": {
+  // 正式环境
+  "production": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8",
+    "iOS >= 6",
+    "Android > 4.1",
+    "Firefox > 20"
+  ],
+  // 开发环境
+  "development": [
+    "last 1 chrome version",
+    "last 1 firefox version",
+    "last 1 safari version"
+  ]
+}
+```
+
+### 全局方法
+例如引用axios到全局
+在`index.js`中：
+```js
+import Axios from 'axios';//直接引用  
+//or
+import Axios from "/axios/index.js";//如果封装了axios，还可以引入封装后的文件
+React.$axios = Axios;
+```
+
+
 ### react集成预渲染方案，解决首屏白屏问题+seo问题
 1.安装单页应用预渲染插件：
 ```npm

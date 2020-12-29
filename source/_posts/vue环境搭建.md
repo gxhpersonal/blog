@@ -42,7 +42,7 @@ npm install --save-dev node-sass
 ### vue打包静态资源js，css路径不对的解决办法
 打开config/index.js，将其中的build配置下的assetsPublicPath值改为’./’
 
-### 不同环境配置不同api域名
+### vue-cli2.X不同环境配置不同api域名
 1.安装cross-env
 ```npm
 npm i --save-dev cross-env
@@ -133,6 +133,43 @@ request中就可以区分接口域名了变量：process.env.API_ROOT
 执行`npm run build:test`打包的就是测试环境
 执行`npm run build:prod`打包的就是生产环境
 
+### @vue/cli(vue-cli3)环境配置
+这可就简单太多了，傻瓜操作
+1.`package.json`文件同目录（项目根目录）下创建文件`.env.development`，`.env.staging`，`.env.production`；
+2.`.env.development`文件（本地开发文件）中添加配置：
+```js
+module.exports = { 
+  NODE_ENV = development
+  VUE_APP_BASE_API = http://192.168.xxx/  //本地接口域名，无需加引号，项目中要把这行注释删掉！
+}
+```
+`.env.staging`文件（测试环境文件）中添加配置：
+```js
+module.exports = { 
+  NODE_ENV = staging
+  VUE_APP_BASE_API = http://192.168.xxx/  //测试接口域名，无需加引号，项目中要把这行注释删掉！
+}
+```
+`.env.production`文件（生产环境文件）中添加配置：
+```js
+module.exports = { 
+  NODE_ENV = production
+  VUE_APP_BASE_API = http://api.xxx.com/  //生产接口域名，无需加引号，项目中要把这行注释删掉！
+}
+```
+3.`package.json`文件中：
+```json
+"scripts": {
+    "serve": "vue-cli-service serve --mode development", //对应本地开发环境 npm run serve
+    "test":"vue-cli-service build --mode staging",  //对应测试环境打包命令  npm run test
+    "build": "vue-cli-service build --mode production" //对应生产环境打包 npm run build
+},
+```
+4.request请求文件中通过`process.env.VUE_APP_BASE_API`就可以获取到不同环境的接口域名了
+
+OK，刚刚蛋蛋，大功告成
+
+### 
 
 ### 兼容低版本安卓ios系统，ios8以下
 修改package.json文件中的`browserslist`配置项：
