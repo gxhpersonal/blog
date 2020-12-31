@@ -72,7 +72,6 @@ deploy:
   type: git
   repo: https://github.com/gxhpersonal/blog.git
   branch: gh-pages
-  token: 6fc256b41272ffbd476ed24a63b1b9fd84922e88
 
 # 百度分享服务
 baidushare: true
