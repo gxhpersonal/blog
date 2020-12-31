@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/blog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="blog,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="记录一下hexo博客next主题集成gitalk评论插件的步骤 本文参考https://asdfv1929.github.io/2018/01/20/gitalk/gitalk：一个基于 Github Issue 和 Preact 开发的评论插件官网：https://gitalk.github.io/官方GitHub：https://github.com/gitalk/gitalk/blob/ma">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="next主题集成gitalk评论">
+<meta property="og:url" content="http://gxhpersonal.github.io/blog/2019/03/11/next主题集成gitalk评论/index.html">
+<meta property="og:site_name" content="blog station">
+<meta property="og:description" content="记录一下hexo博客next主题集成gitalk评论插件的步骤 本文参考https://asdfv1929.github.io/2018/01/20/gitalk/gitalk：一个基于 Github Issue 和 Preact 开发的评论插件官网：https://gitalk.github.io/官方GitHub：https://github.com/gitalk/gitalk/blob/ma">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.guoxh.com/blog/img/blog/register.png">
+<meta property="og:image" content="http://www.guoxh.com/blog/img/blog/register2.png">
+<meta property="og:image" content="http://www.guoxh.com/blog/img/blog/register3.png">
+<meta property="og:updated_time" content="2020-12-30T03:02:53.585Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="next主题集成gitalk评论">
+<meta name="twitter:description" content="记录一下hexo博客next主题集成gitalk评论插件的步骤 本文参考https://asdfv1929.github.io/2018/01/20/gitalk/gitalk：一个基于 Github Issue 和 Preact 开发的评论插件官网：https://gitalk.github.io/官方GitHub：https://github.com/gitalk/gitalk/blob/ma">
+<meta name="twitter:image" content="http://www.guoxh.com/blog/img/blog/register.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gxhpersonal.github.io/blog/2019/03/11/next主题集成gitalk评论/">
+
+
+
+
+
+  <title>next主题集成gitalk评论 | blog station</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">blog station</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gxhpersonal.github.io/blog/blog/2019/03/11/next主题集成gitalk评论/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="郭雪辉">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://www.guoxh.com/blog/img/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog station">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">next主题集成gitalk评论</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-11T15:34:00+08:00">
+                2019-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/blog/" itemprop="url" rel="index">
+                    <span itemprop="name">blog</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="记录一下hexo博客next主题集成gitalk评论插件的步骤"><a href="#记录一下hexo博客next主题集成gitalk评论插件的步骤" class="headerlink" title="记录一下hexo博客next主题集成gitalk评论插件的步骤"></a>记录一下hexo博客next主题集成gitalk评论插件的步骤</h2><blockquote>
+<p>本文参考<a href="https://asdfv1929.github.io/2018/01/20/gitalk/" target="_blank" rel="noopener">https://asdfv1929.github.io/2018/01/20/gitalk/</a><br>gitalk：一个基于 Github Issue 和 Preact 开发的评论插件<br>官网：<a href="https://gitalk.github.io/" target="_blank" rel="noopener">https://gitalk.github.io/</a><br>官方GitHub：<a href="https://github.com/gitalk/gitalk/blob/master/readme-cn.md" target="_blank" rel="noopener">https://github.com/gitalk/gitalk/blob/master/readme-cn.md</a></p>
+</blockquote>
+<h3 id="1-在自己的GitHub中注册一个开放授权的gitalk应用"><a href="#1-在自己的GitHub中注册一个开放授权的gitalk应用" class="headerlink" title="1.在自己的GitHub中注册一个开放授权的gitalk应用"></a>1.在自己的GitHub中注册一个开放授权的gitalk应用</h3><p><a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">注册链接</a><br><img src="http://www.guoxh.com/blog/img/blog/register.png" alt></p>
+<blockquote>
+<p>参数说明：<br>  Application name： # 应用名称，随意<br>  Homepage URL： # 网站URL，如<a href="https://gxhpersonal.github.io">https://gxhpersonal.github.io</a><br>  Application description # 描述，随意<br>  Authorization callback URL：# 网站URL，<a href="https://gxhpersonal.github.io">https://gxhpersonal.github.io</a></p>
+</blockquote>
+<h3 id="2-点击注册后，页面跳转如下，其中Client-ID和Client-Secret在后面的配置中需要用到，到时复制粘贴即可："><a href="#2-点击注册后，页面跳转如下，其中Client-ID和Client-Secret在后面的配置中需要用到，到时复制粘贴即可：" class="headerlink" title="2.点击注册后，页面跳转如下，其中Client ID和Client Secret在后面的配置中需要用到，到时复制粘贴即可："></a>2.点击注册后，页面跳转如下，其中Client ID和Client Secret在后面的配置中需要用到，到时复制粘贴即可：</h3><p><img src="http://www.guoxh.com/blog/img/blog/register2.png" alt></p>
+<h3 id="3-在next主题文件下新建-layout-third-party-comments-gitalk-swig文件，并添加内容："><a href="#3-在next主题文件下新建-layout-third-party-comments-gitalk-swig文件，并添加内容：" class="headerlink" title="3.在next主题文件下新建/layout/_third-party/comments/gitalk.swig文件，并添加内容："></a>3.在next主题文件下新建/layout/_third-party/comments/gitalk.swig文件，并添加内容：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">  &#123;% if page.comments &amp;&amp; theme.gitalk.enable %&#125;</span><br><span class="line">  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/gitalk/dist/gitalk.css&quot;&gt;</span><br><span class="line">  &lt;script src=&quot;https://unpkg.com/gitalk/dist/gitalk.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">   &lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">        var gitalk = new Gitalk(&#123;</span><br><span class="line">          clientID: &apos;&#123;&#123; theme.gitalk.ClientID &#125;&#125;&apos;,</span><br><span class="line">          clientSecret: &apos;&#123;&#123; theme.gitalk.ClientSecret &#125;&#125;&apos;,</span><br><span class="line">          repo: &apos;&#123;&#123; theme.gitalk.repo &#125;&#125;&apos;,</span><br><span class="line">          owner: &apos;&#123;&#123; theme.gitalk.githubID &#125;&#125;&apos;,</span><br><span class="line">          admin: [&apos;&#123;&#123; theme.gitalk.adminUser &#125;&#125;&apos;],</span><br><span class="line">          id: location.pathname        &#125;)</span><br><span class="line">        gitalk.render(&apos;gitalk-container&apos;)           </span><br><span class="line">       &lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>其中的配置项如clientID，clientSecret等对应为主题配置文件_config.yml中的配置项</p>
+</blockquote>
+<h3 id="4-修改-layout-partials-comments-swig，添加内容如下，与前面的elseif同一级别上："><a href="#4-修改-layout-partials-comments-swig，添加内容如下，与前面的elseif同一级别上：" class="headerlink" title="4.修改/layout/_partials/comments.swig，添加内容如下，与前面的elseif同一级别上："></a>4.修改/layout/_partials/comments.swig，添加内容如下，与前面的elseif同一级别上：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% elseif theme.gitalk.enable %&#125;</span><br><span class="line"> &lt;div id=&quot;gitalk-container&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="http://www.guoxh.com/blog/img/blog/register3.png" alt></p>
+<h3 id="5-修改layout-third-party-comments-index-swig，在最后一行添加内容："><a href="#5-修改layout-third-party-comments-index-swig，在最后一行添加内容：" class="headerlink" title="5.修改layout/_third-party/comments/index.swig，在最后一行添加内容："></a>5.修改layout/_third-party/comments/index.swig，在最后一行添加内容：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% include &apos;gitalk.swig&apos; %&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="6-在主题配置文件next-config-yml中添加如下内容："><a href="#6-在主题配置文件next-config-yml中添加如下内容：" class="headerlink" title="6.在主题配置文件next/_config.yml中添加如下内容："></a>6.在主题配置文件next/_config.yml中添加如下内容：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">gitalk:</span><br><span class="line">  enable: true</span><br><span class="line">  githubID: github帐号ID  # 例：gxhpersonal </span><br><span class="line">  repo: 仓库名称   # 例：gxhpersonal.github.io</span><br><span class="line">  ClientID: Client ID #上面申请的授权应用id</span><br><span class="line">  ClientSecret: Client Secret #上面申请的授权应用Secret</span><br><span class="line">  adminUser: github帐号 #指定可初始化评论账户 例：gxhpersonal</span><br></pre></td></tr></table></figure>
+<h4 id="以上"><a href="#以上" class="headerlink" title="以上"></a>以上</h4><hr>
+<h4 id="以下为可能遇到的问题"><a href="#以下为可能遇到的问题" class="headerlink" title="以下为可能遇到的问题"></a>以下为可能遇到的问题</h4><h3 id="Error-Not-Found"><a href="#Error-Not-Found" class="headerlink" title="Error Not Found"></a>Error Not Found</h3><p>检查自己的配置项字段是否正确，如：<br>1&gt; repo：gxhpersonal.github.io后面不能加path路径<br>2&gt; 主题配置文件next/_config.yml中的字段要和/layout/_third-party/comments/gitalk.swig文件中的引用字段对应</p>
+<h3 id="Error-Validation-Failed"><a href="#Error-Validation-Failed" class="headerlink" title="Error: Validation Failed"></a>Error: Validation Failed</h3><p>由于 Github 限制 labal 长度不能超过 50引起的<br>具体解决是通过MD5加密ID来缩短labal长度<br>1&gt; 创建<code>md5.min.js</code>文件在 \themes\next\source\js\src\md5.min.js<a href="https://github.com/blueimp/JavaScript-MD5/blob/master/js/md5.min.js" target="_blank" rel="noopener">官网GitHub</a><br>2&gt; 修改gitalk.swig文件<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">  &#123;% if page.comments &amp;&amp; theme.gitalk.enable %&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://unpkg.com/gitalk/dist/gitalk.css"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://unpkg.com/gitalk/dist/gitalk.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  ``引入文件 <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/js/src/md5.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>``</span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> gitalk = <span class="keyword">new</span> Gitalk(&#123;</span></span><br><span class="line"><span class="javascript">          clientID: <span class="string">'&#123;&#123; theme.gitalk.ClientID &#125;&#125;'</span>,</span></span><br><span class="line"><span class="javascript">          clientSecret: <span class="string">'&#123;&#123; theme.gitalk.ClientSecret &#125;&#125;'</span>,</span></span><br><span class="line"><span class="javascript">          repo: <span class="string">'&#123;&#123; theme.gitalk.repo &#125;&#125;'</span>,</span></span><br><span class="line"><span class="javascript">          owner: <span class="string">'&#123;&#123; theme.gitalk.githubID &#125;&#125;'</span>,</span></span><br><span class="line"><span class="javascript">          admin: [<span class="string">'&#123;&#123; theme.gitalk.adminUser &#125;&#125;'</span>],     </span></span><br><span class="line">          </span><br><span class="line"><span class="javascript">          <span class="string">``</span>删除配置     id: location.pathname,<span class="string">``</span></span></span><br><span class="line"><span class="javascript">          <span class="string">``</span>添加配置     id: md5(location.pathname),<span class="string">``</span></span></span><br><span class="line"></span><br><span class="line">          &#125;)</span><br><span class="line"><span class="javascript">        gitalk.render(<span class="string">'gitalk-container'</span>)           </span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure></p>
+<p>~啦啦啦~</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/blog/" rel="tag"># blog</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2019/03/05/mini-program/" rel="next" title="微信小程序记录">
+                <i class="fa fa-chevron-left"></i> 微信小程序记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2019/03/13/vue3.0/" rel="prev" title="VUE3.0">
+                VUE3.0 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://www.guoxh.com/blog/img/avatar.png" alt="郭雪辉">
+            
+              <p class="site-author-name" itemprop="name">郭雪辉</p>
+              <p class="site-description motion-element" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/blog/archives/">
+              
+                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/blog/categories/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/blog/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#记录一下hexo博客next主题集成gitalk评论插件的步骤"><span class="nav-number">1.</span> <span class="nav-text">记录一下hexo博客next主题集成gitalk评论插件的步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-在自己的GitHub中注册一个开放授权的gitalk应用"><span class="nav-number">1.1.</span> <span class="nav-text">1.在自己的GitHub中注册一个开放授权的gitalk应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-点击注册后，页面跳转如下，其中Client-ID和Client-Secret在后面的配置中需要用到，到时复制粘贴即可："><span class="nav-number">1.2.</span> <span class="nav-text">2.点击注册后，页面跳转如下，其中Client ID和Client Secret在后面的配置中需要用到，到时复制粘贴即可：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-在next主题文件下新建-layout-third-party-comments-gitalk-swig文件，并添加内容："><span class="nav-number">1.3.</span> <span class="nav-text">3.在next主题文件下新建/layout/_third-party/comments/gitalk.swig文件，并添加内容：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-修改-layout-partials-comments-swig，添加内容如下，与前面的elseif同一级别上："><span class="nav-number">1.4.</span> <span class="nav-text">4.修改/layout/_partials/comments.swig，添加内容如下，与前面的elseif同一级别上：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-修改layout-third-party-comments-index-swig，在最后一行添加内容："><span class="nav-number">1.5.</span> <span class="nav-text">5.修改layout/_third-party/comments/index.swig，在最后一行添加内容：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-在主题配置文件next-config-yml中添加如下内容："><span class="nav-number">1.6.</span> <span class="nav-text">6.在主题配置文件next/_config.yml中添加如下内容：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#以上"><span class="nav-number">1.6.1.</span> <span class="nav-text">以上</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#以下为可能遇到的问题"><span class="nav-number">1.6.2.</span> <span class="nav-text">以下为可能遇到的问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Error-Not-Found"><span class="nav-number">1.7.</span> <span class="nav-text">Error Not Found</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Error-Validation-Failed"><span class="nav-number">1.8.</span> <span class="nav-text">Error: Validation Failed</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">郭雪辉</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/blog/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":50,"height":100},"mobile":{"show":false},"log":false});</script></body>
+</html>

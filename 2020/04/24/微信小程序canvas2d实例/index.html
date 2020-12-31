@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/blog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="微信小程序,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="canvas2d生成图片，本人菜，所以踩了很多坑，记录下步骤代码，温故而知新1234567891011121314151617181920212223242526272829303132333435363738394041//保存图片saveImg() &amp;#123;  //获取canvas实例，因为要获取canvas节点，所以不能使用wx:if隐藏  const query = wx.create">
+<meta name="keywords" content="微信小程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信小程序canvas2d实例">
+<meta property="og:url" content="http://gxhpersonal.github.io/blog/2020/04/24/微信小程序canvas2d实例/index.html">
+<meta property="og:site_name" content="blog station">
+<meta property="og:description" content="canvas2d生成图片，本人菜，所以踩了很多坑，记录下步骤代码，温故而知新1234567891011121314151617181920212223242526272829303132333435363738394041//保存图片saveImg() &amp;#123;  //获取canvas实例，因为要获取canvas节点，所以不能使用wx:if隐藏  const query = wx.create">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-12-30T03:02:53.603Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="微信小程序canvas2d实例">
+<meta name="twitter:description" content="canvas2d生成图片，本人菜，所以踩了很多坑，记录下步骤代码，温故而知新1234567891011121314151617181920212223242526272829303132333435363738394041//保存图片saveImg() &amp;#123;  //获取canvas实例，因为要获取canvas节点，所以不能使用wx:if隐藏  const query = wx.create">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gxhpersonal.github.io/blog/2020/04/24/微信小程序canvas2d实例/">
+
+
+
+
+
+  <title>微信小程序canvas2d实例 | blog station</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">blog station</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gxhpersonal.github.io/blog/blog/2020/04/24/微信小程序canvas2d实例/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="郭雪辉">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://www.guoxh.com/blog/img/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog station">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">微信小程序canvas2d实例</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-24T09:49:16+08:00">
+                2020-04-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/微信小程序/" itemprop="url" rel="index">
+                    <span itemprop="name">微信小程序</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="canvas2d生成图片，本人菜，所以踩了很多坑，记录下步骤代码，温故而知新"><a href="#canvas2d生成图片，本人菜，所以踩了很多坑，记录下步骤代码，温故而知新" class="headerlink" title="canvas2d生成图片，本人菜，所以踩了很多坑，记录下步骤代码，温故而知新"></a>canvas2d生成图片，本人菜，所以踩了很多坑，记录下步骤代码，温故而知新</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//保存图片</span></span><br><span class="line">saveImg() &#123;</span><br><span class="line">  <span class="comment">//获取canvas实例，因为要获取canvas节点，所以不能使用wx:if隐藏</span></span><br><span class="line">  <span class="keyword">const</span> query = wx.createSelectorQuery();</span><br><span class="line">  query.select(<span class="string">'#canvas'</span>)</span><br><span class="line">    .fields(&#123;</span><br><span class="line">      node: <span class="literal">true</span>,</span><br><span class="line">      size: <span class="literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line">    .exec(<span class="keyword">async</span> (res) =&gt; &#123;</span><br><span class="line">      <span class="comment">//要在获取node节点回调执行保存</span></span><br><span class="line">      wx.canvasToTempFilePath(&#123;</span><br><span class="line">        x: <span class="number">0</span>,</span><br><span class="line">        y: <span class="number">0</span>,</span><br><span class="line">        width: res[<span class="number">0</span>].width * wx.getSystemInfoSync().pixelRatio,</span><br><span class="line">        height: res[<span class="number">0</span>].height * wx.getSystemInfoSync().pixelRatio,</span><br><span class="line">        destWidth: res[<span class="number">0</span>].width * wx.getSystemInfoSync().pixelRatio * <span class="number">2</span>,</span><br><span class="line">        destHeight: res[<span class="number">0</span>].height * wx.getSystemInfoSync().pixelRatio * <span class="number">2</span>,</span><br><span class="line">        canvas: res[<span class="number">0</span>].node,</span><br><span class="line">        success(res) &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(res)</span><br><span class="line">          wx.saveImageToPhotosAlbum(&#123;</span><br><span class="line">            filePath: res.tempFilePath,</span><br><span class="line">            success(res) &#123;</span><br><span class="line">              wx.showToast(&#123;</span><br><span class="line">                title: <span class="string">'保存成功'</span>,</span><br><span class="line">                icon: <span class="string">"none"</span></span><br><span class="line">              &#125;)</span><br><span class="line">              <span class="built_in">console</span>.log(res)</span><br><span class="line">            &#125;,</span><br><span class="line">            complete(res) &#123;</span><br><span class="line">              <span class="built_in">console</span>.log(res)</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;,</span><br><span class="line">        complete(res) &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(res)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//生成海报</span></span><br><span class="line">getPost(e) &#123;</span><br><span class="line">  <span class="comment">//因为要获取手机号生成邀请码所以要先判断登录</span></span><br><span class="line">  <span class="keyword">if</span> (wx.getStorageSync(<span class="string">'isLogin'</span>)) &#123;</span><br><span class="line">    <span class="keyword">if</span> (e.detail.errMsg != <span class="string">"getUserInfo:ok"</span>) &#123;</span><br><span class="line">      wx.showModal(&#123;</span><br><span class="line">        title: <span class="string">'提示!'</span>,</span><br><span class="line">        content: <span class="string">'请允许授权,否则无法生成海报!'</span>,</span><br><span class="line">        showCancel: <span class="literal">false</span></span><br><span class="line">      &#125;)</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> avatar = e.detail.userInfo.avatarUrl</span><br><span class="line">    <span class="keyword">let</span> nickname = e.detail.userInfo.nickName</span><br><span class="line">    <span class="keyword">const</span> that = <span class="keyword">this</span>;</span><br><span class="line">    wx.showLoading(&#123;</span><br><span class="line">      title: <span class="string">'海报生成中...'</span>,</span><br><span class="line">      mask: <span class="literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line">    wx.createSelectorQuery().select(<span class="string">'#canvas'</span>).fields(&#123;</span><br><span class="line">      node: <span class="literal">true</span>,</span><br><span class="line">      size: <span class="literal">true</span>,</span><br><span class="line">    &#125;).exec(<span class="keyword">async</span> (res) =&gt; &#123;</span><br><span class="line">      <span class="comment">//要在获取node节点之后回调执行绘画</span></span><br><span class="line">      <span class="built_in">console</span>.log(res)</span><br><span class="line">      <span class="keyword">const</span> canvas = res[<span class="number">0</span>].node;</span><br><span class="line">      <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">'2d'</span>);</span><br><span class="line">      <span class="keyword">const</span> width = res[<span class="number">0</span>].width;</span><br><span class="line">      <span class="keyword">const</span> height = res[<span class="number">0</span>].height;</span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">this</span>.data.flag)&#123;</span><br><span class="line">        <span class="comment">//这里加个开关只有第一次绘制才设置canvas宽高，因为多次点击显示隐藏不会重绘，所以会导致canvas画布越来越大</span></span><br><span class="line">        <span class="keyword">const</span> dpr = wx.getSystemInfoSync().pixelRatio</span><br><span class="line">        canvas.width = width * dpr;</span><br><span class="line">        canvas.height = height * dpr;</span><br><span class="line">        ctx.scale(dpr, dpr);</span><br><span class="line">        <span class="keyword">this</span>.data.flag = <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">const</span> bgImg = canvas.createImage();</span><br><span class="line">      bgImg.src = wx.getStorageSync(<span class="string">'postBg'</span>);</span><br><span class="line">      <span class="keyword">let</span> bgImgPo = <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        bgImg.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          resolve(bgImg)</span><br><span class="line">        &#125;</span><br><span class="line">        bgImg.onerror = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">          reject(e)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="comment">//背景图必须这样用await异步，否则背景图会把背景图上的文字遮盖，待老夫研究原理再补充</span></span><br><span class="line">      ctx.drawImage(bgImgPo, <span class="number">0</span>, <span class="number">0</span>, <span class="number">257</span>, <span class="number">389</span>)</span><br><span class="line">      <span class="comment">//用户昵称</span></span><br><span class="line">      ctx.font = <span class="string">"normal bold 14px sans-serif"</span>;</span><br><span class="line">      ctx.fillStyle = <span class="string">"#FFFFFF"</span></span><br><span class="line">      ctx.fillText(<span class="string">`<span class="subst">$&#123;nickname&#125;</span>邀您参加`</span>, <span class="number">42</span>, <span class="number">24</span>)</span><br><span class="line">      <span class="comment">//参与</span></span><br><span class="line">      ctx.font = <span class="string">"normal bold 14px sans-serif"</span>;</span><br><span class="line">      ctx.fillStyle = <span class="string">"#FFFFFF"</span></span><br><span class="line">      ctx.strokeStyle = <span class="string">"#4B32A9"</span></span><br><span class="line">      ctx.strokeText(<span class="string">'长按识别二维码参与'</span>, <span class="number">75</span>, <span class="number">373</span>)</span><br><span class="line">      ctx.fillText(<span class="string">'长按识别二维码参与'</span>, <span class="number">75</span>, <span class="number">373</span>)</span><br><span class="line"></span><br><span class="line">      <span class="comment">//二维码裁剪</span></span><br><span class="line">      <span class="function"><span class="keyword">function</span> <span class="title">canvasQR</span>(<span class="params">qrImgUrl</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">const</span> qrImg = canvas.createImage();</span><br><span class="line">        qrImg.src = qrImgUrl;</span><br><span class="line">        qrImg.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          ctx.save();</span><br><span class="line">          ctx.beginPath() <span class="comment">//开始创建一个路径</span></span><br><span class="line">          ctx.arc(<span class="number">128</span>, <span class="number">319</span>, <span class="number">32</span>, <span class="number">0</span>, <span class="number">2</span> * <span class="built_in">Math</span>.PI, <span class="literal">false</span>) <span class="comment">//画一个圆形裁剪区域</span></span><br><span class="line">          ctx.clip() <span class="comment">//裁剪</span></span><br><span class="line">          ctx.drawImage(qrImg, <span class="number">96</span>, <span class="number">287</span>, <span class="number">65</span>, <span class="number">65</span>);</span><br><span class="line">          ctx.closePath();</span><br><span class="line">          ctx.restore();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      canvasQR(<span class="string">'http://www.guoxh.com/blog/img/blog/qr.png'</span>);</span><br><span class="line"></span><br><span class="line">      <span class="comment">//头像裁剪</span></span><br><span class="line">      <span class="function"><span class="keyword">function</span> <span class="title">canvasWxHeader</span>(<span class="params">headImageLocal</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">const</span> headerImg = canvas.createImage();</span><br><span class="line">        headerImg.src = headImageLocal;</span><br><span class="line">        headerImg.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          ctx.save();</span><br><span class="line">          ctx.beginPath() <span class="comment">//开始创建一个路径</span></span><br><span class="line">          ctx.arc(<span class="number">26</span>, <span class="number">21</span>, <span class="number">12</span>, <span class="number">0</span>, <span class="number">2</span> * <span class="built_in">Math</span>.PI, <span class="literal">false</span>) <span class="comment">//画一个圆形裁剪区域</span></span><br><span class="line">          ctx.clip() <span class="comment">//裁剪</span></span><br><span class="line">          ctx.drawImage(headerImg, <span class="number">14</span>, <span class="number">5</span>, <span class="number">24</span>, <span class="number">30</span>);</span><br><span class="line">          ctx.closePath();</span><br><span class="line">          ctx.restore();</span><br><span class="line">          <span class="comment">//关闭loading</span></span><br><span class="line">          wx.hideLoading();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      canvasWxHeader(avatar);</span><br><span class="line"></span><br><span class="line">      that.setData(&#123;</span><br><span class="line">        postPopup: <span class="literal">true</span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    wx.navigateTo(&#123;</span><br><span class="line">      url: <span class="string">'/pages/login/login'</span>,</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h3 id="canvas不能wx-if隐藏，否则会获取不到元素，可以使用fixed-top-9999rpx实现"><a href="#canvas不能wx-if隐藏，否则会获取不到元素，可以使用fixed-top-9999rpx实现" class="headerlink" title="canvas不能wx:if隐藏，否则会获取不到元素，可以使用fixed+top:-9999rpx实现"></a>canvas不能wx:if隐藏，否则会获取不到元素，可以使用fixed+top:-9999rpx实现</h3><h3 id="canvas-2d生成背景图片不遮挡文字：使用await"><a href="#canvas-2d生成背景图片不遮挡文字：使用await" class="headerlink" title="canvas 2d生成背景图片不遮挡文字：使用await"></a>canvas 2d生成背景图片不遮挡文字：使用await</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bgImg = canvas.createImage();</span><br><span class="line">      bgImg.src = <span class="string">'http://www.guoxh.com/blog/img/blog/qr.png'</span>;</span><br><span class="line">      <span class="keyword">let</span> bgImgPo = <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        bgImg.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          resolve(bgImg)</span><br><span class="line">        &#125;</span><br><span class="line">        bgImg.onerror = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">          reject(e)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      ctx.drawImage(bgImgPo, <span class="number">0</span>, <span class="number">0</span>, <span class="number">257</span>, <span class="number">389</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="设置ctx-font-“normal-bold-14px-sans-serif”-一定要写全，或者不要写微信没有的字体，虽然我不知道微信没有什么字体，所以我就抄网上的，一定要记住，不然安卓会闪退-ㄒoㄒ"><a href="#设置ctx-font-“normal-bold-14px-sans-serif”-一定要写全，或者不要写微信没有的字体，虽然我不知道微信没有什么字体，所以我就抄网上的，一定要记住，不然安卓会闪退-ㄒoㄒ" class="headerlink" title="设置ctx.font = “normal bold 14px sans-serif”;一定要写全，或者不要写微信没有的字体，虽然我不知道微信没有什么字体，所以我就抄网上的，一定要记住，不然安卓会闪退/(ㄒoㄒ)/~~"></a>设置ctx.font = “normal bold 14px sans-serif”;一定要写全，或者不要写微信没有的字体，虽然我不知道微信没有什么字体，所以我就抄网上的，一定要记住，不然安卓会闪退/(ㄒoㄒ)/~~</h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/微信小程序/" rel="tag"># 微信小程序</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2019/12/05/Nuxt.js预渲染/" rel="next" title="Nuxt.js预渲染">
+                <i class="fa fa-chevron-left"></i> Nuxt.js预渲染
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2020/06/04/小程序写点垃圾代码/" rel="prev" title="小程序写点垃圾代码">
+                小程序写点垃圾代码 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://www.guoxh.com/blog/img/avatar.png" alt="郭雪辉">
+            
+              <p class="site-author-name" itemprop="name">郭雪辉</p>
+              <p class="site-description motion-element" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/blog/archives/">
+              
+                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/blog/categories/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/blog/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#canvas2d生成图片，本人菜，所以踩了很多坑，记录下步骤代码，温故而知新"><span class="nav-number">1.</span> <span class="nav-text">canvas2d生成图片，本人菜，所以踩了很多坑，记录下步骤代码，温故而知新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#canvas不能wx-if隐藏，否则会获取不到元素，可以使用fixed-top-9999rpx实现"><span class="nav-number">2.</span> <span class="nav-text">canvas不能wx:if隐藏，否则会获取不到元素，可以使用fixed+top:-9999rpx实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#canvas-2d生成背景图片不遮挡文字：使用await"><span class="nav-number">3.</span> <span class="nav-text">canvas 2d生成背景图片不遮挡文字：使用await</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#设置ctx-font-“normal-bold-14px-sans-serif”-一定要写全，或者不要写微信没有的字体，虽然我不知道微信没有什么字体，所以我就抄网上的，一定要记住，不然安卓会闪退-ㄒoㄒ"><span class="nav-number"></span> <span class="nav-text">设置ctx.font = “normal bold 14px sans-serif”;一定要写全，或者不要写微信没有的字体，虽然我不知道微信没有什么字体，所以我就抄网上的，一定要记住，不然安卓会闪退/(ㄒoㄒ)/~~</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">郭雪辉</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/blog/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":50,"height":100},"mobile":{"show":false},"log":false});</script></body>
+</html>

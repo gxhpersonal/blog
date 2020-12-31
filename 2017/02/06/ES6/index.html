@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/blog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JS,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="let  constlet和var类似，let必须先声明后使用，否则会报错，let不存在变量提升；let声明变量，const声明常量；12345678function kuai()&amp;#123;  let n = 5;  if(true)&amp;#123;    let n = 10;  &amp;#125;  console.log(n)&amp;#125;kuai() 上面代码说明let有块级作用域，不同块级相同变量">
+<meta name="keywords" content="JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6">
+<meta property="og:url" content="http://gxhpersonal.github.io/blog/2017/02/06/ES6/index.html">
+<meta property="og:site_name" content="blog station">
+<meta property="og:description" content="let  constlet和var类似，let必须先声明后使用，否则会报错，let不存在变量提升；let声明变量，const声明常量；12345678function kuai()&amp;#123;  let n = 5;  if(true)&amp;#123;    let n = 10;  &amp;#125;  console.log(n)&amp;#125;kuai() 上面代码说明let有块级作用域，不同块级相同变量">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-12-30T03:02:53.569Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6">
+<meta name="twitter:description" content="let  constlet和var类似，let必须先声明后使用，否则会报错，let不存在变量提升；let声明变量，const声明常量；12345678function kuai()&amp;#123;  let n = 5;  if(true)&amp;#123;    let n = 10;  &amp;#125;  console.log(n)&amp;#125;kuai() 上面代码说明let有块级作用域，不同块级相同变量">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gxhpersonal.github.io/blog/2017/02/06/ES6/">
+
+
+
+
+
+  <title>ES6 | blog station</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">blog station</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gxhpersonal.github.io/blog/blog/2017/02/06/ES6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="郭雪辉">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://www.guoxh.com/blog/img/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog station">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ES6</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-06T09:34:53+08:00">
+                2017-02-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/JS/" itemprop="url" rel="index">
+                    <span itemprop="name">JS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="let-const"><a href="#let-const" class="headerlink" title="let  const"></a>let  const</h3><p>let和var类似，let必须先声明后使用，否则会报错，let不存在变量提升；<br>let声明变量，const声明常量；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function kuai()&#123;</span><br><span class="line">  let n = 5;</span><br><span class="line">  if(true)&#123;</span><br><span class="line">    let n = 10;</span><br><span class="line">  &#125;</span><br><span class="line">  console.log(n)</span><br><span class="line">&#125;</span><br><span class="line">kuai()</span><br></pre></td></tr></table></figure></p>
+<p>上面代码说明let有块级作用域，不同块级相同变量不受影响；</p>
+<h3 id="顶层对象的属性和全局变量关系"><a href="#顶层对象的属性和全局变量关系" class="headerlink" title="顶层对象的属性和全局变量关系"></a>顶层对象的属性和全局变量关系</h3><p>ES5中的顶层变量属性和全局变量挂钩，被认为是JS最大的败笔之一，<br>ES6中let，class和const声明的变量不再与顶层对象的属性关联</p>
+<h3 id="Promise-主要解决异步回调地狱的问题"><a href="#Promise-主要解决异步回调地狱的问题" class="headerlink" title="Promise(主要解决异步回调地狱的问题)"></a>Promise(主要解决异步回调地狱的问题)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var promise = new Promise(function (resolve, reject) &#123;</span><br><span class="line">        console.log(&apos;resolve&apos;);</span><br><span class="line">		//成功回调</span><br><span class="line">        resolve();</span><br><span class="line">		//失败回调</span><br><span class="line">		reject();</span><br><span class="line">    &#125;)</span><br><span class="line">    promise.then(function () &#123;</span><br><span class="line">        console.log(&apos;success&apos;)</span><br><span class="line">    &#125;, function () &#123;</span><br><span class="line">        console.log(&apos;fail&apos;)</span><br><span class="line">    &#125;)</span><br><span class="line">    console.log(&apos;justgo&apos;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Promise.prototype.then()第一个函数参数为resolve执行函数，第二个函数参数为reject执行函数</p>
+</blockquote>
+<h3 id="export-default-为模块指定默认输出"><a href="#export-default-为模块指定默认输出" class="headerlink" title="export default {}为模块指定默认输出"></a>export default {}为模块指定默认输出</h3><p>export default function () {<br>  console.log(‘foo’);<br>}<br>其他模块加载该模块时，import命令可以为该匿名函数指定任意名字<br>import customName from ‘./export-default’;</p>
+<h3 id="ES6支持方法简写"><a href="#ES6支持方法简写" class="headerlink" title="ES6支持方法简写"></a>ES6支持方法简写</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a&#123;</span><br><span class="line">  points:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">* ES6可以简写为</span><br><span class="line"><span class="keyword">var</span> a&#123;</span><br><span class="line">   points()&#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="export-export-default的异同"><a href="#export-export-default的异同" class="headerlink" title="export,export default的异同"></a>export,export default的异同</h3><p>1.export在js中可以有多个，export default只能出现一个；<br>2.在一个文件或模块中，export、import可以有多个，export default仅有一个<br>3.通过export方式导出，在导入时要加{ }，export default则不需要<br>4.export能直接导出变量表达式，export default不行。</p>
+<h3 id="ES6的箭头函数"><a href="#ES6的箭头函数" class="headerlink" title="ES6的箭头函数"></a>ES6的箭头函数</h3><p>ES6中的箭头函数写法更加简单，表达更加简洁，简化回调函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> var func = v =&gt; v+1;</span><br><span class="line">等于：</span><br><span class="line"> var func = function(v)&#123;return v+1&#125;</span><br><span class="line"></span><br><span class="line">var result = [1,2,1,3,4].sort((a,b)=&gt;a-b)</span><br><span class="line">等于：</span><br><span class="line">var result = [1,2,1,3,4].sort(function(a,b)&#123;return a-b&#125;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1,1,2,3,4,5,66,5,6];</span><br><span class="line">console.log(new Set(arr))</span><br><span class="line">//此时console出来的是一个对象，</span><br><span class="line">console.log(array.from(new Set(arr)))</span><br><span class="line">//此时console出来的是去重之后的数组</span><br></pre></td></tr></table></figure>
+<h3 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ES5:</span><br><span class="line">var func = function(v)&#123;</span><br><span class="line">	console.log(&apos;name &apos;+v)</span><br><span class="line">&#125;</span><br><span class="line">func(&apos;jone&apos;)</span><br><span class="line"></span><br><span class="line">ES6:</span><br><span class="line">var func = v =&gt; console.log(`name $&#123;v&#125;`)</span><br><span class="line">func(&apos;jone&apos;)</span><br></pre></td></tr></table></figure>
+<h3 id="ES6支持变量作为对象key，如："><a href="#ES6支持变量作为对象key，如：" class="headerlink" title="ES6支持变量作为对象key，如："></a>ES6支持变量作为对象key，如：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let a = &apos;aaa&apos;;</span><br><span class="line">let b = &apos;bbb&apos;;</span><br><span class="line">let c = &#123;[a]:&apos;this is key a&apos;,[b]:&apos;this is key b&apos;&#125;;</span><br><span class="line">console.log(c)</span><br></pre></td></tr></table></figure>
+<h3 id="生成器函数指定下一次调用-next-时会生成什么-value"><a href="#生成器函数指定下一次调用-next-时会生成什么-value" class="headerlink" title="生成器函数指定下一次调用 next() 时会生成什么 value"></a>生成器函数指定下一次调用 next() 时会生成什么 value</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">function* greeter()&#123;</span><br><span class="line">  yeild &quot;hello&quot;</span><br><span class="line">  yeild &quot;how are you&quot;</span><br><span class="line">  yeild &quot;good bye&quot;</span><br><span class="line">&#125;</span><br><span class="line">const greet = greeter();</span><br><span class="line">console.log(greet.next().value);</span><br><span class="line">// &apos;Hi&apos;</span><br><span class="line">console.log(greet.next().value);</span><br><span class="line">// &apos;How are you?&apos;</span><br><span class="line">console.log(greet.next().value);</span><br><span class="line">// &apos;Bye&apos;</span><br><span class="line">console.log(greet.next().value);</span><br><span class="line">// undefined</span><br><span class="line">or</span><br><span class="line">使用生成器生成无限个值：</span><br><span class="line">function* idCreator() &#123;</span><br><span class="line">  let i = 0;</span><br><span class="line">  while (true)</span><br><span class="line">    yield i++;</span><br><span class="line">&#125;</span><br><span class="line">const ids = idCreator();</span><br><span class="line">console.log(ids.next().value);</span><br><span class="line">// 0</span><br><span class="line">console.log(ids.next().value);</span><br><span class="line">// 1</span><br><span class="line">console.log(ids.next().value);</span><br><span class="line">// 2</span><br><span class="line">// etc...</span><br></pre></td></tr></table></figure>
+<h3 id="Async-Await"><a href="#Async-Await" class="headerlink" title="Async/Await"></a>Async/Await</h3><p>在掌握了 promise 的用法后，你可能也会喜欢 async await，它只是一种基于 promise 的“语法糖”。在下面的示例中，我们创建了一个 async 函数，并 await greeter promise。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const greeter = new Promise((res, rej) =&gt; &#123;</span><br><span class="line">  setTimeout(() =&gt; res(&apos;Hello world!&apos;), 2000);</span><br><span class="line">&#125;)</span><br><span class="line">async function myFunc() &#123;</span><br><span class="line">  const greeting = await greeter;</span><br><span class="line">  console.log(greeting);</span><br><span class="line">&#125;</span><br><span class="line">myFunc();</span><br><span class="line">// &apos;Hello world!&apos;</span><br><span class="line">// 可以看到，async创建的函数体内，加了await的函数，即使它是异步的，也会等他先执行完</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/JS/" rel="tag"># JS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2016/12/29/jquery常见问题/" rel="next" title="jquery常见问题">
+                <i class="fa fa-chevron-left"></i> jquery常见问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2017/02/22/vue记录/" rel="prev" title="vue记录">
+                vue记录 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://www.guoxh.com/blog/img/avatar.png" alt="郭雪辉">
+            
+              <p class="site-author-name" itemprop="name">郭雪辉</p>
+              <p class="site-description motion-element" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/blog/archives/">
+              
+                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/blog/categories/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/blog/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#let-const"><span class="nav-number">1.</span> <span class="nav-text">let  const</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#顶层对象的属性和全局变量关系"><span class="nav-number">2.</span> <span class="nav-text">顶层对象的属性和全局变量关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Promise-主要解决异步回调地狱的问题"><span class="nav-number">3.</span> <span class="nav-text">Promise(主要解决异步回调地狱的问题)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#export-default-为模块指定默认输出"><span class="nav-number">4.</span> <span class="nav-text">export default {}为模块指定默认输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6支持方法简写"><span class="nav-number">5.</span> <span class="nav-text">ES6支持方法简写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#export-export-default的异同"><span class="nav-number">6.</span> <span class="nav-text">export,export default的异同</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6的箭头函数"><span class="nav-number">7.</span> <span class="nav-text">ES6的箭头函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组去重"><span class="nav-number">8.</span> <span class="nav-text">数组去重</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串拼接"><span class="nav-number">9.</span> <span class="nav-text">字符串拼接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6支持变量作为对象key，如："><span class="nav-number">10.</span> <span class="nav-text">ES6支持变量作为对象key，如：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成器函数指定下一次调用-next-时会生成什么-value"><span class="nav-number">11.</span> <span class="nav-text">生成器函数指定下一次调用 next() 时会生成什么 value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Async-Await"><span class="nav-number">12.</span> <span class="nav-text">Async/Await</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">郭雪辉</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/blog/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":50,"height":100},"mobile":{"show":false},"log":false});</script></body>
+</html>

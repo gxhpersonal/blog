@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/blog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JS,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="主要记录了js中不常用的一些技巧和逻辑1.js中 &amp;amp;&amp;amp; 和 &amp;amp; ，|| 和 | 的区别：&amp;amp;&amp;amp;1console.log(1 &amp;amp;&amp;amp; 2); // 2 JS中的逻辑运算符 &amp;amp;&amp;amp; 与，左边为真才走右边，左边为假只走左边。 &amp;amp;123console.log(1 &amp;amp; 2); // 0console.log(0 &amp;amp; 0">
+<meta name="keywords" content="JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js黑科技">
+<meta property="og:url" content="http://gxhpersonal.github.io/blog/2019/05/02/js黑科技/index.html">
+<meta property="og:site_name" content="blog station">
+<meta property="og:description" content="主要记录了js中不常用的一些技巧和逻辑1.js中 &amp;amp;&amp;amp; 和 &amp;amp; ，|| 和 | 的区别：&amp;amp;&amp;amp;1console.log(1 &amp;amp;&amp;amp; 2); // 2 JS中的逻辑运算符 &amp;amp;&amp;amp; 与，左边为真才走右边，左边为假只走左边。 &amp;amp;123console.log(1 &amp;amp; 2); // 0console.log(0 &amp;amp; 0">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-12-30T03:02:53.583Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js黑科技">
+<meta name="twitter:description" content="主要记录了js中不常用的一些技巧和逻辑1.js中 &amp;amp;&amp;amp; 和 &amp;amp; ，|| 和 | 的区别：&amp;amp;&amp;amp;1console.log(1 &amp;amp;&amp;amp; 2); // 2 JS中的逻辑运算符 &amp;amp;&amp;amp; 与，左边为真才走右边，左边为假只走左边。 &amp;amp;123console.log(1 &amp;amp; 2); // 0console.log(0 &amp;amp; 0">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gxhpersonal.github.io/blog/2019/05/02/js黑科技/">
+
+
+
+
+
+  <title>js黑科技 | blog station</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">blog station</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gxhpersonal.github.io/blog/blog/2019/05/02/js黑科技/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="郭雪辉">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://www.guoxh.com/blog/img/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog station">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">js黑科技</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-02T10:41:23+08:00">
+                2019-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/JS/" itemprop="url" rel="index">
+                    <span itemprop="name">JS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="主要记录了js中不常用的一些技巧和逻辑"><a href="#主要记录了js中不常用的一些技巧和逻辑" class="headerlink" title="主要记录了js中不常用的一些技巧和逻辑"></a>主要记录了js中不常用的一些技巧和逻辑</h2><h3 id="1-js中-amp-amp-和-amp-，-和-的区别："><a href="#1-js中-amp-amp-和-amp-，-和-的区别：" class="headerlink" title="1.js中 &amp;&amp; 和 &amp; ，|| 和 | 的区别："></a>1.js中 <code>&amp;&amp;</code> 和 <code>&amp;</code> ，<code>||</code> 和 <code>|</code> 的区别：</h3><h5 id="amp-amp"><a href="#amp-amp" class="headerlink" title="&amp;&amp;"></a>&amp;&amp;</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> &amp;&amp; <span class="number">2</span>); <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<p>JS中的逻辑运算符 <code>&amp;&amp;</code> 与，左边为真才走右边，左边为假只走左边。</p>
+<h5 id="amp"><a href="#amp" class="headerlink" title="&amp;"></a>&amp;</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> &amp; <span class="number">2</span>); <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">0</span> &amp; <span class="number">0</span>)  <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span> &amp; <span class="number">123</span>)  <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<p>&amp;是表示位的与运算，把左右两边的数字转化为二进制，然后每一位分别进行比较，如果相等就为1，不相等即为0。<br>同时&amp;具有强制转换的功能，把false,true转换成了0和1进行比较。而0又表示false的意思，所以带有false的都挂掉了，偶尔也可以当做逻辑与来使用。<br>1转换为二进制为1,2转换为二进制为10，  所以1&amp;2实际是0001&amp;0010,没有相等的部分，最终结果就是0了。</p>
+<h3 id="2-获取url参数最简写法"><a href="#2-获取url参数最简写法" class="headerlink" title="2.获取url参数最简写法"></a>2.获取url参数最简写法</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">q=&#123;&#125;;location.search.replace(<span class="regexp">/([^?&amp;=]+)=([^&amp;]+)/g</span>,(_,k,v)=&gt;q[k]=v);q;</span><br><span class="line"><span class="comment">// emm..所谓最简是获取当前页面链接可以，如果获取指定链接参数：</span></span><br><span class="line"><span class="keyword">let</span> q = &#123;&#125;;</span><br><span class="line"><span class="built_in">decodeURIComponent</span>(url).split(<span class="string">"?"</span>)[<span class="number">1</span>].replace(<span class="regexp">/([^?&amp;=]+)=([^&amp;]+)/g</span>, (_, k, v) =&gt; q[k] = v); <span class="comment">//就是把search手动截取</span></span><br><span class="line"><span class="comment">// 额，js有原生api直接取值：（小程序不适用没有URL对象）</span></span><br><span class="line"><span class="keyword">new</span> URL(<span class="string">'https://www.guoxh.com/blog?a=123'</span>).searchParams.get(<span class="string">'a'</span>); <span class="comment">// 123</span></span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"><span class="keyword">new</span> URLSearchParams(<span class="string">'?a=123'</span>).get(<span class="string">'a'</span>); <span class="comment">// 123</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-返回一个键盘？"><a href="#3-返回一个键盘？" class="headerlink" title="3.返回一个键盘？"></a>3.返回一个键盘？</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="params">_</span>=&gt;</span>[...<span class="string">"`1234567890-=~~QWERTYUIOP[]\\~ASDFGHJKL;'~~ZXCVBNM,./~"</span>].map(<span class="function"><span class="params">x</span>=&gt;</span>(o+=<span class="string">`/<span class="subst">$&#123;b=<span class="string">'_'</span>.repeat(w=x&lt;y?<span class="number">2</span>:<span class="string">' 667699'</span>[x=[<span class="string">"BS"</span>,<span class="string">"TAB"</span>,<span class="string">"CAPS"</span>,<span class="string">"ENTER"</span>][p++]||<span class="string">'SHIFT'</span>,p])&#125;</span>\\|`</span>,m+=y+(x+<span class="string">'    '</span>).slice(<span class="number">0</span>,w)+y+y,n+=y+b+y+y,l+=<span class="string">' __'</span>+b)[<span class="number">73</span>]&amp;&amp;(k.push(l,m,n,o),l=<span class="string">''</span>,m=n=o=y),m=n=o=y=<span class="string">'|'</span>,p=l=k=[])&amp;&amp;k.join<span class="string">`</span></span><br><span class="line"><span class="string">`</span>)()</span><br></pre></td></tr></table></figure>
+<h3 id="js原生-警告，确认，信息输入弹窗"><a href="#js原生-警告，确认，信息输入弹窗" class="headerlink" title="js原生 警告，确认，信息输入弹窗"></a>js原生 警告，确认，信息输入弹窗</h3><p>alert confirm prompt</p>
+<h3 id="console玩法"><a href="#console玩法" class="headerlink" title="console玩法"></a>console玩法</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.groupCollapsed(<span class="string">'这里是外面'</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'这里是里面'</span>);</span><br><span class="line"><span class="built_in">console</span>.groupEnd();</span><br><span class="line"></span><br><span class="line">  <span class="comment">//小区别：</span></span><br><span class="line">  - <span class="built_in">console</span>.group 默认是展开状态</span><br><span class="line">  - <span class="built_in">console</span>.groupCollapsed 默认是收起状态</span><br></pre></td></tr></table></figure>
+<h3 id="骂人不带脏字-–-””"><a href="#骂人不带脏字-–-””" class="headerlink" title="骂人不带脏字(!(~+[])+{})[–[~+””][+[]][~+[]]+~~!+[]]+({}+[])[[~!+[]]~+[]]"></a>骂人不带脏字(!(~+[])+{})[–[~+””][+[]]<em>[~+[]]+~~!+[]]+({}+[])[[~!+[]]</em>~+[]]</h3>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/JS/" rel="tag"># JS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2019/04/25/fiddler抓包/" rel="next" title="fiddler抓包">
+                <i class="fa fa-chevron-left"></i> fiddler抓包
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2019/05/07/css自定义属性/" rel="prev" title="css自定义属性">
+                css自定义属性 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://www.guoxh.com/blog/img/avatar.png" alt="郭雪辉">
+            
+              <p class="site-author-name" itemprop="name">郭雪辉</p>
+              <p class="site-description motion-element" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/blog/archives/">
+              
+                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/blog/categories/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/blog/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#主要记录了js中不常用的一些技巧和逻辑"><span class="nav-number">1.</span> <span class="nav-text">主要记录了js中不常用的一些技巧和逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-js中-amp-amp-和-amp-，-和-的区别："><span class="nav-number">1.1.</span> <span class="nav-text">1.js中 &amp;&amp; 和 &amp; ，|| 和 | 的区别：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#amp-amp"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">&amp;&amp;</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#amp"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">&amp;</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-获取url参数最简写法"><span class="nav-number">1.2.</span> <span class="nav-text">2.获取url参数最简写法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-返回一个键盘？"><span class="nav-number">1.3.</span> <span class="nav-text">3.返回一个键盘？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#js原生-警告，确认，信息输入弹窗"><span class="nav-number">1.4.</span> <span class="nav-text">js原生 警告，确认，信息输入弹窗</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#console玩法"><span class="nav-number">1.5.</span> <span class="nav-text">console玩法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#骂人不带脏字-–-””"><span class="nav-number">1.6.</span> <span class="nav-text">骂人不带脏字(!(~+[])+{})[–[~+””][+[]][~+[]]+~~!+[]]+({}+[])[[~!+[]]~+[]]</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">郭雪辉</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/blog/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":50,"height":100},"mobile":{"show":false},"log":false});</script></body>
+</html>

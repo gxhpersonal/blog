@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/blog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="微信小程序,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="直播插件因为小程序组件&amp;lt;live-player /&amp;gt;需要直播相关主体，所以用了腾讯云直播插件&amp;lt;live-room-play /&amp;gt;相关文档其中有个播放状态监控：12&amp;lt;!-- 这里有个小窗播放`picture-in-picture-mode`此插件1.3.0版本已经支持，但是没实现了，不知原因，查找中... --&amp;gt;&amp;lt;live-room-play class=&quot;">
+<meta name="keywords" content="微信小程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小程序直播相关">
+<meta property="og:url" content="http://gxhpersonal.github.io/blog/2020/06/15/小程序直播相关/index.html">
+<meta property="og:site_name" content="blog station">
+<meta property="og:description" content="直播插件因为小程序组件&amp;lt;live-player /&amp;gt;需要直播相关主体，所以用了腾讯云直播插件&amp;lt;live-room-play /&amp;gt;相关文档其中有个播放状态监控：12&amp;lt;!-- 这里有个小窗播放`picture-in-picture-mode`此插件1.3.0版本已经支持，但是没实现了，不知原因，查找中... --&amp;gt;&amp;lt;live-room-play class=&quot;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-12-30T03:02:53.601Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小程序直播相关">
+<meta name="twitter:description" content="直播插件因为小程序组件&amp;lt;live-player /&amp;gt;需要直播相关主体，所以用了腾讯云直播插件&amp;lt;live-room-play /&amp;gt;相关文档其中有个播放状态监控：12&amp;lt;!-- 这里有个小窗播放`picture-in-picture-mode`此插件1.3.0版本已经支持，但是没实现了，不知原因，查找中... --&amp;gt;&amp;lt;live-room-play class=&quot;">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gxhpersonal.github.io/blog/2020/06/15/小程序直播相关/">
+
+
+
+
+
+  <title>小程序直播相关 | blog station</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">blog station</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gxhpersonal.github.io/blog/blog/2020/06/15/小程序直播相关/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="郭雪辉">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://www.guoxh.com/blog/img/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog station">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">小程序直播相关</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-15T17:57:45+08:00">
+                2020-06-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/微信小程序/" itemprop="url" rel="index">
+                    <span itemprop="name">微信小程序</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="直播插件"><a href="#直播插件" class="headerlink" title="直播插件"></a>直播插件</h3><p>因为小程序组件<code>&lt;live-player /&gt;</code>需要直播相关主体，所以用了腾讯云直播插件<code>&lt;live-room-play /&gt;</code><br><a href="https://cloud.tencent.com/document/product/1078/42916" target="_blank" rel="noopener">相关文档</a><br>其中有个播放状态监控：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 这里有个小窗播放`picture-in-picture-mode`此插件1.3.0版本已经支持，但是没实现了，不知原因，查找中... --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">live-room-play</span> <span class="attr">class</span>=<span class="string">"live-room"</span> <span class="attr">objectFit</span>=<span class="string">"contain"</span> <span class="attr">version</span>=<span class="string">"2"</span> <span class="attr">picture-in-picture-mode</span>=<span class="string">"['push', 'pop']"</span> <span class="attr">liveAppID</span>=<span class="string">""</span> <span class="attr">autoplay</span>=<span class="string">"&#123;&#123;autoPlay&#125;&#125;"</span> <span class="attr">bindPlayEvent</span>=<span class="string">"playStatus"</span> <span class="attr">bindNetStatus</span>=<span class="string">"netStatus"</span> <span class="attr">autopause</span>=<span class="string">"true"</span> <span class="attr">bindError</span>=<span class="string">"error"</span> <span class="attr">playUrl</span>=<span class="string">"&#123;&#123;playUrl&#125;&#125;"</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//播放状态变化事件回调</span></span><br><span class="line">playStatus(e) &#123;</span><br><span class="line">  <span class="keyword">let</span> that = <span class="keyword">this</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"播放状态"</span>, e.detail.detail)</span><br><span class="line">  <span class="keyword">if</span> (e.detail.code == <span class="number">2004</span>) &#123;</span><br><span class="line">    <span class="comment">//视频播放开始</span></span><br><span class="line">    <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">      livePause: <span class="literal">false</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.timer) &#123;</span><br><span class="line">      clearInterval(<span class="keyword">this</span>.timer)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (e.detail.code == <span class="number">2001</span>) &#123;</span><br><span class="line">    <span class="comment">//已经连接服务器</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (e.detail.code == <span class="number">2103</span>) &#123;</span><br><span class="line">    <span class="comment">//网络断连, 启动自动重连</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.data.liveEnd) &#123;</span><br><span class="line">      <span class="comment">//直播结束不再请求</span></span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.timer) &#123;</span><br><span class="line">        clearInterval(<span class="keyword">this</span>.timer)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (e.detail.code == <span class="number">-2301</span>) &#123;</span><br><span class="line">    <span class="comment">// -2301:网络断连且经多次重连抢救无效</span></span><br><span class="line">    <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">      autoPlay: <span class="literal">false</span>,</span><br><span class="line">      livePause: <span class="literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.timer) &#123;</span><br><span class="line">      <span class="keyword">this</span>.timer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"开始请求直播拉流"</span>)</span><br><span class="line">        that.setData(&#123;</span><br><span class="line">          playUrl: that.data.playUrl,</span><br><span class="line">          autoPlay: <span class="literal">true</span></span><br><span class="line">        &#125;)</span><br><span class="line">        that.liveRoomComponent &amp;&amp; that.liveRoomComponent.start();</span><br><span class="line">      &#125;, <span class="number">5000</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (e.detail.code == <span class="number">2006</span>) &#123;</span><br><span class="line">    <span class="comment">//2006:视频播放结束;</span></span><br><span class="line">    <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">      liveEnd: <span class="literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h3 id="即时通信IM"><a href="#即时通信IM" class="headerlink" title="即时通信IM"></a>即时通信IM</h3><h5 id="因为是直播，所以IM类型选择直播群"><a href="#因为是直播，所以IM类型选择直播群" class="headerlink" title="因为是直播，所以IM类型选择直播群"></a>因为是直播，所以IM类型选择直播群</h5><p><a href="cloud.tencent.com/document/product/269/43002">官方文档很详细</a></p>
+<p>这里加几个注意的点：</p>
+<h5 id="1-IM设置头像昵称要在ready之后调用"><a href="#1-IM设置头像昵称要在ready之后调用" class="headerlink" title="1. IM设置头像昵称要在ready之后调用"></a>1. IM设置头像昵称要在ready之后调用</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">tim.on(TIM.EVENT.SDK_READY, <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// SDK ready 后接入侧才可以调用 sendMessage 等需要鉴权的接口，否则会提示失败！</span></span><br><span class="line">  <span class="comment">// event.name - TIM.EVENT.SDK_READY</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"SDK ready"</span>, event)</span><br><span class="line">  <span class="comment">// 修改个人标配资料</span></span><br><span class="line">  tim.updateMyProfile(&#123;</span><br><span class="line">    nick: wx.getStorageSync(<span class="string">'wxUserInfo'</span>).nickName,</span><br><span class="line">    avatar: wx.getStorageSync(<span class="string">'wxUserInfo'</span>).avatarUrl</span><br><span class="line">  &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">imResponse</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(imResponse.data); <span class="comment">// 更新资料成功</span></span><br><span class="line">  &#125;).catch(<span class="function"><span class="keyword">function</span> (<span class="params">imError</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.warn(<span class="string">'updateMyProfile error:'</span>, imError); <span class="comment">// 更新资料失败的相关信息</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h5 id="2-有成员加群回调只有调用登录tim-login方法-再调用加群tim-joinGroup方法-才会触发"><a href="#2-有成员加群回调只有调用登录tim-login方法-再调用加群tim-joinGroup方法-才会触发" class="headerlink" title="2.有成员加群回调只有调用登录tim.login方法 再调用加群tim.joinGroup方法 才会触发"></a>2.有成员加群回调只有调用登录<code>tim.login</code>方法 再调用加群<code>tim.joinGroup</code>方法 才会触发</h5><p>示例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//登录IM</span></span><br><span class="line">tim.login(&#123;</span><br><span class="line">  userID: uid, <span class="comment">//用户ID后台返回的用户ID</span></span><br><span class="line">  userSig: data.data.UserSig <span class="comment">//后台返回的根据用户ID生成的加密串</span></span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">imResponse</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"登录成功"</span>, imResponse.data); <span class="comment">// 登录成功</span></span><br><span class="line">  tim.joinGroup(&#123;</span><br><span class="line">    groupID: that.data.groupID,  <span class="comment">//群ID</span></span><br><span class="line">    type: TIM.TYPES.GRP_AVCHATROOM <span class="comment">//类型为直播群必填字段</span></span><br><span class="line">  &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">imResponse</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"加群成功"</span>, imResponse)</span><br><span class="line">    <span class="keyword">switch</span> (imResponse.data.status) &#123;</span><br><span class="line">      <span class="keyword">case</span> TIM.TYPES.JOIN_STATUS_SUCCESS: <span class="comment">// 加群成功</span></span><br><span class="line">        <span class="comment">// console.log(imResponse.data.group) // 加入的群组资料</span></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">      <span class="keyword">case</span> TIM.TYPES.JOIN_STATUS_ALREADY_IN_GROUP: <span class="comment">// 已经在群中</span></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">      <span class="keyword">default</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;).catch(<span class="function"><span class="keyword">function</span> (<span class="params">imError</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.warn(<span class="string">'加群失败'</span>, imError) <span class="comment">// 申请加群失败的相关信息</span></span><br><span class="line">  &#125;);</span><br><span class="line">  resolve(imResponse)</span><br><span class="line">&#125;).catch(<span class="function"><span class="keyword">function</span> (<span class="params">imError</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.warn(<span class="string">'登录IM失败:'</span>, imError); <span class="comment">// 登录失败的相关信息</span></span><br><span class="line">  reject(imError)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h5 id="3-判断是否被禁言，调用发消息（包括各种类型的消息）前先判断是否被禁言，如果禁言调用发消息会报错（注意必须在SDK-READY之后调用）"><a href="#3-判断是否被禁言，调用发消息（包括各种类型的消息）前先判断是否被禁言，如果禁言调用发消息会报错（注意必须在SDK-READY之后调用）" class="headerlink" title="3.判断是否被禁言，调用发消息（包括各种类型的消息）前先判断是否被禁言，如果禁言调用发消息会报错（注意必须在SDK_READY之后调用）"></a>3.判断是否被禁言，调用发消息（包括各种类型的消息）前先判断是否被禁言，如果禁言调用发消息会报错（注意必须在SDK_READY之后调用）</h5><p>示例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//判断是否被禁言</span></span><br><span class="line">checkUserBanned() &#123;</span><br><span class="line">  <span class="keyword">let</span> that = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    tim.getGroupMemberProfile(&#123;</span><br><span class="line">      groupID: that.data.groupID,</span><br><span class="line">      userIDList: [wx.getStorageSync(<span class="string">'userInfo'</span>).uid] <span class="comment">//用户ID，必须为数组</span></span><br><span class="line">    &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">imResponse</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// console.log(imResponse.data.memberList); // 群成员列表</span></span><br><span class="line">      resolve(imResponse.data.memberList)</span><br><span class="line">    &#125;).catch(<span class="function"><span class="keyword">function</span> (<span class="params">imError</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// console.warn('getGroupMemberProfile error:', imError);</span></span><br><span class="line">      reject(imError)</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">//检查是否被禁言,这样调用还有个弊端，每次发消息都会请求禁言接口，导致发消息很慢，所以我优化成了调用login时判断此用户是否被禁言</span></span><br><span class="line">that.checkUserBanned().then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> groupMember <span class="keyword">of</span> res) &#123;</span><br><span class="line">    <span class="keyword">if</span> (groupMember.muteUntil * <span class="number">1000</span> &gt; <span class="built_in">Date</span>.now()) &#123;</span><br><span class="line">      <span class="comment">//禁言中</span></span><br><span class="line">      wx.showToast(&#123;</span><br><span class="line">        title: <span class="string">'您已被禁言'</span>,</span><br><span class="line">        icon: <span class="string">"none"</span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">//未禁言</span></span><br><span class="line">      <span class="keyword">let</span> message = tim.createCustomMessage(&#123;</span><br><span class="line">        to: that.data.groupID,</span><br><span class="line">        conversationType: TIM.TYPES.CONV_GROUP,</span><br><span class="line">        payload: &#123;</span><br><span class="line">          data: <span class="string">''</span>, <span class="comment">// 用于标识该消息是什么类型自定义消息</span></span><br><span class="line">          description: that.liveId, <span class="comment">// 直播ID</span></span><br><span class="line">          extension: number + <span class="string">""</span> <span class="comment">// </span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="comment">// 3. 发送消息</span></span><br><span class="line">      <span class="keyword">let</span> promise = tim.sendMessage(message);</span><br><span class="line">      promise.then(<span class="function"><span class="keyword">function</span> (<span class="params">imResponse</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 发送成功</span></span><br><span class="line">        <span class="built_in">console</span>.log(imResponse);</span><br><span class="line">      &#125;).catch(<span class="function"><span class="keyword">function</span> (<span class="params">imError</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 发送失败</span></span><br><span class="line">        <span class="built_in">console</span>.warn(<span class="string">'sendMessage error:'</span>, imError);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h5 id="4-进场消息、购买消息等只显示一次，并且显示时间相同的消息实现"><a href="#4-进场消息、购买消息等只显示一次，并且显示时间相同的消息实现" class="headerlink" title="4.进场消息、购买消息等只显示一次，并且显示时间相同的消息实现"></a>4.进场消息、购买消息等只显示一次，并且显示时间相同的消息实现</h5><ul>
+<li>基本原理就是<code>onShow</code>生命周期触发一个定时器方法，在收到进群消息或购买消息回调之后，把收到的消息push到一个相同的数组中，然后页面只展示第一条数组，因为动画是三秒一条消息，所以定时器三秒轮询一次，第一条三秒之后删除，这样不会导致数组内存过大，<br>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">onShow()&#123;</span><br><span class="line">  <span class="keyword">this</span>.tipMsg()</span><br><span class="line">&#125;,</span><br><span class="line">buyMessage(message) &#123;</span><br><span class="line">  <span class="comment">//收到购买消息回调之后，往tipsData数组push一条数据，定时器监测到有数据便会渲染出来</span></span><br><span class="line">  <span class="keyword">let</span> that = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">let</span> res = &#123;&#125;;</span><br><span class="line">  res.avatar = message.avatar;</span><br><span class="line">  res.nick = message.nick;</span><br><span class="line">  res.type = <span class="number">3</span>;</span><br><span class="line">  that.data.tipsData.push(res)</span><br><span class="line">&#125;,</span><br><span class="line">tipMsg() &#123;</span><br><span class="line">  <span class="keyword">let</span> that = <span class="keyword">this</span>;</span><br><span class="line">  that.tipTimer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (that.data.tipsData.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      that.setData(&#123;</span><br><span class="line">        tipsDatas: that.data.tipsData[<span class="number">0</span>] <span class="comment">//这里的tipsData对象便是要渲染到页面中的单条数据</span></span><br><span class="line">      &#125;)</span><br><span class="line">      that.tipAnimation()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, <span class="number">3000</span>);</span><br><span class="line">&#125;,</span><br><span class="line">tipAnimation() &#123;</span><br><span class="line">  <span class="keyword">let</span> that = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">let</span> animation = wx.createAnimation(&#123;</span><br><span class="line">    duration: <span class="number">300</span></span><br><span class="line">  &#125;)</span><br><span class="line">  animation.translateX(<span class="number">0</span>).step()</span><br><span class="line">  that.setData(&#123;</span><br><span class="line">    animationData: animation.export()</span><br><span class="line">  &#125;)</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    animation.translateX(<span class="string">'-100%'</span>).step(&#123;</span><br><span class="line">      duration: <span class="number">0</span></span><br><span class="line">    &#125;)</span><br><span class="line">    that.setData(&#123;</span><br><span class="line">      animationData: animation.export()</span><br><span class="line">    &#125;)</span><br><span class="line">    that.data.tipsData.shift()</span><br><span class="line">    <span class="comment">// console.log(that.data.tipsData)</span></span><br><span class="line">  &#125;, <span class="number">2700</span>);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>tips：这样应该不是最优解，毕竟定时器触发还是有点耗性能的，loading…</p>
+<p>这样做下来直播IM还是相对简单的，毕竟用的API还没有十分之一，很多API都是聊天群才用到的</p>
+<h3 id="小程序云点播功能需要插件并且需要买流量买插件，所以用了H5的播放器"><a href="#小程序云点播功能需要插件并且需要买流量买插件，所以用了H5的播放器" class="headerlink" title="小程序云点播功能需要插件并且需要买流量买插件，所以用了H5的播放器"></a>小程序云点播功能需要插件并且需要买流量买插件，所以用了H5的播放器</h3><p>1.自动播放：查了很多没实现，基本都说，微信浏览器必须有用户操作行为才会播放<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"https://imgcache.qq.com/open/qcloud/video/tcplayer/tcplayer.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--如果需要在 Chrome 和 Firefox 等现代浏览器中通过 H5 播放 HLS 格式的视频，需要在 tcplayer.v4.1.min.js 之前引入 hls.min.0.13.2m.js。--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://imgcache.qq.com/open/qcloud/video/tcplayer/libs/hls.min.0.13.2m.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--播放器脚本文件，不转码用下面这个js--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://imgcache.qq.com/open/qcloud/video/tcplayer/tcplayer.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--播放器脚本文件，转码用下面这个js--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://imgcache.qq.com/open/qcloud/video/tcplayer/tcplayer.v4.1.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 设置播放器容器 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">id</span>=<span class="string">"player-container-id"</span> <span class="attr">preload</span>=<span class="string">"auto"</span> <span class="attr">width</span>=<span class="string">"100%"</span> <span class="attr">height</span>=<span class="string">"100%"</span> <span class="attr">autoplay</span>=<span class="string">"true"</span> <span class="attr">playsinline</span> <span class="attr">webkit-playsinline</span>&gt;</span><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.player = TCPlayer(<span class="string">"player-container-id"</span>, &#123;</span><br><span class="line">  <span class="comment">// player-container-id 为播放器容器 ID，必须与 html 中一致</span></span><br><span class="line">  fileID: data.data[<span class="number">0</span>].file_id, <span class="comment">// 请传入需要播放的视频 filID（必须）</span></span><br><span class="line">  appID: <span class="string">"1500001289"</span>, <span class="comment">// 请传入点播账号的 appID（必须）</span></span><br><span class="line">  <span class="comment">// autoplay: true,</span></span><br><span class="line">  <span class="comment">// plugins: &#123;</span></span><br><span class="line">  <span class="comment">// 	ContinuePlay: &#123;</span></span><br><span class="line">  <span class="comment">// 		// 开启续播功能</span></span><br><span class="line">  <span class="comment">// 		auto: true //[可选] 是否在视频播放后自动续播</span></span><br><span class="line">  <span class="comment">// 	&#125;</span></span><br><span class="line">  <span class="comment">// &#125;</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 切换播放视频</span></span><br><span class="line">methods: &#123;</span><br><span class="line">  chooseVideo(v) &#123;</span><br><span class="line">    <span class="keyword">this</span>.currentId = v.file_id;</span><br><span class="line">    <span class="keyword">this</span>.player.loadVideoByID(&#123;</span><br><span class="line">      fileID: v.file_id, <span class="comment">// 请传入需要播放的视频 filID（必须）</span></span><br><span class="line">      appID: <span class="string">"1500001289"</span> <span class="comment">// 请传入点播账号的 appID（必须）</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/微信小程序/" rel="tag"># 微信小程序</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2020/06/04/小程序写点垃圾代码/" rel="next" title="小程序写点垃圾代码">
+                <i class="fa fa-chevron-left"></i> 小程序写点垃圾代码
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2020/10/22/经验积累/" rel="prev" title="经验积累">
+                经验积累 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://www.guoxh.com/blog/img/avatar.png" alt="郭雪辉">
+            
+              <p class="site-author-name" itemprop="name">郭雪辉</p>
+              <p class="site-description motion-element" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/blog/archives/">
+              
+                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/blog/categories/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/blog/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#直播插件"><span class="nav-number">1.</span> <span class="nav-text">直播插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#即时通信IM"><span class="nav-number">2.</span> <span class="nav-text">即时通信IM</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#因为是直播，所以IM类型选择直播群"><span class="nav-number">2.0.1.</span> <span class="nav-text">因为是直播，所以IM类型选择直播群</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-IM设置头像昵称要在ready之后调用"><span class="nav-number">2.0.2.</span> <span class="nav-text">1. IM设置头像昵称要在ready之后调用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-有成员加群回调只有调用登录tim-login方法-再调用加群tim-joinGroup方法-才会触发"><span class="nav-number">2.0.3.</span> <span class="nav-text">2.有成员加群回调只有调用登录tim.login方法 再调用加群tim.joinGroup方法 才会触发</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-判断是否被禁言，调用发消息（包括各种类型的消息）前先判断是否被禁言，如果禁言调用发消息会报错（注意必须在SDK-READY之后调用）"><span class="nav-number">2.0.4.</span> <span class="nav-text">3.判断是否被禁言，调用发消息（包括各种类型的消息）前先判断是否被禁言，如果禁言调用发消息会报错（注意必须在SDK_READY之后调用）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-进场消息、购买消息等只显示一次，并且显示时间相同的消息实现"><span class="nav-number">2.0.5.</span> <span class="nav-text">4.进场消息、购买消息等只显示一次，并且显示时间相同的消息实现</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#小程序云点播功能需要插件并且需要买流量买插件，所以用了H5的播放器"><span class="nav-number">3.</span> <span class="nav-text">小程序云点播功能需要插件并且需要买流量买插件，所以用了H5的播放器</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">郭雪辉</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/blog/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":50,"height":100},"mobile":{"show":false},"log":false});</script></body>
+</html>

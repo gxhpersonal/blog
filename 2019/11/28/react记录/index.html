@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/blog/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/blog/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/blog/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="React,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="打包后路径不对解决执行npm run build后发现打包文件路径错误，在package.json文件最外层添加&amp;quot;homepage&amp;quot;: &amp;quot;./&amp;quot; 安装依赖（sass）1$ npm install node-sass --save css添加浏览器前缀修改package.json文件中的1234567891011121314151617&quot;browserslis">
+<meta name="keywords" content="React">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react记录">
+<meta property="og:url" content="http://gxhpersonal.github.io/blog/2019/11/28/react记录/index.html">
+<meta property="og:site_name" content="blog station">
+<meta property="og:description" content="打包后路径不对解决执行npm run build后发现打包文件路径错误，在package.json文件最外层添加&amp;quot;homepage&amp;quot;: &amp;quot;./&amp;quot; 安装依赖（sass）1$ npm install node-sass --save css添加浏览器前缀修改package.json文件中的1234567891011121314151617&quot;browserslis">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-12-30T03:02:53.585Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="react记录">
+<meta name="twitter:description" content="打包后路径不对解决执行npm run build后发现打包文件路径错误，在package.json文件最外层添加&amp;quot;homepage&amp;quot;: &amp;quot;./&amp;quot; 安装依赖（sass）1$ npm install node-sass --save css添加浏览器前缀修改package.json文件中的1234567891011121314151617&quot;browserslis">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/blog/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://gxhpersonal.github.io/blog/2019/11/28/react记录/">
+
+
+
+
+
+  <title>react记录 | blog station</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/blog/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">blog station</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://gxhpersonal.github.io/blog/blog/2019/11/28/react记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="郭雪辉">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://www.guoxh.com/blog/img/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog station">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">react记录</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-28T11:17:22+08:00">
+                2019-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/React/" itemprop="url" rel="index">
+                    <span itemprop="name">React</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="打包后路径不对解决"><a href="#打包后路径不对解决" class="headerlink" title="打包后路径不对解决"></a>打包后路径不对解决</h3><p>执行<code>npm run build</code>后发现打包文件路径错误，在package.json文件最外层添加<code>&quot;homepage&quot;: &quot;./&quot;</code></p>
+<h3 id="安装依赖（sass）"><a href="#安装依赖（sass）" class="headerlink" title="安装依赖（sass）"></a>安装依赖（sass）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install node-sass --save</span><br></pre></td></tr></table></figure>
+<h3 id="css添加浏览器前缀"><a href="#css添加浏览器前缀" class="headerlink" title="css添加浏览器前缀"></a>css添加浏览器前缀</h3><p>修改<code>package.json</code>文件中的<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">"browserslist": &#123;</span><br><span class="line">  <span class="comment">// 正式环境</span></span><br><span class="line">  "production": [</span><br><span class="line">    "&gt; 1%",</span><br><span class="line">    "last 2 versions",</span><br><span class="line">    "not ie &lt;= 8",</span><br><span class="line">    "iOS &gt;= 6",</span><br><span class="line">    "Android &gt; 4.1",</span><br><span class="line">    <span class="string">"Firefox &gt; 20"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 开发环境</span></span><br><span class="line">  "development": [</span><br><span class="line">    "last 1 chrome version",</span><br><span class="line">    "last 1 firefox version",</span><br><span class="line">    <span class="string">"last 1 safari version"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="全局方法"><a href="#全局方法" class="headerlink" title="全局方法"></a>全局方法</h3><p>例如引用axios到全局<br>在<code>index.js</code>中：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Axios <span class="keyword">from</span> <span class="string">'axios'</span>;<span class="comment">//直接引用  </span></span><br><span class="line"><span class="comment">//or</span></span><br><span class="line"><span class="keyword">import</span> Axios <span class="keyword">from</span> <span class="string">"/axios/index.js"</span>;<span class="comment">//如果封装了axios，还可以引入封装后的文件</span></span><br><span class="line">React.$axios = Axios;</span><br></pre></td></tr></table></figure></p>
+<h3 id="react集成预渲染方案，解决首屏白屏问题-seo问题"><a href="#react集成预渲染方案，解决首屏白屏问题-seo问题" class="headerlink" title="react集成预渲染方案，解决首屏白屏问题+seo问题"></a>react集成预渲染方案，解决首屏白屏问题+seo问题</h3><p>1.安装单页应用预渲染插件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install prerender-spa-plugin --save-dev</span><br></pre></td></tr></table></figure></p>
+<p>2.安装自定义配置插件（此工具可以自定义配置webpack插件）</p>
+<p>1) 安装插件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react-app-rewired --save-dev</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p><a href="https://github.com/timarney/react-app-rewired/blob/HEAD/README_zh.md" target="_blank" rel="noopener">插件官网</a><br>此工具可以在不 ‘eject’ 也不创建额外 react-scripts 的情况下修改 create-react-app 内置的 webpack 配置，然后你将拥有 create-react-app 的一切特性，且可以根据你的需要去配置 webpack 的 plugins, loaders 等。<br>使用了 react-app-rewired 之后，等于你得到了项目的配置权，但这表示你的项目将无法得到 CRA 提供的配置“保证”，希望你知道自己要做什么。</p>
+</blockquote>
+<p>2) 在根目录中创建一个 config-overrides.js 文件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+-- your-project</span><br><span class="line">|   +-- config-overrides.js  <span class="comment">//新增</span></span><br><span class="line">|   +-- node_modules</span><br><span class="line">|   +-- package.json</span><br><span class="line">|   +-- public</span><br><span class="line">|   +-- README.md</span><br><span class="line">|   +-- src</span><br></pre></td></tr></table></figure></p>
+<p>文件中添加<code>prerender-spa-plugin</code>插件的配置项：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* config-overrides.js */</span></span><br><span class="line"><span class="keyword">const</span> PrerenderSPAPlugin = <span class="built_in">require</span>(<span class="string">'prerender-spa-plugin'</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function">(<span class="params">config, env</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (env === <span class="string">'production'</span>) &#123;</span><br><span class="line">    config.plugins = config.plugins.concat([</span><br><span class="line">      <span class="keyword">new</span> PrerenderSPAPlugin(&#123;</span><br><span class="line">        routes: [<span class="string">'/'</span>],  <span class="comment">//路由地址，要生成静态文件的路由添加在数组中</span></span><br><span class="line">        staticDir: path.join(__dirname, <span class="string">'build'</span>),  <span class="comment">//staticDir是使用哪个文件夹作为模板目录默认build</span></span><br><span class="line">      &#125;),</span><br><span class="line">    ]);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> config;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>3) 替换 package.json 中 scripts 执行部分</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">/* package.json */</span></span><br><span class="line"></span><br><span class="line">  "scripts": &#123;</span><br><span class="line">-   "start": "react-scripts start",</span><br><span class="line">+   "start": "react-app-rewired start",</span><br><span class="line">-   "build": "react-scripts build",</span><br><span class="line">+   "build": "react-app-rewired build",</span><br><span class="line">-   "test": "react-scripts test --env=jsdom",</span><br><span class="line">+   "test": "react-app-rewired test --env=jsdom",</span><br><span class="line">    "eject": "react-scripts eject"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>注意：不用替换 eject 部分。工具中没有针对 eject 的配置替换，执行了 eject 命令会让工具失去作用（能找到这个插件我也相信你知道 eject 是干嘛的）。</li>
+<li>react-scripts 是 create-react-app 的一个核心包，一些脚本和工具的默认配置都集成在里面，而 react-scripts eject 命令执行后会将封装在 create-react-app 中的配置全部反编译到当前项目，这样用户就能完全取得 webpack 文件的控制权。所以，eject 命令存在的意义就是更改 webpack 配置存在</li>
+</ul>
+<p>3.执行<code>npm run build</code>打包后打开<code>build/index.html</code>文件会发现所有dom都已经加入了，bingo！</p>
+<h3 id="react集成TDK（2020-5-15大佬插件竟然1万3千多赞，惊呆）"><a href="#react集成TDK（2020-5-15大佬插件竟然1万3千多赞，惊呆）" class="headerlink" title="react集成TDK（2020.5.15大佬插件竟然1万3千多赞，惊呆）"></a>react集成TDK（2020.5.15大佬插件竟然1万3千多赞，惊呆）</h3><p><a href="https://github.com/nfl/react-helmet" target="_blank" rel="noopener">传送门官方地址</a><br>非常简单<br>1.安装<code>react-helmet</code>插件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react-helmet --save-dev</span><br></pre></td></tr></table></figure></p>
+<p>打包构建用，不在生产环境使用，所以加到<code>devDependencies</code>配置项下就可以</p>
+<p>2.引入插件，模板中加入<code>Helmet</code>标签即可：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;Helmet&#125; <span class="keyword">from</span> <span class="string">"react-helmet"</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Application</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  render () &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;div className=<span class="string">"application"</span>&gt;</span><br><span class="line">            &lt;Helmet&gt;</span><br><span class="line">                &lt;meta charSet=<span class="string">"utf-8"</span> /&gt;</span><br><span class="line">                &lt;title&gt;title&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">                &lt;meta name="keywords" content="keywords" /</span>&gt;</span><br><span class="line">                &lt;meta name=<span class="string">"description"</span> content=<span class="string">"description"</span> /&gt;</span><br><span class="line">            &lt;<span class="regexp">/Helmet&gt;</span></span><br><span class="line"><span class="regexp">            ...</span></span><br><span class="line"><span class="regexp">        &lt;/</span>div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>注意：嵌套或后继组件将覆盖重复的更改：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;Parent&gt;</span><br><span class="line">    &lt;Helmet&gt;</span><br><span class="line">        &lt;title&gt;My Title&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">        &lt;meta name="description" content="Helmet application" /</span>&gt;</span><br><span class="line">    &lt;<span class="regexp">/Helmet&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    &lt;Child&gt;</span></span><br><span class="line"><span class="regexp">        &lt;Helmet&gt;</span></span><br><span class="line"><span class="regexp">            &lt;title&gt;Nested Title&lt;/</span>title&gt;</span><br><span class="line">            &lt;meta name=<span class="string">"description"</span> content=<span class="string">"Nested component"</span> /&gt;</span><br><span class="line">        &lt;<span class="regexp">/Helmet&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>Child&gt;</span><br><span class="line">&lt;<span class="regexp">/Parent&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/React/" rel="tag"># React</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2019/09/06/常见兼容问题处理/" rel="next" title="常见兼容问题处理">
+                <i class="fa fa-chevron-left"></i> 常见兼容问题处理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2019/12/05/vue预渲染方案/" rel="prev" title="vue预渲染方案">
+                vue预渲染方案 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://www.guoxh.com/blog/img/avatar.png" alt="郭雪辉">
+            
+              <p class="site-author-name" itemprop="name">郭雪辉</p>
+              <p class="site-description motion-element" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/blog/archives/">
+              
+                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/blog/categories/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/blog/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#打包后路径不对解决"><span class="nav-number">1.</span> <span class="nav-text">打包后路径不对解决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装依赖（sass）"><span class="nav-number">2.</span> <span class="nav-text">安装依赖（sass）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css添加浏览器前缀"><span class="nav-number">3.</span> <span class="nav-text">css添加浏览器前缀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局方法"><span class="nav-number">4.</span> <span class="nav-text">全局方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#react集成预渲染方案，解决首屏白屏问题-seo问题"><span class="nav-number">5.</span> <span class="nav-text">react集成预渲染方案，解决首屏白屏问题+seo问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#react集成TDK（2020-5-15大佬插件竟然1万3千多赞，惊呆）"><span class="nav-number">6.</span> <span class="nav-text">react集成TDK（2020.5.15大佬插件竟然1万3千多赞，惊呆）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">郭雪辉</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/blog/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/blog/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":50,"height":100},"mobile":{"show":false},"log":false});</script></body>
+</html>
