@@ -6,10 +6,13 @@ categories: blog
 ---
 ### NEXT主题官方文档，操作扩展都非常详细，有兴趣可以看一看 
 [NEXT主题配置](http://theme-next.iissnan.com/theme-settings.html)   
+[NEXT官方文档](https://theme-next.js.org/docs/getting-started/)
 <h2 id="配置"><a name="t4"></a>配置</h2>
 
 ### 首先我们看看 `主题配置文件` 的配置 `F:\hexo\themes\next\_config.yml`
 ```
+use_motion || motion: true  # 开启动画效果
+use_motion: false # 关闭动画效果
 1. 把页面中的动画效果取消，把enable改为对应的false改为true，然后hexo d -g，再进主页，问题就解决了，下面的length参数对应的是文章预览的文本长度，可以自己设置。
 auto_excerpt:
   enable: false
