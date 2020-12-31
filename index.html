@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +13,13 @@
 <meta name="theme-color" content="#222">
 
 
+
+  
+  
+    
+    
+  <script src="/blog/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/blog/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
 
 
 
@@ -96,9 +103,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/blog/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -160,7 +167,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+        <h1 class="site-subtitle" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</h1>
       
   </div>
 
@@ -190,12 +197,72 @@
         </li>
       
         
+        <li class="menu-item menu-item-about">
+          <a href="/blog/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/blog/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/blog/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/blog/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/blog/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
           </a>
         </li>
       
@@ -249,9 +316,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2020/10/22/经验积累/" itemprop="url">经验积累</a></h1>
+                <a class="post-title-link" href="/blog/2020/10/22/经验积累/" itemprop="url">经验积累</a></h2>
         
 
         <div class="post-meta">
@@ -325,17 +392,20 @@
       
         
           
-            <h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><ol>
-<li><a href="https://segmentfault.com/a/1190000022851543" target="_blank" rel="noopener">那些不常见，但却非常实用的css属性</a></li>
-</ol>
-<h3 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h3><ol>
-<li><a href="https://juejin.im/post/6854573212890562573" target="_blank" rel="noopener">JS开发必须知道的41个技巧</a></li>
-<li><a href="https://juejin.im/post/6844904116339261447" target="_blank" rel="noopener">2020年前端面试复习必读文章【超三百篇文章/赠复习导图】</a></li>
-<li><a href="https://segmentfault.com/a/1190000023941089" target="_blank" rel="noopener">Javascript 里的奇葩知识</a></li>
-</ol>
-<h3 id="遇到过的兼容问题"><a href="#遇到过的兼容问题" class="headerlink" title="遇到过的兼容问题"></a>遇到过的兼容问题</h3><p>1.微信内H5支付问题<br>  手机系统：iOS13、iOS14 （只在苹果手机发现）<br>  微信版本：7.0.17-7.0.18<br>  问题描述：vue history模式跳转，微信内H5支付，刷新页面会出现<code>WeixinJSBridge == &quot;undefined&quot;</code>，并且加兼容判断都没用，只能在跳转支付页时不用<code>$router.push()</code>改用<code>location.href = xx</code>方式。</p>
+          CSS
+那些不常见，但却非常实用的css属性
 
-          
+JS
+JS开发必须知道的41个技巧
+2020年前端面
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/blog/2020/10/22/经验积累/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -399,9 +469,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2020/06/15/小程序直播相关/" itemprop="url">小程序直播相关</a></h1>
+                <a class="post-title-link" href="/blog/2020/06/15/小程序直播相关/" itemprop="url">小程序直播相关</a></h2>
         
 
         <div class="post-meta">
@@ -475,23 +545,15 @@
       
         
           
-            <h3 id="直播插件"><a href="#直播插件" class="headerlink" title="直播插件"></a>直播插件</h3><p>因为小程序组件<code>&lt;live-player /&gt;</code>需要直播相关主体，所以用了腾讯云直播插件<code>&lt;live-room-play /&gt;</code><br><a href="https://cloud.tencent.com/document/product/1078/42916" target="_blank" rel="noopener">相关文档</a><br>其中有个播放状态监控：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 这里有个小窗播放`picture-in-picture-mode`此插件1.3.0版本已经支持，但是没实现了，不知原因，查找中... --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">live-room-play</span> <span class="attr">class</span>=<span class="string">"live-room"</span> <span class="attr">objectFit</span>=<span class="string">"contain"</span> <span class="attr">version</span>=<span class="string">"2"</span> <span class="attr">picture-in-picture-mode</span>=<span class="string">"['push', 'pop']"</span> <span class="attr">liveAppID</span>=<span class="string">""</span> <span class="attr">autoplay</span>=<span class="string">"&#123;&#123;autoPlay&#125;&#125;"</span> <span class="attr">bindPlayEvent</span>=<span class="string">"playStatus"</span> <span class="attr">bindNetStatus</span>=<span class="string">"netStatus"</span> <span class="attr">autopause</span>=<span class="string">"true"</span> <span class="attr">bindError</span>=<span class="string">"error"</span> <span class="attr">playUrl</span>=<span class="string">"&#123;&#123;playUrl&#125;&#125;"</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//播放状态变化事件回调</span></span><br><span class="line">playStatus(e) &#123;</span><br><span class="line">  <span class="keyword">let</span> that = <span class="keyword">this</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"播放状态"</span>, e.detail.detail)</span><br><span class="line">  <span class="keyword">if</span> (e.detail.code == <span class="number">2004</span>) &#123;</span><br><span class="line">    <span class="comment">//视频播放开始</span></span><br><span class="line">    <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">      livePause: <span class="literal">false</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.timer) &#123;</span><br><span class="line">      clearInterval(<span class="keyword">this</span>.timer)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (e.detail.code == <span class="number">2001</span>) &#123;</span><br><span class="line">    <span class="comment">//已经连接服务器</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (e.detail.code == <span class="number">2103</span>) &#123;</span><br><span class="line">    <span class="comment">//网络断连, 启动自动重连</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.data.liveEnd) &#123;</span><br><span class="line">      <span class="comment">//直播结束不再请求</span></span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.timer) &#123;</span><br><span class="line">        clearInterval(<span class="keyword">this</span>.timer)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (e.detail.code == <span class="number">-2301</span>) &#123;</span><br><span class="line">    <span class="comment">// -2301:网络断连且经多次重连抢救无效</span></span><br><span class="line">    <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">      autoPlay: <span class="literal">false</span>,</span><br><span class="line">      livePause: <span class="literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.timer) &#123;</span><br><span class="line">      <span class="keyword">this</span>.timer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"开始请求直播拉流"</span>)</span><br><span class="line">        that.setData(&#123;</span><br><span class="line">          playUrl: that.data.playUrl,</span><br><span class="line">          autoPlay: <span class="literal">true</span></span><br><span class="line">        &#125;)</span><br><span class="line">        that.liveRoomComponent &amp;&amp; that.liveRoomComponent.start();</span><br><span class="line">      &#125;, <span class="number">5000</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (e.detail.code == <span class="number">2006</span>) &#123;</span><br><span class="line">    <span class="comment">//2006:视频播放结束;</span></span><br><span class="line">    <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">      liveEnd: <span class="literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-<h3 id="即时通信IM"><a href="#即时通信IM" class="headerlink" title="即时通信IM"></a>即时通信IM</h3><h5 id="因为是直播，所以IM类型选择直播群"><a href="#因为是直播，所以IM类型选择直播群" class="headerlink" title="因为是直播，所以IM类型选择直播群"></a>因为是直播，所以IM类型选择直播群</h5><p><a href="cloud.tencent.com/document/product/269/43002">官方文档很详细</a></p>
-<p>这里加几个注意的点：</p>
-<h5 id="1-IM设置头像昵称要在ready之后调用"><a href="#1-IM设置头像昵称要在ready之后调用" class="headerlink" title="1. IM设置头像昵称要在ready之后调用"></a>1. IM设置头像昵称要在ready之后调用</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">tim.on(TIM.EVENT.SDK_READY, <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// SDK ready 后接入侧才可以调用 sendMessage 等需要鉴权的接口，否则会提示失败！</span></span><br><span class="line">  <span class="comment">// event.name - TIM.EVENT.SDK_READY</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"SDK ready"</span>, event)</span><br><span class="line">  <span class="comment">// 修改个人标配资料</span></span><br><span class="line">  tim.updateMyProfile(&#123;</span><br><span class="line">    nick: wx.getStorageSync(<span class="string">'wxUserInfo'</span>).nickName,</span><br><span class="line">    avatar: wx.getStorageSync(<span class="string">'wxUserInfo'</span>).avatarUrl</span><br><span class="line">  &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">imResponse</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(imResponse.data); <span class="comment">// 更新资料成功</span></span><br><span class="line">  &#125;).catch(<span class="function"><span class="keyword">function</span> (<span class="params">imError</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.warn(<span class="string">'updateMyProfile error:'</span>, imError); <span class="comment">// 更新资料失败的相关信息</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h5 id="2-有成员加群回调只有调用登录tim-login方法-再调用加群tim-joinGroup方法-才会触发"><a href="#2-有成员加群回调只有调用登录tim-login方法-再调用加群tim-joinGroup方法-才会触发" class="headerlink" title="2.有成员加群回调只有调用登录tim.login方法 再调用加群tim.joinGroup方法 才会触发"></a>2.有成员加群回调只有调用登录<code>tim.login</code>方法 再调用加群<code>tim.joinGroup</code>方法 才会触发</h5><p>示例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//登录IM</span></span><br><span class="line">tim.login(&#123;</span><br><span class="line">  userID: uid, <span class="comment">//用户ID后台返回的用户ID</span></span><br><span class="line">  userSig: data.data.UserSig <span class="comment">//后台返回的根据用户ID生成的加密串</span></span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">imResponse</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"登录成功"</span>, imResponse.data); <span class="comment">// 登录成功</span></span><br><span class="line">  tim.joinGroup(&#123;</span><br><span class="line">    groupID: that.data.groupID,  <span class="comment">//群ID</span></span><br><span class="line">    type: TIM.TYPES.GRP_AVCHATROOM <span class="comment">//类型为直播群必填字段</span></span><br><span class="line">  &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">imResponse</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"加群成功"</span>, imResponse)</span><br><span class="line">    <span class="keyword">switch</span> (imResponse.data.status) &#123;</span><br><span class="line">      <span class="keyword">case</span> TIM.TYPES.JOIN_STATUS_SUCCESS: <span class="comment">// 加群成功</span></span><br><span class="line">        <span class="comment">// console.log(imResponse.data.group) // 加入的群组资料</span></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">      <span class="keyword">case</span> TIM.TYPES.JOIN_STATUS_ALREADY_IN_GROUP: <span class="comment">// 已经在群中</span></span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">      <span class="keyword">default</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;).catch(<span class="function"><span class="keyword">function</span> (<span class="params">imError</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.warn(<span class="string">'加群失败'</span>, imError) <span class="comment">// 申请加群失败的相关信息</span></span><br><span class="line">  &#125;);</span><br><span class="line">  resolve(imResponse)</span><br><span class="line">&#125;).catch(<span class="function"><span class="keyword">function</span> (<span class="params">imError</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.warn(<span class="string">'登录IM失败:'</span>, imError); <span class="comment">// 登录失败的相关信息</span></span><br><span class="line">  reject(imError)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<h5 id="3-判断是否被禁言，调用发消息（包括各种类型的消息）前先判断是否被禁言，如果禁言调用发消息会报错（注意必须在SDK-READY之后调用）"><a href="#3-判断是否被禁言，调用发消息（包括各种类型的消息）前先判断是否被禁言，如果禁言调用发消息会报错（注意必须在SDK-READY之后调用）" class="headerlink" title="3.判断是否被禁言，调用发消息（包括各种类型的消息）前先判断是否被禁言，如果禁言调用发消息会报错（注意必须在SDK_READY之后调用）"></a>3.判断是否被禁言，调用发消息（包括各种类型的消息）前先判断是否被禁言，如果禁言调用发消息会报错（注意必须在SDK_READY之后调用）</h5><p>示例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//判断是否被禁言</span></span><br><span class="line">checkUserBanned() &#123;</span><br><span class="line">  <span class="keyword">let</span> that = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    tim.getGroupMemberProfile(&#123;</span><br><span class="line">      groupID: that.data.groupID,</span><br><span class="line">      userIDList: [wx.getStorageSync(<span class="string">'userInfo'</span>).uid] <span class="comment">//用户ID，必须为数组</span></span><br><span class="line">    &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params">imResponse</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// console.log(imResponse.data.memberList); // 群成员列表</span></span><br><span class="line">      resolve(imResponse.data.memberList)</span><br><span class="line">    &#125;).catch(<span class="function"><span class="keyword">function</span> (<span class="params">imError</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// console.warn('getGroupMemberProfile error:', imError);</span></span><br><span class="line">      reject(imError)</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">//检查是否被禁言,这样调用还有个弊端，每次发消息都会请求禁言接口，导致发消息很慢，所以我优化成了调用login时判断此用户是否被禁言</span></span><br><span class="line">that.checkUserBanned().then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> groupMember <span class="keyword">of</span> res) &#123;</span><br><span class="line">    <span class="keyword">if</span> (groupMember.muteUntil * <span class="number">1000</span> &gt; <span class="built_in">Date</span>.now()) &#123;</span><br><span class="line">      <span class="comment">//禁言中</span></span><br><span class="line">      wx.showToast(&#123;</span><br><span class="line">        title: <span class="string">'您已被禁言'</span>,</span><br><span class="line">        icon: <span class="string">"none"</span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">//未禁言</span></span><br><span class="line">      <span class="keyword">let</span> message = tim.createCustomMessage(&#123;</span><br><span class="line">        to: that.data.groupID,</span><br><span class="line">        conversationType: TIM.TYPES.CONV_GROUP,</span><br><span class="line">        payload: &#123;</span><br><span class="line">          data: <span class="string">''</span>, <span class="comment">// 用于标识该消息是什么类型自定义消息</span></span><br><span class="line">          description: that.liveId, <span class="comment">// 直播ID</span></span><br><span class="line">          extension: number + <span class="string">""</span> <span class="comment">// </span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="comment">// 3. 发送消息</span></span><br><span class="line">      <span class="keyword">let</span> promise = tim.sendMessage(message);</span><br><span class="line">      promise.then(<span class="function"><span class="keyword">function</span> (<span class="params">imResponse</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 发送成功</span></span><br><span class="line">        <span class="built_in">console</span>.log(imResponse);</span><br><span class="line">      &#125;).catch(<span class="function"><span class="keyword">function</span> (<span class="params">imError</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 发送失败</span></span><br><span class="line">        <span class="built_in">console</span>.warn(<span class="string">'sendMessage error:'</span>, imError);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<h5 id="4-进场消息、购买消息等只显示一次，并且显示时间相同的消息实现"><a href="#4-进场消息、购买消息等只显示一次，并且显示时间相同的消息实现" class="headerlink" title="4.进场消息、购买消息等只显示一次，并且显示时间相同的消息实现"></a>4.进场消息、购买消息等只显示一次，并且显示时间相同的消息实现</h5><ul>
-<li>基本原理就是<code>onShow</code>生命周期触发一个定时器方法，在收到进群消息或购买消息回调之后，把收到的消息push到一个相同的数组中，然后页面只展示第一条数组，因为动画是三秒一条消息，所以定时器三秒轮询一次，第一条三秒之后删除，这样不会导致数组内存过大，<br>示例：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">onShow()&#123;</span><br><span class="line">  <span class="keyword">this</span>.tipMsg()</span><br><span class="line">&#125;,</span><br><span class="line">buyMessage(message) &#123;</span><br><span class="line">  <span class="comment">//收到购买消息回调之后，往tipsData数组push一条数据，定时器监测到有数据便会渲染出来</span></span><br><span class="line">  <span class="keyword">let</span> that = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">let</span> res = &#123;&#125;;</span><br><span class="line">  res.avatar = message.avatar;</span><br><span class="line">  res.nick = message.nick;</span><br><span class="line">  res.type = <span class="number">3</span>;</span><br><span class="line">  that.data.tipsData.push(res)</span><br><span class="line">&#125;,</span><br><span class="line">tipMsg() &#123;</span><br><span class="line">  <span class="keyword">let</span> that = <span class="keyword">this</span>;</span><br><span class="line">  that.tipTimer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (that.data.tipsData.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      that.setData(&#123;</span><br><span class="line">        tipsDatas: that.data.tipsData[<span class="number">0</span>] <span class="comment">//这里的tipsData对象便是要渲染到页面中的单条数据</span></span><br><span class="line">      &#125;)</span><br><span class="line">      that.tipAnimation()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, <span class="number">3000</span>);</span><br><span class="line">&#125;,</span><br><span class="line">tipAnimation() &#123;</span><br><span class="line">  <span class="keyword">let</span> that = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">let</span> animation = wx.createAnimation(&#123;</span><br><span class="line">    duration: <span class="number">300</span></span><br><span class="line">  &#125;)</span><br><span class="line">  animation.translateX(<span class="number">0</span>).step()</span><br><span class="line">  that.setData(&#123;</span><br><span class="line">    animationData: animation.export()</span><br><span class="line">  &#125;)</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    animation.translateX(<span class="string">'-100%'</span>).step(&#123;</span><br><span class="line">      duration: <span class="number">0</span></span><br><span class="line">    &#125;)</span><br><span class="line">    that.setData(&#123;</span><br><span class="line">      animationData: animation.export()</span><br><span class="line">    &#125;)</span><br><span class="line">    that.data.tipsData.shift()</span><br><span class="line">    <span class="comment">// console.log(that.data.tipsData)</span></span><br><span class="line">  &#125;, <span class="number">2700</span>);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>tips：这样应该不是最优解，毕竟定时器触发还是有点耗性能的，loading…</p>
-<p>这样做下来直播IM还是相对简单的，毕竟用的API还没有十分之一，很多API都是聊天群才用到的</p>
-<h3 id="小程序云点播功能需要插件并且需要买流量买插件，所以用了H5的播放器"><a href="#小程序云点播功能需要插件并且需要买流量买插件，所以用了H5的播放器" class="headerlink" title="小程序云点播功能需要插件并且需要买流量买插件，所以用了H5的播放器"></a>小程序云点播功能需要插件并且需要买流量买插件，所以用了H5的播放器</h3><p>1.自动播放：查了很多没实现，基本都说，微信浏览器必须有用户操作行为才会播放<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"https://imgcache.qq.com/open/qcloud/video/tcplayer/tcplayer.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--如果需要在 Chrome 和 Firefox 等现代浏览器中通过 H5 播放 HLS 格式的视频，需要在 tcplayer.v4.1.min.js 之前引入 hls.min.0.13.2m.js。--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://imgcache.qq.com/open/qcloud/video/tcplayer/libs/hls.min.0.13.2m.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--播放器脚本文件，不转码用下面这个js--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://imgcache.qq.com/open/qcloud/video/tcplayer/tcplayer.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--播放器脚本文件，转码用下面这个js--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://imgcache.qq.com/open/qcloud/video/tcplayer/tcplayer.v4.1.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 设置播放器容器 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">id</span>=<span class="string">"player-container-id"</span> <span class="attr">preload</span>=<span class="string">"auto"</span> <span class="attr">width</span>=<span class="string">"100%"</span> <span class="attr">height</span>=<span class="string">"100%"</span> <span class="attr">autoplay</span>=<span class="string">"true"</span> <span class="attr">playsinline</span> <span class="attr">webkit-playsinline</span>&gt;</span><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.player = TCPlayer(<span class="string">"player-container-id"</span>, &#123;</span><br><span class="line">  <span class="comment">// player-container-id 为播放器容器 ID，必须与 html 中一致</span></span><br><span class="line">  fileID: data.data[<span class="number">0</span>].file_id, <span class="comment">// 请传入需要播放的视频 filID（必须）</span></span><br><span class="line">  appID: <span class="string">"1500001289"</span>, <span class="comment">// 请传入点播账号的 appID（必须）</span></span><br><span class="line">  <span class="comment">// autoplay: true,</span></span><br><span class="line">  <span class="comment">// plugins: &#123;</span></span><br><span class="line">  <span class="comment">// 	ContinuePlay: &#123;</span></span><br><span class="line">  <span class="comment">// 		// 开启续播功能</span></span><br><span class="line">  <span class="comment">// 		auto: true //[可选] 是否在视频播放后自动续播</span></span><br><span class="line">  <span class="comment">// 	&#125;</span></span><br><span class="line">  <span class="comment">// &#125;</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 切换播放视频</span></span><br><span class="line">methods: &#123;</span><br><span class="line">  chooseVideo(v) &#123;</span><br><span class="line">    <span class="keyword">this</span>.currentId = v.file_id;</span><br><span class="line">    <span class="keyword">this</span>.player.loadVideoByID(&#123;</span><br><span class="line">      fileID: v.file_id, <span class="comment">// 请传入需要播放的视频 filID（必须）</span></span><br><span class="line">      appID: <span class="string">"1500001289"</span> <span class="comment">// 请传入点播账号的 appID（必须）</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
+          直播插件因为小程序组件&lt;live-player /&gt;需要直播相关主体，所以用了腾讯云直播
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/blog/2020/06/15/小程序直播相关/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -555,9 +617,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2020/06/04/小程序写点垃圾代码/" itemprop="url">小程序写点垃圾代码</a></h1>
+                <a class="post-title-link" href="/blog/2020/06/04/小程序写点垃圾代码/" itemprop="url">小程序写点垃圾代码</a></h2>
         
 
         <div class="post-meta">
@@ -631,20 +693,15 @@
       
         
           
-            <h3 id="列表倒计时"><a href="#列表倒计时" class="headerlink" title="列表倒计时"></a>列表倒计时</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//添加倒计时参数res为接口返回数据列表</span></span><br><span class="line">res.find(<span class="function">(<span class="params">v</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> nowTime = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line">    <span class="comment">//expire_time为接口返回截止时间的时间戳</span></span><br><span class="line">    <span class="keyword">let</span> endDate = v.expire_time * <span class="number">1000</span> - nowTime;</span><br><span class="line">    <span class="keyword">if</span> (endDate &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">//倒计时</span></span><br><span class="line">    <span class="keyword">let</span> stop = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">//days | hour 分别表示天和小时</span></span><br><span class="line">        <span class="comment">//days = Math.floor(time.t / 1000 / 60 / 60 / 24);</span></span><br><span class="line">        <span class="comment">//hour = Math.floor(time.t / 1000 / 60 / 60 % 24);</span></span><br><span class="line">        <span class="keyword">let</span> minute = <span class="built_in">Math</span>.floor((endDate / <span class="number">1000</span> / <span class="number">60</span>) % <span class="number">60</span>);</span><br><span class="line">        <span class="keyword">let</span> second = <span class="built_in">Math</span>.floor((endDate / <span class="number">1000</span>) % <span class="number">60</span>);</span><br><span class="line">        <span class="keyword">let</span> min = minute &lt; <span class="number">10</span> ? <span class="string">"0"</span> + minute : minute;</span><br><span class="line">        <span class="keyword">let</span> sec = second &lt; <span class="number">10</span> ? <span class="string">"0"</span> + second : second;</span><br><span class="line">        <span class="keyword">if</span> (endDate &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">          <span class="comment">//如果倒计时结束，改变当前订单状态，重新赋值orderList数据即可</span></span><br><span class="line">          v.status = <span class="number">-1</span>;</span><br><span class="line">          <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">            orderList: <span class="keyword">this</span>.data.orderList</span><br><span class="line">          &#125;)</span><br><span class="line">          clearInterval(stop);</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          endDate -= <span class="number">1000</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        v.goods_time = min + <span class="string">":"</span> + sec;</span><br><span class="line">        <span class="comment">//每秒重新赋值orderList数据</span></span><br><span class="line">        <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">          orderList: <span class="keyword">this</span>.data.orderList</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">       v.status = <span class="number">-1</span>;</span><br><span class="line">       <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">         orderList: <span class="keyword">this</span>.data.orderList</span><br><span class="line">    &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>find() 方法返回通过测试（函数内判断）的数组的第一个元素的值。<br>find() 方法为数组中的每个元素都调用一次函数执行：<br>当数组中的元素在测试条件时返回 true 时, find() 返回符合条件的元素，之后的值不会再调用执行函数。<br>如果没有符合条件的元素返回 undefined<br>注意: find() 对于空数组，函数是不会执行的。<br>注意: find() 并没有改变数组的原始值。</p>
-</blockquote>
-<h3 id="web-view正确使用"><a href="#web-view正确使用" class="headerlink" title="web-view正确使用"></a>web-view正确使用</h3><p>小程序页面：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">navigator</span> <span class="attr">wx:for</span>=<span class="string">"&#123;&#123;imgUrlNew&#125;&#125;"</span> <span class="attr">wx:key</span>=<span class="string">"index"</span> <span class="attr">url</span>=<span class="string">"/pages/webview/webview?skipUrl=&#123;&#123;item.url&#125;&#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">image</span> <span class="attr">src</span>=<span class="string">'&#123;&#123;item.img&#125;&#125;'</span> <span class="attr">mode</span>=<span class="string">"widthFix"</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">text</span>&gt;</span>&#123;&#123;item.name&#125;&#125;<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">navigator</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>封装webview的页面：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- webview.wxml --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">web-view</span> <span class="attr">src</span>=<span class="string">"&#123;&#123;skipUrl&#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">web-view</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>然后在webview.js中：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">data: &#123;</span><br><span class="line">id:<span class="string">''</span>,</span><br><span class="line">imgUrl:<span class="string">''</span></span><br><span class="line">&#125;,</span><br><span class="line">onLoad: <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//获取到链接中的webview链接参数,传入的链接要encode，否则如果链接有其他字符会被截断，然后赋值时再decode</span></span><br><span class="line">    <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">      skipUrl: <span class="built_in">decodeURIComponent</span>(options.skipUrl)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
-<h3 id="父子自定义组件传参-数据绑定"><a href="#父子自定义组件传参-数据绑定" class="headerlink" title="父子自定义组件传参+数据绑定"></a>父子自定义组件传参+数据绑定</h3><p>子组件：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">"close"</span> <span class="attr">bindtap</span>=<span class="string">'onClose'</span>&gt;</span><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 组件的方法列表</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">methods: &#123;</span><br><span class="line">    onClose()&#123;</span><br><span class="line">        <span class="comment">//triggerEvent方法参数：事件名、detail对象和事件选项</span></span><br><span class="line">        <span class="keyword">this</span>.triggerEvent(<span class="string">"closeReserve"</span>,&#123;<span class="string">"name"</span>:<span class="string">"我是子组件传给父组件的数据"</span>&#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>父组件：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">hot-goods-popup</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123;reserveSuccess&#125;&#125;"</span> <span class="attr">bindcloseReserve</span>=<span class="string">"closeReserve"</span> /&gt;</span></span><br></pre></td></tr></table></figure></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 组件的方法列表</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">methods: &#123;</span><br><span class="line">    closeReserve()&#123;</span><br><span class="line">        <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">        reserveSuccess: <span class="literal">false</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>### </p>
-
-          
+          列表倒计时123456789101112131415161718192021222324252627
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/blog/2020/06/04/小程序写点垃圾代码/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -708,9 +765,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2020/04/24/微信小程序canvas2d实例/" itemprop="url">微信小程序canvas2d实例</a></h1>
+                <a class="post-title-link" href="/blog/2020/04/24/微信小程序canvas2d实例/" itemprop="url">微信小程序canvas2d实例</a></h2>
         
 
         <div class="post-meta">
@@ -784,11 +841,15 @@
       
         
           
-            <h3 id="canvas2d生成图片，本人菜，所以踩了很多坑，记录下步骤代码，温故而知新"><a href="#canvas2d生成图片，本人菜，所以踩了很多坑，记录下步骤代码，温故而知新" class="headerlink" title="canvas2d生成图片，本人菜，所以踩了很多坑，记录下步骤代码，温故而知新"></a>canvas2d生成图片，本人菜，所以踩了很多坑，记录下步骤代码，温故而知新</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//保存图片</span></span><br><span class="line">saveImg() &#123;</span><br><span class="line">  <span class="comment">//获取canvas实例，因为要获取canvas节点，所以不能使用wx:if隐藏</span></span><br><span class="line">  <span class="keyword">const</span> query = wx.createSelectorQuery();</span><br><span class="line">  query.select(<span class="string">'#canvas'</span>)</span><br><span class="line">    .fields(&#123;</span><br><span class="line">      node: <span class="literal">true</span>,</span><br><span class="line">      size: <span class="literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line">    .exec(<span class="keyword">async</span> (res) =&gt; &#123;</span><br><span class="line">      <span class="comment">//要在获取node节点回调执行保存</span></span><br><span class="line">      wx.canvasToTempFilePath(&#123;</span><br><span class="line">        x: <span class="number">0</span>,</span><br><span class="line">        y: <span class="number">0</span>,</span><br><span class="line">        width: res[<span class="number">0</span>].width * wx.getSystemInfoSync().pixelRatio,</span><br><span class="line">        height: res[<span class="number">0</span>].height * wx.getSystemInfoSync().pixelRatio,</span><br><span class="line">        destWidth: res[<span class="number">0</span>].width * wx.getSystemInfoSync().pixelRatio * <span class="number">2</span>,</span><br><span class="line">        destHeight: res[<span class="number">0</span>].height * wx.getSystemInfoSync().pixelRatio * <span class="number">2</span>,</span><br><span class="line">        canvas: res[<span class="number">0</span>].node,</span><br><span class="line">        success(res) &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(res)</span><br><span class="line">          wx.saveImageToPhotosAlbum(&#123;</span><br><span class="line">            filePath: res.tempFilePath,</span><br><span class="line">            success(res) &#123;</span><br><span class="line">              wx.showToast(&#123;</span><br><span class="line">                title: <span class="string">'保存成功'</span>,</span><br><span class="line">                icon: <span class="string">"none"</span></span><br><span class="line">              &#125;)</span><br><span class="line">              <span class="built_in">console</span>.log(res)</span><br><span class="line">            &#125;,</span><br><span class="line">            complete(res) &#123;</span><br><span class="line">              <span class="built_in">console</span>.log(res)</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;,</span><br><span class="line">        complete(res) &#123;</span><br><span class="line">          <span class="built_in">console</span>.log(res)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//生成海报</span></span><br><span class="line">getPost(e) &#123;</span><br><span class="line">  <span class="comment">//因为要获取手机号生成邀请码所以要先判断登录</span></span><br><span class="line">  <span class="keyword">if</span> (wx.getStorageSync(<span class="string">'isLogin'</span>)) &#123;</span><br><span class="line">    <span class="keyword">if</span> (e.detail.errMsg != <span class="string">"getUserInfo:ok"</span>) &#123;</span><br><span class="line">      wx.showModal(&#123;</span><br><span class="line">        title: <span class="string">'提示!'</span>,</span><br><span class="line">        content: <span class="string">'请允许授权,否则无法生成海报!'</span>,</span><br><span class="line">        showCancel: <span class="literal">false</span></span><br><span class="line">      &#125;)</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> avatar = e.detail.userInfo.avatarUrl</span><br><span class="line">    <span class="keyword">let</span> nickname = e.detail.userInfo.nickName</span><br><span class="line">    <span class="keyword">const</span> that = <span class="keyword">this</span>;</span><br><span class="line">    wx.showLoading(&#123;</span><br><span class="line">      title: <span class="string">'海报生成中...'</span>,</span><br><span class="line">      mask: <span class="literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line">    wx.createSelectorQuery().select(<span class="string">'#canvas'</span>).fields(&#123;</span><br><span class="line">      node: <span class="literal">true</span>,</span><br><span class="line">      size: <span class="literal">true</span>,</span><br><span class="line">    &#125;).exec(<span class="keyword">async</span> (res) =&gt; &#123;</span><br><span class="line">      <span class="comment">//要在获取node节点之后回调执行绘画</span></span><br><span class="line">      <span class="built_in">console</span>.log(res)</span><br><span class="line">      <span class="keyword">const</span> canvas = res[<span class="number">0</span>].node;</span><br><span class="line">      <span class="keyword">const</span> ctx = canvas.getContext(<span class="string">'2d'</span>);</span><br><span class="line">      <span class="keyword">const</span> width = res[<span class="number">0</span>].width;</span><br><span class="line">      <span class="keyword">const</span> height = res[<span class="number">0</span>].height;</span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">this</span>.data.flag)&#123;</span><br><span class="line">        <span class="comment">//这里加个开关只有第一次绘制才设置canvas宽高，因为多次点击显示隐藏不会重绘，所以会导致canvas画布越来越大</span></span><br><span class="line">        <span class="keyword">const</span> dpr = wx.getSystemInfoSync().pixelRatio</span><br><span class="line">        canvas.width = width * dpr;</span><br><span class="line">        canvas.height = height * dpr;</span><br><span class="line">        ctx.scale(dpr, dpr);</span><br><span class="line">        <span class="keyword">this</span>.data.flag = <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">const</span> bgImg = canvas.createImage();</span><br><span class="line">      bgImg.src = wx.getStorageSync(<span class="string">'postBg'</span>);</span><br><span class="line">      <span class="keyword">let</span> bgImgPo = <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        bgImg.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          resolve(bgImg)</span><br><span class="line">        &#125;</span><br><span class="line">        bgImg.onerror = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">          reject(e)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="comment">//背景图必须这样用await异步，否则背景图会把背景图上的文字遮盖，待老夫研究原理再补充</span></span><br><span class="line">      ctx.drawImage(bgImgPo, <span class="number">0</span>, <span class="number">0</span>, <span class="number">257</span>, <span class="number">389</span>)</span><br><span class="line">      <span class="comment">//用户昵称</span></span><br><span class="line">      ctx.font = <span class="string">"normal bold 14px sans-serif"</span>;</span><br><span class="line">      ctx.fillStyle = <span class="string">"#FFFFFF"</span></span><br><span class="line">      ctx.fillText(<span class="string">`<span class="subst">$&#123;nickname&#125;</span>邀您参加`</span>, <span class="number">42</span>, <span class="number">24</span>)</span><br><span class="line">      <span class="comment">//参与</span></span><br><span class="line">      ctx.font = <span class="string">"normal bold 14px sans-serif"</span>;</span><br><span class="line">      ctx.fillStyle = <span class="string">"#FFFFFF"</span></span><br><span class="line">      ctx.strokeStyle = <span class="string">"#4B32A9"</span></span><br><span class="line">      ctx.strokeText(<span class="string">'长按识别二维码参与'</span>, <span class="number">75</span>, <span class="number">373</span>)</span><br><span class="line">      ctx.fillText(<span class="string">'长按识别二维码参与'</span>, <span class="number">75</span>, <span class="number">373</span>)</span><br><span class="line"></span><br><span class="line">      <span class="comment">//二维码裁剪</span></span><br><span class="line">      <span class="function"><span class="keyword">function</span> <span class="title">canvasQR</span>(<span class="params">qrImgUrl</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">const</span> qrImg = canvas.createImage();</span><br><span class="line">        qrImg.src = qrImgUrl;</span><br><span class="line">        qrImg.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          ctx.save();</span><br><span class="line">          ctx.beginPath() <span class="comment">//开始创建一个路径</span></span><br><span class="line">          ctx.arc(<span class="number">128</span>, <span class="number">319</span>, <span class="number">32</span>, <span class="number">0</span>, <span class="number">2</span> * <span class="built_in">Math</span>.PI, <span class="literal">false</span>) <span class="comment">//画一个圆形裁剪区域</span></span><br><span class="line">          ctx.clip() <span class="comment">//裁剪</span></span><br><span class="line">          ctx.drawImage(qrImg, <span class="number">96</span>, <span class="number">287</span>, <span class="number">65</span>, <span class="number">65</span>);</span><br><span class="line">          ctx.closePath();</span><br><span class="line">          ctx.restore();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      canvasQR(<span class="string">'http://www.guoxh.com/blog/img/blog/qr.png'</span>);</span><br><span class="line"></span><br><span class="line">      <span class="comment">//头像裁剪</span></span><br><span class="line">      <span class="function"><span class="keyword">function</span> <span class="title">canvasWxHeader</span>(<span class="params">headImageLocal</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">const</span> headerImg = canvas.createImage();</span><br><span class="line">        headerImg.src = headImageLocal;</span><br><span class="line">        headerImg.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          ctx.save();</span><br><span class="line">          ctx.beginPath() <span class="comment">//开始创建一个路径</span></span><br><span class="line">          ctx.arc(<span class="number">26</span>, <span class="number">21</span>, <span class="number">12</span>, <span class="number">0</span>, <span class="number">2</span> * <span class="built_in">Math</span>.PI, <span class="literal">false</span>) <span class="comment">//画一个圆形裁剪区域</span></span><br><span class="line">          ctx.clip() <span class="comment">//裁剪</span></span><br><span class="line">          ctx.drawImage(headerImg, <span class="number">14</span>, <span class="number">5</span>, <span class="number">24</span>, <span class="number">30</span>);</span><br><span class="line">          ctx.closePath();</span><br><span class="line">          ctx.restore();</span><br><span class="line">          <span class="comment">//关闭loading</span></span><br><span class="line">          wx.hideLoading();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      canvasWxHeader(avatar);</span><br><span class="line"></span><br><span class="line">      that.setData(&#123;</span><br><span class="line">        postPopup: <span class="literal">true</span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    wx.navigateTo(&#123;</span><br><span class="line">      url: <span class="string">'/pages/login/login'</span>,</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-<h3 id="canvas不能wx-if隐藏，否则会获取不到元素，可以使用fixed-top-9999rpx实现"><a href="#canvas不能wx-if隐藏，否则会获取不到元素，可以使用fixed-top-9999rpx实现" class="headerlink" title="canvas不能wx:if隐藏，否则会获取不到元素，可以使用fixed+top:-9999rpx实现"></a>canvas不能wx:if隐藏，否则会获取不到元素，可以使用fixed+top:-9999rpx实现</h3><h3 id="canvas-2d生成背景图片不遮挡文字：使用await"><a href="#canvas-2d生成背景图片不遮挡文字：使用await" class="headerlink" title="canvas 2d生成背景图片不遮挡文字：使用await"></a>canvas 2d生成背景图片不遮挡文字：使用await</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bgImg = canvas.createImage();</span><br><span class="line">      bgImg.src = <span class="string">'http://www.guoxh.com/blog/img/blog/qr.png'</span>;</span><br><span class="line">      <span class="keyword">let</span> bgImgPo = <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        bgImg.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          resolve(bgImg)</span><br><span class="line">        &#125;</span><br><span class="line">        bgImg.onerror = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">          reject(e)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      ctx.drawImage(bgImgPo, <span class="number">0</span>, <span class="number">0</span>, <span class="number">257</span>, <span class="number">389</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="设置ctx-font-“normal-bold-14px-sans-serif”-一定要写全，或者不要写微信没有的字体，虽然我不知道微信没有什么字体，所以我就抄网上的，一定要记住，不然安卓会闪退-ㄒoㄒ"><a href="#设置ctx-font-“normal-bold-14px-sans-serif”-一定要写全，或者不要写微信没有的字体，虽然我不知道微信没有什么字体，所以我就抄网上的，一定要记住，不然安卓会闪退-ㄒoㄒ" class="headerlink" title="设置ctx.font = “normal bold 14px sans-serif”;一定要写全，或者不要写微信没有的字体，虽然我不知道微信没有什么字体，所以我就抄网上的，一定要记住，不然安卓会闪退/(ㄒoㄒ)/~~"></a>设置ctx.font = “normal bold 14px sans-serif”;一定要写全，或者不要写微信没有的字体，虽然我不知道微信没有什么字体，所以我就抄网上的，一定要记住，不然安卓会闪退/(ㄒoㄒ)/~~</h2>
-          
+          canvas2d生成图片，本人菜，所以踩了很多坑，记录下步骤代码，温故而知新123456789101
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/blog/2020/04/24/微信小程序canvas2d实例/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -852,9 +913,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2019/12/05/Nuxt.js预渲染/" itemprop="url">Nuxt.js预渲染</a></h1>
+                <a class="post-title-link" href="/blog/2019/12/05/Nuxt.js预渲染/" itemprop="url">Nuxt.js预渲染</a></h2>
         
 
         <div class="post-meta">
@@ -928,22 +989,15 @@
       
         
           
-            <h2 id="个人认为这个框架有点鸡肋，起初以为它可以做到SSR，事实too-young-too-naive-这个框架还是相当于封装了个prerender-spa-plugin插件，增加了一些独有的特性和方法，要想做到SSR还是得依赖node；"><a href="#个人认为这个框架有点鸡肋，起初以为它可以做到SSR，事实too-young-too-naive-这个框架还是相当于封装了个prerender-spa-plugin插件，增加了一些独有的特性和方法，要想做到SSR还是得依赖node；" class="headerlink" title="个人认为这个框架有点鸡肋，起初以为它可以做到SSR，事实too young too naive,这个框架还是相当于封装了个prerender-spa-plugin插件，增加了一些独有的特性和方法，要想做到SSR还是得依赖node；"></a>个人认为这个框架有点鸡肋，起初以为它可以做到SSR，事实too young too naive,这个框架还是相当于封装了个prerender-spa-plugin插件，增加了一些独有的特性和方法，要想做到SSR还是得依赖node；</h2><h3 id="nuxt基于vuejs的seo优化"><a href="#nuxt基于vuejs的seo优化" class="headerlink" title="nuxt基于vuejs的seo优化"></a>nuxt基于vuejs的seo优化</h3><p>一、css单独打包<br>在nuxt.config.js配置中加下面代码：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">build: &#123;</span><br><span class="line">    extractCSS: true,</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
-<p>二、html中TDK自定义<br>page目录下的.vue文件中加下面代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">	head() &#123;</span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">			title: <span class="string">"title"</span>,</span><br><span class="line">			meta: [</span><br><span class="line">				&#123;</span><br><span class="line">					hid: <span class="string">"description"</span>,</span><br><span class="line">					name: <span class="string">"description"</span>,</span><br><span class="line">					content: <span class="string">"desc"</span></span><br><span class="line">				&#125;,</span><br><span class="line">				&#123;</span><br><span class="line">					hid: <span class="string">"keywords"</span>,</span><br><span class="line">					name: <span class="string">"keywords"</span>,</span><br><span class="line">					content: <span class="string">"key"</span></span><br><span class="line">				&#125;</span><br><span class="line">			]</span><br><span class="line">		&#125;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>三、修改局域网配置<br>在package.json中新添加<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">"config": &#123;</span><br><span class="line">    "nuxt": &#123;</span><br><span class="line">      "host": "127.0.0.1",</span><br><span class="line">      "port": "8080"</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
-<p>四、插件引用<br>以生成二维码插件为例：<br>1.在<code>plugins</code>目录下新建<code>qrcode.js</code>文件:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> qrcode <span class="keyword">from</span> <span class="string">"qrcodejs2"</span>;</span><br><span class="line"></span><br><span class="line">Vue.prototype.$qrcode = qrcode;</span><br></pre></td></tr></table></figure></p>
-<p>2.在<code>nuxt.config.js</code>配置文件中：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">	&#123; <span class="attr">src</span>: <span class="string">'~/plugins/qrcode.js'</span>, <span class="attr">ssr</span>: <span class="literal">false</span> &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<p>这样就可以在全局.vue中使用了，<code>new this.$qrcode()</code></p>
-<p>五、环境配置<br>1.<code>nuxt.config.js</code>文件中添加配置项：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">env: &#123;</span><br><span class="line">	BASE_URL: process.env.BASE_URL,</span><br><span class="line">	NODE_ENV: process.env.NODE_ENV</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
-<p>2.<code>package.json</code>文件中修改：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">	"dev": "cross-env BASE_URL=http://xxx NODE_ENV=development nuxt",</span><br><span class="line">	"test": "cross-env BASE_URL=http://xxx NODE_ENV=production nuxt generate",</span><br><span class="line">	"generate": "cross-env BASE_URL=http://xxx NODE_ENV=production nuxt generate"</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
-<p>这样，本地、测试、生产环境就都有了，执行对应命令即可如：npm run dev, npm run test, npm run generate</p>
-<p>3.在axios等请求中就可以使用不同的<code>process.env.BASE_URL</code>来使用接口域名</p>
-<p>六、asyncData 方法</p>
-<ul>
-<li>你可能想要在服务器端获取并渲染数据。Nuxt.js添加了asyncData方法使得你能够在渲染组件之前异步获取数据。</li>
-</ul>
-
-          
+          个人认为这个框架有点鸡肋，起初以为它可以做到SSR，事实too young too naive,这个
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/blog/2019/12/05/Nuxt.js预渲染/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1007,9 +1061,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2019/12/05/vue预渲染方案/" itemprop="url">vue预渲染方案</a></h1>
+                <a class="post-title-link" href="/blog/2019/12/05/vue预渲染方案/" itemprop="url">vue预渲染方案</a></h2>
         
 
         <div class="post-meta">
@@ -1083,11 +1137,15 @@
       
         
           
-            <h3 id="vue-cli基于webpack-prerender-spa-plugin-vue-meta-info的seo优化"><a href="#vue-cli基于webpack-prerender-spa-plugin-vue-meta-info的seo优化" class="headerlink" title="@vue/cli基于webpack + prerender-spa-plugin + vue-meta-info的seo优化"></a>@vue/cli基于webpack + prerender-spa-plugin + vue-meta-info的seo优化</h3><p>1.安装<code>prerender-spa-plugin</code>插件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i prerender-spa-plugin</span><br></pre></td></tr></table></figure></p>
-<p>2.@vue/cli（vuecli3）配置<code>vue.config.js</code>文件添加插件参数配置：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> PrerenderSPAPlugin = <span class="built_in">require</span>(<span class="string">'prerender-spa-plugin'</span>)</span><br><span class="line"><span class="keyword">const</span> Renderer = PrerenderSPAPlugin.PuppeteerRenderer</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  publicPath: <span class="string">'/'</span>,</span><br><span class="line">  configureWebpack: <span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span>) <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      plugins: [</span><br><span class="line">        <span class="keyword">new</span> PrerenderSPAPlugin(&#123;</span><br><span class="line">          <span class="comment">// 生成文件的路径，也可以与webpakc打包的一致。</span></span><br><span class="line">          <span class="comment">// 下面这句话非常重要！！！</span></span><br><span class="line">          <span class="comment">// 这个目录只能有一级，如果目录层次大于一级，在生成的时候不会有任何错误提示，在预渲染的时候只会卡着不动。</span></span><br><span class="line">          staticDir: path.join(__dirname, <span class="string">'dist'</span>),</span><br><span class="line">          <span class="comment">// outputDir: path.join(__dirname, './'),</span></span><br><span class="line">          <span class="comment">// 对应自己的路由文件，比如a有参数，就需要写成 /a/param1。</span></span><br><span class="line">          routes: [<span class="string">'/'</span>, <span class="string">'/about'</span>, <span class="string">'/contact'</span>],</span><br><span class="line">          renderer: <span class="keyword">new</span> Renderer(&#123;</span><br><span class="line">            inject: &#123;</span><br><span class="line">              foo: <span class="string">'bar'</span></span><br><span class="line">            &#125;,</span><br><span class="line">            headless: <span class="literal">false</span>,</span><br><span class="line">            <span class="comment">// 在 main.js 中 document.dispatchEvent(new Event('render-event'))，两者的事件名称要对应上。</span></span><br><span class="line">            renderAfterDocumentEvent: <span class="string">'render-event'</span></span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>3.在<code>main.js</code>中添加代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  render: <span class="function"><span class="params">h</span> =&gt;</span> h(App),</span><br><span class="line">  mounted () &#123;</span><br><span class="line">    <span class="comment">//dispatchEvent() 方法给节点分派一个合成事件</span></span><br><span class="line">    <span class="built_in">document</span>.dispatchEvent(<span class="keyword">new</span> Event(<span class="string">'render-event'</span>))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;).$mount(<span class="string">'#app'</span>)</span><br></pre></td></tr></table></figure></p>
-
-          
+          @vue/cli基于webpack + prerender-spa-plugin + vue-met
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/blog/2019/12/05/vue预渲染方案/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1151,9 +1209,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2019/11/28/react记录/" itemprop="url">react记录</a></h1>
+                <a class="post-title-link" href="/blog/2019/11/28/react记录/" itemprop="url">react记录</a></h2>
         
 
         <div class="post-meta">
@@ -1227,33 +1285,15 @@
       
         
           
-            <h3 id="打包后路径不对解决"><a href="#打包后路径不对解决" class="headerlink" title="打包后路径不对解决"></a>打包后路径不对解决</h3><p>执行<code>npm run build</code>后发现打包文件路径错误，在package.json文件最外层添加<code>&quot;homepage&quot;: &quot;./&quot;</code></p>
-<h3 id="安装依赖（sass）"><a href="#安装依赖（sass）" class="headerlink" title="安装依赖（sass）"></a>安装依赖（sass）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install node-sass --save</span><br></pre></td></tr></table></figure>
-<h3 id="css添加浏览器前缀"><a href="#css添加浏览器前缀" class="headerlink" title="css添加浏览器前缀"></a>css添加浏览器前缀</h3><p>修改<code>package.json</code>文件中的<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">"browserslist": &#123;</span><br><span class="line">  <span class="comment">// 正式环境</span></span><br><span class="line">  "production": [</span><br><span class="line">    "&gt; 1%",</span><br><span class="line">    "last 2 versions",</span><br><span class="line">    "not ie &lt;= 8",</span><br><span class="line">    "iOS &gt;= 6",</span><br><span class="line">    "Android &gt; 4.1",</span><br><span class="line">    <span class="string">"Firefox &gt; 20"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 开发环境</span></span><br><span class="line">  "development": [</span><br><span class="line">    "last 1 chrome version",</span><br><span class="line">    "last 1 firefox version",</span><br><span class="line">    <span class="string">"last 1 safari version"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="全局方法"><a href="#全局方法" class="headerlink" title="全局方法"></a>全局方法</h3><p>例如引用axios到全局<br>在<code>index.js</code>中：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Axios <span class="keyword">from</span> <span class="string">'axios'</span>;<span class="comment">//直接引用  </span></span><br><span class="line"><span class="comment">//or</span></span><br><span class="line"><span class="keyword">import</span> Axios <span class="keyword">from</span> <span class="string">"/axios/index.js"</span>;<span class="comment">//如果封装了axios，还可以引入封装后的文件</span></span><br><span class="line">React.$axios = Axios;</span><br></pre></td></tr></table></figure></p>
-<h3 id="react集成预渲染方案，解决首屏白屏问题-seo问题"><a href="#react集成预渲染方案，解决首屏白屏问题-seo问题" class="headerlink" title="react集成预渲染方案，解决首屏白屏问题+seo问题"></a>react集成预渲染方案，解决首屏白屏问题+seo问题</h3><p>1.安装单页应用预渲染插件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install prerender-spa-plugin --save-dev</span><br></pre></td></tr></table></figure></p>
-<p>2.安装自定义配置插件（此工具可以自定义配置webpack插件）</p>
-<p>1) 安装插件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react-app-rewired --save-dev</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p><a href="https://github.com/timarney/react-app-rewired/blob/HEAD/README_zh.md" target="_blank" rel="noopener">插件官网</a><br>此工具可以在不 ‘eject’ 也不创建额外 react-scripts 的情况下修改 create-react-app 内置的 webpack 配置，然后你将拥有 create-react-app 的一切特性，且可以根据你的需要去配置 webpack 的 plugins, loaders 等。<br>使用了 react-app-rewired 之后，等于你得到了项目的配置权，但这表示你的项目将无法得到 CRA 提供的配置“保证”，希望你知道自己要做什么。</p>
-</blockquote>
-<p>2) 在根目录中创建一个 config-overrides.js 文件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+-- your-project</span><br><span class="line">|   +-- config-overrides.js  <span class="comment">//新增</span></span><br><span class="line">|   +-- node_modules</span><br><span class="line">|   +-- package.json</span><br><span class="line">|   +-- public</span><br><span class="line">|   +-- README.md</span><br><span class="line">|   +-- src</span><br></pre></td></tr></table></figure></p>
-<p>文件中添加<code>prerender-spa-plugin</code>插件的配置项：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* config-overrides.js */</span></span><br><span class="line"><span class="keyword">const</span> PrerenderSPAPlugin = <span class="built_in">require</span>(<span class="string">'prerender-spa-plugin'</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function">(<span class="params">config, env</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (env === <span class="string">'production'</span>) &#123;</span><br><span class="line">    config.plugins = config.plugins.concat([</span><br><span class="line">      <span class="keyword">new</span> PrerenderSPAPlugin(&#123;</span><br><span class="line">        routes: [<span class="string">'/'</span>],  <span class="comment">//路由地址，要生成静态文件的路由添加在数组中</span></span><br><span class="line">        staticDir: path.join(__dirname, <span class="string">'build'</span>),  <span class="comment">//staticDir是使用哪个文件夹作为模板目录默认build</span></span><br><span class="line">      &#125;),</span><br><span class="line">    ]);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> config;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>3) 替换 package.json 中 scripts 执行部分</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">/* package.json */</span></span><br><span class="line"></span><br><span class="line">  "scripts": &#123;</span><br><span class="line">-   "start": "react-scripts start",</span><br><span class="line">+   "start": "react-app-rewired start",</span><br><span class="line">-   "build": "react-scripts build",</span><br><span class="line">+   "build": "react-app-rewired build",</span><br><span class="line">-   "test": "react-scripts test --env=jsdom",</span><br><span class="line">+   "test": "react-app-rewired test --env=jsdom",</span><br><span class="line">    "eject": "react-scripts eject"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>注意：不用替换 eject 部分。工具中没有针对 eject 的配置替换，执行了 eject 命令会让工具失去作用（能找到这个插件我也相信你知道 eject 是干嘛的）。</li>
-<li>react-scripts 是 create-react-app 的一个核心包，一些脚本和工具的默认配置都集成在里面，而 react-scripts eject 命令执行后会将封装在 create-react-app 中的配置全部反编译到当前项目，这样用户就能完全取得 webpack 文件的控制权。所以，eject 命令存在的意义就是更改 webpack 配置存在</li>
-</ul>
-<p>3.执行<code>npm run build</code>打包后打开<code>build/index.html</code>文件会发现所有dom都已经加入了，bingo！</p>
-<h3 id="react集成TDK（2020-5-15大佬插件竟然1万3千多赞，惊呆）"><a href="#react集成TDK（2020-5-15大佬插件竟然1万3千多赞，惊呆）" class="headerlink" title="react集成TDK（2020.5.15大佬插件竟然1万3千多赞，惊呆）"></a>react集成TDK（2020.5.15大佬插件竟然1万3千多赞，惊呆）</h3><p><a href="https://github.com/nfl/react-helmet" target="_blank" rel="noopener">传送门官方地址</a><br>非常简单<br>1.安装<code>react-helmet</code>插件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react-helmet --save-dev</span><br></pre></td></tr></table></figure></p>
-<p>打包构建用，不在生产环境使用，所以加到<code>devDependencies</code>配置项下就可以</p>
-<p>2.引入插件，模板中加入<code>Helmet</code>标签即可：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;Helmet&#125; <span class="keyword">from</span> <span class="string">"react-helmet"</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Application</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  render () &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;div className=<span class="string">"application"</span>&gt;</span><br><span class="line">            &lt;Helmet&gt;</span><br><span class="line">                &lt;meta charSet=<span class="string">"utf-8"</span> /&gt;</span><br><span class="line">                &lt;title&gt;title&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">                &lt;meta name="keywords" content="keywords" /</span>&gt;</span><br><span class="line">                &lt;meta name=<span class="string">"description"</span> content=<span class="string">"description"</span> /&gt;</span><br><span class="line">            &lt;<span class="regexp">/Helmet&gt;</span></span><br><span class="line"><span class="regexp">            ...</span></span><br><span class="line"><span class="regexp">        &lt;/</span>div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>注意：嵌套或后继组件将覆盖重复的更改：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;Parent&gt;</span><br><span class="line">    &lt;Helmet&gt;</span><br><span class="line">        &lt;title&gt;My Title&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">        &lt;meta name="description" content="Helmet application" /</span>&gt;</span><br><span class="line">    &lt;<span class="regexp">/Helmet&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    &lt;Child&gt;</span></span><br><span class="line"><span class="regexp">        &lt;Helmet&gt;</span></span><br><span class="line"><span class="regexp">            &lt;title&gt;Nested Title&lt;/</span>title&gt;</span><br><span class="line">            &lt;meta name=<span class="string">"description"</span> content=<span class="string">"Nested component"</span> /&gt;</span><br><span class="line">        &lt;<span class="regexp">/Helmet&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>Child&gt;</span><br><span class="line">&lt;<span class="regexp">/Parent&gt;</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-
-          
+          打包后路径不对解决执行npm run build后发现打包文件路径错误，在package.json文
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/blog/2019/11/28/react记录/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1317,9 +1357,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2019/09/06/常见兼容问题处理/" itemprop="url">常见兼容问题处理</a></h1>
+                <a class="post-title-link" href="/blog/2019/09/06/常见兼容问题处理/" itemprop="url">常见兼容问题处理</a></h2>
         
 
         <div class="post-meta">
@@ -1393,34 +1433,16 @@
       
         
           
-            <h3 id="1-ios键盘唤起，键盘收起以后页面不归位"><a href="#1-ios键盘唤起，键盘收起以后页面不归位" class="headerlink" title="1.ios键盘唤起，键盘收起以后页面不归位"></a>1.ios键盘唤起，键盘收起以后页面不归位</h3><ul>
-<li>现状：输入内容，软键盘弹出，页面内容整体上移，但是键盘收起，页面内容不下滑</li>
-<li>原因：固定定位的元素 在元素内 input 框聚焦的时候 弹出的软键盘占位 失去焦点的时候软键盘消失 但是还是占位的 导致input框不能再次输入 在失去焦点的时候给一个事件</li>
-<li>解决方法：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> @<span class="attr">blur.prevent</span>=<span class="string">"blur()"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">blur()&#123;</span><br><span class="line"><span class="javascript">   <span class="keyword">let</span> u = navigator.userAgent;</span></span><br><span class="line"><span class="javascript">   <span class="keyword">let</span> isIOS = !!u.match(<span class="regexp">/\(i[^;]+;( U;)? CPU.+Mac OS X/</span>);</span></span><br><span class="line">   if(isIOS)&#123;</span><br><span class="line"><span class="javascript">     setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">       <span class="keyword">const</span> scrollHeight = <span class="built_in">document</span>.documentElement.scrollTop || <span class="built_in">document</span>.body.scrollTop || <span class="number">0</span></span></span><br><span class="line"><span class="javascript">       <span class="built_in">window</span>.scrollTo(<span class="number">0</span>, <span class="built_in">Math</span>.max(scrollHeight - <span class="number">1</span>, <span class="number">0</span>))</span></span><br><span class="line">       &#125;, 200)</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="2-安卓弹出的键盘遮盖文本框"><a href="#2-安卓弹出的键盘遮盖文本框" class="headerlink" title="2.安卓弹出的键盘遮盖文本框"></a>2.安卓弹出的键盘遮盖文本框</h3><ul>
-<li>现状：安卓微信H5弹出软键盘后挡住input输入框</li>
-<li>原因：因为调用安卓键盘有一点迟钝，导致如果不延时处理的话，滚动就失效了</li>
-<li>解决方法：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> @<span class="attr">focus</span>=<span class="string">"focus()"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">focus()&#123;</span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> u = navigator.userAgent;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> isAndroid = u.indexOf(<span class="string">'Android'</span>) &gt; <span class="number">-1</span> || u.indexOf(<span class="string">'Linux'</span>) &gt; <span class="number">-1</span>;</span></span><br><span class="line">      if(isAndroid)&#123;</span><br><span class="line"><span class="javascript">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">         <span class="built_in">document</span>.activeElement.scrollIntoViewIfNeeded();</span></span><br><span class="line"><span class="javascript">         <span class="built_in">document</span>.activeElement.scrollIntoView();</span></span><br><span class="line">        &#125;, 500);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<blockquote>
-<p>Element.scrollIntoView()方法让当前的元素滚动到浏览器窗口的可视区域内。而Element.scrollIntoViewIfNeeded()方法也是用来将不在浏览器窗口的可见区域内的元素滚动到浏览器窗口的可见区域。但如果该元素已经在浏览器窗口的可见区域内，则不会发生滚动</p>
-</blockquote>
-<h3 id="3-Vue中路由使用hash模式，开发微信H5页面分享时在安卓上设置分享成功，但是ios的分享异常"><a href="#3-Vue中路由使用hash模式，开发微信H5页面分享时在安卓上设置分享成功，但是ios的分享异常" class="headerlink" title="3.Vue中路由使用hash模式，开发微信H5页面分享时在安卓上设置分享成功，但是ios的分享异常"></a>3.Vue中路由使用hash模式，开发微信H5页面分享时在安卓上设置分享成功，但是ios的分享异常</h3><ul>
-<li>现状：ios当前页面分享给好友，点击进来是正常，如果二次分享，则异常；使用vue router跳转到第二个页面后在分享时，分享设置失败；以上安卓分享都是正常</li>
-<li>原因：jssdk是后端进行签署，前端校验，但是有时跨域，ios是分享以后会自动带上 from=singlemessage&amp;isappinstalled=0 以及其他参数，<code>#/</code>在微信中会被截断，导致分享链接和传入API的链接不一样</li>
-<li>解决方法：分享的url再ios下加个编码方法encodeURIComponent(url)</li>
-</ul>
-<h3 id="4-ios下input样式问题"><a href="#4-ios下input样式问题" class="headerlink" title="4.ios下input样式问题"></a>4.ios下input样式问题</h3><p>1.ios下如果想要禁用input,input设置为readonly仍然会呼起键盘，所以必须设置disabled属性。<br>2.ios下设置为disabled属性，input表单背景颜色会变灰，透明度会降低，所以，必须设置<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">input</span><span class="selector-pseudo">:disabled</span>&#123;</span><br><span class="line">      <span class="attribute">opacity</span>:<span class="number">1</span>;</span><br><span class="line">      <span class="attribute">bakcground</span>:<span class="number">#fff</span>;</span><br><span class="line">      -webkit-text-fill-color:#2e3d4c;//字体颜色填充这个属性可以解决IOS字体颜色变淡的问题</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>然而，设置了-webkit-text-fill-color属性还是会有问题，placeholder字体颜色也会跟着改变，所以placeholder也要设置-webkit-text-fill-color值<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">题外话：（设置渐变字体）</span><br><span class="line">	<span class="selector-tag">background</span>: <span class="selector-tag">-webkit-linear-gradient</span>(<span class="selector-tag">top</span>,<span class="selector-id">#fc0</span>,<span class="selector-id">#f30</span> 50%,<span class="selector-id">#c00</span> 51%,<span class="selector-id">#600</span>);</span><br><span class="line">    <span class="selector-tag">-webkit-background-clip</span>: <span class="selector-tag">text</span>;</span><br><span class="line">    <span class="selector-tag">-webkit-text-fill-color</span>: <span class="selector-tag">transparent</span>;</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>如果想设置渐变字体，要保证这个标签中只有要设置的文本，不能有其他标签，否则在PC浏览器正常，而在iOS中显示不出来</p>
-</blockquote>
-<p>3.没错，iOS下就是各种坑，<br>user-select：none 控制着用户能否选中文本<br>一般都不想被复制，所以全局使用这个属性，就会导致在ios中，input无法定位光标，无法输入；<br>所以慎用，或者局部使用；<br>或者给表单单独加个<code>user-select: auto;</code>默认值</p>
-
-          
+          1.ios键盘唤起，键盘收起以后页面不归位
+现状：输入内容，软键盘弹出，页面内容整体上移，但是键盘收
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/blog/2019/09/06/常见兼容问题处理/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1484,9 +1506,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2019/08/29/scratchers/" itemprop="url">scratchers</a></h1>
+                <a class="post-title-link" href="/blog/2019/08/29/scratchers/" itemprop="url">scratchers</a></h2>
         
 
         <div class="post-meta">
@@ -1560,110 +1582,19 @@
       
         
           
-            <style>
+          
     * {
         margin: 0;
         padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        width: 100%;
-        height: 100%;
-        background: #dfdfdf;
-        text-align: center;
-    }
-
-    .canvas-only-container h1 {
-        padding-top: 50px;
-    }
-
-    .canvas-only-container #result {
-        padding-top: 50px;
-        color: red;
-    }
-
-    #canvasOnly {
-        width: 240px;
-        height: 137px;
-        background: url('http://www.guoxh.com/blog/img/blog/special.jpg');
-        background-size: 100% 100%;
-        margin: 0 auto;
-        margin-top: 50px;
-    }
-</style>
-
-<body><br>    <div class="canvas-only-container"><br>        <h1>刮奖</h1><br>        <div id="canvasOnly"><canvas id="maskOnlyOne" width="240" height="137"></canvas></div><br>        <h3 id="result"></h3><br>    </div><br><script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/blog/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":50,"height":100},"mobile":{"show":false},"log":false});</script></body>
-
-<script>
-    var canvas = document.getElementById('maskOnlyOne');
-    var context = canvas.getContext("2d");
-    context.fillStyle = "#d1d1d1";
-    context.fillRect(0, 0, 240, 137);
-    context.globalCompositeOperation = 'destination-out';
-    // 鼠标按下 增加mousemove的事件监听
-    canvas.addEventListener('mousedown', drawArcMouseHandle);
-    canvas.addEventListener('mouseup', function (event) {
-        // 鼠标抬起之后，把mousemove的事件监听撤销掉
-        this.removeEventListener('mousemove', mousemoveHandle);
-    });
-    // 根据鼠标的move画圆
-    function drawArcMouseHandle(event) {
-        event.preventDefault();
-        event.target.addEventListener("mousemove", mousemoveHandle);
-    }
-    // 为了能够移除movesemove的事件需要单独处理一下
-    function mousemoveHandle(event) {
-        event.preventDefault();
-        drawArcByPoint(event.pageX, event.pageY);
-    }
-    // 监听 touchmove
-    canvas.addEventListener('touchmove', drawArcTouchHandle);
-    // 根据触摸点画圆 
-    function drawArcTouchHandle(event) {
-        event.preventDefault();
-        var touch = event.touches[0];
-        drawArcByPoint(touch.pageX, touch.pageY);
-    }
-    // 根据某个点在canvas上画圆
-    // x 坐标和 y 坐标 两个坐标是触摸点的坐标而不是画圆的圆心
-    // 圆心通过计算得出
-    function drawArcByPoint(x, y) {
-        context.beginPath();
-        context.arc(x - canvas.offsetLeft, y - canvas.offsetTop, 20, 0, Math.PI * 2);
-        context.closePath();
-        context.fillStyle = '#dddddd';
-        context.fill();
-        checkComplete();
-    }
-    // 判断是否完成刮奖 点数大于80%
-    function checkComplete() {
-        var imgData = context.getImageData(0, 0, 240, 137);
-        var pxData = imgData.data; // 获取字节数据
-        var len = pxData.length; // 获取字节长度
-        var count = 0; // 记录透明点的个数
-        // 主要的思想是 一个像素由四个数据组成，每个数据分别是 rgba() 所以第四个数据 a 表示alpha透明度
-        for (var i = 0; i < len; i += 4) {
-            var alpha = pxData[i + 3]; // 获取每个像素的透明度
-            if (alpha < 10) {
-                // 透明度小于10 
-                count++;
-            }
-        }
-        var percent = count / (len / 4); // 计算百分比
-        // 如果百分比大于0.8 则表示成功
-        if (percent >= 0.8) {
-            showResult();
-        }
-    }
-    // 显示刮奖结果
-    function showResult(msg) {
-        msg = msg || "刮奖结束";
-        var res = document.getElementById('result');
-        res.innerHTML = msg;
-    }
-</script>
-          
+  
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/blog/2019/08/29/scratchers/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1727,9 +1658,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2019/05/07/css自定义属性/" itemprop="url">css自定义属性</a></h1>
+                <a class="post-title-link" href="/blog/2019/05/07/css自定义属性/" itemprop="url">css自定义属性</a></h2>
         
 
         <div class="post-meta">
@@ -1803,16 +1734,16 @@
       
         
           
-            <h3 id="css自定义属性"><a href="#css自定义属性" class="headerlink" title="css自定义属性"></a>css自定义属性</h3><blockquote>
-<p>CSS自定义属性 对于很多前端同学可能并没有接触过，甚至没有听说过，但如果说CSS的变量，估计就很多同学有听说过。但这里再次强调，我们应该纠正这样的说法：<br>CSS没有变量，没有变量，没有变量；只有自定义属性，只有自定义属性，只有自定义属性！<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>我是什么颜色？<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>那我是什么颜色？<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"alert"</span>&gt;</span>我又是啥颜色？<span class="tag">&lt;<span class="name">p</span>&gt;</span>那我呢？<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- CSS --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css"><span class="selector-pseudo">:root</span>&#123;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">--color</span><span class="selector-pseudo">:red</span>;</span></span><br><span class="line">&#125;</span><br><span class="line">div&#123;</span><br><span class="line"><span class="css">    <span class="selector-tag">--color</span><span class="selector-pseudo">:yellow</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="selector-class">.alert</span>&#123;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">--color</span><span class="selector-pseudo">:blue</span>;</span></span><br><span class="line">&#125;</span><br><span class="line">*&#123;</span><br><span class="line"><span class="css">    <span class="selector-tag">color</span><span class="selector-pseudo">:var(--color)</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<ul>
-<li>:root表示是在根元素上声明的，–color: red，将会影响所有的元素</li>
-<li>div是一个标签元素选择器，其声明的–color: yellow将会影响所有div元素以及他的后代元素</li>
-<li>.alert是一个类选择器，其声明的–color: blue会影响类名为.alert的元素以及其后代码元素所以在第一个div的文本颜色是一个yellow(它覆盖了:root的red颜色)；第一p的文本颜色是red（运用了:root的red色），第二个div.alert以及它的子元素p的文本颜色是blue（运用了.alert中的blue）。</li>
-</ul>
-
-          
+          css自定义属性
+CSS自定义属性 对于很多前端同学可能并没有接触过，甚至没有听说过，但如果说CSS
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/blog/2019/05/07/css自定义属性/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1888,7 +1819,7 @@
               <img class="site-author-image" itemprop="image" src="http://www.guoxh.com/blog/img/avatar.png" alt="郭雪辉">
             
               <p class="site-author-name" itemprop="name">郭雪辉</p>
-              <p class="site-description motion-element" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           <nav class="site-state motion-element">
@@ -1975,7 +1906,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -1995,6 +1926,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     

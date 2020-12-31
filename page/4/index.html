@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +13,13 @@
 <meta name="theme-color" content="#222">
 
 
+
+  
+  
+    
+    
+  <script src="/blog/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/blog/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
 
 
 
@@ -96,9 +103,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/blog/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -160,7 +167,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+        <h1 class="site-subtitle" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</h1>
       
   </div>
 
@@ -190,12 +197,72 @@
         </li>
       
         
+        <li class="menu-item menu-item-about">
+          <a href="/blog/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/blog/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/blog/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/blog/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/blog/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>
+            
+            公益404
           </a>
         </li>
       
@@ -249,9 +316,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/02/22/vue记录/" itemprop="url">vue记录</a></h1>
+                <a class="post-title-link" href="/blog/2017/02/22/vue记录/" itemprop="url">vue记录</a></h2>
         
 
         <div class="post-meta">
@@ -325,80 +392,15 @@
       
         
           
-            <h3 id="如何让css只在当前组件起作用"><a href="#如何让css只在当前组件起作用" class="headerlink" title="如何让css只在当前组件起作用"></a>如何让css只在当前组件起作用</h3><p>这样写其他组件引用当前组件时当前组件中的css无法作用在其他组件（个人认为中小项目不需要加这个属性，因为组件之间的调用会很少很少）<br>同级组件不加scope如果有相同类名，会相互影响（同级当前组件优先级高）<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;style scoped&gt;&lt;/style&gt;</span><br></pre></td></tr></table></figure></p>
-<h3 id="v-for遍历数据中的v-bind-key（-key）问题"><a href="#v-for遍历数据中的v-bind-key（-key）问题" class="headerlink" title="v-for遍历数据中的v-bind:key（:key）问题"></a>v-for遍历数据中的v-bind:key（:key）问题</h3><blockquote>
-<p><strong><em>tips:</em></strong> 2.2.0+ 的版本里，当在组件中使用 v-for 时，key 现在是必须的。<br>在vue中用v-for最好搭配v-bind:key=”key”来使用；<br>key的作用主要是为了高效的更新虚拟DOM<br>key值只能为string/number，不能是对象或数组；<br>example: <el-carousel-item v-for="(item, index) in items" :key="index"></el-carousel-item><br>我们知道，vue和react都实现了一套虚拟DOM，使我们可以不直接操作DOM元素，只操作数据便可以重新渲染页面。而隐藏在背后的原理便是其高效的Diff算法。</p>
-</blockquote>
-<h3 id="父组件与子组件互传数据"><a href="#父组件与子组件互传数据" class="headerlink" title="父组件与子组件互传数据"></a>父组件与子组件互传数据</h3><ol>
-<li>props:{}用来接收父组件传过来的数据</li>
-</ol>
-<ul>
-<li>父组件：<br><img src="http://www.guoxh.com/blog/img/vue/propParentDOM.png" alt></li>
-<li>子组件：<br><img src="http://www.guoxh.com/blog/img/vue/propChildDOM.png" alt></li>
-</ul>
-<ol start="2">
-<li>this.$emit(自定义事件名，数据)向父组件传递数据</li>
-</ol>
-<ul>
-<li><p>子组件：<br><img src="http://www.guoxh.com/blog/img/vue/$emitChildDOM.png" alt><br><img src="http://www.guoxh.com/blog/img/vue/$emitChildJS.png" alt></p>
-</li>
-<li><p>父组件<br><img src="http://www.guoxh.com/blog/img/vue/$emitParentDOM.png" alt><br><img src="http://www.guoxh.com/blog/img/vue/$emitParentJS.png" alt><br>或者父组件中：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">data()&#123;</span><br><span class="line">	<span class="keyword">return</span>&#123;</span><br><span class="line">		a:<span class="string">''</span>,</span><br><span class="line">		b:<span class="string">''</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;,</span><br><span class="line">mounted()&#123;</span><br><span class="line">	<span class="comment">//两种接收的方式    </span></span><br><span class="line">	<span class="keyword">var</span> _this = <span class="keyword">this</span>;</span><br><span class="line">	Event.$on(<span class="string">'transferUser'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">a</span>)</span>&#123;</span><br><span class="line">		_this.a=a;</span><br><span class="line">	&#125;);</span><br><span class="line">	Event.$on(<span class="string">'transferUser'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">b</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.b = b;</span><br><span class="line">	&#125;.bind(<span class="keyword">this</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用watch侦听器,监听props中的数据实现控制当前子组件内容</span></span><br><span class="line">props: [<span class="string">"orderInfo"</span>],</span><br><span class="line">  data: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      yetOrder: <span class="literal">false</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  watch: &#123;</span><br><span class="line">    orderInfo: <span class="function"><span class="keyword">function</span>(<span class="params">newVal, oldVal</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// newVal 为改变后的值</span></span><br><span class="line">      <span class="keyword">if</span> (newVal.reserve_id &amp;&amp; newVal.reserve_id != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.yetOrder = <span class="literal">true</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
-<p><code>1this.$emit(自定义事件,[])用来触发自定义事件increment1(或者函数名吧)，[]为参数</code></p>
-<h5 id="父组件调用子组件方法"><a href="#父组件调用子组件方法" class="headerlink" title="父组件调用子组件方法"></a>父组件调用子组件方法</h5><p>父组件：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 更换手机号 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- ref="changePhone"是子组件在父组件中的名字 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">change-phone</span> <span class="attr">ref</span>=<span class="string">"changePhone"</span>&gt;</span><span class="tag">&lt;/<span class="name">change-phone</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">switchPhone() &#123;</span><br><span class="line">  <span class="comment">//this.$refs.changePhone 获取子组件实例</span></span><br><span class="line">  <span class="comment">//this.$refs.changePhone.switchPhone("这是实参") 在父组件的方法中调用子组件的方法</span></span><br><span class="line">  <span class="keyword">this</span>.$refs.changePhone.switchPhone(<span class="string">"这是实参"</span>);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-<h3 id="祖孙组件之间传递数据和绑定方法（祖组件传递给孙组件的数据不能与父组件公用，否则会传递失败，孙组件拿不到数据）"><a href="#祖孙组件之间传递数据和绑定方法（祖组件传递给孙组件的数据不能与父组件公用，否则会传递失败，孙组件拿不到数据）" class="headerlink" title="祖孙组件之间传递数据和绑定方法（祖组件传递给孙组件的数据不能与父组件公用，否则会传递失败，孙组件拿不到数据）"></a>祖孙组件之间传递数据和绑定方法（祖组件传递给孙组件的数据不能与父组件公用，否则会传递失败，孙组件拿不到数据）</h3><p>1.祖组件向下传递数据到孙组件：<br>祖组件：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">son</span> <span class="attr">:data</span>=<span class="string">"data"</span> @<span class="attr">pay</span>=<span class="string">"pay"</span>&gt;</span><span class="tag">&lt;/<span class="name">son</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>父组件：（必经过父组件）<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">grand-son</span> <span class="attr">v-bind</span>=<span class="string">"$attrs"</span> <span class="attr">v-on</span>=<span class="string">"$listeners"</span>&gt;</span><span class="tag">&lt;/<span class="name">grand-son</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>孙组件：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> @<span class="attr">click</span>=<span class="string">"pay(payData)"</span>&gt;</span>&#123;&#123;payData&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span>&#123;</span></span><br><span class="line"><span class="javascript">    props: [<span class="string">"payData"</span>],</span></span><br><span class="line">    methods:&#123;</span><br><span class="line">      pay(data)&#123;</span><br><span class="line"><span class="javascript">        <span class="keyword">this</span>.$emit(<span class="string">"pay"</span>,data)</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="this-set-设置对象的属性，这个方法主要用于避开-Vue-不能检测属性被添加的限制"><a href="#this-set-设置对象的属性，这个方法主要用于避开-Vue-不能检测属性被添加的限制" class="headerlink" title="this.$set()设置对象的属性，这个方法主要用于避开 Vue 不能检测属性被添加的限制"></a>this.$set()设置对象的属性，这个方法主要用于避开 Vue 不能检测属性被添加的限制</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var vm = new Vue(&#123;</span><br><span class="line">el:&apos;#app&apos;,</span><br><span class="line">data:&#123;</span><br><span class="line">  arr:[1,2,3];</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br><span class="line">vm.arr[0] = 4;//这样操作数据，dom不会更新数据</span><br><span class="line">vm.$set(vm.arr,0,4) //这样dom数据才会改变</span><br></pre></td></tr></table></figure>
-<h3 id="引入模块和引入文件"><a href="#引入模块和引入文件" class="headerlink" title="引入模块和引入文件"></a>引入模块和引入文件</h3><p><em>引入模块：import webview from “../../common/webview.js”;
-</em>引入文件：import “../../filter/webpFilter.js”;</p>
-<h3 id="vue数据绑定支持JS表达式-以后v-for的时候再也不用先在JS中处理一遍数据再绑定了"><a href="#vue数据绑定支持JS表达式-以后v-for的时候再也不用先在JS中处理一遍数据再绑定了" class="headerlink" title="vue数据绑定支持JS表达式(以后v-for的时候再也不用先在JS中处理一遍数据再绑定了)"></a>vue数据绑定支持JS表达式(以后v-for的时候再也不用先在JS中处理一遍数据再绑定了)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; number + 1 &#125;&#125;</span><br><span class="line">&#123;&#123; ok ? &apos;YES&apos; : &apos;NO&apos; &#125;&#125;</span><br><span class="line">&#123;&#123; message.split(&apos;&apos;).reverse().join(&apos;&apos;) &#125;&#125;</span><br><span class="line">&lt;div v-bind:id=&quot;&apos;list-&apos; + id&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="vue中的index索引值问题"><a href="#vue中的index索引值问题" class="headerlink" title="vue中的index索引值问题"></a>vue中的index索引值问题</h3><p>vue 中$index $key 已经移除了<br>之前可以这样:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"example"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"item in items"</span>&gt;</span></span><br><span class="line">        &#123;&#123;$index&#125;&#125;</span><br><span class="line">        &#123;&#123;$key&#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>现在已经移除,如果还用的话就会报错:Uncaught ReferenceError: $index is not defined;</p>
-<p>现在这样写:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"example"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"(item,index) in items"</span>&gt;</span></span><br><span class="line">        &#123;&#123;item&#125;&#125;</span><br><span class="line">        &#123;&#123;index&#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>第一个参数是值,第二个参数是索引;目的是为了保持和原生的一致;</p>
-<h3 id="鼠标右键事件"><a href="#鼠标右键事件" class="headerlink" title="鼠标右键事件"></a>鼠标右键事件</h3><p>@contextmenu.prevent=”alert(‘您点击的是鼠标右键’)”</p>
-<h3 id="在所有ajax完成后执行"><a href="#在所有ajax完成后执行" class="headerlink" title="在所有ajax完成后执行"></a>在所有ajax完成后执行</h3><p>这个时候用promise.all最合适了，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">let p1=new Promise(function(resolve,reject)&#123; </span><br><span class="line">resolve(42)</span><br><span class="line">&#125;);</span><br><span class="line">let p2=new Promise(function(resolve,reject)&#123; </span><br><span class="line">resolve(43)</span><br><span class="line">&#125;);</span><br><span class="line">let p3=new Promise(function(resolve,reject)&#123; </span><br><span class="line">resolve(44)</span><br><span class="line">&#125;);</span><br><span class="line">let p4=Promise.all([p1,p2,p3]);</span><br><span class="line">p4.then(function(v)&#123;</span><br><span class="line">这个里面就是你需要做的事情</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<h3 id="深入理解vue"><a href="#深入理解vue" class="headerlink" title="深入理解vue"></a>深入理解vue</h3><p>当你把一个普通的 JavaScript 对象传给 Vue 实例的 data 选项，Vue 将遍历此对象所有的属性，并使用 Object.defineProperty 把这些属性全部转为 getter/setter。<br>每个组件实例都有相应的 watcher 实例对象，它会在组件渲染的过程中把属性记录为依赖，之后当依赖项的 setter 被调用时，会通知 watcher 重新计算，从而致使它关联的组件得以更新。</p>
-<h3 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h3><p>单文件组件：你完全可以自定义一个组件名，然后在父级组件中import组件，并且在components: {}中声明一下</p>
-<h3 id="在v-html中使用filters-的三种方法"><a href="#在v-html中使用filters-的三种方法" class="headerlink" title="在v-html中使用filters 的三种方法"></a>在v-html中使用filters 的三种方法</h3><p>1.在vue实例上定义全局方法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Vue.prototype.highlight= <span class="function"><span class="keyword">function</span> (<span class="params">sTitle</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// to do</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//然后所有组件都可以使用方法</span></span><br><span class="line">v-html=<span class="string">"highlight(option.title)"</span></span><br></pre></td></tr></table></figure></p>
-<p>2.使用 $options.filters<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">v-html=<span class="string">"$options.filters.highlight(option.title)"</span></span><br><span class="line"><span class="keyword">var</span> appMain= <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#appMain'</span>,</span><br><span class="line">    filters:&#123;</span><br><span class="line">      highlight: <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>) </span>&#123;</span><br><span class="line">          <span class="keyword">return</span> msg.replace(<span class="regexp">/\n/g</span>, <span class="string">"&lt;br&gt;"</span>) ;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    data: &#123;</span><br><span class="line">     <span class="keyword">return</span>&#123;&#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>3.computed 计算属性<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> appMain= <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">      el: <span class="string">'#appMain'</span>,</span><br><span class="line">      computed :&#123;</span><br><span class="line">         content： <span class="function"><span class="keyword">function</span> (<span class="params">msg</span>) </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> msg.replace(<span class="string">"\n"</span>, <span class="string">"&lt;br&gt;"</span>)</span><br><span class="line">          &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">      data: &#123;</span><br><span class="line">        content: <span class="string">"XXXXX"</span></span><br><span class="line">     &#125;</span><br><span class="line">&#125;)</span><br><span class="line">页面上：</span><br><span class="line">&lt;div&gt;&#123;&#123;content&#125;&#125;&lt;<span class="regexp">/div&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="vue路由频繁切换的时候，会有部分白屏问题，下拉后恢复正常-用于同一个页面，点击导航栏切换不同路由"><a href="#vue路由频繁切换的时候，会有部分白屏问题，下拉后恢复正常-用于同一个页面，点击导航栏切换不同路由" class="headerlink" title="vue路由频繁切换的时候，会有部分白屏问题，下拉后恢复正常(用于同一个页面，点击导航栏切换不同路由)"></a>vue路由频繁切换的时候，会有部分白屏问题，下拉后恢复正常(用于同一个页面，点击导航栏切换不同路由)</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">mounted() &#123;</span><br><span class="line">   <span class="keyword">this</span>.setPosition(); </span><br><span class="line">&#125;,</span><br><span class="line">method:&#123;</span><br><span class="line">  setPosition() &#123;</span><br><span class="line">      <span class="keyword">var</span> oTop = $(<span class="string">".page-center"</span>).offset().top;</span><br><span class="line">        <span class="comment">//获取导航栏的高度，此高度用于保证内容的平滑过渡</span></span><br><span class="line">        <span class="keyword">var</span> martop = $(<span class="string">'.page-center'</span>).outerHeight();</span><br><span class="line">        <span class="keyword">var</span> sTop = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 监听页面的滚动</span></span><br><span class="line">        $(<span class="built_in">window</span>).scroll(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="comment">// 获取页面向上滚动的距离</span></span><br><span class="line">            sTop = $(<span class="keyword">this</span>).scrollTop();</span><br><span class="line">            <span class="comment">// 当导航栏到达屏幕顶端</span></span><br><span class="line">            <span class="keyword">if</span> (sTop &gt;= oTop) &#123;</span><br><span class="line">                <span class="comment">// 修改导航栏position属性，使之固定在屏幕顶端</span></span><br><span class="line">                $(<span class="string">".page-center"</span>).css(&#123; <span class="string">"position"</span>: <span class="string">"fixed"</span>, <span class="string">"top"</span>: <span class="string">"0"</span> &#125;);</span><br><span class="line">                <span class="comment">// 修改内容的margin-top值，保证平滑过渡</span></span><br><span class="line">                $(<span class="string">".page-bottom"</span>).css(&#123; <span class="string">"margin-top"</span>: martop &#125;);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 当导航栏脱离屏幕顶端时，回复原来的属性</span></span><br><span class="line">                $(<span class="string">".page-center"</span>).css(&#123; <span class="string">"position"</span>: <span class="string">"static"</span> &#125;);</span><br><span class="line">                $(<span class="string">".page-bottom"</span>).css(&#123; <span class="string">"margin-top"</span>: <span class="string">"0"</span> &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;,  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">参考自：[https:<span class="comment">//juejin.im/post/5be92ae2e51d4572fd18c4c6](https://juejin.im/post/5be92ae2e51d4572fd18c4c6)</span></span><br></pre></td></tr></table></figure>
-<h3 id="vue中实现接口刷新，页面不刷新，这样变相的做到了返回定位到之前位置，并且不会有缓存数据："><a href="#vue中实现接口刷新，页面不刷新，这样变相的做到了返回定位到之前位置，并且不会有缓存数据：" class="headerlink" title="vue中实现接口刷新，页面不刷新，这样变相的做到了返回定位到之前位置，并且不会有缓存数据："></a>vue中实现接口刷新，页面不刷新，这样变相的做到了返回定位到之前位置，并且不会有缓存数据：</h3><blockquote>
-<p>目前实在没找到bug，只能在项目中出真知，手动微微无奈😔？很慌<br>当组件在 <keep-alive> 内被切换，它的 <code>activated</code> 和 <code>deactivated</code> 这两个生命周期钩子函数将会被对应执行。</keep-alive></p>
-</blockquote>
-<p>引用上面句话，在 <keep-alive> 组件内把请求放在<code>activated</code>生命周期中，就可以做到刷新数据不刷新页面</keep-alive></p>
-<p><code>activated</code>钩子在 <code>keep-alive</code> 组件激活时调用(进入当前组件)<br><code>deactivated</code>钩子在 <code>keep-alive</code> 组件停用时调用(离开当前组件)</p>
-<blockquote>
-<p>在 2.2.0 及其更高版本中，activated 和 deactivated 将会在 <keep-alive> 树内的所有嵌套组件中触发。</keep-alive></p>
-</blockquote>
-<ul>
-<li><p>如果在父组件使用了<code>keep-alive</code>，子组件生命周期方法只能使用<code>activated</code>和<code>deactivated</code></p>
-</li>
-<li><p>因为用到了缓存，所以缓存组件中的vdom都会缓存，导致更新数据时vdom没有更新，暂时想到的办法是<br><code>deactivated</code>周期加个<code>v-if</code>来清除不想缓存的vdom，<code>activated</code>周期再显示出来</p>
-</li>
-</ul>
-<h3 id="vue中利用qrcodejs2插件前端生成二维码"><a href="#vue中利用qrcodejs2插件前端生成二维码" class="headerlink" title="vue中利用qrcodejs2插件前端生成二维码"></a>vue中利用qrcodejs2插件前端生成二维码</h3><p>1.安装qrcodejs2插件，在控制台输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install qrcodejs2 --save</span><br></pre></td></tr></table></figure></p>
-<p>2.template or 入口文件 引入插件：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> QRCode <span class="keyword">from</span> <span class="string">"qrcodejs2"</span>;</span><br></pre></td></tr></table></figure></p>
-<p>3.html中加标签：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"qrcode"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>4.生成二维码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如果是props传入的二维码地址：</span></span><br><span class="line">props: [<span class="string">"qrCodeLink"</span>],</span><br><span class="line">watch: &#123;</span><br><span class="line">  qrCodeLink(newValue, oldValue) &#123;</span><br><span class="line">    <span class="comment">//生成二维码</span></span><br><span class="line">    <span class="keyword">new</span> QRCode(<span class="built_in">document</span>.getElementById(<span class="string">"qrcode"</span>), newValue);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//如果是写死的，或者不是父组件传来的，直接new就好：</span></span><br><span class="line"><span class="keyword">new</span> QRCode(<span class="built_in">document</span>.getElementById(<span class="string">"qrcode"</span>), qrCodeLink);</span><br><span class="line"><span class="comment">// 如果是点击生成二维码，会存在点一次生成一次的情况，所以要每次清除掉上次生成的二维码</span></span><br><span class="line"><span class="built_in">document</span>.getElementById(id).innerHTML = <span class="string">""</span>;</span><br></pre></td></tr></table></figure></p>
-<h3 id="vue订单列表倒计时（这种方式适合vue单组件，即一个组件为一个订单，不需要遍历可以直接操作，父级组件已经遍历好，方便快捷暴力）"><a href="#vue订单列表倒计时（这种方式适合vue单组件，即一个组件为一个订单，不需要遍历可以直接操作，父级组件已经遍历好，方便快捷暴力）" class="headerlink" title="vue订单列表倒计时（这种方式适合vue单组件，即一个组件为一个订单，不需要遍历可以直接操作，父级组件已经遍历好，方便快捷暴力）"></a>vue订单列表倒计时（这种方式适合vue单组件，即一个组件为一个订单，不需要遍历可以直接操作，父级组件已经遍历好，方便快捷暴力）</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> that = <span class="keyword">this</span>;</span><br><span class="line"><span class="keyword">let</span> nowTime = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line"><span class="comment">//expire_time为接口返回截止时间的时间戳</span></span><br><span class="line"><span class="keyword">let</span> endDate = v.expire_time * <span class="number">1000</span> - nowTime;</span><br><span class="line"><span class="comment">// let endDate = 10000;</span></span><br><span class="line"><span class="keyword">if</span> (endDate &gt; <span class="number">0</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> stop = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//days | hour 分别表示天和小时</span></span><br><span class="line">    <span class="comment">//days = Math.floor(time.t / 1000 / 60 / 60 / 24);</span></span><br><span class="line">    <span class="comment">//hour = Math.floor(time.t / 1000 / 60 / 60 % 24);</span></span><br><span class="line">    <span class="keyword">let</span> minute = <span class="built_in">Math</span>.floor((endDate / <span class="number">1000</span> / <span class="number">60</span>) % <span class="number">60</span>);</span><br><span class="line">    <span class="keyword">let</span> second = <span class="built_in">Math</span>.floor((endDate / <span class="number">1000</span>) % <span class="number">60</span>);</span><br><span class="line">    <span class="keyword">let</span> min = minute &lt; <span class="number">10</span> ? <span class="string">"0"</span> + minute : minute;</span><br><span class="line">    <span class="keyword">let</span> sec = second &lt; <span class="number">10</span> ? <span class="string">"0"</span> + second : second;</span><br><span class="line">    <span class="keyword">if</span> (endDate &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="comment">//如果倒计时结束，直接改变当前订单的状态</span></span><br><span class="line">      that.overTime = <span class="literal">true</span>;</span><br><span class="line">      clearInterval(stop);</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      endDate -= <span class="number">1000</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    that.lastTime = time.m + <span class="string">":"</span> + time.s;</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">  that.overTime = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="链接不改，版本迭代会导致再微信内浏览器中页面缓存为旧页面"><a href="#链接不改，版本迭代会导致再微信内浏览器中页面缓存为旧页面" class="headerlink" title="链接不改，版本迭代会导致再微信内浏览器中页面缓存为旧页面"></a>链接不改，版本迭代会导致再微信内浏览器中页面缓存为旧页面</h3><p>详细：见<a href="https://www.jianshu.com/p/cce9511c0914" target="_blank" rel="noopener">解决方法</a><br>其中：<br>设置nginx的缓存机制；直接将nginx的缓存设置成<code>{expires-1;}</code>，设置成永远不缓存；如果没有nginx，其他apache什么的通用这个方法。</p>
-<h3 id="vue-resource实现vue异步请求"><a href="#vue-resource实现vue异步请求" class="headerlink" title="vue-resource实现vue异步请求"></a>vue-resource实现vue异步请求</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    todos: [</span><br><span class="line">      &#123; <span class="attr">text</span>: <span class="string">'学习 JavaScript'</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">text</span>: <span class="string">'学习 Vue'</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">text</span>: <span class="string">'整个牛项目'</span> &#125;</span><br><span class="line">    ],</span><br><span class="line">    tftext: <span class="string">"这是一段24px大小的字体"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  created() &#123;</span><br><span class="line">    <span class="comment">//get请求</span></span><br><span class="line">    <span class="keyword">this</span>.$http.get(<span class="string">"/api/getapi"</span>).then(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">      <span class="comment">// console.log(data)</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">//post请求</span></span><br><span class="line">    <span class="keyword">this</span>.$http.post(<span class="string">"/api/postapi"</span>,</span><br><span class="line">      &#123; <span class="attr">mobile</span>: xxxxxxxxx &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        headers: &#123; <span class="string">'Content-Type'</span>: <span class="string">'application/x-www-form-urlencoded;charset=UTF-8'</span> &#125;,</span><br><span class="line">        emulateJSON: <span class="literal">true</span></span><br><span class="line">      &#125;</span><br><span class="line">    ).then(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(data)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.todos)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>上面例子中<br>get请求很好懂，如果要加参数，直接在api链接后面拼上即可，<br>而post中有几个注意点：<br>post(url, [body], [options])<br>1.post中第一个参数为请求的目标api url;<br>2.第二个参数为作为请求体发送的数据，类型可以为Object, FormData, string<br>3.第三个参数很多，较常用的有headers:请求头、emulateJSON:设置请求体的类型为application/x-www-form-urlencoded<br>4.如果要改为formdata提交，第三个参数加<br>{<br>headers: { ‘Content-Type’: ‘application/x-www-form-urlencoded;charset=UTF-8’ },<br>emulateJSON: true<br>}<br>即可</li>
-</ul>
-<h3 id="vue-js源码分析"><a href="#vue-js源码分析" class="headerlink" title="vue.js源码分析"></a>vue.js源码分析</h3><p>1.Object.create(null)和{}区别；<br> 二者都是创建一个对象，前者去掉了原型链，后者保留原型链</p>
-<h3 id="华为浏览器微信H5支付，回跳链接正确，页面显示却错误"><a href="#华为浏览器微信H5支付，回跳链接正确，页面显示却错误" class="headerlink" title="华为浏览器微信H5支付，回跳链接正确，页面显示却错误"></a>华为浏览器微信H5支付，回跳链接正确，页面显示却错误</h3><p>初步分析原因可能有两个：<br>1.华为自带浏览器回跳未刷新页面，只是更改了路由链接，对vue路由不友好(也可能是我用了keep-alive组件，但是其他手机没问题)<br>2.未在微信公众后台配置回跳具体到路由参数的链接都会被拦截至首页</p>
-<p><a href="https://juejin.im/post/6844903632815521799" target="_blank" rel="noopener">https://juejin.im/post/6844903632815521799</a><br><a href="https://juejin.im/post/6844903632815521799" target="_blank" rel="noopener">https://juejin.im/post/6844903632815521799</a></p>
-
-          
+          如何让css只在当前组件起作用这样写其他组件引用当前组件时当前组件中的css无法作用在其他组件（个人
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/blog/2017/02/22/vue记录/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -462,9 +464,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2017/02/06/ES6/" itemprop="url">ES6</a></h1>
+                <a class="post-title-link" href="/blog/2017/02/06/ES6/" itemprop="url">ES6</a></h2>
         
 
         <div class="post-meta">
@@ -538,24 +540,15 @@
       
         
           
-            <h3 id="let-const"><a href="#let-const" class="headerlink" title="let  const"></a>let  const</h3><p>let和var类似，let必须先声明后使用，否则会报错，let不存在变量提升；<br>let声明变量，const声明常量；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function kuai()&#123;</span><br><span class="line">  let n = 5;</span><br><span class="line">  if(true)&#123;</span><br><span class="line">    let n = 10;</span><br><span class="line">  &#125;</span><br><span class="line">  console.log(n)</span><br><span class="line">&#125;</span><br><span class="line">kuai()</span><br></pre></td></tr></table></figure></p>
-<p>上面代码说明let有块级作用域，不同块级相同变量不受影响；</p>
-<h3 id="顶层对象的属性和全局变量关系"><a href="#顶层对象的属性和全局变量关系" class="headerlink" title="顶层对象的属性和全局变量关系"></a>顶层对象的属性和全局变量关系</h3><p>ES5中的顶层变量属性和全局变量挂钩，被认为是JS最大的败笔之一，<br>ES6中let，class和const声明的变量不再与顶层对象的属性关联</p>
-<h3 id="Promise-主要解决异步回调地狱的问题"><a href="#Promise-主要解决异步回调地狱的问题" class="headerlink" title="Promise(主要解决异步回调地狱的问题)"></a>Promise(主要解决异步回调地狱的问题)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var promise = new Promise(function (resolve, reject) &#123;</span><br><span class="line">        console.log(&apos;resolve&apos;);</span><br><span class="line">		//成功回调</span><br><span class="line">        resolve();</span><br><span class="line">		//失败回调</span><br><span class="line">		reject();</span><br><span class="line">    &#125;)</span><br><span class="line">    promise.then(function () &#123;</span><br><span class="line">        console.log(&apos;success&apos;)</span><br><span class="line">    &#125;, function () &#123;</span><br><span class="line">        console.log(&apos;fail&apos;)</span><br><span class="line">    &#125;)</span><br><span class="line">    console.log(&apos;justgo&apos;)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Promise.prototype.then()第一个函数参数为resolve执行函数，第二个函数参数为reject执行函数</p>
-</blockquote>
-<h3 id="export-default-为模块指定默认输出"><a href="#export-default-为模块指定默认输出" class="headerlink" title="export default {}为模块指定默认输出"></a>export default {}为模块指定默认输出</h3><p>export default function () {<br>  console.log(‘foo’);<br>}<br>其他模块加载该模块时，import命令可以为该匿名函数指定任意名字<br>import customName from ‘./export-default’;</p>
-<h3 id="ES6支持方法简写"><a href="#ES6支持方法简写" class="headerlink" title="ES6支持方法简写"></a>ES6支持方法简写</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a&#123;</span><br><span class="line">  points:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">* ES6可以简写为</span><br><span class="line"><span class="keyword">var</span> a&#123;</span><br><span class="line">   points()&#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="export-export-default的异同"><a href="#export-export-default的异同" class="headerlink" title="export,export default的异同"></a>export,export default的异同</h3><p>1.export在js中可以有多个，export default只能出现一个；<br>2.在一个文件或模块中，export、import可以有多个，export default仅有一个<br>3.通过export方式导出，在导入时要加{ }，export default则不需要<br>4.export能直接导出变量表达式，export default不行。</p>
-<h3 id="ES6的箭头函数"><a href="#ES6的箭头函数" class="headerlink" title="ES6的箭头函数"></a>ES6的箭头函数</h3><p>ES6中的箭头函数写法更加简单，表达更加简洁，简化回调函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> var func = v =&gt; v+1;</span><br><span class="line">等于：</span><br><span class="line"> var func = function(v)&#123;return v+1&#125;</span><br><span class="line"></span><br><span class="line">var result = [1,2,1,3,4].sort((a,b)=&gt;a-b)</span><br><span class="line">等于：</span><br><span class="line">var result = [1,2,1,3,4].sort(function(a,b)&#123;return a-b&#125;)</span><br></pre></td></tr></table></figure></p>
-<h3 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var arr = [1,1,2,3,4,5,66,5,6];</span><br><span class="line">console.log(new Set(arr))</span><br><span class="line">//此时console出来的是一个对象，</span><br><span class="line">console.log(array.from(new Set(arr)))</span><br><span class="line">//此时console出来的是去重之后的数组</span><br></pre></td></tr></table></figure>
-<h3 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ES5:</span><br><span class="line">var func = function(v)&#123;</span><br><span class="line">	console.log(&apos;name &apos;+v)</span><br><span class="line">&#125;</span><br><span class="line">func(&apos;jone&apos;)</span><br><span class="line"></span><br><span class="line">ES6:</span><br><span class="line">var func = v =&gt; console.log(`name $&#123;v&#125;`)</span><br><span class="line">func(&apos;jone&apos;)</span><br></pre></td></tr></table></figure>
-<h3 id="ES6支持变量作为对象key，如："><a href="#ES6支持变量作为对象key，如：" class="headerlink" title="ES6支持变量作为对象key，如："></a>ES6支持变量作为对象key，如：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let a = &apos;aaa&apos;;</span><br><span class="line">let b = &apos;bbb&apos;;</span><br><span class="line">let c = &#123;[a]:&apos;this is key a&apos;,[b]:&apos;this is key b&apos;&#125;;</span><br><span class="line">console.log(c)</span><br></pre></td></tr></table></figure>
-<h3 id="生成器函数指定下一次调用-next-时会生成什么-value"><a href="#生成器函数指定下一次调用-next-时会生成什么-value" class="headerlink" title="生成器函数指定下一次调用 next() 时会生成什么 value"></a>生成器函数指定下一次调用 next() 时会生成什么 value</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">function* greeter()&#123;</span><br><span class="line">  yeild &quot;hello&quot;</span><br><span class="line">  yeild &quot;how are you&quot;</span><br><span class="line">  yeild &quot;good bye&quot;</span><br><span class="line">&#125;</span><br><span class="line">const greet = greeter();</span><br><span class="line">console.log(greet.next().value);</span><br><span class="line">// &apos;Hi&apos;</span><br><span class="line">console.log(greet.next().value);</span><br><span class="line">// &apos;How are you?&apos;</span><br><span class="line">console.log(greet.next().value);</span><br><span class="line">// &apos;Bye&apos;</span><br><span class="line">console.log(greet.next().value);</span><br><span class="line">// undefined</span><br><span class="line">or</span><br><span class="line">使用生成器生成无限个值：</span><br><span class="line">function* idCreator() &#123;</span><br><span class="line">  let i = 0;</span><br><span class="line">  while (true)</span><br><span class="line">    yield i++;</span><br><span class="line">&#125;</span><br><span class="line">const ids = idCreator();</span><br><span class="line">console.log(ids.next().value);</span><br><span class="line">// 0</span><br><span class="line">console.log(ids.next().value);</span><br><span class="line">// 1</span><br><span class="line">console.log(ids.next().value);</span><br><span class="line">// 2</span><br><span class="line">// etc...</span><br></pre></td></tr></table></figure>
-<h3 id="Async-Await"><a href="#Async-Await" class="headerlink" title="Async/Await"></a>Async/Await</h3><p>在掌握了 promise 的用法后，你可能也会喜欢 async await，它只是一种基于 promise 的“语法糖”。在下面的示例中，我们创建了一个 async 函数，并 await greeter promise。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const greeter = new Promise((res, rej) =&gt; &#123;</span><br><span class="line">  setTimeout(() =&gt; res(&apos;Hello world!&apos;), 2000);</span><br><span class="line">&#125;)</span><br><span class="line">async function myFunc() &#123;</span><br><span class="line">  const greeting = await greeter;</span><br><span class="line">  console.log(greeting);</span><br><span class="line">&#125;</span><br><span class="line">myFunc();</span><br><span class="line">// &apos;Hello world!&apos;</span><br><span class="line">// 可以看到，async创建的函数体内，加了await的函数，即使它是异步的，也会等他先执行完</span><br></pre></td></tr></table></figure></p>
-
-          
+          let  constlet和var类似，let必须先声明后使用，否则会报错，let不存在变量提升；l
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/blog/2017/02/06/ES6/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -619,9 +612,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2016/12/29/jquery常见问题/" itemprop="url">jquery常见问题</a></h1>
+                <a class="post-title-link" href="/blog/2016/12/29/jquery常见问题/" itemprop="url">jquery常见问题</a></h2>
         
 
         <div class="post-meta">
@@ -695,18 +688,15 @@
       
         
           
-            <p>###trigger() 方法<br>给指定元素添加触发事件，例：$(“#this”).trigger(“click”)</p>
-<p>###jQuery noConflict() 方法<br>noConflict() 方法会释放会 $ 标识符的控制，这样其他脚本就可以使用它了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var jq = $.noConflict();</span><br><span class="line">jq(document).ready(function()&#123;</span><br><span class="line">  jq(&quot;button&quot;).click(function()&#123;</span><br><span class="line">    jq(&quot;p&quot;).text(&quot;jQuery 仍在运行！&quot;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="ready-方法"><a href="#ready-方法" class="headerlink" title="ready()方法"></a>ready()方法</h3><p>当 DOM（文档对象模型） 已经加载，并且页面（包括图像）已经完全呈现时，会发生 ready 事件。</p>
-<blockquote>
-<p>ready() 函数仅能用于当前文档，因此无需选择器。<br>语法 1<br>$(document).ready(function)<br>语法 2<br>$().ready(function)<br>语法 3<br>$(function)</p>
-<ul>
-<li>提示：ready() 函数不应与 <body onload> 一起使用。</body></li>
-</ul>
-</blockquote>
-
-          
+          ###trigger() 方法给指定元素添加触发事件，例：$(“#this”).trigger(“c
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/blog/2016/12/29/jquery常见问题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -770,9 +760,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2016/12/26/其他/" itemprop="url">other</a></h1>
+                <a class="post-title-link" href="/blog/2016/12/26/其他/" itemprop="url">other</a></h2>
         
 
         <div class="post-meta">
@@ -846,55 +836,23 @@
       
         
           
-            <h3 id="css"><a href="#css" class="headerlink" title="css"></a>css</h3><ol>
-<li>CSS BFC</li>
-</ol>
-<h3 id="js"><a href="#js" class="headerlink" title="js"></a>js</h3><ol>
-<li><p>promise</p>
-</li>
-<li><p>跨域</p>
-</li>
-<li><p>Macrotask Queue和Microtask Queue</p>
-</li>
-<li><p>数组排序</p>
-</li>
-<li><p>数组去重</p>
-</li>
-<li><p>ES6</p>
-</li>
-<li><p>WebAssembly 是一种可以使用非 JavaScript 编程语言编写代码并且能在浏览器上运行的技术方案。、</p>
-</li>
-<li><p>ES5,ES6中this指向</p>
-</li>
-<li><p>理解 JavaScript 中的 This, Bind, Call 和 Apply<br><a href="https://www.runoob.com/w3cnote/js-call-apply-bind.html" target="_blank" rel="noopener">详情</a></p>
-</li>
-<li><p>如何判断object是数组类型？<br>1、从原型入手，Array.prototype.isPrototypeOf(obj);<br>2.Array.isArray()方法。例：Array.isArray([1, 2, 3]);  // true</p>
-</li>
-<li><p>精确获取页面元素位置的方式有哪些</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> X= <span class="keyword">this</span>.getBoundingClientRect().left;</span><br><span class="line"><span class="keyword">var</span> Y =<span class="keyword">this</span>.getBoundingClientRect().top;</span><br><span class="line"><span class="comment">//再加上滚动距离，就可以得到绝对位置</span></span><br><span class="line"><span class="keyword">var</span> X= <span class="keyword">this</span>.getBoundingClientRect().left+<span class="built_in">document</span>.documentElement.scrollLeft;</span><br><span class="line"><span class="keyword">var</span> Y =<span class="keyword">this</span>.getBoundingClientRect().top+<span class="built_in">document</span>.documentElement.scrollTop;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>事件委托<br>又叫事件代理，利用事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件；<br>作用：<br>在JavaScript中，添加到页面上的事件处理程序数量将直接关系到页面的整体运行性能，因为需要不断的与dom节点进行交互，访问dom的次数越多，引起浏览器重绘与重排的次数也就越多，就会延长整个页面的交互就绪时间，这就是为什么性能优化的主要思想之一就是减少DOM操作的原因；如果要用事件委托，就会将所有的操作放到js程序里面，与dom的操作就只需要交互一次，这样就能大大的减少与dom的交互次数，提高性能；</p>
-</li>
-</ol>
-<p>每个函数都是一个对象，是对象就会占用内存，对象越多，内存占用率就越大，自然性能就越差了（内存不够用，是硬伤，哈哈），比如上面的100个li，就要占用100个内存空间，如果是1000个，10000个呢，那只能说呵呵了，如果用事件委托，那么我们就可以只对它的父级（如果只有一个父级）这一个对象进行操作，这样我们就需要一个内存空间就够了，是不是省了很多，自然性能就会更好。</p>
-<ol start="13">
-<li><p>构造函数<br>实例的<strong>proto</strong>属性（原型）等于其构造函数的prototype属性<br>例：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> Person(<span class="string">'Tom'</span>);</span><br><span class="line"><span class="number">1.</span> p.__proto__等于什么？Person.prototype</span><br><span class="line"><span class="number">2.</span> Person.__proto等于什么？ <span class="built_in">Function</span>.prototype</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>匿名函数 又称IIFE(为了隔离作用域，防止污染全局命名空间。) 函数名没有意义</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(</span><br><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">&#125;+</span><br><span class="line">)()</span><br><span class="line">==</span><br><span class="line"><span class="keyword">var</span> a = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="number">1</span>)&#125;;a()</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ol>
-<li><p>webpack插件 prerender-spa-plugin 预渲染</p>
-</li>
-<li><p>在浏览器输入URL回车之后发生了什么</p>
-</li>
-</ol>
-<h3 id="函数柯里化"><a href="#函数柯里化" class="headerlink" title="函数柯里化"></a>函数柯里化</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置一个函数输出一下的值</span></span><br><span class="line"><span class="built_in">console</span>.log(add(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>)); <span class="comment">// 6</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 1 把所有参数转换成数组</span></span><br><span class="line">    <span class="keyword">let</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>)</span><br><span class="line">    <span class="comment">// 2 再次调用add函数，传递合并当前与之前的参数</span></span><br><span class="line">    <span class="keyword">let</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> arg_fn = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>)</span><br><span class="line">        <span class="keyword">return</span> add.apply(<span class="literal">null</span>, args.concat(arg_fn))</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 3 最后默认调用，返回合并的值</span></span><br><span class="line">    fn.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> args.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> a + b</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> fn</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6写法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> args = [...arguments];</span><br><span class="line">    <span class="keyword">let</span> fn = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> add.apply(<span class="literal">null</span>, args.concat([...arguments]))</span><br><span class="line">    &#125; </span><br><span class="line">    fn.toString = <span class="function"><span class="params">()</span> =&gt;</span> args.reduce(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a + b)</span><br><span class="line">    <span class="keyword">return</span> fn;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="原型，原型链，原型继承，继承方式"><a href="#原型，原型链，原型继承，继承方式" class="headerlink" title="原型，原型链，原型继承，继承方式"></a>原型，原型链，原型继承，继承方式</h3><p><a href="https://juejin.im/post/6875152247714480136" target="_blank" rel="noopener">https://juejin.im/post/6875152247714480136</a></p>
+          css
+CSS BFC
 
-          
+js
+promise
+
+跨域
+
+Macrotask Queue和Micro
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/blog/2016/12/26/其他/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -958,9 +916,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2016/12/26/JS常见问题/" itemprop="url">JS常见问题</a></h1>
+                <a class="post-title-link" href="/blog/2016/12/26/JS常见问题/" itemprop="url">JS常见问题</a></h2>
         
 
         <div class="post-meta">
@@ -1034,56 +992,15 @@
       
         
           
-            <h3 id="do-not-track-禁止跟踪"><a href="#do-not-track-禁止跟踪" class="headerlink" title="do not track (禁止跟踪)"></a>do not track (禁止跟踪)</h3><p><a href>https://www.zhangxinxu.com/wordpress/2018/07/navigator-do-not-track-api/</a></p>
-<h3 id="五种方法去除字符串最后的逗号"><a href="#五种方法去除字符串最后的逗号" class="headerlink" title="五种方法去除字符串最后的逗号"></a>五种方法去除字符串最后的逗号</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="built_in">window</span>.onload=<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> obj = &#123;<span class="attr">name</span>: <span class="string">"xxx"</span>, <span class="attr">age</span>: <span class="number">30</span>, <span class="attr">sex</span>: <span class="string">"female"</span>&#125;;<span class="comment">//定义一个object对象</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> str = <span class="string">''</span><span class="comment">//定义一个空字符用来接收对象里的key或者value</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">for</span>(<span class="keyword">var</span> item <span class="keyword">in</span> obj) &#123;<span class="comment">//遍历item变量里的对象的属性和元素，</span></span></span><br><span class="line"><span class="javascript">        str += obj[item] + <span class="string">","</span><span class="comment">//将obj对象的值遍历出来，并且追加到str字符中。</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">//str += item + ","//将obj对象的属性遍历出来，并且追加到str字符中。</span></span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="javascript">    <span class="comment">//第一种方法、将字符串中最后一个元素","逗号去掉，</span></span></span><br><span class="line"><span class="javascript">    str = str.substring(<span class="number">0</span>, str.lastIndexOf(<span class="string">','</span>));</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="comment">//第二种方法、将字符串中最后一个元素","逗号去掉，</span></span></span><br><span class="line"><span class="javascript">    str = (str.substring(str.length - <span class="number">1</span>) == <span class="string">','</span>) ? str.substring(<span class="number">0</span>, str.length - <span class="number">1</span>) : str;</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="comment">//第三种方法、将字符串中最后一个元素","逗号去掉，</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> str=str.substring(<span class="number">0</span>,str.length<span class="number">-1</span>);<span class="comment">//3、将字符串中最后一个元素","逗号去掉，</span></span></span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="comment">//第四种方法、将字符串中最后一个元素","逗号去掉，</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> reg=<span class="regexp">/,$/gi</span>;</span></span><br><span class="line"><span class="javascript">    str=str.replace(reg,<span class="string">""</span>);</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(str)</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">//最后一种用css解决</span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">ng-repeat</span>=<span class="string">"v in carNaP.sflb"</span>&gt;</span>&#123;&#123;v.Label&#125;&#125;<span class="tag">&lt;<span class="name">i</span>&gt;</span>、<span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css"><span class="selector-tag">span</span><span class="selector-pseudo">:last-child</span>&#123;</span></span><br><span class="line">   i&#123;</span><br><span class="line"><span class="css">     <span class="selector-tag">display</span><span class="selector-pseudo">:none</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="Ajax跨域问题解决"><a href="#Ajax跨域问题解决" class="headerlink" title="Ajax跨域问题解决"></a>Ajax跨域问题解决</h3><p><a href>http://www.cnblogs.com/pandang/p/5341250.html</a></p>
-<h3 id="JS判断浏览器种类IE，FF，Opera-Safari-chrome…"><a href="#JS判断浏览器种类IE，FF，Opera-Safari-chrome…" class="headerlink" title="JS判断浏览器种类IE，FF，Opera,Safari,chrome…"></a>JS判断浏览器种类IE，FF，Opera,Safari,chrome…</h3><p>//基本原理就是根据浏览器的userAgent判断<br>var userAgent = navigator.userAgent;<br>//例如：<br>if (userAgent.indexOf(“Safari”) &gt; -1) {<br>        return “Safari”;<br>} //判断是否Safari浏览器</p>
-<h3 id="encodeURIComponent-和decodeURIComponent-函数"><a href="#encodeURIComponent-和decodeURIComponent-函数" class="headerlink" title="encodeURIComponent()和decodeURIComponent()函数"></a>encodeURIComponent()和decodeURIComponent()函数</h3><p>1.encodeURIComponent() 函数可把字符串作为 URI 组件进行编码。</p>
-<ul>
-<li>请注意 encodeURIComponent() 函数 与 encodeURI() 函数的区别之处，前者假定它的参数是 URI 的一部分（比如        协议、主机名、路径或查询字符串）。因此 encodeURIComponent() 函数将转义用于分隔 URI 各个部分的标点符号。<br>2.decodeURIComponent() 对 encodeURIComponent() 函数编码的 URI 进行解码</li>
-</ul>
-<h3 id="escape-encodeURI-encodeURIComponent"><a href="#escape-encodeURI-encodeURIComponent" class="headerlink" title="escape() encodeURI() encodeURIComponent()"></a>escape() encodeURI() encodeURIComponent()</h3><p>escape() 方法：</p>
-<p>采用ISO Latin字符集对指定的字符串进行编码。所有的空格符、标点符号、特殊字符以及其他非ASCII字符都将被转化成%xx格式的字符编码（xx等于该字符在字符集表里面的编码的16进制数字）。比如，空格符对应的编码是%20。unescape方法与此相反。不会被此方法编码的字符： @ * / +</p>
-<ul>
-<li>对应的解码方法：unescape()</li>
-</ul>
-<p>encodeURI() 方法：<br>把URI字符串采用UTF-8编码格式转化成escape格式的字符串。不会被此方法编码的字符：! @ # $&amp; * ( ) = : / ; ? + ‘</p>
-<ul>
-<li>对应的解码方法：decodeURI()</li>
-</ul>
-<p>encodeURIComponent() 方法：</p>
-<p>把URI字符串采用UTF-8编码格式转化成escape格式的字符串。与encodeURI()相比，这个方法将对更多的字符进行编码，比如 / 等字符。所以如果字符串里面包含了URI的几个部分的话，不能用这个方法来进行编码，否则 / 字符被编码之后URL将显示错误。不会被此方法编码的字符：! * ( ) </p>
-<ul>
-<li>对应的解码方法：decodeURIComponent()</li>
-</ul>
-<h3 id="JS监听动画完成事件"><a href="#JS监听动画完成事件" class="headerlink" title="JS监听动画完成事件"></a>JS监听动画完成事件</h3><p>tt.addEventListener(“webkitAnimationEnd”, function(){ //动画结束时事件<br>this.className = this.className.replace(‘change’, ‘ ‘);<br>}, false); </p>
-<h3 id="元素scrollTop属性"><a href="#元素scrollTop属性" class="headerlink" title="元素scrollTop属性"></a>元素scrollTop属性</h3><blockquote>
-<p>只有元素设置了overflow样式，且不为hidden时才会生效，jquery对象要加下标[index]，否则找不到此属性；</p>
-</blockquote>
-<h3 id="JS处理Range"><a href="#JS处理Range" class="headerlink" title="JS处理Range"></a>JS处理Range</h3><blockquote>
-<p>所谓”Range”，是指HTML文档中任意一段内容。一个Range的起始点和结束点位置任意，甚至起始点和结束点可以是一样的（也就是空Range）。最常见的Range是用户文本选择范围(user text selection)。当用户选择了页面上的某一段文字后，你就可以把这个选择转为Range。当然，你也可以直接用程序定义Range<br>举几个常用的处理Range的方法：<br>1.获取用户选中的文本：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oBtn = <span class="built_in">document</span>.getElementById(<span class="string">"button"</span>);</span><br><span class="line">oBtn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> userSelection, text;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.getSelection) &#123; </span><br><span class="line">        <span class="comment">//现代浏览器</span></span><br><span class="line">        userSelection = <span class="built_in">window</span>.getSelection();</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">document</span>.selection) &#123; </span><br><span class="line">        <span class="comment">//IE浏览器 考虑到Opera，应该放在后面</span></span><br><span class="line">        userSelection = <span class="built_in">document</span>.selection.createRange();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!(text = userSelection.text)) &#123;</span><br><span class="line">        text = userSelection;</span><br><span class="line">    &#125;</span><br><span class="line">    alert(text);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<p>2.点击表单内容全选：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SelectText</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(obj.createTextRange)&#123;<span class="comment">//IE浏览器</span></span><br><span class="line">    <span class="keyword">var</span> range = obj.createTextRange();              </span><br><span class="line">    range.moveEnd(<span class="string">"character"</span>,结束序号);</span><br><span class="line">    range.moveStart(<span class="string">"character"</span>, 起始序号);</span><br><span class="line">    range.select();</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;<span class="comment">//非IE浏览器</span></span><br><span class="line">    obj.setSelectionRange(起始序号, 结束序号);</span><br><span class="line">    obj.focus();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>其他详见张鑫旭博客：<br><a href>http://www.zhangxinxu.com/wordpress/2011/04/js-range-html%E6%96%87%E6%A1%A3%E6%96%87%E5%AD%97%E5%86%85%E5%AE%B9%E9%80%89%E4%B8%AD%E3%80%81%E5%BA%93%E5%8F%8A%E5%BA%94%E7%94%A8%E4%BB%8B%E7%BB%8D/</a></p>
-<h3 id="clipboard-js实现移动端复制功能-！！！重中之重：iOS下要给点击的元素加onclick-””或者cursor：pointer，总之就是让iOS可以识别到这个元素可点击"><a href="#clipboard-js实现移动端复制功能-！！！重中之重：iOS下要给点击的元素加onclick-””或者cursor：pointer，总之就是让iOS可以识别到这个元素可点击" class="headerlink" title="clipboard.js实现移动端复制功能(！！！重中之重：iOS下要给点击的元素加onclick=””或者cursor：pointer，总之就是让iOS可以识别到这个元素可点击)"></a>clipboard.js实现移动端复制功能(！！！重中之重：iOS下要给点击的元素加onclick=””或者cursor：pointer，总之就是让iOS可以识别到这个元素可点击)</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"J-browserLink"</span> <span class="attr">style</span>=<span class="string">"cursor: pointer;"</span>&gt;</span>点击复制1<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.bootcss.com/clipboard.js/1.6.0/clipboard.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> clipboard1 = <span class="keyword">new</span> Clipboard(<span class="string">".J-browserLink"</span>, &#123;</span></span><br><span class="line"><span class="javascript">	text: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">return</span> $(<span class="string">".J-browserLink"</span>).html()</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="javascript">clipboard1.on(<span class="string">"success"</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">	alert(<span class="string">'复制成功'</span>);</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="window-location"><a href="#window-location" class="headerlink" title="window.location"></a>window.location</h3><p>返回当前 URL 的路径名：<br>console.log(location.pathname);</p>
-<p>加载一个新的文档：<br>window.location.assign(“<a href="http://www.w3school.com.cn&quot;" target="_blank" rel="noopener">http://www.w3school.com.cn&quot;</a>)</p>
-<p>  ● location.hostname 返回 web 主机的域名<br>  ● location.pathname 返回当前页面的路径和文件名<br>  ● location.port 返回 web 主机的端口 （80 或 443）<br>  ● location.protocol 返回所使用的 web 协议（http:// 或 https://）</p>
-<h3 id="app内返回不刷新导致订单状态没有更新解决，强制刷新"><a href="#app内返回不刷新导致订单状态没有更新解决，强制刷新" class="headerlink" title="app内返回不刷新导致订单状态没有更新解决，强制刷新"></a>app内返回不刷新导致订单状态没有更新解决，强制刷新</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">JumpUrlForReturn: <span class="function"><span class="keyword">function</span> (<span class="params">url</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//定义页面展示时触发事件</span></span><br><span class="line">    <span class="built_in">window</span>.onpageshow = <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">        <span class="comment">//从缓存中读取页面时触发</span></span><br><span class="line">        <span class="keyword">if</span> (event.persisted &amp;&amp; WebStorage.forceRefresh) &#123;</span><br><span class="line">            WebStorage.removeItem(<span class="string">"forceRefresh"</span>)</span><br><span class="line">            <span class="built_in">window</span>.location.reload(<span class="literal">true</span>);<span class="comment">//强制刷新                  </span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//兼容不支持onpageshow: event.persisted </span></span><br><span class="line">    <span class="keyword">var</span> refresh = hzch5.getParameterByName(<span class="string">"refresh"</span>);</span><br><span class="line">    <span class="keyword">var</span> curl = <span class="built_in">window</span>.location.href;</span><br><span class="line">    <span class="keyword">if</span> (curl.indexOf(<span class="string">"?"</span>) &gt; <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (refresh &amp;&amp; refresh != <span class="string">""</span> &amp;&amp; curl.indexOf(<span class="string">"refresh"</span>) &gt; <span class="number">-1</span>) &#123;</span><br><span class="line">            curl = curl.replace(<span class="string">"refresh="</span> + refresh, <span class="string">"refresh="</span> + <span class="built_in">Math</span>.random());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            curl += <span class="string">"&amp;refresh="</span> + <span class="built_in">Math</span>.random();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        curl += <span class="string">"?refresh="</span> + <span class="built_in">Math</span>.random();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">window</span>.history.replaceState(<span class="string">""</span>, <span class="built_in">window</span>.document.title, curl);</span><br><span class="line">    <span class="comment">//End 兼容不支持onpageshow: event.persisted </span></span><br><span class="line"></span><br><span class="line">    url &amp;&amp; (<span class="built_in">window</span>.location.href = url);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="通过身份证号得到生日，性别，年龄"><a href="#通过身份证号得到生日，性别，年龄" class="headerlink" title="通过身份证号得到生日，性别，年龄"></a>通过身份证号得到生日，性别，年龄</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="comment">//获取出生日期，7位到15位为出生年月</span></span></span><br><span class="line"><span class="javascript">birth=UUserCard.substring(<span class="number">6</span>, <span class="number">10</span>) + <span class="string">"-"</span> + UUserCard.substring(<span class="number">10</span>, <span class="number">12</span>) + <span class="string">"-"</span> + UUserCard.substring(<span class="number">12</span>, <span class="number">14</span>);</span></span><br><span class="line"><span class="javascript"><span class="comment">//获取性别（其原理就是取身份证第17位除以2，余数1是男，否则是女）</span></span></span><br><span class="line"><span class="javascript"><span class="built_in">parseInt</span>(UUserCard.substr(<span class="number">16</span>, <span class="number">1</span>)) % <span class="number">2</span> == <span class="number">1</span></span></span><br><span class="line"><span class="javascript"><span class="comment">//获取年龄（年龄=当前年-身份证7至10位数字，如果月比当前月小或者月与当前月相等&amp;&amp;日比当前日小于等于，则年龄+1）</span></span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="APP环境登录判断"><a href="#APP环境登录判断" class="headerlink" title="APP环境登录判断"></a>APP环境登录判断</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">url = 函数传入的参数值</span><br><span class="line">1.调接口，判断登录态，未登录，跳转登录</span><br><span class="line">2.已登录，window.location = window.location.href || url;</span><br></pre></td></tr></table></figure>
-<h3 id="时间格式转换"><a href="#时间格式转换" class="headerlink" title="时间格式转换"></a>时间格式转换</h3><blockquote>
-<p>Date 对象方法<br>每个get方法都有对应的一个set方法，如：<br>getFullYear() 对应 setFullYear()<br>getMonth() 对应 setMonth()<br>getTime() 对应 setTime() //返回 1970 年 1 月 1 日至今的毫秒数  和      以毫秒设置 Date 对象。</p>
-</blockquote>
-<h3 id="多个同类型元素控制别的同类型的元素"><a href="#多个同类型元素控制别的同类型的元素" class="headerlink" title="多个同类型元素控制别的同类型的元素"></a>多个同类型元素控制别的同类型的元素</h3><p>举个栗子：<br>通过点击当前tab要控制侧边栏的导航tab，因为两个tab中的同级元素很多，所以可以根据他们的id来分别控制；<br>给点击的tab元素设置不同的id,<code>如：current1</code>，给被控制的元素设置id，<code>如：nav-current1</code>,与点击的元素id对应就好，然后就可以根据<code>nav-xxx</code><br>来对应元素进行操作</p>
-<h3 id="JS实现滚动显示，停止滚动隐藏"><a href="#JS实现滚动显示，停止滚动隐藏" class="headerlink" title="JS实现滚动显示，停止滚动隐藏"></a>JS实现滚动显示，停止滚动隐藏</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timer;</span><br><span class="line"><span class="built_in">window</span>.onscroll = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">   $(<span class="string">'.div'</span>).hide()</span><br><span class="line">   <span class="keyword">if</span> (timer)&#123;</span><br><span class="line">      clearTimeout(timer)</span><br><span class="line">   &#125;</span><br><span class="line">   timer = setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      $(<span class="string">'.div'</span>).show()</span><br><span class="line">   &#125;, <span class="number">1000</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="JS兼容H5手机实现弹窗出现禁止背景滚动"><a href="#JS兼容H5手机实现弹窗出现禁止背景滚动" class="headerlink" title="JS兼容H5手机实现弹窗出现禁止背景滚动"></a>JS兼容H5手机实现弹窗出现禁止背景滚动</h3><p>既然我们要阻止页面滚动，那么何不将其固定在视窗（即position: fixed），这样它就无法滚动了，当蒙层关闭时再释放。<br>当然还有一些细节要考虑，将页面固定视窗后，内容会回头最顶端，这里我们需要记录一下，同步top值。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> bodyEl = <span class="built_in">document</span>.body</span><br><span class="line"><span class="keyword">let</span> top = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopBodyScroll</span> (<span class="params">isFixed</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (isFixed) &#123;</span><br><span class="line">    top = <span class="built_in">window</span>.scrollY</span><br><span class="line"></span><br><span class="line">    bodyEl.style.position = <span class="string">'fixed'</span></span><br><span class="line">    bodyEl.style.top = -top + <span class="string">'px'</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    bodyEl.style.position = <span class="string">''</span></span><br><span class="line">    bodyEl.style.top = <span class="string">''</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">window</span>.scrollTo(<span class="number">0</span>, top) <span class="comment">// 回到原先的top</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="js获取链接中的参数"><a href="#js获取链接中的参数" class="headerlink" title="js获取链接中的参数"></a>js获取链接中的参数</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//name为参数名，queryString为链接</span></span><br><span class="line">getParameterByName: <span class="function"><span class="keyword">function</span> (<span class="params">name,queryString</span>) </span>&#123;</span><br><span class="line">  name = name.replace(<span class="regexp">/[\[]/</span>, <span class="string">"\\["</span>).replace(<span class="regexp">/[\]]/</span>, <span class="string">"\\]"</span>);</span><br><span class="line">  <span class="keyword">if</span> (!queryString) &#123;</span><br><span class="line">      queryString = location.search;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> regex = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"[\\?&amp;]"</span> + name + <span class="string">"=([^&amp;#]*)"</span>),</span><br><span class="line">  results = regex.exec(queryString);</span><br><span class="line">  <span class="keyword">return</span> results == <span class="literal">null</span> ? <span class="string">""</span> : <span class="built_in">decodeURIComponent</span>(results[<span class="number">1</span>].replace(<span class="regexp">/\+/g</span>, <span class="string">" "</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><p>function a(m){<br>  if(m == 1){<br>    return 1;<br> }<br> return a(m-1) + m<br>}</p>
-<h3 id="canvas图片跨域"><a href="#canvas图片跨域" class="headerlink" title="canvas图片跨域"></a>canvas图片跨域</h3><p>因为生成图片时，生成图片路径和已有图片路径不同，可以把图片转为base64<br>canvas.toDataURL(type, encoderOptions);</p>
-<h3 id="常用正则"><a href="#常用正则" class="headerlink" title="常用正则"></a>常用正则</h3><p>1.邮箱：/^\w+((-\w+)|(.\w+))<em>\@[A-Za-z0-9]+((.|-)[A-Za-z0-9]+)</em>.[A-Za-z0-9]+$/<br>2.手机号：/^1[3|4|5|6|7|8|9][0-9]{9}$/</p>
-<h3 id="防抖：延时执行函数，如果存在定时器，则清空定时器，重新设置定时器延时执行；节流：先立刻执行一次函数，进入延时，直到这个函数执行完成，才能再次执行函数"><a href="#防抖：延时执行函数，如果存在定时器，则清空定时器，重新设置定时器延时执行；节流：先立刻执行一次函数，进入延时，直到这个函数执行完成，才能再次执行函数" class="headerlink" title="防抖：延时执行函数，如果存在定时器，则清空定时器，重新设置定时器延时执行；节流：先立刻执行一次函数，进入延时，直到这个函数执行完成，才能再次执行函数"></a>防抖：延时执行函数，如果存在定时器，则清空定时器，重新设置定时器延时执行；节流：先立刻执行一次函数，进入延时，直到这个函数执行完成，才能再次执行函数</h3>
-          
+          do not track (禁止跟踪)https://www.zhangxinxu.com/word
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/blog/2016/12/26/JS常见问题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1147,9 +1064,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2016/11/30/JS字符串，数组处理/" itemprop="url">JS字符串控制</a></h1>
+                <a class="post-title-link" href="/blog/2016/11/30/JS字符串，数组处理/" itemprop="url">JS字符串控制</a></h2>
         
 
         <div class="post-meta">
@@ -1223,64 +1140,16 @@
       
         
           
-            <h3 id="split-方法"><a href="#split-方法" class="headerlink" title=".split()方法"></a>.split()方法</h3><blockquote>
-<p>stringObject.split(separator,howm)<br>separator: 必需，字符串或正则表达式，以这个字符对应要操作的字符串中的字符分割<br>howm: 可选，返回数组的最大长度<br>注 以多个字符分割字符串 正则搞定：<br>stringObject.split(/[-,./]/)</p>
-</blockquote>
-<h3 id="splice-方法"><a href="#splice-方法" class="headerlink" title=".splice()方法"></a>.splice()方法</h3><blockquote>
-<p>array.splice(index,howmany,item1,…..,itemX);<br>参数1必需。整数，规定添加/删除项目的位置，使用负数可从数组结尾处规定位置。，<br>参数2必需。要删除的项目数量。如果设置为 0，则不会删除项目。，<br>参数3可选。向数组添加的新项目。</p>
-</blockquote>
-<h3 id="slice-方法-可从-已有的数组中返回选定的元素"><a href="#slice-方法-可从-已有的数组中返回选定的元素" class="headerlink" title=".slice()方法   可从  已有的数组中返回选定的元素"></a>.slice()方法   可从  已有的数组中返回选定的元素</h3><blockquote>
-<p>包含起始位置，不包含结束位置</p>
-</blockquote>
-<h3 id="reverse-方法"><a href="#reverse-方法" class="headerlink" title=".reverse()方法"></a>.reverse()方法</h3><blockquote>
-<p>arrayPbject.reverse()<br>用于颠倒数组中元素顺序</p>
-</blockquote>
-<h3 id="join-方法-把数组中的所有元素放入一个字符串"><a href="#join-方法-把数组中的所有元素放入一个字符串" class="headerlink" title=".join()方法  //把数组中的所有元素放入一个字符串"></a>.join()方法  //把数组中的所有元素放入一个字符串</h3><blockquote>
-<p>arrayObject.join(separator)<br>参数用来指定要使用的分隔符，默认为逗号</p>
-</blockquote>
-<h3 id="push-pop-unshift-shift-方法"><a href="#push-pop-unshift-shift-方法" class="headerlink" title=".push(),.pop(),.unshift(),.shift()方法"></a>.push(),.pop(),.unshift(),.shift()方法</h3><p>.push()方法在当前数组末尾添加新元素，返回值为新数组长度；<br>.pop()方法删除当前数组最后一个元素并返回这个元素；<br>.unshift()方法向数组开始位置添加元素；<br>.shift() 方法用于把数组的第一个元素从其中删除，并返回第一个元素的值</p>
-<h3 id="toLocaleString-方法"><a href="#toLocaleString-方法" class="headerlink" title="toLocaleString()方法"></a>toLocaleString()方法</h3><p>toLocaleString()除了可以数组转字符串，如：[1,2,3,4].toLocaleString() //‘1,2,3,4’<br>还可以：<br>数字(不能是字符串)转为千分位格式 let num = 123456789;num..toLocaleString(‘en-US’) //123,456,789</p>
-<h3 id="flat-方法"><a href="#flat-方法" class="headerlink" title="flat() 方法"></a>flat() 方法</h3><blockquote>
-<p>会按照一个可指定的深度(默认值为1)递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回</p>
-<ul>
-<li>大白话就是，flat()可以把一个多层嵌套的数组转换成一个只有一层的数组</li>
-<li>例子：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,[<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,[<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>]]];</span><br><span class="line">arr.flat(<span class="number">2</span>)</span><br><span class="line"><span class="comment">// [1,2,3,4,5,6,7,8]</span></span><br><span class="line">arr.flat(<span class="number">1</span>)</span><br><span class="line"><span class="comment">// [1,2,3,4,5,[6,7,8]]</span></span><br><span class="line">arr.flat()</span><br><span class="line"><span class="comment">// [1,2,3,4,5,[6,7,8]]</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</blockquote>
-<h3 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h3><p>1.利用空数组+空对象push法：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeArrSame1</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> tmp = &#123;&#125;;</span><br><span class="line">	<span class="keyword">var</span> newA = [];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;arr.length;i++)&#123;</span><br><span class="line"> 		<span class="keyword">if</span>(!tmp[arr[i]])&#123;</span><br><span class="line">			tmp[arr[i]] = <span class="number">1</span>;</span><br><span class="line">			newA.push(arr[i]);</span><br><span class="line">	&#125;</span><br><span class="line"> &#125;	</span><br><span class="line"> <span class="keyword">return</span> newA;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>2.new一个新数组push方法：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeArrSame2</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> newA = [];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;arr.length;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(newA.indexOf(arr[i]) === <span class="number">-1</span>)&#123;</span><br><span class="line">			newA.push(arr[i])</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> newA;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="substr-方法"><a href="#substr-方法" class="headerlink" title=".substr()方法"></a>.substr()方法</h3><p>string.substr(star,length)<br>第一个参数要抽取的字串的起始下标，如果是负数，倒数，<br>第二个参数表示字串字符数</p>
-<h3 id="string-substring-方法"><a href="#string-substring-方法" class="headerlink" title="string.substring()方法"></a>string.substring()方法</h3><p>返回介于两个指定下标之间的字符，取第一个参数，不取第二个参数，第二个参数不填，则返回到结尾；</p>
-<h3 id="字符串转换数字类型方法"><a href="#字符串转换数字类型方法" class="headerlink" title="字符串转换数字类型方法"></a>字符串转换数字类型方法</h3><p>1.parseInt(),parseFloat()<br>js提供了parseInt()和parseFloat()两个转换函数。前者把值转换成整数，后者把值转换成浮点数。只有对String类型调用这些方法，这两个函数才能正确运行；对其他类型返回的都是NaN(Not a Number)。</p>
-<p>2.Number()<br>Number(value)——把给定的值转换成数字（可以是整数或浮点数）；</p>
-<h3 id="字符串大小写互转"><a href="#字符串大小写互转" class="headerlink" title="字符串大小写互转"></a>字符串大小写互转</h3><h5 id="转换成小写"><a href="#转换成小写" class="headerlink" title="转换成小写"></a>转换成小写</h5><p>toLowerCase 方法<br>返回一个字符串，该字符串中的字母被转换为小写字母。</p>
-<blockquote>
-<p>strVariable.toLowerCase()<br>“String Literal”.toLowerCase()</p>
-</blockquote>
-<p>说明<br>toLowerCase 方法对非字母字符不会产生影响。</p>
-<blockquote>
-<p>var strVariable = “This is a STRING object”;<br>strVariable = strVariable.toLowerCase();</p>
-</blockquote>
-<p>值为：</p>
-<blockquote>
-<p>this is a string object</p>
-</blockquote>
-<h5 id="转换成大写"><a href="#转换成大写" class="headerlink" title="转换成大写"></a>转换成大写</h5><p>toUpperCase 方法<br>返回一个字符串，该字符串中的所有字母都被转化为大写字母。</p>
-<blockquote>
-<p>strVariable.toUpperCase()<br>“String Literal”.toUpperCase()</p>
-</blockquote>
-<p>说明<br>toUpperCase 方法对非字母字符不会产生影响。</p>
-<blockquote>
-<p>var strVariable = “This is a STRING object”;<br>strVariable = strVariable.toUpperCase();</p>
-</blockquote>
-<p>值为：</p>
-<blockquote>
-<p>THIS IS A STRING OBJECT</p>
-</blockquote>
-<h3 id="输出图形字符"><a href="#输出图形字符" class="headerlink" title="输出图形字符"></a>输出图形字符</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1000</span>;i&lt;<span class="number">10000</span>;i++)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">String</span>.fromCharCode(i))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
+          .split()方法
+stringObject.split(separator,howm)separ
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/blog/2016/11/30/JS字符串，数组处理/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1344,9 +1213,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2016/11/27/css3变量/" itemprop="url">css3变量</a></h1>
+                <a class="post-title-link" href="/blog/2016/11/27/css3变量/" itemprop="url">css3变量</a></h2>
         
 
         <div class="post-meta">
@@ -1420,50 +1289,15 @@
       
         
           
-            <p>一、变量是个好东西<br>在任何语言中，变量的有一点作用都是一样的，那就是可以降低维护成本，附带还有更高性能，文件更高压缩率的好处。</p>
-<p>随着CSS预编译工具Sass/Less/Stylus的关注和逐渐流行，CSS工作组迅速跟进CSS变量的规范制定，并且，很多浏览器已经跟进，目前，在部分项目中已经可以直接使用了。</p>
-<p>Chrome/Firefox/Safari浏览器都是绿油油的，兼容性大大超出我的预期，于是果断尝鲜记录下语法用法和特性。</p>
-<p>二、CSS变量var()语法和用法和特性<br>CSS中原生的变量定义语法是：–<em>，变量使用语法是：`var(–</em>)<code>，其中</code>*`表示我们的变量名称。关于命名这个东西，各种语言都有些显示，例如CSS选择器不能是数字开头，JS中的变量是不能直接数值的，但是，在CSS变量中，这些限制通通没有，例如：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">  <span class="attribute">--1</span>: <span class="number">#369</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">var</span>(--<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>结果背景色如下：</p>
-<p>但是，不能包含$，[，^，(，%等字符，普通字符局限在只要是“数字[0-9]”“字母[a-zA-Z]”“下划线_”和“短横线-”这些组合，但是可以是中文，日文或者韩文，例如：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  --深蓝: #369;</span><br><span class="line">  <span class="selector-tag">background-color</span>: <span class="selector-tag">var</span>(<span class="selector-tag">--</span>深蓝);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>所以，我们就可以直接使用中文名称作为变量，即使英语4级没过的小伙伴也不会有压力了，我们也不需要随时挂个翻译器在身边了。</p>
-<p>无论是变量的定义和使用只能在声明块{}里面，例如，下面这样是无效的：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">--</span>深蓝: <span class="selector-id">#369</span>;</span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">var</span>(--深蓝);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>变量的定义，或者说声明跟CSS计数器的声明类似的，你应该摆脱Sass/Less等预编译工具语法先入为主的语法影响，把CSS的原生变量理解为一种CSS属性。</p>
-<p>这样，你就对其权重和变量应用规则要容易理解地多。</p>
-<p>例如下面这个例子：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123; <span class="attribute">--color</span>: purple; &#125;</span><br><span class="line"><span class="selector-tag">div</span> &#123; <span class="attribute">--color</span>: green; &#125;</span><br><span class="line"><span class="selector-id">#alert</span> &#123; <span class="attribute">--color</span>: red; &#125;</span><br><span class="line">* &#123; <span class="attribute">color</span>: <span class="built_in">var</span>(--color); &#125;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;我的紫色继承于根元素&lt;/p&gt;</span><br><span class="line">&lt;div&gt;我的绿色来自直接设置&lt;/div&gt;</span><br><span class="line">&lt;div id='alert'&gt;</span><br><span class="line">  <span class="selector-tag">ID</span>选择器权重更高，因此阿拉是红色！</span><br><span class="line">  &lt;p&gt;我也是红色，占了继承的光&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
-<p>上面这个例子我们可以获得这些信息：</p>
-<p>变量也是跟着CSS选择器走的，如果变量所在的选择器和使用变量的元素没有交集，是没有效果的。例如#alert定义的变量，只有id为alert的元素才能享有。如果你想变量全局使用，则你可以设置在:root选择器上；<br>当存在多个同样名称的变量时候，变量的覆盖规则由CSS选择器的权重决定的，但并无!important这种用法，因为没有必要，!important设计初衷是干掉JS的style设置，但对于变量的定义则没有这样的需求。<br>CSS属性名可以走变量吗？</p>
-<p>类似下面这样：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">--bc</span>: background-color;    </span><br><span class="line">    var(--bc): #369;</span><br><span class="line">&#125;</span><br><span class="line">答案是“不可以”，要是可以支持的话，那<span class="selector-tag">CSS</span>的压缩可就要逆天了，估计所有的属性都会变成1~2个字符。</span><br></pre></td></tr></table></figure></p>
-<p>CSS变量支持同时多个声明吗？</p>
-<p>类似下面这样：<br>…<br>不好意思，类似不了，语法上就根本不支持。</p>
-<p>CSS变量使用完整语法<br>CSS变量使用的完整语法为：var( [, ]? )，用中文表示就是：var( &lt;自定义属性名&gt; [, &lt;默认值 ]? )，</p>
-<p>意思就是，如果我们使用的变量没有定义（注意，仅限于没有定义），则使用后面的值作为元素的属性值。举个例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  --1: #369;</span><br><span class="line">&#125;</span><br><span class="line">body &#123;</span><br><span class="line">  background-color: var(--1, #cd0000);</span><br><span class="line">&#125;</span><br><span class="line">则此时的背景色是#cd0000：</span><br></pre></td></tr></table></figure>
-<p>CSS变量不合法的缺省特性</p>
-<p>请看下面这个例子：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">--color</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#369</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">var</span>(--color, #cd0000);</span><br><span class="line">&#125;</span><br><span class="line">请问，此时&lt;<span class="selector-tag">body</span>&gt;的背景色是？</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">A</span>. <span class="selector-tag">transparent</span>    <span class="selector-tag">B</span>. 20<span class="selector-tag">px</span>     <span class="selector-tag">C</span>. <span class="selector-id">#369</span>      <span class="selector-tag">D</span>. <span class="selector-id">#cd0000</span></span><br><span class="line">答案是…………………………<span class="selector-tag">A</span>. <span class="selector-tag">transparent</span></span><br></pre></td></tr></table></figure></p>
-<p>不知大家答对了没有！</p>
-<p>这是CSS变量非常有意思的一个点，对于CSS变量，只要语法是正确的，就算变量里面的值是个乱七八糟的东西，也是会作为正常的声明解析，如果发现变量值是不合法的，例如上面背景色显然不能是20px，则使用背景色的缺省值，也就是默认值代替，于是，上面CSS等同于：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line"><span class="attribute">--color</span>: <span class="number">20px</span>;</span><br><span class="line"><span class="attribute">background-color</span>: <span class="number">#369</span>;</span><br><span class="line"><span class="attribute">background-color</span>: transparent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>千万不能想当然得认为等同于background-color:20px，这也是为什么上面要强调CSS默认值的使用仅限于变量未定义的情况，并不包括变量不合法。</p>
-<p>CSS变量的空格尾随特性</p>
-<p>请看下面这个例子：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">--size</span>: <span class="number">20</span>;   </span><br><span class="line">  <span class="attribute">font-size</span>: <span class="built_in">var</span>(--size)<span class="built_in">px</span>;</span><br><span class="line">&#125;</span><br><span class="line">请问，此时&lt;<span class="selector-tag">body</span>&gt;的<span class="selector-tag">font-size</span>大小是多少？</span><br></pre></td></tr></table></figure></p>
-<p>如果你以为是20px就太天真了，实际上，此处font-size:var(–size)px等同于font-size:20 px，注意，20后面有个空格，所以，这里的font-size使用的是<body>元素默认的大小。因此，就不要妄图取消就使用一个数值来贯穿全场，还是使用稳妥的做法：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">--size</span>: <span class="number">20px</span>;   </span><br><span class="line">  <span class="attribute">font-size</span>: <span class="built_in">var</span>(--size);</span><br><span class="line">&#125;</span><br><span class="line">或者使用<span class="selector-tag">CSS3</span> <span class="selector-tag">calc</span>()计算：</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">--size</span>: <span class="number">20</span>;   </span><br><span class="line">  <span class="attribute">font-size</span>: <span class="built_in">calc</span>(var(--size) * <span class="number">1px</span>);</span><br><span class="line">&#125;</span><br><span class="line">此时，&lt;<span class="selector-tag">body</span>&gt;的<span class="selector-tag">font-size</span>大小才是20<span class="selector-tag">px</span>，</span><br></pre></td></tr></table></figure></body></p>
-<p>CSS变量的相互传递特性</p>
-<p>就是说，我们在CSS变量定义的时候可以直接引入其他变量给自己使用，例如：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">--green</span>: <span class="number">#4CAF50</span>;   </span><br><span class="line">  <span class="attribute">--backgroundColor</span>: <span class="built_in">var</span>(--green);</span><br><span class="line">&#125;</span><br><span class="line">或者更复杂的使用<span class="selector-tag">CSS3</span> <span class="selector-tag">calc</span>()计算，例如：</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">--columns</span>: <span class="number">4</span>;</span><br><span class="line">  <span class="attribute">--margins</span>: <span class="built_in">calc</span>(<span class="number">24px</span> / var(--columns));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>对于复杂布局，CSS变量的这种相互传递和直接引用特性可以简化我们的代码和实现成本，尤其和动态布局在一起的时候，无论是CSS的响应式后者是JS驱动的布局变化。</p>
-<p>我们来看一个CSS变量与响应式布局的例子，您可以狠狠地点击这里：CSS变量与响应式布局实例demo</p>
-<p>默认进去是4栏，如下图：</p>
-<p>随着浏览器宽度减小，4栏可能就变成3栏，2栏甚至1栏，我们实际开发的时候，显然不仅仅是栏目数量变化，宽度小，往往意味着访问设备尺寸有限，此时我们往往会缩小空白间距以及文字字号大小，这样，有限屏幕才能显示更多内容。</p>
-<p>也就是说，当我们响应式变化的时候，改变的CSS属性值不是1个，而是3个或者更多，如果我们有3个响应点，是不是就至少需要9个CSS声明？但是，由于我们有了CSS变量，同时，CSS变量可以传递，当我们遭遇响应点的时候，我们只需要改变一个CSS属性值就可以了。</p>
-<p>下面就是本demo核心CSS代码（只需要改变–columns这一个变量即可）：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">    <span class="attribute">--columns</span>: <span class="number">4</span>;</span><br><span class="line">    <span class="attribute">--margins</span>: <span class="built_in">calc</span>(<span class="number">24px</span> / var(--columns));</span><br><span class="line">    <span class="attribute">--space</span>: <span class="built_in">calc</span>(<span class="number">4px</span> * var(--columns));</span><br><span class="line">    <span class="attribute">--fontSize</span>: <span class="built_in">calc</span>(<span class="number">20px</span> - <span class="number">4</span> / var(--columns));</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">max-width:</span> <span class="number">1200px</span>) &#123;</span><br><span class="line">    <span class="selector-class">.box</span> &#123;</span><br><span class="line">        <span class="attribute">--columns</span>: <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">max-width:</span> <span class="number">900px</span>) &#123;</span><br><span class="line">    <span class="selector-class">.box</span> &#123;</span><br><span class="line">        <span class="attribute">--columns</span>: <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">max-width:</span> <span class="number">600px</span>) &#123;</span><br><span class="line">    <span class="selector-class">.box</span> &#123;</span><br><span class="line">        <span class="attribute">--columns</span>: <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>于是，我们在2栏下的效果就是，字号，间距随着栏目数量的减小也一并减小了，然后每栏之间间距是扩大了;</p>
-<p>有没有觉得CSS越来越屌了呢！哈哈~</p>
-<p>三、结束语<br>由于目前几乎没有关于CSS3 var()的文章，因此，上面关于var()的语法特性等都是自己通过看规范文档，外加细致的测试得到的。但是，一个人的能力总是有限的，因此，必然还有很多var()变量有意思的点没发现，因此，就希望大家若是发现var()其他有意思的地方，欢迎评论告知，我们及时添加在文章中，方便你我他她它。</p>
-<p>多人合作项目我也会使用Less/Sass之类的预编译工具，但是，基本上用到的就是变量，其他高级功能，几乎都不怎么使用。所以，如果浏览器全方位支持了原生的CSS变量，我十有八九就会抛弃Less/Sass之类的工具。</p>
-
-          
+          一、变量是个好东西在任何语言中，变量的有一点作用都是一样的，那就是可以降低维护成本，附带还有更高性能
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/blog/2016/11/27/css3变量/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1527,9 +1361,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2016/11/25/html常见问题/" itemprop="url">html常见问题</a></h1>
+                <a class="post-title-link" href="/blog/2016/11/25/html常见问题/" itemprop="url">html常见问题</a></h2>
         
 
         <div class="post-meta">
@@ -1603,28 +1437,18 @@
       
         
           
-            <h3 id="标签变为可编辑"><a href="#标签变为可编辑" class="headerlink" title="标签变为可编辑"></a>标签变为可编辑</h3><blockquote>
-<p>contenteditable=true</p>
-</blockquote>
-<p>###textarea标签问题<br>加边框在移动端会出现双边框</p>
-<h3 id="img标签中的图片无法显示"><a href="#img标签中的图片无法显示" class="headerlink" title="img标签中的图片无法显示"></a>img标签中的图片无法显示</h3><p>1、让这个图片元素隐藏：<br>onerror=”this.style.display=’none’”/&gt;<br>2、用默认的图片替换：</p>
-<ul>
-<li>控制onerror事件只触发一次，需要增加这句话：this.onerror=null;<br>onerror=”this.src=’默认图片的url地址;this.onerror=null’”/&gt;</li>
-</ul>
-<h3 id="input标签在chrome浏览器下背景颜色变黄色的问题"><a href="#input标签在chrome浏览器下背景颜色变黄色的问题" class="headerlink" title="input标签在chrome浏览器下背景颜色变黄色的问题"></a>input标签在chrome浏览器下背景颜色变黄色的问题</h3><p>如图<br><img src="http://ota5i8p1g.bkt.clouddn.com/input.png" alt></p>
-<p>解决方法：</p>
-<blockquote>
-<p>方法一：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;text&quot;  autocomplete=&quot;off&quot;&gt;，没错，就是给input标签设置禁用自动完成属性；出现黄色背景就是因为启用了自动完成属性；</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>方法二：<br> -webkit-box-shadow: 0 0 0px 1000px white inset；  没错，就是给input设置内置阴影！而且一定要大，至少要比你的input本身大！不过，box-shadow是很慢的！而且，如果你的input是用图片做背景or，是没有办法做这么干的！</p>
-</blockquote>
-<h3 id="localstorage"><a href="#localstorage" class="headerlink" title="localstorage"></a>localstorage</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> storage = <span class="built_in">JSON</span>.parse(<span class="built_in">window</span>.localStorage.getItem(<span class="string">"Data"</span>)) || &#123;&#125;;  <span class="comment">//从本地取localstorage数据</span></span><br><span class="line">storage[<span class="string">"typeId"</span>] = id;    <span class="comment">//localstorage数据设置key = value;</span></span><br><span class="line"><span class="built_in">window</span>.localStorage.setItem(<span class="string">'Data'</span>,<span class="built_in">JSON</span>.stringify(storage));   <span class="comment">// 设置好的数据存到localstorage</span></span><br><span class="line"><span class="built_in">JSON</span>.parse()将字符串转换为对象</span><br><span class="line"><span class="built_in">JSON</span>.stringify()将对象转换为字符串</span><br></pre></td></tr></table></figure>
-<p>###a标签href属性多功能<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1、&lt;a href=&quot;tel:400-888-6633&quot;&gt;拨打电话&lt;a&gt;</span><br><span class="line">2、&lt;a href=&quot;sms:19956321564&quot;&gt;发送短信&lt;a&gt;</span><br><span class="line">3、&lt;a href=&quot;mailto:mail@mail.com&quot;&gt;发送邮件&lt;a&gt;</span><br></pre></td></tr></table></figure></p>
-<h3 id="a标签rel"><a href="#a标签rel" class="headerlink" title="a标签rel"></a>a标签rel</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a rel=&quot;nofollow noopener noreferrer&quot;&gt;</span><br></pre></td></tr></table></figure>
-<p>使用a标签的target=”_blank”属性，或者window.open(url)在新窗口中打开页面时，会存在潜在的安全问题。为什么呢？这个锅是一个叫opener的全局对象的锅。<br>通过在a标签上添加这个noopener属性，可以将新打开窗口的opner置为空<br>可解决除IE外的安全问题，和所有现代浏览器的性能问题</p>
-<h3 id="利用css3-media-媒体查询方法实现-引用不同link标签"><a href="#利用css3-media-媒体查询方法实现-引用不同link标签" class="headerlink" title="利用css3 @media 媒体查询方法实现 引用不同link标签"></a>利用css3 @media 媒体查询方法实现 引用不同link标签</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 使用： --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- mediatype: all || print || screen || speech --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">media</span>=<span class="string">"mediatype and|not|only (media feature)"</span> <span class="attr">href</span>=<span class="string">"mystylesheet.css"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 具体示例: --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">media</span>=<span class="string">"screen and (max-width:750px)"</span> <span class="attr">href</span>=<span class="string">"./css/index.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">media</span>=<span class="string">"screen and (min-width:750px)"</span> <span class="attr">href</span>=<span class="string">"./css/indexPC.css"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-          
+          标签变为可编辑
+contenteditable=true
+
+###textarea标签问题加边框在移
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/blog/2016/11/25/html常见问题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1688,9 +1512,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2016/11/22/hexo-next主题配置优化/" itemprop="url">hexo next主题配置优化</a></h1>
+                <a class="post-title-link" href="/blog/2016/11/22/hexo-next主题配置优化/" itemprop="url">hexo next主题配置优化</a></h2>
         
 
         <div class="post-meta">
@@ -1764,87 +1588,18 @@
       
         
           
-            <h3 id="NEXT主题官方文档，操作扩展都非常详细，有兴趣可以看一看"><a href="#NEXT主题官方文档，操作扩展都非常详细，有兴趣可以看一看" class="headerlink" title="NEXT主题官方文档，操作扩展都非常详细，有兴趣可以看一看"></a>NEXT主题官方文档，操作扩展都非常详细，有兴趣可以看一看</h3><p><a href="http://theme-next.iissnan.com/theme-settings.html" target="_blank" rel="noopener">NEXT主题配置</a>   </p>
-<h2 id="配置"><a name="t4"></a>配置</h2>
+          NEXT主题官方文档，操作扩展都非常详细，有兴趣可以看一看NEXT主题配置   
+配置
 
-<h3 id="首先我们看看-主题配置文件-的配置-F-hexo-themes-next-config-yml"><a href="#首先我们看看-主题配置文件-的配置-F-hexo-themes-next-config-yml" class="headerlink" title="首先我们看看 主题配置文件 的配置 F:\hexo\themes\next\_config.yml"></a>首先我们看看 <code>主题配置文件</code> 的配置 <code>F:\hexo\themes\next\_config.yml</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">1. 把页面中的动画效果取消，把enable改为对应的false改为true，然后hexo d -g，再进主页，问题就解决了，下面的length参数对应的是文章预览的文本长度，可以自己设置。</span><br><span class="line">auto_excerpt:</span><br><span class="line">  enable: false</span><br><span class="line">  length: 150</span><br><span class="line"></span><br><span class="line">2. 设置菜单项的显示文本和图标</span><br><span class="line">NexT 使用的是 [Font Awesome](http://fontawesome.dashgame.com/) 提供的图标， Font Awesome 提供了 600+ 的图标，可以满足绝大的多数的场景，同时无须担心在 Retina 屏幕下图标模糊的问题。</span><br><span class="line"></span><br><span class="line">3. 浏览页面的时候显示当前浏览进度</span><br><span class="line">搜索关键字 scrollpercent ,把 false 改为 true。</span><br><span class="line"># Scroll percent label in b2t button</span><br><span class="line">scrollpercent: true</span><br><span class="line"></span><br><span class="line">4. 添加顶部加载条</span><br><span class="line">打开 themes/next/_config.yml ，搜索关键字 pace ,设置为 true ,可以更换加载样式：</span><br><span class="line"></span><br><span class="line">5. 修改文章底部的那个带#号的标签</span><br><span class="line">修改模板/themes/hexo-theme-next/layout/_macro/post.swig，</span><br><span class="line">搜索 rel=&quot;tag&quot;&gt;#，将 # 换成&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;</span><br><span class="line"></span><br><span class="line">6. 增加本地搜索功能</span><br><span class="line">1&gt; 在你站点的根目录下</span><br><span class="line">$ npm install hexo-generator-searchdb --save</span><br><span class="line">2&gt; 打开 Hexo 站点配置文件 _config.yml,添加配置</span><br><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 10000</span><br><span class="line">3&gt; 打开 themes/next/_config.yml ,搜索关键字 local_search ,enable 设置为 true：</span><br><span class="line">local_search:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
-<h3 id="我们再看看-站点配置文件-的配置-F-hexo-config-yml"><a href="#我们再看看-站点配置文件-的配置-F-hexo-config-yml" class="headerlink" title="我们再看看 站点配置文件 的配置 F:\hexo\_config.yml"></a>我们再看看 <code>站点配置文件</code> 的配置 <code>F:\hexo\_config.yml</code></h3><pre class="prettyprint" name="code"><code class="hljs avrasm has-numbering"><span class="hljs-preprocessor"># Hexo Configuration</span>
-<span class="hljs-preprocessor">## Docs: https://hexo.io/docs/configuration.html</span>
-<span class="hljs-preprocessor">## Source: https://github.com/hexojs/hexo/</span>
-<span class="hljs-preprocessor"># Site 网站</span>
-<span class="hljs-label">title:</span> 为学   <span class="hljs-preprocessor">#网站标题</span>
-<span class="hljs-label">subtitle:</span> 天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。   <span class="hljs-preprocessor">#网站副标题</span>
-<span class="hljs-label">description:</span> 天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。   <span class="hljs-preprocessor">#网站描述</span>
-<span class="hljs-label">author:</span> willxue   <span class="hljs-preprocessor">#您的名字</span>
-<span class="hljs-label">language:</span> <span class="hljs-built_in">zh</span>-CN   <span class="hljs-preprocessor">#网站使用的语言</span>
-<span class="hljs-label">timezone:</span>           <span class="hljs-preprocessor">#网站时区。Hexo 默认使用您电脑的时区</span>
-
-<span class="hljs-preprocessor"># URL 网址</span>
-<span class="hljs-preprocessor">## 如果您的网站存放在子目录中，例如 http://yoursite.com/blog，则请将您的 url 设为 http://yoursite.com/blog 并把 root 设为 /blog/。</span>
-<span class="hljs-label">url:</span> http://willxue<span class="hljs-preprocessor">.top</span>
-<span class="hljs-label">permalink:</span> :year/:month/:day/:title/    <span class="hljs-preprocessor">#生成文件名字的格式我改成blog/:title:year:month:day/</span>
-<span class="hljs-label">permalink_defaults:</span>
-
-<span class="hljs-preprocessor"># Directory 目录配置</span>
-<span class="hljs-label">source_dir:</span> source   <span class="hljs-preprocessor">#源文件夹，这个文件夹用来存放内容。</span>
-<span class="hljs-label">public_dir:</span> public   <span class="hljs-preprocessor">#公共文件夹，这个文件夹用于存放生成的站点文件。</span>
-<span class="hljs-label">tag_dir:</span> tags   <span class="hljs-preprocessor">#标签文件夹</span>
-<span class="hljs-label">archive_dir:</span> archives   <span class="hljs-preprocessor">#归档文件夹</span>
-<span class="hljs-label">category_dir:</span> categories   <span class="hljs-preprocessor">#分类文件夹</span>
-<span class="hljs-label">code_dir:</span> downloads/code    <span class="hljs-preprocessor">#nclude code 文件夹</span>
-<span class="hljs-label">i18n_dir:</span> :lang   <span class="hljs-preprocessor">#国际化（i18n）文件夹</span>
-<span class="hljs-label">skip_render:</span>   <span class="hljs-preprocessor">#跳过指定文件的渲染，您可使用 glob 表达式来匹配路径。</span>
-
-<span class="hljs-preprocessor"># Writing 文章</span>
-<span class="hljs-label">new_post_name:</span> :title<span class="hljs-preprocessor">.md</span>   <span class="hljs-preprocessor"># 新建文章默认文件名</span>
-<span class="hljs-label">default_layout:</span> post   <span class="hljs-preprocessor"># 默认布局</span>
-<span class="hljs-label">titlecase:</span> false   <span class="hljs-preprocessor"># Transform title into titlecase</span>
-<span class="hljs-label">external_link:</span> true   <span class="hljs-preprocessor"># 在新标签中打开一个外部链接，默认为true</span>
-<span class="hljs-label">filename_case:</span> <span class="hljs-number">0</span>   <span class="hljs-preprocessor">#转换文件名，1代表小写；2代表大写；默认为0，意思就是创建文章的时候，是否自动帮你转换文件名，默认就行，意义不大。</span>
-<span class="hljs-label">render_drafts:</span> false   <span class="hljs-preprocessor">#是否渲染_drafts目录下的文章，默认为false</span>
-<span class="hljs-label">post_asset_folder:</span> false   <span class="hljs-preprocessor">#启动 Asset 文件夹</span>
-<span class="hljs-label">relative_link:</span> false   <span class="hljs-preprocessor">#把链接改为与根目录的相对位址，默认false</span>
-<span class="hljs-label">future:</span> true   <span class="hljs-preprocessor">#显示未来的文章，默认false</span>
-<span class="hljs-label">highlight:</span>   <span class="hljs-preprocessor">#代码块的设置 </span>
-  enable: true
-  line_number: true
-  auto_detect: false
-  tab_replace:
-
-<span class="hljs-preprocessor"># Category &amp; Tag   分类和标签的设置</span>
-<span class="hljs-label">default_category:</span> uncategorized   <span class="hljs-preprocessor">#默认分类</span>
-<span class="hljs-label">category_map:</span>   <span class="hljs-preprocessor">#分类别名</span>
-<span class="hljs-label">tag_map:</span>   <span class="hljs-preprocessor">#标签别名</span>
-
-<span class="hljs-preprocessor"># Date / Time format</span>
-<span class="hljs-preprocessor">## Hexo uses Moment.js to parse and display date</span>
-<span class="hljs-preprocessor">## You can customize the date format as defined in</span>
-<span class="hljs-preprocessor">## http://momentjs.com/docs/#/displaying/format/</span>
-<span class="hljs-label">date_format:</span> YYYY-MM-DD
-<span class="hljs-label">time_format:</span> HH:mm:ss
-
-<span class="hljs-preprocessor"># Pagination 分页</span>
-<span class="hljs-preprocessor">## Set per_page to 0 to disable pagination</span>
-<span class="hljs-label">per_page:</span> <span class="hljs-number">10</span>   <span class="hljs-preprocessor">#每页显示的文章量 (0 = 关闭分页功能)</span>
-<span class="hljs-label">pagination_dir:</span> page   <span class="hljs-preprocessor">#分页目录</span>
-
-<span class="hljs-preprocessor"># Extensions</span>
-<span class="hljs-preprocessor">## Plugins: https://hexo.io/plugins/</span>
-<span class="hljs-preprocessor">## Themes: https://hexo.io/themes/</span>
-<span class="hljs-label">theme:</span> next
-
-<span class="hljs-label">feed:</span>
-  type: atom       <span class="hljs-preprocessor">#feed 类型 (atom/rss2)</span>
-  path: atom<span class="hljs-preprocessor">.xml</span>   <span class="hljs-preprocessor">#rss 路径</span>
-  limit: <span class="hljs-number">20</span>        <span class="hljs-preprocessor">#在 rss 中最多生成的文章数(0显示所有)</span>
-
-<span class="hljs-preprocessor"># Deployment</span>
-<span class="hljs-preprocessor">## Docs: https://hexo.io/docs/deployment.html</span>
-<span class="hljs-label">deploy:</span> 
-<span class="hljs-label">type:</span> git 
-  repository: https://github<span class="hljs-preprocessor">.com</span>/imwillxue/imwillxue<span class="hljs-preprocessor">.github</span><span class="hljs-preprocessor">.com</span><span class="hljs-preprocessor">.git</span> 
-  branch: master</code></pre>
-          
+首先我们看
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/blog/2016/11/22/hexo-next主题配置优化/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1908,9 +1663,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/blog/2016/11/22/css3-animate/" itemprop="url">css3 animate</a></h1>
+                <a class="post-title-link" href="/blog/2016/11/22/css3-animate/" itemprop="url">css3 animate</a></h2>
         
 
         <div class="post-meta">
@@ -1984,42 +1739,17 @@
       
         
           
-            <h2 id="animation"><a href="#animation" class="headerlink" title="animation:"></a>animation:</h2><ul>
-<li>animation-name : xuanzhuan  //动画名字</li>
-<li>animation-duration : 1s ;   //动画时长</li>
-<li>animation-timing-function : linear; //动画运动方式</li>
-<li>animation-fill-mode : both;  //动画最终停留状态</li>
-<li>animation-iteration-count : infinite; //动画运动次数</li>
-<li>animation-direction : alternate; //动画来回</li>
-<li>animation-delay : 1s;   //动画延迟</li>
-<li>animation-play-state : paused  / running;  //给js 用的动画控制</li>
-</ul>
-<p>$.fn.fullpage.  调用方法</p>
-<h2 id="旋转图片：transform"><a href="#旋转图片：transform" class="headerlink" title="旋转图片：transform:"></a>旋转图片：transform:</h2><ul>
-<li>旋转：rotateY  rotateZ  rotateX();          (deg)  </li>
-<li>放大：scaleX scaleY scaleZ scale scale3d          (1.1)  </li>
-<li>斜切：skewX skewY skewZ skew3d          (deg)</li>
-<li>位移：translateX translateY  translateZ  translate3d (px)</li>
-</ul>
-<h2 id="背景图片颜色渐变："><a href="#背景图片颜色渐变：" class="headerlink" title="背景图片颜色渐变："></a>背景图片颜色渐变：</h2><p>   background-image:linear-gradient(#33bb11,#ffaacc)<br>   &lt; linear-gradient&gt;：使用线性渐变创建背景图像。<br>   &lt; radial-gradient&gt;：使用径向(放射性)渐变创建背景图像。<br>   &lt; repeating-linear-gradient&gt;：使用重复的线性渐变创建背景图像。<br>   &lt; repeating-radial-gradient&gt;：使用重复的径向(放射性)渐变创建背景图像</p>
-<h2 id="定义一个动画的方法"><a href="#定义一个动画的方法" class="headerlink" title="定义一个动画的方法"></a>定义一个动画的方法</h2><ul>
-<li>@keyframes</li>
-</ul>
-<h2 id="transform-origin-top-center"><a href="#transform-origin-top-center" class="headerlink" title="transform-origin:top center;"></a>transform-origin:top center;</h2><h2 id="永远不要写all-写那些真正需要监测的属性"><a href="#永远不要写all-写那些真正需要监测的属性" class="headerlink" title="永远不要写all 写那些真正需要监测的属性"></a>永远不要写all 写那些真正需要监测的属性</h2><ul>
-<li>ease ease-in ease-in-out ease-out ease-out linear step-end step-start steps()</li>
-<li>transition-property: all;</li>
-<li>transition-duration: .8s;</li>
-<li>transition-timing-function: ease;</li>
-<li>transition-delay: 0;</li>
-</ul>
-<h2 id="animation-timing-function-cubic-bezier"><a href="#animation-timing-function-cubic-bezier" class="headerlink" title="animation-timing-function:cubic-bezier();"></a>animation-timing-function:cubic-bezier();</h2><pre><code>both:让动画留在最后一帧；
-无限动画：infinite
-</code></pre><p>// 进入一屏的时候会调用afterLoad<br>afterLoad:function(name,index){<br>  name是当前这张的名字 index 当前是第几张<br>}<br>// 离开一屏的时候 会调用onLeave<br>onLeave:function(index,next,dir){<br>  if(index === 5){<br>    $(‘#section5 h1’).addClass(‘animate-fei’);<br>  }<br>  if(index === 1){<br>    //离开失效<br>    return false;<br>  }<br>}</p>
-<h2 id="四、使用css结合js去制作页面中的动画"><a href="#四、使用css结合js去制作页面中的动画" class="headerlink" title="四、使用css结合js去制作页面中的动画"></a>四、使用css结合js去制作页面中的动画</h2><p>1、使用 transtion 结合fullpage 去制作动画<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">transition:transform .5s ease 1s ,opacity .6s ease-in-out;</span><br><span class="line">transform:rotateX()</span><br><span class="line">transform:translate3d(30px,40px,0)</span><br></pre></td></tr></table></figure></p>
-<p>2、使用 animation 结合 fullpage 去制作动画</p>
-<p>a.要动的元素写到每一个section中<br>b.正常状态下采用一种动画(可选)<br>c.在section拥有active类的情况下彩另外一种动画<br>d.一些复杂的情况，把动画预先写好， 在配置项的onLeave afterLoad回调函数中通过添加类名</p>
-
-          
+          animation:
+animation-name : xuanzhuan  //动画名字
+anim
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/blog/2016/11/22/css3-animate/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2095,7 +1825,7 @@
               <img class="site-author-image" itemprop="image" src="http://www.guoxh.com/blog/img/avatar.png" alt="郭雪辉">
             
               <p class="site-author-name" itemprop="name">郭雪辉</p>
-              <p class="site-description motion-element" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           <nav class="site-state motion-element">
@@ -2182,7 +1912,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -2202,6 +1932,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     
