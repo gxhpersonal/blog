@@ -13,6 +13,24 @@ categories: React
 $ npm install node-sass --save
 ```
 
+### 打包不同环境代码包
+1.安装`cross-env`插件：
+```npm
+npm install cross-env -dev
+```
+
+2.`package.json`文件中：
+```json
+"scripts": {
+  "start": "cross-env REACT_APP_SECRET_ENV='development' node scripts/start.js",
+  "build": "cross-env REACT_APP_SECRET_ENV='production' node scripts/build.js",
+  "build:staging": "cross-env REACT_APP_SECRET_ENV='staging' node scripts/build.js",
+  "test": "node scripts/test.js"
+},
+```
+
+3.在任意js中不同环境就可以获取到不同的`REACT_APP_SECRET_ENV`值;
+
 ### css添加浏览器前缀
 修改`package.json`文件中的
 ```json
