@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="打包后路径不对解决执行npm run build后发现打包文件路径错误，在package.json文件最外层添加&amp;quot;homepage&amp;quot;: &amp;quot;./&amp;quot; 安装依赖（sass）1$ npm install node-sass --save css添加浏览器前缀修改package.json文件中的1234567891011121314151617&quot;browserslis">
+<meta name="description" content="打包后路径不对解决执行npm run build后发现打包文件路径错误，在package.json文件最外层添加&amp;quot;homepage&amp;quot;: &amp;quot;./&amp;quot; 安装依赖（sass）1$ npm install node-sass --save 打包不同环境代码包1.安装cross-env插件：1npm install cross-env -dev 2.package.js">
 <meta name="keywords" content="React">
 <meta property="og:type" content="article">
 <meta property="og:title" content="react记录">
 <meta property="og:url" content="http://gxhpersonal.github.io/blog/2019/11/28/react记录/index.html">
 <meta property="og:site_name" content="blog station">
-<meta property="og:description" content="打包后路径不对解决执行npm run build后发现打包文件路径错误，在package.json文件最外层添加&amp;quot;homepage&amp;quot;: &amp;quot;./&amp;quot; 安装依赖（sass）1$ npm install node-sass --save css添加浏览器前缀修改package.json文件中的1234567891011121314151617&quot;browserslis">
+<meta property="og:description" content="打包后路径不对解决执行npm run build后发现打包文件路径错误，在package.json文件最外层添加&amp;quot;homepage&amp;quot;: &amp;quot;./&amp;quot; 安装依赖（sass）1$ npm install node-sass --save 打包不同环境代码包1.安装cross-env插件：1npm install cross-env -dev 2.package.js">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-12-30T03:02:53.585Z">
+<meta property="og:updated_time" content="2021-01-08T01:35:30.657Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react记录">
-<meta name="twitter:description" content="打包后路径不对解决执行npm run build后发现打包文件路径错误，在package.json文件最外层添加&amp;quot;homepage&amp;quot;: &amp;quot;./&amp;quot; 安装依赖（sass）1$ npm install node-sass --save css添加浏览器前缀修改package.json文件中的1234567891011121314151617&quot;browserslis">
+<meta name="twitter:description" content="打包后路径不对解决执行npm run build后发现打包文件路径错误，在package.json文件最外层添加&amp;quot;homepage&amp;quot;: &amp;quot;./&amp;quot; 安装依赖（sass）1$ npm install node-sass --save 打包不同环境代码包1.安装cross-env插件：1npm install cross-env -dev 2.package.js">
 
 
 
@@ -417,6 +417,9 @@
       
         <h3 id="打包后路径不对解决"><a href="#打包后路径不对解决" class="headerlink" title="打包后路径不对解决"></a>打包后路径不对解决</h3><p>执行<code>npm run build</code>后发现打包文件路径错误，在package.json文件最外层添加<code>&quot;homepage&quot;: &quot;./&quot;</code></p>
 <h3 id="安装依赖（sass）"><a href="#安装依赖（sass）" class="headerlink" title="安装依赖（sass）"></a>安装依赖（sass）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install node-sass --save</span><br></pre></td></tr></table></figure>
+<h3 id="打包不同环境代码包"><a href="#打包不同环境代码包" class="headerlink" title="打包不同环境代码包"></a>打包不同环境代码包</h3><p>1.安装<code>cross-env</code>插件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install cross-env -dev</span><br></pre></td></tr></table></figure></p>
+<p>2.<code>package.json</code>文件中：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">  "start": "cross-env REACT_APP_SECRET_ENV='development' node scripts/start.js",</span><br><span class="line">  "build": "cross-env REACT_APP_SECRET_ENV='production' node scripts/build.js",</span><br><span class="line">  "build:staging": "cross-env REACT_APP_SECRET_ENV='staging' node scripts/build.js",</span><br><span class="line">  "test": "node scripts/test.js"</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
+<p>3.在任意js中不同环境就可以获取到不同的<code>REACT_APP_SECRET_ENV</code>值;</p>
 <h3 id="css添加浏览器前缀"><a href="#css添加浏览器前缀" class="headerlink" title="css添加浏览器前缀"></a>css添加浏览器前缀</h3><p>修改<code>package.json</code>文件中的<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">"browserslist": &#123;</span><br><span class="line">  <span class="comment">// 正式环境</span></span><br><span class="line">  "production": [</span><br><span class="line">    "&gt; 1%",</span><br><span class="line">    "last 2 versions",</span><br><span class="line">    "not ie &lt;= 8",</span><br><span class="line">    "iOS &gt;= 6",</span><br><span class="line">    "Android &gt; 4.1",</span><br><span class="line">    <span class="string">"Firefox &gt; 20"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 开发环境</span></span><br><span class="line">  "development": [</span><br><span class="line">    "last 1 chrome version",</span><br><span class="line">    "last 1 firefox version",</span><br><span class="line">    <span class="string">"last 1 safari version"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="全局方法"><a href="#全局方法" class="headerlink" title="全局方法"></a>全局方法</h3><p>例如引用axios到全局<br>在<code>index.js</code>中：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Axios <span class="keyword">from</span> <span class="string">'axios'</span>;<span class="comment">//直接引用  </span></span><br><span class="line"><span class="comment">//or</span></span><br><span class="line"><span class="keyword">import</span> Axios <span class="keyword">from</span> <span class="string">"/axios/index.js"</span>;<span class="comment">//如果封装了axios，还可以引入封装后的文件</span></span><br><span class="line">React.$axios = Axios;</span><br></pre></td></tr></table></figure></p>
 <h3 id="react集成预渲染方案，解决首屏白屏问题-seo问题"><a href="#react集成预渲染方案，解决首屏白屏问题-seo问题" class="headerlink" title="react集成预渲染方案，解决首屏白屏问题+seo问题"></a>react集成预渲染方案，解决首屏白屏问题+seo问题</h3><p>1.安装单页应用预渲染插件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install prerender-spa-plugin --save-dev</span><br></pre></td></tr></table></figure></p>
@@ -644,7 +647,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#打包后路径不对解决"><span class="nav-number">1.</span> <span class="nav-text">打包后路径不对解决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装依赖（sass）"><span class="nav-number">2.</span> <span class="nav-text">安装依赖（sass）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css添加浏览器前缀"><span class="nav-number">3.</span> <span class="nav-text">css添加浏览器前缀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局方法"><span class="nav-number">4.</span> <span class="nav-text">全局方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#react集成预渲染方案，解决首屏白屏问题-seo问题"><span class="nav-number">5.</span> <span class="nav-text">react集成预渲染方案，解决首屏白屏问题+seo问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#react集成TDK（2020-5-15大佬插件竟然1万3千多赞，惊呆）"><span class="nav-number">6.</span> <span class="nav-text">react集成TDK（2020.5.15大佬插件竟然1万3千多赞，惊呆）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#打包后路径不对解决"><span class="nav-number">1.</span> <span class="nav-text">打包后路径不对解决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装依赖（sass）"><span class="nav-number">2.</span> <span class="nav-text">安装依赖（sass）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打包不同环境代码包"><span class="nav-number">3.</span> <span class="nav-text">打包不同环境代码包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css添加浏览器前缀"><span class="nav-number">4.</span> <span class="nav-text">css添加浏览器前缀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局方法"><span class="nav-number">5.</span> <span class="nav-text">全局方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#react集成预渲染方案，解决首屏白屏问题-seo问题"><span class="nav-number">6.</span> <span class="nav-text">react集成预渲染方案，解决首屏白屏问题+seo问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#react集成TDK（2020-5-15大佬插件竟然1万3千多赞，惊呆）"><span class="nav-number">7.</span> <span class="nav-text">react集成TDK（2020.5.15大佬插件竟然1万3千多赞，惊呆）</span></a></li></ol></div>
             
 
           </div>
@@ -664,7 +667,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
