@@ -31,6 +31,26 @@ npm install cross-env -dev
 
 3.在任意js中不同环境就可以获取到不同的`REACT_APP_SECRET_ENV`值;
 
+### 路由懒加载
+`router.js`文件中：
+```js
+import React, { Suspense, lazy } from "react";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+const Home = lazy(() => import('../component/home/Index'));
+const BasicRoute = () => (
+  <Router>
+  // fallback用来页面未加载显示loading等元素提升用户体验，可引入组件
+    <Suspense fallback={<div></div>}>
+      <Switch>
+        // exact用来路由名称精准匹配
+        <Route exact path="/" component={Home} />
+      </Switch>
+    </Suspense>
+  </Router >
+);
+export default BasicRoute;
+```
+
 ### css添加浏览器前缀
 修改`package.json`文件中的
 ```json
