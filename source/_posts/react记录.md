@@ -198,3 +198,33 @@ class Application extends React.Component {
     </Child>
 </Parent>
 ```
+
+### 父子组件互相传值/调用方法
+
+父组件中：
+```jsx
+{/* 优惠券领取弹窗 */}
+<CouponPopup vname={this.props.vname} couponItem={this.state.couponItem} event={this} onRef={(ref) => { this.child = ref }} />
+```
+
+子组件中：
+```jsx
+export default class CouponPopup extends React.Component{
+  constructor() {
+    super();
+    this.state = {};
+  }
+  componentDidMount() {
+    //子组件实例传递给父组件
+    this.props.onRef(this)
+  }
+  toParent = () => {
+    // 调用父组件方法
+    this.props.event.closePopup()
+  }
+  reserve(){
+    console.log("这是提供给父组件调用的方法")
+  }
+}
+
+```
