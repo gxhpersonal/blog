@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://gxhpersonal.github.io/blog/blog/2019/03/05/mini-program/</loc>
+    <lastmod>2021-01-22</lastmod>
+  </url>
+  <url>
     <loc>http://gxhpersonal.github.io/blog/blog/2019/11/28/react%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2021-01-20</lastmod>
   </url>
@@ -125,15 +129,11 @@
     <lastmod>2020-12-30</lastmod>
   </url>
   <url>
-    <loc>http://gxhpersonal.github.io/blog/blog/2019/03/05/mini-program/</loc>
+    <loc>http://gxhpersonal.github.io/blog/blog/2016/12/29/jquery%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2020-12-30</lastmod>
   </url>
   <url>
     <loc>http://gxhpersonal.github.io/blog/blog/2019/05/02/js%E9%BB%91%E7%A7%91%E6%8A%80/</loc>
-    <lastmod>2020-12-30</lastmod>
-  </url>
-  <url>
-    <loc>http://gxhpersonal.github.io/blog/blog/2016/12/29/jquery%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2020-12-30</lastmod>
   </url>
   <url>
@@ -149,11 +149,11 @@
     <lastmod>2020-12-30</lastmod>
   </url>
   <url>
-    <loc>http://gxhpersonal.github.io/blog/blog/2019/04/25/fiddler%E6%8A%93%E5%8C%85/</loc>
+    <loc>http://gxhpersonal.github.io/blog/blog/2019/05/07/css%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7/</loc>
     <lastmod>2020-12-30</lastmod>
   </url>
   <url>
-    <loc>http://gxhpersonal.github.io/blog/blog/2019/05/07/css%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7/</loc>
+    <loc>http://gxhpersonal.github.io/blog/blog/2019/04/25/fiddler%E6%8A%93%E5%8C%85/</loc>
     <lastmod>2020-12-30</lastmod>
   </url>
   <url>
@@ -169,19 +169,19 @@
     <lastmod>2020-12-30</lastmod>
   </url>
   <url>
-    <loc>http://gxhpersonal.github.io/blog/blog/2016/09/14/cookie/</loc>
-    <lastmod>2020-12-30</lastmod>
-  </url>
-  <url>
     <loc>http://gxhpersonal.github.io/blog/blog/2018/12/28/css-mask/</loc>
     <lastmod>2020-12-30</lastmod>
   </url>
   <url>
-    <loc>http://gxhpersonal.github.io/blog/blog/2016/09/27/angular%E5%B8%B8%E7%94%A8%E8%BF%87%E6%BB%A4%E5%99%A8/</loc>
+    <loc>http://gxhpersonal.github.io/blog/blog/2016/09/14/cookie/</loc>
     <lastmod>2020-12-30</lastmod>
   </url>
   <url>
     <loc>http://gxhpersonal.github.io/blog/blog/2016/09/14/call()%E5%92%8Capply()/</loc>
+    <lastmod>2020-12-30</lastmod>
+  </url>
+  <url>
+    <loc>http://gxhpersonal.github.io/blog/blog/2016/09/27/angular%E5%B8%B8%E7%94%A8%E8%BF%87%E6%BB%A4%E5%99%A8/</loc>
     <lastmod>2020-12-30</lastmod>
   </url>
   <url>
