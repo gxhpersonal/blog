@@ -72,6 +72,7 @@ onLoad(){
     }
 }
 ```
+`env(safe-area-inset-bottom)`这个css属性只适用于苹果手机，该变量是IOS 系统内核提供的，在IOS上正常使用；而安卓和开发工具上用的是 Chromium 内核，没有这个变量，所以不支持
 官方文档给的tabbar示例中有个css方法：
 padding-bottom: env(safe-area-inset-bottom);
 这个方法是用来兼容全面屏手机，如iPhoneX，XR,XS等，会在底部留下安全距离，但是引发另一个问题，就是滚动时页面会暴露在tabbar下面，像这样：
