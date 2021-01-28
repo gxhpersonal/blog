@@ -226,8 +226,32 @@ export default class CouponPopup extends React.Component{
     console.log("这是提供给父组件调用的方法")
   }
 }
-
 ```
 
-### 路由跳转传参方式
-1.
+### 路由跳转传参方式（state、query、params），目前我做的是history模式路由，而且以后也不会考虑hash模式
+1.`state`参数：
+> `state`方式传参刷新页面参数不会丢失，并且是隐式传参，链接中不会显示参数，`state`传参的方式只支持`Browserrouter`路由，不支持`hashrouter`，就是我们常说的`history`模式，而不支持`hash`模式
+获取参数：`this.props.location.state`
+2.`query`参数：
+> `query`方式传参刷新页面参数丢失
+3.`params`参数：
+> `params`方式传参刷新页面参数丢失
+* 暂时并没有发现在history模式下query和params两种方式的不同，看网上说在hash模式下会有区别，然后还有文档说params传参可以是下面这种：
+```jsx
+import { Link } from "react-router-dom";
+state={
+    id:88,
+    name:'Jack',
+}
+// 路由页面：
+<Route path='/demo/:id/:name' component={Demo}></Route>  
+// 路由跳转并传递参数：
+    // 链接方式：
+    <Link to={{pathname:`/demo/${this.state.id}/${this.state.name}`}}></Link>
+
+    // js方式：
+    this.props.history.push({pathname:`/demo/${this.state.id}/${this.state.name}`})
+// 获取参数：
+this.props.match.params     //结果 {id: "88", name: "Jack"}
+```
+这种感觉像vue的子路由，还有待进一步研究
