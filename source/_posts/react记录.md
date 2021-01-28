@@ -228,3 +228,6 @@ export default class CouponPopup extends React.Component{
 }
 
 ```
+
+### 路由跳转传参方式
+1.
