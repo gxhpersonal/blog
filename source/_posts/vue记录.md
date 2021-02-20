@@ -114,6 +114,12 @@ switchPhone() {
 </script>
 ```
 
+### vue中引入未定义的第三方组件会报错，所以需要过滤掉
+在`main.js`中添加过滤元素：
+```js
+Vue.config.ignoredElements = ['wx-open-launch-weapp']
+```
+
 ### this.$set()设置对象的属性，这个方法主要用于避开 Vue 不能检测属性被添加的限制
 ```
 var vm = new Vue({
