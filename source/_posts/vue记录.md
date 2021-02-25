@@ -121,7 +121,7 @@ Vue.config.ignoredElements = ['wx-open-launch-weapp']
 ```
 
 ### this.$set()设置对象的属性，这个方法主要用于避开 Vue 不能检测属性被添加的限制
-```
+```js
 var vm = new Vue({
 el:'#app',
 data:{
@@ -137,7 +137,7 @@ vm.$set(vm.arr,0,4) //这样dom数据才会改变
 *引入文件：import "../../filter/webpFilter.js";
 
 ### vue数据绑定支持JS表达式(以后v-for的时候再也不用先在JS中处理一遍数据再绑定了)
-```
+```js
 {{ number + 1 }}
 {{ ok ? 'YES' : 'NO' }}
 {{ message.split('').reverse().join('') }}
