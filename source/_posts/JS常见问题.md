@@ -283,4 +283,29 @@ canvas.toDataURL(type, encoderOptions);
 1.邮箱：/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/
 2.手机号：/^1[3|4|5|6|7|8|9][0-9]{9}$/
 
+### 对象数组合并相同ID的对象并计算出数量
+```js
+//未核销线上店铺商品合并相同订单号的订单
+let sameArr = [{id:111,name:"张三"},{id:222,name:"李四"},{id:111,name:"张三"}]
+let arr = sameArr;
+arr = arr.reduce((obj, item) => {
+let find = obj.find(i => i.id === item.id)
+let _d = {
+    ...item,
+    goods_count: 1,
+    isShow: false
+}
+if (find) {
+    find.goods_count++;
+    find.isShow = true;
+} else {
+    _d.isShow = true;
+}
+obj.push(_d)
+return obj
+}, [])
+// console.log(arr)
+sameArr = arr;
+```
+
 ### 防抖：延时执行函数，如果存在定时器，则清空定时器，重新设置定时器延时执行；节流：先立刻执行一次函数，进入延时，直到这个函数执行完成，才能再次执行函数
