@@ -308,4 +308,36 @@ return obj
 sameArr = arr;
 ```
 
+### HTML5 - 使用地理定位
+```js
+function getLocation() {
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(showPosition, showError);
+	} else {
+		console.log("此浏览器不支持地理位置");
+	}
+}
+getLocation();
+function showPosition(position) {
+	console.log("Latitude: " + position.coords.latitude + " Longitude: " + position.coords.longitude);
+}
+function showError(error) {
+	switch (error.code) {
+		case error.PERMISSION_DENIED:
+			console.log("用户拒绝了地理位置的请求");
+			break;
+		case error.POSITION_UNAVAILABLE:
+			console.log("位置信息不可用");
+			break;
+		case error.TIMEOUT:
+			console.log("获取用户位置的请求超时");
+			break;
+		case error.UNKNOWN_ERROR:
+			console.log("发生未知错误");
+			break;
+	}
+}
+```
+
+
 ### 防抖：延时执行函数，如果存在定时器，则清空定时器，重新设置定时器延时执行；节流：先立刻执行一次函数，进入延时，直到这个函数执行完成，才能再次执行函数
