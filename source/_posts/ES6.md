@@ -8,13 +8,13 @@ categories: JS
 ### let  const
 let和var类似，let必须先声明后使用，否则会报错，let不存在变量提升；
 let声明变量，const声明常量；
-```
+```js
 function kuai(){
   let n = 5;
   if(true){
     let n = 10;
   }
-  console.log(n)
+  console.log(n) //5
 }
 kuai()
 ```
@@ -26,7 +26,7 @@ ES6中let，class和const声明的变量不再与顶层对象的属性关联
 
 
 ### Promise(主要解决异步回调地狱的问题)
-```
+```js
 var promise = new Promise(function (resolve, reject) {
         console.log('resolve');
 		//成功回调
@@ -41,7 +41,7 @@ var promise = new Promise(function (resolve, reject) {
     })
     console.log('justgo')
 ```
-> Promise.prototype.then()第一个函数参数为resolve执行函数，第二个函数参数为reject执行函数
+> `Promise.prototype.then()`第一个函数参数为resolve执行函数，第二个函数参数为reject执行函数
 
 ### export default {}为模块指定默认输出
 export default function () {
@@ -57,13 +57,12 @@ var a{
      return this;
   }
 }
-* ES6可以简写为
+// ES6可以简写为
 var a{
    points(){
      return this;
    }
 }
-
 ```
 
 ### export,export default的异同
@@ -74,13 +73,13 @@ var a{
 
 ### ES6的箭头函数
 ES6中的箭头函数写法更加简单，表达更加简洁，简化回调函数
-```
+```js
  var func = v => v+1;
-等于：
+ // 等于：
  var func = function(v){return v+1}
 
 var result = [1,2,1,3,4].sort((a,b)=>a-b)
-等于：
+// 等于：
 var result = [1,2,1,3,4].sort(function(a,b){return a-b})
 ```
 
