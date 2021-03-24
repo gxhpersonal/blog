@@ -402,6 +402,18 @@ emulateJSON: true
 }
 即可
 
+### SPA单页面项目设置history模式路由，ios微信内跳转页面不会改变页面路径，sdk调用方法导致报错
+* 具体表现：在IOS手机微信端，从A页面(http://a.com/A) 跳转到B页面(http://a.com/B)后，B页面进行微信内置方法操作时就会报签名（invalid signature）错误，基本解决方案就是记录初始进入的页面路径，调用config接口时传入初始路径就可以解决；
+```js
+// 记录进入 App 时的 URL
+if (typeof window.entryUrl === 'undefined' || window.entryUrl === '') {
+    window.entryUrl = location.href
+}
+ 
+// 获取签名的时候 Android 不用使用之前的链接，IOS 需要
+let signLink =  /(Android)/i.test(navigator.userAgent) ? location.href : window.entryUrl;
+```
+
 ### vue.js源码分析
 1.Object.create(null)和{}区别；
  二者都是创建一个对象，前者去掉了原型链，后者保留原型链
