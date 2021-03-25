@@ -285,7 +285,7 @@ canvas.toDataURL(type, encoderOptions);
 
 ### 对象数组合并相同ID的对象并计算出数量
 ```js
-//未核销线上店铺商品合并相同订单号的订单
+//使用reduce累加器特性过滤相同id的项并计算数量
 let sameArr = [{id:111,name:"张三"},{id:222,name:"李四"},{id:111,name:"张三"}]
 let arr = sameArr;
 arr = arr.reduce((obj, item) => {
