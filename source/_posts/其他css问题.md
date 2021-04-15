@@ -53,31 +53,25 @@ vertical-align只适用于行内块元素
     user-select: none;
 ```
 
-### 处理激活状态文字移动问题
-```
-margin-top:-1px;
-margin-bottom:1px;
-padding-top:1px;
-```
-
 ### 文本超出后显示省略号
-```
-> p{
+```css
+/* 一行 */
+p{
    width:40px;
    white-space: nowrap;
    text-overflow: ellipsis;
    overflow: hidden;
 }
-
+/* 多行 */
 p{
-    overflow: hidden;                //超出部分隐藏
-    text-overflow: ellipsis;         //显示省略号来修饰被剪掉的文本
+    overflow: hidden;                /* 超出部分隐藏 */
+    text-overflow: ellipsis;         /* 显示省略号来修饰被剪掉的文本 */
     display: box;
     display: -webkit-box;
-    line-clamp: 3;                     //非规范属性，实现规定文本行数      火狐不支持这个属性
+    line-clamp: 3;                     /* 非规范属性，实现规定文本行数      火狐不支持这个属性 */
     -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;    //规定框的子元素应该被水平或垂直排列
-    -moz-box-orient: vertical;        //支持火狐的写法
+    -webkit-box-orient: vertical;    /* 规定框的子元素应该被水平或垂直排列 */
+    -moz-box-orient: vertical;        /* 支持火狐的写法 */
 } 
 *line-clamp*
 限制在一个块元素显示的文本的行数。
