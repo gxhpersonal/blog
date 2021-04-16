@@ -8,44 +8,6 @@ categories: JS
 ### do not track (禁止跟踪)
 [https://www.zhangxinxu.com/wordpress/2018/07/navigator-do-not-track-api/]()
 
-### 五种方法去除字符串最后的逗号
-```html
-<script>
-window.onload=function() {
-    var obj = {name: "xxx", age: 30, sex: "female"};//定义一个object对象
-    var str = ''//定义一个空字符用来接收对象里的key或者value
-    for(var item in obj) {//遍历item变量里的对象的属性和元素，
-        str += obj[item] + ","//将obj对象的值遍历出来，并且追加到str字符中。
-        //str += item + ","//将obj对象的属性遍历出来，并且追加到str字符中。
-    }
-    //第一种方法、将字符串中最后一个元素","逗号去掉，
-    str = str.substring(0, str.lastIndexOf(','));
-
-    //第二种方法、将字符串中最后一个元素","逗号去掉，
-    str = (str.substring(str.length - 1) == ',') ? str.substring(0, str.length - 1) : str;
-
-    //第三种方法、将字符串中最后一个元素","逗号去掉，
-    var str=str.substring(0,str.length-1);//3、将字符串中最后一个元素","逗号去掉，
-
-    //第四种方法、将字符串中最后一个元素","逗号去掉，
-    var reg=/,$/gi;
-    str=str.replace(reg,"");
-
-
-    console.log(str)
-}
-</script>
-//最后一种用css解决
-<span ng-repeat="v in carNaP.sflb">{{v.Label}}<i>、</i></span>
-<style>
-span:last-child{
-   i{
-     display:none;
-    }
-}
-</style>
-```
-
 ### Ajax跨域问题解决
 [http://www.cnblogs.com/pandang/p/5341250.html]()
 
@@ -197,13 +159,6 @@ parseInt(UUserCard.substr(16, 1)) % 2 == 1
 </script>
 ```
 
-### APP环境登录判断
-```
-url = 函数传入的参数值
-1.调接口，判断登录态，未登录，跳转登录
-2.已登录，window.location = window.location.href || url;
-```
-
 ### 时间格式转换
 >Date 对象方法
 每个get方法都有对应的一个set方法，如：
@@ -266,14 +221,6 @@ getParameterByName: function (name,queryString) {
   return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 ```
-
-### 递归
-function a(m){
-  if(m == 1){
-    return 1;
- }
- return a(m-1) + m
-}
 
 ### canvas图片跨域
 因为生成图片时，生成图片路径和已有图片路径不同，可以把图片转为base64
