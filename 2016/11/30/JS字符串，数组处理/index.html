@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="blog station">
 <meta property="og:description" content=".split()方法 stringObject.split(separator,howm)separator: 必需，字符串或正则表达式，以这个字符对应要操作的字符串中的字符分割howm: 可选，返回数组的最大长度注 以多个字符分割字符串 正则搞定：stringObject.split(/[-,./]/)  .splice()方法 array.splice(index,howmany,item1,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-04-16T06:46:18.207Z">
+<meta property="og:updated_time" content="2021-04-16T07:30:10.161Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS字符串控制">
 <meta name="twitter:description" content=".split()方法 stringObject.split(separator,howm)separator: 必需，字符串或正则表达式，以这个字符对应要操作的字符串中的字符分割howm: 可选，返回数组的最大长度注 以多个字符分割字符串 正则搞定：stringObject.split(/[-,./]/)  .splice()方法 array.splice(index,howmany,item1,">
@@ -431,7 +431,7 @@
 <p>arrayObject.join(separator)<br>参数用来指定要使用的分隔符，默认为逗号</p>
 </blockquote>
 <h3 id="push-pop-unshift-shift-方法"><a href="#push-pop-unshift-shift-方法" class="headerlink" title=".push(),.pop(),.unshift(),.shift()方法"></a>.push(),.pop(),.unshift(),.shift()方法</h3><p>.push()方法在当前数组末尾添加新元素，返回值为新数组长度；<br>.pop()方法删除当前数组最后一个元素并返回这个元素；<br>.unshift()方法向数组开始位置添加元素；<br>.shift() 方法用于把数组的第一个元素从其中删除，并返回第一个元素的值</p>
-<h3 id="toLocaleString-方法"><a href="#toLocaleString-方法" class="headerlink" title="toLocaleString()方法"></a>toLocaleString()方法</h3><p>toLocaleString()除了可以数组转字符串，如：[1,2,3,4].toLocaleString() //‘1,2,3,4’<br>还可以：<br>数字(不能是字符串)转为千分位格式 let num = 123456789;num..toLocaleString(‘en-US’) //123,456,789</p>
+<h3 id="toLocaleString-方法"><a href="#toLocaleString-方法" class="headerlink" title="toLocaleString()方法"></a>toLocaleString()方法</h3><p>toLocaleString()除了可以数组转字符串，如：[1,2,3,4].toLocaleString() //‘1,2,3,4’<br>还可以：<br>数字(不能是字符串)转为千分位格式 let num = 123456789;num..toLocaleString(‘en-US’) //123,456,789<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Intl 对象是 ECMAScript 国际化 API 的一个命名空间，它提供了精确的字符串对比、数字格式化，和日期时间格式化</span></span><br><span class="line"><span class="comment">//Collator，NumberFormat 和 DateTimeFormat 对象的构造函数是 Intl 对象的属性</span></span><br><span class="line"><span class="comment">//数字转千分位</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Intl</span>.NumberFormat().format(<span class="number">3500</span>));</span><br><span class="line"><span class="comment">//"3,500"</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="flat-方法"><a href="#flat-方法" class="headerlink" title="flat() 方法"></a>flat() 方法</h3><blockquote>
 <p>会按照一个可指定的深度(默认值为1)递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回</p>
 <ul>

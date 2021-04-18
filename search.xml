@@ -63,7 +63,7 @@
 <p>arrayObject.join(separator)<br>参数用来指定要使用的分隔符，默认为逗号</p>
 </blockquote>
 <h3 id="push-pop-unshift-shift-方法"><a href="#push-pop-unshift-shift-方法" class="headerlink" title=".push(),.pop(),.unshift(),.shift()方法"></a>.push(),.pop(),.unshift(),.shift()方法</h3><p>.push()方法在当前数组末尾添加新元素，返回值为新数组长度；<br>.pop()方法删除当前数组最后一个元素并返回这个元素；<br>.unshift()方法向数组开始位置添加元素；<br>.shift() 方法用于把数组的第一个元素从其中删除，并返回第一个元素的值</p>
-<h3 id="toLocaleString-方法"><a href="#toLocaleString-方法" class="headerlink" title="toLocaleString()方法"></a>toLocaleString()方法</h3><p>toLocaleString()除了可以数组转字符串，如：[1,2,3,4].toLocaleString() //‘1,2,3,4’<br>还可以：<br>数字(不能是字符串)转为千分位格式 let num = 123456789;num..toLocaleString(‘en-US’) //123,456,789</p>
+<h3 id="toLocaleString-方法"><a href="#toLocaleString-方法" class="headerlink" title="toLocaleString()方法"></a>toLocaleString()方法</h3><p>toLocaleString()除了可以数组转字符串，如：[1,2,3,4].toLocaleString() //‘1,2,3,4’<br>还可以：<br>数字(不能是字符串)转为千分位格式 let num = 123456789;num..toLocaleString(‘en-US’) //123,456,789<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Intl 对象是 ECMAScript 国际化 API 的一个命名空间，它提供了精确的字符串对比、数字格式化，和日期时间格式化</span></span><br><span class="line"><span class="comment">//Collator，NumberFormat 和 DateTimeFormat 对象的构造函数是 Intl 对象的属性</span></span><br><span class="line"><span class="comment">//数字转千分位</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Intl</span>.NumberFormat().format(<span class="number">3500</span>));</span><br><span class="line"><span class="comment">//"3,500"</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="flat-方法"><a href="#flat-方法" class="headerlink" title="flat() 方法"></a>flat() 方法</h3><blockquote>
 <p>会按照一个可指定的深度(默认值为1)递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回</p>
 <ul>
@@ -1303,6 +1303,9 @@ requestAnimFrame(draw);
 <li><a href="https://juejin.im/post/6854573212890562573" target="_blank" rel="noopener">JS开发必须知道的41个技巧</a></li>
 <li><a href="https://juejin.im/post/6844904116339261447" target="_blank" rel="noopener">2020年前端面试复习必读文章【超三百篇文章/赠复习导图】</a></li>
 <li><a href="https://segmentfault.com/a/1190000023941089" target="_blank" rel="noopener">Javascript 里的奇葩知识</a></li>
+</ol>
+<h3 id="面试综合"><a href="#面试综合" class="headerlink" title="面试综合"></a>面试综合</h3><ol>
+<li><a href="https://github.com/CavsZhouyou/Front-End-Interview-Notebook" target="_blank" rel="noopener">面试题大全直击1000K高薪</a></li>
 </ol>
 <h3 id="遇到过的兼容问题"><a href="#遇到过的兼容问题" class="headerlink" title="遇到过的兼容问题"></a>遇到过的兼容问题</h3><p>1.微信内H5支付问题<br>  手机系统：iOS13、iOS14 （只在苹果手机发现）<br>  微信版本：7.0.17-7.0.18<br>  问题描述：vue history模式跳转，微信内H5支付，刷新页面会出现<code>WeixinJSBridge == &quot;undefined&quot;</code>，并且加兼容判断都没用，只能在跳转支付页时不用<code>$router.push()</code>改用<code>location.href = xx</code>方式。</p>
 ]]></content>
