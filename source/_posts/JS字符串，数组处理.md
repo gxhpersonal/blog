@@ -38,6 +38,13 @@ categories: JS
 toLocaleString()除了可以数组转字符串，如：[1,2,3,4].toLocaleString() //'1,2,3,4'
 还可以：
 数字(不能是字符串)转为千分位格式 let num = 123456789;num..toLocaleString('en-US') //123,456,789
+```js
+//Intl 对象是 ECMAScript 国际化 API 的一个命名空间，它提供了精确的字符串对比、数字格式化，和日期时间格式化
+//Collator，NumberFormat 和 DateTimeFormat 对象的构造函数是 Intl 对象的属性
+//数字转千分位
+console.log(new Intl.NumberFormat().format(3500));
+//"3,500"
+```
 
 ### flat() 方法
 > 会按照一个可指定的深度(默认值为1)递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回
