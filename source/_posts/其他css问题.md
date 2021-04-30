@@ -137,13 +137,20 @@ manipulation：允许手势水平/垂直平移或持续的缩放。任何auto属
 [http://www.zhangxinxu.com/wordpress/2015/11/css3-will-change-improve-paint/]()
 
 ### 支持webkit内核浏览器的滚动条样式自定义
->::-webkit-scrollbar{/* 1 */} /*滚动条垂直方向的宽度与水平方向的高度*/ ::-webkit-scrollbar-button{/* 2 */} /*滚动条按钮*/ ::-webkit-scrollbar-track{/* 3 */} /*滚动条轨道*/ ::-webkit-scrollbar-track-piece{/* 4 */} /*滚动条垂直方向轨道件*/ ::-webkit-scrollbar-thumb{/* 5 */} /*滚动条轨道上的按钮*/ ::-webkit-scrollbar-corner{/* 6 */} /*滚动条轨道上的滚动角*/ 
+```css
+::-webkit-scrollbar{width: 5px;height: 8px;background-color: #aaa} /*滚动条垂直方向的宽度与水平方向的高度*/ 
+::-webkit-scrollbar-button{background-color: #aaa} /*滚动条按钮*/ 
+::-webkit-scrollbar-track{background-color: #aaa} /*滚动条轨道*/ 
+::-webkit-scrollbar-track-piece{background-color: #aaa} /*滚动条垂直方向轨道件*/ 
+::-webkit-scrollbar-thumb{background-color: #aaa} /*滚动条轨道上的按钮*/ 
+::-webkit-scrollbar-corner{background-color: #aaa} /*滚动条轨道上的滚动角*/ 
+```
 
 ### 页面加滤镜
 ```css
-//高斯模糊
+/* 高斯模糊 */
 filter: blur(px)；
-//转换为灰度图像
+/* 转换为灰度图像 */
 filter: grayscale(100%);
 -webkit-filter: grayscale(100%);
 -moz-filter: grayscale(100%);
@@ -155,6 +162,17 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
 
 ### mask
 css的mask属性允许使用者通过部分或者完全隐藏一个元素的可见区域。这种效果可以通过遮罩或者裁切特定区域的图片。
+mask-reference:设置遮罩图片的路径
+masking-mode:设置遮罩图片的模式
+position:设置遮罩图片的位置
+bg-size:设置遮罩的大小
+repeat-style:设置遮罩图片的重复性
+compositing-operator:设置遮罩图层的组合操作
+```css
+.anothertarget {
+  mask: url(resources.svg#c1) 50px 30px/10px 10px repeat-x exclude;
+}
+```
 
 ### clip 图像裁剪
 clip:rect(0px,0px,0px,0px)四个值分别对应上右下左
@@ -277,3 +295,36 @@ tom;margin-left:left;执行的效率更高。
 > inherit	 从该元素的父元素继承属性。
 
 ### 卡片翻转效果实现
+```html
+<style>
+  .box{
+    width: 50px;
+    height: 50px;
+    transition: 0.6s;
+    transform-style: preserve-3d;
+  }
+  .box.rotate {
+    transform: rotateY(180deg);
+  }
+  .front{
+    width: 50px;
+		height: 50px;
+		background: green;
+    backface-visibility: hidden;
+  }
+  .back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotateY(180deg);
+    width: 50px;
+		height: 50px;
+		background: red;
+}
+</style>
+<div class="box">
+  <div class="front"></div>
+  <div class="back"></div>
+</div>
+```
