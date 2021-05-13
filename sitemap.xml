@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://gxhpersonal.github.io/blog/2017/02/06/ES6/</loc>
+    
+    <lastmod>2021-05-13T08:18:09.194Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://gxhpersonal.github.io/blog/about/index.html</loc>
     
     <lastmod>2021-05-10T07:06:53.183Z</lastmod>
@@ -54,13 +61,6 @@
     <loc>http://gxhpersonal.github.io/blog/2017/02/22/vue%E8%AE%B0%E5%BD%95/</loc>
     
     <lastmod>2021-03-24T08:16:04.754Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://gxhpersonal.github.io/blog/2017/02/06/ES6/</loc>
-    
-    <lastmod>2021-03-16T03:21:40.438Z</lastmod>
     
   </url>
   
