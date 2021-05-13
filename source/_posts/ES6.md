@@ -114,7 +114,7 @@ console.log(c)
 ```
 
 ### 生成器函数指定下一次调用 next() 时会生成什么 value
-```
+```js
 function* greeter(){
   yeild "hello"
   yeild "how are you"
@@ -129,8 +129,8 @@ console.log(greet.next().value);
 // 'Bye'
 console.log(greet.next().value);
 // undefined
-or
-使用生成器生成无限个值：
+// or
+// 使用生成器生成无限个值：
 function* idCreator() {
   let i = 0;
   while (true)
@@ -160,3 +160,5 @@ myFunc();
 // 'Hello world!'
 // 可以看到，async创建的函数体内，加了await的函数，即使它是异步的，也会等他先执行完
 ```
+
+### ES2020新增链判断运算符 及 Null/undefined判断运算符
