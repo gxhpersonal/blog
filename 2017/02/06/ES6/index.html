@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="blog station">
 <meta property="og:description" content="let  constlet和var类似，let必须先声明后使用，否则会报错，let不存在变量提升；let声明变量，const声明常量；12345678function kuai()&amp;#123;  let n = 5;  if(true)&amp;#123;    let n = 10;  &amp;#125;  console.log(n) //5&amp;#125;kuai() 上面代码说明let有块级作用域，不同块级">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-05-13T08:18:09.194Z">
+<meta property="og:updated_time" content="2021-05-14T07:41:54.349Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6">
 <meta name="twitter:description" content="let  constlet和var类似，let必须先声明后使用，否则会报错，let不存在变量提升；let声明变量，const声明常量；12345678function kuai()&amp;#123;  let n = 5;  if(true)&amp;#123;    let n = 10;  &amp;#125;  console.log(n) //5&amp;#125;kuai() 上面代码说明let有块级作用域，不同块级">
@@ -409,7 +409,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  833
+                  1k
                 </span>
               
 
@@ -425,7 +425,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  4
                 </span>
               
             </div>
@@ -462,7 +462,11 @@
 <h3 id="ES6支持变量作为对象key，如："><a href="#ES6支持变量作为对象key，如：" class="headerlink" title="ES6支持变量作为对象key，如："></a>ES6支持变量作为对象key，如：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let a = &apos;aaa&apos;;</span><br><span class="line">let b = &apos;bbb&apos;;</span><br><span class="line">let c = &#123;[a]:&apos;this is key a&apos;,[b]:&apos;this is key b&apos;&#125;;</span><br><span class="line">console.log(c)</span><br></pre></td></tr></table></figure>
 <h3 id="生成器函数指定下一次调用-next-时会生成什么-value"><a href="#生成器函数指定下一次调用-next-时会生成什么-value" class="headerlink" title="生成器函数指定下一次调用 next() 时会生成什么 value"></a>生成器函数指定下一次调用 next() 时会生成什么 value</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">greeter</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  yeild <span class="string">"hello"</span></span><br><span class="line">  yeild <span class="string">"how are you"</span></span><br><span class="line">  yeild <span class="string">"good bye"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> greet = greeter();</span><br><span class="line"><span class="built_in">console</span>.log(greet.next().value);</span><br><span class="line"><span class="comment">// 'Hi'</span></span><br><span class="line"><span class="built_in">console</span>.log(greet.next().value);</span><br><span class="line"><span class="comment">// 'How are you?'</span></span><br><span class="line"><span class="built_in">console</span>.log(greet.next().value);</span><br><span class="line"><span class="comment">// 'Bye'</span></span><br><span class="line"><span class="built_in">console</span>.log(greet.next().value);</span><br><span class="line"><span class="comment">// undefined</span></span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"><span class="comment">// 使用生成器生成无限个值：</span></span><br><span class="line"><span class="function"><span class="keyword">function</span>* <span class="title">idCreator</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">    <span class="keyword">yield</span> i++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> ids = idCreator();</span><br><span class="line"><span class="built_in">console</span>.log(ids.next().value);</span><br><span class="line"><span class="comment">// 0</span></span><br><span class="line"><span class="built_in">console</span>.log(ids.next().value);</span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="built_in">console</span>.log(ids.next().value);</span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="comment">// etc...</span></span><br></pre></td></tr></table></figure>
 <h3 id="Async-Await"><a href="#Async-Await" class="headerlink" title="Async/Await"></a>Async/Await</h3><p>在掌握了 promise 的用法后，你可能也会喜欢 async await，它只是一种基于 promise 的“语法糖”。在下面的示例中，我们创建了一个 async 函数，并 await greeter promise。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const greeter = new Promise((res, rej) =&gt; &#123;</span><br><span class="line">  setTimeout(() =&gt; res(&apos;Hello world!&apos;), 2000);</span><br><span class="line">&#125;)</span><br><span class="line">async function myFunc() &#123;</span><br><span class="line">  const greeting = await greeter;</span><br><span class="line">  console.log(greeting);</span><br><span class="line">&#125;</span><br><span class="line">myFunc();</span><br><span class="line">// &apos;Hello world!&apos;</span><br><span class="line">// 可以看到，async创建的函数体内，加了await的函数，即使它是异步的，也会等他先执行完</span><br></pre></td></tr></table></figure></p>
-<h3 id="ES2020新增链判断运算符-及-Null-undefined判断运算符"><a href="#ES2020新增链判断运算符-及-Null-undefined判断运算符" class="headerlink" title="ES2020新增链判断运算符 及 Null/undefined判断运算符"></a>ES2020新增链判断运算符 及 Null/undefined判断运算符</h3>
+<h3 id="ES2020新增链判断运算符-及-Null-undefined判断运算符"><a href="#ES2020新增链判断运算符-及-Null-undefined判断运算符" class="headerlink" title="ES2020新增链判断运算符 及 Null/undefined判断运算符"></a>ES2020新增链判断运算符 及 Null/undefined判断运算符</h3><p>1.<code>?.</code>链判断运算符<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//错误的写法 这样如果user及前面的值没取到会报错</span></span><br><span class="line"><span class="keyword">let</span> name = data.result.user.name;</span><br><span class="line"><span class="comment">//正确的写法</span></span><br><span class="line"><span class="keyword">let</span> name = (data &amp;&amp; data.result &amp;&amp; data.result.user &amp;&amp; data.result.user.name) || <span class="string">'小明'</span>;</span><br><span class="line"><span class="comment">// 非常麻烦，所以ES2020引入 ?. 运算符</span></span><br><span class="line"><span class="keyword">let</span> name = data?.result?.user?.name || <span class="string">'小明'</span>;</span><br><span class="line"><span class="comment">// 上面例子中，只要有一层返回null或者undefined就不再往下取值，直接返回undefined</span></span><br><span class="line"><span class="comment">// 取一个数组指定下标值：</span></span><br><span class="line"><span class="keyword">let</span> arr = array?.[<span class="number">1</span>]</span><br></pre></td></tr></table></figure></p>
+<p>2.<code>??</code>Null/undefined判断运算符</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> headerText = response.settings.headerText || <span class="string">'Hello, world!'</span>;</span><br><span class="line"><span class="keyword">const</span> headerText = response.settings.headerText ?? <span class="string">'Hello, world!'</span>;</span><br></pre></td></tr></table></figure>
+<p>上面两种例子的区别是<code>||</code>左边的值为false、空字符串、0都会生效，而<code>??</code>只有左边为undefined或者null才会取右边的默认值；</p>
+
       
     </div>
     
@@ -700,7 +704,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">44.1k</span>
+    <span title="Site words total count">44.3k</span>
   
 </div>
 
