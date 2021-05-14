@@ -162,3 +162,23 @@ myFunc();
 ```
 
 ### ES2020新增链判断运算符 及 Null/undefined判断运算符
+1.`?.`链判断运算符
+```js
+//错误的写法 这样如果user及前面的值没取到会报错
+let name = data.result.user.name;
+//正确的写法
+let name = (data && data.result && data.result.user && data.result.user.name) || '小明';
+// 非常麻烦，所以ES2020引入 ?. 运算符
+let name = data?.result?.user?.name || '小明';
+// 上面例子中，只要有一层返回null或者undefined就不再往下取值，直接返回undefined
+// 取一个数组指定下标值：
+let arr = array?.[1]
+```
+
+2.`??`Null/undefined判断运算符
+
+```js
+const headerText = response.settings.headerText || 'Hello, world!';
+const headerText = response.settings.headerText ?? 'Hello, world!';
+```
+上面两种例子的区别是`||`左边的值为false、空字符串、0都会生效，而`??`只有左边为undefined或者null才会取右边的默认值；
