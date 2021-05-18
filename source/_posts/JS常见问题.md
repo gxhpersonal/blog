@@ -286,5 +286,14 @@ function showError(error) {
 }
 ```
 
+### Selection.collapse() 方法可以收起当前选区到一个点。文档不会发生改变。如果选区的内容是可编辑的并且焦点落在上面，则光标会在该处闪烁
+要获取用于检查或修改的 Selection 对象，请调用 window.getSelection()
+window.getSelection().collapse(parentNode, offset);
+参数
+parentNode
+光标落在的目标节点。
+offset 可选
+落在节点的偏移量。
+
 
 ### 防抖：延时执行函数，如果存在定时器，则清空定时器，重新设置定时器延时执行；节流：先立刻执行一次函数，进入延时，直到这个函数执行完成，才能再次执行函数
