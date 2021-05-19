@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://gxhpersonal.github.io/blog/blog/2017/02/22/vue%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2021-05-19</lastmod>
+  </url>
+  <url>
     <loc>http://gxhpersonal.github.io/blog/blog/2016/12/26/JS%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2021-05-18</lastmod>
   </url>
@@ -27,10 +31,6 @@
   <url>
     <loc>http://gxhpersonal.github.io/blog/blog/2019/03/26/vue%E5%BE%AE%E4%BF%A1%E5%88%86%E4%BA%AB/</loc>
     <lastmod>2021-03-25</lastmod>
-  </url>
-  <url>
-    <loc>http://gxhpersonal.github.io/blog/blog/2017/02/22/vue%E8%AE%B0%E5%BD%95/</loc>
-    <lastmod>2021-03-24</lastmod>
   </url>
   <url>
     <loc>http://gxhpersonal.github.io/blog/blog/2019/11/28/react%E8%AE%B0%E5%BD%95/</loc>
