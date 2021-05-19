@@ -88,6 +88,30 @@ switchPhone() {
 },
 ```
 
+### 兄弟组件传值
+1.新建文件`eventBus.js`,添加以下代码：
+```js
+import Vue from 'vue';
+export default new Vue();
+```
+2.兄弟组件分别引入`eventBus.js`文件：
+```js
+import eventBus from "../js/eventBus.js";
+```
+3.传值：
+```js
+// 兄弟组件1传数据：
+tuikuan() {
+  eventBus.$emit("event", "sendData");
+},
+// 兄弟组件2接受数据：
+mounted() {
+  eventBus.$on("event", (data) => {
+    console.log(data)
+  });
+},
+```
+
 
 ### 祖孙组件之间传递数据和绑定方法（祖组件传递给孙组件的数据不能与父组件公用，否则会传递失败，孙组件拿不到数据）
 1.祖组件向下传递数据到孙组件：
