@@ -116,7 +116,7 @@ this.setData({
 })
 ```
 
-### 小程序中不支持时间格式为 - 或者 . 的转换必须转换为 / 格式
+### 小程序中ios不支持时间格式为 - 或者 . 的转换必须转换为 / 格式
 例如：new Date("2019-07-05 12:00:00".replace(/-/g, "/"));
 只有这样可以得到正确的时间格式，其他转换可能也行，但是没试
 
@@ -223,10 +223,10 @@ svroll-view下拉刷新有时会莫名抖动2020.07.24
 非常简单，利用小程序中自带方法`getCurrentPages()`可以获取上个页面数据方法的特性：
 ```js
 // 在detail调用列表页方法，以实现不刷新页面改变状态
-let page = getCurrentPages();
-if (page.length >= 2 && page[page.length - 2].route == "pages/list/list") {
+let pages = getCurrentPages();
+if (pages.length >= 2 && pages[pages.length - 2].route == "page/list/list") {
   //如果上个页面为list页
-  let preData = page[page.length - 2];
+  let preData = pages[pages.length - 2];
   let arg = {
     resultFlag: res.infoMap.resultFlag,
     id: item.id,
