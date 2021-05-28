@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="1.ios键盘唤起，键盘收起以后页面不归位 现状：输入内容，软键盘弹出，页面内容整体上移，但是键盘收起，页面内容不下滑 原因：固定定位的元素 在元素内 input 框聚焦的时候 弹出的软键盘占位 失去焦点的时候软键盘消失 但是还是占位的 导致input框不能再次输入 在失去焦点的时候给一个事件 解决方法：12345678910111213&amp;lt;input @blur.prevent=&quot;blur(">
+<meta name="description" content="1.ios键盘唤起，键盘收起以后页面不归位解决 现状：输入内容，软键盘弹出，页面内容整体上移，但是键盘收起，页面内容不下滑 原因：固定定位的元素 在元素内 input 框聚焦的时候 弹出的软键盘占位 失去焦点的时候软键盘消失 但是还是占位的 导致input框不能再次输入 在失去焦点的时候给一个事件 解决方法：12345678910111213&amp;lt;input @blur.prevent=&quot;blu">
 <meta name="keywords" content="JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="常见兼容问题处理">
 <meta property="og:url" content="http://gxhpersonal.github.io/blog/2019/09/06/常见兼容问题处理/index.html">
 <meta property="og:site_name" content="blog station">
-<meta property="og:description" content="1.ios键盘唤起，键盘收起以后页面不归位 现状：输入内容，软键盘弹出，页面内容整体上移，但是键盘收起，页面内容不下滑 原因：固定定位的元素 在元素内 input 框聚焦的时候 弹出的软键盘占位 失去焦点的时候软键盘消失 但是还是占位的 导致input框不能再次输入 在失去焦点的时候给一个事件 解决方法：12345678910111213&amp;lt;input @blur.prevent=&quot;blur(">
+<meta property="og:description" content="1.ios键盘唤起，键盘收起以后页面不归位解决 现状：输入内容，软键盘弹出，页面内容整体上移，但是键盘收起，页面内容不下滑 原因：固定定位的元素 在元素内 input 框聚焦的时候 弹出的软键盘占位 失去焦点的时候软键盘消失 但是还是占位的 导致input框不能再次输入 在失去焦点的时候给一个事件 解决方法：12345678910111213&amp;lt;input @blur.prevent=&quot;blu">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-12-30T03:02:53.603Z">
+<meta property="og:updated_time" content="2021-05-28T09:00:37.857Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常见兼容问题处理">
-<meta name="twitter:description" content="1.ios键盘唤起，键盘收起以后页面不归位 现状：输入内容，软键盘弹出，页面内容整体上移，但是键盘收起，页面内容不下滑 原因：固定定位的元素 在元素内 input 框聚焦的时候 弹出的软键盘占位 失去焦点的时候软键盘消失 但是还是占位的 导致input框不能再次输入 在失去焦点的时候给一个事件 解决方法：12345678910111213&amp;lt;input @blur.prevent=&quot;blur(">
+<meta name="twitter:description" content="1.ios键盘唤起，键盘收起以后页面不归位解决 现状：输入内容，软键盘弹出，页面内容整体上移，但是键盘收起，页面内容不下滑 原因：固定定位的元素 在元素内 input 框聚焦的时候 弹出的软键盘占位 失去焦点的时候软键盘消失 但是还是占位的 导致input框不能再次输入 在失去焦点的时候给一个事件 解决方法：12345678910111213&amp;lt;input @blur.prevent=&quot;blu">
 
 
 
@@ -409,7 +409,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  869
+                  871
                 </span>
               
 
@@ -446,7 +446,7 @@
       
 
       
-        <h3 id="1-ios键盘唤起，键盘收起以后页面不归位"><a href="#1-ios键盘唤起，键盘收起以后页面不归位" class="headerlink" title="1.ios键盘唤起，键盘收起以后页面不归位"></a>1.ios键盘唤起，键盘收起以后页面不归位</h3><ul>
+        <h3 id="1-ios键盘唤起，键盘收起以后页面不归位解决"><a href="#1-ios键盘唤起，键盘收起以后页面不归位解决" class="headerlink" title="1.ios键盘唤起，键盘收起以后页面不归位解决"></a>1.ios键盘唤起，键盘收起以后页面不归位解决</h3><ul>
 <li>现状：输入内容，软键盘弹出，页面内容整体上移，但是键盘收起，页面内容不下滑</li>
 <li>原因：固定定位的元素 在元素内 input 框聚焦的时候 弹出的软键盘占位 失去焦点的时候软键盘消失 但是还是占位的 导致input框不能再次输入 在失去焦点的时候给一个事件</li>
 <li>解决方法：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> @<span class="attr">blur.prevent</span>=<span class="string">"blur()"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">blur()&#123;</span><br><span class="line"><span class="javascript">   <span class="keyword">let</span> u = navigator.userAgent;</span></span><br><span class="line"><span class="javascript">   <span class="keyword">let</span> isIOS = !!u.match(<span class="regexp">/\(i[^;]+;( U;)? CPU.+Mac OS X/</span>);</span></span><br><span class="line">   if(isIOS)&#123;</span><br><span class="line"><span class="javascript">     setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">       <span class="keyword">const</span> scrollHeight = <span class="built_in">document</span>.documentElement.scrollTop || <span class="built_in">document</span>.body.scrollTop || <span class="number">0</span></span></span><br><span class="line"><span class="javascript">       <span class="built_in">window</span>.scrollTo(<span class="number">0</span>, <span class="built_in">Math</span>.max(scrollHeight - <span class="number">1</span>, <span class="number">0</span>))</span></span><br><span class="line">       &#125;, 200)</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -676,7 +676,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-ios键盘唤起，键盘收起以后页面不归位"><span class="nav-number">1.</span> <span class="nav-text">1.ios键盘唤起，键盘收起以后页面不归位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-安卓弹出的键盘遮盖文本框"><span class="nav-number">2.</span> <span class="nav-text">2.安卓弹出的键盘遮盖文本框</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Vue中路由使用hash模式，开发微信H5页面分享时在安卓上设置分享成功，但是ios的分享异常"><span class="nav-number">3.</span> <span class="nav-text">3.Vue中路由使用hash模式，开发微信H5页面分享时在安卓上设置分享成功，但是ios的分享异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-ios下input样式问题"><span class="nav-number">4.</span> <span class="nav-text">4.ios下input样式问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-ios键盘唤起，键盘收起以后页面不归位解决"><span class="nav-number">1.</span> <span class="nav-text">1.ios键盘唤起，键盘收起以后页面不归位解决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-安卓弹出的键盘遮盖文本框"><span class="nav-number">2.</span> <span class="nav-text">2.安卓弹出的键盘遮盖文本框</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Vue中路由使用hash模式，开发微信H5页面分享时在安卓上设置分享成功，但是ios的分享异常"><span class="nav-number">3.</span> <span class="nav-text">3.Vue中路由使用hash模式，开发微信H5页面分享时在安卓上设置分享成功，但是ios的分享异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-ios下input样式问题"><span class="nav-number">4.</span> <span class="nav-text">4.ios下input样式问题</span></a></li></ol></div>
             
 
           </div>
