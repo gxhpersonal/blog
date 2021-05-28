@@ -38,6 +38,8 @@ npm install --save-dev node-sass
 <style lang="scss" scope>
 </style>
 ```
+* 这里需要注意！！如果node版本14以上，node-sass会出现不支持情况，这里执行`npm rebuild node-sass`可以解决，如果还不能解决，可以看下node-sass版本号：
+![](http://www.guoxh.com/blog/img/blog/node-sass.png)
 
 ### vue打包静态资源js，css路径不对的解决办法
 打开config/index.js，将其中的build配置下的assetsPublicPath值改为’./’
