@@ -65,7 +65,7 @@ var a{
 }
 ```
 
-### export,export default的异同
+### export,export default的异同点
 1.export在js中可以有多个，export default只能出现一个；
 2.在一个文件或模块中，export、import可以有多个，export default仅有一个
 3.通过export方式导出，在导入时要加{ }，export default则不需要
