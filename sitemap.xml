@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://gxhpersonal.github.io/blog/2017/02/06/ES6/</loc>
+    
+    <lastmod>2021-06-01T02:20:27.740Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://gxhpersonal.github.io/blog/2019/09/06/%E5%B8%B8%E8%A7%81%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/</loc>
     
     <lastmod>2021-05-28T09:00:37.857Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>http://gxhpersonal.github.io/blog/2016/12/26/JS%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</loc>
     
     <lastmod>2021-05-18T07:18:24.468Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://gxhpersonal.github.io/blog/2017/02/06/ES6/</loc>
-    
-    <lastmod>2021-05-14T07:41:54.349Z</lastmod>
     
   </url>
   
