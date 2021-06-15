@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://gxhpersonal.github.io/blog/2021/06/04/vue3%E5%85%A8%E5%AE%B6%E6%A1%B6%E6%90%AD%E5%BB%BA/</loc>
+    
+    <lastmod>2021-06-11T09:28:21.362Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://gxhpersonal.github.io/blog/2019/03/25/vue2.x%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</loc>
+    
+    <lastmod>2021-06-09T09:37:55.988Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://gxhpersonal.github.io/blog/2017/02/06/ES6/</loc>
     
     <lastmod>2021-06-01T02:20:27.740Z</lastmod>
@@ -12,13 +26,6 @@
     <loc>http://gxhpersonal.github.io/blog/2019/09/06/%E5%B8%B8%E8%A7%81%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/</loc>
     
     <lastmod>2021-05-28T09:00:37.857Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://gxhpersonal.github.io/blog/2019/03/25/vue%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</loc>
-    
-    <lastmod>2021-05-28T03:58:53.094Z</lastmod>
     
   </url>
   
@@ -254,14 +261,14 @@
   </url>
   
   <url>
-    <loc>http://gxhpersonal.github.io/blog/2019/08/29/scratchers/</loc>
+    <loc>http://gxhpersonal.github.io/blog/2016/09/19/swiper%E6%8F%92%E4%BB%B6/</loc>
     
     <lastmod>2020-12-30T03:02:53.586Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://gxhpersonal.github.io/blog/2016/09/19/swiper%E6%8F%92%E4%BB%B6/</loc>
+    <loc>http://gxhpersonal.github.io/blog/2019/08/29/scratchers/</loc>
     
     <lastmod>2020-12-30T03:02:53.586Z</lastmod>
     
@@ -359,14 +366,14 @@
   </url>
   
   <url>
-    <loc>http://gxhpersonal.github.io/blog/2016/09/27/angular%E5%B8%B8%E7%94%A8%E8%BF%87%E6%BB%A4%E5%99%A8/</loc>
+    <loc>http://gxhpersonal.github.io/blog/2016/09/14/call()%E5%92%8Capply()/</loc>
     
     <lastmod>2020-12-30T03:02:53.575Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://gxhpersonal.github.io/blog/2016/09/14/call()%E5%92%8Capply()/</loc>
+    <loc>http://gxhpersonal.github.io/blog/2016/09/27/angular%E5%B8%B8%E7%94%A8%E8%BF%87%E6%BB%A4%E5%99%A8/</loc>
     
     <lastmod>2020-12-30T03:02:53.575Z</lastmod>
     
