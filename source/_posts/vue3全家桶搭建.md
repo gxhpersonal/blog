@@ -60,7 +60,9 @@ const routes: Array<RouteRecordRaw> = [
   }
 ]
 const router = createRouter({
-  history: createWebHistory(), //用最舒服的H5 history模式
+  // 用最舒服的H5 history模式
+  history: createWebHistory(), //应用托管在根目录下，如：给出的网址为 `https://example.com/`
+  history: createWebHistory('/folder/'), //应用托管在子目录下，如：给出的网址为 `https://example.com/folder/`
   routes // `routes: routes` 的缩写,ES6语法糖
 });
 export default router;
@@ -84,6 +86,21 @@ createApp(App).use(router).mount('#app')
     <router-view></router-view>
 	</div>
 </template>
+```
+
+tips:
+如果部署的项目在子目录下，则相应的需要修改`vite.config.ts`文件中的base路径：
+```ts
+// vite.config.ts
+export default defineConfig({
+  plugins: [vue()],
+  base:"/folder/",
+  server: {
+    //用本机IP启动项目，在相同网络下可以直接用手机调试
+    host: '192.168.9.136',
+    port: 8082
+  }
+})
 ```
 
 ### 3.配置vuex状态管理模式+库
