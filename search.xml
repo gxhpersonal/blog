@@ -1933,7 +1933,7 @@ $ git commit -a
 </ul>
 <p>2.在远程服务器文件管理中我们可以看到<code>重定向的程序和文件夹</code>在里面我们可以找到本地项目，copy到远程服务器中，修改对应nginx配置root为项目路径：<br><img src="http://www.guoxh.com/blog/img/blog/nginx12.png" alt></p>
 <p>2.单页面项目配置history模式路由，nginx对应配置：<br>打开<code>conf</code>文件夹中<code>nginx.conf</code>文件，修改文件中：<br><img src="http://www.guoxh.com/blog/img/blog/nginx11.png" alt><br>我这个项目部署的是子目录，所以我这里加了<code>/vue-next/</code>子路径，如果是根目录部署，则不需要这个子路径；</p>
-]]></content>
+<h3 id="ssr"><a href="#ssr" class="headerlink" title="ssr"></a>ssr</h3>]]></content>
       <categories>
         <category>服务器</category>
       </categories>

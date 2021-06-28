@@ -104,7 +104,7 @@
 <meta property="og:image" content="http://www.guoxh.com/blog/img/blog/nginx10.png">
 <meta property="og:image" content="http://www.guoxh.com/blog/img/blog/nginx12.png">
 <meta property="og:image" content="http://www.guoxh.com/blog/img/blog/nginx11.png">
-<meta property="og:updated_time" content="2021-06-24T03:28:33.846Z">
+<meta property="og:updated_time" content="2021-06-28T07:18:08.672Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自购服务器搭建前端项目练手">
 <meta name="twitter:description" content="我用的是Windows server 2019系统服务器nginx安装1、下载nginx 地址 ，这里我下载的是稳定版本（stable version） 2、下载Windows service wrapper 地址 ，这里我下载的最新的： 3、将nginx压缩包解压至C盘根目录，并命名为nginx 4、将winsw-bin.exe放入nginx目录下，重命名为nginx-service.exe。在">
@@ -422,7 +422,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  693
+                  694
                 </span>
               
 
@@ -483,7 +483,7 @@
 </ul>
 <p>2.在远程服务器文件管理中我们可以看到<code>重定向的程序和文件夹</code>在里面我们可以找到本地项目，copy到远程服务器中，修改对应nginx配置root为项目路径：<br><img src="http://www.guoxh.com/blog/img/blog/nginx12.png" alt></p>
 <p>2.单页面项目配置history模式路由，nginx对应配置：<br>打开<code>conf</code>文件夹中<code>nginx.conf</code>文件，修改文件中：<br><img src="http://www.guoxh.com/blog/img/blog/nginx11.png" alt><br>我这个项目部署的是子目录，所以我这里加了<code>/vue-next/</code>子路径，如果是根目录部署，则不需要这个子路径；</p>
-
+<h3 id="ssr"><a href="#ssr" class="headerlink" title="ssr"></a>ssr</h3>
       
     </div>
     
@@ -683,7 +683,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#我用的是Windows-server-2019系统服务器"><span class="nav-number">1.</span> <span class="nav-text">我用的是Windows server 2019系统服务器</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx安装"><span class="nav-number"></span> <span class="nav-text">nginx安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、下载nginx-地址-，这里我下载的是稳定版本（stable-version）"><span class="nav-number">1.</span> <span class="nav-text">1、下载nginx 地址 ，这里我下载的是稳定版本（stable version）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、下载Windows-service-wrapper-地址-，这里我下载的最新的："><span class="nav-number">2.</span> <span class="nav-text">2、下载Windows service wrapper 地址 ，这里我下载的最新的：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、将nginx压缩包解压至C盘根目录，并命名为nginx"><span class="nav-number">3.</span> <span class="nav-text">3、将nginx压缩包解压至C盘根目录，并命名为nginx</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、将winsw-bin-exe放入nginx目录下，重命名为nginx-service-exe。在此目录下添加文件nginx-service-xml"><span class="nav-number">4.</span> <span class="nav-text">4、将winsw-bin.exe放入nginx目录下，重命名为nginx-service.exe。在此目录下添加文件nginx-service.xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、安装nginx系统服务，打开cmd"><span class="nav-number">5.</span> <span class="nav-text">5、安装nginx系统服务，打开cmd</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6、命令行方式操作nginx服务"><span class="nav-number">6.</span> <span class="nav-text">6、命令行方式操作nginx服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7、浏览器中输入http-localhost-，出现下面页面即成功："><span class="nav-number">7.</span> <span class="nav-text">7、浏览器中输入http://localhost/，出现下面页面即成功：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8、发布前端vue项目"><span class="nav-number">8.</span> <span class="nav-text">8、发布前端vue项目</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#我用的是Windows-server-2019系统服务器"><span class="nav-number">1.</span> <span class="nav-text">我用的是Windows server 2019系统服务器</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx安装"><span class="nav-number"></span> <span class="nav-text">nginx安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、下载nginx-地址-，这里我下载的是稳定版本（stable-version）"><span class="nav-number">1.</span> <span class="nav-text">1、下载nginx 地址 ，这里我下载的是稳定版本（stable version）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、下载Windows-service-wrapper-地址-，这里我下载的最新的："><span class="nav-number">2.</span> <span class="nav-text">2、下载Windows service wrapper 地址 ，这里我下载的最新的：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、将nginx压缩包解压至C盘根目录，并命名为nginx"><span class="nav-number">3.</span> <span class="nav-text">3、将nginx压缩包解压至C盘根目录，并命名为nginx</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、将winsw-bin-exe放入nginx目录下，重命名为nginx-service-exe。在此目录下添加文件nginx-service-xml"><span class="nav-number">4.</span> <span class="nav-text">4、将winsw-bin.exe放入nginx目录下，重命名为nginx-service.exe。在此目录下添加文件nginx-service.xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、安装nginx系统服务，打开cmd"><span class="nav-number">5.</span> <span class="nav-text">5、安装nginx系统服务，打开cmd</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6、命令行方式操作nginx服务"><span class="nav-number">6.</span> <span class="nav-text">6、命令行方式操作nginx服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7、浏览器中输入http-localhost-，出现下面页面即成功："><span class="nav-number">7.</span> <span class="nav-text">7、浏览器中输入http://localhost/，出现下面页面即成功：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8、发布前端vue项目"><span class="nav-number">8.</span> <span class="nav-text">8、发布前端vue项目</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ssr"><span class="nav-number"></span> <span class="nav-text">ssr</span></a></li></div>
             
 
           </div>
