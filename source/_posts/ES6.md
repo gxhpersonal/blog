@@ -9,14 +9,14 @@ categories: JS
 let和var类似，let必须先声明后使用，否则会报错，let不存在变量提升；
 let声明变量，const声明常量；
 ```js
-function kuai(){
+function block(){
   let n = 5;
   if(true){
     let n = 10;
   }
   console.log(n) //5
 }
-kuai()
+block()
 ```
 上面代码说明let有块级作用域，不同块级相同变量不受影响；
 
