@@ -301,16 +301,16 @@ tom;margin-left:left;执行的效率更高。
     width: 50px;
     height: 50px;
     transition: 0.6s;
-    transform-style: preserve-3d;
+    transform-style: preserve-3d;/*子元素将保留其 3D 位置*/
   }
   .box.rotate {
     transform: rotateY(180deg);
   }
   .front{
     width: 50px;
-		height: 50px;
-		background: green;
-    backface-visibility: hidden;
+    height: 50px;
+    background: green;
+    backface-visibility: hidden;/* 定义当元素不面向屏幕时是否可见，hidden：背面是不可见的 */
   }
   .back {
     backface-visibility: hidden;
@@ -319,9 +319,9 @@ tom;margin-left:left;执行的效率更高。
     left: 0;
     transform: rotateY(180deg);
     width: 50px;
-		height: 50px;
-		background: red;
-}
+    height: 50px;
+    background: red;
+  }
 </style>
 <div class="box">
   <div class="front"></div>
