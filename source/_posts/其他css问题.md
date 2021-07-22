@@ -109,6 +109,10 @@ position:absolute;
 z-index:1; 
 ```
 
+### overscroll-behavior可以控制只触发当前层的滚动效果
+
+### overflow-anchor属性改变滚动行为来控制可视区内容
+
 ### css3滤镜效果：-webkit-filter
 [http://www.css88.com/html5-demo/-webkit-filter/index.html]()
 
