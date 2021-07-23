@@ -110,6 +110,9 @@ z-index:1;
 ```
 
 ### overscroll-behavior可以控制只触发当前层的滚动效果
+overscroll-behavior: auto | none
+> auto:（默认值），即滚动时不会受内容变化影响。滚动条变化，可视内容不变
+none:即滚动时会受内容变化影响，可视区插入内容会显示插入的内容。滚动条不变，可视内容变化
 
 ### overflow-anchor属性改变滚动行为来控制可视区内容
 
