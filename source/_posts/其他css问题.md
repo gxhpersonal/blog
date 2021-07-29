@@ -110,11 +110,16 @@ z-index:1;
 ```
 
 ### overscroll-behavior可以控制只触发当前层的滚动效果
-overscroll-behavior: auto | none
-> auto:（默认值），即滚动时不会受内容变化影响。滚动条变化，可视内容不变
-none:即滚动时会受内容变化影响，可视区插入内容会显示插入的内容。滚动条不变，可视内容变化
+overscroll-behavior: auto | contain | none
+> auto:（默认值），即滚动到边缘后继续滚动外部的可滚动容器
+contain: 默认的滚动溢出行为只会表现在当前元素的内部（例如“反弹”效果或刷新），并且会阻止默认的滚动溢出行为
+none:相邻的滚动区域不会发生滚动，并且会阻止默认的滚动溢出行为
+contain和none的行为差异体现主要在移动端
 
 ### overflow-anchor属性改变滚动行为来控制可视区内容
+overflow-anchor: auto | none
+> auto:（默认值），即滚动时不会受内容变化影响。滚动条变化，可视内容不变
+none:即滚动时会受内容变化影响，可视区插入内容会显示插入的内容。滚动条不变，可视内容变化
 
 ### css3滤镜效果：-webkit-filter
 [http://www.css88.com/html5-demo/-webkit-filter/index.html]()
