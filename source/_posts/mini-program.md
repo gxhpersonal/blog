@@ -90,17 +90,26 @@ padding-bottom: env(safe-area-inset-bottom);
 
 ### swiper指示点样式控制
 ```css
-.wx-swiper-dots{
-  position: absolute;
-  bottom: 50rpx;
+/* 注意要加重点标记 */
+.wx-swiper-dot {
+  display: inline-block !important;
+  width: 6rpx !important;
+  height: 6rpx !important;
+  margin-right: 8rpx !important;
 }
-.swiper-box .wx-swiper-dot::before{
+
+.wx-swiper-dot-active {
+  width: 12rpx !important;
+  height: 6rpx !important;
+  border-radius: 3rpx !important;
+}
+.wx-swiper-dot::before{
     content: '';
     flex-grow: 1; 
     background: rgba(255,255,255,0.8);
     border-radius: 8rpx
 }
-.swiper-box .wx-swiper-dot-active::before{
+.wx-swiper-dot-active::before{
     background:rgba(244,0,0,0.8);   
 }
 ```
