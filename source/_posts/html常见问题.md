@@ -65,3 +65,9 @@ JSON.stringify()将对象转换为字符串
     <link rel="stylesheet" media="screen and (max-width:750px)" href="./css/index.css">
     <link rel="stylesheet" media="screen and (min-width:750px)" href="./css/indexPC.css">
 ```
+
+### 利用meta标签在Safari浏览器显示下载app tab
+
+```html
+<meta name="apple-itunes-app" content="app-id=xxxxx, app-argument=appname://feed">
+```
