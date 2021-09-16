@@ -10,7 +10,7 @@ categories: blog
 <h2 id="配置"><a name="t4"></a>配置</h2>
 
 ### 首先我们看看 `主题配置文件` 的配置 `F:\hexo\themes\next\_config.yml`
-```
+```md
 use_motion || motion: true  # 开启动画效果
 use_motion: false # 关闭动画效果
 1. 把页面中的动画效果取消，把enable改为对应的false改为true，然后hexo d -g，再进主页，问题就解决了，下面的length参数对应的是文章预览的文本长度，可以自己设置。
@@ -45,9 +45,38 @@ search:
 3> 打开 themes/next/_config.yml ,搜索关键字 local_search ,enable 设置为 true：
 local_search:
   enable: true
+
+7. 自动摘录
+auto_excerpt:
+length 设置文字显示长度
+
+8. 文章阴影设置
+打开`\themes\next\source\css\_custom\custom.styl`,向里面加入：
+.post{
+  margin-top:60px;
+  margin-bottom:60px;
+  padding:25px;
+  box-shadow:0 0 5px rgba(202,203,204,.5);
+}
+
+9. 文章顶部显示文章字数统计,阅读时长,总字数
+post_wordcount:
+  #是否显示描述文字
+  item_text: true
+  #字数统计
+  wordcount: true
+  #预览时间
+  min2read: true
+  #总字数,显示在页面底部
+  totalcount: false
+  #是否换行
+  separated_meta: true
+
+10. 新建404界面
 ```
 
 ### 我们再看看 `站点配置文件` 的配置 `F:\hexo\_config.yml`
+```html
 <pre class="prettyprint" name="code"><code class="hljs avrasm has-numbering"><span class="hljs-preprocessor"># Hexo Configuration</span>
 <span class="hljs-preprocessor">## Docs: https://hexo.io/docs/configuration.html</span>
 <span class="hljs-preprocessor">## Source: https://github.com/hexojs/hexo/</span>
@@ -124,3 +153,4 @@ local_search:
 <span class="hljs-label">type:</span> git 
   repository: https://github<span class="hljs-preprocessor">.com</span>/imwillxue/imwillxue<span class="hljs-preprocessor">.github</span><span class="hljs-preprocessor">.com</span><span class="hljs-preprocessor">.git</span> 
   branch: master</code></pre>
+```
