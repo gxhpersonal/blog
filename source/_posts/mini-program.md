@@ -6,6 +6,7 @@ categories: 微信小程序
 ---
 
 ### 生命周期执行顺序：onLoad > onShow > onReady
+
 ### 禁止下拉
 app.json中window下加enablePullDownRefresh:false
 
@@ -264,3 +265,32 @@ setTimeout(()=>{
 },1000)
 //哪有人要说了，直接在前一个页面重新set一下不就好了，但是你要知道我们无法知道异步请求成功时间，所以不可靠
 ```
+
+### 模板语法
+
+1.定义模板，使用`name`属性作为模板名称，然后再`template`标签中写入代码，或者引入自定义组件
+```wxml
+<template name="msgItem">
+  <view>
+    <text> {{index}}: {{msg}} </text>
+    <text> Time: {{time}} </text>
+  </view>
+</template>
+```
+
+2.使用模板，使用`is`属性，声明要使用的模板，然后将上面定义的模板中需要的数据引入：
+```wxml
+<template is="msgItem" data="{{...item}}"/>
+```
+```js
+Page({
+  data: {
+    item: {
+      index: 0,
+      msg: 'this is a template',
+      time: '2016-09-15'
+    }
+  }
+})
+```
+> `is`属性还可以使用Mustache胡子语法，动态引入需要的模板
