@@ -72,7 +72,27 @@ post_wordcount:
   #是否换行
   separated_meta: true
 
-10. 新建404界面
+10. 新建404公益界面，在`source`文件夹下新建`404/index.html`文件：
+```
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8;"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="robots" content="all" />
+  <meta name="robots" content="index,follow"/>
+  <link rel="stylesheet" type="text/css" href="https://qzone.qq.com/gy/404/style/404style.css">
+</head>
+<body>
+  <script type="text/plain" src="http://www.qq.com/404/search_children.js"
+          charset="utf-8" homePageUrl="/"
+          homePageName="回到我的主页">
+  </script>
+  <script src="https://qzone.qq.com/gy/404/data.js" charset="utf-8"></script>
+  <script src="https://qzone.qq.com/gy/404/page.js" charset="utf-8"></script>
+</body>
+</html>
+```
 ```
 
 ### 我们再看看 `站点配置文件` 的配置 `F:\hexo\_config.yml`
