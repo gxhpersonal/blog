@@ -10,7 +10,7 @@ categories: blog
 <h2 id="配置"><a name="t4"></a>配置</h2>
 
 ### 首先我们看看 `主题配置文件` 的配置 `F:\hexo\themes\next\_config.yml`
-```md
+
 use_motion || motion: true  # 开启动画效果
 use_motion: false # 关闭动画效果
 1. 把页面中的动画效果取消，把enable改为对应的false改为true，然后hexo d -g，再进主页，问题就解决了，下面的length参数对应的是文章预览的文本长度，可以自己设置。
@@ -73,7 +73,7 @@ post_wordcount:
   separated_meta: true
 
 10. 新建404公益界面，在`source`文件夹下新建`404/index.html`文件：
-```
+```html
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -93,9 +93,11 @@ post_wordcount:
 </body>
 </html>
 ```
-```
+
+11. 
 
 ### 我们再看看 `站点配置文件` 的配置 `F:\hexo\_config.yml`
+
 ```html
 <pre class="prettyprint" name="code"><code class="hljs avrasm has-numbering"><span class="hljs-preprocessor"># Hexo Configuration</span>
 <span class="hljs-preprocessor">## Docs: https://hexo.io/docs/configuration.html</span>
