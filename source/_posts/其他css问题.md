@@ -296,7 +296,7 @@ tom;margin-left:left;执行的效率更高。
 
 ### css设置图片`img`标签显示样式
 `object-fit`属性
-支持：chrome: >= 31.0; IE: >= 16.0; firefox: >= 36.0; safari: >= 7.1;
+* 支持：chrome: >= 31.0; IE: >= 16.0; firefox: >= 36.0; safari: >= 7.1;
 > 值	     描述 <br/>
 > fill	   默认，不保证保持原有的比例，内容拉伸填充整个内容容器。 <br/>
 > contain	 保持原有尺寸比例。内容被缩放。 <br/>
