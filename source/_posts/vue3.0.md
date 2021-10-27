@@ -10,5 +10,6 @@ categories: vue
 但是，Vue 3 将使用 ES2015 Proxy 作为其观察者机制。 这消除了以前存在的警告，使速度加倍，并节省了一半的内存开销。
 为了继续支持 IE11，Vue 3 将发布一个支持旧观察者机制和新 Proxy 版本的构建。
 
+proxy并不比Object.definProperty更快，Object.definProperty只能监听对象属性的改变，而proxy不止可以监听对象属性的改变，还能监听对象属性的增加和删除
 
 ### 重写vDom
