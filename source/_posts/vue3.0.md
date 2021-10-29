@@ -13,3 +13,7 @@ categories: vue
 proxy并不比Object.definProperty更快，Object.definProperty只能监听对象属性的改变，而proxy不止可以监听对象属性的改变，还能监听对象属性的增加和删除
 
 ### 重写vDom
+
+### 生命周期改变
+`beforeDestroy`生命周期选项被重命名为`beforeUnmount`
+`destroyed`生命周期选项重命名为`unmounted`
