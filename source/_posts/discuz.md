@@ -53,6 +53,8 @@ npm install -g node-gyp
 
 npm install taro-ui@3.0.0-alpha.3
 
+### web端代码不支持修改NODE_ENV环境变量，因为next打包基于production环境变量
+
 ### PC发布帖子，小程序不显示
 
 需要再管理后台`全局`-`站点设置`-`功能设置`勾选`打赏、悬赏、红包、匿名、私信、商品、帖子付费、用户组付费、充值`选项
