@@ -255,3 +255,10 @@ state={
 this.props.match.params     //结果 {id: "88", name: "Jack"}
 ```
 这种感觉像vue的子路由，还有待进一步研究
+
+### Hook
+1.
+```js
+import {useState} from "react";
+const [state,setState] = useState({top:0,bottom:0,left:0,right:0})
+```

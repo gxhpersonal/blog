@@ -44,11 +44,13 @@ var promise = new Promise(function (resolve, reject) {
 > `Promise.prototype.then()`第一个函数参数为resolve执行函数，第二个函数参数为reject执行函数
 
 ### export default {}为模块指定默认输出
+```js
 export default function () {
   console.log('foo');
 }
-其他模块加载该模块时，import命令可以为该匿名函数指定任意名字
+// 其他模块加载该模块时，import命令可以为该匿名函数指定任意名字
 import customName from './export-default';
+```
 
 ### ES6支持方法简写
 ```javascript
@@ -84,7 +86,7 @@ var result = [1,2,1,3,4].sort(function(a,b){return a-b})
 ```
 
 ### 数组去重
-```
+```js
 var arr = [1,1,2,3,4,5,66,5,6];
 console.log(new Set(arr))
 //此时console出来的是一个对象，
@@ -93,7 +95,7 @@ console.log(array.from(new Set(arr)))
 ```
 
 ### 字符串拼接
-```
+```js
 ES5:
 var func = function(v){
 	console.log('name '+v)
@@ -106,7 +108,7 @@ func('jone')
 ```
 
 ### ES6支持变量作为对象key，如：
-```
+```js
 let a = 'aaa';
 let b = 'bbb';
 let c = {[a]:'this is key a',[b]:'this is key b'};
