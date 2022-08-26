@@ -30,8 +30,8 @@ scrollpercent: true
 打开 themes/next/_config.yml ，搜索关键字 pace ,设置为 true ,可以更换加载样式：
 
 5. 修改文章底部的那个带#号的标签
-修改模板/themes/hexo-theme-next/layout/_macro/post.swig，
-搜索 rel="tag">#，将 # 换成<i class="fa fa-tag"></i>
+修改模板`/themes/hexo-theme-next/layout/_macro/post.swig`，
+搜索 `rel="tag">#`，将 `#` 换成`<i class="fa fa-tag"></i>`
 
 6. 增加本地搜索功能
 1> 在你站点的根目录下
