@@ -22,6 +22,7 @@ apply方法：
 如果 argArray 不是一个有效的数组或者不是 arguments 对象，那么将导致一个 TypeError。 
 如果没有提供 argArray 和 thisObj 任何一个参数，那么 Global 对象将被用作 thisObj， 并且无法被传递任何参数。
  
+ <!-- more -->
 2、常用实例
 a、
 Javascript代码  

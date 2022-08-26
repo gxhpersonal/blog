@@ -20,6 +20,8 @@ categories: angular
 ```html
 <p>总价 = {{ (quantity * price) | currency }}</p>
 ```
+<!-- more -->
+
 ## 二。向指令添加过滤器
 > 1. orderBy 过滤器根据表达式排列数组：
 ```html
