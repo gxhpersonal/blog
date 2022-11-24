@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://www.guoxh.com/blog/img/favicon.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://www.guoxh.com/blog/img/favicon.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://www.guoxh.com/blog/img/favicon.jpg">
+  <link rel="mask-icon" href="https://www.guoxh.com/blog/img/favicon.jpg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"gxhpersonal.github.io","root":"/blog/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="运行npm install 出现thon Python is not set from command line or npm configuration解决方案管理员权限打开执行：npm install –global –production windows-build-tools 解决Error: ENOENT: no such file or directory, scandir 安装nod">
+<meta property="og:type" content="article">
+<meta property="og:title" content="discuz">
+<meta property="og:url" content="http://gxhpersonal.github.io/blog/2021/11/05/discuz/index.html">
+<meta property="og:site_name" content="blog station">
+<meta property="og:description" content="运行npm install 出现thon Python is not set from command line or npm configuration解决方案管理员权限打开执行：npm install –global –production windows-build-tools 解决Error: ENOENT: no such file or directory, scandir 安装nod">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://www.guoxh.com/blog/img/Jenkins/1.png">
+<meta property="og:image" content="http://www.guoxh.com/blog/img/Jenkins/2.png">
+<meta property="article:published_time" content="2021-11-05T05:39:16.000Z">
+<meta property="article:modified_time" content="2022-08-25T05:47:26.395Z">
+<meta property="article:author" content="郭雪辉">
+<meta property="article:tag" content="discuz">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.guoxh.com/blog/img/Jenkins/1.png">
+
+<link rel="canonical" href="http://gxhpersonal.github.io/blog/2021/11/05/discuz/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>discuz | blog station</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">blog station</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-首页">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-关于">
+
+    <a href="/blog/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-标签">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-分类">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-归档">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-日历">
+
+    <a href="/blog/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日历</a>
+
+  </li>
+        <li class="menu-item menu-item-站点">
+
+    <a href="/blog/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点</a>
+
+  </li>
+        <li class="menu-item menu-item-公益链接">
+
+    <a href="/blog/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益链接</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://gxhpersonal.github.io/blog/2021/11/05/discuz/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="郭雪辉">
+      <meta itemprop="description" content="郭雪辉博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog station">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          discuz
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-05 13:39:16" itemprop="dateCreated datePublished" datetime="2021-11-05T13:39:16+08:00">2021-11-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-25 13:47:26" itemprop="dateModified" datetime="2022-08-25T13:47:26+08:00">2022-08-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/discuz/" itemprop="url" rel="index"><span itemprop="name">discuz</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="运行npm-install-出现thon-Python-is-not-set-from-command-line-or-npm-configuration解决方案"><a href="#运行npm-install-出现thon-Python-is-not-set-from-command-line-or-npm-configuration解决方案" class="headerlink" title="运行npm install 出现thon Python is not set from command line or npm configuration解决方案"></a>运行npm install 出现thon Python is not set from command line or npm configuration解决方案</h3><p>管理员权限打开执行：npm install –global –production windows-build-tools</p>
+<h3 id="解决Error-ENOENT-no-such-file-or-directory-scandir-安装node-sass报错"><a href="#解决Error-ENOENT-no-such-file-or-directory-scandir-安装node-sass报错" class="headerlink" title="解决Error: ENOENT: no such file or directory, scandir 安装node-sass报错"></a>解决Error: ENOENT: no such file or directory, scandir 安装node-sass报错</h3><p>npm rebuild node-sass</p>
+<h3 id="npm-install-项目时，报：gyp-ERR-stack-Error-gyp-failed-with-exit-code-1"><a href="#npm-install-项目时，报：gyp-ERR-stack-Error-gyp-failed-with-exit-code-1" class="headerlink" title="npm install 项目时，报：gyp ERR! stack Error: gyp failed with exit code: 1"></a>npm install 项目时，报：gyp ERR! stack Error: <code>gyp</code> failed with exit code: 1</h3><ol>
+<li><blockquote>
+<p>npm install -g cnpm –registry&#x3D;<a target="_blank" rel="noopener" href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a></p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>cnpm install</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="gyp-ERR-find-Python-解决方案"><a href="#gyp-ERR-find-Python-解决方案" class="headerlink" title="gyp ERR! find Python 解决方案"></a>gyp ERR! find Python 解决方案</h3><p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000023271417">gyp ERR! find Python 解决方案</a></p>
+<p>1.安装node-gyp</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g node-gyp</span><br></pre></td></tr></table></figure>
+
+<p>2.安装python</p>
+<h3 id="jenkins-node-js版本不对解决"><a href="#jenkins-node-js版本不对解决" class="headerlink" title="jenkins node.js版本不对解决"></a>jenkins node.js版本不对解决</h3><p>1.管理Jenkins - 管理插件 - 下载NodeJS插件</p>
+<p>2.下载的插件在：$JENKINS_HOME&#x2F;plugins目录下</p>
+<p>3.管理Jenkins - Global Tool Configuration(全局工具配置) - 选择需要安装的nodejs版本（会从nodejs官网下载安装，nodejs安装包在：$JENKINS_HOME&#x2F;tools目录下）<br><img src="http://www.guoxh.com/blog/img/Jenkins/1.png"></p>
+<blockquote>
+<p>这里可以添加多个node版本，然后就可以实现不同项目使用不同的node版本，以实现项目代码对node版本的要求</p>
+</blockquote>
+<p>2.项目构建环境勾选<code>Provide Node &amp; npm bin/ folder to PATH</code>选项<br><img src="http://www.guoxh.com/blog/img/Jenkins/2.png"></p>
+<blockquote>
+<p>每次build，都会首先执行环境构建，环境构建无误后，才会开始真正的构建过程<br>会下载nodejs并安装配置，并把node添加到当前PATH环境变量中，这样就支持node和npm命令啦！</p>
+</blockquote>
+<h3 id="taro-UI按需引用样式文件报错引用taro-UI报错Error-Cannot-find-module-39-style-index-scss-39"><a href="#taro-UI按需引用样式文件报错引用taro-UI报错Error-Cannot-find-module-39-style-index-scss-39" class="headerlink" title="taro UI按需引用样式文件报错引用taro UI报错Error: Cannot find module &#39;./style/index.scss&#39;"></a>taro UI按需引用样式文件报错<code>引用taro UI报错Error: Cannot find module &#39;./style/index.scss&#39;</code></h3><p>安装tao-ui时,如果出现报错，可以尝试安装taro-ui版本，因为目前taro ui2.+和taro3.+版本不兼容,使用以下命令可解决</p>
+<p>npm install <a href="mailto:&#x74;&#x61;&#x72;&#x6f;&#x2d;&#117;&#x69;&#x40;&#x33;&#x2e;&#x30;&#46;&#48;&#45;&#97;&#108;&#112;&#x68;&#97;&#46;&#x33;">&#x74;&#x61;&#x72;&#x6f;&#x2d;&#117;&#x69;&#x40;&#x33;&#x2e;&#x30;&#46;&#48;&#45;&#97;&#108;&#112;&#x68;&#97;&#46;&#x33;</a></p>
+<h3 id="web端代码不支持修改NODE-ENV环境变量，因为next打包基于production环境变量"><a href="#web端代码不支持修改NODE-ENV环境变量，因为next打包基于production环境变量" class="headerlink" title="web端代码不支持修改NODE_ENV环境变量，因为next打包基于production环境变量"></a>web端代码不支持修改NODE_ENV环境变量，因为next打包基于production环境变量</h3><h3 id="PC发布帖子，小程序不显示"><a href="#PC发布帖子，小程序不显示" class="headerlink" title="PC发布帖子，小程序不显示"></a>PC发布帖子，小程序不显示</h3><p>需要再管理后台<code>全局</code>-<code>站点设置</code>-<code>功能设置</code>勾选<code>打赏、悬赏、红包、匿名、私信、商品、帖子付费、用户组付费、充值</code>选项</p>
+<h3 id="taro子组件不能直接调用onShow生命周期，所以需要"><a href="#taro子组件不能直接调用onShow生命周期，所以需要" class="headerlink" title="taro子组件不能直接调用onShow生命周期，所以需要"></a>taro子组件不能直接调用onShow生命周期，所以需要</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Taro</span>, &#123; eventCenter, getCurrentInstance &#125; <span class="keyword">from</span> <span class="string">&#x27;@tarojs/taro&#x27;</span>;</span><br><span class="line">$instance = <span class="title function_">getCurrentInstance</span>();</span><br><span class="line">  <span class="title function_">componentDidMount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> onShowEventId = <span class="variable language_">this</span>.<span class="property">$instance</span>.<span class="property">router</span>.<span class="property">onShow</span>;</span><br><span class="line">    eventCenter.<span class="title function_">on</span>(onShowEventId, <span class="variable language_">this</span>.<span class="property">onShow</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  onShow = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//这样就可以调用onShow了</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">componentWillUnmount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">//始终记得要在这个react组件卸载前生命周期方法里清除onShow事件，否则会一直累加</span></span><br><span class="line">    <span class="keyword">const</span> onShowEventId = <span class="variable language_">this</span>.<span class="property">$instance</span>.<span class="property">router</span>.<span class="property">onShow</span>;</span><br><span class="line">    eventCenter.<span class="title function_">off</span>(onShowEventId, <span class="variable language_">this</span>.<span class="property">onShow</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/discuz/" rel="tag"># discuz</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2021/06/15/%E8%87%AA%E8%B4%AD%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E7%BB%83%E6%89%8B/" rel="prev" title="自购服务器搭建前端项目练手">
+      <i class="fa fa-chevron-left"></i> 自购服务器搭建前端项目练手
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E8%A1%8Cnpm-install-%E5%87%BA%E7%8E%B0thon-Python-is-not-set-from-command-line-or-npm-configuration%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">1.</span> <span class="nav-text">运行npm install 出现thon Python is not set from command line or npm configuration解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3Error-ENOENT-no-such-file-or-directory-scandir-%E5%AE%89%E8%A3%85node-sass%E6%8A%A5%E9%94%99"><span class="nav-number">2.</span> <span class="nav-text">解决Error: ENOENT: no such file or directory, scandir 安装node-sass报错</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#npm-install-%E9%A1%B9%E7%9B%AE%E6%97%B6%EF%BC%8C%E6%8A%A5%EF%BC%9Agyp-ERR-stack-Error-gyp-failed-with-exit-code-1"><span class="nav-number">3.</span> <span class="nav-text">npm install 项目时，报：gyp ERR! stack Error: gyp failed with exit code: 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gyp-ERR-find-Python-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">4.</span> <span class="nav-text">gyp ERR! find Python 解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jenkins-node-js%E7%89%88%E6%9C%AC%E4%B8%8D%E5%AF%B9%E8%A7%A3%E5%86%B3"><span class="nav-number">5.</span> <span class="nav-text">jenkins node.js版本不对解决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#taro-UI%E6%8C%89%E9%9C%80%E5%BC%95%E7%94%A8%E6%A0%B7%E5%BC%8F%E6%96%87%E4%BB%B6%E6%8A%A5%E9%94%99%E5%BC%95%E7%94%A8taro-UI%E6%8A%A5%E9%94%99Error-Cannot-find-module-39-style-index-scss-39"><span class="nav-number">6.</span> <span class="nav-text">taro UI按需引用样式文件报错引用taro UI报错Error: Cannot find module &#39;.&#x2F;style&#x2F;index.scss&#39;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web%E7%AB%AF%E4%BB%A3%E7%A0%81%E4%B8%8D%E6%94%AF%E6%8C%81%E4%BF%AE%E6%94%B9NODE-ENV%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%EF%BC%8C%E5%9B%A0%E4%B8%BAnext%E6%89%93%E5%8C%85%E5%9F%BA%E4%BA%8Eproduction%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">7.</span> <span class="nav-text">web端代码不支持修改NODE_ENV环境变量，因为next打包基于production环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PC%E5%8F%91%E5%B8%83%E5%B8%96%E5%AD%90%EF%BC%8C%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%8D%E6%98%BE%E7%A4%BA"><span class="nav-number">8.</span> <span class="nav-text">PC发布帖子，小程序不显示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#taro%E5%AD%90%E7%BB%84%E4%BB%B6%E4%B8%8D%E8%83%BD%E7%9B%B4%E6%8E%A5%E8%B0%83%E7%94%A8onShow%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%EF%BC%8C%E6%89%80%E4%BB%A5%E9%9C%80%E8%A6%81"><span class="nav-number">9.</span> <span class="nav-text">taro子组件不能直接调用onShow生命周期，所以需要</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">郭雪辉</p>
+  <div class="site-description" itemprop="description">郭雪辉博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives">
+          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/gxhpersonal" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;gxhpersonal" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.guoxh.com/" title="https:&#x2F;&#x2F;www.guoxh.com" rel="noopener" target="_blank">主站</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">郭雪辉</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+
+<script src="/blog/js/schemes/muse.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

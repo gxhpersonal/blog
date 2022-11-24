@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://www.guoxh.com/blog/img/favicon.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://www.guoxh.com/blog/img/favicon.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://www.guoxh.com/blog/img/favicon.jpg">
+  <link rel="mask-icon" href="https://www.guoxh.com/blog/img/favicon.jpg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"gxhpersonal.github.io","root":"/blog/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="@vue&#x2F;cli基于webpack + prerender-spa-plugin + vue-meta-info的seo优化1.安装prerender-spa-plugin插件 1npm i prerender-spa-plugin 2.@vue&#x2F;cli（vuecli3）配置vue.config.js文件添加插件参数配置：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue预渲染方案">
+<meta property="og:url" content="http://gxhpersonal.github.io/blog/2019/12/05/vue%E9%A2%84%E6%B8%B2%E6%9F%93%E6%96%B9%E6%A1%88/index.html">
+<meta property="og:site_name" content="blog station">
+<meta property="og:description" content="@vue&#x2F;cli基于webpack + prerender-spa-plugin + vue-meta-info的seo优化1.安装prerender-spa-plugin插件 1npm i prerender-spa-plugin 2.@vue&#x2F;cli（vuecli3）配置vue.config.js文件添加插件参数配置：">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-12-05T01:51:37.000Z">
+<meta property="article:modified_time" content="2022-08-25T05:47:26.410Z">
+<meta property="article:author" content="郭雪辉">
+<meta property="article:tag" content="vue">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://gxhpersonal.github.io/blog/2019/12/05/vue%E9%A2%84%E6%B8%B2%E6%9F%93%E6%96%B9%E6%A1%88/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>vue预渲染方案 | blog station</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">blog station</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-首页">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-关于">
+
+    <a href="/blog/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-标签">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-分类">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-归档">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-日历">
+
+    <a href="/blog/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日历</a>
+
+  </li>
+        <li class="menu-item menu-item-站点">
+
+    <a href="/blog/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点</a>
+
+  </li>
+        <li class="menu-item menu-item-公益链接">
+
+    <a href="/blog/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益链接</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://gxhpersonal.github.io/blog/2019/12/05/vue%E9%A2%84%E6%B8%B2%E6%9F%93%E6%96%B9%E6%A1%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="郭雪辉">
+      <meta itemprop="description" content="郭雪辉博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog station">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vue预渲染方案
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-05 09:51:37" itemprop="dateCreated datePublished" datetime="2019-12-05T09:51:37+08:00">2019-12-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-25 13:47:26" itemprop="dateModified" datetime="2022-08-25T13:47:26+08:00">2022-08-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="vue-x2F-cli基于webpack-prerender-spa-plugin-vue-meta-info的seo优化"><a href="#vue-x2F-cli基于webpack-prerender-spa-plugin-vue-meta-info的seo优化" class="headerlink" title="@vue&#x2F;cli基于webpack + prerender-spa-plugin + vue-meta-info的seo优化"></a>@vue&#x2F;cli基于webpack + prerender-spa-plugin + vue-meta-info的seo优化</h3><p>1.安装<code>prerender-spa-plugin</code>插件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i prerender-spa-plugin</span><br></pre></td></tr></table></figure>
+<p>2.@vue&#x2F;cli（vuecli3）配置<code>vue.config.js</code>文件添加插件参数配置：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">PrerenderSPAPlugin</span> = <span class="built_in">require</span>(<span class="string">&#x27;prerender-spa-plugin&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Renderer</span> = <span class="title class_">PrerenderSPAPlugin</span>.<span class="property">PuppeteerRenderer</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">publicPath</span>: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">  <span class="attr">configureWebpack</span>: <span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (process.<span class="property">env</span>.<span class="property">NODE_ENV</span> !== <span class="string">&#x27;production&#x27;</span>) <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">plugins</span>: [</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">PrerenderSPAPlugin</span>(&#123;</span><br><span class="line">          <span class="comment">// 生成文件的路径，也可以与webpakc打包的一致。</span></span><br><span class="line">          <span class="comment">// 下面这句话非常重要！！！</span></span><br><span class="line">          <span class="comment">// 这个目录只能有一级，如果目录层次大于一级，在生成的时候不会有任何错误提示，在预渲染的时候只会卡着不动。</span></span><br><span class="line">          <span class="attr">staticDir</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;dist&#x27;</span>),</span><br><span class="line">          <span class="comment">// outputDir: path.join(__dirname, &#x27;./&#x27;),</span></span><br><span class="line">          <span class="comment">// 对应自己的路由文件，比如a有参数，就需要写成 /a/param1。</span></span><br><span class="line">          <span class="attr">routes</span>: [<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;/about&#x27;</span>, <span class="string">&#x27;/contact&#x27;</span>],</span><br><span class="line">          <span class="attr">renderer</span>: <span class="keyword">new</span> <span class="title class_">Renderer</span>(&#123;</span><br><span class="line">            <span class="attr">inject</span>: &#123;</span><br><span class="line">              <span class="attr">foo</span>: <span class="string">&#x27;bar&#x27;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">headless</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="comment">// 在 main.js 中 document.dispatchEvent(new Event(&#x27;render-event&#x27;))，两者的事件名称要对应上。</span></span><br><span class="line">            <span class="attr">renderAfterDocumentEvent</span>: <span class="string">&#x27;render-event&#x27;</span></span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.在<code>main.js</code>中添加代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">  router,</span><br><span class="line">  <span class="attr">render</span>: <span class="function"><span class="params">h</span> =&gt;</span> <span class="title function_">h</span>(<span class="title class_">App</span>),</span><br><span class="line">  mounted () &#123;</span><br><span class="line">    <span class="comment">//dispatchEvent() 方法给节点分派一个合成事件</span></span><br><span class="line">    <span class="variable language_">document</span>.<span class="title function_">dispatchEvent</span>(<span class="keyword">new</span> <span class="title class_">Event</span>(<span class="string">&#x27;render-event&#x27;</span>))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;).$mount(<span class="string">&#x27;#app&#x27;</span>)</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/vue/" rel="tag"># vue</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2019/11/28/react%E8%AE%B0%E5%BD%95/" rel="prev" title="react记录">
+      <i class="fa fa-chevron-left"></i> react记录
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2019/12/05/Nuxt.js%E9%A2%84%E6%B8%B2%E6%9F%93/" rel="next" title="Nuxt.js预渲染">
+      Nuxt.js预渲染 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-x2F-cli%E5%9F%BA%E4%BA%8Ewebpack-prerender-spa-plugin-vue-meta-info%E7%9A%84seo%E4%BC%98%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">@vue&#x2F;cli基于webpack + prerender-spa-plugin + vue-meta-info的seo优化</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">郭雪辉</p>
+  <div class="site-description" itemprop="description">郭雪辉博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives">
+          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/gxhpersonal" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;gxhpersonal" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.guoxh.com/" title="https:&#x2F;&#x2F;www.guoxh.com" rel="noopener" target="_blank">主站</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">郭雪辉</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+
+<script src="/blog/js/schemes/muse.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://www.guoxh.com/blog/img/favicon.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://www.guoxh.com/blog/img/favicon.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://www.guoxh.com/blog/img/favicon.jpg">
+  <link rel="mask-icon" href="https://www.guoxh.com/blog/img/favicon.jpg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"gxhpersonal.github.io","root":"/blog/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="1.ios键盘唤起，键盘收起以后页面不归位解决 现状：输入内容，软键盘弹出，页面内容整体上移，但是键盘收起，页面内容不下滑 原因：固定定位的元素 在元素内 input 框聚焦的时候 弹出的软键盘占位 失去焦点的时候软键盘消失 但是还是占位的 导致input框不能再次输入 在失去焦点的时候给一个事件 解决方法：12345678910111213&lt;input @blur.prevent&#x3D;&amp;quo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常见兼容问题处理">
+<meta property="og:url" content="http://gxhpersonal.github.io/blog/2019/09/06/%E5%B8%B8%E8%A7%81%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/index.html">
+<meta property="og:site_name" content="blog station">
+<meta property="og:description" content="1.ios键盘唤起，键盘收起以后页面不归位解决 现状：输入内容，软键盘弹出，页面内容整体上移，但是键盘收起，页面内容不下滑 原因：固定定位的元素 在元素内 input 框聚焦的时候 弹出的软键盘占位 失去焦点的时候软键盘消失 但是还是占位的 导致input框不能再次输入 在失去焦点的时候给一个事件 解决方法：12345678910111213&lt;input @blur.prevent&#x3D;&amp;quo">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-09-06T06:00:26.000Z">
+<meta property="article:modified_time" content="2022-08-25T05:47:26.410Z">
+<meta property="article:author" content="郭雪辉">
+<meta property="article:tag" content="JS">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://gxhpersonal.github.io/blog/2019/09/06/%E5%B8%B8%E8%A7%81%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>常见兼容问题处理 | blog station</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">blog station</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-首页">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-关于">
+
+    <a href="/blog/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-标签">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-分类">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-归档">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-日历">
+
+    <a href="/blog/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日历</a>
+
+  </li>
+        <li class="menu-item menu-item-站点">
+
+    <a href="/blog/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点</a>
+
+  </li>
+        <li class="menu-item menu-item-公益链接">
+
+    <a href="/blog/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益链接</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://gxhpersonal.github.io/blog/2019/09/06/%E5%B8%B8%E8%A7%81%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="郭雪辉">
+      <meta itemprop="description" content="郭雪辉博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog station">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          常见兼容问题处理
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-06 14:00:26" itemprop="dateCreated datePublished" datetime="2019-09-06T14:00:26+08:00">2019-09-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-25 13:47:26" itemprop="dateModified" datetime="2022-08-25T13:47:26+08:00">2022-08-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/JS/" itemprop="url" rel="index"><span itemprop="name">JS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="1-ios键盘唤起，键盘收起以后页面不归位解决"><a href="#1-ios键盘唤起，键盘收起以后页面不归位解决" class="headerlink" title="1.ios键盘唤起，键盘收起以后页面不归位解决"></a>1.ios键盘唤起，键盘收起以后页面不归位解决</h3><ul>
+<li>现状：输入内容，软键盘弹出，页面内容整体上移，但是键盘收起，页面内容不下滑</li>
+<li>原因：固定定位的元素 在元素内 input 框聚焦的时候 弹出的软键盘占位 失去焦点的时候软键盘消失 但是还是占位的 导致input框不能再次输入 在失去焦点的时候给一个事件</li>
+<li>解决方法：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> @<span class="attr">blur.prevent</span>=<span class="string">&quot;blur()&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="title function_">blur</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">   <span class="keyword">let</span> u = navigator.<span class="property">userAgent</span>;</span></span><br><span class="line"><span class="language-javascript">   <span class="keyword">let</span> isIOS = !!u.<span class="title function_">match</span>(<span class="regexp">/\(i[^;]+;( U;)? CPU.+Mac OS X/</span>);</span></span><br><span class="line"><span class="language-javascript">   <span class="keyword">if</span>(isIOS)&#123;</span></span><br><span class="line"><span class="language-javascript">     <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">       <span class="keyword">const</span> scrollHeight = <span class="variable language_">document</span>.<span class="property">documentElement</span>.<span class="property">scrollTop</span> || <span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">scrollTop</span> || <span class="number">0</span></span></span><br><span class="line"><span class="language-javascript">       <span class="variable language_">window</span>.<span class="title function_">scrollTo</span>(<span class="number">0</span>, <span class="title class_">Math</span>.<span class="title function_">max</span>(scrollHeight - <span class="number">1</span>, <span class="number">0</span>))</span></span><br><span class="line"><span class="language-javascript">       &#125;, <span class="number">200</span>)</span></span><br><span class="line"><span class="language-javascript">   &#125;</span></span><br><span class="line"><span class="language-javascript"> &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2-安卓弹出的键盘遮盖文本框"><a href="#2-安卓弹出的键盘遮盖文本框" class="headerlink" title="2.安卓弹出的键盘遮盖文本框"></a>2.安卓弹出的键盘遮盖文本框</h3><ul>
+<li>现状：安卓微信H5弹出软键盘后挡住input输入框</li>
+<li>原因：因为调用安卓键盘有一点迟钝，导致如果不延时处理的话，滚动就失效了</li>
+<li>解决方法：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> @<span class="attr">focus</span>=<span class="string">&quot;focus()&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="title function_">focus</span>(<span class="params"></span>)&#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">let</span> u = navigator.<span class="property">userAgent</span>;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">let</span> isAndroid = u.<span class="title function_">indexOf</span>(<span class="string">&#x27;Android&#x27;</span>) &gt; -<span class="number">1</span> || u.<span class="title function_">indexOf</span>(<span class="string">&#x27;Linux&#x27;</span>) &gt; -<span class="number">1</span>;</span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">if</span>(isAndroid)&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="built_in">setTimeout</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">         <span class="variable language_">document</span>.<span class="property">activeElement</span>.<span class="title function_">scrollIntoViewIfNeeded</span>();</span></span><br><span class="line"><span class="language-javascript">         <span class="variable language_">document</span>.<span class="property">activeElement</span>.<span class="title function_">scrollIntoView</span>();</span></span><br><span class="line"><span class="language-javascript">        &#125;, <span class="number">500</span>);</span></span><br><span class="line"><span class="language-javascript">      &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Element.scrollIntoView()方法让当前的元素滚动到浏览器窗口的可视区域内。而Element.scrollIntoViewIfNeeded()方法也是用来将不在浏览器窗口的可见区域内的元素滚动到浏览器窗口的可见区域。但如果该元素已经在浏览器窗口的可见区域内，则不会发生滚动</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="3-Vue中路由使用hash模式，开发微信H5页面分享时在安卓上设置分享成功，但是ios的分享异常"><a href="#3-Vue中路由使用hash模式，开发微信H5页面分享时在安卓上设置分享成功，但是ios的分享异常" class="headerlink" title="3.Vue中路由使用hash模式，开发微信H5页面分享时在安卓上设置分享成功，但是ios的分享异常"></a>3.Vue中路由使用hash模式，开发微信H5页面分享时在安卓上设置分享成功，但是ios的分享异常</h3><ul>
+<li>现状：ios当前页面分享给好友，点击进来是正常，如果二次分享，则异常；使用vue router跳转到第二个页面后在分享时，分享设置失败；以上安卓分享都是正常</li>
+<li>原因：jssdk是后端进行签署，前端校验，但是有时跨域，ios是分享以后会自动带上 from&#x3D;singlemessage&amp;isappinstalled&#x3D;0 以及其他参数，<code>#/</code>在微信中会被截断，导致分享链接和传入API的链接不一样</li>
+<li>解决方法：分享的url再ios下加个编码方法encodeURIComponent(url)</li>
+</ul>
+<h3 id="4-ios下input样式问题"><a href="#4-ios下input样式问题" class="headerlink" title="4.ios下input样式问题"></a>4.ios下input样式问题</h3><p>1.ios下如果想要禁用input,input设置为readonly仍然会呼起键盘，所以必须设置disabled属性。<br>2.ios下设置为disabled属性，input表单背景颜色会变灰，透明度会降低，所以，必须设置</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">input</span><span class="selector-pseudo">:disabled</span>&#123;</span><br><span class="line">      <span class="attribute">opacity</span>:<span class="number">1</span>;</span><br><span class="line">      bakcground:<span class="number">#fff</span>;</span><br><span class="line">      -webkit-text-fill-<span class="attribute">color</span>:<span class="number">#2e3d4c</span>;//字体颜色填充这个属性可以解决IOS字体颜色变淡的问题</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然而，设置了-webkit-text-fill-color属性还是会有问题，placeholder字体颜色也会跟着改变，所以placeholder也要设置-webkit-text-fill-color值</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">题外话：（设置渐变字体）</span><br><span class="line">	<span class="attribute">background</span>: <span class="built_in">-webkit-linear-gradient</span>(top,<span class="number">#fc0</span>,<span class="number">#f30</span> <span class="number">50%</span>,<span class="number">#c00</span> <span class="number">51%</span>,<span class="number">#600</span>);</span><br><span class="line">    -webkit-<span class="attribute">background-clip</span>: text;</span><br><span class="line">    -webkit-text-fill-<span class="attribute">color</span>: transparent;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果想设置渐变字体，要保证这个标签中只有要设置的文本，不能有其他标签，否则在PC浏览器正常，而在iOS中显示不出来</p>
+</blockquote>
+<p>3.没错，iOS下就是各种坑，<br>user-select：none 控制着用户能否选中文本<br>一般都不想被复制，所以全局使用这个属性，就会导致在ios中，input无法定位光标，无法输入；<br>所以慎用，或者局部使用；<br>或者给表单单独加个<code>user-select: auto;</code>默认值</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/JS/" rel="tag"># JS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/2019/08/29/scratchers/" rel="prev" title="scratchers">
+      <i class="fa fa-chevron-left"></i> scratchers
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/blog/2019/11/28/react%E8%AE%B0%E5%BD%95/" rel="next" title="react记录">
+      react记录 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-ios%E9%94%AE%E7%9B%98%E5%94%A4%E8%B5%B7%EF%BC%8C%E9%94%AE%E7%9B%98%E6%94%B6%E8%B5%B7%E4%BB%A5%E5%90%8E%E9%A1%B5%E9%9D%A2%E4%B8%8D%E5%BD%92%E4%BD%8D%E8%A7%A3%E5%86%B3"><span class="nav-number">1.</span> <span class="nav-text">1.ios键盘唤起，键盘收起以后页面不归位解决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%AE%89%E5%8D%93%E5%BC%B9%E5%87%BA%E7%9A%84%E9%94%AE%E7%9B%98%E9%81%AE%E7%9B%96%E6%96%87%E6%9C%AC%E6%A1%86"><span class="nav-number">2.</span> <span class="nav-text">2.安卓弹出的键盘遮盖文本框</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Vue%E4%B8%AD%E8%B7%AF%E7%94%B1%E4%BD%BF%E7%94%A8hash%E6%A8%A1%E5%BC%8F%EF%BC%8C%E5%BC%80%E5%8F%91%E5%BE%AE%E4%BF%A1H5%E9%A1%B5%E9%9D%A2%E5%88%86%E4%BA%AB%E6%97%B6%E5%9C%A8%E5%AE%89%E5%8D%93%E4%B8%8A%E8%AE%BE%E7%BD%AE%E5%88%86%E4%BA%AB%E6%88%90%E5%8A%9F%EF%BC%8C%E4%BD%86%E6%98%AFios%E7%9A%84%E5%88%86%E4%BA%AB%E5%BC%82%E5%B8%B8"><span class="nav-number">3.</span> <span class="nav-text">3.Vue中路由使用hash模式，开发微信H5页面分享时在安卓上设置分享成功，但是ios的分享异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-ios%E4%B8%8Binput%E6%A0%B7%E5%BC%8F%E9%97%AE%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">4.ios下input样式问题</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">郭雪辉</p>
+  <div class="site-description" itemprop="description">郭雪辉博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives">
+          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/gxhpersonal" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;gxhpersonal" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.guoxh.com/" title="https:&#x2F;&#x2F;www.guoxh.com" rel="noopener" target="_blank">主站</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">郭雪辉</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+
+<script src="/blog/js/schemes/muse.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

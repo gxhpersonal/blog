@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://www.guoxh.com/blog/img/favicon.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://www.guoxh.com/blog/img/favicon.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://www.guoxh.com/blog/img/favicon.jpg">
+  <link rel="mask-icon" href="https://www.guoxh.com/blog/img/favicon.jpg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+<link rel="stylesheet" href="/blog/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"gxhpersonal.github.io","root":"/blog/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="###动态插入的标签元素带有angular语法不执行解决 12var uploadInfo &#x3D; &amp;#x27;上传成功！&lt;a ng-click&#x3D;&quot;quitTo(&amp;#x27;customer&amp;#x27;)&quot;&gt;点击&lt;&#x2F;a&gt;跳转到客户列表界面&amp;#x27;;angular.element(&amp;#x27;.modal-body&amp;#x27;).append(upload">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于angular个人遇到的问题（差不多过去式了）">
+<meta property="og:url" content="http://gxhpersonal.github.io/blog/2016/09/14/%E5%85%B3%E4%BA%8Eangular%E4%B8%AA%E4%BA%BA%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="blog station">
+<meta property="og:description" content="###动态插入的标签元素带有angular语法不执行解决 12var uploadInfo &#x3D; &amp;#x27;上传成功！&lt;a ng-click&#x3D;&quot;quitTo(&amp;#x27;customer&amp;#x27;)&quot;&gt;点击&lt;&#x2F;a&gt;跳转到客户列表界面&amp;#x27;;angular.element(&amp;#x27;.modal-body&amp;#x27;).append(upload">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-09-14T07:50:50.000Z">
+<meta property="article:modified_time" content="2022-08-25T05:47:26.410Z">
+<meta property="article:author" content="郭雪辉">
+<meta property="article:tag" content="angular">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://gxhpersonal.github.io/blog/2016/09/14/%E5%85%B3%E4%BA%8Eangular%E4%B8%AA%E4%BA%BA%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>关于angular个人遇到的问题（差不多过去式了） | blog station</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">blog station</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-首页">
+
+    <a href="/blog/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-关于">
+
+    <a href="/blog/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-标签">
+
+    <a href="/blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-分类">
+
+    <a href="/blog/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-归档">
+
+    <a href="/blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-日历">
+
+    <a href="/blog/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日历</a>
+
+  </li>
+        <li class="menu-item menu-item-站点">
+
+    <a href="/blog/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点</a>
+
+  </li>
+        <li class="menu-item menu-item-公益链接">
+
+    <a href="/blog/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益链接</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://gxhpersonal.github.io/blog/2016/09/14/%E5%85%B3%E4%BA%8Eangular%E4%B8%AA%E4%BA%BA%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="郭雪辉">
+      <meta itemprop="description" content="郭雪辉博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog station">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          关于angular个人遇到的问题（差不多过去式了）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-09-14 15:50:50" itemprop="dateCreated datePublished" datetime="2016-09-14T15:50:50+08:00">2016-09-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-25 13:47:26" itemprop="dateModified" datetime="2022-08-25T13:47:26+08:00">2022-08-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/angular/" itemprop="url" rel="index"><span itemprop="name">angular</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>###动态插入的标签元素带有angular语法不执行解决</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var uploadInfo = &#x27;上传成功！&lt;a ng-click=&quot;quitTo(&#x27;customer&#x27;)&quot;&gt;点击&lt;/a&gt;跳转到客户列表界面&#x27;;</span><br><span class="line">angular.element(&#x27;.modal-body&#x27;).append(uploadInfo);</span><br></pre></td></tr></table></figure>
+<p>将uploadInfo变量通过$compile进行处理，<br>var ele &#x3D; $compile(uploadInfo)($scope);<br>angular.element(‘.modal-body’).append(ele);</p>
+<p>###依赖注入<br>AngularJS提供了一种非常简单的解决方法，即将依赖作为一个数组传入，数组的最后一个元素是一个函数，所有的依赖项作为它的参数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app.controller(&#x27;MainCtrl&#x27;, [&#x27;$scope&#x27;, &#x27;$timeout&#x27;, function($scope, $timeout)&#123;</span><br><span class="line">    $timeout(function()&#123;</span><br><span class="line">        console.log($scope);</span><br><span class="line">    &#125;, 1000);</span><br><span class="line">&#125;]);</span><br></pre></td></tr></table></figure>
+
+<h3 id="获取input焦点-自定义一个指令"><a href="#获取input焦点-自定义一个指令" class="headerlink" title="获取input焦点(自定义一个指令)"></a>获取input焦点(自定义一个指令)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myApp = angular.<span class="title function_">module</span>(<span class="string">&#x27;myApp&#x27;</span>,[]);</span><br><span class="line">myApp.<span class="title function_">directive</span>(<span class="string">&#x27;setFocus&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">function</span>(<span class="params">scope, element</span>)&#123;</span><br><span class="line">element[<span class="number">0</span>].<span class="title function_">focus</span>();</span><br><span class="line">&#125;;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="ng-repeat遍历数组"><a href="#ng-repeat遍历数组" class="headerlink" title="ng-repeat遍历数组"></a>ng-repeat遍历数组</h3><blockquote>
+<p>ng-repeat遍历数组时，数组中有2个以上的相同数字，需要在 v in xxx 后面加上 track by $index；<br><a target="_blank" rel="noopener" href="http://blog.csdn.net/rangqiwei/article/details/38020667">详细解释：</a></p>
+</blockquote>
+<h3 id="ng-repeat遍历对象"><a href="#ng-repeat遍历对象" class="headerlink" title="ng-repeat遍历对象"></a>ng-repeat遍历对象</h3><blockquote>
+<p>ng-repeat&#x3D;”(key,value) in feesWays”<br>这种方式可以把接口数据对象格式的字段分离成键和值；</p>
+</blockquote>
+<h3 id="倒计时"><a href="#倒计时" class="headerlink" title="倒计时"></a>倒计时</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//后台会传一个时间戳给你，只需要把这个时间戳转换为倒计时就行</span></span><br><span class="line">   $scope.<span class="property">daojishi</span> = <span class="keyword">function</span> (<span class="params">activityendtime</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> time = $scope.<span class="property">time</span> = &#123;&#125;;</span><br><span class="line">    <span class="keyword">var</span> count = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="comment">//计算剩下毫秒数</span></span><br><span class="line">        time.<span class="property">t</span> = activityendtime;</span><br><span class="line">        time.<span class="property">d</span> = <span class="title class_">Math</span>.<span class="title function_">floor</span>(time.<span class="property">t</span> / <span class="number">1000</span> / <span class="number">60</span> / <span class="number">60</span> / <span class="number">24</span>);</span><br><span class="line">        time.<span class="property">h</span> = <span class="title class_">Math</span>.<span class="title function_">floor</span>(time.<span class="property">t</span> / <span class="number">1000</span> / <span class="number">60</span> / <span class="number">60</span> % <span class="number">24</span>);</span><br><span class="line">        time.<span class="property">m</span> = <span class="title class_">Math</span>.<span class="title function_">floor</span>(time.<span class="property">t</span> / <span class="number">1000</span> / <span class="number">60</span> % <span class="number">60</span>) &lt; <span class="number">10</span> ? <span class="string">&#x27;0&#x27;</span> + <span class="title class_">Math</span>.<span class="title function_">floor</span>(time.<span class="property">t</span> / <span class="number">1000</span> / <span class="number">60</span> % <span class="number">60</span>) : <span class="title class_">Math</span>.<span class="title function_">floor</span>(time.<span class="property">t</span> / <span class="number">1000</span> / <span class="number">60</span> % <span class="number">60</span>);</span><br><span class="line">        time.<span class="property">s</span> = <span class="title class_">Math</span>.<span class="title function_">floor</span>(time.<span class="property">t</span> / <span class="number">1000</span> % <span class="number">60</span>) &lt; <span class="number">10</span> ? <span class="string">&#x27;0&#x27;</span> + <span class="title class_">Math</span>.<span class="title function_">floor</span>(time.<span class="property">t</span> / <span class="number">1000</span> % <span class="number">60</span>) : <span class="title class_">Math</span>.<span class="title function_">floor</span>(time.<span class="property">t</span> / <span class="number">1000</span> % <span class="number">60</span>);</span><br><span class="line">        <span class="keyword">if</span> (time.<span class="property">t</span> &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            $scope.<span class="property">overhtml</span> = <span class="string">&quot;活动已结束！&quot;</span>;</span><br><span class="line">            $interval.<span class="title function_">cancel</span>(stop);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            activityendtime = (time.<span class="property">t</span> - <span class="number">1000</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        $scope.<span class="property">Residualtime</span> = time.<span class="property">d</span> + <span class="string">&quot;:&quot;</span> + time.<span class="property">h</span> + <span class="string">&quot;:&quot;</span> + time.<span class="property">m</span> + <span class="string">&quot;:&quot;</span> + time.<span class="property">s</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="title function_">count</span>();</span><br><span class="line">    <span class="keyword">var</span> stop = $interval(count, <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line">$scope.<span class="property">daojishi</span>（$scope.<span class="property">activityendtime</span>）</span><br></pre></td></tr></table></figure>
+
+<h3 id="angularJS全局API"><a href="#angularJS全局API" class="headerlink" title="angularJS全局API"></a>angularJS全局API</h3><blockquote>
+<p>angular.lowercase()	转换字符串为小写<br>angular.uppercase()	转换字符串为大写<br>angular.isString()	判断给定的对象是否为字符串，如果是返回 true。<br>angular.isNumber()	判断给定的对象是否为数字，如果是返回 true。</p>
+</blockquote>
+<p>###angular自带遍历方法  angular.forEach</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> objs =[&#123;<span class="attr">a</span>:<span class="number">1</span>&#125;,&#123;<span class="attr">a</span>:<span class="number">2</span>&#125;];</span><br><span class="line">angular.<span class="title function_">forEach</span>(objs, <span class="keyword">function</span>(<span class="params">data,index,array</span>)&#123;</span><br><span class="line">        <span class="comment">//data等价于array[index]</span></span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(data.<span class="property">a</span>+<span class="string">&#x27;=&#x27;</span>+array[index].<span class="property">a</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="angularJS懒加载"><a href="#angularJS懒加载" class="headerlink" title="angularJS懒加载"></a>angularJS懒加载</h3><p>引入  angular-img-lazy-load.min.js</p>
+<p>src-lazy&#x3D;”“</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var hzcApp = angular.module(&quot;hzc_app&quot;, [&#x27;img-lazy-load&#x27;]);</span><br><span class="line">&gt; 下面这个包含在controller中</span><br><span class="line">hzcApp.constant(&#x27;imgLazyLoadConf&#x27;, &#123;</span><br><span class="line">                tolerance: 50,</span><br><span class="line">                detectElement: true</span><br><span class="line">      &#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="directive"><a href="#directive" class="headerlink" title="directive"></a>directive</h3><p>2 . 在AngularJS中，操作DOM一般在指令中完成，事件监听机制是在对于已经静态生成的dom绑定事件，而如果在指令中动态生成了DOM节点，动态生成的节点不会被JS事件监听</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">angular.module(&#x27;myapp&#x27;,[])</span><br><span class="line">.directive(&#x27;myText&#x27;,function($compile)&#123;</span><br><span class="line">    var template:&#x27;&lt;div ng-click=&quot;hello()&quot;&gt;Hi everyone&lt;/div&gt;&#x27;,</span><br><span class="line">    return&#123;</span><br><span class="line">        restrict:&#x27;A&#x27;,</span><br><span class="line">        link:function(scope,ele,attr)&#123;</span><br><span class="line">             ele.on(&quot;click&quot;, function() &#123;</span><br><span class="line">                scope.$apply(function() &#123;</span><br><span class="line">                    var content = $compile(template)(scope);</span><br><span class="line">                    element.append(content);</span><br><span class="line">               &#125;)</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="timeout-apply"><a href="#timeout-apply" class="headerlink" title="$timeout $apply"></a>$timeout $apply</h3><p>$timeout会帮你调用$apply()，让你不需要手动地调用它<br>$apply会吧我们的代码wrapped到了$scope.$apply()中，它会自动触发$rootScope.$digest()，从而让watchers被触发用以更新view</p>
+<h3 id="ng-click方法函数中的this指向问题"><a href="#ng-click方法函数中的this指向问题" class="headerlink" title="ng-click方法函数中的this指向问题"></a>ng-click方法函数中的this指向问题</h3><blockquote>
+<p>this指向当前controller中的$scope<br>比如：this.value &#x3D; $scope.value;</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ng-click中的this的特性在ng-repeat中非常好用。</span><br><span class="line">比如用ng-repeat遍历出一个列表：</span><br><span class="line">&lt;div ng-click=&quot;change()&quot; ng-repeat=&quot;item in items&quot;&gt;&#123;&#123;item.value&#125;&#125;&lt;/div&gt;</span><br><span class="line">然后你想给他们绑定一个统一的函数change()方法，点击之后只会把自己的值改变，此时this就是指向当前的子scope：</span><br><span class="line">$scope.change = function()&#123;</span><br><span class="line">    this.item.value = &#x27;new value&#x27;;</span><br><span class="line">    //由于是ng-repeat出来的，所以这里this指向的scope是上面那个案例中$scope的子集。</span><br><span class="line">    //即this.$parent === $scope;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="angular-cope-复制数组或对象"><a href="#angular-cope-复制数组或对象" class="headerlink" title="angular.cope()复制数组或对象"></a>angular.cope()复制数组或对象</h3><h3 id="ng-bind-html绑定接口获取的html，数据处理"><a href="#ng-bind-html绑定接口获取的html，数据处理" class="headerlink" title="ng-bind-html绑定接口获取的html，数据处理"></a>ng-bind-html绑定接口获取的html，数据处理</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">.filter(&#x27;to_trusted&#x27;, [&#x27;$sce&#x27;, function ($sce) &#123;</span><br><span class="line">    return function (text) &#123;</span><br><span class="line">      return $sce.trustAsHtml(text);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;])</span><br><span class="line">  .directive(&#x27;compileHtml&#x27;, function ($compile) &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      restrict: &#x27;A&#x27;,</span><br><span class="line">      replace: true,</span><br><span class="line">      link: function (scope, ele, attrs) &#123;</span><br><span class="line">        scope.$watch(function () &#123; return scope.$eval(attrs.compile); &#125;,</span><br><span class="line">          function (html) &#123;</span><br><span class="line">            ele.html(html);</span><br><span class="line">            $compile(ele.contents())(scope);</span><br><span class="line">          &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="http"><a href="#http" class="headerlink" title="$http"></a>$http</h2><p>angular提供了$http服务来同服务端进行通信，$http服务对浏览器的XMLHttpRequest对象进行了封装，让我们可以以ajax的方式来从服务器请求数据。<br>$http服务是一个接受一个参数的函数，参数的类型是对象，用来配置生成的http的请求，该函数返回一个promise对象（promise对象是一个构造函数ES6的对象）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var promise = $http(&#123;</span><br><span class="line">  method:&#x27;GET&#x27;,</span><br><span class="line">  url:&#x27;/api/user.json&#x27;</span><br><span class="line">&#125;);</span><br><span class="line">promise.then(</span><br><span class="line">	function(resp)&#123;</span><br><span class="line">		//success状态为resolved时调用（即异步操作成功）</span><br><span class="line">	&#125;, function(resp)&#123;</span><br><span class="line">		//failure可选，状态为rejected时调用（失败）</span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
+
+
+<p>$http请求的配置对象<br>$http()接受的配置对象可以包含以下属性:</p>
+<blockquote>
+<p>method:http请求方式，可以为GET,DELETE,HEAD,JSONP,POST,PUT<br>url:字符串，请求的目标<br>params:字符串或者对象，会被转换成为查询字符串追加的url后面<br>data:在发送post请求时使用，作为消息体发送到服务器<br>headers:一个列表，每个元素都是一个函数，返回http头<br>xsrfHeaderName(字符串)：保存XSFR令牌的http头的名称<br>xsrfCookieName:保存XSFR令牌的cookie名称<br>transformRequest:函数或者函数数组，用来对http请求的请求体和头信息进行转换，并返回转换后的结果。<br>transformResponse:函数或者函数数组，用来对http响应的响应体和头信息进行转换，并返回转换后的结果。<br>cache:布尔类型或者缓存对象，设置之后angular会缓存get请求。<br>timeout:数值，延迟请求<br>responseType：字符串，响应类型。可以为arraybuffer, blob,document,json, text, moz-blob, moz-chunked-text, moz-chunked-arraybuffer<br>$http请求的响应对象<br>angular传递给then方法的响应对象包括以下几个属性<br>data:转换之后的响应体<br>status:http响应状态码<br>headers:头信息<br>config:生成原始请求的设置对象<br>statusText:http响应状态的文本</p>
+</blockquote>
+<h3 id="http配置为form-data-提交"><a href="#http配置为form-data-提交" class="headerlink" title="$http配置为form data 提交:"></a>$http配置为form data 提交:</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$http(&#123;</span><br><span class="line">        <span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">        <span class="attr">url</span>: <span class="string">&#x27;/user/&#x27;</span>,</span><br><span class="line">        <span class="comment">/*$.param() 方法创建数组或对象的序列化表示形式，</span></span><br><span class="line"><span class="comment">        例如：&#123;mobile:134****2345,email:a@qw.com&#125; 改为 mobile:134****2345&amp;email=a@qw.com*/</span></span><br><span class="line">        <span class="attr">data</span>: $.<span class="title function_">param</span>($scope.<span class="property">formData</span>), </span><br><span class="line">        <span class="comment">// 设置post为formdata表单提交，而不是默认的json提交</span></span><br><span class="line">        <span class="attr">headers</span>: &#123; <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/x-www-form-urlencoded;charset=utf-8&#x27;</span> &#125; </span><br><span class="line">    &#125;).<span class="title function_">success</span>(<span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(data);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="获得ng-model里的value"><a href="#获得ng-model里的value" class="headerlink" title="获得ng-model里的value"></a>获得ng-model里的value</h3><p>ng-model&#x3D;”name”, $scope.name拿不到值是因为原型继承，具体可以百度，解决方法是使用对象属性取值，ng-model&#x3D;”model.name”; $scope.model &#x3D;{};<br>$scope.model.name这个时候就是双向绑定了。</p>
+<h3 id="指令写图片懒加载"><a href="#指令写图片懒加载" class="headerlink" title="指令写图片懒加载"></a>指令写图片懒加载</h3><p>先用一个小的图片占位，图片加载完毕显示需要加载的图片；<br>html：src为默认显示的图片，lazy-src为需要懒加载的图片</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">image-lazy-load</span> <span class="attr">src</span>=<span class="string">&quot;&quot;</span>  <span class="attr">lazy-src</span>=<span class="string">&quot;default.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">directive</span>(<span class="string">&#x27;imageLazyLoad&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">   <span class="keyword">return</span> &#123;</span><br><span class="line">       <span class="comment">// A = attribute, E = Element, C = Class and M = HTML Comment</span></span><br><span class="line">       <span class="attr">restrict</span>: <span class="string">&#x27;A&#x27;</span>,</span><br><span class="line">       <span class="attr">link</span>: <span class="keyword">function</span>(<span class="params">scope, ele, attrs</span>)&#123;</span><br><span class="line">           ele[<span class="number">0</span>].<span class="property">src</span> = <span class="string">&#x27;default.jpg&#x27;</span>;   <span class="comment">//默认</span></span><br><span class="line">           ele[<span class="number">0</span>].<span class="property">onload</span> =<span class="keyword">function</span> (<span class="params">ev</span>) &#123;  <span class="comment">//图片onload完毕</span></span><br><span class="line">               ele[<span class="number">0</span>].<span class="property">src</span> = attrs.<span class="property">lazySrc</span>;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/angular/" rel="tag"># angular</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/blog/2016/09/14/hexo%E5%BC%BA%E5%8A%9B%E6%90%AD%E5%BB%BAgithub%E5%8D%9A%E5%AE%A2/" rel="next" title="hexo强力搭建github博客">
+      hexo强力搭建github博客 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96input%E7%84%A6%E7%82%B9-%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E6%8C%87%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">获取input焦点(自定义一个指令)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ng-repeat%E9%81%8D%E5%8E%86%E6%95%B0%E7%BB%84"><span class="nav-number">2.</span> <span class="nav-text">ng-repeat遍历数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ng-repeat%E9%81%8D%E5%8E%86%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.</span> <span class="nav-text">ng-repeat遍历对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%80%92%E8%AE%A1%E6%97%B6"><span class="nav-number">4.</span> <span class="nav-text">倒计时</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#angularJS%E5%85%A8%E5%B1%80API"><span class="nav-number">5.</span> <span class="nav-text">angularJS全局API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#angularJS%E6%87%92%E5%8A%A0%E8%BD%BD"><span class="nav-number">6.</span> <span class="nav-text">angularJS懒加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#directive"><span class="nav-number">7.</span> <span class="nav-text">directive</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#timeout-apply"><span class="nav-number">8.</span> <span class="nav-text">$timeout $apply</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ng-click%E6%96%B9%E6%B3%95%E5%87%BD%E6%95%B0%E4%B8%AD%E7%9A%84this%E6%8C%87%E5%90%91%E9%97%AE%E9%A2%98"><span class="nav-number">9.</span> <span class="nav-text">ng-click方法函数中的this指向问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#angular-cope-%E5%A4%8D%E5%88%B6%E6%95%B0%E7%BB%84%E6%88%96%E5%AF%B9%E8%B1%A1"><span class="nav-number">10.</span> <span class="nav-text">angular.cope()复制数组或对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ng-bind-html%E7%BB%91%E5%AE%9A%E6%8E%A5%E5%8F%A3%E8%8E%B7%E5%8F%96%E7%9A%84html%EF%BC%8C%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="nav-number">11.</span> <span class="nav-text">ng-bind-html绑定接口获取的html，数据处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#http"><span class="nav-number"></span> <span class="nav-text">$http</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#http%E9%85%8D%E7%BD%AE%E4%B8%BAform-data-%E6%8F%90%E4%BA%A4"><span class="nav-number">1.</span> <span class="nav-text">$http配置为form data 提交:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%BE%97ng-model%E9%87%8C%E7%9A%84value"><span class="nav-number">2.</span> <span class="nav-text">获得ng-model里的value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%86%99%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD"><span class="nav-number">3.</span> <span class="nav-text">指令写图片懒加载</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">郭雪辉</p>
+  <div class="site-description" itemprop="description">郭雪辉博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/blog/archives">
+          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/blog/categories/">
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/gxhpersonal" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;gxhpersonal" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.guoxh.com/" title="https:&#x2F;&#x2F;www.guoxh.com" rel="noopener" target="_blank">主站</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">郭雪辉</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/blog/lib/anime.min.js"></script>
+
+<script src="/blog/js/utils.js"></script>
+
+
+<script src="/blog/js/schemes/muse.js"></script>
+
+
+<script src="/blog/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
