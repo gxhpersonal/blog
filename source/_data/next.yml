@@ -633,7 +633,7 @@ livere_uid: # <your_uid>
 # Gitalk
 # For more information: https://gitalk.github.io, https://github.com/gitalk/gitalk
 gitalk:
-  enable: true
+  enable: false
   github_id: gxhpersonal  #github帐号
   repo: gxhpersonal.github.io # Repository name to store issues
   client_id: d9974835a58aa113788e # GitHub Application Client ID
