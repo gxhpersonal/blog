@@ -121,7 +121,7 @@ menu:
   标签: /tags/ || fa fa-tags
   分类: /categories/ || fa fa-th
   归档: /archives/ || fa fa-archive
-  日历: /schedule/ || fa fa-calendar
+  图片: /photos/ || fa fa-camera # 注：可换其它fa图标
   站点: /sitemap.xml || fa fa-sitemap
   公益链接: /404/ || fa fa-heartbeat
 
@@ -521,11 +521,11 @@ fancybox: false
 # A JavaScript library for zooming images like Medium.
 # Do not enable both `fancybox` and `mediumzoom`.
 # For more information: https://github.com/francoischalifour/medium-zoom
-mediumzoom: false
+mediumzoom: true
 
 # Vanilla JavaScript plugin for lazyloading images.
 # For more information: https://github.com/ApoorvSaxena/lozad.js
-lazyload: false
+lazyload: true
 
 # Pangu Support
 # For more information: https://github.com/vinta/pangu.js
@@ -739,7 +739,7 @@ algolia_search:
 # Local Search
 # Dependencies: https://github.com/theme-next/hexo-generator-searchdb
 local_search:
-  enable: false
+  enable: true
   # If auto, trigger search by changing input.
   # If manual, trigger search by pressing enter key or search button.
   trigger: auto
