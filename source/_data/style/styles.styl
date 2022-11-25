@@ -1,0 +1,103 @@
+// 文章阴影
+// .post {
+//    margin-top: 50px;
+//    margin-bottom: 50px;
+//    padding: 25px;
+//    -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5);
+//    -moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);
+// }
+.post-block{
+    padding: 25px;
+    border-radius:5px;
+    -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5);
+    -moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);
+}
+// 修改链接样式
+.post-body p a{
+  color: #0593d3;
+  border-bottom: none;
+  &:hover {
+    color: #ff5200;
+  }
+}
+a, span.exturl {
+  border-bottom: none;
+  &:hover {
+    color: #ff5200;
+  }
+}
+
+// [Read More]按钮样式
+.post-button .btn {
+    color: #555 !important;
+    background-color: rgb(255, 255, 255);
+    border-radius: 3px;
+    font-size: 15px;
+    box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
+    border: none !important;
+    transition-property: unset;
+    padding: 0px 15px;
+}
+.post-button .btn:hover {
+    color: rgb(255, 255, 255) !important;
+    border-radius: 3px;
+    font-size: 15px;
+    box-shadow: none;
+    background-image: linear-gradient(90deg, #ff5200 0%, #ffd600 50%, #ff5200 100%);
+}
+
+// 修改选中字符的颜色
+/* webkit, opera, IE9 */
+::selection { 
+    background: #ff5200;
+    color: #f7f7f7; 
+}
+/* firefox */
+::-moz-selection { 
+    background: #ff5200;
+    color: #f7f7f7;    
+}
+// 代码块选中颜色
+.highlight *::selection {
+    background: #ff5200;
+}
+
+.tag-cloud a {
+    box-shadow: 0 1px 3px #ff5200, 0 1px 2px #d9534f;
+    padding: 2px 10px;
+    margin: 8px;
+    background: rgba(193,66,92,0);
+    border-bottom: none;
+    border-radius: 20px;
+}
+
+// 代码行样式
+code{
+  background: #555;
+  color: #fff;
+}
+
+.post-toc .nav .active-current > a{
+    color: #ff5200;
+}
+.post-toc .nav .active-current > a:hover{
+    color: #ff5200;
+}
+.post-toc .nav .active > a{
+    border-bottom-color: #ff5200;
+    color: #ff5200;
+}
+.sidebar-nav .sidebar-nav-active{
+    border-bottom-color: #ff5200;
+    color: #ff5200;
+}
+.sidebar-nav .sidebar-nav-active:hover{
+    color: #ff5200;
+}
+
+.sidebar-toggle:hover .toggle-line{
+    background: #ff5200;
+}
+.back-to-top:hover{
+    color: #ff5200;
+}

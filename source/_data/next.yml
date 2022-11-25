@@ -29,9 +29,9 @@ custom_file_path:
   #postBodyEnd: source/_data/post-body-end.swig
   #footer: source/_data/footer.swig
   #bodyEnd: source/_data/body-end.swig
-  #variable: source/_data/variables.styl
+  variable: source/_data/style/variables.styl
   #mixin: source/_data/mixins.styl
-  #style: source/_data/styles.styl
+  style: source/_data/style/styles.styl
 
 
 # ---------------------------------------------------------------
@@ -250,9 +250,13 @@ post_meta:
 # Post wordcount display settings
 # Dependencies: https://github.com/theme-next/hexo-symbols-count-time
 symbols_count_time:
-  separated_meta: true
-  item_text_post: true
-  item_text_total: false
+  separated_meta: true # 是否另起一行
+  item_text_post: true # 是否显示文章统计的文字描述
+  item_text_total: true # 是否显示统计的文字描述
+  # 平均字长
+  awl: 4
+  # 每分钟阅读字数，用于预估文章阅读时间
+  wpm: 400
 
 # Use icon instead of the symbol # to indicate the tag at the bottom of the post
 tag_icon: false
@@ -375,7 +379,7 @@ reading_progress:
   enable: true
   # Available values: top | bottom
   position: top
-  color: "#37c6c0"
+  color: "#222"
   height: 3px
 
 # Bookmark Support

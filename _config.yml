@@ -13,7 +13,7 @@ timezone: Asia/Shanghai
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://gxhpersonal.github.io/blog
+url: https://www.guoxh.com/blog
 root: /blog/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -142,3 +142,10 @@ live2d:
     height: 150
   mobile:
     show: true
+
+# 字数，阅读时间统计
+symbols_count_time:
+  symbols: true 
+  time: true 
+  total_symbols: true 
+  total_time: true 

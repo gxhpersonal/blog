@@ -5,6 +5,23 @@ tags: 微信小程序
 categories: 微信小程序
 ---
 
+### canvas不能wx:if隐藏，否则会获取不到元素，可以使用fixed+top:-9999rpx实现
+
+### canvas 2d生成背景图片不遮挡文字：使用await
+```js
+const bgImg = canvas.createImage();
+      bgImg.src = 'http://www.guoxh.com/blog/img/blog/qr.png';
+      let bgImgPo = await new Promise((resolve, reject) => {
+        bgImg.onload = () => {
+          resolve(bgImg)
+        }
+        bgImg.onerror = (e) => {
+          reject(e)
+        }
+      });
+      ctx.drawImage(bgImgPo, 0, 0, 257, 389)
+```
+<!-- more -->
 ### canvas2d生成图片，本人菜，所以踩了很多坑，记录下步骤代码，温故而知新
 ```js
 //保存图片
@@ -157,21 +174,6 @@ getPost(e) {
 },
 ```
 
-### canvas不能wx:if隐藏，否则会获取不到元素，可以使用fixed+top:-9999rpx实现
 
-### canvas 2d生成背景图片不遮挡文字：使用await
-```js
-const bgImg = canvas.createImage();
-      bgImg.src = 'http://www.guoxh.com/blog/img/blog/qr.png';
-      let bgImgPo = await new Promise((resolve, reject) => {
-        bgImg.onload = () => {
-          resolve(bgImg)
-        }
-        bgImg.onerror = (e) => {
-          reject(e)
-        }
-      });
-      ctx.drawImage(bgImgPo, 0, 0, 257, 389)
-```
 
 ## 设置ctx.font = "normal bold 14px sans-serif";一定要写全，或者不要写微信没有的字体，虽然我不知道微信没有什么字体，所以我就抄网上的，一定要记住，不然安卓会闪退/(ㄒoㄒ)/~~
