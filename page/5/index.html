@@ -925,93 +925,6 @@ $ git clone https://github.com/gxhpersonal/blog.git
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.guoxh.com/blog/2016/09/14/cookie/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://www.guoxh.com/blog/img/favicon.jpg">
-      <meta itemprop="name" content="郭雪辉">
-      <meta itemprop="description" content="郭雪辉博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="blog station">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2016/09/14/cookie/" class="post-title-link" itemprop="url">cookie</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2016-09-14 18:07:27" itemprop="dateCreated datePublished" datetime="2016-09-14T18:07:27+08:00">2016-09-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-25 13:47:26" itemprop="dateModified" datetime="2022-08-25T13:47:26+08:00">2022-08-25</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/JS/" itemprop="url" rel="index"><span itemprop="name">JS</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>678</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置cookie  </span></span><br><span class="line"><span class="comment">//name是cookie中的名，value是对应的值，iTime是多久过期（单位为天）  </span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">setCookie</span>(<span class="params">name,value,iTime</span>)&#123;  </span><br><span class="line">    <span class="keyword">var</span> oDate = <span class="keyword">new</span> <span class="title class_">Date</span>();  </span><br><span class="line">    <span class="comment">//设置cookie过期时间  </span></span><br><span class="line">    oDate.<span class="title function_">setDate</span>(oDate.<span class="title function_">getDate</span>()+iTime);  </span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">cookie</span> = name+<span class="string">&#x27;=&#x27;</span>+value+<span class="string">&#x27;;expires=&#x27;</span>+oDate.<span class="title function_">toGMTString</span>();  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="comment">//获取cookie  </span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getCookie</span>(<span class="params">name</span>)&#123;  </span><br><span class="line">    <span class="comment">//cookie中的数据都是以分号加空格区分开  </span></span><br><span class="line">    <span class="keyword">var</span> arr = <span class="variable language_">document</span>.<span class="property">cookie</span>.<span class="title function_">split</span>(<span class="string">&quot;; &quot;</span>);  </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;arr.<span class="property">length</span>; i++)&#123;  </span><br><span class="line">        <span class="keyword">if</span>(arr[i].<span class="title function_">split</span>(<span class="string">&quot;=&quot;</span>)[<span class="number">0</span>] == name)&#123;  </span><br><span class="line">            <span class="keyword">return</span> arr[i].<span class="title function_">split</span>(<span class="string">&quot;=&quot;</span>)[<span class="number">1</span>];  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="comment">//未找到对应的cookie则返回空字符串  </span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span>;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="comment">//删除cookie  </span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">removeCookie</span>(<span class="params">name</span>)&#123;  </span><br><span class="line">    <span class="comment">//调用setCookie方法，把时间设置为-1  </span></span><br><span class="line">    <span class="title function_">setCookie</span>(name,<span class="number">1</span>,-<span class="number">1</span>);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://www.guoxh.com/blog/2016/09/14/call()%E5%92%8Capply()/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1092,6 +1005,93 @@ $ git clone https://github.com/gxhpersonal/blog.git
             </div>
           <!--/noindex-->
         
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.guoxh.com/blog/2016/09/14/cookie/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://www.guoxh.com/blog/img/favicon.jpg">
+      <meta itemprop="name" content="郭雪辉">
+      <meta itemprop="description" content="郭雪辉博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog station">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2016/09/14/cookie/" class="post-title-link" itemprop="url">cookie</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-09-14 18:07:27" itemprop="dateCreated datePublished" datetime="2016-09-14T18:07:27+08:00">2016-09-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-25 13:47:26" itemprop="dateModified" datetime="2022-08-25T13:47:26+08:00">2022-08-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/JS/" itemprop="url" rel="index"><span itemprop="name">JS</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>678</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置cookie  </span></span><br><span class="line"><span class="comment">//name是cookie中的名，value是对应的值，iTime是多久过期（单位为天）  </span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">setCookie</span>(<span class="params">name,value,iTime</span>)&#123;  </span><br><span class="line">    <span class="keyword">var</span> oDate = <span class="keyword">new</span> <span class="title class_">Date</span>();  </span><br><span class="line">    <span class="comment">//设置cookie过期时间  </span></span><br><span class="line">    oDate.<span class="title function_">setDate</span>(oDate.<span class="title function_">getDate</span>()+iTime);  </span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">cookie</span> = name+<span class="string">&#x27;=&#x27;</span>+value+<span class="string">&#x27;;expires=&#x27;</span>+oDate.<span class="title function_">toGMTString</span>();  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="comment">//获取cookie  </span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getCookie</span>(<span class="params">name</span>)&#123;  </span><br><span class="line">    <span class="comment">//cookie中的数据都是以分号加空格区分开  </span></span><br><span class="line">    <span class="keyword">var</span> arr = <span class="variable language_">document</span>.<span class="property">cookie</span>.<span class="title function_">split</span>(<span class="string">&quot;; &quot;</span>);  </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;arr.<span class="property">length</span>; i++)&#123;  </span><br><span class="line">        <span class="keyword">if</span>(arr[i].<span class="title function_">split</span>(<span class="string">&quot;=&quot;</span>)[<span class="number">0</span>] == name)&#123;  </span><br><span class="line">            <span class="keyword">return</span> arr[i].<span class="title function_">split</span>(<span class="string">&quot;=&quot;</span>)[<span class="number">1</span>];  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="comment">//未找到对应的cookie则返回空字符串  </span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span>;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="comment">//删除cookie  </span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">removeCookie</span>(<span class="params">name</span>)&#123;  </span><br><span class="line">    <span class="comment">//调用setCookie方法，把时间设置为-1  </span></span><br><span class="line">    <span class="title function_">setCookie</span>(name,<span class="number">1</span>,-<span class="number">1</span>);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
