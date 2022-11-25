@@ -9,57 +9,93 @@ categories: blog
 [NEXT官方文档](https://theme-next.js.org/docs/getting-started/)
 <h2 id="配置"><a name="t4"></a>配置</h2>
 
-### 首先我们看看 `主题配置文件` 的配置 `F:\hexo\themes\next\_config.yml`
+### 我目前更新使用 hexo 6.3.0版本，next 7.8.0版本
+
+我更新了hexo，已经支持在根目录`source`文件夹下同步next配置，再也不用担心更改`themes/next/_config.yml`配置文件，换个电脑配置找不到了！
+在根目录source文件夹下新建`_data`文件夹，并新建`next.yml`文件，然后把主题配置文件复制到这个文件中，修改这个文件中的配置项，主题配置就会生效，这个操作其实在`themes/next/_config.yml`文件中开头都有提到。
+
+### 首先我们看看 `主题配置文件` 的配置 `\hexo\source\_data_\next.yml`
 
 use_motion || motion: true  # 开启动画效果
 use_motion: false # 关闭动画效果
 1. 把页面中的动画效果取消，把enable改为对应的false改为true，然后hexo d -g，再进主页，问题就解决了，下面的length参数对应的是文章预览的文本长度，可以自己设置。
+```yml
 auto_excerpt:
   enable: false
   length: 150
+```
+> 这个配置在next新版本配置中已经被取消，需要自己安装一个插件
+> ```
+> npm install hexo-excerpt --save
+> ```
+> 在站点配置文件(不是主题的配置文件)_config.yml添加
+> ```
+> excerpt:			# 一定要顶格写，注意格式
+   depth: 5			# 他的大小就是全文阅读预览长度设置
+   excerpt_excludes: []
+   more_excludes: []
+   hideWholePostExcerpts: true  #是否隐藏整个帖子摘录
+> ```
+> 在主题配置文件中_config.yml里 `excerpt_description` 改为 `true`
 
 2. 设置菜单项的显示文本和图标
 NexT 使用的是 [Font Awesome](http://fontawesome.dashgame.com/) 提供的图标， Font Awesome 提供了 600+ 的图标，可以满足绝大的多数的场景，同时无须担心在 Retina 屏幕下图标模糊的问题。
 
 3. 浏览页面的时候显示当前浏览进度
 搜索关键字 scrollpercent ,把 false 改为 true。
+```yml
 # Scroll percent label in b2t button
 scrollpercent: true
+```
 
 4. 添加顶部加载条
-打开 themes/next/_config.yml ，搜索关键字 pace ,设置为 true ,可以更换加载样式：
+打开 `\source\_data_\next.yml` ，搜索关键字 `pace` ,设置为 `true` ,可以更换加载样式：
 
 5. 修改文章底部的那个带#号的标签
+```
 修改模板`/themes/hexo-theme-next/layout/_macro/post.swig`，
 搜索 `rel="tag">#`，将 `#` 换成`<i class="fa fa-tag"></i>`
+```
 
 6. 增加本地搜索功能
 1> 在你站点的根目录下
+```node
 $ npm install hexo-generator-searchdb --save
+```
 2> 打开 Hexo 站点配置文件 _config.yml,添加配置
+```yml
 search:
   path: search.xml
   field: post
   format: html
   limit: 10000
+```
 3> 打开 themes/next/_config.yml ,搜索关键字 local_search ,enable 设置为 true：
+
+```yml
 local_search:
   enable: true
+```
 
 7. 自动摘录
+```yml
 auto_excerpt:
 length 设置文字显示长度
+```
 
 8. 文章阴影设置
 打开`\themes\next\source\css\_custom\custom.styl`,向里面加入：
+```css
 .post{
   margin-top:60px;
   margin-bottom:60px;
   padding:25px;
   box-shadow:0 0 5px rgba(202,203,204,.5);
 }
+```
 
 9. 文章顶部显示文章字数统计,阅读时长,总字数
+```yml
 post_wordcount:
   #是否显示描述文字
   item_text: true
@@ -71,6 +107,7 @@ post_wordcount:
   totalcount: false
   #是否换行
   separated_meta: true
+```
 
 10. 新建404公益界面，在`source`文件夹下新建`404/index.html`文件：
 ```html
@@ -94,85 +131,157 @@ post_wordcount:
 </html>
 ```
 
-11. 
+11.我们再看看 `站点配置文件` 的配置 `F:\hexo\_config.yml`
 
-### 我们再看看 `站点配置文件` 的配置 `F:\hexo\_config.yml`
+```yml
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
 
-```html
-<pre class="prettyprint" name="code"><code class="hljs avrasm has-numbering"><span class="hljs-preprocessor"># Hexo Configuration</span>
-<span class="hljs-preprocessor">## Docs: https://hexo.io/docs/configuration.html</span>
-<span class="hljs-preprocessor">## Source: https://github.com/hexojs/hexo/</span>
-<span class="hljs-preprocessor"># Site 网站</span>
-<span class="hljs-label">title:</span> 为学   <span class="hljs-preprocessor">#网站标题</span>
-<span class="hljs-label">subtitle:</span> 天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。   <span class="hljs-preprocessor">#网站副标题</span>
-<span class="hljs-label">description:</span> 天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。   <span class="hljs-preprocessor">#网站描述</span>
-<span class="hljs-label">author:</span> willxue   <span class="hljs-preprocessor">#您的名字</span>
-<span class="hljs-label">language:</span> <span class="hljs-built_in">zh</span>-CN   <span class="hljs-preprocessor">#网站使用的语言</span>
-<span class="hljs-label">timezone:</span>           <span class="hljs-preprocessor">#网站时区。Hexo 默认使用您电脑的时区</span>
+# Site
+title: blog station  #网站标题
+subtitle: 天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。	#网站副标题
+description: 郭雪辉博客  #网站描述
+keywords: 郭雪辉博客 #网站的关键词。支持多个关键词。
+author: 郭雪辉 #您的名字
+language: zh-CN  #网站使用的语言。对于简体中文用户来说，使用不同的主题可能需要设置成不同的值，请参考你的主题的文档自行设置，常见的有 zh-Hans和 zh-CN。
+timezone: Asia/Shanghai #网站时区。Hexo 默认使用您电脑的时区。请参考 时区列表 进行设置，如 America/New_York, Japan, 和 UTC 。一般的，对于中国大陆地区可以使用 Asia/Shanghai。
+#其中，description主要用于SEO，告诉搜索引擎一个关于您站点的简单描述，通常建议在其中包含您网站的关键词。author参数用于主题显示文章的作者。
 
-<span class="hljs-preprocessor"># URL 网址</span>
-<span class="hljs-preprocessor">## 如果您的网站存放在子目录中，例如 http://yoursite.com/blog，则请将您的 url 设为 http://yoursite.com/blog 并把 root 设为 /blog/。</span>
-<span class="hljs-label">url:</span> http://willxue<span class="hljs-preprocessor">.top</span>
-<span class="hljs-label">permalink:</span> :year/:month/:day/:title/    <span class="hljs-preprocessor">#生成文件名字的格式我改成blog/:title:year:month:day/</span>
-<span class="hljs-label">permalink_defaults:</span>
+# URL
+## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
+url: http://gxhpersonal.github.io/blog #网址, 必须以 http:// 或 https:// 开头
+root: /blog/ #网站根目录
+permalink: :year/:month/:day/:title/  #文章的 永久链接 格式
+permalink_defaults:  #永久链接中各部分的默认值
+pretty_urls:  #改写 permalink 的值来美化 URL
+  trailing_index: true # 是否在永久链接中保留尾部的 index.html，设置为 false 时去除
+  trailing_html: true # 是否在永久链接中保留尾部的 .html, 设置为 false 时去除 (对尾部的 index.html无效)
 
-<span class="hljs-preprocessor"># Directory 目录配置</span>
-<span class="hljs-label">source_dir:</span> source   <span class="hljs-preprocessor">#源文件夹，这个文件夹用来存放内容。</span>
-<span class="hljs-label">public_dir:</span> public   <span class="hljs-preprocessor">#公共文件夹，这个文件夹用于存放生成的站点文件。</span>
-<span class="hljs-label">tag_dir:</span> tags   <span class="hljs-preprocessor">#标签文件夹</span>
-<span class="hljs-label">archive_dir:</span> archives   <span class="hljs-preprocessor">#归档文件夹</span>
-<span class="hljs-label">category_dir:</span> categories   <span class="hljs-preprocessor">#分类文件夹</span>
-<span class="hljs-label">code_dir:</span> downloads/code    <span class="hljs-preprocessor">#nclude code 文件夹</span>
-<span class="hljs-label">i18n_dir:</span> :lang   <span class="hljs-preprocessor">#国际化（i18n）文件夹</span>
-<span class="hljs-label">skip_render:</span>   <span class="hljs-preprocessor">#跳过指定文件的渲染，您可使用 glob 表达式来匹配路径。</span>
+# Directory
+source_dir: source  #资源文件夹，这个文件夹用来存放内容。
+public_dir: public #公共文件夹，这个文件夹用于存放生成的站点文件。
+tag_dir: tags #标签文件夹
+archive_dir: archives #归档文件夹
+category_dir: categories #分类文件夹
+code_dir: downloads/code #Include code 文件夹，source_dir 下的子目录
+i18n_dir: :lang #国际化（i18n）文件夹
+skip_render: #跳过指定文件的渲染。匹配到的文件将会被不做改动地复制到 public 目录中。您可使用 glob 表达式来匹配路径。
 
-<span class="hljs-preprocessor"># Writing 文章</span>
-<span class="hljs-label">new_post_name:</span> :title<span class="hljs-preprocessor">.md</span>   <span class="hljs-preprocessor"># 新建文章默认文件名</span>
-<span class="hljs-label">default_layout:</span> post   <span class="hljs-preprocessor"># 默认布局</span>
-<span class="hljs-label">titlecase:</span> false   <span class="hljs-preprocessor"># Transform title into titlecase</span>
-<span class="hljs-label">external_link:</span> true   <span class="hljs-preprocessor"># 在新标签中打开一个外部链接，默认为true</span>
-<span class="hljs-label">filename_case:</span> <span class="hljs-number">0</span>   <span class="hljs-preprocessor">#转换文件名，1代表小写；2代表大写；默认为0，意思就是创建文章的时候，是否自动帮你转换文件名，默认就行，意义不大。</span>
-<span class="hljs-label">render_drafts:</span> false   <span class="hljs-preprocessor">#是否渲染_drafts目录下的文章，默认为false</span>
-<span class="hljs-label">post_asset_folder:</span> false   <span class="hljs-preprocessor">#启动 Asset 文件夹</span>
-<span class="hljs-label">relative_link:</span> false   <span class="hljs-preprocessor">#把链接改为与根目录的相对位址，默认false</span>
-<span class="hljs-label">future:</span> true   <span class="hljs-preprocessor">#显示未来的文章，默认false</span>
-<span class="hljs-label">highlight:</span>   <span class="hljs-preprocessor">#代码块的设置 </span>
+# Writing
+new_post_name: :title.md #新文章的文件名称
+default_layout: post #预设布局
+auto_spacing: false #在中文和英文之间加入空格
+titlecase: false #把标题转换为 title case
+external_link: #在新标签中打开链接
+  enable: true # Open external links in new tab
+  field: site #对整个网站（site）生效或仅对文章（post）生效
+  exclude: '' #需要排除的域名。主域名和子域名如 www 需分别配置
+filename_case: 0 #把文件名称转换为 (1) 小写或 (2) 大写
+render_drafts: false #显示草稿
+post_asset_folder: false #启动 Asset 文件夹
+relative_link: false #把链接改为与根目录的相对位址
+future: true #显示未来的文章
+highlight: #代码块的设置, 请参考 Highlight.js 进行设置
   enable: true
   line_number: true
   auto_detect: false
-  tab_replace:
+  tab_replace: ''
+  wrap: true
+  hljs: false
+prismjs: #代码块的设置, 请参考 PrismJS 进行设置
+  enable: false
+  preprocess: true
+  line_number: true
+  tab_replace: ''
 
-<span class="hljs-preprocessor"># Category &amp; Tag   分类和标签的设置</span>
-<span class="hljs-label">default_category:</span> uncategorized   <span class="hljs-preprocessor">#默认分类</span>
-<span class="hljs-label">category_map:</span>   <span class="hljs-preprocessor">#分类别名</span>
-<span class="hljs-label">tag_map:</span>   <span class="hljs-preprocessor">#标签别名</span>
+excerpt:
+  depth: 4
+  excerpt_excludes: []
+  more_excludes: []
+  hideWholePostExcerpts: true
+  
+# Home page setting
+# path: Root path for your blogs index page. (default = '')
+# per_page: Posts displayed per page. (0 = disable pagination)
+# order_by: Posts order. (Order by date descending by default)
+index_generator:
+  path: ''
+  per_page: 10
+  order_by: -date
 
-<span class="hljs-preprocessor"># Date / Time format</span>
-<span class="hljs-preprocessor">## Hexo uses Moment.js to parse and display date</span>
-<span class="hljs-preprocessor">## You can customize the date format as defined in</span>
-<span class="hljs-preprocessor">## http://momentjs.com/docs/#/displaying/format/</span>
-<span class="hljs-label">date_format:</span> YYYY-MM-DD
-<span class="hljs-label">time_format:</span> HH:mm:ss
+# Category & Tag
+default_category: uncategorized #默认分类
+category_map: #分类别名
+tag_map: #标签别名
 
-<span class="hljs-preprocessor"># Pagination 分页</span>
-<span class="hljs-preprocessor">## Set per_page to 0 to disable pagination</span>
-<span class="hljs-label">per_page:</span> <span class="hljs-number">10</span>   <span class="hljs-preprocessor">#每页显示的文章量 (0 = 关闭分页功能)</span>
-<span class="hljs-label">pagination_dir:</span> page   <span class="hljs-preprocessor">#分页目录</span>
+# Metadata elements
+## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
+meta_generator: true
 
-<span class="hljs-preprocessor"># Extensions</span>
-<span class="hljs-preprocessor">## Plugins: https://hexo.io/plugins/</span>
-<span class="hljs-preprocessor">## Themes: https://hexo.io/themes/</span>
-<span class="hljs-label">theme:</span> next
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+## Hexo 使用 Moment.js 来解析和显示时间
+date_format: YYYY-MM-DD #日期格式
+time_format: HH:mm:ss #时间格式
+## updated_option supports 'mtime', 'date', 'empty'
+updated_option: 'mtime' #当 Front Matter 中没有指定 updated 时 updated 的取值
+ 
+# Pagination
+## Set per_page to 0 to disable pagination
+per_page: 10 #每页显示的文章量 (0 = 关闭分页功能)
+pagination_dir: blog #分页目录
 
-<span class="hljs-label">feed:</span>
-  type: atom       <span class="hljs-preprocessor">#feed 类型 (atom/rss2)</span>
-  path: atom<span class="hljs-preprocessor">.xml</span>   <span class="hljs-preprocessor">#rss 路径</span>
-  limit: <span class="hljs-number">20</span>        <span class="hljs-preprocessor">#在 rss 中最多生成的文章数(0显示所有)</span>
+# Include / Exclude file(s)
+## include:/exclude: options only apply to the 'source/' folder
+include:
+exclude:
+ignore:
 
-<span class="hljs-preprocessor"># Deployment</span>
-<span class="hljs-preprocessor">## Docs: https://hexo.io/docs/deployment.html</span>
-<span class="hljs-label">deploy:</span> 
-<span class="hljs-label">type:</span> git 
-  repository: https://github<span class="hljs-preprocessor">.com</span>/imwillxue/imwillxue<span class="hljs-preprocessor">.github</span><span class="hljs-preprocessor">.com</span><span class="hljs-preprocessor">.git</span> 
-  branch: master</code></pre>
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: next
+avatar: http://www.guoxh.com/blog/img/avatar.png
+
+# Deployment
+## Docs: https://hexo.io/docs/one-command-deployment
+deploy:
+  type: git
+  repo: https://github.com/gxhpersonal/blog.git
+  branch: gh-pages
+
+# 百度分享服务
+baidushare: true
+
+# 多说热评文章 true 或者 false
+# duoshuo_hotartical: true
+
+# search:
+#   path: search.xml
+#   field: post
+#   format: html
+#   limit: 10000
+
+live2d:
+  enable: true
+  scriptFrom: local
+  pluginRootPath: live2dw/
+  pluginJsPath: lib/
+  pluginModelPath: assets/
+  tagMode: false
+  debug: false
+  model:
+    use: live2d-widget-model-wanko
+  display:
+    position: left
+    width: 100
+    height: 150
+  mobile:
+    show: true
+
 ```
+
+12.如果遇到本地生成样式没问题，上线样式错乱，先执行：`hexo clean`，再执行`hexo d -g`
