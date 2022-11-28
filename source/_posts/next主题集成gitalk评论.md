@@ -5,6 +5,8 @@ tags: blog
 categories: blog
 ---
 
+## 2022.11.28目前gittalk已经需要翻墙才能使用了，不翻墙会一直提示netwrok error，作为一个遵纪守法的良好公民，我自然是深恶痛绝偷偷翻墙的这种行为，同时对私连IP搭建VPN并以此盈利的不法分子更是痛心疾首，希望能早日醒悟，苦海无涯，回头是岸，否则悔之晚矣
+
 ## 记录一下hexo博客next主题集成gitalk评论插件的步骤
 > 本文参考[https://asdfv1929.github.io/2018/01/20/gitalk/](https://asdfv1929.github.io/2018/01/20/gitalk/)
 > gitalk：一个基于 Github Issue 和 Preact 开发的评论插件
