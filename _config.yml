@@ -145,7 +145,7 @@ live2d:
 
 # 字数，阅读时间统计
 symbols_count_time:
-  symbols: true 
-  time: true 
-  total_symbols: true 
-  total_time: true 
+  symbols: true # 文章字数统计
+  time: true # 文章阅读时间统计
+  total_symbols: true # 站点总字数统计
+  total_time: true # 站点总阅读时间统计

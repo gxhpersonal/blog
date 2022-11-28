@@ -4,6 +4,9 @@ date: 2016-11-22 13:44:16
 tags:
 categories: blog
 ---
+
+### 技术迭代版本飞快，只有时刻保持学习和探索，才能跟上不掉队，框架更是如此，需要不断更新，不断修改文章记录，如果一成不变，那写文章将毫无意义
+
 ### NEXT主题官方文档，操作扩展都非常详细，有兴趣可以看一看 
 [NEXT主题配置](http://theme-next.iissnan.com/theme-settings.html)   
 [NEXT官方文档](https://theme-next.js.org/docs/getting-started/)
@@ -62,51 +65,59 @@ scrollpercent: true
 ```node
 $ npm install hexo-generator-searchdb --save
 ```
-2> 打开 Hexo 站点配置文件 _config.yml,添加配置
+2> 主题配置文件 `next.yml` 添加 `search` 选项，修改 `local_search` 选项：
 ```yml
-search:
+search:  #不添加也可以，功能照用
   path: search.xml
   field: post
   format: html
   limit: 10000
-```
-3> 打开 themes/next/_config.yml ,搜索关键字 local_search ,enable 设置为 true：
-
-```yml
 local_search:
   enable: true
+  trigger: auto #如果是auto，通过改变输入触发搜索。如果是手动，按回车键或搜索按钮触发搜索
+  top_n_per_article: 1 #显示每篇文章的前n个结果，设置为-1显示所有结果
+  unescape: false #将html字符串转义为可读的。
+  preload: false #在页面加载时预加载搜索数据。
 ```
 
-7. 自动摘录
+7. 自动摘录，主题配置文件：
 ```yml
-auto_excerpt:
-length 设置文字显示长度
+excerpt_description: true ##自动摘录主页中的描述作为序言文本
+read_more_btn: true #阅读更多按钮显示
 ```
 
 8. 文章阴影设置
-打开`\themes\next\source\css\_custom\custom.styl`,向里面加入：
-```css
-.post{
-  margin-top:60px;
-  margin-bottom:60px;
-  padding:25px;
-  box-shadow:0 0 5px rgba(202,203,204,.5);
+```scss
+// 文章阴影
+.post-block{
+    padding: 25px;
+    border-radius:5px;
+    -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5);
+    -moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);
 }
 ```
 
 9. 文章顶部显示文章字数统计,阅读时长,总字数
+安装 hexo-symbols-count-time 插件：
+```npm
+npm install hexo-symbols-count-time --save
+```
+编辑站点配置文件 hexo/_config.yml，添加如下内容：
 ```yml
-post_wordcount:
-  #是否显示描述文字
-  item_text: true
-  #字数统计
-  wordcount: true
-  #预览时间
-  min2read: true
-  #总字数,显示在页面底部
-  totalcount: false
-  #是否换行
-  separated_meta: true
+symbols_count_time:
+  symbols: true # 文章字数统计
+  time: true # 文章阅读时间统计
+  total_symbols: true # 站点总字数统计
+  total_time: true  # 站点总阅读时间统计
+```
+修改主题配置文件 next.yml 中 symbols_count_time 选项：
+```yml
+symbols_count_time:
+  separated_meta: true # 是否另起一行（true的话不和发表时间等同一行）
+  item_text_post: true # 首页文章统计数量前是否显示文字描述（本文字数、阅读时长）
+  item_text_total: true # 页面底部统计数量前是否显示文字描述（站点总字数、站点阅读时长）
+  awl: 2 # 平均字长
+  wpm: 275 # 每分钟阅读字数
 ```
 
 10. 新建404公益界面，在`source`文件夹下新建`404/index.html`文件：
@@ -121,7 +132,7 @@ post_wordcount:
   <link rel="stylesheet" type="text/css" href="https://qzone.qq.com/gy/404/style/404style.css">
 </head>
 <body>
-  <script type="text/plain" src="http://www.qq.com/404/search_children.js"
+  <script type="text/plain" src="https://www.qq.com/404/search_children.js"
           charset="utf-8" homePageUrl="/"
           homePageName="回到我的主页">
   </script>
@@ -285,3 +296,29 @@ live2d:
 ```
 
 12.如果遇到本地生成样式没问题，上线样式错乱，先执行：`hexo clean`，再执行`hexo d -g`
+
+13.文章指定摘录段落&&修改阅读全文样式
+
+next 在需要显示摘要的地方加上 `<!--more-->` ，就不会显示全文，在`\hexo\source\_data_\style\styles.styl`中写入下面内容，修改默认的 Read More 按钮样式：
+```scss
+// [Read More]按钮样式
+.post-button .btn {
+    color: #555 !important;
+    background-color: rgb(255, 255, 255);
+    border-radius: 3px;
+    font-size: 15px;
+    box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
+    border: none !important;
+    transition-property: unset;
+    padding: 0px 15px;
+}
+.post-button .btn:hover {
+    color: rgb(255, 255, 255) !important;
+    border-radius: 3px;
+    font-size: 15px;
+    box-shadow: none;
+    background-image: linear-gradient(90deg, #ff5200 0%, #ffd600 50%, #ff5200 100%);
+}
+```
+
+* 上面修改样式的配置都可以自己自定义，只需要在F12中找到对应类名，在`\hexo\source\_data_\style\styles.styl`文件中添加对应类名想要的样式就好了
