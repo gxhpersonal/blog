@@ -122,7 +122,7 @@ overflow-anchor: auto | none
 none:即滚动时会受内容变化影响，可视区插入内容会显示插入的内容。滚动条不变，可视内容变化
 
 ### css3滤镜效果：-webkit-filter
-[http://www.css88.com/html5-demo/-webkit-filter/index.html]()
+[https://developer.mozilla.org/zh-CN/docs/Web/CSS/filter]()
 
 ### 字体抗锯齿效果
 Webkit在自己的引擎中支持了这一效果。
@@ -187,7 +187,11 @@ compositing-operator:设置遮罩图层的组合操作
 ```
 
 ### clip 图像裁剪
-clip:rect(0px,0px,0px,0px)四个值分别对应上右下左
+```css
+*{
+  clip:rect(0px,0px,0px,0px) //四个值分别对应上右下左
+}
+```
 
 ### 滚动动画
 html, body { scroll-behavior:smooth; }
@@ -198,29 +202,36 @@ html, body { scroll-behavior:smooth; }
     behavior: "smooth"
 });
 我们随便打开一个有链接的页面，把首个链接滚动到屏幕外，然后控制台输入类似下面代码，我们就可以看到页面平滑滚动定位了：
-
+```js
 document.links[0].scrollIntoView({
     behavior: "smooth"
 });
+```
 
 ### box-shadow添加多个不同的阴影
 > 用逗号分隔即可
 > 如：
-> box-shadow: 0 3px 3px 0 rgba(243,132,0, 0.35), 0 -6px 2px 0 rgba(244, 149, 0,0.35) inset;
+> ```css
+> *{box-shadow: 0 3px 3px 0 rgba(243,132,0, 0.35), 0 -6px 2px 0 rgba(244, 149, 0,0.35) inset;}
+> ```
 
 ### 背景色渐变
+```css
+*{
 /* 渐变轴为45度，从蓝色渐变到红色 */
-linear-gradient(45deg, blue, red);
+background-image:linear-gradient(45deg, blue, red);
 
 /* 从右下到左上、从蓝色渐变到红色 */
-linear-gradient(to left top, blue, red);
+background-image:linear-gradient(to left top, blue, red);
 
 /* 从下到上，从蓝色开始渐变、到高度40%位置是绿色渐变开始、最后以红色结束 */
-linear-gradient(0deg, blue, green 40%, red);
+background-image:linear-gradient(0deg, blue, green 40%, red);
+}
+```
 
 ### iphoenX适配问题(利用media限制iPhone X屏幕尺寸)
-```
-// css部分，利用media做你想要的适配，我这里通过一个白色div留出安全距离防挡
+```css
+/* css部分，利用media做你想要的适配，我这里通过一个白色div留出安全距离防挡 */
 @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
   .adapt {
     position: fixed;
@@ -248,7 +259,7 @@ linear-gradient(0deg, blue, green 40%, red);
 ```
 
 ### CSS all
-> CSS all 简写属性 将除却 unicode-bidi 与 direction 之外的所有属性重设至其初始值，或继承值。
+> CSS `all` 简写属性 将除却 `unicode-bidi` 与 `direction` 之外的所有属性重设至其初始值，或继承值。
 * 取值
 initial
 该关键字代表改变该元素或其父元素的所有属性至初始值。
@@ -260,8 +271,7 @@ unset
 ### css优化
 ##### 加载性能：
 （1）css压缩：将写好的css进行打包压缩，可以减少很多的体积。
-（2）css单一样式：当需要下边距和左边距的时候，很多时候选择:margin:top0bottom0;但margin-bottom:bot
-tom;margin-left:left;执行的效率更高。
+（2）css单一样式：当需要下边距和左边距的时候，很多时候选择：`margin:top0 bottom0;`但`margin-bottom:bottom;margin-left:left;`执行的效率更高。
 （3）减少使用@import,而建议使用link，因为后者在页面加载时一起加载，前者是等待页面加载完成之后再进行加载。
 
 ##### 选择器性能：
@@ -340,3 +350,41 @@ tom;margin-left:left;执行的效率更高。
   <div class="back"></div>
 </div>
 ```
+
+### :empty 选择器
+> `:empty`代表没有子元素的元素。子元素只可以是元素节点或文本（包括空格）。注释或处理指令都不会产生影响。
+* 之前判断数据为空显示`暂无数据`需要判断数据length为0显示一个包裹暂无数据文案的标签，而用了`:empty`伪类选择器，只需要在外层div加一个伪类就可以实现；
+```css
+.container {
+    width: 400px;
+    height: 400px;
+    background-color: skyblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container:empty::after {
+    content: "—— 没有更多了 ——";
+}
+```
+
+### gap属性
+当我们需要每个子元素之间距离等分而又除不尽时，就可以用到`gap`属性，`gap`属性它适用于`Grid`布局、`Flex`布局以及多列布局，并不一定只是`Grid`布局中可以使用。
+比如我们要让每个元素之间隔开`20px`， 那么使用`gap`我们可以这样：
+```css
+.wrap{
+  display: flex | grid；
+  gap: 20px;
+}
+```
+
+### background-clip
+
+
+### :invalid 伪类
+
+### :focus-within 伪类
+
+### mix-blend-mode:difference 
+
+> `mix-blend-mode`属性描述了元素的内容应该与元素的直系父元素的内容和元素的背景如何混合。其中，difference 表示差值。
