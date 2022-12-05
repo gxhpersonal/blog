@@ -378,7 +378,14 @@ unset
 }
 ```
 
-### background-clip
+### background-clip 实现文本背景图
+```css
+.text{
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: rgba(0, 0, 0, 0.2);
+}
+```
 
 
 ### :invalid 伪类

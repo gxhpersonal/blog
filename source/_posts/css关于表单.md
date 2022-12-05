@@ -22,7 +22,7 @@ input的placeholder属性字体颜色：
             color: #aaa;
         }
 ```
-input的选中状态：
+<!-- input的选中状态： -->
 ```css
        input:focus{ border:1px solid red }
 ```
@@ -73,8 +73,11 @@ inherit规定应该从父元素继承 text-transform 属性的值。
 }
 
 这样布局可能会是的滚动失去原来的流畅，加以下代码，恢复之前丝滑般的滚动：
+```css
+.box{
     -webkit-overflow-scrolling: touch;
-
+}
+```
 这样的布局在h5是行不通的，所以需要用JS来控制内部滚动元素的高度：
 ```javascript
 // 1. 内部滚动
