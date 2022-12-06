@@ -2432,4 +2432,15 @@ requestAnimFrame(draw);
         <tag>React</tag>
       </tags>
   </entry>
+  <entry>
+    <title>canvas</title>
+    <url>/blog/2022/12/05/canvas/</url>
+    <content><![CDATA[<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3>]]></content>
+      <categories>
+        <category>canvas</category>
+      </categories>
+      <tags>
+        <tag>canvas</tag>
+      </tags>
+  </entry>
 </search>
