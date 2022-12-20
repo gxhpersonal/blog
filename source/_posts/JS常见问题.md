@@ -165,6 +165,8 @@ parseInt(UUserCard.substr(16, 1)) % 2 == 1
 getFullYear() 对应 setFullYear()
 getMonth() 对应 setMonth()
 getTime() 对应 setTime() //返回 1970 年 1 月 1 日至今的毫秒数  和  	以毫秒设置 Date 对象。
+> Date.parse()和getTime()的区别：
+> getTime()方法是把一个date对象转成毫秒；parse()方法是把一个时间格式的字符串转换成毫秒。
 
 ### 多个同类型元素控制别的同类型的元素
 举个栗子：
