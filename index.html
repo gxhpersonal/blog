@@ -320,7 +320,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-11-30 18:04:55" itemprop="dateModified" datetime="2022-11-30T18:04:55+08:00">2022-11-30</time>
+                <time title="修改时间：2023-02-07 09:07:10" itemprop="dateModified" datetime="2023-02-07T09:07:10+08:00">2023-02-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -338,7 +338,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>771</span>
+              <span>1.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -358,9 +358,18 @@
 
       
           <h3 id="接口返回的数据填充Form，有时会无法填充"><a href="#接口返回的数据填充Form，有时会无法填充" class="headerlink" title="接口返回的数据填充Form，有时会无法填充"></a>接口返回的数据填充<code>Form</code>，有时会无法填充</h3><p>原因：接口返回比页面渲染慢，导致页面渲染完成还没有拿到数据<br>解决：保证接口返回数据再渲染页面</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">``</span><span class="string">`</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">### 如果table分页最后一页只有一条数据，删除这条会导致分页和数据展示不一致</span></span><br><span class="line"><span class="string">原因：</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">### 获取路由中的id</span></span><br><span class="line"><span class="string">dva.js store文件中无法使用react方法；</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br><span class="line"><span class="comment">//安装path-to-regexp插件</span></span><br><span class="line"><span class="keyword">const</span> &#123; pathToRegexp &#125; = <span class="built_in">require</span>(<span class="string">&quot;path-to-regexp&quot;</span>);</span><br><span class="line"><span class="attr">subscriptions</span>: &#123;</span><br><span class="line">        <span class="title function_">setup</span>(<span class="params">&#123; dispatch, history &#125;</span>) &#123;</span><br><span class="line">            history.<span class="title function_">listen</span>(<span class="function">(<span class="params">location</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">const</span> match = <span class="title function_">pathToRegexp</span>(<span class="string">&#x27;/marketing/node/:id&#x27;</span>).<span class="title function_">exec</span>(location.<span class="property">pathname</span>);</span><br><span class="line">                <span class="keyword">if</span> (match) &#123;</span><br><span class="line">                    <span class="title function_">dispatch</span>(&#123;</span><br><span class="line">                        <span class="attr">type</span>: <span class="string">&#x27;save&#x27;</span>, <span class="attr">payload</span>: &#123;</span><br><span class="line">                            <span class="attr">loadSuccess</span>: <span class="literal">false</span>,</span><br><span class="line">                            <span class="attr">disabled</span>: location?.<span class="property">query</span>?.<span class="property">type</span> === <span class="string">&quot;1&quot;</span> ? <span class="literal">true</span> : <span class="literal">false</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;);</span><br><span class="line">                    <span class="title function_">dispatch</span>(&#123; <span class="attr">type</span>: <span class="string">&#x27;query&#x27;</span>, <span class="attr">payload</span>: &#123; <span class="attr">id</span>: match[<span class="number">1</span>] &#125; &#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
-
-<h3 id="Form表单中有上传组件Upload，无法在Form-Item的name属性绑定对应值，需要特殊处理下"><a href="#Form表单中有上传组件Upload，无法在Form-Item的name属性绑定对应值，需要特殊处理下" class="headerlink" title="Form表单中有上传组件Upload，无法在Form.Item的name属性绑定对应值，需要特殊处理下"></a>Form表单中有上传组件<code>Upload</code>，无法在Form.Item的name属性绑定对应值，需要特殊处理下</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如果用了状态管理</span></span><br><span class="line"><span class="attr">state</span>: &#123;</span><br><span class="line">    <span class="attr">loadSuccess</span>: <span class="literal">false</span>,</span><br><span class="line">&#125;,</span><br><span class="line"><span class="attr">effects</span>: &#123;</span><br><span class="line">    *<span class="title function_">query</span>(<span class="params">&#123; payload = &#123;&#125; &#125;, &#123; call, put &#125;</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> data = <span class="keyword">yield</span> <span class="title function_">call</span>(getTaskDetail, payload);</span><br><span class="line">        <span class="keyword">if</span> (data.<span class="property">success</span>) &#123;</span><br><span class="line">            <span class="keyword">yield</span> <span class="title function_">put</span>(&#123;</span><br><span class="line">                <span class="attr">type</span>: <span class="string">&#x27;save&#x27;</span>,</span><br><span class="line">                <span class="attr">payload</span>: &#123;</span><br><span class="line">                    <span class="attr">loadSuccess</span>: <span class="literal">true</span></span><br><span class="line">                &#125;,</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line"><span class="comment">//在jsx文件中：</span></span><br><span class="line"><span class="title function_">render</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">return</span>(</span><br><span class="line">        &#123;<span class="variable language_">this</span>.<span class="property">props</span>.<span class="property">loadSuccess</span> &amp;&amp; <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>&#125;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>应该有更好的解决方案，这种如果加载时间长会白屏很长时间，等有好的解决思路再补充。。。</p>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/blog/2022/11/25/antd%E8%AE%B0%E5%BD%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1277,7 +1286,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -1287,7 +1296,7 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">158k</span>
+    <span title="站点总字数">159k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
