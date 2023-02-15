@@ -74,3 +74,10 @@ subscriptions: {
 ### Form表单中有上传组件`Upload`，无法在Form.Item的name属性绑定对应值，需要特殊处理下
 
 ### Form表单中的Form.Item组件`name`属性为数组时，可以做嵌套对象使用
+
+### react路由跳转进入，链接参数为数字，刷新后，链接参数变字符串
+```js
+const { query } = this.props.location;
+const { cityId, activityId, smsSupplierType, smsPrice } = query;
+//antd中Form表单initialValues默认值填充校验数据类型，所以要和你Form表单中value类型相同，才能回显
+```
