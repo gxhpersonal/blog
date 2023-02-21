@@ -395,3 +395,10 @@ unset
 ### mix-blend-mode:difference 
 
 > `mix-blend-mode`属性描述了元素的内容应该与元素的直系父元素的内容和元素的背景如何混合。其中，difference 表示差值。
+
+### `*-line-start`和`*-block-end`相关属性
+其中 inline 和 block 表示方向， start 和 end 表示起止方位。
+
+在中文和英文网页环境中，inline元素（文字、图片、按钮等）的默认是从左往右水平排列的；block元素（如`<div>`、`<p>`元素等）默认是从上往下垂直排列的。
+
+因此，`margin-inline-start`就表示内联元素排列方向的起始位置，就是“左侧”，`margin-inline-end`就表示内联元素排列方向的终止位置，就是“右侧”。
