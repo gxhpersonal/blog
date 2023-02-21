@@ -2443,6 +2443,9 @@ requestAnimFrame(draw);
 <h3 id="invalid-伪类"><a href="#invalid-伪类" class="headerlink" title=":invalid 伪类"></a>:invalid 伪类</h3><h3 id="focus-within-伪类"><a href="#focus-within-伪类" class="headerlink" title=":focus-within 伪类"></a>:focus-within 伪类</h3><h3 id="mix-blend-mode-difference"><a href="#mix-blend-mode-difference" class="headerlink" title="mix-blend-mode:difference"></a>mix-blend-mode:difference</h3><blockquote>
 <p><code>mix-blend-mode</code>属性描述了元素的内容应该与元素的直系父元素的内容和元素的背景如何混合。其中，difference 表示差值。</p>
 </blockquote>
+<h3 id="line-start和-block-end相关属性"><a href="#line-start和-block-end相关属性" class="headerlink" title="*-line-start和*-block-end相关属性"></a><code>*-line-start</code>和<code>*-block-end</code>相关属性</h3><p>其中 inline 和 block 表示方向， start 和 end 表示起止方位。</p>
+<p>在中文和英文网页环境中，inline元素（文字、图片、按钮等）的默认是从左往右水平排列的；block元素（如<code>&lt;div&gt;</code>、<code>&lt;p&gt;</code>元素等）默认是从上往下垂直排列的。</p>
+<p>因此，<code>margin-inline-start</code>就表示内联元素排列方向的起始位置，就是“左侧”，<code>margin-inline-end</code>就表示内联元素排列方向的终止位置，就是“右侧”。</p>
 ]]></content>
       <categories>
         <category>css</category>
