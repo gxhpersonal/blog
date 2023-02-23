@@ -401,4 +401,4 @@ unset
 
 在中文和英文网页环境中，inline元素（文字、图片、按钮等）的默认是从左往右水平排列的；block元素（如`<div>`、`<p>`元素等）默认是从上往下垂直排列的。
 
-因此，`margin-inline-start`就表示内联元素排列方向的起始位置，就是“左侧”，`margin-inline-end`就表示内联元素排列方向的终止位置，就是“右侧”。
+因此，`margin-inline-start`就表示内联元素排列方向的起始位置，就是“左侧”，`margin-inline-end`就表示内联元素排列方向的终止位置，就是“右侧”；`margin-block-start`就表示块级元素排列方向的起始位置，就是“上面”，`margin-block-end`就表示块级元素排列方向的终止位置，就是“下面”。
