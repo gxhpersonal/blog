@@ -208,6 +208,95 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.guoxh.com/blog/2019/03/26/vue%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://www.guoxh.com/blog/img/favicon.jpg">
+      <meta itemprop="name" content="郭雪辉">
+      <meta itemprop="description" content="郭雪辉博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog station">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/blog/2019/03/26/vue%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" class="post-title-link" itemprop="url">vue文件上传</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-26 13:56:08" itemprop="dateCreated datePublished" datetime="2019-03-26T13:56:08+08:00">2019-03-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-08-25 13:47:26" itemprop="dateModified" datetime="2022-08-25T13:47:26+08:00">2022-08-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/blog/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="文件上传（支持PDF格式文件上传）以文件流的形式上传到接口"><a href="#文件上传（支持PDF格式文件上传）以文件流的形式上传到接口" class="headerlink" title="文件上传（支持PDF格式文件上传）以文件流的形式上传到接口"></a>文件上传（支持PDF格式文件上传）以文件流的形式上传到接口</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> <span class="attr">id</span>=<span class="string">&quot;CarDamageFile&quot;</span> <span class="attr">class</span>=<span class="string">&quot;g-core-image-upload-form&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span> <span class="attr">accept</span>=<span class="string">&quot;image/gif,image/jpeg,image/jpg,image/png,application/pdf&quot;</span> <span class="attr">data-type</span>=<span class="string">&quot;back-page&quot;</span> <span class="attr">name</span>=<span class="string">&quot;Pictures&quot;</span> <span class="attr">multiple</span>=<span class="string">&quot;multiple&quot;</span> @<span class="attr">change</span>=<span class="string">&quot;imagechanged($event,Udata[7])&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//文件上传</span></span><br><span class="line"><span class="title function_">wrongTip</span>(<span class="params">data</span>)&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(data)</span><br><span class="line">&#125;,</span><br><span class="line"><span class="title function_">imagechanged</span>(<span class="params">e, data</span>) &#123;</span><br><span class="line"><span class="comment">//参数e为当前上传的表单，data为要处理的数据</span></span><br><span class="line">    <span class="keyword">var</span> that = <span class="variable language_">this</span>,</span><br><span class="line">      _data = that.<span class="property">Udata</span>,</span><br><span class="line">      fileList = e.<span class="property">target</span>.<span class="property">files</span>;</span><br><span class="line">    data.<span class="property">count</span> = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (fileList.<span class="property">length</span> &gt; <span class="number">5</span>) &#123;</span><br><span class="line">      that.<span class="title function_">wrongTip</span>(<span class="string">&quot;每项最多上传5张&quot;</span>);</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (fileList) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; fileList.<span class="property">length</span>; i++) &#123;</span><br><span class="line">		<span class="comment">//遍历上传的文件，一个一个处理</span></span><br><span class="line">        that.<span class="title function_">readFile</span>(fileList.<span class="property">length</span>, fileList[i], data);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">readFile</span>(<span class="params">num, res, Sdata</span>) &#123;</span><br><span class="line"><span class="comment">//num为上传文件数量，res为上传文件数据，Sdata为要处理数据</span></span><br><span class="line">    <span class="keyword">var</span> that = <span class="variable language_">this</span>,</span><br><span class="line">      _data = that.<span class="property">Udata</span>,</span><br><span class="line">      <span class="title class_">Ename</span> = <span class="title class_">Sdata</span>.<span class="property">Ename</span>,</span><br><span class="line">      render = <span class="keyword">new</span> <span class="title class_">FileReader</span>();</span><br><span class="line">    <span class="keyword">if</span> (res.<span class="property">type</span> != <span class="string">&quot;application/pdf&quot;</span> &amp;&amp; res.<span class="property">size</span> / <span class="number">1024</span> &gt; <span class="number">10240</span>) &#123;</span><br><span class="line">      that.<span class="title function_">wrongTip</span>(</span><br><span class="line">        <span class="string">&quot;材料仅限pdf. jpg .gif .png格式，单个图片大小不超过10M，单个PDF大小不超过4.5M，每项最多上传5张。&quot;</span></span><br><span class="line">      );</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (res.<span class="property">type</span> == <span class="string">&quot;application/pdf&quot;</span> &amp;&amp; res.<span class="property">size</span> / <span class="number">1024</span> &gt; <span class="number">4608</span>) &#123;</span><br><span class="line">      that.<span class="title function_">wrongTip</span>(</span><br><span class="line">        <span class="string">&quot;材料仅限pdf. jpg .gif .png格式，单个图片大小不超过10M，单个PDF大小不超过4.5M，每项最多上传5张。&quot;</span></span><br><span class="line">      );</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      render.<span class="title function_">addEventListener</span>(</span><br><span class="line">        <span class="string">&quot;load&quot;</span>,</span><br><span class="line">        <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">          <span class="keyword">var</span> src = <span class="variable language_">this</span>.<span class="property">result</span>;</span><br><span class="line">          <span class="keyword">var</span> formData = <span class="keyword">new</span> <span class="title class_">FormData</span>();</span><br><span class="line">          <span class="keyword">var</span> index = <span class="variable language_">this</span>.<span class="property">index</span>;</span><br><span class="line">          <span class="keyword">var</span> _fileName = res.<span class="property">name</span>;</span><br><span class="line">          formData.<span class="title function_">append</span>(<span class="string">&quot;fileUrl&quot;</span>, res);</span><br><span class="line">          formData.<span class="title function_">append</span>(<span class="string">&quot;fileName&quot;</span>, _fileName);</span><br><span class="line">          <span class="title class_">Sdata</span>.<span class="property">loading</span> = <span class="literal">true</span>;</span><br><span class="line">          <span class="title class_">Basic</span>.<span class="title function_">ajaxReturnPromise</span>(&#123;</span><br><span class="line">            <span class="attr">type</span>: <span class="string">&quot;POST&quot;</span>,</span><br><span class="line">            <span class="attr">apiUrl</span>: <span class="string">&quot;/Comment/UploadImg&quot;</span>,</span><br><span class="line">            <span class="attr">customLoading</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">param</span>: formData,</span><br><span class="line">            <span class="attr">emulateJSON</span>: <span class="literal">false</span></span><br><span class="line">          &#125;).<span class="title function_">then</span>(</span><br><span class="line">            <span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">              <span class="keyword">if</span> (response.<span class="property">IsSuccess</span>) &#123;</span><br><span class="line">                ++<span class="title class_">Sdata</span>.<span class="property">count</span>;</span><br><span class="line">                <span class="keyword">var</span> data = response.<span class="property">data</span>;</span><br><span class="line">                <span class="keyword">if</span> (<span class="title class_">Sdata</span>.<span class="property">imgSrc</span>.<span class="property">length</span> + data.<span class="property">length</span> &lt; <span class="number">6</span>) &#123;</span><br><span class="line">                  <span class="title class_">Sdata</span>.<span class="property">curImg</span> = <span class="built_in">parseInt</span>(<span class="title class_">Sdata</span>.<span class="property">curImg</span> + <span class="number">1</span>);</span><br><span class="line">                  <span class="comment">// Sdata.imgSrc.shift();</span></span><br><span class="line">                  <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> data) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (data[i].<span class="property">BaseUrl</span>.<span class="title function_">toLowerCase</span>().<span class="title function_">indexOf</span>(<span class="string">&quot;.pdf&quot;</span>) != -<span class="number">1</span>) &#123;</span><br><span class="line">                      <span class="title class_">Sdata</span>.<span class="property">imgSrc</span>.<span class="title function_">unshift</span>(&#123;</span><br><span class="line">                        <span class="attr">picUrl</span>: <span class="string">&quot;https://h5-fe.huizuche.com/claim/PDF.png&quot;</span>,</span><br><span class="line">                        <span class="attr">url</span>: data[i].<span class="property">BaseUrl</span>,</span><br><span class="line">                        <span class="attr">name</span>: _fileName</span><br><span class="line">                      &#125;);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                      <span class="title class_">Sdata</span>.<span class="property">imgSrc</span>.<span class="title function_">unshift</span>(&#123;</span><br><span class="line">                        <span class="attr">picUrl</span>:</span><br><span class="line">                          data[i].<span class="property">BaseUrl</span> +</span><br><span class="line">                          <span class="string">&quot;?x-oss-process=image/resize,m_fill,h_78,w_78&quot;</span>,</span><br><span class="line">                        <span class="attr">url</span>: data[i].<span class="property">BaseUrl</span>,</span><br><span class="line">                        <span class="attr">name</span>: _fileName</span><br><span class="line">                      &#125;);</span><br><span class="line">                    &#125;</span><br><span class="line">                  &#125;</span><br><span class="line">                  that.<span class="property">$store</span>.<span class="title function_">dispatch</span>(<span class="title class_">Sdata</span>.<span class="property">store</span>, &#123;</span><br><span class="line">                    [<span class="title class_">Ename</span>]: <span class="title class_">Sdata</span>.<span class="property">imgSrc</span></span><br><span class="line">                  &#125;);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                  that.<span class="title function_">wrongTip</span>(<span class="string">&quot;每项最多上传5张&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="keyword">if</span> (<span class="title class_">Sdata</span>.<span class="property">count</span> == num) &#123;</span><br><span class="line">                <span class="title class_">Sdata</span>.<span class="property">loading</span> = <span class="literal">false</span>;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">              that.<span class="title function_">wrongTip</span>(<span class="string">&quot;文件上传失败，请重新上传&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">          );</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="literal">false</span></span><br><span class="line">      );</span><br><span class="line">      render.<span class="title function_">readAsDataURL</span>(res);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://www.guoxh.com/blog/2019/03/26/vue%E5%BE%AE%E4%BF%A1%E5%88%86%E4%BA%AB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1109,129 +1198,6 @@ animation: mask 5s linear infinite forwards;
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.guoxh.com/blog/2018/11/21/%E6%95%B0%E5%AD%97%E4%B8%8B%E9%99%8D%E7%89%B9%E6%95%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://www.guoxh.com/blog/img/favicon.jpg">
-      <meta itemprop="name" content="郭雪辉">
-      <meta itemprop="description" content="郭雪辉博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="blog station">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/blog/2018/11/21/%E6%95%B0%E5%AD%97%E4%B8%8B%E9%99%8D%E7%89%B9%E6%95%88/" class="post-title-link" itemprop="url">数字下降动画</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-11-21 10:46:27" itemprop="dateCreated datePublished" datetime="2018-11-21T10:46:27+08:00">2018-11-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-25 13:47:26" itemprop="dateModified" datetime="2022-08-25T13:47:26+08:00">2022-08-25</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/blog/categories/other/" itemprop="url" rel="index"><span itemprop="name">other</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>762</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><canvas id="canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#000;" width="1920" height="1080"></canvas></p>
-<script>
-window.requestAnimFrame = (function () {
-return window.requestAnimationFrame ||
-window.webkitRequestAnimationFrame ||
-window.mozRequestAnimationFrame ||
-function (callback) {
-window.setTimeout(callback, 1000 / 60);
-};
-})();
-var can = document.getElementById('canvas');
-var cxt = can.getContext('2d');
-can.width = window.screen.width;
-can.height = window.screen.height;
-var size = 15;
-var cols = can.width / size; 
-var y = [];
-for (var i = 0; i < cols; i++)y[i] = 0;
-(function draw() {
-cxt.fillStyle = 'rgba(0,0,0,.1)';
-cxt.fillRect(0, 0, can.width, can.height);
-cxt.fillStyle = '#27ff00';
-cxt.font = 'bold ' + size + 'px Microsoft yahei';
-for (var i = 0; i < cols; i++)
-{
-var s = Math.floor(Math.random() * 10) + ''; 
-var textX = i * size; 
-var textY = y[i];
-cxt.fillText(s, textX, textY); 
-y[i] += size; 
-if (y[i] >= can.height && Math.random() >= 0.9) {
-y[i] = 0;
-};
-}
-requestAnimFrame(draw);
-})()		  		
-</script>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1302,7 +1268,7 @@ requestAnimFrame(draw);
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/blog/archives">
-          <span class="site-state-item-count">57</span>
+          <span class="site-state-item-count">58</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
