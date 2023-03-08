@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"www.guoxh.com","root":"/blog/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="input中加slot标签，表单验证无法回显默认宽度可能会覆盖回显值，设置足够宽度">
+  <meta name="description" content="input中加slot标签，表单验证无法回显默认宽度可能会覆盖回显值，设置足够宽度 Form表单验证通过，却没反应12345678910111213&#x2F;&#x2F;如果表单验证rules对象中有自定义验证，必须在验证函数最后返回回调函数let validatePass1 &#x3D; (rule, value, callback) &#x3D;&gt; &amp;#123;let reg &#x3D; &#x2F;(?!^0*(\.0&amp;#123;1,2&amp;#">
 <meta property="og:type" content="article">
 <meta property="og:title" content="element记录">
 <meta property="og:url" content="https://www.guoxh.com/blog/2022/11/25/elementUI/index.html">
 <meta property="og:site_name" content="blog station">
-<meta property="og:description" content="input中加slot标签，表单验证无法回显默认宽度可能会覆盖回显值，设置足够宽度">
+<meta property="og:description" content="input中加slot标签，表单验证无法回显默认宽度可能会覆盖回显值，设置足够宽度 Form表单验证通过，却没反应12345678910111213&#x2F;&#x2F;如果表单验证rules对象中有自定义验证，必须在验证函数最后返回回调函数let validatePass1 &#x3D; (rule, value, callback) &#x3D;&gt; &amp;#123;let reg &#x3D; &#x2F;(?!^0*(\.0&amp;#123;1,2&amp;#">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-11-25T08:01:48.000Z">
-<meta property="article:modified_time" content="2023-03-03T07:43:20.846Z">
+<meta property="article:modified_time" content="2023-03-08T07:20:04.122Z">
 <meta property="article:author" content="郭雪辉">
 <meta property="article:tag" content="vue">
 <meta name="twitter:card" content="summary">
@@ -241,7 +241,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-03 15:43:20" itemprop="dateModified" datetime="2023-03-03T15:43:20+08:00">2023-03-03</time>
+                <time title="修改时间：2023-03-08 15:20:04" itemprop="dateModified" datetime="2023-03-08T15:20:04+08:00">2023-03-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -259,7 +259,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>41</span>
+              <span>968</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -279,7 +279,12 @@
 
       
         <h3 id="input中加slot标签，表单验证无法回显"><a href="#input中加slot标签，表单验证无法回显" class="headerlink" title="input中加slot标签，表单验证无法回显"></a>input中加slot标签，表单验证无法回显</h3><p>默认宽度可能会覆盖回显值，设置足够宽度</p>
+<h3 id="Form表单验证通过，却没反应"><a href="#Form表单验证通过，却没反应" class="headerlink" title="Form表单验证通过，却没反应"></a>Form表单验证通过，却没反应</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如果表单验证rules对象中有自定义验证，必须在验证函数最后返回回调函数</span></span><br><span class="line"><span class="keyword">let</span> <span class="title function_">validatePass1</span> = (<span class="params">rule, value, callback</span>) =&gt; &#123;</span><br><span class="line"><span class="keyword">let</span> reg = <span class="regexp">/(?!^0*(\.0&#123;1,2&#125;)?$)^\d&#123;1,13&#125;(\.\d&#123;1,2&#125;)?$/</span>;</span><br><span class="line"><span class="keyword">if</span> (value &amp;&amp; !reg.<span class="title function_">test</span>(value)) &#123;</span><br><span class="line">    <span class="title function_">callback</span>(<span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;仅支持输入大于0的数字&#x27;</span>));</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">//这里必须返回</span></span><br><span class="line">    <span class="title function_">callback</span>()</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="attr">rules</span>: &#123;</span><br><span class="line">    <span class="attr">market_price</span>: [&#123; <span class="attr">validator</span>: validatePass1, <span class="attr">trigger</span>: <span class="string">&quot;change&quot;</span> &#125;],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h3 id="Form表单如果是动态遍历添加表单项，且遍历项是字符串不是对象"><a href="#Form表单如果是动态遍历添加表单项，且遍历项是字符串不是对象" class="headerlink" title="Form表单如果是动态遍历添加表单项，且遍历项是字符串不是对象"></a>Form表单如果是动态遍历添加表单项，且遍历项是字符串不是对象</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-form-item</span></span></span><br><span class="line"><span class="tag">        <span class="attr">v-for</span>=<span class="string">&quot;(item, index) in form.commodity_label&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">:prop</span>=<span class="string">&quot;&#x27;commodity_label.&#x27; + index&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">:key</span>=<span class="string">&quot;index&quot;</span></span></span><br><span class="line"><span class="tag">      &gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-input</span> <span class="attr">class</span>=<span class="string">&quot;item&quot;</span> <span class="attr">v-model</span>=<span class="string">&quot;form.commodity_label[index]&quot;</span> <span class="attr">maxlength</span>=<span class="string">&quot;6&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;请输入&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-button</span> @<span class="attr">click.prevent</span>=<span class="string">&quot;removeMark(index)&quot;</span>&gt;</span>删除<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="el-upload组件list-type-quot-picture-card-quot-属性如果是上传视频无法正常显示"><a href="#el-upload组件list-type-quot-picture-card-quot-属性如果是上传视频无法正常显示" class="headerlink" title="el-upload组件list-type=&quot;picture-card&quot;属性如果是上传视频无法正常显示"></a><code>el-upload</code>组件<code>list-type=&quot;picture-card&quot;</code>属性如果是上传视频无法正常显示</h3>
     </div>
 
     
@@ -362,7 +367,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#input%E4%B8%AD%E5%8A%A0slot%E6%A0%87%E7%AD%BE%EF%BC%8C%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%E6%97%A0%E6%B3%95%E5%9B%9E%E6%98%BE"><span class="nav-number">1.</span> <span class="nav-text">input中加slot标签，表单验证无法回显</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#input%E4%B8%AD%E5%8A%A0slot%E6%A0%87%E7%AD%BE%EF%BC%8C%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%E6%97%A0%E6%B3%95%E5%9B%9E%E6%98%BE"><span class="nav-number">1.</span> <span class="nav-text">input中加slot标签，表单验证无法回显</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Form%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%E9%80%9A%E8%BF%87%EF%BC%8C%E5%8D%B4%E6%B2%A1%E5%8F%8D%E5%BA%94"><span class="nav-number">2.</span> <span class="nav-text">Form表单验证通过，却没反应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Form%E8%A1%A8%E5%8D%95%E5%A6%82%E6%9E%9C%E6%98%AF%E5%8A%A8%E6%80%81%E9%81%8D%E5%8E%86%E6%B7%BB%E5%8A%A0%E8%A1%A8%E5%8D%95%E9%A1%B9%EF%BC%8C%E4%B8%94%E9%81%8D%E5%8E%86%E9%A1%B9%E6%98%AF%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8D%E6%98%AF%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.</span> <span class="nav-text">Form表单如果是动态遍历添加表单项，且遍历项是字符串不是对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#el-upload%E7%BB%84%E4%BB%B6list-type-quot-picture-card-quot-%E5%B1%9E%E6%80%A7%E5%A6%82%E6%9E%9C%E6%98%AF%E4%B8%8A%E4%BC%A0%E8%A7%86%E9%A2%91%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E6%98%BE%E7%A4%BA"><span class="nav-number">4.</span> <span class="nav-text">el-upload组件list-type&#x3D;&quot;picture-card&quot;属性如果是上传视频无法正常显示</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -443,13 +448,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">160k</span>
+    <span title="站点总字数">161k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:25</span>
+    <span title="站点阅读时长">2:26</span>
 </div>
 
         
