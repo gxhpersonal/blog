@@ -60,15 +60,15 @@ dva.js store文件中无法使用react方法；
 //安装path-to-regexp插件
 const { pathToRegexp } = require("path-to-regexp");
 subscriptions: {
-        setup({ dispatch, history }) {
-            history.listen((location) => {
-                const match = pathToRegexp('/marketing/node/:id').exec(location.pathname);
-                if (match) {
-                    dispatch({ type: 'query', payload: { id: match[1] } });
-                }
-            })
-        },
+    setup({ dispatch, history }) {
+        history.listen((location) => {
+            const match = pathToRegexp('/marketing/node/:id').exec(location.pathname);
+            if (match) {
+                dispatch({ type: 'query', payload: { id: match[1] } });
+            }
+        })
     },
+},
 ```
 
 ### Form表单中有上传组件`Upload`，无法在Form.Item的name属性绑定对应值，需要特殊处理下

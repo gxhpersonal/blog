@@ -27,14 +27,10 @@ rules: {
 
 ### Form表单如果是动态遍历添加表单项，且遍历项是字符串不是对象
 ```html
-<el-form-item
-        v-for="(item, index) in form.commodity_label"
-        :prop="'commodity_label.' + index"
-        :key="index"
-      >
-        <el-input class="item" v-model="form.commodity_label[index]" maxlength="6" placeholder="请输入"></el-input>
-        <el-button @click.prevent="removeMark(index)">删除</el-button>
-      </el-form-item>
+<el-form-item v-for="(item, index) in form.commodity_label" :prop="'commodity_label.' + index" :key="index">
+  <el-input class="item" v-model="form.commodity_label[index]" maxlength="6" placeholder="请输入"></el-input>
+  <el-button @click.prevent="removeMark(index)">删除</el-button>
+</el-form-item>
 ```
 
 
