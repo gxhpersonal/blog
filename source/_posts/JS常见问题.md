@@ -328,3 +328,19 @@ function throttle(fn,delay){
     }
 }
 ```
+
+### 合并数组
+对于小数组，我们可以这样：
+```js
+var arr1 = [1,2,3];
+var arr2 = [4,5,6];
+
+var arr3 = arr1.concat(arr2);  // [1,2,3,4,5,6]
+```
+不过，`concat()`这个函数并不适合用来合并两个大型的数组，因为其将消耗大量的内存来存储新创建的数组。在这种情况之个，可以使用`Array.prototype.push.apply(arr1,arr2)`来替代创建一个新数组。
+这种方法不是用来创建一个新的数组，其只是将第一个第二个数组合并在一起，同时减少内存的使用：
+```js
+Array.prototype.push.apply(arr1, arr2); 
+
+console.log(arr1); // [1,2,3,4,5,6]
+```
