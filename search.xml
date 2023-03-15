@@ -2457,6 +2457,9 @@ requestAnimFrame(draw);
 <h3 id="line-start和-block-end相关属性"><a href="#line-start和-block-end相关属性" class="headerlink" title="*-line-start和*-block-end相关属性"></a><code>*-line-start</code>和<code>*-block-end</code>相关属性</h3><p>其中 inline 和 block 表示方向， start 和 end 表示起止方位。</p>
 <p>在中文和英文网页环境中，inline元素（文字、图片、按钮等）的默认是从左往右水平排列的；block元素（如<code>&lt;div&gt;</code>、<code>&lt;p&gt;</code>元素等）默认是从上往下垂直排列的。</p>
 <p>因此，<code>margin-inline-start</code>就表示内联元素排列方向的起始位置，就是“左侧”，<code>margin-inline-end</code>就表示内联元素排列方向的终止位置，就是“右侧”；<code>margin-block-start</code>就表示块级元素排列方向的起始位置，就是“上面”，<code>margin-block-end</code>就表示块级元素排列方向的终止位置，就是“下面”。</p>
+<h3 id="flex-布局-子元素不设置宽高，高度撑满父元素的问题"><a href="#flex-布局-子元素不设置宽高，高度撑满父元素的问题" class="headerlink" title="flex 布局 子元素不设置宽高，高度撑满父元素的问题"></a>flex 布局 子元素不设置宽高，高度撑满父元素的问题</h3><p>在 <code>flex</code> 布局中，我们通过 <code>align-items</code> 来控制元素在交叉轴上的对齐方式。</p>
+<p>它可能取5个值：<br>flex-start: 交叉轴的起点对齐<br>flex-end: 交叉轴的终点对齐<br>center: 交叉轴的中点对齐。<br>baseline: 项目的第一行文字的基线对齐。<br>stretch (默认值）: 如果子元素未设置高度或者高度为auto，将占满整个容器的高度。</p>
+<p>当我们没有给子元素增加高度的时候，其在交叉轴方向的对齐方式就是默认值 <code>stretch</code>，因此他的高度与父元素的高度一致。<br>所以如果想要自适应高度，子元素需单独设置<code>align-self:flex-start</code>，或者父元素不设置高度，靠子元素撑开;</p>
 ]]></content>
       <categories>
         <category>css</category>
