@@ -167,7 +167,12 @@
 <h3 id="合并数组"><a href="#合并数组" class="headerlink" title="合并数组"></a>合并数组</h3><p>对于小数组，我们可以这样：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> arr2 = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr3 = arr1.<span class="title function_">concat</span>(arr2);  <span class="comment">// [1,2,3,4,5,6]</span></span><br></pre></td></tr></table></figure>
 <p>不过，<code>concat()</code>这个函数并不适合用来合并两个大型的数组，因为其将消耗大量的内存来存储新创建的数组。在这种情况之个，可以使用<code>Array.prototype.push.apply(arr1,arr2)</code>来替代创建一个新数组。<br>这种方法不是用来创建一个新的数组，其只是将第一个第二个数组合并在一起，同时减少内存的使用：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Array</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">push</span>.<span class="title function_">apply</span>(arr1, arr2); </span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr1); <span class="comment">// [1,2,3,4,5,6]</span></span><br></pre></td></tr></table></figure>]]></content>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Array</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">push</span>.<span class="title function_">apply</span>(arr1, arr2); </span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr1); <span class="comment">// [1,2,3,4,5,6]</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>push 方法具有通用性。该方法和 <code>call()</code> 或 <code>apply()</code> 一起使用时，可应用在类似数组的对象上。<code>push</code> 方法根据 <code>length</code> 属性来决定从哪里开始插入给定的值。如果 <code>length</code> 不能被转成一个数值，则插入的元素索引为 0，包括 <code>length</code> 不存在时。当 <code>length</code> 不存在时，将会创建它。</p>
+<p>唯一的原生类数组（array-like）对象是 <code>Strings</code>，尽管如此，它们并不适用该方法，因为字符串是不可改变的。</p>
+</blockquote>
+]]></content>
       <categories>
         <category>JS</category>
       </categories>
