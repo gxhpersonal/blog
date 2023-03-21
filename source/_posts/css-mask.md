@@ -34,8 +34,8 @@ categories: other
 .mask {
 width: 700px;
 height: 392px;
-background: black url("http://www.kkkk1000.com/images/1534750163.jpg");
--webkit-mask-image: url("http://www.kkkk1000.com/images/1534750222.jpg");
+background: black url("http://www.guoxh.com/blog/img/blog/哈利波特1.jpg");
+-webkit-mask-image: url("http://www.guoxh.com/blog/img/blog/哈利波特2.jpeg");
 animation: mask 5s linear infinite forwards;
 }
 </style>
