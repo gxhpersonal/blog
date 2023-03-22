@@ -6,10 +6,10 @@ categories: JS
 ---
 
 ### do not track (禁止跟踪)
-[https://www.zhangxinxu.com/wordpress/2018/07/navigator-do-not-track-api/]()
+链接：[https://www.zhangxinxu.com/wordpress/2018/07/navigator-do-not-track-api/](https://www.zhangxinxu.com/wordpress/2018/07/navigator-do-not-track-api/)
 
 ### Ajax跨域问题解决
-[http://www.cnblogs.com/pandang/p/5341250.html]()
+链接：[http://www.cnblogs.com/pandang/p/5341250.html](http://www.cnblogs.com/pandang/p/5341250.html)
 
 ### JS判断浏览器种类IE，FF，Opera,Safari,chrome...
 
@@ -21,9 +21,10 @@ if (userAgent.indexOf("Safari") > -1) {
 } //判断是否Safari浏览器
 
 ### encodeURIComponent()和decodeURIComponent()函数
-1.encodeURIComponent() 函数可把字符串作为 URI 组件进行编码。
-* 请注意 encodeURIComponent() 函数 与 encodeURI() 函数的区别之处，前者假定它的参数是 URI 的一部分（比如        协议、主机名、路径或查询字符串）。因此 encodeURIComponent() 函数将转义用于分隔 URI 各个部分的标点符号。
-2.decodeURIComponent() 对 encodeURIComponent() 函数编码的 URI 进行解码
+1. encodeURIComponent() 函数可把字符串作为 URI 组件进行编码。
+> 请注意 encodeURIComponent() 函数 与 encodeURI() 函数的区别之处，前者假定它的参数是 URI 的一部分（比如协议、主机名、路径或查询字符串）。因此 encodeURIComponent() 函数将转义用于分隔 URI 各个部分的标点符号。
+
+2. decodeURIComponent() 对 encodeURIComponent() 函数编码的 URI 进行解码
 
 ### escape() encodeURI() encodeURIComponent()
 escape() 方法：
@@ -148,15 +149,15 @@ JumpUrlForReturn: function (url) {
 ```
 
 ### 通过身份证号得到生日，性别，年龄
-```html
-<script>
+```js
 //获取出生日期，7位到15位为出生年月
-birth=UUserCard.substring(6, 10) + "-" + UUserCard.substring(10, 12) + "-" + UUserCard.substring(12, 14);
+birth = UUserCard.substring(6, 10)
+ + "-" + UUserCard.substring(10, 12)
+  + "-" + UUserCard.substring(12, 14);
 //获取性别（其原理就是取身份证第17位除以2，余数1是男，否则是女）
 parseInt(UUserCard.substr(16, 1)) % 2 == 1
-//获取年龄（年龄=当前年-身份证7至10位数字，如果月比当前月小或者月与当前月相等&&日比当前日小于等于，则年龄+1）
-
-</script>
+/*获取年龄（年龄=当前年-身份证7至10位数字，
+如果月比当前月小或者月与当前月相等&&日比当前日小于等于，则年龄+1）*/
 ```
 
 ### 时间格式转换
