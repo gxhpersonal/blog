@@ -90,3 +90,6 @@ env: {
 
 六、asyncData 方法
 * 你可能想要在服务器端获取并渲染数据。Nuxt.js添加了asyncData方法使得你能够在渲染组件之前异步获取数据。
+
+
+经过不懈的努力，通过阅读 next 源码发现了端倪，发现在打包时将所有的公共css通过 splitChunks 进行分组，由于项目中组件都是动态引入的，这里直接在 next.config.js 中修改webpack打包参数，将 splitChunks.cacheGroups.styles 配置删除，使用默认的 chunks: async 配置，即可实现按需引入。
