@@ -430,4 +430,4 @@ stretch (默认值）: 如果子元素未设置高度或者高度为auto，将�
 ```
 扩展：
 > [attribute^=value]  p[title^="【"]  选择其`title`属性值以`【 `开头的每个`<p>`元素。
-> [attribute~=value]  [title~=flower] 选择带有包含`flower`一词(而且必须是前后都有空格才可以)的`title`属性的所有元素。
+> [attribute~=value]  [title~=flower] 选择带有包含`flower`一词(而且必须是前后都有空格才可以，当然中文亦可以)的`title`属性的所有元素。
