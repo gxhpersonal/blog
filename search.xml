@@ -288,7 +288,7 @@
 <ul>
 <li>你可能想要在服务器端获取并渲染数据。Nuxt.js添加了asyncData方法使得你能够在渲染组件之前异步获取数据。</li>
 </ul>
-<p>经过不懈的努力，通过阅读 next 源码发现了端倪，发现在打包时将所有的公共css通过 splitChunks 进行分组，由于项目中组件都是动态引入的，这里直接在 next.config.js 中修改webpack打包参数，将 splitChunks.cacheGroups.styles 配置删除，使用默认的 chunks: async 配置，即可实现按需引入。</p>
+<p>七、css按需引入<br>通过阅读 nuxt 源码发现了端倪，发现在打包时将所有的公共css通过 splitChunks 进行分组，由于项目中组件都是动态引入的，这里直接在 nuxt.config.js 中修改webpack打包参数，将 splitChunks.cacheGroups.styles 配置删除，使用默认的 chunks: async 配置，即可实现按需引入。</p>
 ]]></content>
       <categories>
         <category>Nuxt</category>
@@ -2521,7 +2521,7 @@ requestAnimFrame(draw);
 <h3 id="多个标题竖向排列，有中文扩号【「导致顶端无法对齐解决"><a href="#多个标题竖向排列，有中文扩号【「导致顶端无法对齐解决" class="headerlink" title="多个标题竖向排列，有中文扩号【「导致顶端无法对齐解决"></a>多个标题竖向排列，有中文扩号<code>【「</code>导致顶端无法对齐解决</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">  <span class="selector-tag">p</span><span class="selector-attr">[title^=<span class="string">&quot;【&quot;</span>]</span>,<span class="selector-tag">p</span><span class="selector-attr">[title^=<span class="string">&quot;「&quot;</span>]</span>&#123;</span></span><br><span class="line"><span class="language-css">      <span class="attribute">text-indent</span>: -<span class="number">0.5em</span>;</span></span><br><span class="line"><span class="language-css">  &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">title</span>=<span class="string">&quot;【你好，晚安，早安，午安】&quot;</span>&gt;</span>【你好，晚安，早安，午安】<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>你好，晚安，早安，午安<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">title</span>=<span class="string">&quot;「你好，晚安，早安，午安」&quot;</span>&gt;</span>「你好，晚安，早安，午安」<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>你好，晚安，早安，午安<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>扩展：</p>
 <blockquote>
-<p>[attribute^&#x3D;value]  p[title^&#x3D;”【”]  选择其<code>title</code>属性值以<code>【 </code>开头的每个<code>&lt;p&gt;</code>元素。<br>[attribute<del>&#x3D;value]  [title</del>&#x3D;flower] 选择带有包含<code>flower</code>一词(而且必须是前后都有空格才可以)的<code>title</code>属性的所有元素。</p>
+<p>[attribute^&#x3D;value]  p[title^&#x3D;”【”]  选择其<code>title</code>属性值以<code>【 </code>开头的每个<code>&lt;p&gt;</code>元素。<br>[attribute<del>&#x3D;value]  [title</del>&#x3D;flower] 选择带有包含<code>flower</code>一词(而且必须是前后都有空格才可以，当然中文亦可以)的<code>title</code>属性的所有元素。</p>
 </blockquote>
 ]]></content>
       <categories>
