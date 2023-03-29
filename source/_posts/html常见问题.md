@@ -8,7 +8,7 @@ categories: html
 ### 标签变为可编辑
 > contenteditable=true
 
-###textarea标签问题
+### textarea标签问题
 加边框在移动端会出现双边框
 
 ### img标签中的图片无法显示
@@ -41,7 +41,7 @@ JSON.stringify()将对象转换为字符串
 ```
 
 
-###a标签href属性多功能
+### a标签href属性多功能
 ```
 1、<a href="tel:400-888-6633">拨打电话<a>
 2、<a href="sms:19956321564">发送短信<a>

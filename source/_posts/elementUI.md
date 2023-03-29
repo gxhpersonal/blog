@@ -34,4 +34,4 @@ rules: {
 ```
 
 
-### `el-upload`组件`list-type="picture-card"`属性如果是上传视频无法正常显示
+### `el-upload`组件`list-type="picture-card"`属性如果是上传视频无法正常显示，不如antd，狗头

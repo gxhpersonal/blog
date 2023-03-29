@@ -47,10 +47,14 @@ vertical-align只适用于行内块元素
 
 ### 在移动端手机APP中禁止长按来阻止其他手机自带默认事件（如：iPhone的3Dtouch）
 ```css
-    touch-callout: none; //当你触摸并按住触摸目标时候，禁止或显示系统默认菜单
-    -webkit-touch-callout: none;
-    -webkit-user-select: none; //用户能否选中文本
-    user-select: none;
+*{
+  /* 当你触摸并按住触摸目标时候，禁止或显示系统默认菜单 */
+  touch-callout: none; 
+  -webkit-touch-callout: none;
+  /* 用户能否选中文本 */
+  -webkit-user-select: none; 
+  user-select: none;
+}
 ```
 
 ### 文本超出后显示省略号
