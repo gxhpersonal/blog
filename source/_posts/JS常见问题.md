@@ -307,7 +307,7 @@ function debounce(fn,delay){
     let timer = null //借助闭包
     return function() {
         if(timer){
-            clearTimeout(timer) 
+            clearTimeout(timer)
         }
         timer = setTimeout(fn,delay) // 简化写法
     }
@@ -318,7 +318,7 @@ function throttle(fn,delay){
     return function() {
        if(!valid){
            //休息时间 暂不接客
-           return false 
+           return false
        }
        // 工作时间，执行函数并且在间隔期内把状态位设为无效
         valid = false
@@ -335,14 +335,12 @@ function throttle(fn,delay){
 ```js
 var arr1 = [1,2,3];
 var arr2 = [4,5,6];
-
 var arr3 = arr1.concat(arr2);  // [1,2,3,4,5,6]
 ```
 不过，`concat()`这个函数并不适合用来合并两个大型的数组，因为其将消耗大量的内存来存储新创建的数组。在这种情况之个，可以使用`Array.prototype.push.apply(arr1,arr2)`来替代创建一个新数组。
 这种方法不是用来创建一个新的数组，其只是将第一个第二个数组合并在一起，同时减少内存的使用：
 ```js
 Array.prototype.push.apply(arr1, arr2); 
-
 console.log(arr1); // [1,2,3,4,5,6]
 ```
 > push 方法具有通用性。该方法和 `call()` 或 `apply()` 一起使用时，可应用在类似数组的对象上。`push` 方法根据 `length` 属性来决定从哪里开始插入给定的值。如果 `length` 不能被转成一个数值，则插入的元素索引为 0，包括 `length` 不存在时。当 `length` 不存在时，将会创建它。
