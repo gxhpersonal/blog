@@ -81,3 +81,17 @@ const { query } = this.props.location;
 const { cityId, activityId, smsSupplierType, smsPrice } = query;
 //antd中Form表单initialValues默认值填充校验数据类型，所以要和你Form表单中value类型相同，才能回显
 ```
+
+### tree组件实现筛选只保留目标项
+```html
+<Input placeholder="搜索" onChange={this.onChange}/>
+<Tree
+    height={278}
+    checkable
+    checkStrictly
+    onCheck={this.onCheck}
+    checkedKeys={checkedKeys}
+    fieldNames={{ title: "title", key: "id" }}
+    treeData={normListCopy}
+></Tree>
+```
