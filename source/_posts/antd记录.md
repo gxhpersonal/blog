@@ -83,6 +83,8 @@ const { cityId, activityId, smsSupplierType, smsPrice } = query;
 ```
 
 ### tree组件实现筛选只保留目标项
+> `checkStrictly`是核心，可以使`checkedKeys`即选中的数组与`treeData`即树列表之间的绑定关系分离开，从
+> 而做到筛选时暂时性的改变`treeData`数据不会影响`checkedKeys`
 ```html
 <Input placeholder="搜索" onChange={this.onChange}/>
 <Tree
