@@ -124,6 +124,9 @@ $ git reset --hard commit_id     退到/进到 指定commit的sha码
 $ git push origin HEAD --force
 ```
 
+> 如果强推的分支为受保护分支（受保护分支是不允许进行 【--force】操作），需要修改项目设置中受保护分支选项：
+> 找到项目远程地址Settings ——> Repository ——> Protected Branches ——> Unprotect 撤销保护分支
+
 ### git提交GitHub代码不再需要每次commit输入username和password解决
 1.在命令行输入命令:
 ```
