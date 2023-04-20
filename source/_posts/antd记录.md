@@ -86,6 +86,7 @@ const { cityId, activityId, smsSupplierType, smsPrice } = query;
 > `checkStrictly`是核心，可以使`checkedKeys`即选中的数组与`treeData`即树列表之间的绑定关系分离开，从
 > 而做到筛选时暂时性的改变`treeData`数据不会影响`checkedKeys`
 ```html
+<!-- 这里最重要的是需要有一个常量一个变量来存储原始数据和筛选后的数据`normListCopy`为筛选后的数据 -->
 <Input placeholder="搜索" onChange={this.onChange}/>
 <Tree
     height={278}
