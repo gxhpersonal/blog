@@ -10,9 +10,9 @@ categories: css
 ### css优化
 1. 加载性能：
 （1）css压缩：将写好的css进行打包压缩，可以减少很多的体积。
-（2）css单一样式：当需要下边距和左边距的时候，很多时候选择：`margin:top0 bottom0;`但`margin-bottom:bottom;margin-left:left;`执行的效率更高。
+（2）css单一样式：当需要下边距和左边距的时候，很多时候选择：`margin:top0 bottom:0;`但`margin-bottom:bottom;margin-left:left;`执行的效率更高。
 （3）减少使用@import,而建议使用link，因为后者在页面加载时一起加载，前者是等待页面加载完成之后再进行加载。
-
+<!--more-->
 2. 选择器性能：
 （1）关键选择器（keyselector）。选择器的最后面的部分为关键选择器（即用来匹配目标元素的部分）。CSS选择符是从右到
 左进行匹配的。当使用后代选择器的时候，浏览器会遍历所有子元素来确定是否是指定的元素等等；
