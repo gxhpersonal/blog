@@ -28,7 +28,7 @@
 <meta property="og:description" content="打包后路径不对解决执行npm run build后发现打包文件路径错误，在package.json文件最外层添加&quot;homepage&quot;: &quot;.&#x2F;&quot; 安装依赖（sass）1$ npm install node-sass --save">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-11-28T03:17:22.000Z">
-<meta property="article:modified_time" content="2022-08-26T06:28:18.995Z">
+<meta property="article:modified_time" content="2023-05-12T02:38:56.703Z">
 <meta property="article:author" content="郭雪辉">
 <meta property="article:tag" content="React">
 <meta name="twitter:card" content="summary">
@@ -241,7 +241,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-08-26 14:28:18" itemprop="dateModified" datetime="2022-08-26T14:28:18+08:00">2022-08-26</time>
+                <time title="修改时间：2023-05-12 10:38:56" itemprop="dateModified" datetime="2023-05-12T10:38:56+08:00">2023-05-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -259,7 +259,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>6.2k</span>
+              <span>6.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -348,6 +348,8 @@
 <h3 id="Hook"><a href="#Hook" class="headerlink" title="Hook"></a>Hook</h3><ol>
 <li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;useState&#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> [state,setState] = <span class="title function_">useState</span>(&#123;<span class="attr">top</span>:<span class="number">0</span>,<span class="attr">bottom</span>:<span class="number">0</span>,<span class="attr">left</span>:<span class="number">0</span>,<span class="attr">right</span>:<span class="number">0</span>&#125;)</span><br></pre></td></tr></table></figure></li>
 </ol>
+<h3 id="条件渲染运算符-amp-amp"><a href="#条件渲染运算符-amp-amp" class="headerlink" title="条件渲染运算符&amp;&amp;"></a>条件渲染运算符&amp;&amp;</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">render</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="keyword">let</span> a = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span>(</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;a &amp;&amp; <span class="tag">&lt;<span class="name">div</span>&gt;</span>`&amp;&amp;`后面的元素会被跳过，但会返回false表达式<span class="tag">&lt;/<span class="name">div</span>&gt;</span>&#125;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码返回值<code>&lt;div&gt;0&lt;/div&gt;</code>，因为&amp;&amp;表达式前面的条件是0，而不是布尔值，0会作为值返回；</p>
 
     </div>
 
@@ -431,7 +433,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%93%E5%8C%85%E5%90%8E%E8%B7%AF%E5%BE%84%E4%B8%8D%E5%AF%B9%E8%A7%A3%E5%86%B3"><span class="nav-number">1.</span> <span class="nav-text">打包后路径不对解决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%EF%BC%88sass%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">安装依赖（sass）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%93%E5%8C%85%E4%B8%8D%E5%90%8C%E7%8E%AF%E5%A2%83%E4%BB%A3%E7%A0%81%E5%8C%85"><span class="nav-number">3.</span> <span class="nav-text">打包不同环境代码包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E6%87%92%E5%8A%A0%E8%BD%BD"><span class="nav-number">4.</span> <span class="nav-text">路由懒加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css%E6%B7%BB%E5%8A%A0%E6%B5%8F%E8%A7%88%E5%99%A8%E5%89%8D%E7%BC%80"><span class="nav-number">5.</span> <span class="nav-text">css添加浏览器前缀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E6%96%B9%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">全局方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#react%E9%9B%86%E6%88%90%E9%A2%84%E6%B8%B2%E6%9F%93%E6%96%B9%E6%A1%88%EF%BC%8C%E8%A7%A3%E5%86%B3%E9%A6%96%E5%B1%8F%E7%99%BD%E5%B1%8F%E9%97%AE%E9%A2%98-seo%E9%97%AE%E9%A2%98"><span class="nav-number">7.</span> <span class="nav-text">react集成预渲染方案，解决首屏白屏问题+seo问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#react%E9%9B%86%E6%88%90TDK%EF%BC%882020-5-15%E5%A4%A7%E4%BD%AC%E6%8F%92%E4%BB%B6%E7%AB%9F%E7%84%B61%E4%B8%873%E5%8D%83%E5%A4%9A%E8%B5%9E%EF%BC%8C%E6%83%8A%E5%91%86%EF%BC%89"><span class="nav-number">8.</span> <span class="nav-text">react集成TDK（2020.5.15大佬插件竟然1万3千多赞，惊呆）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BA%92%E7%9B%B8%E4%BC%A0%E5%80%BC-x2F-%E8%B0%83%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">9.</span> <span class="nav-text">父子组件互相传值&#x2F;调用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E8%B7%B3%E8%BD%AC%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F%EF%BC%88state%E3%80%81query%E3%80%81params%EF%BC%89%EF%BC%8C%E7%9B%AE%E5%89%8D%E6%88%91%E5%81%9A%E7%9A%84%E6%98%AFhistory%E6%A8%A1%E5%BC%8F%E8%B7%AF%E7%94%B1%EF%BC%8C%E8%80%8C%E4%B8%94%E4%BB%A5%E5%90%8E%E4%B9%9F%E4%B8%8D%E4%BC%9A%E8%80%83%E8%99%91hash%E6%A8%A1%E5%BC%8F"><span class="nav-number">10.</span> <span class="nav-text">路由跳转传参方式（state、query、params），目前我做的是history模式路由，而且以后也不会考虑hash模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hook"><span class="nav-number">11.</span> <span class="nav-text">Hook</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%93%E5%8C%85%E5%90%8E%E8%B7%AF%E5%BE%84%E4%B8%8D%E5%AF%B9%E8%A7%A3%E5%86%B3"><span class="nav-number">1.</span> <span class="nav-text">打包后路径不对解决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%EF%BC%88sass%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">安装依赖（sass）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%93%E5%8C%85%E4%B8%8D%E5%90%8C%E7%8E%AF%E5%A2%83%E4%BB%A3%E7%A0%81%E5%8C%85"><span class="nav-number">3.</span> <span class="nav-text">打包不同环境代码包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E6%87%92%E5%8A%A0%E8%BD%BD"><span class="nav-number">4.</span> <span class="nav-text">路由懒加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css%E6%B7%BB%E5%8A%A0%E6%B5%8F%E8%A7%88%E5%99%A8%E5%89%8D%E7%BC%80"><span class="nav-number">5.</span> <span class="nav-text">css添加浏览器前缀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E6%96%B9%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">全局方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#react%E9%9B%86%E6%88%90%E9%A2%84%E6%B8%B2%E6%9F%93%E6%96%B9%E6%A1%88%EF%BC%8C%E8%A7%A3%E5%86%B3%E9%A6%96%E5%B1%8F%E7%99%BD%E5%B1%8F%E9%97%AE%E9%A2%98-seo%E9%97%AE%E9%A2%98"><span class="nav-number">7.</span> <span class="nav-text">react集成预渲染方案，解决首屏白屏问题+seo问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#react%E9%9B%86%E6%88%90TDK%EF%BC%882020-5-15%E5%A4%A7%E4%BD%AC%E6%8F%92%E4%BB%B6%E7%AB%9F%E7%84%B61%E4%B8%873%E5%8D%83%E5%A4%9A%E8%B5%9E%EF%BC%8C%E6%83%8A%E5%91%86%EF%BC%89"><span class="nav-number">8.</span> <span class="nav-text">react集成TDK（2020.5.15大佬插件竟然1万3千多赞，惊呆）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BA%92%E7%9B%B8%E4%BC%A0%E5%80%BC-x2F-%E8%B0%83%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">9.</span> <span class="nav-text">父子组件互相传值&#x2F;调用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E8%B7%B3%E8%BD%AC%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F%EF%BC%88state%E3%80%81query%E3%80%81params%EF%BC%89%EF%BC%8C%E7%9B%AE%E5%89%8D%E6%88%91%E5%81%9A%E7%9A%84%E6%98%AFhistory%E6%A8%A1%E5%BC%8F%E8%B7%AF%E7%94%B1%EF%BC%8C%E8%80%8C%E4%B8%94%E4%BB%A5%E5%90%8E%E4%B9%9F%E4%B8%8D%E4%BC%9A%E8%80%83%E8%99%91hash%E6%A8%A1%E5%BC%8F"><span class="nav-number">10.</span> <span class="nav-text">路由跳转传参方式（state、query、params），目前我做的是history模式路由，而且以后也不会考虑hash模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hook"><span class="nav-number">11.</span> <span class="nav-text">Hook</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93%E8%BF%90%E7%AE%97%E7%AC%A6-amp-amp"><span class="nav-number">12.</span> <span class="nav-text">条件渲染运算符&amp;&amp;</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -512,13 +514,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">164k</span>
+    <span title="站点总字数">165k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:29</span>
+    <span title="站点阅读时长">2:30</span>
 </div>
 
         
