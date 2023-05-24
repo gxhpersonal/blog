@@ -55,6 +55,8 @@ render(){
 ```
 > 应该有更好的解决方案，这种如果加载时间长会白屏很长时间，等有好的解决思路再补充。。。
 
+> 找到了，就是官方方法，在form标签上添加`fields={fields}`属性，缺点是其中的`fields`值不是对象，而是包含`name`和`value`属性的对象数组，所以如果回显时，需要把对应的值遍历填充相应`value`
+
 ### 获取路由中的id
 dva.js store文件中无法使用react方法；
 ```js
@@ -75,6 +77,10 @@ subscriptions: {
 ### Form表单中有上传组件`Upload`，无法在Form.Item的name属性绑定对应值，需要特殊处理下
 
 ### Form表单中的Form.Item组件`name`属性为数组时，可以做嵌套对象使用
+```js
+// 获取相应值
+form.name.secondname
+```
 
 ### react路由跳转进入，链接参数为数字，刷新后，链接参数变字符串
 ```js
