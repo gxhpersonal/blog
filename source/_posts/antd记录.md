@@ -85,7 +85,8 @@ form.name.secondname
 ### react路由跳转进入，链接参数为数字，刷新后，链接参数变字符串
 ```js
 const { query } = this.props.location;
-const { cityId, activityId, smsSupplierType, smsPrice } = query;
+const { cityId } = query;
+typeof(cityId) //'string'
 //antd中Form表单initialValues默认值填充校验数据类型，所以要和你Form表单中value类型相同，才能回显
 ```
 
