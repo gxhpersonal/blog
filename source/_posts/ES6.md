@@ -29,10 +29,10 @@ ES6中let，class和const声明的变量不再与顶层对象的属性关联
 ```js
 var promise = new Promise(function (resolve, reject) {
         console.log('resolve');
-		//成功回调
+    		//成功回调
         resolve();
-		//失败回调
-		reject();
+		    //失败回调
+		    reject();
     })
     promise.then(function () {
         console.log('success')
