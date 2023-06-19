@@ -1334,7 +1334,7 @@
 <h3 id="Hook"><a href="#Hook" class="headerlink" title="Hook"></a>Hook</h3><ol>
 <li><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;useState&#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> [state,setState] = <span class="title function_">useState</span>(&#123;<span class="attr">top</span>:<span class="number">0</span>,<span class="attr">bottom</span>:<span class="number">0</span>,<span class="attr">left</span>:<span class="number">0</span>,<span class="attr">right</span>:<span class="number">0</span>&#125;)</span><br></pre></td></tr></table></figure></li>
 </ol>
-<h3 id="条件渲染运算符-amp-amp"><a href="#条件渲染运算符-amp-amp" class="headerlink" title="条件渲染运算符&amp;&amp;"></a>条件渲染运算符&amp;&amp;</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title function_">render</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="keyword">let</span> a = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span>(</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;a &amp;&amp; <span class="tag">&lt;<span class="name">div</span>&gt;</span>`&amp;&amp;`后面的元素会被跳过，但会返回false表达式<span class="tag">&lt;/<span class="name">div</span>&gt;</span>&#125;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用条件渲染运算符-amp-amp-注意"><a href="#使用条件渲染运算符-amp-amp-注意" class="headerlink" title="使用条件渲染运算符&amp;&amp;注意"></a>使用条件渲染运算符<code>&amp;&amp;</code>注意</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title function_">render</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="keyword">let</span> a = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span>(</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;a &amp;&amp; <span class="tag">&lt;<span class="name">div</span>&gt;</span>`&amp;&amp;`后面的元素会被跳过，但会返回false表达式<span class="tag">&lt;/<span class="name">div</span>&gt;</span>&#125;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上面代码返回值<code>&lt;div&gt;0&lt;/div&gt;</code>，因为&amp;&amp;表达式前面的条件是0，而不是布尔值，0会作为值返回；</p>
 ]]></content>
       <categories>
@@ -2453,7 +2453,70 @@ requestAnimFrame(draw);
   <entry>
     <title>css关于Grid布局</title>
     <url>/blog/2023/04/21/css%E5%85%B3%E4%BA%8EGrid%E5%B8%83%E5%B1%80/</url>
-    <content><![CDATA[<h3 id="如果说flex布局是一维布局，则grid布局则是二维布局"><a href="#如果说flex布局是一维布局，则grid布局则是二维布局" class="headerlink" title="如果说flex布局是一维布局，则grid布局则是二维布局"></a>如果说flex布局是一维布局，则grid布局则是二维布局</h3>]]></content>
+    <content><![CDATA[<h3 id="如果说flex布局是一维布局，则grid布局则是二维布局"><a href="#如果说flex布局是一维布局，则grid布局则是二维布局" class="headerlink" title="如果说flex布局是一维布局，则grid布局则是二维布局"></a>如果说flex布局是一维布局，则grid布局则是二维布局</h3><style>
+.wrap{
+    display:grid;
+    grid-template-columns:repeat(3,100px);
+    grid-template-rows:repeat(4,100px);
+    grid-template-areas: 'a b c' 'd e f' 'g h i';
+    grid-gap:10px 20px;
+}
+.wrap div{
+    display:grid;
+    align-items:center;
+    justify-items:center;
+    place-items:center center; /* place-items是上面两个属性的简写形式 */
+    font-size:20px;
+    color:#fff;
+}
+.a1{
+    background:blueviolet;
+    grid-area:a;
+    grid-column:1/3;
+    grid-row:1/3;
+}
+.a2{
+    background:lightblue;
+}
+.a3{
+    background:cadetblue;
+}
+.a4{
+    background:cornflowerblue;
+}
+.a5{
+    background:darkblue;
+}
+.a6{
+    background:deepskyblue;
+}
+.a7{
+    background:dodgerblue;
+}
+.a8{
+    background:lightsteelblue;
+}
+.a9{
+    background:powderblue;
+    /* grid-area:i;
+    grid-column:1/2;
+    grid-row:1/3; */
+}
+</style>
+<div class="wrap">
+    <div class="a1">1</div>
+    <div class="a2">2</div>
+    <div class="a3">3</div>
+    <div class="a4">4</div>
+    <div class="a5">5</div>
+    <div class="a6">6</div>
+    <div class="a7">7</div>
+    <div class="a8">8</div>
+    <div class="a9">9</div>
+</div>
+
+<p>以上布局充分体现出了<code>grid</code>布局的精髓，<code>grid</code>布局虽然属性之多，但是随之提供的是更灵活，更多样的布局方式；</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 多行布局使用repeat，如果不固定元素数量，则可以使用`auto-fill`参数 */</span></span><br><span class="line"><span class="selector-class">.wrap</span>&#123;</span><br><span class="line">    <span class="attribute">grid-template-rows</span>:<span class="built_in">repeat</span>(auto-fill,<span class="number">100px</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>css</category>
       </categories>
