@@ -175,6 +175,10 @@ let name = data?.result?.user?.name || '小明';
 // 上面例子中，只要有一层返回null或者undefined就不再往下取值，直接返回undefined
 // 取一个数组指定下标值：
 let arr = array?.[1]
+// 引申示例：
+if(arr && arr.length > 0){...}
+if(arr && arr.length){...} //如果arr是数组，arr.length为0，按照隐式转换不会执行里面代码，所以不需要判断 > 0 
+if(arr?.length){...}  //这就是链判断运算符的好处，节省代码，语义明确
 ```
 
 2.`??`Null/undefined判断运算符
