@@ -28,7 +28,7 @@
 <meta property="og:description" content="let  constlet和var类似，let必须先声明后使用，否则会报错，let不存在变量提升；let声明变量，const声明常量； 12345678function block()&amp;#123;  let n &#x3D; 5;  if(true)&amp;#123;    let n &#x3D; 10;  &amp;#125;  console.log(n) &#x2F;&#x2F;5&amp;#125;block() 上面代码说明let有块级作用域，不">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-02-06T01:34:53.000Z">
-<meta property="article:modified_time" content="2023-06-08T06:13:25.946Z">
+<meta property="article:modified_time" content="2023-06-19T09:14:54.700Z">
 <meta property="article:author" content="郭雪辉">
 <meta property="article:tag" content="JS">
 <meta name="twitter:card" content="summary">
@@ -241,7 +241,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-06-08 14:13:25" itemprop="dateModified" datetime="2023-06-08T14:13:25+08:00">2023-06-08</time>
+                <time title="修改时间：2023-06-19 17:14:54" itemprop="dateModified" datetime="2023-06-19T17:14:54+08:00">2023-06-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -259,7 +259,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.4k</span>
+              <span>3.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -306,7 +306,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const greeter = new Promise((res, rej) =&gt; &#123;</span><br><span class="line">  setTimeout(() =&gt; res(&#x27;Hello world!&#x27;), 2000);</span><br><span class="line">&#125;)</span><br><span class="line">async function myFunc() &#123;</span><br><span class="line">  const greeting = await greeter;</span><br><span class="line">  console.log(greeting);</span><br><span class="line">&#125;</span><br><span class="line">myFunc();</span><br><span class="line">// &#x27;Hello world!&#x27;</span><br><span class="line">// 可以看到，async创建的函数体内，加了await的函数，即使它是异步的，也会等他先执行完</span><br></pre></td></tr></table></figure>
 
 <h3 id="ES2020新增链判断运算符-及-Null-x2F-undefined判断运算符"><a href="#ES2020新增链判断运算符-及-Null-x2F-undefined判断运算符" class="headerlink" title="ES2020新增链判断运算符 及 Null&#x2F;undefined判断运算符"></a>ES2020新增链判断运算符 及 Null&#x2F;undefined判断运算符</h3><p>1.<code>?.</code>链判断运算符</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//错误的写法 这样如果user及前面的值没取到会报错</span></span><br><span class="line"><span class="keyword">let</span> name = data.<span class="property">result</span>.<span class="property">user</span>.<span class="property">name</span>;</span><br><span class="line"><span class="comment">//正确的写法</span></span><br><span class="line"><span class="keyword">let</span> name = (data &amp;&amp; data.<span class="property">result</span> &amp;&amp; data.<span class="property">result</span>.<span class="property">user</span> &amp;&amp; data.<span class="property">result</span>.<span class="property">user</span>.<span class="property">name</span>) || <span class="string">&#x27;小明&#x27;</span>;</span><br><span class="line"><span class="comment">// 非常麻烦，所以ES2020引入 ?. 运算符</span></span><br><span class="line"><span class="keyword">let</span> name = data?.<span class="property">result</span>?.<span class="property">user</span>?.<span class="property">name</span> || <span class="string">&#x27;小明&#x27;</span>;</span><br><span class="line"><span class="comment">// 上面例子中，只要有一层返回null或者undefined就不再往下取值，直接返回undefined</span></span><br><span class="line"><span class="comment">// 取一个数组指定下标值：</span></span><br><span class="line"><span class="keyword">let</span> arr = array?.[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//错误的写法 这样如果user及前面的值没取到会报错</span></span><br><span class="line"><span class="keyword">let</span> name = data.<span class="property">result</span>.<span class="property">user</span>.<span class="property">name</span>;</span><br><span class="line"><span class="comment">//正确的写法</span></span><br><span class="line"><span class="keyword">let</span> name = (data &amp;&amp; data.<span class="property">result</span> &amp;&amp; data.<span class="property">result</span>.<span class="property">user</span> &amp;&amp; data.<span class="property">result</span>.<span class="property">user</span>.<span class="property">name</span>) || <span class="string">&#x27;小明&#x27;</span>;</span><br><span class="line"><span class="comment">// 非常麻烦，所以ES2020引入 ?. 运算符</span></span><br><span class="line"><span class="keyword">let</span> name = data?.<span class="property">result</span>?.<span class="property">user</span>?.<span class="property">name</span> || <span class="string">&#x27;小明&#x27;</span>;</span><br><span class="line"><span class="comment">// 上面例子中，只要有一层返回null或者undefined就不再往下取值，直接返回undefined</span></span><br><span class="line"><span class="comment">// 取一个数组指定下标值：</span></span><br><span class="line"><span class="keyword">let</span> arr = array?.[<span class="number">1</span>]</span><br><span class="line"><span class="comment">// 引申示例：</span></span><br><span class="line"><span class="keyword">if</span>(arr &amp;&amp; arr.<span class="property">length</span> &gt; <span class="number">0</span>)&#123;...&#125;</span><br><span class="line"><span class="keyword">if</span>(arr &amp;&amp; arr.<span class="property">length</span>)&#123;...&#125; <span class="comment">//如果arr是数组，arr.length为0，按照隐式转换不会执行里面代码，所以不需要判断 &gt; 0 </span></span><br><span class="line"><span class="keyword">if</span>(arr?.<span class="property">length</span>)&#123;...&#125;  <span class="comment">//这就是链判断运算符的好处，节省代码，语义明确</span></span><br></pre></td></tr></table></figure>
 
 <p>2.<code>??</code>Null&#x2F;undefined判断运算符</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> headerText = response.<span class="property">settings</span>.<span class="property">headerText</span> || <span class="string">&#x27;Hello, world!&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> headerText = response.<span class="property">settings</span>.<span class="property">headerText</span> ?? <span class="string">&#x27;Hello, world!&#x27;</span>;</span><br></pre></td></tr></table></figure>
@@ -475,13 +475,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">165k</span>
+    <span title="站点总字数">166k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:30</span>
+    <span title="站点阅读时长">2:31</span>
 </div>
 
         
