@@ -2515,6 +2515,8 @@ requestAnimFrame(draw);
     <div class="a9">9</div>
 </div>
 
+<span id="more"></span>
+
 <p>以上布局充分体现出了<code>grid</code>布局的精髓，<code>grid</code>布局虽然属性之多，但是随之提供的是更灵活，更多样的布局方式；</p>
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 多行布局使用repeat，如果不固定元素数量，则可以使用`auto-fill`参数 */</span></span><br><span class="line"><span class="selector-class">.wrap</span>&#123;</span><br><span class="line">    <span class="attribute">grid-template-rows</span>:<span class="built_in">repeat</span>(auto-fill,<span class="number">100px</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
