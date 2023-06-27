@@ -69,6 +69,8 @@ categories: css
     <div class="a9">9</div>
 </div>
 
+<!--more-->
+
 以上布局充分体现出了`grid`布局的精髓，`grid`布局虽然属性之多，但是随之提供的是更灵活，更多样的布局方式；
 ```css
 /* 多行布局使用repeat，如果不固定元素数量，则可以使用`auto-fill`参数 */
