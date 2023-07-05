@@ -106,3 +106,7 @@ typeof(cityId) //'string'
     treeData={normListCopy}
 ></Tree>
 ```
+
+### dispatch({...}).then(()=>{}) 报错 is not a function
+
+这种情况都是`dispatch`中的方法没找到，确认下方法是否声明
