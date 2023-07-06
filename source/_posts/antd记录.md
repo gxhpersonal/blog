@@ -110,3 +110,16 @@ typeof(cityId) //'string'
 ### dispatch({...}).then(()=>{}) 报错 is not a function
 
 这种情况都是`dispatch`中的方法没找到，确认下方法是否声明
+
+### 用umi搭建的项目，新增环境变量
+因为用了umi框架，所以不考虑用`cross-env`控制变量；
+umi官方推荐一个`UMI_ENV`变量，在项目根目录新建`config.${UMI_ENV}.ts`文件，添加代码如下：
+```js
+export default {
+  define: {
+    // 添加这个自定义的环境变量
+    "process.env.UMI_ENV": process.env.UMI_ENV,
+  },
+}
+```
+这样，在任意页面代码中`process.env.UMI_ENV`就是当前环境变量值
