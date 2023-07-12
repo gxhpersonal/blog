@@ -122,4 +122,4 @@ export default {
   },
 }
 ```
-这样，在任意页面代码中`process.env.UMI_ENV`就是当前环境变量值
+这样，在任意页面代码中`process.env.UMI_ENV`就是当前环境变量值，这个和`vue-cli`中的`.env.{mode}`文件异曲同工，都是在环境配置文件输出环境变量
