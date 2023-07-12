@@ -429,7 +429,7 @@
 <h3 id="dispatch-…-then-x3D-gt-报错-is-not-a-function"><a href="#dispatch-…-then-x3D-gt-报错-is-not-a-function" class="headerlink" title="dispatch({…}).then(()&#x3D;&gt;{}) 报错 is not a function"></a>dispatch({…}).then(()&#x3D;&gt;{}) 报错 is not a function</h3><p>这种情况都是<code>dispatch</code>中的方法没找到，确认下方法是否声明</p>
 <h3 id="用umi搭建的项目，新增环境变量"><a href="#用umi搭建的项目，新增环境变量" class="headerlink" title="用umi搭建的项目，新增环境变量"></a>用umi搭建的项目，新增环境变量</h3><p>因为用了umi框架，所以不考虑用<code>cross-env</code>控制变量；<br>umi官方推荐一个<code>UMI_ENV</code>变量，在项目根目录新建<code>config.$&#123;UMI_ENV&#125;.ts</code>文件，添加代码如下：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">define</span>: &#123;</span><br><span class="line">    <span class="comment">// 添加这个自定义的环境变量</span></span><br><span class="line">    <span class="string">&quot;process.env.UMI_ENV&quot;</span>: process.<span class="property">env</span>.<span class="property">UMI_ENV</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样，在任意页面代码中<code>process.env.UMI_ENV</code>就是当前环境变量值</p>
+<p>这样，在任意页面代码中<code>process.env.UMI_ENV</code>就是当前环境变量值，这个和<code>vue-cli</code>中的<code>.env.&#123;mode&#125;</code>文件异曲同工，都是在环境配置文件输出环境变量</p>
 ]]></content>
       <categories>
         <category>React</category>
