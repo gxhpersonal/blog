@@ -35,3 +35,18 @@ rules: {
 
 
 ### `el-upload`组件`list-type="picture-card"`属性如果是上传视频无法正常显示，不如antd，狗头
+
+### 列表筛选条件添加到链接，以实现跳转详情返回保存筛选条件
+```js
+// 选中筛选条件，点击搜索时
+handleSearch() {
+  const { path } = this.$router.currentRoute;
+  this.form = {}；//筛选参数
+  this.$router.replace({ path, query: this.form }, () => { })
+},
+//返回列表页
+mounted() {
+  const { query } = this.$router.currentRoute;
+  this.form = JSON.parse(JSON.stringify(query));//回显筛选项值，用深拷贝是为了form和query彻底隔离开，否则会影响form赋值
+},
+```
