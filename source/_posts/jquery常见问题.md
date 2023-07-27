@@ -10,7 +10,7 @@ categories: jquery
 ###jQuery noConflict() 方法
 noConflict() 方法会释放会 $ 标识符的控制，这样其他脚本就可以使用它了。
 
-```script
+```js
 var jq = $.noConflict();
 jq(document).ready(function(){
   jq("button").click(function(){

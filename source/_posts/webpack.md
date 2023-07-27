@@ -7,7 +7,7 @@ categories: webpack
 html-webpack-plugin插件，webpack中生成HTML的插件
 
 ### 配置文件
-```
+```js
 module.exports = {
   entry:  __dirname + "/app/main.js",	//已多次提及的唯一入口文件
   output: {
