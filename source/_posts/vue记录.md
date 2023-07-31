@@ -37,21 +37,21 @@ categories: vue
 ![](http://www.guoxh.com/blog/img/vue/$emitParentJS.png)
 或者父组件中：
 ```js
-data(){
-	return{
-		a:'',
-		b:''
-	}
+data() {
+  return {
+    a: '',
+    b: ''
+  }
 },
-mounted(){
-	//两种接收的方式    
-	var _this = this;
-	Event.$on('transferUser',function(a){
-		_this.a=a;
-	});
-	Event.$on('transferUser',function(b){
-		this.b = b;
-	}.bind(this))
+mounted() {
+  //两种接收的方式    
+  var _this = this;
+  Event.$on('transferUser', function (a) {
+    _this.a = a;
+  });
+  Event.$on('transferUser', function (b) {
+    this.b = b;
+  }.bind(this))
 }
 ```
 ```js
@@ -127,11 +127,11 @@ mounted() {
 ```html
 <div @click="pay(payData)">{{payData}}</div>
 <script>
-  export default{
+  export default {
     props: ["payData"],
     methods:{
-      pay(data){
-        this.$emit("pay",data)
+      pay(data) {
+        this.$emit("pay", data)
       }
     }
   }
@@ -198,18 +198,18 @@ vue 中$index $key 已经移除了
 ### 在所有ajax完成后执行
 这个时候用promise.all最合适了，比如：
 ```es6
-let p1=new Promise(function(resolve,reject){ 
-resolve(42)
+let p1 = new Promise(function (resolve, reject) {
+  resolve(42)
 });
-let p2=new Promise(function(resolve,reject){ 
-resolve(43)
+let p2 = new Promise(function (resolve, reject) {
+  resolve(43)
 });
-let p3=new Promise(function(resolve,reject){ 
-resolve(44)
+let p3 = new Promise(function (resolve, reject) {
+  resolve(44)
 });
-let p4=Promise.all([p1,p2,p3]);
-p4.then(function(v){
-// 这个里面就是你需要做的事情
+let p4 = Promise.all([p1, p2, p3]);
+p4.then(function (v) {
+  // 这个里面就是你需要做的事情
 })
 ```
 
