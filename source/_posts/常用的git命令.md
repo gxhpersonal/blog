@@ -12,12 +12,13 @@ categories: git
 * Remote：远程仓库
 
 ### 新建代码库
-
+```
 	//在当前目录新建一个git代码库
 	$ git init
 
 	//克隆一个项目
 	$ git clone https://github.com/gxhpersonal/blog.git
+```
 
 ### 配置
 Git的设置文件为`.gitconfig`，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。
@@ -102,14 +103,17 @@ Git的设置文件为`.gitconfig`，它可以在用户主目录下（全局配�
 ```
 
 ### 指定某个commit到指定的分支
-1.执行git log -3 --graph test，查看test分支下的commit:
- 
-注：commit 后面的hash值代表某个commit，这里把”2e1ada53819d46557b24ee7376dc61d37a06939d“这个commit提交到master。
-2.执行git checkout master，切换到master分支。
 
-3.执行 git cherry-pick 2e1ada53819d46557b24ee7376dc61d37a06939d，该commit便被提交到了master分支。
+1.执行`git log -3 --graph test`，查看test分支下的commit:
  
-到此，”2e1ada53819d46557b24ee7376dc61d37a06939d“这个commit便被提交到了master分支。
+> 注：commit 后面的hash值代表某个commit，这里把"2e1ada53819d46557b24ee7376dc61d37a06939d"这个commit提交到master。
+
+2.执行`git checkout master`，切换到master分支。
+
+3.执行` git cherry-pick 2e1ada53819d46557b24ee7376dc61d37a06939d`，该commit便被提交到了master分支。
+ 
+到此，"2e1ada53819d46557b24ee7376dc61d37a06939d" 这个commit便被提交到了master分支。
+
 
 ### 回退到某个commit，并提交远程
 回退命令：
@@ -124,8 +128,8 @@ $ git reset --hard commit_id     退到/进到 指定commit的sha码
 $ git push origin HEAD --force
 ```
 
-> 如果强推的分支为受保护分支（受保护分支是不允许进行 【--force】操作），需要修改项目设置中受保护分支选项：
-> 找到项目远程地址Settings ——> Repository ——> Protected Branches ——> Unprotect 撤销保护分支
+> 如果强推的分支为受保护分支（受保护分支是不允许进行`--force`操作），需要修改项目设置中受保护分支选项：
+> 找到项目远程地址`Settings ——> Repository ——> Protected Branches ——> Unprotect`撤销保护分支
 
 ### git提交GitHub代码不再需要每次commit输入username和password解决
 1.在命令行输入命令:
@@ -139,7 +143,7 @@ git config --global credential.helper store
 ```
 2.现在push你的代码 (git push), 这时会让你输入用户名密码, 这一步输入的用户名密码会被记住, 下次再push代码时就不用输入用户名密码啦!
 ☞这一步会在用户目录下生成文件.git-credential 用来记录用户名密码的信息.
-☞ git config --global 命令实际上在操作用户目录下的.gitconfig文件, 我们cat一下此文件(cat .gitconfig), 其内容如下:
+☞ `git config --global` 命令实际上在操作用户目录下的`.gitconfig`文件, 我们cat一下此文件(cat .gitconfig), 其内容如下:
 ```
 [user]
  name = alice
