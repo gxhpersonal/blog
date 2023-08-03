@@ -101,7 +101,7 @@ hzcApp.constant('imgLazyLoadConf', {
 
 ### directive
 2 . 在AngularJS中，操作DOM一般在指令中完成，事件监听机制是在对于已经静态生成的dom绑定事件，而如果在指令中动态生成了DOM节点，动态生成的节点不会被JS事件监听
-```
+```js
 angular.module('myapp',[])
 .directive('myText',function($compile){
     var template:'<div ng-click="hello()">Hi everyone</div>',
@@ -142,7 +142,7 @@ $scope.change = function(){
 
 
 ### ng-bind-html绑定接口获取的html，数据处理
-```
+```js
 .filter('to_trusted', ['$sce', function ($sce) {
     return function (text) {
       return $sce.trustAsHtml(text);
@@ -163,11 +163,11 @@ $scope.change = function(){
   });
 ```
 
-## $http
+### $http
 angular提供了$http服务来同服务端进行通信，$http服务对浏览器的XMLHttpRequest对象进行了封装，让我们可以以ajax的方式来从服务器请求数据。
-$http服务是一个接受一个参数的函数，参数的类型是对象，用来配置生成的http的请求，该函数返回一个promise对象（promise对象是一个构造函数ES6的对象）
+`$http`服务是一个接受一个参数的函数，参数的类型是对象，用来配置生成的http的请求，该函数返回一个promise对象（promise对象是一个构造函数ES6的对象）
 
-```
+```js
 var promise = $http({
   method:'GET',
   url:'/api/user.json'
@@ -181,9 +181,9 @@ promise.then(
 ```
 
 
-$http请求的配置对象
-$http()接受的配置对象可以包含以下属性:
-
+`$http`请求的配置对象
+`$http()`接受的配置对象可以包含以下属性:
+```
 > method:http请求方式，可以为GET,DELETE,HEAD,JSONP,POST,PUT
 url:字符串，请求的目标
 params:字符串或者对象，会被转换成为查询字符串追加的url后面
@@ -196,13 +196,14 @@ transformResponse:函数或者函数数组，用来对http响应的响应体和�
 cache:布尔类型或者缓存对象，设置之后angular会缓存get请求。
 timeout:数值，延迟请求
 responseType：字符串，响应类型。可以为arraybuffer, blob,document,json, text, moz-blob, moz-chunked-text, moz-chunked-arraybuffer
-$http请求的响应对象
+`$http`请求的响应对象
 angular传递给then方法的响应对象包括以下几个属性
 data:转换之后的响应体
 status:http响应状态码
 headers:头信息
 config:生成原始请求的设置对象
 statusText:http响应状态的文本
+```
 
 ### $http配置为form data 提交:
 ```js
@@ -220,8 +221,8 @@ $http({
 ```
 
 ### 获得ng-model里的value
-ng-model="name", $scope.name拿不到值是因为原型继承，具体可以百度，解决方法是使用对象属性取值，ng-model="model.name"; $scope.model ={}; 
-$scope.model.name这个时候就是双向绑定了。
+ng-model="name", `$scope.name`拿不到值是因为原型继承，具体可以百度，解决方法是使用对象属性取值，ng-model="model.name"; $scope.model ={}; 
+`$scope.model.name`这个时候就是双向绑定了。
 
 ### 指令写图片懒加载
 先用一个小的图片占位，图片加载完毕显示需要加载的图片；
