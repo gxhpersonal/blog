@@ -114,7 +114,7 @@ getPost(e) {
           reject(e)
         }
       });
-      //背景图必须这样用await异步，否则背景图会把背景图上的文字遮盖，待老夫研究原理再补充
+      //背景图必须这样用await异步，否则背景图会把背景图上的文字遮盖，待老夫研究原理再补充（这里就要牵扯到promise回调属于微任务，排在同步任务之后，所以加async和await强制后面代码等待异步执行完再执行）
       ctx.drawImage(bgImgPo, 0, 0, 257, 389)
       //用户昵称
       ctx.font = "normal bold 14px sans-serif";
