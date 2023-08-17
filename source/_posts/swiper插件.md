@@ -10,18 +10,18 @@ categories: swiper
 <!--！！！！重中之重：swiper不能用v-show或者v-if来控制显示隐藏，这样初始化时不会添加swiper-slide-active这个类名，没有这个类名，就无法动态控制显示哪一个slide,也就是参数initialSlide，用visibility: hidden来控制显示隐藏-->
 <!--下面这个swiper实现了fixed布局下的swiper-->
 <section class="swiper-box" :class="{'hidden':!showEqSwiper}">
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide" v-for="(v,i) in Data" :key="i">
-            <img :src="v.image_url" alt>
-            <h4>{{v.title}}</h4>
-            <p>{{v.description}}</p>
-          </div>
-        </div>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" v-for="(v,i) in Data" :key="i">
+        <img :src="v.image_url" alt>
+        <h4>{{v.title}}</h4>
+        <p>{{v.description}}</p>
       </div>
-      <!--关闭按钮-->
-      <img class="close-swiper" src="./img/eq-close.png" alt @click="showEqSwiper = false">
-    </section>
+    </div>
+  </div>
+  <!--关闭按钮-->
+  <img class="close-swiper" src="./img/eq-close.png" alt @click="showEqSwiper = false">
+</section>
 ```
 ```js
 `$ npm install swiper`
