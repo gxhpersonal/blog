@@ -59,7 +59,7 @@ class request {
                     // 只能用在 'PUT', 'POST' 和 'PATCH' 这几个请求方法
                     // 后面数组中的函数必须返回一个字符串，或 ArrayBuffer，或 Stream
                     transformRequest: [(data) => {
-                        // 对 data 进行form-data处理
+                        // 对 data 进行form-data处理，这个只针对后端还需要formData格式数据，如果是json则简单许多，无需区分请求方式
                         let rData = ''
                         for (let i in data) {
                             rData += encodeURIComponent(i) + '=' + encodeURIComponent(data[i]) + '&'

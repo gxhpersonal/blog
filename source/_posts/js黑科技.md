@@ -79,3 +79,6 @@ console.groupEnd();
   } catch (err) { }
 })();
 ```
+
+### chrome打印对象默认会隐藏value，强制显示value
+用`console.log('item', JSON.parse(JSON.stringify(item)))`
