@@ -361,3 +361,5 @@ const intersectionObserver = new IntersectionObserver((entries) => {
 // 开始监听
 intersectionObserver.observe(document.querySelector('.scrollerFooter'));
 ```
+
+### 递归的核心用法就是函数内部判断并自调用，而重要的是参数，传入的参数和自调用参数形成层级递归遍历
