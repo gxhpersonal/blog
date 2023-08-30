@@ -103,6 +103,7 @@ var func = function(v){
 func('jone')
 
 ES6:
+// 又叫模板字符串
 var func = v => console.log(`name ${v}`)
 func('jone')
 ```
@@ -188,3 +189,5 @@ const headerText = response.settings.headerText || 'Hello, world!';
 const headerText = response.settings.headerText ?? 'Hello, world!';
 ```
 上面两种例子的区别是`||`左边的值为false、空字符串、0都会生效，而`??`只有左边为undefined或者null才会取右边的默认值；
+
+### 

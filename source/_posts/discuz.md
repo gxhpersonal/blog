@@ -16,9 +16,16 @@ npm rebuild node-sass
 
 ### npm install 项目时，报：gyp ERR! stack Error: `gyp` failed with exit code: 1
 
-1. > npm install -g cnpm --registry=https://registry.npm.taobao.org
+1. > npm install -g cnpm@6.0.0 --registry=https://registry.npm.taobao.org
+
+其中的@6.0.0是指定cnpm的版本号，cnpm版本号一定要和npm版本（npm -v）一致，（如npm6.x.x则cnpm版本为6.x.x，大版本一致即可）
 
 2. > cnpm install
+
+如果`cnpm install`失败，多构建几次尝试
+
+3. > npm install 
+会发现`npm install`也可以了
 
 ### gyp ERR! find Python 解决方案
 [gyp ERR! find Python 解决方案](https://segmentfault.com/a/1190000023271417)
