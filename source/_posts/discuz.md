@@ -27,6 +27,8 @@ npm rebuild node-sass
 3. > npm install 
 会发现`npm install`也可以了
 
+4. 如果`npm run dev`报错，再执行一次`npm install`，可能cnpm有的插件没安装下来？
+
 ### gyp ERR! find Python 解决方案
 [gyp ERR! find Python 解决方案](https://segmentfault.com/a/1190000023271417)
 
