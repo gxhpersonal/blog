@@ -295,6 +295,19 @@ Page({
 ```
 > `is`属性还可以使用Mustache胡子语法，动态引入需要的模板
 
+### 小程序内置插件启用
+
+1.旧项目
+在 project.config.json 文件中，修改 setting 下的 useCompilerPlugins 字段为 ["typescript"]，即可开启工具内置的 typescript 编译插件。 如需同时开启 less 编译插件，可将该字段修改为 ["typescript", "less"]。 目前支持三个编译插件：typescript、less、sass
+
+2.新建项目
+可在创建小程序项目时，选择对应的语言模板。 目前支持的语言模板有
+* TypeScript
+* TypeScript + Less
+* TypeScript + Sass
+
 ### 小程序插件的大小是会算进小程序代码包2M体积限制中的，所以如果遇到插件包过大，可以考虑引用较低版本的插件，当然得考虑兼容性；
+
+所以插件尽量放到分包中
 
 ### 加密数据传输用CryptoJS
