@@ -348,4 +348,4 @@ tips:在首页显示文章的摘录并显示 阅读全文 按钮，可以通过�
 当重装电脑之后，或者想在其他电脑上修改博客，可以使用下列步骤：
 
 1. 使用git clone git@github.com:gxhpersonal/blog.git拷贝仓库（默认分支为master）；
-2. 在本地新拷贝的blog文件夹下通过Git bash依次执行下列指令：npm install hexo、npm install、npm install hexo-deployer-git（记得，不需要hexo init这条指令）。
+2. 在本地新拷贝的blog文件夹下通过Git bash依次执行下列指令：npm install hexo、npm i hexo-cli -g、npm install、npm install hexo-deployer-git（记得，不需要hexo init这条指令）。
