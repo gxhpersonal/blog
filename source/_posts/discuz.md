@@ -84,3 +84,27 @@ $instance = getCurrentInstance();
     eventCenter.off(onShowEventId, this.onShow);
   }
 ```
+
+### 因为微信新增小程序隐私协议的原因，升级taro
+1. 全局安装Taro cli:
+```
+npm install -g @tarojs/cli 
+```
+2. 查看Taro所有命令及帮助：
+```
+taro --help
+```
+3. 更新taro版本：
+```
+taro updata self
+```
+4. 更新项目中的Taro相关依赖：
+```
+taro update project
+```
+5. 环境及依赖检测
+```
+taro info
+```
+
+更多见官网说明：https://taro-docs.jd.com/docs/cli
