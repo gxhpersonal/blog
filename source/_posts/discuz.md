@@ -108,3 +108,37 @@ taro info
 ```
 
 更多见官网说明：https://taro-docs.jd.com/docs/cli
+
+### taro使用原生组件
+1. 在`app`或页面配置文件`page.config.js`中配置`usingComponents`属性：
+```js
+export default {
+  usingComponents: {
+    // 定义需要引入的第三方组件
+    // 1. key 值指定第三方组件名字，以小写开头
+    // 2. value 值指定第三方组件 js 文件的相对路径
+    'ec-canvas': '../../components/ec-canvas/ec-canvas',
+  },
+}
+```
+2. 使用组件：
+```js
+import React, { Component } from 'react'
+import { View } from '@tarojs/components'
+
+export default class Index extends Component {
+  this.state = {
+    ec: {
+      onInit: function () {}
+    }
+  }
+
+  render () {
+    return (
+      <View>
+        <ec-canvas id='mychart-dom-area' canvas-id='mychart-area' ec={this.state.ec} />
+      </View>
+    )
+  }
+}
+```
