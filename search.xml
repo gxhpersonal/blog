@@ -55,7 +55,7 @@
 <p>2.<code>??</code>Null&#x2F;undefined判断运算符</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> headerText = response.<span class="property">settings</span>.<span class="property">headerText</span> || <span class="string">&#x27;Hello, world!&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> headerText = response.<span class="property">settings</span>.<span class="property">headerText</span> ?? <span class="string">&#x27;Hello, world!&#x27;</span>;</span><br></pre></td></tr></table></figure>
 <p>上面两种例子的区别是<code>||</code>左边的值为false、空字符串、0都会生效，而<code>??</code>只有左边为undefined或者null才会取右边的默认值；</p>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3>]]></content>
+<h3 id="顶级await"><a href="#顶级await" class="headerlink" title="顶级await"></a>顶级await</h3><h3 id="Object-hasOwn"><a href="#Object-hasOwn" class="headerlink" title="Object.hasOwn"></a>Object.hasOwn</h3><h3 id="数组-at-方法"><a href="#数组-at-方法" class="headerlink" title="数组.at()方法"></a>数组<code>.at()</code>方法</h3><h3 id="私有槽位-及方法"><a href="#私有槽位-及方法" class="headerlink" title="私有槽位#及方法"></a>私有槽位<code>#</code>及方法</h3>]]></content>
       <categories>
         <category>JS</category>
       </categories>
@@ -767,7 +767,7 @@
 <h3 id="解决Error-ENOENT-no-such-file-or-directory-scandir-安装node-sass报错"><a href="#解决Error-ENOENT-no-such-file-or-directory-scandir-安装node-sass报错" class="headerlink" title="解决Error: ENOENT: no such file or directory, scandir 安装node-sass报错"></a>解决Error: ENOENT: no such file or directory, scandir 安装node-sass报错</h3><p>npm rebuild node-sass</p>
 <h3 id="npm-install-项目时，报：gyp-ERR-stack-Error-gyp-failed-with-exit-code-1"><a href="#npm-install-项目时，报：gyp-ERR-stack-Error-gyp-failed-with-exit-code-1" class="headerlink" title="npm install 项目时，报：gyp ERR! stack Error: gyp failed with exit code: 1"></a>npm install 项目时，报：gyp ERR! stack Error: <code>gyp</code> failed with exit code: 1</h3><ol>
 <li><blockquote>
-<p>npm install -g <a href="mailto:&#x63;&#x6e;&#x70;&#x6d;&#x40;&#x36;&#46;&#x30;&#x2e;&#48;">&#x63;&#x6e;&#x70;&#x6d;&#x40;&#x36;&#46;&#x30;&#x2e;&#48;</a> –registry&#x3D;<a href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a></p>
+<p>npm install -g <a href="mailto:&#99;&#110;&#112;&#109;&#x40;&#54;&#x2e;&#48;&#46;&#48;">&#99;&#110;&#112;&#109;&#x40;&#54;&#x2e;&#48;&#46;&#48;</a> –registry&#x3D;<a href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a></p>
 </blockquote>
 </li>
 </ol>
@@ -803,7 +803,7 @@
 <p>每次build，都会首先执行环境构建，环境构建无误后，才会开始真正的构建过程<br>会下载nodejs并安装配置，并把node添加到当前PATH环境变量中，这样就支持node和npm命令啦！</p>
 </blockquote>
 <h3 id="taro-UI按需引用样式文件报错引用taro-UI报错Error-Cannot-find-module-39-style-index-scss-39"><a href="#taro-UI按需引用样式文件报错引用taro-UI报错Error-Cannot-find-module-39-style-index-scss-39" class="headerlink" title="taro UI按需引用样式文件报错引用taro UI报错Error: Cannot find module &#39;./style/index.scss&#39;"></a>taro UI按需引用样式文件报错<code>引用taro UI报错Error: Cannot find module &#39;./style/index.scss&#39;</code></h3><p>安装tao-ui时,如果出现报错，可以尝试安装taro-ui版本，因为目前taro ui2.+和taro3.+版本不兼容,使用以下命令可解决</p>
-<p>npm install <a href="mailto:&#x74;&#97;&#114;&#x6f;&#x2d;&#x75;&#x69;&#64;&#x33;&#46;&#48;&#x2e;&#x30;&#x2d;&#97;&#x6c;&#112;&#104;&#x61;&#x2e;&#x33;">&#x74;&#97;&#114;&#x6f;&#x2d;&#x75;&#x69;&#64;&#x33;&#46;&#48;&#x2e;&#x30;&#x2d;&#97;&#x6c;&#112;&#104;&#x61;&#x2e;&#x33;</a></p>
+<p>npm install <a href="mailto:&#116;&#97;&#114;&#x6f;&#45;&#x75;&#x69;&#x40;&#x33;&#46;&#48;&#46;&#x30;&#x2d;&#97;&#108;&#x70;&#104;&#97;&#x2e;&#x33;">&#116;&#97;&#114;&#x6f;&#45;&#x75;&#x69;&#x40;&#x33;&#46;&#48;&#46;&#x30;&#x2d;&#97;&#108;&#x70;&#104;&#97;&#x2e;&#x33;</a></p>
 <h3 id="web端代码不支持修改NODE-ENV环境变量，因为next打包基于production环境变量"><a href="#web端代码不支持修改NODE-ENV环境变量，因为next打包基于production环境变量" class="headerlink" title="web端代码不支持修改NODE_ENV环境变量，因为next打包基于production环境变量"></a>web端代码不支持修改NODE_ENV环境变量，因为next打包基于production环境变量</h3><h3 id="PC发布帖子，小程序不显示"><a href="#PC发布帖子，小程序不显示" class="headerlink" title="PC发布帖子，小程序不显示"></a>PC发布帖子，小程序不显示</h3><p>需要再管理后台<code>全局</code>-<code>站点设置</code>-<code>功能设置</code>勾选<code>打赏、悬赏、红包、匿名、私信、商品、帖子付费、用户组付费、充值</code>选项</p>
 <h3 id="taro子组件不能直接调用onShow生命周期，所以需要"><a href="#taro子组件不能直接调用onShow生命周期，所以需要" class="headerlink" title="taro子组件不能直接调用onShow生命周期，所以需要"></a>taro子组件不能直接调用onShow生命周期，所以需要</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Taro</span>, &#123; eventCenter, getCurrentInstance &#125; <span class="keyword">from</span> <span class="string">&#x27;@tarojs/taro&#x27;</span>;</span><br><span class="line">$instance = <span class="title function_">getCurrentInstance</span>();</span><br><span class="line">  <span class="title function_">componentDidMount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> onShowEventId = <span class="variable language_">this</span>.<span class="property">$instance</span>.<span class="property">router</span>.<span class="property">onShow</span>;</span><br><span class="line">    eventCenter.<span class="title function_">on</span>(onShowEventId, <span class="variable language_">this</span>.<span class="property">onShow</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  onShow = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//这样就可以调用onShow了</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">componentWillUnmount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">//始终记得要在这个react组件卸载前生命周期方法里清除onShow事件，否则会一直累加</span></span><br><span class="line">    <span class="keyword">const</span> onShowEventId = <span class="variable language_">this</span>.<span class="property">$instance</span>.<span class="property">router</span>.<span class="property">onShow</span>;</span><br><span class="line">    eventCenter.<span class="title function_">off</span>(onShowEventId, <span class="variable language_">this</span>.<span class="property">onShow</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 
@@ -815,6 +815,10 @@
 <li>环境及依赖检测<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">taro info</span><br></pre></td></tr></table></figure></li>
 </ol>
 <p>更多见官网说明：<a href="https://taro-docs.jd.com/docs/cli">https://taro-docs.jd.com/docs/cli</a></p>
+<h3 id="taro使用原生组件"><a href="#taro使用原生组件" class="headerlink" title="taro使用原生组件"></a>taro使用原生组件</h3><ol>
+<li>在<code>app</code>或页面配置文件<code>page.config.js</code>中配置<code>usingComponents</code>属性：<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">usingComponents</span>: &#123;</span><br><span class="line">    <span class="comment">// 定义需要引入的第三方组件</span></span><br><span class="line">    <span class="comment">// 1. key 值指定第三方组件名字，以小写开头</span></span><br><span class="line">    <span class="comment">// 2. value 值指定第三方组件 js 文件的相对路径</span></span><br><span class="line">    <span class="string">&#x27;ec-canvas&#x27;</span>: <span class="string">&#x27;../../components/ec-canvas/ec-canvas&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>使用组件：<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; <span class="title class_">Component</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">View</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@tarojs/components&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">class</span> <span class="title class_">Index</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Component</span> &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">    <span class="attr">ec</span>: &#123;</span><br><span class="line">      <span class="attr">onInit</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render () &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">View</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">ec-canvas</span> <span class="attr">id</span>=<span class="string">&#x27;mychart-dom-area&#x27;</span> <span class="attr">canvas-id</span>=<span class="string">&#x27;mychart-area&#x27;</span> <span class="attr">ec</span>=<span class="string">&#123;this.state.ec&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
 ]]></content>
       <categories>
         <category>discuz</category>
@@ -1138,8 +1142,8 @@
 <p>tips:在首页显示文章的摘录并显示 阅读全文 按钮，可以通过以下方法：<br>在文章中使用 <!-- more --> 手动进行截断，Hexo 提供的方式 (除了可以精确控制需要显示的摘录内容以外， 这种方式也可以让 Hexo 中的插件更好的识别。)</p>
 <h4 id="5-3-2-本地资料丢失"><a href="#5-3-2-本地资料丢失" class="headerlink" title="5.3.2 本地资料丢失"></a>5.3.2 本地资料丢失</h4><p>当重装电脑之后，或者想在其他电脑上修改博客，可以使用下列步骤：</p>
 <ol>
-<li>使用git clone <a href="mailto:&#103;&#105;&#x74;&#x40;&#103;&#x69;&#x74;&#104;&#x75;&#x62;&#x2e;&#99;&#x6f;&#109;">&#103;&#105;&#x74;&#x40;&#103;&#x69;&#x74;&#104;&#x75;&#x62;&#x2e;&#99;&#x6f;&#109;</a>:gxhpersonal&#x2F;blog.git拷贝仓库（默认分支为master）；</li>
-<li>在本地新拷贝的blog文件夹下通过Git bash依次执行下列指令：npm install hexo、npm install、npm install hexo-deployer-git（记得，不需要hexo init这条指令）。</li>
+<li>使用git clone <a href="mailto:&#x67;&#x69;&#x74;&#64;&#103;&#105;&#116;&#104;&#117;&#x62;&#46;&#x63;&#x6f;&#109;">&#x67;&#x69;&#x74;&#64;&#103;&#105;&#116;&#104;&#117;&#x62;&#46;&#x63;&#x6f;&#109;</a>:gxhpersonal&#x2F;blog.git拷贝仓库（默认分支为master）；</li>
+<li>在本地新拷贝的blog文件夹下通过Git bash依次执行下列指令：npm install hexo、npm i hexo-cli -g、npm install、npm install hexo-deployer-git（记得，不需要hexo init这条指令）。</li>
 </ol>
 ]]></content>
       <categories>
@@ -2670,6 +2674,39 @@ $ git commit -a
       </categories>
       <tags>
         <tag>css</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nvm安装</title>
+    <url>/blog/2023/09/06/nvm%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<h3 id="之前一直懒没有安装nvm，现在安装上发现又简单又方便，真香！"><a href="#之前一直懒没有安装nvm，现在安装上发现又简单又方便，真香！" class="headerlink" title="之前一直懒没有安装nvm，现在安装上发现又简单又方便，真香！"></a>之前一直懒没有安装nvm，现在安装上发现又简单又方便，真香！</h3><h3 id="注意：在下载nvm之前需要卸载本电脑已经安装的node"><a href="#注意：在下载nvm之前需要卸载本电脑已经安装的node" class="headerlink" title="注意：在下载nvm之前需要卸载本电脑已经安装的node!"></a>注意：在下载nvm之前需要卸载本电脑已经安装的node!</h3><h3 id="一、进入官网http-nvm-uihtm-com-或者-github-https-github-com-coreybutler-nvm-windows-releases-下载："><a href="#一、进入官网http-nvm-uihtm-com-或者-github-https-github-com-coreybutler-nvm-windows-releases-下载：" class="headerlink" title="一、进入官网http://nvm.uihtm.com/ 或者 github https://github.com/coreybutler/nvm-windows/releases 下载："></a>一、进入官网<a href="http://nvm.uihtm.com/">http://nvm.uihtm.com/</a> 或者 github <a href="https://github.com/coreybutler/nvm-windows/releases">https://github.com/coreybutler/nvm-windows/releases</a> 下载：</h3><p><img data-src="http://www.guoxh.com/blog/img/nvm/1.png"></p>
+<h3 id="二、安装："><a href="#二、安装：" class="headerlink" title="二、安装："></a>二、安装：</h3><p>一路向下就好了，没什么好说的：<br><img data-src="http://www.guoxh.com/blog/img/nvm/2.png"><br><img data-src="http://www.guoxh.com/blog/img/nvm/3.png"></p>
+<h3 id="三、打开默认安装的路径："><a href="#三、打开默认安装的路径：" class="headerlink" title="三、打开默认安装的路径："></a>三、打开默认安装的路径：</h3><p>图中nodejs表示当前激活的node版本：<br><img data-src="http://www.guoxh.com/blog/img/nvm/4.png"></p>
+<p>图中nvm文件夹下可以看到你安装的所有node版本文件（如何安装node后面会说）：<br><img data-src="http://www.guoxh.com/blog/img/nvm/5.png"></p>
+<h3 id="四、打开cmd终端"><a href="#四、打开cmd终端" class="headerlink" title="四、打开cmd终端"></a>四、打开cmd终端</h3><ol>
+<li><p>输入<code>nvm</code>查看nvm版本及其相关命令信息：<br><img data-src="http://www.guoxh.com/blog/img/nvm/6.png"></p>
+</li>
+<li><p>快速查询部分node版本（当然只是部分，其他也可以下载）：<br><img data-src="http://www.guoxh.com/blog/img/nvm/7.png"></p>
+</li>
+<li><p>安装指定node版本（下载的node会安装到上面提到的nvm文件夹下）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nvm install [node版本号]</span><br></pre></td></tr></table></figure>
+<p><img data-src="http://www.guoxh.com/blog/img/nvm/8.png" alt="同时会下载对应npm版本"></p>
+</li>
+<li><p>切换指定node版本：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nvm use 20.x.x</span><br></pre></td></tr></table></figure>
+<p><img data-src="http://www.guoxh.com/blog/img/nvm/9.png"></p>
+</li>
+<li><p>特别注意！！！执行<code>nvm use 20.x.x</code>命令后，看到下面这样才算切换版本成功：<br><img data-src="http://www.guoxh.com/blog/img/nvm/10.png"><br>如果切换后没有显示<code>(Currently using 64-bit executable)</code>，则切换失败，执行<code>node -v</code>会提示找不到node<br>可以尝试切换管理员运行模式打开cmd</p>
+</li>
+</ol>
+<ul>
+<li>win11:导航栏中间图标右键<code>终端（管理员）</code>打开cmd</li>
+<li>win10:文件夹右键以管理员模式运行</li>
+<li>如果还不行，卸载nvm重装</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>nvm</tag>
       </tags>
   </entry>
 </search>
