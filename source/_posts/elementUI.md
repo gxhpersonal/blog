@@ -52,3 +52,5 @@ mounted() {
   this.form = JSON.parse(JSON.stringify(query));//回显筛选项值，用深拷贝是为了form和query彻底隔离开，否则会影响form赋值
 },
 ```
+
+### 需要传入数组的组件，需要提前声明变量为数组，否则调接口返回填充还是不显示，并且不报错

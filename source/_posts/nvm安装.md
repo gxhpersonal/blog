@@ -9,7 +9,7 @@ tags: nvm
 
 ### 注意：在下载nvm之前需要卸载本电脑已经安装的node!
 
-### 一、进入官网http://nvm.uihtm.com/ 或者 github https://github.com/coreybutler/nvm-windows/releases 下载：
+### 一、进入官网`http://nvm.uihtm.com/` 或者github`https://github.com/coreybutler/nvm-windows/releases` 下载：
 
 ![](http://www.guoxh.com/blog/img/nvm/1.png)
 
@@ -37,7 +37,8 @@ tags: nvm
 ```
 nvm install [node版本号]
 ```
-![同时会下载对应npm版本](http://www.guoxh.com/blog/img/nvm/8.png)
+![](http://www.guoxh.com/blog/img/nvm/8.png)
+<center><b><font size ='1'>如图所示，同时会下载对应npm版本</font></b></center>
 
 4. 切换指定node版本：
 ```
