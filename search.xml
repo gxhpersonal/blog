@@ -55,7 +55,8 @@
 <p>2.<code>??</code>Null&#x2F;undefined判断运算符</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> headerText = response.<span class="property">settings</span>.<span class="property">headerText</span> || <span class="string">&#x27;Hello, world!&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> headerText = response.<span class="property">settings</span>.<span class="property">headerText</span> ?? <span class="string">&#x27;Hello, world!&#x27;</span>;</span><br></pre></td></tr></table></figure>
 <p>上面两种例子的区别是<code>||</code>左边的值为false、空字符串、0都会生效，而<code>??</code>只有左边为undefined或者null才会取右边的默认值；</p>
-<h3 id="顶级await"><a href="#顶级await" class="headerlink" title="顶级await"></a>顶级await</h3><h3 id="Object-hasOwn"><a href="#Object-hasOwn" class="headerlink" title="Object.hasOwn"></a>Object.hasOwn</h3><h3 id="数组-at-方法"><a href="#数组-at-方法" class="headerlink" title="数组.at()方法"></a>数组<code>.at()</code>方法</h3><h3 id="私有槽位-及方法"><a href="#私有槽位-及方法" class="headerlink" title="私有槽位#及方法"></a>私有槽位<code>#</code>及方法</h3>]]></content>
+<h3 id="顶级await"><a href="#顶级await" class="headerlink" title="顶级await"></a>顶级await</h3><p>可以不用<code>async</code>直接使用<code>await</code>关键字</p>
+<h3 id="Object-hasOwn"><a href="#Object-hasOwn" class="headerlink" title="Object.hasOwn"></a>Object.hasOwn</h3><h3 id="数组-at-方法"><a href="#数组-at-方法" class="headerlink" title="数组.at()方法"></a>数组<code>.at()</code>方法</h3><h3 id="私有槽位-及方法"><a href="#私有槽位-及方法" class="headerlink" title="私有槽位#及方法"></a>私有槽位<code>#</code>及方法</h3>]]></content>
       <categories>
         <category>JS</category>
       </categories>
@@ -393,7 +394,8 @@
 <h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><p>分割线的语法只需要三个 <code>*</code> 号，例如：</p>
 <hr>
 <h2 id="代码区块"><a href="#代码区块" class="headerlink" title="代码区块"></a>代码区块</h2><p>代码区块也是非常常用的一种标记语法，语法非常简单，只需在代码前面加4个空格或1个制表符(tab),例如：<br>    这是一个代码区块</p>
-]]></content>
+<h3 id="添加图片描述"><a href="#添加图片描述" class="headerlink" title="添加图片描述"></a>添加图片描述</h3><p>如下所示添加标签文案</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">![](http://www.guoxh.com/blog/img/nvm/8.png)</span><br><span class="line">&lt;center&gt;&lt;b&gt;&lt;font size =&#x27;1&#x27;&gt;这是图片描述&lt;/font&gt;&lt;/b&gt;&lt;/center&gt;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>markdown</category>
       </categories>
