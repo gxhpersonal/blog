@@ -109,6 +109,51 @@ taro info
 
 更多见官网说明：https://taro-docs.jd.com/docs/cli
 
+但是会有第三方插件不支持最新版taro的情况，所以可以另辟蹊径，采用taro官方补丁插件：
+
+#### @tarojs/plugin-inject
+> 可以为小程序平台注入公共的组件、API 等逻辑
+##### 版本要求
+###### Taro 3.3+
+请使用本插件的`1.0`或以上版本
+###### Taro 3.1/3.2
+请使用本插件的`0.0.2`或以上版本
+
+##### 安装
+在 Taro 项目根目录下安装
+```
+$ npm i @tarojs/plugin-inject --save
+```
+##### 使用
+###### 引入插件
+请确保`Taro CLI`已升级至`Taro 3.1.0`的最新版本。
+
+修改项目`config/index.js`中的`plugins`配置为如下:
+```js
+const config = {
+  ...
+  plugins: [
+    [
+      '@tarojs/plugin-inject',
+      {
+        // 配置需要新增的 API
+        syncApis: ['getPrivacySetting', 'openPrivacyContract', 'requirePrivacyAuthorize', 'onNeedPrivacyAuthorization'], //同步API
+        asyncApis:[''],//异步
+        components: {
+          // 配置组件新增 属性和事件
+          Button: {
+            "open-type": "agreePrivacyAuthorization", //属性写法
+            bindAgreePrivacyAuthorization: '', //事件写法（一定要写成小程序官方事件名，不能写成taro事件名）
+          },
+        },
+      },
+    ],
+  ],
+  ...
+}
+```
+> 官方文档：https://github.com/NervJS/taro-plugin-inject
+
 ### taro使用原生组件
 1. 在`app`或页面配置文件`page.config.js`中配置`usingComponents`属性：
 ```js
@@ -142,3 +187,7 @@ export default class Index extends Component {
   }
 }
 ```
+
+### There are multiple modules with names that only differ in casing报错
+
+一般是组件文件夹名用了驼峰命名，改成`小写`加`-`即可
