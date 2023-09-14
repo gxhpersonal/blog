@@ -2567,7 +2567,7 @@ $ git commit -a
   <entry>
     <title>其他css问题</title>
     <url>/blog/2016/09/14/css%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h3 id="flex布局"><a href="#flex布局" class="headerlink" title="flex布局"></a>flex布局</h3><p><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool">更多参见阮老师blog</a><br>1.意为弹性布局，块元素：display:flex;行内元素：display:inline-flex;<br>2.不同内核浏览器需要加前缀区分，如：display:-webkit-flex; &#x2F;<em>Safari</em>&#x2F;  <code>非规范属性值：display:-webkit-box</code><br>3.设为flex布局后，子元素的float,clear,vertical-align属性将失效。  <code>非规范属性：-webkit-box-orient：vertical //垂直排列子元素</code><br>4.flex属性：<br>1）flex-direction:row（默认值）：主轴为水平方向，起点在左端。<br>                  row-reverse：主轴为水平方向，起点在右端。<br>                  column：主轴为垂直方向，起点在上沿。<br>                  column-reverse：主轴为垂直方向，起点在下沿<br>2)flex-wrap属性: nowrap（默认）：不换行。<br>                wrap：换行，第一行在上方。<br>                wrap-reverse：换行，第一行在下方。<br>3)flex-flow：属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。<br>4)justify-content:flex-start | flex-end | center | space-between | space-around<br>5)align-items: flex-start | flex-end | center | baseline | stretch;<br>6)当使用了<code>flex-direction:column</code>之后,未定宽的元素会自动适应宽度为100%；给元素加个非默认值<code>align-self:stretch</code>外的值就可以</p>
+    <content><![CDATA[<h3 id="css相关能写一万年，考虑分开写了，太多了"><a href="#css相关能写一万年，考虑分开写了，太多了" class="headerlink" title="css相关能写一万年，考虑分开写了，太多了"></a>css相关能写一万年，考虑分开写了，太多了</h3><h3 id="flex布局"><a href="#flex布局" class="headerlink" title="flex布局"></a>flex布局</h3><p><a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool">更多参见阮老师blog</a><br>1.意为弹性布局，块元素：display:flex;行内元素：display:inline-flex;<br>2.不同内核浏览器需要加前缀区分，如：display:-webkit-flex; &#x2F;<em>Safari</em>&#x2F;  <code>非规范属性值：display:-webkit-box</code><br>3.设为flex布局后，子元素的float,clear,vertical-align属性将失效。  <code>非规范属性：-webkit-box-orient：vertical //垂直排列子元素</code><br>4.flex属性：<br>1）flex-direction:row（默认值）：主轴为水平方向，起点在左端。<br>                  row-reverse：主轴为水平方向，起点在右端。<br>                  column：主轴为垂直方向，起点在上沿。<br>                  column-reverse：主轴为垂直方向，起点在下沿<br>2)flex-wrap属性: nowrap（默认）：不换行。<br>                wrap：换行，第一行在上方。<br>                wrap-reverse：换行，第一行在下方。<br>3)flex-flow：属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。<br>4)justify-content:flex-start | flex-end | center | space-between | space-around<br>5)align-items: flex-start | flex-end | center | baseline | stretch;<br>6)当使用了<code>flex-direction:column</code>之后,未定宽的元素会自动适应宽度为100%；给元素加个非默认值<code>align-self:stretch</code>外的值就可以</p>
 <h3 id="grid布局"><a href="#grid布局" class="headerlink" title="grid布局"></a>grid布局</h3><p>grid布局比起flex布局更加灵活，flex布局只有横轴纵轴概念，grid布局则多了个网格概念，可以控制每个单元格样式</p>
 <h3 id="清除所有a标签在点击时出现的特效"><a href="#清除所有a标签在点击时出现的特效" class="headerlink" title="清除所有a标签在点击时出现的特效"></a>清除所有a标签在点击时出现的特效</h3><blockquote>
 <p>清除所有a标签在点击时出现的特效：a{ -webkit-tap-highlight-color:rgba(255,0,0,0);}</p>
@@ -2686,6 +2686,10 @@ $ git commit -a
 <blockquote>
 <p>[attribute^&#x3D;value]  p[title^&#x3D;”【”]  选择其<code>title</code>属性值以<code>【 </code>开头的每个<code>&lt;p&gt;</code>元素。<br>[attribute<del>&#x3D;value]  [title</del>&#x3D;flower] 选择带有包含<code>flower</code>一词(而且必须是前后都有空格才可以，当然中文亦可以)的<code>title</code>属性的所有元素。</p>
 </blockquote>
+<h3 id="怎么使position-fixed元素相对于屏幕视口位置改为相对于祖先元素位置"><a href="#怎么使position-fixed元素相对于屏幕视口位置改为相对于祖先元素位置" class="headerlink" title="怎么使position:fixed元素相对于屏幕视口位置改为相对于祖先元素位置"></a>怎么使position:fixed元素相对于屏幕视口位置改为相对于祖先元素位置</h3><blockquote>
+<p>当元素设置<code>position:fixed</code>元素会被移出正常文档流，并不为元素预留空间，而是通过指定元素相对于屏幕视口（viewport）的位置来指定元素位置。元素的位置在屏幕滚动时不会改变。打印时，元素会出现在的每页的固定位置。<code>fixed</code>属性会创建新的层叠上下文。当元素祖先的<code>transform</code>、<code>perspective</code>、<code>filter</code>或<code>backdrop-filter</code>属性非<code>none</code>时，容器由视口改为该祖先。</p>
+</blockquote>
+<p>所以只需要祖先元素设置任意其中的一个值非<code>none</code>，就会使元素重回文档流，当然同时也意味着元素失去<code>fixed</code>浮动的特性。</p>
 ]]></content>
       <categories>
         <category>css</category>
