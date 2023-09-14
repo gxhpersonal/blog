@@ -4,6 +4,7 @@ date: 2016-09-14 18:07:27
 tags: css
 categories: css
 ---
+### css相关能写一万年，考虑分开写了，太多了
 
 ### flex布局	
 [更多参见阮老师blog](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool)
@@ -404,3 +405,9 @@ stretch (默认值）: 如果子元素未设置高度或者高度为auto，将�
 扩展：
 > [attribute^=value]  p[title^="【"]  选择其`title`属性值以`【 `开头的每个`<p>`元素。
 > [attribute~=value]  [title~=flower] 选择带有包含`flower`一词(而且必须是前后都有空格才可以，当然中文亦可以)的`title`属性的所有元素。
+
+### 怎么使position:fixed元素相对于屏幕视口位置改为相对于祖先元素位置
+
+> 当元素设置`position:fixed`元素会被移出正常文档流，并不为元素预留空间，而是通过指定元素相对于屏幕视口（viewport）的位置来指定元素位置。元素的位置在屏幕滚动时不会改变。打印时，元素会出现在的每页的固定位置。`fixed`属性会创建新的层叠上下文。当元素祖先的`transform`、`perspective`、`filter`或`backdrop-filter`属性非`none`时，容器由视口改为该祖先。
+
+所以只需要祖先元素设置任意其中的一个值非`none`，就会使元素重回文档流，当然同时也意味着元素失去`fixed`浮动的特性。
