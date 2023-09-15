@@ -191,7 +191,10 @@ const headerText = response.settings.headerText ?? 'Hello, world!';
 上面两种例子的区别是`||`左边的值为false、空字符串、0都会生效，而`??`只有左边为undefined或者null才会取右边的默认值；
 
 ### 顶级await
-可以不用`async`直接使用`await`关键字
+从[ES2022](https://github.com/tc39/proposal-top-level-await)开始，允许在模块的顶层独立使用`await`命令，使得上面那行代码不会报错了。它的主要目的是使用`await`解决模块异步加载的问题，如下：
+```js
+const data = await fetch('https://api.example.com');
+```
 
 ### Object.hasOwn
 

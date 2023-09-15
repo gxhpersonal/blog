@@ -191,3 +191,5 @@ export default class Index extends Component {
 ### There are multiple modules with names that only differ in casing报错
 
 一般是组件文件夹名用了驼峰命名，改成`小写`加`-`即可
+
+https://github.com/hsuna/taro-privacy-popup/blob/master/src/components/PrivacyPopup/index.jsx
