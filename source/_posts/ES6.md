@@ -190,14 +190,72 @@ const headerText = response.settings.headerText ?? 'Hello, world!';
 ```
 上面两种例子的区别是`||`左边的值为false、空字符串、0都会生效，而`??`只有左边为undefined或者null才会取右边的默认值；
 
-### 顶级await
+### ES13 (ECMAScript 2022) 新增以下功能：
+##### 顶级await
 从[ES2022](https://github.com/tc39/proposal-top-level-await)开始，允许在模块的顶层独立使用`await`命令，使得上面那行代码不会报错了。它的主要目的是使用`await`解决模块异步加载的问题，如下：
 ```js
 const data = await fetch('https://api.example.com');
+// or
+const showBlackTheme = window.location.search.includes('theme=black')
+if (showBlackTheme) {
+  await import('/theme/black.js')
+} else {
+  await import('/theme/white.js')
+}
 ```
 
-### Object.hasOwn
+##### Object.hasOwn
+我们经常需要知道对象上是否存在某个属性。怎么做？
 
-### 数组`.at()`方法
+“in”或“obj.hasOwnProperty”是用于此目的的两种最常用的方法。
 
-### 私有槽位`#`及方法
+如果指定的属性位于指定的对象或其原型链中，则 in 运算符返回 true。
+```js
+const Person = function (age) {
+  this.age = age
+}
+
+Person.prototype.name = 'fatfish'
+
+const p1 = new Person(24)
+
+console.log('age' in p1) // true 
+console.log('name' in p1) // true
+```
+hasOwnProperty 方法返回一个布尔值，指示对象是否将指定属性作为其自己的属性（而不是继承它）。
+```js
+const Person = function (age) {
+  this.age = age
+}
+
+Person.prototype.name = 'fatfish'
+
+const p1 = new Person(24)
+
+console.log(p1.hasOwnProperty('age')) // true 
+console.log(p1.hasOwnProperty('name')) // fasle
+```
+以下情况使用`hasOwnProperty`会报错
+```js
+Object.create(null).hasOwnProperty('name')
+// Uncaught TypeError: Object.create(...).hasOwnProperty is not a function
+```
+不用担心，我们可以使用“Object.hasOwn”来规避这两个问题，这比“obj.hasOwnProperty”方法更方便、更安全。
+```js
+let object = { age: 24 }
+
+Object.hasOwn(object, 'age') // true
+
+let object2 = Object.create({ age: 24 })
+
+Object.hasOwn(object2, 'age') // false  The 'age' attribute exists on the prototype
+
+let object3 = Object.create(null)
+
+Object.hasOwn(object3, 'age') // false an object that does not inherit from "Object.prototype"
+```
+
+
+##### 数组`.at()`方法
+
+##### 私有槽位`#`及方法
