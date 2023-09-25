@@ -255,7 +255,37 @@ let object3 = Object.create(null)
 Object.hasOwn(object3, 'age') // false an object that does not inherit from "Object.prototype"
 ```
 
-
 ##### 数组`.at()`方法
+> at 方法可以取正数或负数，这将决定它是从数组的头部还是尾部开始读取元素。
+```js
+const arr = [ 1, 2, 3, 4, 5 ]
+const lastItem = array.at(-1) // 5
+const firstItem = array.at(0) // 1
+```
 
 ##### 私有槽位`#`及方法
+使用`#`来实现真正安全的私有属性
+```js
+class Person {
+  #money=1
+  constructor (name) {
+    this.name = name
+  }
+  get money () {
+    return this.#money
+  }
+  set money (money) {
+    this.#money = money
+  }
+  showMoney () {
+    console.log(this.#money)
+  }
+}
+const p1 = new Person('fatfish')
+console.log(p1.money) // 1
+// p1.#money = 2 // We cannot modify #money in this way
+p1.money = 2
+console.log(p1.money) // 2
+console.log(p1.#money) // Uncaught SyntaxError: Private field '#money' must be declared in an enclosing class
+
+```
