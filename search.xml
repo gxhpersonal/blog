@@ -1776,7 +1776,9 @@
     <url>/blog/2018/07/05/vuex%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<h3 id="vuex中Action和mutation的区别"><a href="#vuex中Action和mutation的区别" class="headerlink" title="vuex中Action和mutation的区别"></a>vuex中Action和mutation的区别</h3><p>Action 提交的是 mutation，而不是直接变更状态。<br>Action 可以包含任意异步操作。</p>
 <h3 id="vuex使用注意"><a href="#vuex使用注意" class="headerlink" title="vuex使用注意"></a>vuex使用注意</h3><p>1.路由组件之间跳转不会刷新vuex中mutation的值，就是说，vuex会保存上次存储过的值，所以要在每次路由跳转到指定页面时，给vuex中的值初始化一次，保证不会把上次的记录的值带过来（待定验证）<br>2.可以直接把从vuex中取的数据传给后台，不会把vue自定义的东西带过去；</p>
-<h3 id="提交载荷"><a href="#提交载荷" class="headerlink" title="提交载荷"></a>提交载荷</h3>]]></content>
+<h3 id="提交载荷"><a href="#提交载荷" class="headerlink" title="提交载荷"></a>提交载荷</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// store.js中</span></span><br><span class="line"><span class="keyword">const</span> store = <span class="title function_">createStore</span>(&#123;</span><br><span class="line">  <span class="attr">state</span>: &#123;</span><br><span class="line">    <span class="attr">count</span>: <span class="number">1</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">mutations</span>: &#123;</span><br><span class="line">  increment (state, payload) &#123;</span><br><span class="line">    state.<span class="property">count</span> += payload.<span class="property">amount</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">store.<span class="title function_">commit</span>(<span class="string">&#x27;increment&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">amount</span>: <span class="number">10</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+]]></content>
       <categories>
         <category>vue</category>
       </categories>
