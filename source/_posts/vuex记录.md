@@ -15,3 +15,21 @@ Action 可以包含任意异步操作。
 2.可以直接把从vuex中取的数据传给后台，不会把vue自定义的东西带过去；
 
 ### 提交载荷
+```js
+// store.js中
+const store = createStore({
+  state: {
+    count: 1
+  },
+  mutations: {
+  increment (state, payload) {
+    state.count += payload.amount
+  }
+}
+})
+```
+```js
+store.commit('increment', {
+  amount: 10
+})
+```
