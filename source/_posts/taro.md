@@ -84,3 +84,17 @@ const baseConfig = {
   outputRoot: `dist/${process.env.TARO_ENV}`,
 }
 ```
+
+### 添加环境字段
+用taro init生成项目时，根目录下会发现有三个`.env.xxx`文件。
+因为默认打包时查找的文件是`NODE_ENV`的值，所以需要把`.env.dev`和`.env.prod`文件改为`.env.development`和`.env.production`;
+或者可以在`package.json`文件中修改命令`"dev:weapp": taro build --type weapp --watch --mode dev`;
+可以发现命令中不加`--mode dev`时默认`mode`为`development`;
+两种方案皆可。
+然后就可以在`.env.xxx`文件中添加对应环境变量字段：
+```C
+# 配置文档参考 https://taro-docs.jd.com/docs/next/env-mode-config
+TARO_APP_ID="开发环境小程序APPID"
+TARO_APP_API="https://api-dev.com"
+```
+> 请注意，只有以`TARO_APP_`开头的变量将通过`webpack.DefinePlugin`静态地嵌入到客户端侧的代码中。这是为了避免和系统内置环境变量冲突。
