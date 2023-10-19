@@ -73,3 +73,14 @@ class SomePage extends Component {
   }
 }
 ```
+
+### 持久化缓存功能，提升二次编译速度，提升开发效率
+
+### 同时打包多段代码，多端项目同时调试
+```js
+//config/index.js
+const baseConfig = {
+  ...
+  outputRoot: `dist/${process.env.TARO_ENV}`,
+}
+```
