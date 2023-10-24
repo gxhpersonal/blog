@@ -98,3 +98,8 @@ TARO_APP_ID="开发环境小程序APPID"
 TARO_APP_API="https://api-dev.com"
 ```
 > 请注意，只有以`TARO_APP_`开头的变量将通过`webpack.DefinePlugin`静态地嵌入到客户端侧的代码中。这是为了避免和系统内置环境变量冲突。
+
+### Uncaught Error: Rendered fewer hooks than expected. This may be caused by an accidental early return statement.
+不要在循环，条件或嵌套函数中调用Hook。相反，始终在React函数的顶层使用Hooks。通过遵循此规则，您可以确保每次组件呈现时都以相同的顺序调用Hook。这就是允许React在多个useState和useEffect调用之间正确保留Hook状态的原因。
+
+选择在没有判断条件的顶层使用useContext、useState、useEffect、userHistory、useTransaction等，将获取的值，作为参数传给子组件使用。
