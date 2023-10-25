@@ -2777,7 +2777,10 @@ $ git commit -a
 </blockquote>
 <h3 id="Uncaught-Error-Rendered-fewer-hooks-than-expected-This-may-be-caused-by-an-accidental-early-return-statement"><a href="#Uncaught-Error-Rendered-fewer-hooks-than-expected-This-may-be-caused-by-an-accidental-early-return-statement" class="headerlink" title="Uncaught Error: Rendered fewer hooks than expected. This may be caused by an accidental early return statement."></a>Uncaught Error: Rendered fewer hooks than expected. This may be caused by an accidental early return statement.</h3><p>不要在循环，条件或嵌套函数中调用Hook。相反，始终在React函数的顶层使用Hooks。通过遵循此规则，您可以确保每次组件呈现时都以相同的顺序调用Hook。这就是允许React在多个useState和useEffect调用之间正确保留Hook状态的原因。</p>
 <p>选择在没有判断条件的顶层使用useContext、useState、useEffect、userHistory、useTransaction等，将获取的值，作为参数传给子组件使用。</p>
-]]></content>
+<h3 id="优化主包体积大小"><a href="#优化主包体积大小" class="headerlink" title="优化主包体积大小"></a>优化主包体积大小</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//config/index.js</span></span><br><span class="line"><span class="comment">//这样简单配置之后，可以避免主包没有引入的 module 被提取到commonChunks中，该功能会在打包时分析 module 和 chunk 的依赖关系，筛选出主包没有引用到的 module 把它提取到分包内</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="attr">mini</span>: &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="attr">optimizeMainPackage</span>: &#123;</span><br><span class="line">      <span class="attr">enable</span>: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="多个页面引用同一个自定义组件时，页面不显示"><a href="#多个页面引用同一个自定义组件时，页面不显示" class="headerlink" title="多个页面引用同一个自定义组件时，页面不显示"></a>多个页面引用同一个自定义组件时，页面不显示</h3><p>开启<code>optimizeMainPackage</code>打包优化导致的。。。暂时不知道原因。。。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>taro</category>
       </categories>
