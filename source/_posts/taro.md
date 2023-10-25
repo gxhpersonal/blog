@@ -103,3 +103,24 @@ TARO_APP_API="https://api-dev.com"
 不要在循环，条件或嵌套函数中调用Hook。相反，始终在React函数的顶层使用Hooks。通过遵循此规则，您可以确保每次组件呈现时都以相同的顺序调用Hook。这就是允许React在多个useState和useEffect调用之间正确保留Hook状态的原因。
 
 选择在没有判断条件的顶层使用useContext、useState、useEffect、userHistory、useTransaction等，将获取的值，作为参数传给子组件使用。
+
+### 优化主包体积大小
+```js
+//config/index.js
+//这样简单配置之后，可以避免主包没有引入的 module 被提取到commonChunks中，该功能会在打包时分析 module 和 chunk 的依赖关系，筛选出主包没有引用到的 module 把它提取到分包内
+module.exports = {
+  // ...
+  mini: {
+    // ...
+    optimizeMainPackage: {
+      enable: true,
+    },
+  },
+}
+```
+
+### 多个页面引用同一个自定义组件时，页面不显示
+开启`optimizeMainPackage`打包优化导致的。。。暂时不知道原因。。。
+```js
+
+```
