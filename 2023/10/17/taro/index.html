@@ -28,7 +28,7 @@
 <meta property="og:description" content="新建项目项目配置1.开启 PreBundle 配置  开发环境热更新占用内存可以大大降低，热更新所需时间也将大幅减少；生产模式也可以通过提前编译依赖，大幅提升部署效率。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-10-17T06:52:19.000Z">
-<meta property="article:modified_time" content="2023-10-24T06:04:02.320Z">
+<meta property="article:modified_time" content="2023-10-27T03:28:28.922Z">
 <meta property="article:author" content="郭雪辉">
 <meta property="article:tag" content="taro">
 <meta name="twitter:card" content="summary">
@@ -241,7 +241,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-10-24 14:04:02" itemprop="dateModified" datetime="2023-10-24T14:04:02+08:00">2023-10-24</time>
+                <time title="修改时间：2023-10-27 11:28:28" itemprop="dateModified" datetime="2023-10-27T11:28:28+08:00">2023-10-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -259,14 +259,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.5k</span>
+              <span>3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -299,8 +299,16 @@
 <p>选择在没有判断条件的顶层使用useContext、useState、useEffect、userHistory、useTransaction等，将获取的值，作为参数传给子组件使用。</p>
 <h3 id="优化主包体积大小"><a href="#优化主包体积大小" class="headerlink" title="优化主包体积大小"></a>优化主包体积大小</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//config/index.js</span></span><br><span class="line"><span class="comment">//这样简单配置之后，可以避免主包没有引入的 module 被提取到commonChunks中，该功能会在打包时分析 module 和 chunk 的依赖关系，筛选出主包没有引用到的 module 把它提取到分包内</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="attr">mini</span>: &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="attr">optimizeMainPackage</span>: &#123;</span><br><span class="line">      <span class="attr">enable</span>: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="多个页面引用同一个自定义组件时，页面不显示"><a href="#多个页面引用同一个自定义组件时，页面不显示" class="headerlink" title="多个页面引用同一个自定义组件时，页面不显示"></a>多个页面引用同一个自定义组件时，页面不显示</h3><p>开启<code>optimizeMainPackage</code>打包优化导致的。。。暂时不知道原因。。。</p>
+<h3 id="多个页面引用同一个自定义组件时，页面不显示"><a href="#多个页面引用同一个自定义组件时，页面不显示" class="headerlink" title="多个页面引用同一个自定义组件时，页面不显示"></a>多个页面引用同一个自定义组件时，页面不显示</h3><p>开启<code>optimizeMainPackage</code>打包优化导致的。。。暂时不知道原因。。。估计是官方bug</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a>useEffect</h3><p>两个参数，第一个参数为函数，函数内执行初始化代码，可以返回一个函数，用来组件销毁时执行；<br>第二个参数为数组，传值则 Effect 在 初始渲染后以及依赖项变更的重新渲染后 运行；</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;, [a, b]); <span class="comment">// 如果 a 或 b 不同则会再次运行</span></span><br></pre></td></tr></table></figure>
+<p>传空数组，Effect 仅在 初始渲染后 运行；</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;, []); <span class="comment">// 不会再次运行（开发环境下除外）</span></span><br><span class="line"><span class="comment">// 为了 帮助你发现 bug，在开发环境下，React 在运行 setup 之前会额外运行一次setup 和 cleanup。这是一个压力测试，用于验证 Effect 逻辑是否正确实现。如果这会导致可见的问题，那么你的 cleanup 函数就缺少一些逻辑。cleanup 函数应该停止或撤消 setup 函数正在执行的任何操作</span></span><br></pre></td></tr></table></figure>
+<p>如果完全不传递依赖数组，则 Effect 会在组件的 每次单独渲染（和重新渲染）之后 运行。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;); <span class="comment">// 总是再次运行</span></span><br></pre></td></tr></table></figure>
+
     </div>
 
     
@@ -380,7 +388,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">新建项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">项目配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E4%BA%A7%E9%A2%84%E6%B8%B2%E6%9F%93"><span class="nav-number">3.</span> <span class="nav-text">生产预渲染</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%81%E4%B9%85%E5%8C%96%E7%BC%93%E5%AD%98%E5%8A%9F%E8%83%BD%EF%BC%8C%E6%8F%90%E5%8D%87%E4%BA%8C%E6%AC%A1%E7%BC%96%E8%AF%91%E9%80%9F%E5%BA%A6%EF%BC%8C%E6%8F%90%E5%8D%87%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87"><span class="nav-number">4.</span> <span class="nav-text">持久化缓存功能，提升二次编译速度，提升开发效率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8C%E6%97%B6%E6%89%93%E5%8C%85%E5%A4%9A%E6%AE%B5%E4%BB%A3%E7%A0%81%EF%BC%8C%E5%A4%9A%E7%AB%AF%E9%A1%B9%E7%9B%AE%E5%90%8C%E6%97%B6%E8%B0%83%E8%AF%95"><span class="nav-number">5.</span> <span class="nav-text">同时打包多段代码，多端项目同时调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%8E%AF%E5%A2%83%E5%AD%97%E6%AE%B5"><span class="nav-number">6.</span> <span class="nav-text">添加环境字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Uncaught-Error-Rendered-fewer-hooks-than-expected-This-may-be-caused-by-an-accidental-early-return-statement"><span class="nav-number">7.</span> <span class="nav-text">Uncaught Error: Rendered fewer hooks than expected. This may be caused by an accidental early return statement.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E4%B8%BB%E5%8C%85%E4%BD%93%E7%A7%AF%E5%A4%A7%E5%B0%8F"><span class="nav-number">8.</span> <span class="nav-text">优化主包体积大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E9%A1%B5%E9%9D%A2%E5%BC%95%E7%94%A8%E5%90%8C%E4%B8%80%E4%B8%AA%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E6%97%B6%EF%BC%8C%E9%A1%B5%E9%9D%A2%E4%B8%8D%E6%98%BE%E7%A4%BA"><span class="nav-number">9.</span> <span class="nav-text">多个页面引用同一个自定义组件时，页面不显示</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">新建项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">项目配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E4%BA%A7%E9%A2%84%E6%B8%B2%E6%9F%93"><span class="nav-number">3.</span> <span class="nav-text">生产预渲染</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%81%E4%B9%85%E5%8C%96%E7%BC%93%E5%AD%98%E5%8A%9F%E8%83%BD%EF%BC%8C%E6%8F%90%E5%8D%87%E4%BA%8C%E6%AC%A1%E7%BC%96%E8%AF%91%E9%80%9F%E5%BA%A6%EF%BC%8C%E6%8F%90%E5%8D%87%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87"><span class="nav-number">4.</span> <span class="nav-text">持久化缓存功能，提升二次编译速度，提升开发效率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8C%E6%97%B6%E6%89%93%E5%8C%85%E5%A4%9A%E6%AE%B5%E4%BB%A3%E7%A0%81%EF%BC%8C%E5%A4%9A%E7%AB%AF%E9%A1%B9%E7%9B%AE%E5%90%8C%E6%97%B6%E8%B0%83%E8%AF%95"><span class="nav-number">5.</span> <span class="nav-text">同时打包多段代码，多端项目同时调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%8E%AF%E5%A2%83%E5%AD%97%E6%AE%B5"><span class="nav-number">6.</span> <span class="nav-text">添加环境字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Uncaught-Error-Rendered-fewer-hooks-than-expected-This-may-be-caused-by-an-accidental-early-return-statement"><span class="nav-number">7.</span> <span class="nav-text">Uncaught Error: Rendered fewer hooks than expected. This may be caused by an accidental early return statement.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E4%B8%BB%E5%8C%85%E4%BD%93%E7%A7%AF%E5%A4%A7%E5%B0%8F"><span class="nav-number">8.</span> <span class="nav-text">优化主包体积大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E9%A1%B5%E9%9D%A2%E5%BC%95%E7%94%A8%E5%90%8C%E4%B8%80%E4%B8%AA%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E6%97%B6%EF%BC%8C%E9%A1%B5%E9%9D%A2%E4%B8%8D%E6%98%BE%E7%A4%BA"><span class="nav-number">9.</span> <span class="nav-text">多个页面引用同一个自定义组件时，页面不显示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#useEffect"><span class="nav-number">10.</span> <span class="nav-text">useEffect</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -467,7 +475,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:43</span>
+    <span title="站点阅读时长">2:44</span>
 </div>
 
         

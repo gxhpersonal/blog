@@ -2395,6 +2395,7 @@ $ git commit -a
 </ol>
 <h3 id="遇到过的兼容问题"><a href="#遇到过的兼容问题" class="headerlink" title="遇到过的兼容问题"></a>遇到过的兼容问题</h3><p>1.微信内H5支付问题<br>  手机系统：iOS13、iOS14 （只在苹果手机发现）<br>  微信版本：7.0.17-7.0.18<br>  问题描述：vue history模式跳转，微信内H5支付，刷新页面会出现<code>WeixinJSBridge == &quot;undefined&quot;</code>，并且加兼容判断都没用，只能在跳转支付页时不用<code>$router.push()</code>改用<code>location.href = xx</code>方式。</p>
 <h3 id="有趣的网站"><a href="#有趣的网站" class="headerlink" title="有趣的网站"></a>有趣的网站</h3><p><a href="https://www.coderutil.com/">程序员盒子</a> <a href="https://www.coderutil.com/">https://www.coderutil.com/</a><br><a href="http://bhrgz.cn/">程序员导航网</a> <a href="http://bhrgz.cn/">http://bhrgz.cn/</a></p>
+<p><a href="https://nvm.uihtm.com/">https://nvm.uihtm.com/</a></p>
 ]]></content>
       <categories>
         <category>经验积累</category>
@@ -2779,8 +2780,16 @@ $ git commit -a
 <p>选择在没有判断条件的顶层使用useContext、useState、useEffect、userHistory、useTransaction等，将获取的值，作为参数传给子组件使用。</p>
 <h3 id="优化主包体积大小"><a href="#优化主包体积大小" class="headerlink" title="优化主包体积大小"></a>优化主包体积大小</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//config/index.js</span></span><br><span class="line"><span class="comment">//这样简单配置之后，可以避免主包没有引入的 module 被提取到commonChunks中，该功能会在打包时分析 module 和 chunk 的依赖关系，筛选出主包没有引用到的 module 把它提取到分包内</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="attr">mini</span>: &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="attr">optimizeMainPackage</span>: &#123;</span><br><span class="line">      <span class="attr">enable</span>: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="多个页面引用同一个自定义组件时，页面不显示"><a href="#多个页面引用同一个自定义组件时，页面不显示" class="headerlink" title="多个页面引用同一个自定义组件时，页面不显示"></a>多个页面引用同一个自定义组件时，页面不显示</h3><p>开启<code>optimizeMainPackage</code>打包优化导致的。。。暂时不知道原因。。。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+<h3 id="多个页面引用同一个自定义组件时，页面不显示"><a href="#多个页面引用同一个自定义组件时，页面不显示" class="headerlink" title="多个页面引用同一个自定义组件时，页面不显示"></a>多个页面引用同一个自定义组件时，页面不显示</h3><p>开启<code>optimizeMainPackage</code>打包优化导致的。。。暂时不知道原因。。。估计是官方bug</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a>useEffect</h3><p>两个参数，第一个参数为函数，函数内执行初始化代码，可以返回一个函数，用来组件销毁时执行；<br>第二个参数为数组，传值则 Effect 在 初始渲染后以及依赖项变更的重新渲染后 运行；</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;, [a, b]); <span class="comment">// 如果 a 或 b 不同则会再次运行</span></span><br></pre></td></tr></table></figure>
+<p>传空数组，Effect 仅在 初始渲染后 运行；</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;, []); <span class="comment">// 不会再次运行（开发环境下除外）</span></span><br><span class="line"><span class="comment">// 为了 帮助你发现 bug，在开发环境下，React 在运行 setup 之前会额外运行一次setup 和 cleanup。这是一个压力测试，用于验证 Effect 逻辑是否正确实现。如果这会导致可见的问题，那么你的 cleanup 函数就缺少一些逻辑。cleanup 函数应该停止或撤消 setup 函数正在执行的任何操作</span></span><br></pre></td></tr></table></figure>
+<p>如果完全不传递依赖数组，则 Effect 会在组件的 每次单独渲染（和重新渲染）之后 运行。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;); <span class="comment">// 总是再次运行</span></span><br></pre></td></tr></table></figure>
+]]></content>
       <categories>
         <category>taro</category>
       </categories>
