@@ -146,3 +146,31 @@ useEffect(() => {
   // ...
 }); // 总是再次运行
 ```
+
+### alias
+用于配置目录别名，从而方便书写代码引用路径。
+```js
+//config/index.js
+module.exports = {
+  // ...
+  alias: {
+    '@/components': path.resolve(__dirname, '..', 'src/components'),
+    '@/utils': path.resolve(__dirname, '..', 'src/utils'),
+  },
+}
+//index.jsx
+import A from '@/components/A'
+```
+为了让编辑器（VS Code）不报错，并继续使用自动路径补全的功能（F12能定位到引用文件并打开）：
+```json
+//项目根目录下新建文件 jsconfig.json
+{
+  "compilerOptions": {
+    "baseUrl": ".", //根路径
+    "paths": {
+      "@/components/*": ["./src/components/*"], //相对路径，如果有更深引用，需要加 /*
+      "@/utils/*": ["./src/utils/*"],
+    }
+  }
+}
+```
