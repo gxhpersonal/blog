@@ -260,7 +260,7 @@ return obj
 sameArr = arr;
 ```
 
-### HTML5 - 使用地理定位
+### HTML5 - 使用地理定位（谷歌浏览器无法获取位置，应该是被禁了，qq浏览器也不行，总之废了）
 ```js
 function getLocation() {
 	if (navigator.geolocation) {
