@@ -202,6 +202,7 @@ class Application extends React.Component {
 
 ### 父子组件互相传值/调用方法
 
+##### 类组件：
 父组件中：
 ```jsx
 {/* 优惠券领取弹窗 */}
@@ -228,6 +229,43 @@ export default class CouponPopup extends React.Component{
   }
 }
 ```
+##### 函数组件
+父组件：
+```js
+import React from 'react';
+export default () => {
+  ref = React.useRef(null);
+  //调用子组件方法
+  const getChild = () => {
+    ref.current.getInfo(v.activityInfo);
+  }
+  return (
+    <>
+      <div onClick={getChild}></div>
+      <ChildComponents onRef={ref}  getUser={getUser} />
+    </>
+  )
+}
+```
+子组件：
+```js
+import React, { useImperativeHandle } from 'react';
+export default (props) => {
+  const { getUser } = props;
+  const getInfo = () => {
+
+  }
+  //子组件方法暴露给父组件
+  useImperativeHandle(props.onRef, () => {
+    return { getInfo }
+  })
+  return (
+    // 子组件调用父组件方法
+    <div onClick={getUser}></div>
+  )
+}
+```
+
 
 ### 路由跳转传参方式（state、query、params），目前我做的是history模式路由，而且以后也不会考虑hash模式
 1.`state`参数：
