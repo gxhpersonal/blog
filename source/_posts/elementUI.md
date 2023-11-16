@@ -54,3 +54,24 @@ mounted() {
 ```
 
 ### 需要传入数组的组件，需要提前声明变量为数组，否则调接口返回填充还是不显示，并且不报错
+
+### element-plus的el-scroller监听滑动到底部
+```html
+<script setup>
+const scrollEl = ref();
+const scroll = (e) => {
+  //scrollEl.value.wrapRef.scrollHeight：当前内容高度
+  //scrollEl.value.wrapRef.clientHeight：当前内容可视高度（外部scroll标签设置的高度）
+  //e.scrollTop 滚动条距顶部距离
+  if (
+    scrollEl.value.wrapRef.scrollHeight - scrollEl.value.wrapRef.clientHeight ==
+    e.scrollTop
+  ) {
+    console.log("触底");
+  }
+};
+</script>
+<el-scrollbar ref="scrollEl" @scroll="scroll">
+  ...
+</el-scrollbar>
+```
