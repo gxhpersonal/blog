@@ -2775,7 +2775,10 @@ $ git commit -a
     <title>Nuxt.js 3.8</title>
     <url>/blog/2023/11/16/Nuxt3.8/</url>
     <content><![CDATA[<p>官网：<a href="https://nuxt.com.cn/">https://nuxt.com.cn/</a></p>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3>]]></content>
+<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p>1.根目录下新建文件<code>.env.development</code>和<code>.env.production</code>，当然文件<code>.env.xxx</code>都行，只要和后面对应上即可；<br>2.文件中增加全局环境变量，例如：<code>PUBLIC_API_BASE=https://api.com</code>;<br>3.<code>nuxt.config.ts</code>配置文件增加配置项：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineNuxtConfig</span>(&#123;</span><br><span class="line"><span class="attr">runtimeConfig</span>: &#123;</span><br><span class="line">    <span class="attr">apiKey</span>: <span class="string">&#x27;&#x27;</span>,<span class="comment">//默认为空字符串，在运行时使用process.env.NUXT_API_KEY自动设置，为项目域名</span></span><br><span class="line">    <span class="attr">public</span>: &#123;</span><br><span class="line">       <span class="attr">baseURL</span>: process.<span class="property">env</span>.<span class="property">PUBLIC_API_BASE</span> <span class="comment">//暴露在前端的自定义路径</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>4.引用环境变量：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title function_">useRuntimeConfig</span>().<span class="property">public</span>.<span class="property">baseURL</span></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Nuxt</category>
       </categories>
