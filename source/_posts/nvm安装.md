@@ -1,7 +1,7 @@
 ---
 title: nvm安装
 date: 2023-09-06 14:35:42
-categories:
+categories: nvm
 tags: nvm
 ---
 
