@@ -35,7 +35,6 @@ useRuntimeConfig().public.baseURL
  */
 export const $http = async (obj) => {
   try {
-    await nextTick(); //加上nextTick()方法让页面每次刷新都会请求数据，不加useFetch方法不改变请求参数不会再请求，即使刷新页面
     const res = await useFetch(
       (obj.baseURL ?? useRuntimeConfig().public.baseURL) + obj.url,
       {
@@ -70,6 +69,9 @@ export const $http = async (obj) => {
   }
 }
 ```
+`useFetch`适合在ssr中使用，如果是在ssg中使用，用`$fetch`最佳，参数都相同，改个名即可，如果后面想转ssr，再改名就可以了
 
 ### 静态资源
 静态资源（如图片）放在`public`目录下，没有新建一个，引用时直接`/demo.png`即可。
+
+### 
