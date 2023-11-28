@@ -74,4 +74,14 @@ export const $http = async (obj) => {
 ### 静态资源
 静态资源（如图片）放在`public`目录下，没有新建一个，引用时直接`/demo.png`即可。
 
-### 
+### useState全局共享状态
+```js
+const useCityName = (id) => {
+  return useState("commonCityName", () => id);
+};
+//改变useState中的值，使用 .value 属性赋值；
+const change = () => {
+  const cityName = useCityName();
+  cityName.value = v.city_name;
+}
+```
