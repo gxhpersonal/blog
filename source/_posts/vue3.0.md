@@ -29,3 +29,23 @@ watch(() => route.path, (path) => {
 });
 </script>
 ```
+
+### 子组件传递父组件值
+```html
+<!-- <script setup>语法糖写法 -->
+<script setup>
+  const emit = defineEmits(['submit']);
+  function buttonClick() {
+  emit('submit')
+}
+</script>
+<!-- 显式地使用了 setup 函数 写法 -->
+<script>
+export default {
+  emits: ['inFocus', 'submit'],
+  setup(props, ctx) {
+    ctx.emit('submit')
+  }
+}
+</script>
+```

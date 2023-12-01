@@ -26,6 +26,28 @@ runtimeConfig: {
 useRuntimeConfig().public.baseURL
 ```
 
+### 配置api代理，解决跨域
+```js
+export default defineNuxtConfig({
+nitro: {
+    devProxy: {
+      "/api": {
+        target: "http://192.168.1.1", // 这里是接口地址
+        changeOrigin: true,
+        prependPath: true,
+      },
+    },
+    // 该配置用于服务端请求转发
+    routeRules: {
+      '/api/**': {
+        proxy: 'http://192.168.1.1/**'
+      }
+    }
+  },
+})
+//在调用接口的地方直接使用`/api`即可，不需要配置域名和ip
+```
+
 ### 封装api请求方法
 ```js
 /**
