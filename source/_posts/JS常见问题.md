@@ -364,3 +364,18 @@ intersectionObserver.observe(document.querySelector('.scrollerFooter'));
 ```
 
 ### 递归的核心用法就是函数内部判断并自调用，而重要的是参数，传入的参数和自调用参数形成层级递归遍历
+
+### structuredClone()
+
+这个函数可以用来进行深拷贝 JavaScript 变量。 也支持循环引用，如下所示：
+```js
+const original = { name: "MDN" };
+original.itself = original;
+
+// 克隆
+const clone = structuredClone(original);
+
+console.assert(clone !== original); // the objects are not the same (not same identity)
+console.assert(clone.name === "MDN"); // they do have the same values
+console.assert(clone.itself === clone); // and the circular reference is preserved
+```

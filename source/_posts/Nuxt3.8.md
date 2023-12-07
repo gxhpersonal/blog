@@ -107,3 +107,16 @@ const change = () => {
   cityName.value = v.city_name;
 }
 ```
+
+### 在不同端获取数据
+```js
+/* 此调用在水合之前执行 */
+const { article } = await useFetch('api/article')
+
+/* 此调用仅在客户端执行 */
+const { pending, data: posts } = useFetch('/api/comments', {
+  lazy: true,
+  server: false
+})
+```
+要注意的是，如果使用的预渲染，水合之前执行的数据，img图片会有缓存，所以如果是经常变动的数据，不要使用这种方式请求数据；
