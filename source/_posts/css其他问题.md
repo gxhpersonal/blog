@@ -427,3 +427,15 @@ stretch (默认值）: 如果子元素未设置高度或者高度为auto，将�
   }
 }
 ```
+
+### white-space参数
+```css
+p {
+  white-space: normal; /* 连续的空白符会被合并 */
+  white-space: nowrap; /* 和 normal 一样合并空白符，但阻止源码中的文本换行。 */
+  white-space: pre;
+  white-space: pre-wrap;
+  white-space: pre-line;
+  white-space: break-spaces;
+}
+```
