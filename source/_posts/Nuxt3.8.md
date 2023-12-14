@@ -28,6 +28,7 @@ useRuntimeConfig().public.baseURL
 
 ### 配置api代理，解决跨域
 ```js
+//这种只适合在dev环境，配置也能看出来devProxy配置，如果是预渲染测试，则此配置不行，当然服务端渲染可
 export default defineNuxtConfig({
 nitro: {
     devProxy: {
