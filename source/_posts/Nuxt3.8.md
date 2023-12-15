@@ -121,3 +121,28 @@ const { pending, data: posts } = useFetch('/api/comments', {
 })
 ```
 要注意的是，如果使用的预渲染，水合之前执行的数据，img图片会有缓存，所以如果是经常变动的数据，不要使用这种方式请求数据；
+
+### 服务端渲染（ssr）相关配置
+1. 新建文件`ecosystem.config.js`，并填写以下代码：
+```js
+module.exports = {
+  apps: [
+    {
+      name: 'NuxtAppName',
+      port: '8921',
+      path : "服务器IP",
+      exec_mode: 'cluster',
+      instances: 'max',
+      script: './.output/server/index.mjs'
+    }
+  ]
+}
+```
+2. 安装pm2
+```bash
+npm install -g pm2
+```
+3. 在服务器项目目录下运行
+```bash
+pm2 start nuxt
+```

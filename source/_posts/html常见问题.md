@@ -71,3 +71,9 @@ JSON.stringify()将对象转换为字符串
 ```html
 <meta name="apple-itunes-app" content="app-id=xxxxx, app-argument=appname://feed">
 ```
+
+### 文案中的引号和字段外的引号冲突解决
+```js
+//用反斜杠\包裹引号
+const str = 'BIG SHOTS\'\ COMMENTS';
+```
