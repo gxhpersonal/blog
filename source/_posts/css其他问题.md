@@ -288,6 +288,15 @@ unset
 > initial	 设置为默认值 <br/>
 > inherit	 从该元素的父元素继承属性。
 
+`object-position`属性
+> object-position 属性与 object-fit 属性一起使用，指定图像或视频应如何在其内容框中使用 x/y 坐标进行定位。
+```css
+img {
+  object-fit: cover;
+  object-position: bottom right;
+}
+```
+
 ### 卡片翻转效果实现
 ```html
 <style>
@@ -437,5 +446,23 @@ p {
   white-space: pre-wrap;
   white-space: pre-line;
   white-space: break-spaces;
+}
+```
+
+### inset
+
+在处理位置时，您可以使用 inset 属性，而不是使用 top、right、bottom、left 属性。
+```css
+div {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  left: 16px;
+  bottom: 23px;
+}
+/*可以这样替代上面写法*/
+div {
+  position: absolute;
+  inset: 20px 25px 16px 23px;
 }
 ```
