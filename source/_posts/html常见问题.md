@@ -77,3 +77,5 @@ JSON.stringify()将对象转换为字符串
 //用反斜杠\包裹引号
 const str = 'BIG SHOTS\'\ COMMENTS';
 ```
+
+### js中并不能直接使用`↵`换行，可以替换为`\n`

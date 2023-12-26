@@ -440,17 +440,16 @@ stretch (默认值）: 如果子元素未设置高度或者高度为auto，将�
 ### white-space参数
 ```css
 p {
-  white-space: normal; /* 连续的空白符会被合并 */
-  white-space: nowrap; /* 和 normal 一样合并空白符，但阻止源码中的文本换行。 */
-  white-space: pre;
-  white-space: pre-wrap;
-  white-space: pre-line;
-  white-space: break-spaces;
+  white-space: normal;  /* 连续的空白符会被合并 */
+  white-space: nowrap;  /* 和 normal 一样合并空白符，但阻止文本换行 */
+  white-space: pre;     /* 连续的空白符会被保留。仅在遇到换行符或 <br> 元素时才会换行。*/
+  white-space: pre-wrap;/* 连续的空白符会被保留。在遇到换行符或 <br> 元素时，或者根据填充行框盒子的需要换行。*/
+  white-space: pre-line;/* 连续的空白符会被合并。在遇到换行符或 <br> 元素时，或者根据填充行框盒子的需要换行。*/
+  white-space: break-spaces;/* 与 pre-wrap 的行为相同，但空白占空间并且可被截断 */
 }
 ```
 
 ### inset
-
 在处理位置时，您可以使用 inset 属性，而不是使用 top、right、bottom、left 属性。
 ```css
 div {
