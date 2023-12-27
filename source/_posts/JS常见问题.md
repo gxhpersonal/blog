@@ -379,3 +379,14 @@ console.assert(clone !== original); // the objects are not the same (not same id
 console.assert(clone.name === "MDN"); // they do have the same values
 console.assert(clone.itself === clone); // and the circular reference is preserved
 ```
+
+### 切换全屏模式
+```js
+const fullscreen = (mode = true, el = 'body') =>
+  mode
+    ? document.querySelector(el).requestFullscreen()
+    : document.exitFullscreen();
+
+fullscreen(); // 在全屏模式打开网页
+fullscreen(false); // 退出全屏
+```
