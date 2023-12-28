@@ -317,3 +317,29 @@ render(){
 
 ### react中css作用域
 react充分发扬自由编程，没有自己语法的特点，没有自己的css作用域，所以需要用到webpack中的`css-module`，一般是默认的，无需配置。
+
+### 无法获取自定义组件的 ref 
+> Warning: Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?
+
+这是因为默认情况下，自定义组件不会暴露它们内部 DOM 节点的 ref。
+```jsx
+import { forwardRef } from 'react';
+
+const MyInput = forwardRef(({ value, onChange }, ref) => {
+  return (
+    <input
+      value={value}
+      onChange={onChange}
+      ref={ref}
+    />
+  );
+});
+
+export default MyInput;
+```
+这样，父级组件就可以得到子组件的 ref。
+```jsx
+const inputRef = useRef(null);
+
+return <MyInput ref={inputRef} />;
+```
