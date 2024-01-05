@@ -311,3 +311,36 @@ Page({
 所以插件尽量放到分包中
 
 ### 加密数据传输用CryptoJS
+
+### 弱网体验优化（弱网情况下直接返回缓存的数据）
+```js
+App({
+  onLaunch() {
+    const cacheManager = wx.createCacheManager({
+      origin: `api域名`,
+    })
+    
+    cacheManager.addRules([
+      //监听的api路由
+      '/cgi/home',
+      '/cgi/detail/:id',
+    ])
+    cacheManager.on('enterWeakNetwork', () => {
+      console.log('enterWeakNetwork')
+    })
+    cacheManager.on('exitWeakNetwork', () => {
+      console.log('exitWeakNetwork')
+    })
+    cacheManager.on('request', evt => {
+      return new Promise((resolve, reject) => {
+        const matchRes = cacheManager.match(evt)
+        if (matchRes) {
+          resolve(matchRes.data || null)
+        } else {
+          reject({errMsg: `catch not found: ${evt.url}`})
+        }
+      })
+    })
+  }
+})
+```
