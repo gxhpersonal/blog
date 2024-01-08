@@ -28,7 +28,7 @@
 <meta property="og:description" content="新建项目项目配置1.开启 PreBundle 配置  开发环境热更新占用内存可以大大降低，热更新所需时间也将大幅减少；生产模式也可以通过提前编译依赖，大幅提升部署效率。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-10-17T06:52:19.000Z">
-<meta property="article:modified_time" content="2023-11-01T06:00:31.530Z">
+<meta property="article:modified_time" content="2024-01-08T02:35:18.366Z">
 <meta property="article:author" content="郭雪辉">
 <meta property="article:tag" content="taro">
 <meta name="twitter:card" content="summary">
@@ -241,7 +241,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-11-01 14:00:31" itemprop="dateModified" datetime="2023-11-01T14:00:31+08:00">2023-11-01</time>
+                <time title="修改时间：2024-01-08 10:35:18" itemprop="dateModified" datetime="2024-01-08T10:35:18+08:00">2024-01-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -259,14 +259,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.6k</span>
+              <span>4.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -313,6 +313,11 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//config/index.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="attr">alias</span>: &#123;</span><br><span class="line">    <span class="string">&#x27;@/components&#x27;</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&#x27;..&#x27;</span>, <span class="string">&#x27;src/components&#x27;</span>),</span><br><span class="line">    <span class="string">&#x27;@/utils&#x27;</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&#x27;..&#x27;</span>, <span class="string">&#x27;src/utils&#x27;</span>),</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//index.jsx</span></span><br><span class="line"><span class="keyword">import</span> A <span class="keyword">from</span> <span class="string">&#x27;@/components/A&#x27;</span></span><br></pre></td></tr></table></figure>
 <p>为了让编辑器（VS Code）不报错，并继续使用自动路径补全的功能（F12能定位到引用文件并打开）：</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//项目根目录下新建文件 jsconfig.json</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;compilerOptions&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;baseUrl&quot;</span><span class="punctuation">:</span> <span class="string">&quot;.&quot;</span><span class="punctuation">,</span> <span class="comment">//根路径</span></span><br><span class="line">    <span class="attr">&quot;paths&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;@/components/*&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;./src/components/*&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="comment">//相对路径，如果有更深引用，需要加 /*</span></span><br><span class="line">      <span class="attr">&quot;@/utils/*&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;./src/utils/*&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="mobx中请求异步赋值警告"><a href="#mobx中请求异步赋值警告" class="headerlink" title="mobx中请求异步赋值警告"></a>mobx中请求异步赋值警告</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; runInAction &#125; <span class="keyword">from</span> <span class="string">&#x27;mobx&#x27;</span>;</span><br><span class="line">getAdvData = <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> data = <span class="keyword">await</span> api.<span class="title function_">http</span>(&#123; <span class="attr">url</span>: <span class="string">&#x27;/xjb/city/advList&#x27;</span> &#125;)</span><br><span class="line">  <span class="comment">//需要把赋值操作放在runInAction回调中</span></span><br><span class="line">  <span class="title function_">runInAction</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">banner</span> = data.<span class="property">result</span>.<span class="property">first_banner</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">cipian</span> = data.<span class="property">result</span>.<span class="property">first_cipian</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">jingang</span> = data.<span class="property">result</span>.<span class="property">first_jingang</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">address</span> = data.<span class="property">result</span>.<span class="property">jiabo_adress</span>[<span class="number">0</span>].<span class="property">image_url</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">yunying</span> = data.<span class="property">result</span>.<span class="property">first_yunying</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="编译taro警告Error-chunk-common-mini-css-extract-plugin"><a href="#编译taro警告Error-chunk-common-mini-css-extract-plugin" class="headerlink" title="编译taro警告Error: chunk common [mini-css-extract-plugin]"></a>编译taro警告<code>Error: chunk common [mini-css-extract-plugin]</code></h3><p>这是由于引用组件顺序不同，打包时会多打包一次，就会发出警告</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="attr">mini</span>: &#123;</span><br><span class="line">    <span class="attr">miniCssExtractPluginOptions</span>: &#123;</span><br><span class="line">      <span class="attr">ignoreOrder</span>: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -330,8 +335,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/blog/2023/09/06/nvm%E5%AE%89%E8%A3%85/" rel="prev" title="nvm安装">
-      <i class="fa fa-chevron-left"></i> nvm安装
+    <a href="/blog/2023/10/17/uni-app/" rel="prev" title="uni-app">
+      <i class="fa fa-chevron-left"></i> uni-app
     </a></div>
       <div class="post-nav-item">
     <a href="/blog/2023/11/16/Nuxt3.8/" rel="next" title="Nuxt.js 3.8">
@@ -395,7 +400,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">新建项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">项目配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E4%BA%A7%E9%A2%84%E6%B8%B2%E6%9F%93"><span class="nav-number">3.</span> <span class="nav-text">生产预渲染</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%81%E4%B9%85%E5%8C%96%E7%BC%93%E5%AD%98%E5%8A%9F%E8%83%BD%EF%BC%8C%E6%8F%90%E5%8D%87%E4%BA%8C%E6%AC%A1%E7%BC%96%E8%AF%91%E9%80%9F%E5%BA%A6%EF%BC%8C%E6%8F%90%E5%8D%87%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87"><span class="nav-number">4.</span> <span class="nav-text">持久化缓存功能，提升二次编译速度，提升开发效率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8C%E6%97%B6%E6%89%93%E5%8C%85%E5%A4%9A%E6%AE%B5%E4%BB%A3%E7%A0%81%EF%BC%8C%E5%A4%9A%E7%AB%AF%E9%A1%B9%E7%9B%AE%E5%90%8C%E6%97%B6%E8%B0%83%E8%AF%95"><span class="nav-number">5.</span> <span class="nav-text">同时打包多段代码，多端项目同时调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%8E%AF%E5%A2%83%E5%AD%97%E6%AE%B5"><span class="nav-number">6.</span> <span class="nav-text">添加环境字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Uncaught-Error-Rendered-fewer-hooks-than-expected-This-may-be-caused-by-an-accidental-early-return-statement"><span class="nav-number">7.</span> <span class="nav-text">Uncaught Error: Rendered fewer hooks than expected. This may be caused by an accidental early return statement.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E4%B8%BB%E5%8C%85%E4%BD%93%E7%A7%AF%E5%A4%A7%E5%B0%8F"><span class="nav-number">8.</span> <span class="nav-text">优化主包体积大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E9%A1%B5%E9%9D%A2%E5%BC%95%E7%94%A8%E5%90%8C%E4%B8%80%E4%B8%AA%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E6%97%B6%EF%BC%8C%E9%A1%B5%E9%9D%A2%E4%B8%8D%E6%98%BE%E7%A4%BA"><span class="nav-number">9.</span> <span class="nav-text">多个页面引用同一个自定义组件时，页面不显示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#useEffect"><span class="nav-number">10.</span> <span class="nav-text">useEffect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#alias"><span class="nav-number">11.</span> <span class="nav-text">alias</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">新建项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">项目配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E4%BA%A7%E9%A2%84%E6%B8%B2%E6%9F%93"><span class="nav-number">3.</span> <span class="nav-text">生产预渲染</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%81%E4%B9%85%E5%8C%96%E7%BC%93%E5%AD%98%E5%8A%9F%E8%83%BD%EF%BC%8C%E6%8F%90%E5%8D%87%E4%BA%8C%E6%AC%A1%E7%BC%96%E8%AF%91%E9%80%9F%E5%BA%A6%EF%BC%8C%E6%8F%90%E5%8D%87%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87"><span class="nav-number">4.</span> <span class="nav-text">持久化缓存功能，提升二次编译速度，提升开发效率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8C%E6%97%B6%E6%89%93%E5%8C%85%E5%A4%9A%E6%AE%B5%E4%BB%A3%E7%A0%81%EF%BC%8C%E5%A4%9A%E7%AB%AF%E9%A1%B9%E7%9B%AE%E5%90%8C%E6%97%B6%E8%B0%83%E8%AF%95"><span class="nav-number">5.</span> <span class="nav-text">同时打包多段代码，多端项目同时调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%8E%AF%E5%A2%83%E5%AD%97%E6%AE%B5"><span class="nav-number">6.</span> <span class="nav-text">添加环境字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Uncaught-Error-Rendered-fewer-hooks-than-expected-This-may-be-caused-by-an-accidental-early-return-statement"><span class="nav-number">7.</span> <span class="nav-text">Uncaught Error: Rendered fewer hooks than expected. This may be caused by an accidental early return statement.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E4%B8%BB%E5%8C%85%E4%BD%93%E7%A7%AF%E5%A4%A7%E5%B0%8F"><span class="nav-number">8.</span> <span class="nav-text">优化主包体积大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E9%A1%B5%E9%9D%A2%E5%BC%95%E7%94%A8%E5%90%8C%E4%B8%80%E4%B8%AA%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E6%97%B6%EF%BC%8C%E9%A1%B5%E9%9D%A2%E4%B8%8D%E6%98%BE%E7%A4%BA"><span class="nav-number">9.</span> <span class="nav-text">多个页面引用同一个自定义组件时，页面不显示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#useEffect"><span class="nav-number">10.</span> <span class="nav-text">useEffect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#alias"><span class="nav-number">11.</span> <span class="nav-text">alias</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mobx%E4%B8%AD%E8%AF%B7%E6%B1%82%E5%BC%82%E6%AD%A5%E8%B5%8B%E5%80%BC%E8%AD%A6%E5%91%8A"><span class="nav-number">12.</span> <span class="nav-text">mobx中请求异步赋值警告</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E8%AF%91taro%E8%AD%A6%E5%91%8AError-chunk-common-mini-css-extract-plugin"><span class="nav-number">13.</span> <span class="nav-text">编译taro警告Error: chunk common [mini-css-extract-plugin]</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -410,18 +415,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/blog/archives">
-          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-count">64</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/blog/categories/">
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/blog/tags/">
-        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -482,7 +487,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:51</span>
+    <span title="站点阅读时长">2:52</span>
 </div>
 
         
