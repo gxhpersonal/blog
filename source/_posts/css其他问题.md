@@ -465,3 +465,10 @@ div {
   inset: 20px 25px 16px 23px;
 }
 ```
+
+### 选择前几个元素
+```css
+&:nth-child(-n + 4) {
+  margin-bottom: 0.2rem;
+}
+```

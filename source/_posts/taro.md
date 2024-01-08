@@ -174,3 +174,33 @@ import A from '@/components/A'
   }
 }
 ```
+
+### mobx中请求异步赋值警告
+```js
+import { runInAction } from 'mobx';
+getAdvData = async () => {
+  const data = await api.http({ url: '/xjb/city/advList' })
+  //需要把赋值操作放在runInAction回调中
+  runInAction(() => {
+    this.banner = data.result.first_banner
+    this.cipian = data.result.first_cipian
+    this.jingang = data.result.first_jingang
+    this.address = data.result.jiabo_adress[0].image_url
+    this.yunying = data.result.first_yunying
+  })
+}
+```
+
+### 编译taro警告`Error: chunk common [mini-css-extract-plugin]`
+这是由于引用组件顺序不同，打包时会多打包一次，就会发出警告
+```js
+export default {
+  // ...
+  mini: {
+    miniCssExtractPluginOptions: {
+      ignoreOrder: true,
+    },
+  }
+  // ...
+};
+```
