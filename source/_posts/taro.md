@@ -76,12 +76,51 @@ class SomePage extends Component {
 
 ### 持久化缓存功能，提升二次编译速度，提升开发效率
 
-### 同时打包多段代码，多端项目同时调试
+### 同时打包多端代码，多端项目同时调试
 ```js
 //config/index.js
 const baseConfig = {
   ...
   outputRoot: `dist/${process.env.TARO_ENV}`,
+}
+```
+
+### 半编译模式 —— CompileMode 通常用于节点较多的列表
+```js
+//config/index.js
+const config = {
+  mini: {
+    experimental: {
+      compileMode: true
+    }
+  }
+  // ...
+}
+//然后只需要给 Taro 基础组件添加 compileMode 属性，该组件及其 children 将会被编译为单独的小程序模板：
+function GoodsItem () {
+  return (
+    <View compileMode>
+      ...
+    </View>
+  )
+}
+```
+常见问题：
+1. 编译出的模板文件会增加包体积
+2. 只能优化部分语法
+
+### 优化主包体积大小
+```js
+//config/index.js
+//这样简单配置之后，可以避免主包没有引入的 module 被提取到commonChunks中，该功能会在打包时分析 module 和 chunk 的依赖关系，筛选出主包没有引用到的 module 把它提取到分包内
+module.exports = {
+  // ...
+  mini: {
+    // ...
+    optimizeMainPackage: {
+      enable: true,
+    },
+  },
 }
 ```
 
@@ -103,21 +142,6 @@ TARO_APP_API="https://api-dev.com"
 不要在循环，条件或嵌套函数中调用Hook。相反，始终在React函数的顶层使用Hooks。通过遵循此规则，您可以确保每次组件呈现时都以相同的顺序调用Hook。这就是允许React在多个useState和useEffect调用之间正确保留Hook状态的原因。
 
 选择在没有判断条件的顶层使用useContext、useState、useEffect、userHistory、useTransaction等，将获取的值，作为参数传给子组件使用。
-
-### 优化主包体积大小
-```js
-//config/index.js
-//这样简单配置之后，可以避免主包没有引入的 module 被提取到commonChunks中，该功能会在打包时分析 module 和 chunk 的依赖关系，筛选出主包没有引用到的 module 把它提取到分包内
-module.exports = {
-  // ...
-  mini: {
-    // ...
-    optimizeMainPackage: {
-      enable: true,
-    },
-  },
-}
-```
 
 ### 多个页面引用同一个自定义组件时，页面不显示
 开启`optimizeMainPackage`打包优化导致的。。。暂时不知道原因。。。估计是官方bug
@@ -203,4 +227,47 @@ export default {
   }
   // ...
 };
+```
+
+### 上滑加载page不更新问题
+```js
+//如果直接声明 let page = 1;在事件回调中page+=1;始终只能拿到page=2，应该是组件更新时，把page变量直接重置了；
+//如果用useState钩子，不能在事件中更新值，因为不能及时拿到更新后的page，所以要提前更新page，放在接口调用方法中：
+const [list, setList] = useState([]);
+const [hasData, setHasData] = useState(true);
+const [pages, setPages] = useState(1);
+const getData = async (page = 1, refresh = true) => {
+  //提前更新page
+  setPages(page);
+  let res = await api.http({
+    url: '/api/getdata',
+    data: { page }
+  });
+  if (refresh) {
+    setList(res.data);
+  } else {
+    setList(list.concat(res.data));
+  }
+  setHasData(res.data?.length < 10 ? false : true);
+}
+// 上滑触底
+useReachBottom(() => {
+  if (hasData) {
+    getData(currentTab, pages + 1, false);
+  }
+})
+```
+
+### ios小程序不支持直接写backdrop-filter，需要加上浏览器前缀-webkit-backdrop-filter
+
+### ios偶发自定义tabbar点击没反应问题
+经过真机调试，发现自定义tabbar在来回切换，会有一定几率点不到，因为tabbar被挤出了页面，掉在最下面，虽然还能看到，导致点不到
+```js
+//page show
+useDidShow(() => {
+  //触发一下滚动，解决ios偶发tabbar点不中bug
+  Taro.pageScrollTo({
+    scrollTop: 1
+  })
+})
 ```
