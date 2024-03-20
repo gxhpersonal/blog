@@ -271,3 +271,17 @@ useDidShow(() => {
   })
 })
 ```
+
+### 跳过编译某个css属性
+```css
+div{
+  /* autoprefixer: ignore next */
+  -webkit-box-orient: vertical;
+
+  /* 或者忽略段落： */
+
+  /* autoprefixer: off */
+  -webkit-box-orient: vertical;
+  /* autoprefixer: on */
+}
+```
