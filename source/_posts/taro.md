@@ -136,6 +136,7 @@ module.exports = {
 TARO_APP_ID="开发环境小程序APPID"
 TARO_APP_API="https://api-dev.com"
 ```
+> 如果想用除`development`和`production`之外的环境变量，如`test`，则需要在对应`.env.test`环境变量配置文件中增加如`TARO_APP_ENV`字段来区分。
 > 请注意，只有以`TARO_APP_`开头的变量将通过`webpack.DefinePlugin`静态地嵌入到客户端侧的代码中。这是为了避免和系统内置环境变量冲突。
 
 ### Uncaught Error: Rendered fewer hooks than expected. This may be caused by an accidental early return statement.
@@ -284,4 +285,20 @@ div{
   -webkit-box-orient: vertical;
   /* autoprefixer: on */
 }
+```
+
+### 适配小程序和H5安全距离的tabbar
+小程序：
+```css
+.tabbar{
+  padding-bottom: calc(10px + env(safe-area-inset-bottom));
+}
+```
+H5：
+```html
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+viewport-fit参数有三个值：
+contain：可视窗口完全包含网页内容
+cover：网页内容完全覆盖可视窗口
+auto：默认值，此值不影响初始布局视图端口，并且整个web页面都是可查看的
 ```
