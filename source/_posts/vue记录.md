@@ -449,4 +449,3 @@ let signLink =  /(Android)/i.test(navigator.userAgent) ? location.href : window.
 2.未在微信公众后台配置回跳具体到路由参数的链接都会被拦截至首页
 
 https://juejin.im/post/6844903632815521799
-https://juejin.im/post/6844903632815521799

@@ -302,3 +302,26 @@ contain：可视窗口完全包含网页内容
 cover：网页内容完全覆盖可视窗口
 auto：默认值，此值不影响初始布局视图端口，并且整个web页面都是可查看的
 ```
+
+### 解决移动端设置放大字体，导致页面也被放大显示不全
+```js
+// /config/index.js
+{
+  h5: {
+    postcss: {
+       pxtransform: {
+        enable: true,
+        config: {
+          baseFontSize: 50, //H5 字体尺寸大小基准值( Default: 20)。
+          maxRootSize: 100 //H5 根节点 font-size 的最大值(Default: 40)。
+        }
+      }
+    }
+  },
+}
+```
+这样配置好处有2：
+1.解决了手机设置了放大，页面也被放大显示不全的问题；
+2.调试看元素尺寸清晰，设计稿标准尺寸下，比如元素350px，则布局中换算的为3.5rem，直观又不用手动换算。
+
+### compression-webpack-plugin开启gzip压缩（服务器端其实也可以开启gzip，无需前端配置）

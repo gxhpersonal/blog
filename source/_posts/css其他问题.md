@@ -86,6 +86,7 @@ display: -webkit-box; 必须结合的属性 ，将对象作为弹性伸缩盒子
 -webkit-box-orient 必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。
 text-overflow，可以用来多行文本的情况下，用省略号“...”隐藏超出范围的文本 。
 ```
+> 升级版：https://codepen.io/xboxyan/pen/VwpPNbm?fileGuid=YcHxPHhHvDtpqvDw
 
 ### 自定义鼠标指针
 > cursor: url(/路径/cursor.cur), url(two.svg) 5 5,auto; 
