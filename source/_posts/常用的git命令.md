@@ -170,3 +170,14 @@ git config --global credential.helper store 操作的就是上面最后一行的
 ### 用Git Bash创建项目时，会遇到需要箭头选择项目依赖的情况
 1.在git bash中用箭头是无效的，因为有光标只会移动光标，可以用数字代替1代表选择第一个选项，以此类推。。；
 2.用编辑器或者`cmd`命令创建项目。
+
+### 已经在.gitignore中忽略某个文件，还是会进行提交
+
+如果已经提交过改文件，文件在前面已经被 git 跟踪，在这之后再添加到 .gitignore 中是无效的。
+```bash
+git rm -r --cached 文件/文件夹名字
+
+# 去掉已经托管的文件，然后重新提交
+git add .
+git commit -m '提交说明'
+```
