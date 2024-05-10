@@ -325,3 +325,6 @@ auto：默认值，此值不影响初始布局视图端口，并且整个web页�
 2.调试看元素尺寸清晰，设计稿标准尺寸下，比如元素350px，则布局中换算的为3.5rem，直观又不用手动换算。
 
 ### compression-webpack-plugin开启gzip压缩（服务器端其实也可以开启gzip，无需前端配置）
+
+### Taro.setClipboardData
+Taro.setClipboardData方法不能在异步回调中使用，ios浏览器H5会失效
