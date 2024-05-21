@@ -289,3 +289,9 @@ console.log(p1.money) // 2
 console.log(p1.#money) // Uncaught SyntaxError: Private field '#money' must be declared in an enclosing class
 
 ```
+
+##### 实例方法：toReversed()，toSorted()，toSpliced()，with()
+
+##### 实例方法：group()，groupToMap() (只是提案，未能使用)
+
+##### Math.trunc()
