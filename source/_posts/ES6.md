@@ -291,7 +291,14 @@ console.log(p1.#money) // Uncaught SyntaxError: Private field '#money' must be d
 ```
 
 ##### 实例方法：toReversed()，toSorted()，toSpliced()，with()
+`toReversed()`对应`reverse()`，用来颠倒数组成员的位置。
+`toSorted()`对应`sort()`，用来对数组成员排序。
+`toSpliced()`对应`splice()`，用来在指定位置，删除指定数量的成员，并插入新成员。
+`with(index, value)`对应`splice(index, 1, value)`，用来将指定位置的成员替换为新的值。
+
+两种方法对应用法完全一样，唯一区别的是不会改变原数组（要用babel转一下，有许多老款手机会报错不支持2024.5）
 
 ##### 实例方法：group()，groupToMap() (只是提案，未能使用)
 
 ##### Math.trunc()
+用于去除一个数的小数部分，返回整数部分
