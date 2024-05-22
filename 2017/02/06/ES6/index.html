@@ -28,7 +28,7 @@
 <meta property="og:description" content="let  constlet和var类似，let必须先声明后使用，否则会报错，let不存在变量提升；let声明变量，const声明常量； 12345678function block()&amp;#123;  let n &#x3D; 5;  if(true)&amp;#123;    let n &#x3D; 10;  &amp;#125;  console.log(n) &#x2F;&#x2F;5&amp;#125;block() 上面代码说明let有块级作用域，不">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-02-06T01:34:53.000Z">
-<meta property="article:modified_time" content="2024-05-14T03:40:01.738Z">
+<meta property="article:modified_time" content="2024-05-21T02:35:13.440Z">
 <meta property="article:author" content="郭雪辉">
 <meta property="article:tag" content="JS">
 <meta name="twitter:card" content="summary">
@@ -241,7 +241,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-05-14 11:40:01" itemprop="dateModified" datetime="2024-05-14T11:40:01+08:00">2024-05-14</time>
+                <time title="修改时间：2024-05-21 10:35:13" itemprop="dateModified" datetime="2024-05-21T10:35:13+08:00">2024-05-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -259,14 +259,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>5.9k</span>
+              <span>6.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
+              <span>6 分钟</span>
             </span>
 
         </div>
@@ -333,7 +333,10 @@
 <h5 id="私有槽位-及方法"><a href="#私有槽位-及方法" class="headerlink" title="私有槽位#及方法"></a>私有槽位<code>#</code>及方法</h5><p>使用<code>#</code>来实现真正安全的私有属性</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  #money=<span class="number">1</span></span><br><span class="line">  <span class="title function_">constructor</span> (name) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name</span><br><span class="line">  &#125;</span><br><span class="line">  get money () &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.#money</span><br><span class="line">  &#125;</span><br><span class="line">  set money (money) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.#money = money</span><br><span class="line">  &#125;</span><br><span class="line">  showMoney () &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.#money)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&#x27;fatfish&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p1.<span class="property">money</span>) <span class="comment">// 1</span></span><br><span class="line"><span class="comment">// p1.#money = 2 // We cannot modify #money in this way</span></span><br><span class="line">p1.<span class="property">money</span> = <span class="number">2</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p1.<span class="property">money</span>) <span class="comment">// 2</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p1.#money) <span class="comment">// Uncaught SyntaxError: Private field &#x27;#money&#x27; must be declared in an enclosing class</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h5 id="实例方法：toReversed-，toSorted-，toSpliced-，with"><a href="#实例方法：toReversed-，toSorted-，toSpliced-，with" class="headerlink" title="实例方法：toReversed()，toSorted()，toSpliced()，with()"></a>实例方法：toReversed()，toSorted()，toSpliced()，with()</h5><h5 id="实例方法：group-，groupToMap-只是提案，未能使用"><a href="#实例方法：group-，groupToMap-只是提案，未能使用" class="headerlink" title="实例方法：group()，groupToMap() (只是提案，未能使用)"></a>实例方法：group()，groupToMap() (只是提案，未能使用)</h5><h5 id="Math-trunc"><a href="#Math-trunc" class="headerlink" title="Math.trunc()"></a>Math.trunc()</h5>
+<h5 id="实例方法：toReversed-，toSorted-，toSpliced-，with"><a href="#实例方法：toReversed-，toSorted-，toSpliced-，with" class="headerlink" title="实例方法：toReversed()，toSorted()，toSpliced()，with()"></a>实例方法：toReversed()，toSorted()，toSpliced()，with()</h5><p><code>toReversed()</code>对应<code>reverse()</code>，用来颠倒数组成员的位置。<br><code>toSorted()</code>对应<code>sort()</code>，用来对数组成员排序。<br><code>toSpliced()</code>对应<code>splice()</code>，用来在指定位置，删除指定数量的成员，并插入新成员。<br><code>with(index, value)</code>对应<code>splice(index, 1, value)</code>，用来将指定位置的成员替换为新的值。</p>
+<p>两种方法对应用法完全一样，唯一区别的是不会改变原数组（要用babel转一下，有许多老款手机会报错不支持2024.5）</p>
+<h5 id="实例方法：group-，groupToMap-只是提案，未能使用"><a href="#实例方法：group-，groupToMap-只是提案，未能使用" class="headerlink" title="实例方法：group()，groupToMap() (只是提案，未能使用)"></a>实例方法：group()，groupToMap() (只是提案，未能使用)</h5><h5 id="Math-trunc"><a href="#Math-trunc" class="headerlink" title="Math.trunc()"></a>Math.trunc()</h5><p>用于去除一个数的小数部分，返回整数部分</p>
+
     </div>
 
     
@@ -497,7 +500,7 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">192k</span>
+    <span title="站点总字数">193k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
