@@ -77,6 +77,7 @@ p{
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;    /* 规定框的子元素应该被水平或垂直排列 */
     -moz-box-orient: vertical;       /* 支持火狐的写法 */
+    word-break: break-word;
 } 
 *line-clamp*
 限制在一个块元素显示的文本的行数。
@@ -87,6 +88,8 @@ display: -webkit-box; 必须结合的属性 ，将对象作为弹性伸缩盒子
 text-overflow，可以用来多行文本的情况下，用省略号“...”隐藏超出范围的文本 。
 ```
 > 升级版：https://codepen.io/xboxyan/pen/VwpPNbm?fileGuid=YcHxPHhHvDtpqvDw
+
+word-break 已弃用，但是如果想单词不换行，只有特长单词一行放不下才换行，只能用这个值；
 
 ### 自定义鼠标指针
 > cursor: url(/路径/cursor.cur), url(two.svg) 5 5,auto; 
