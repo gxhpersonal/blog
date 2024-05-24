@@ -297,10 +297,12 @@ div{
 H5：
 ```html
 <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<!-- 
 viewport-fit参数有三个值：
 contain：可视窗口完全包含网页内容
 cover：网页内容完全覆盖可视窗口
-auto：默认值，此值不影响初始布局视图端口，并且整个web页面都是可查看的
+auto：默认值，此值不影响初始布局视图端口，并且整个web页面都是可查看的 
+-->
 ```
 
 ### 解决移动端设置放大字体，导致页面也被放大显示不全
