@@ -2705,7 +2705,13 @@ $ git commit -a
 <h3 id="background-clip-实现文本背景图"><a href="#background-clip-实现文本背景图" class="headerlink" title="background-clip 实现文本背景图"></a>background-clip 实现文本背景图</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.text</span>&#123;</span><br><span class="line">  <span class="attribute">background-clip</span>: text;</span><br><span class="line">  -webkit-<span class="attribute">background-clip</span>: text;</span><br><span class="line">  <span class="attribute">color</span>: <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-<h3 id="invalid-伪类"><a href="#invalid-伪类" class="headerlink" title=":invalid 伪类"></a>:invalid 伪类</h3><h3 id="focus-within-伪类"><a href="#focus-within-伪类" class="headerlink" title=":focus-within 伪类"></a>:focus-within 伪类</h3><h3 id="mix-blend-mode-difference"><a href="#mix-blend-mode-difference" class="headerlink" title="mix-blend-mode:difference"></a>mix-blend-mode:difference</h3><blockquote>
+<h3 id="invalid-伪类"><a href="#invalid-伪类" class="headerlink" title=":invalid 伪类"></a>:invalid 伪类</h3><blockquote>
+<p>选择任何未通过验证的<code>&lt;form&gt;</code>、<code>&lt;fieldset&gt;</code>、<code>&lt;input&gt;</code>或其他表单元素。</p>
+</blockquote>
+<h3 id="focus-within-伪类"><a href="#focus-within-伪类" class="headerlink" title=":focus-within 伪类"></a>:focus-within 伪类</h3><blockquote>
+<p>当元素或其任意后代元素被聚焦时，将匹配该元素。换言之，它表示<code>:focus</code>伪类匹配到该元素自身或它的后代时，该伪类生效。</p>
+</blockquote>
+<h3 id="mix-blend-mode-difference"><a href="#mix-blend-mode-difference" class="headerlink" title="mix-blend-mode:difference"></a>mix-blend-mode:difference</h3><blockquote>
 <p><code>mix-blend-mode</code>属性描述了元素的内容应该与元素的直系父元素的内容和元素的背景如何混合。其中，difference 表示差值。</p>
 </blockquote>
 <h3 id="line-start和-block-end相关属性"><a href="#line-start和-block-end相关属性" class="headerlink" title="*-line-start和*-block-end相关属性"></a><code>*-line-start</code>和<code>*-block-end</code>相关属性</h3><p>其中 inline 和 block 表示方向， start 和 end 表示起止方位。</p>
