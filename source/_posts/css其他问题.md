@@ -374,8 +374,10 @@ img {
 
 
 ### :invalid 伪类
+> 选择任何未通过验证的`<form>`、`<fieldset>`、`<input>`或其他表单元素。
 
 ### :focus-within 伪类
+> 当元素或其任意后代元素被聚焦时，将匹配该元素。换言之，它表示`:focus`伪类匹配到该元素自身或它的后代时，该伪类生效。
 
 ### mix-blend-mode:difference 
 
