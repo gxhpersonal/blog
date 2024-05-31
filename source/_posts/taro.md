@@ -331,3 +331,5 @@ auto：默认值，此值不影响初始布局视图端口，并且整个web页�
 
 ### Taro.setClipboardData
 Taro.setClipboardData方法不能在异步回调中使用，ios浏览器H5会失效
+
+### 全局注入 scss 
