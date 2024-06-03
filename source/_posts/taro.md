@@ -333,3 +333,27 @@ auto：默认值，此值不影响初始布局视图端口，并且整个web页�
 Taro.setClipboardData方法不能在异步回调中使用，ios浏览器H5会失效
 
 ### 全局注入 scss 
+* config/index.js文件中：
+单文件路径形式
+当只有 resource 字段时，可以传入 scss 文件的绝对路径。
+```js
+module.exports = {
+  // ...
+  sass: {
+    resource: path.resolve(__dirname, '..', 'src/styles/variable.scss'),
+  },
+}
+```
+多文件路径形式
+当只有 resource 字段时，也可以传入一个路径数组。
+```js
+module.exports = {
+  // ...
+  sass: {
+    resource: [
+      path.resolve(__dirname, '..', 'src/styles/variable.scss'),
+      path.resolve(__dirname, '..', 'src/styles/mixins.scss'),
+    ],
+  },
+}
+```
