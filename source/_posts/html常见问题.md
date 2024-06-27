@@ -79,3 +79,13 @@ const str = 'BIG SHOTS\'\ COMMENTS';
 ```
 
 ### js中并不能直接使用`↵`换行，可以替换为`\n`
+
+### video标签autoplay无法自动播放
+```html
+<video width="550" autoplay muted playsinline loop>
+    <source src="video.mp4" type="video/mp4" />
+</video>
+```
+> playsinline：一个布尔属性，指明视频将内嵌（inline）播放，即在元素的播放区域内。请注意，没有此属性并不意味着视频始终是全屏播放的。
+> muted：一个布尔属性，指明在视频中音频的默认设置。设置后，音频会初始化为静音。默认值是 false, 意味着视频播放的时候音频也会播放。（在chorme里不设置muted:true，autoplay不会生效）
+> loop：一个布尔属性；指定后会在视频播放结束的时候，自动返回视频开始的地方，继续播放。
