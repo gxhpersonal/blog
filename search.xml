@@ -979,7 +979,11 @@
 
 <h3 id="文案中的引号和字段外的引号冲突解决"><a href="#文案中的引号和字段外的引号冲突解决" class="headerlink" title="文案中的引号和字段外的引号冲突解决"></a>文案中的引号和字段外的引号冲突解决</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//用反斜杠\包裹引号</span></span><br><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;BIG SHOTS\&#x27;\ COMMENTS&#x27;</span>;</span><br></pre></td></tr></table></figure>
 
-<h3 id="js中并不能直接使用↵换行，可以替换为-n"><a href="#js中并不能直接使用↵换行，可以替换为-n" class="headerlink" title="js中并不能直接使用↵换行，可以替换为\n"></a>js中并不能直接使用<code>↵</code>换行，可以替换为<code>\n</code></h3>]]></content>
+<h3 id="js中并不能直接使用↵换行，可以替换为-n"><a href="#js中并不能直接使用↵换行，可以替换为-n" class="headerlink" title="js中并不能直接使用↵换行，可以替换为\n"></a>js中并不能直接使用<code>↵</code>换行，可以替换为<code>\n</code></h3><h3 id="video标签autoplay无法自动播放"><a href="#video标签autoplay无法自动播放" class="headerlink" title="video标签autoplay无法自动播放"></a>video标签autoplay无法自动播放</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">width</span>=<span class="string">&quot;550&quot;</span> <span class="attr">autoplay</span> <span class="attr">muted</span> <span class="attr">playsinline</span> <span class="attr">loop</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;video.mp4&quot;</span> <span class="attr">type</span>=<span class="string">&quot;video/mp4&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>playsinline：一个布尔属性，指明视频将内嵌（inline）播放，即在元素的播放区域内。请注意，没有此属性并不意味着视频始终是全屏播放的。<br>muted：一个布尔属性，指明在视频中音频的默认设置。设置后，音频会初始化为静音。默认值是 false, 意味着视频播放的时候音频也会播放。（在chorme里不设置muted:true，autoplay不会生效）<br>loop：一个布尔属性；指定后会在视频播放结束的时候，自动返回视频开始的地方，继续播放。</p>
+</blockquote>
+]]></content>
       <categories>
         <category>html</category>
       </categories>
