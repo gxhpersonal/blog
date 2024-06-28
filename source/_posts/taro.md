@@ -357,3 +357,13 @@ module.exports = {
   },
 }
 ```
+
+### H5里滑动弹层禁止弹层下面的页面滚动
+```jsx
+const touchMove = (e) => {
+  e.preventDefault()
+}
+<View onTouchMove={(e) => touchMove(e)}>
+
+</View>
+```
