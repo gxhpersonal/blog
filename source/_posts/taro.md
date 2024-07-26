@@ -363,7 +363,8 @@ module.exports = {
 const touchMove = (e) => {
   e.preventDefault()
 }
-<View onTouchMove={(e) => touchMove(e)}>
+<View catchMove={true} onTouchMove={(e) => touchMove(e)}>
 
 </View>
+// catchMove={true} 作用在小程序环境里
 ```
