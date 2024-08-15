@@ -478,3 +478,18 @@ div {
   margin-bottom: 0.2rem;
 }
 ```
+
+### 视觉文案居中
+
+我们知道，中文标点字符基本和中文字符占同样的像素宽，就导致视觉上文案会偏左（如果标点符号在结尾时）；所以就有了下面的方案：
+```html
+<style>
+  p{
+    position:relative;
+  }
+  span{
+    position:absolute;
+  }
+</style>
+<p>智能加成，加亮加实力<span>。</span></p>
+```
