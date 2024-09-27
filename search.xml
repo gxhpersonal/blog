@@ -2445,7 +2445,8 @@ $ git commit -a
 </ul>
 <p>2.在远程服务器文件管理中我们可以看到<code>重定向的程序和文件夹</code>在里面我们可以找到本地项目，copy到远程服务器中，修改对应nginx配置root为项目路径：<br><img data-src="http://www.guoxh.com/blog/img/blog/nginx12.png"></p>
 <p>2.单页面项目配置history模式路由，nginx对应配置：<br>打开<code>conf</code>文件夹中<code>nginx.conf</code>文件，修改文件中：<br><img data-src="http://www.guoxh.com/blog/img/blog/nginx11.png"><br>我这个项目部署的是子目录，所以我这里加了<code>/vue-next/</code>子路径，如果是根目录部署，则不需要这个子路径；</p>
-<h3 id="ssr"><a href="#ssr" class="headerlink" title="ssr"></a>ssr</h3>]]></content>
+<h3 id="ssr"><a href="#ssr" class="headerlink" title="ssr"></a>ssr</h3><h3 id="jenkins删除文件操作"><a href="#jenkins删除文件操作" class="headerlink" title="jenkins删除文件操作"></a>jenkins删除文件操作</h3><p>我们会遇到jenkins打包失败的情况，可能是因为安装的包不匹配导致，所以希望删除node_modules文件夹，然后重新安装，这样就可以解决问题了:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rm -rf node_modules</span><br><span class="line">rm -rf package-lock.json //同时可以删除lock文件，防止锁定不一致的插件</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>服务器</category>
       </categories>
