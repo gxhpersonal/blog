@@ -75,6 +75,7 @@ subscriptions: {
 ```
 
 ### Form表单中有上传组件`Upload`，无法在Form.Item的name属性绑定对应值，需要特殊处理下
+一般是回显时使用`defaultFileList`属性绑定值，新增时可以用自带的`onChange`方法
 
 ### Form表单中的Form.Item组件`name`属性为数组时，可以做嵌套对象使用
 ```js
@@ -109,7 +110,7 @@ typeof(cityId) //'string'
 
 ### dispatch({...}).then(()=>{}) 报错 is not a function
 
-这种情况都是`dispatch`中的方法没找到，确认下方法是否声明
+这种情况都是`dispatch`中的方法没找到，确认下方法是否声明，或者需要在调用的方法中`return`一个值；
 
 ### 用umi搭建的项目，新增环境变量
 因为用了umi框架，所以不考虑用`cross-env`控制变量；
