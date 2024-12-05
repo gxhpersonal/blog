@@ -31,7 +31,7 @@ categories: css
 ```
 
 ### px em rem
-> 1.em
+#### 1.em
 一般都是 body 的 font-size 为基准，例如：
 ```css
 body {
@@ -45,7 +45,7 @@ h1 {
 ```
 计算公式：1 ÷ 父元素的font-size × 需要转换的像素值 = em值
 
-2.rem
+#### 2.rem
 ```css
 html {
     font-size: 62.5%;
