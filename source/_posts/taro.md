@@ -44,10 +44,11 @@ class SomePage extends Component {
   }
 
   componentDidMount() {
-    // 等待组件载入，先渲染了首屏我们再渲染其它内容，降低首次渲染的数据量
-    // 当 mounted 为 true 时，CompA, B, C 的 DOM 树才会作为 data 参与小程序渲染
-    // 注意我们需要在 `componentDidMount()` 这个周期做这件事（对应 Vue 的 `ready()`），更早的生命周期 `setState()` 会与首次渲染的数据一起合并更新
-    // 使用 nextTick 确保本次 setState 不会和首次渲染合并更新
+    /* 等待组件载入，先渲染了首屏我们再渲染其它内容，降低首次渲染的数据量
+     当 mounted 为 true 时，CompA, B, C 的 DOM 树才会作为 data 参与小程序渲染
+     注意我们需要在 `componentDidMount()` 这个周期做这件事（对应 Vue 的 `ready()`），
+    更早的生命周期 `setState()` 会与首次渲染的数据一起合并更新
+     使用 nextTick 确保本次 setState 不会和首次渲染合并更新 */
     Taro.nextTick(() => {
       this.setState({
         mounted: true,
@@ -112,7 +113,9 @@ function GoodsItem () {
 ### 优化主包体积大小
 ```js
 //config/index.js
-//这样简单配置之后，可以避免主包没有引入的 module 被提取到commonChunks中，该功能会在打包时分析 module 和 chunk 的依赖关系，筛选出主包没有引用到的 module 把它提取到分包内
+/*这样简单配置之后，可以避免主包没有引入的 module 被提取到commonChunks中，
+该功能会在打包时分析 module 和 chunk 的依赖关系，
+筛选出主包没有引用到的 module 把它提取到分包内*/
 module.exports = {
   // ...
   mini: {
@@ -162,7 +165,8 @@ useEffect(() => {
 ```js
 useEffect(() => {
   // ...
-}, []); // 不会再次运行（开发环境下除外）
+}, []); 
+// 不会再次运行（开发环境下除外）
 /* 为了 帮助你发现 bug，在开发环境下，React 在运行 setup 之前会额外运行一次setup 和 cleanup。
 这是一个压力测试，用于验证 Effect 逻辑是否正确实现。
 如果这会导致可见的问题，那么你的 cleanup 函数就缺少一些逻辑。
