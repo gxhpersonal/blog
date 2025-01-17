@@ -89,3 +89,17 @@ const str = 'BIG SHOTS\'\ COMMENTS';
 > playsinline：一个布尔属性，指明视频将内嵌（inline）播放，即在元素的播放区域内。请注意，没有此属性并不意味着视频始终是全屏播放的。
 > muted：一个布尔属性，指明在视频中音频的默认设置。设置后，音频会初始化为静音。默认值是 false, 意味着视频播放的时候音频也会播放。（在chorme里不设置muted:true，autoplay不会生效）
 > loop：一个布尔属性；指定后会在视频播放结束的时候，自动返回视频开始的地方，继续播放。
+
+微信内IOS页面视频不会自动播放，需要特殊判断下：
+```js
+if (window.WeixinJSBridge) {
+  WeixinJSBridge.invoke("getNetworkType", {}, function (e) {
+    setTimeout(() => {
+      that.player.play();
+    }, 2000);
+  });
+} else {
+  that.player.play();
+}
+```
+IOS浏览器内不自动播放加个`playsinline`属性，是禁止放大全屏播放属性，正好也解决了微信内会自动放大的问题；
