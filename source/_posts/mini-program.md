@@ -344,3 +344,15 @@ App({
   }
 })
 ```
+### swiper设置current属性失效
+
+如果有手动滑动过swiper,再设置current就不生效了,因为触发onchange事件没有同步current
+```js
+// 需要在onchange事件里手动同步下current值
+<swiper class="swiper" current="{{currentIndex}}"  bindchange="changeSwiper">
+changeSwiper(e) {
+    this.setData({
+      currentIndex: e.detail.current
+    })
+  },
+```
