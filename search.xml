@@ -984,6 +984,9 @@
 <blockquote>
 <p>playsinline：一个布尔属性，指明视频将内嵌（inline）播放，即在元素的播放区域内。请注意，没有此属性并不意味着视频始终是全屏播放的。<br>muted：一个布尔属性，指明在视频中音频的默认设置。设置后，音频会初始化为静音。默认值是 false, 意味着视频播放的时候音频也会播放。（在chorme里不设置muted:true，autoplay不会生效）<br>loop：一个布尔属性；指定后会在视频播放结束的时候，自动返回视频开始的地方，继续播放。</p>
 </blockquote>
+<p>微信内IOS页面视频不会自动播放，需要特殊判断下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="variable language_">window</span>.<span class="property">WeixinJSBridge</span>) &#123;</span><br><span class="line">  <span class="title class_">WeixinJSBridge</span>.<span class="title function_">invoke</span>(<span class="string">&quot;getNetworkType&quot;</span>, &#123;&#125;, <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      that.<span class="property">player</span>.<span class="title function_">play</span>();</span><br><span class="line">    &#125;, <span class="number">2000</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  that.<span class="property">player</span>.<span class="title function_">play</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>IOS浏览器内不自动播放加个<code>playsinline</code>属性，是禁止放大全屏播放属性，正好也解决了微信内会自动放大的问题；</p>
 ]]></content>
       <categories>
         <category>html</category>
