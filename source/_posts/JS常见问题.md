@@ -160,15 +160,6 @@ parseInt(UUserCard.substr(16, 1)) % 2 == 1
 如果月比当前月小或者月与当前月相等&&日比当前日小于等于，则年龄+1）*/
 ```
 
-### 时间格式转换
->Date 对象方法
-每个get方法都有对应的一个set方法，如：
-getFullYear() 对应 setFullYear()
-getMonth() 对应 setMonth()
-getTime() 对应 setTime() //返回 1970 年 1 月 1 日至今的毫秒数  和  	以毫秒设置 Date 对象。
-> Date.parse()和getTime()的区别：
-> getTime()方法是把一个date对象转成毫秒；parse()方法是把一个时间格式的字符串转换成毫秒。
-
 ### 多个同类型元素控制别的同类型的元素
 举个栗子：
 通过点击当前tab要控制侧边栏的导航tab，因为两个tab中的同级元素很多，所以可以根据他们的id来分别控制；
@@ -390,3 +381,38 @@ const fullscreen = (mode = true, el = 'body') =>
 fullscreen(); // 在全屏模式打开网页
 fullscreen(false); // 退出全屏
 ```
+
+### 时间格式转换
+```js
+const formatDate = (date, format = 'YYYY-MM-DD') => {
+  // 如果 date 是字符串或数字，转换为 Date 对象
+  if (typeof date === 'string' || typeof date === 'number') {
+    date = new Date(date);
+  }
+
+  // 如果 date 不是 Date 对象，抛出错误
+  if (!(date instanceof Date) || isNaN(date.getTime())) {
+    throw new Error('Invalid date');
+  }
+
+  // 定义时间部分的映射
+  const map = {
+    YYYY: date.getFullYear(), // 年份
+    MM: String(date.getMonth() + 1).padStart(2, '0'), // 月份，补零
+    DD: String(date.getDate()).padStart(2, '0'), // 日期，补零
+    HH: String(date.getHours()).padStart(2, '0'), // 小时，补零
+    mm: String(date.getMinutes()).padStart(2, '0'), // 分钟，补零
+    ss: String(date.getSeconds()).padStart(2, '0'), // 秒，补零
+  };
+
+  // 替换格式字符串中的占位符
+  return format.replace(/YYYY|MM|DD|HH|mm|ss/g, (match) => map[match]);
+}
+```
+> Date 对象方法
+每个get方法都有对应的一个set方法，如：
+getFullYear() 对应 setFullYear()
+getMonth() 对应 setMonth()
+getTime() 对应 setTime() //返回 1970 年 1 月 1 日至今的毫秒数  和  	以毫秒设置 Date 对象。
+> Date.parse()和getTime()的区别：
+> getTime()方法是把一个date对象转成毫秒；parse()方法是把一个时间格式的字符串转换成毫秒。
