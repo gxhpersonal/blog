@@ -1551,10 +1551,10 @@
 </ul>
 ]]></content>
       <categories>
-        <category>nvm</category>
+        <category>node版本管理工具</category>
       </categories>
       <tags>
-        <tag>nvm</tag>
+        <tag>node版本管理工具</tag>
       </tags>
   </entry>
   <entry>
@@ -2960,6 +2960,21 @@ $ git commit -a
       </categories>
       <tags>
         <tag>css</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>node版本管理工具n的使用</title>
+    <url>/blog/2025/03/04/node%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7n%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h3 id="nvm在-windows上用方便，n则在Mac上用方便"><a href="#nvm在-windows上用方便，n则在Mac上用方便" class="headerlink" title="nvm在 windows上用方便，n则在Mac上用方便"></a>nvm在 windows上用方便，n则在Mac上用方便</h3><h3 id="一、清除-node缓存"><a href="#一、清除-node缓存" class="headerlink" title="一、清除 node缓存"></a>一、清除 node缓存</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo npm cache clean --force</span><br></pre></td></tr></table></figure>
+<h3 id="二、全局安装-n"><a href="#二、全局安装-n" class="headerlink" title="二、全局安装 n"></a>二、全局安装 n</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo npm install n -g</span><br></pre></td></tr></table></figure>
+<h3 id="三、安装不同版本的node"><a href="#三、安装不同版本的node" class="headerlink" title="三、安装不同版本的node"></a>三、安装不同版本的node</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo n stable    // 安装最新稳定版</span><br><span class="line">sudo n lts       // 安装最新长期支持版</span><br><span class="line">sudo n 10.16.0   // 安装指定版本</span><br></pre></td></tr></table></figure>
+<h3 id="四、n-切换不同-node版本"><a href="#四、n-切换不同-node版本" class="headerlink" title="四、n 切换不同 node版本"></a>四、n 切换不同 node版本</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo n //用键盘上下键切换不同 node版本</span><br></pre></td></tr></table></figure>
+<h3 id="五、删除node指定版本"><a href="#五、删除node指定版本" class="headerlink" title="五、删除node指定版本"></a>五、删除node指定版本</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo n rm 10.16.0</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>node版本管理工具</category>
+      </categories>
+      <tags>
+        <tag>node版本管理工具</tag>
       </tags>
   </entry>
 </search>
