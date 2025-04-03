@@ -181,3 +181,13 @@ git rm -r --cached 文件/文件夹名字
 git add .
 git commit -m '提交说明'
 ```
+
+### 本地仓库和远程仓库关联
+```bash
+# 添加远程仓库
+git remote add origin 远程仓库地址
+```
+### 强制推送（慎用）​：仅限个人分支或团队协商后使用，会覆盖远程历史：
+```bash
+git push --force origin 分支名
+```
