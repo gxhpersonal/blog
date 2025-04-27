@@ -12,3 +12,6 @@ categories: uni-app
 uni.hideNavigationBarLoading();
 // #endif
 ```
+
+### 滚动一屏，sticky失效
+需要把 sticky元素放在 一个 view 中，不能放在 template 中  
