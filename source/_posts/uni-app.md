@@ -65,7 +65,7 @@ toMapAPP(data) {
   } else {
     // iOS上获取本机是否安装了百度高德地图，需要在manifest里配置
     // 在manifest.json文件app-plus->distribute->apple->urlschemewhitelist节点下添加
-    //（如urlschemewhitelist:["iosamap","baidumap"]）
+    //（如urlschemewhitelist:"iosamap","baidumap"）
     plus.nativeUI.actionSheet({
         title: "选择地图应用",
         cancel: "取消",
@@ -88,11 +88,15 @@ toMapAPP(data) {
           // 	break;
           case 1:
             url =
-              `baidumap://map/marker?location=${lat},${lng}&title=${shopName||name}&src=taoliangche&coord_type=gcj02`;
+              `baidumap://map/direction?origin={{我的位置}}&destination=latlng:${lat},${lng}|name=${shopName||name}&mode=driving&coord_type=bd09ll`;
+            // coord_type=bd09ll：坐标系类型，必须与传入的经纬度编码一致。
+            // origin={{我的位置}}：固定写法，表示以用户当前位置为起点。
             break;
           case 2:
-            url =
-              `androidamap://arroundpoi?sourceApplication=softname&keywords=${shopName||name}&lat=${lat}&lon=${lng}&dev=0`;
+            url = `iosamap://path?sourceApplication=掏靓车&keywords=${shopName||name}&dlat=${lat}&dlon=${lng}&dev=0&style=0`;
+              // lat/lon：目标经纬度（必须使用高德地图的 ​​GCJ-02​​ 坐标系）。
+              // dev：坐标系类型，0 表示 GCJ-02，1 表示 GPS（WGS-84）。
+              // style：导航方式，2 表示驾车，0 表示速度最快策略。
             break;
           default:
             break;
