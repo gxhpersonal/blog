@@ -75,3 +75,23 @@ const scroll = (e) => {
   ...
 </el-scrollbar>
 ```
+
+### element同时上传两个文件时，on-success只执行一次
+前提：如果on-success里面如果给file-list进行了赋值，此时这个回调方法只执行一次
+解决：
+```js
+// 上传成功回调
+onSuccess(response, file, fileList){
+  //等待所有文件都上传完成，这里注意fileList是所有的文件（包含已上传的）
+  if(fileList.every(it => it.status == 'success')) { 
+    fileList.map(item => {
+    //只push新上传的 （带有response）
+    item.response && this.fileList.push({name:item.response.data.originalName,url:item.response.data.link});
+    })
+    setTimeout(()=>{
+      //提交父组件改变的文件列表
+      this.$emit("input", this.fileList)
+      })
+    }
+}
+```
