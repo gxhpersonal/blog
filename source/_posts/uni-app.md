@@ -5,6 +5,26 @@ tags: uni-app
 categories: uni-app
 ---
 
+### 小程序增加判断环境
+```js
+// #ifdef MP-WEIXIN
+const accountInfo = uni.getAccountInfoSync();
+const {
+	envVersion
+} = accountInfo.miniProgram; //小程序当前环境
+Vue.prototype.$envVersion = envVersion;
+if (envVersion == "develop") {
+	// url = 'https://www.xxx.site'
+}
+if (envVersion == "trial") {
+	url = "http://192.168.1.1" //测试环境
+}
+if (envVersion == "release") {
+	url = 'https://www.xxx.site'
+}
+// #endif
+```
+
 ### 条件编译快捷命令
 选中要条件编译的代码块，`ctrl + alt + /`即可生成正确注释
 ```js
