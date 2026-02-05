@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.guoxh.com","root":"/blog/","images":"/blog/images","scheme":"Muse","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/blog/js/config.js"></script>
+
+    <meta name="description" content="iOS中时间格式ios不支持时间格式如：new Date(2018-01-24)或者 new Date(2018.01.24)格式转换,会抛出NaN,所以要转换成&#x2F;格式的，如： 12345let date &#x3D; 2018-02-12;let newDate &#x3D; date.replace(&#x2F;-&#x2F;g,&amp;#x27;&#x2F;&amp;#x27;);let returnDate &#x3D; new Date(newDate)加时分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端与原生交互">
+<meta property="og:url" content="https://www.guoxh.com/blog/2018/01/22/JS%E4%B8%8E%E5%8E%9F%E7%94%9F%E4%BA%A4%E4%BA%92/index.html">
+<meta property="og:site_name" content="blog station">
+<meta property="og:description" content="iOS中时间格式ios不支持时间格式如：new Date(2018-01-24)或者 new Date(2018.01.24)格式转换,会抛出NaN,所以要转换成&#x2F;格式的，如： 12345let date &#x3D; 2018-02-12;let newDate &#x3D; date.replace(&#x2F;-&#x2F;g,&amp;#x27;&#x2F;&amp;#x27;);let returnDate &#x3D; new Date(newDate)加时分">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-01-22T06:25:23.000Z">
+<meta property="article:modified_time" content="2026-02-05T07:34:27.045Z">
+<meta property="article:author" content="郭雪辉">
+<meta property="article:tag" content="Native">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.guoxh.com/blog/2018/01/22/JS%E4%B8%8E%E5%8E%9F%E7%94%9F%E4%BA%A4%E4%BA%92/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.guoxh.com/blog/2018/01/22/JS%E4%B8%8E%E5%8E%9F%E7%94%9F%E4%BA%A4%E4%BA%92/","path":"2018/01/22/JS与原生交互/","title":"前端与原生交互"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>前端与原生交互 | blog station</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">blog station</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#iOS%E4%B8%AD%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">iOS中时间格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iOS11-XX%E4%BB%A5%E4%B8%8A%E7%9A%84iPhone%E6%B3%A8%E6%84%8F"><span class="nav-number">2.</span> <span class="nav-text">iOS11.XX以上的iPhone注意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iOS%E7%8E%AF%E5%A2%83css-active%E4%BC%AA%E5%85%83%E7%B4%A0%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">iOS环境css :active伪元素不起作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IOS%E6%94%AF%E6%8C%813D-touch%E7%9A%84%E6%89%8B%E6%9C%BA%E5%A6%82%E6%9E%9C%E9%A1%B5%E9%9D%A2%E6%9C%89a%E6%A0%87%E7%AD%BE%E9%95%BF%E6%8C%89%E4%BC%9A%E8%A7%A6%E5%8F%913D-touch%E5%B9%B6%E4%B8%94%E8%B7%B3%E8%BD%AC%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="nav-number">4.</span> <span class="nav-text">IOS支持3D touch的手机如果页面有a标签长按会触发3D touch并且跳转浏览器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E5%8E%9F%E7%94%9F%E4%BA%A4%E4%BA%92%E6%96%B9%E6%B3%95%E5%AE%9A%E4%B9%89"><span class="nav-number">5.</span> <span class="nav-text">与原生交互方法定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ios%E4%B8%8B%E6%BB%9A%E5%8A%A8%E8%83%8C%E6%99%AFbody%E5%AF%BC%E8%87%B4%E5%BC%B9%E5%B1%82%E4%B8%AD%E6%BB%9A%E5%8A%A8%E6%9D%A1%E5%A4%B1%E6%95%88"><span class="nav-number">6.</span> <span class="nav-text">ios下滚动背景body导致弹层中滚动条失效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%A6%E6%88%AAAndroid%E8%87%AA%E5%B8%A6%E7%9A%84%E7%89%A9%E7%90%86%E8%BF%94%E5%9B%9E%E9%94%AE"><span class="nav-number">7.</span> <span class="nav-text">拦截Android自带的物理返回键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8app%E9%87%8C%E7%94%A8JS%E5%86%99%E6%BB%91%E5%8A%A8%E6%89%8B%E5%8A%BF"><span class="nav-number">8.</span> <span class="nav-text">在app里用JS写滑动手势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#js%E7%9B%91%E6%B5%8B%E6%89%8B%E6%9C%BA%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%AF%E5%90%A6%E5%88%87%E6%8D%A2%E5%88%B0%E5%90%8E%E5%8F%B0%E5%BA%94%E7%94%A8"><span class="nav-number">9.</span> <span class="nav-text">js监测手机浏览器是否切换到后台应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9Eapp%E7%8E%AF%E5%A2%83%E6%89%93%E5%BC%80%E9%A1%B5%E9%9D%A2%E8%87%AA%E5%8A%A8%E6%8F%90%E7%A4%BA-%E8%87%AA%E5%8A%A8%E8%B7%B3%E8%BD%ACapp%E4%B8%AD%E5%AF%B9%E5%BA%94%E9%A1%B5%E9%9D%A2%EF%BC%8C%E6%9C%AA%E6%88%90%E5%8A%9F%E8%B7%B3%E8%BD%AC%E5%88%99%E8%B7%B3%E8%BD%ACapp%E4%B8%8B%E8%BD%BD%E9%A1%B5"><span class="nav-number">10.</span> <span class="nav-text">非app环境打开页面自动提示&#x2F;自动跳转app中对应页面，未成功跳转则跳转app下载页</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">郭雪辉</p>
+  <div class="site-description" itemprop="description">郭雪辉博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog/categories/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/blog/tags/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.guoxh.com/blog/2018/01/22/JS%E4%B8%8E%E5%8E%9F%E7%94%9F%E4%BA%A4%E4%BA%92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="郭雪辉">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog station">
+      <meta itemprop="description" content="郭雪辉博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="前端与原生交互 | blog station">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          前端与原生交互
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-01-22 14:25:23" itemprop="dateCreated datePublished" datetime="2018-01-22T14:25:23+08:00">2018-01-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-05 15:34:27" itemprop="dateModified" datetime="2026-02-05T15:34:27+08:00">2026-02-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/Native/" itemprop="url" rel="index"><span itemprop="name">Native</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="iOS中时间格式"><a href="#iOS中时间格式" class="headerlink" title="iOS中时间格式"></a>iOS中时间格式</h3><p>ios不支持时间格式如：new Date(2018-01-24)或者 new Date(2018.01.24)格式转换,会抛出NaN,所以要转换成<code>/</code>格式的，如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let date = 2018-02-12;</span><br><span class="line">let newDate = date.replace(/-/g,&#x27;/&#x27;);</span><br><span class="line">let returnDate = new Date(newDate)</span><br><span class="line">加时分秒：</span><br><span class="line">例如：2018/10/10 12:34:59支持</span><br></pre></td></tr></table></figure>
+
+<h3 id="iOS11-XX以上的iPhone注意"><a href="#iOS11-XX以上的iPhone注意" class="headerlink" title="iOS11.XX以上的iPhone注意"></a>iOS11.XX以上的iPhone注意</h3><p>1.如果页面中有弹窗有input标签的，此弹窗（包括所有input的父级元素）不能用fixed布局，当弹窗被键盘顶上去，会导致input光标错乱，而且弹窗上面的按钮无法点击；<br>解决办法：弹层改为position：absolute，其他所有元素都隐藏，相当于页面只留一个弹层，不再让弹层脱离流</p>
+<h3 id="iOS环境css-active伪元素不起作用"><a href="#iOS环境css-active伪元素不起作用" class="headerlink" title="iOS环境css :active伪元素不起作用"></a>iOS环境css :active伪元素不起作用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.body.addEventListener(&#x27;touchstart&#x27;, function () &#123; &#125;)</span><br></pre></td></tr></table></figure>
+<p>如上，要给body或者点击的元素加touchstart事件，来触发:active伪元素</p>
+<h3 id="IOS支持3D-touch的手机如果页面有a标签长按会触发3D-touch并且跳转浏览器"><a href="#IOS支持3D-touch的手机如果页面有a标签长按会触发3D-touch并且跳转浏览器" class="headerlink" title="IOS支持3D touch的手机如果页面有a标签长按会触发3D touch并且跳转浏览器"></a>IOS支持3D touch的手机如果页面有a标签长按会触发3D touch并且跳转浏览器</h3><h3 id="与原生交互方法定义"><a href="#与原生交互方法定义" class="headerlink" title="与原生交互方法定义"></a>与原生交互方法定义</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">imgesPreview: function (data) &#123;</span><br><span class="line">    if (Basic.isAppVersionAbove &amp;&amp; Basic.isAppVersionAbove(&quot;2.4.7&quot;)) &#123;</span><br><span class="line">      //IOS</span><br><span class="line">      if (</span><br><span class="line">        window.webkit &amp;&amp;</span><br><span class="line">        window.webkit.messageHandlers &amp;&amp;</span><br><span class="line">        window.webkit.messageHandlers.imgesPreview</span><br><span class="line">      ) &#123;</span><br><span class="line">		//如果传入的data为空，ios要传一个空字符串&quot;&quot;</span><br><span class="line">        window.webkit.messageHandlers.imgesPreview.postMessage(JSON.stringify(data));</span><br><span class="line">        return true;</span><br><span class="line">      &#125;</span><br><span class="line">      //Android</span><br><span class="line">      if (window.AndroidCall &amp;&amp; window.AndroidCall.imgesPreview) &#123;</span><br><span class="line">        window.AndroidCall.imgesPreview(JSON.stringify(data));</span><br><span class="line">        return true;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">//调用：</span><br><span class="line">Webview.imgesPreview(dataObj);</span><br></pre></td></tr></table></figure>
+
+<h3 id="ios下滚动背景body导致弹层中滚动条失效"><a href="#ios下滚动背景body导致弹层中滚动条失效" class="headerlink" title="ios下滚动背景body导致弹层中滚动条失效"></a>ios下滚动背景body导致弹层中滚动条失效</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//其中fixed为一个class给body设置fixed样式</span><br><span class="line">fixedHelper: (function(bodyCls) &#123;</span><br><span class="line">   var scrollTop;</span><br><span class="line">            return &#123;</span><br><span class="line">                afterOpen: function() &#123;</span><br><span class="line">					//document.scrollingElement 返回滚动文档的 Element 对象的引用</span><br><span class="line">                    scrollTop = document.scrollingElement.scrollTop;</span><br><span class="line">                    document.body.classList.add(bodyCls);</span><br><span class="line">                    document.body.style.top = -scrollTop + &#x27;px&#x27;;</span><br><span class="line">                &#125;,</span><br><span class="line">                beforeClose: function() &#123;</span><br><span class="line">                    document.body.classList.remove(bodyCls);</span><br><span class="line">                    // scrollTop lost after set position:fixed, restore it back.</span><br><span class="line">                    document.scrollingElement.scrollTop = scrollTop;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;;         </span><br><span class="line">&#125;)(&#x27;fixed&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="拦截Android自带的物理返回键"><a href="#拦截Android自带的物理返回键" class="headerlink" title="拦截Android自带的物理返回键"></a>拦截Android自带的物理返回键</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//拦截安卓回退按钮</span><br><span class="line">    history.pushState(null, null, location.href);</span><br><span class="line">    window.addEventListener(&quot;popstate&quot;, function(event) &#123;</span><br><span class="line">      history.pushState(null, null, location.href);</span><br><span class="line">      //此处加入回退时你要执行的代码</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="在app里用JS写滑动手势"><a href="#在app里用JS写滑动手势" class="headerlink" title="在app里用JS写滑动手势"></a>在app里用JS写滑动手势</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;body&quot;).on(&quot;touchstart&quot;, function (e) &#123;</span><br><span class="line">            e.preventDefault();</span><br><span class="line">            startX = e.originalEvent.changedTouches[0].pageX,</span><br><span class="line">                startY = e.originalEvent.changedTouches[0].pageY;</span><br><span class="line">        &#125;);</span><br><span class="line">        $(&quot;body&quot;).on(&quot;touchmove&quot;, function (e) &#123;</span><br><span class="line">            e.preventDefault();</span><br><span class="line">            moveEndX = e.originalEvent.changedTouches[0].pageX,</span><br><span class="line">                moveEndY = e.originalEvent.changedTouches[0].pageY,</span><br><span class="line">                X = moveEndX - startX,</span><br><span class="line">                Y = moveEndY - startY;</span><br><span class="line"></span><br><span class="line">            if (Math.abs(X) &gt; Math.abs(Y) &amp;&amp; X &gt; 0) &#123;</span><br><span class="line">                // alert(&quot;left 2 right&quot;);</span><br><span class="line">                $(&quot;.show&quot;).hide()</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="js监测手机浏览器是否切换到后台应用"><a href="#js监测手机浏览器是否切换到后台应用" class="headerlink" title="js监测手机浏览器是否切换到后台应用"></a>js监测手机浏览器是否切换到后台应用</h3><blockquote>
+<p>这个功能常见作用于在浏览器h5页面唤醒app（前提是已安装app）浏览器就会被切换到后台装态</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*这时候</span></span><br><span class="line"><span class="comment">document.webkitVisibilityState==&#x27;hidden&#x27;表示已挂起 &#x27;visible&#x27;表示已切换到前台）*/</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;webkitvisibilitychange&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="property">webkitVisibilityState</span> == <span class="string">&#x27;hidden&#x27;</span>) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>好吧，其实并没有说得很么卵用（至少目前的我是这么认为的），因为产品逻辑都会说，如果没有安装app要跳转下载页面，这时候就尴尬了，因为浏览器并没有改变webkitVisibilityState的值，所以无法走进这个方法（只有浏览器切换前后台才会改变）</p>
+</blockquote>
+<h3 id="非app环境打开页面自动提示-自动跳转app中对应页面，未成功跳转则跳转app下载页"><a href="#非app环境打开页面自动提示-自动跳转app中对应页面，未成功跳转则跳转app下载页" class="headerlink" title="非app环境打开页面自动提示&#x2F;自动跳转app中对应页面，未成功跳转则跳转app下载页"></a>非app环境打开页面自动提示&#x2F;自动跳转app中对应页面，未成功跳转则跳转app下载页</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//指定链接提示跳转/下载APP</span></span><br><span class="line"><span class="keyword">if</span> (!util.<span class="title function_">isApp</span>()) &#123;</span><br><span class="line">  <span class="keyword">var</span> timeout;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">openApp</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (location.<span class="property">pathname</span> == <span class="string">&quot;/&quot;</span>) &#123;</span><br><span class="line">      <span class="comment">//如果是首页，打开app首页</span></span><br><span class="line">      <span class="variable language_">window</span>.<span class="property">location</span> = <span class="string">&quot;appname://&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">//其他页面链接加参数后面</span></span><br><span class="line">      <span class="variable language_">window</span>.<span class="property">location</span> =</span><br><span class="line">        <span class="string">&quot;appname://?openType=H5&amp;urlEncode=&quot;</span> +</span><br><span class="line">        <span class="built_in">encodeURIComponent</span>(location.<span class="property">href</span>) +</span><br><span class="line">        <span class="string">&quot;&amp;url=&quot;</span> +</span><br><span class="line">        location.<span class="property">href</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> dates = <span class="title class_">Date</span>.<span class="title function_">now</span>();</span><br><span class="line">  <span class="keyword">if</span> (navigator.<span class="property">userAgent</span>.<span class="title function_">match</span>(<span class="regexp">/(iPhone|iPod|iPad);?/i</span>)) &#123;</span><br><span class="line">    <span class="comment">//ios设备</span></span><br><span class="line">    <span class="comment">//执行打开app方法</span></span><br><span class="line">    <span class="title function_">openApp</span>();</span><br><span class="line">    <span class="comment">//未打开app执行下面的方法跳转下载</span></span><br><span class="line">    timeout = <span class="built_in">setTimeout</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="title class_">Date</span>.<span class="title function_">now</span>() - dates &lt; <span class="number">1800</span>) &#123;</span><br><span class="line">        <span class="variable language_">window</span>.<span class="property">location</span> = <span class="string">&quot;https://itunes.apple.com/cn/app&quot;</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;, <span class="number">1500</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (navigator.<span class="property">userAgent</span>.<span class="title function_">match</span>(<span class="regexp">/android/i</span>)) &#123;</span><br><span class="line">    <span class="comment">//Android设备</span></span><br><span class="line">    <span class="comment">//执行打开app方法</span></span><br><span class="line">    <span class="title function_">openApp</span>();</span><br><span class="line">    <span class="comment">//未打开app执行下面的方法跳转下载</span></span><br><span class="line">    timeout = <span class="built_in">setTimeout</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="title class_">Date</span>.<span class="title function_">now</span>() - dates &lt; <span class="number">1800</span>) &#123;</span><br><span class="line">        <span class="variable language_">window</span>.<span class="property">location</span> = <span class="string">&quot;http://a.app.qq.com/o/simple.jsp&quot;</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;, <span class="number">1500</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>好记性不如markdown</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/Native/" rel="tag"># Native</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/2017/11/17/GitHub/" rel="prev" title="GitHub">
+                  <i class="fa fa-angle-left"></i> GitHub
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blog/2018/03/02/webpack/" rel="next" title="webpack">
+                  webpack <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">郭雪辉</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">215k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:15</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/sidebar.js"></script><script src="/blog/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/blog/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":100,"height":150},"mobile":{"show":true},"log":false});</script></body>
+</html>

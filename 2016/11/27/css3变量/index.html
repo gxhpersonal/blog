@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.guoxh.com","root":"/blog/","images":"/blog/images","scheme":"Muse","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/blog/js/config.js"></script>
+
+    <meta name="description" content="一、变量是个好东西在任何语言中，变量的有一点作用都是一样的，那就是可以降低维护成本，附带还有更高性能，文件更高压缩率的好处。 随着CSS预编译工具Sass&#x2F;Less&#x2F;Stylus的关注和逐渐流行，CSS工作组迅速跟进CSS变量的规范制定，并且，很多浏览器已经跟进，目前，在部分项目中已经可以直接使用了。 Chrome&#x2F;Firefox&#x2F;Safari浏览器都是绿油">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css3变量">
+<meta property="og:url" content="https://www.guoxh.com/blog/2016/11/27/css3%E5%8F%98%E9%87%8F/index.html">
+<meta property="og:site_name" content="blog station">
+<meta property="og:description" content="一、变量是个好东西在任何语言中，变量的有一点作用都是一样的，那就是可以降低维护成本，附带还有更高性能，文件更高压缩率的好处。 随着CSS预编译工具Sass&#x2F;Less&#x2F;Stylus的关注和逐渐流行，CSS工作组迅速跟进CSS变量的规范制定，并且，很多浏览器已经跟进，目前，在部分项目中已经可以直接使用了。 Chrome&#x2F;Firefox&#x2F;Safari浏览器都是绿油">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-11-27T08:52:40.000Z">
+<meta property="article:modified_time" content="2026-02-05T07:34:27.070Z">
+<meta property="article:author" content="郭雪辉">
+<meta property="article:tag" content="css">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.guoxh.com/blog/2016/11/27/css3%E5%8F%98%E9%87%8F/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.guoxh.com/blog/2016/11/27/css3%E5%8F%98%E9%87%8F/","path":"2016/11/27/css3变量/","title":"css3变量"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>css3变量 | blog station</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">blog station</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">郭雪辉</p>
+  <div class="site-description" itemprop="description">郭雪辉博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog/categories/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/blog/tags/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.guoxh.com/blog/2016/11/27/css3%E5%8F%98%E9%87%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="郭雪辉">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog station">
+      <meta itemprop="description" content="郭雪辉博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="css3变量 | blog station">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          css3变量
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-11-27 16:52:40" itemprop="dateCreated datePublished" datetime="2016-11-27T16:52:40+08:00">2016-11-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-05 15:34:27" itemprop="dateModified" datetime="2026-02-05T15:34:27+08:00">2026-02-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/css/" itemprop="url" rel="index"><span itemprop="name">css</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>一、变量是个好东西<br>在任何语言中，变量的有一点作用都是一样的，那就是可以降低维护成本，附带还有更高性能，文件更高压缩率的好处。</p>
+<p>随着CSS预编译工具Sass&#x2F;Less&#x2F;Stylus的关注和逐渐流行，CSS工作组迅速跟进CSS变量的规范制定，并且，很多浏览器已经跟进，目前，在部分项目中已经可以直接使用了。</p>
+<p>Chrome&#x2F;Firefox&#x2F;Safari浏览器都是绿油油的，兼容性大大超出我的预期，于是果断尝鲜记录下语法用法和特性。</p>
+<p>二、CSS变量var()语法和用法和特性<br>CSS中原生的变量定义语法是：–*，变量使用语法是：<code>var(--*)</code>，其中<code>*</code>表示我们的变量名称。关于命名这个东西，各种语言都有些显示，例如CSS选择器不能是数字开头，JS中的变量是不能直接数值的，但是，在CSS变量中，这些限制通通没有，例如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line">  --<span class="number">1</span>: <span class="number">#369</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">var</span>(--<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果背景色如下：</p>
+<p>但是，不能包含$，[，^，(，%等字符，普通字符局限在只要是“数字[0-9]”“字母[a-zA-Z]”“下划线_”和“短横线-”这些组合，但是可以是中文，日文或者韩文，例如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  --深蓝: <span class="number">#369</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">var</span>(--深蓝);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所以，我们就可以直接使用中文名称作为变量，即使英语4级没过的小伙伴也不会有压力了，我们也不需要随时挂个翻译器在身边了。</p>
+<p>无论是变量的定义和使用只能在声明块{}里面，例如，下面这样是无效的：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">--深蓝: <span class="number">#369</span>;</span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">var</span>(--深蓝);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>变量的定义，或者说声明跟CSS计数器的声明类似的，你应该摆脱Sass&#x2F;Less等预编译工具语法先入为主的语法影响，把CSS的原生变量理解为一种CSS属性。</p>
+<p>这样，你就对其权重和变量应用规则要容易理解地多。</p>
+<p>例如下面这个例子：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span> &#123; <span class="attr">--color</span>: purple; &#125;</span><br><span class="line"><span class="selector-tag">div</span> &#123; <span class="attr">--color</span>: green; &#125;</span><br><span class="line"><span class="selector-id">#alert</span> &#123; <span class="attr">--color</span>: red; &#125;</span><br><span class="line">* &#123; <span class="attribute">color</span>: <span class="built_in">var</span>(--color); &#125;</span><br><span class="line"></span><br><span class="line">&lt;<span class="selector-tag">p</span>&gt;我的紫色继承于根元素&lt;/<span class="selector-tag">p</span>&gt;</span><br><span class="line">&lt;<span class="selector-tag">div</span>&gt;我的绿色来自直接设置&lt;/<span class="selector-tag">div</span>&gt;</span><br><span class="line">&lt;<span class="selector-tag">div</span> id=&#x27;alert&#x27;&gt;</span><br><span class="line">  ID选择器权重更高，因此阿拉是红色！</span><br><span class="line">  &lt;<span class="selector-tag">p</span>&gt;我也是红色，占了继承的光&lt;/<span class="selector-tag">p</span>&gt;</span><br><span class="line">&lt;/<span class="selector-tag">div</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>上面这个例子我们可以获得这些信息：</p>
+<p>变量也是跟着CSS选择器走的，如果变量所在的选择器和使用变量的元素没有交集，是没有效果的。例如#alert定义的变量，只有id为alert的元素才能享有。如果你想变量全局使用，则你可以设置在:root选择器上；<br>当存在多个同样名称的变量时候，变量的覆盖规则由CSS选择器的权重决定的，但并无!important这种用法，因为没有必要，!important设计初衷是干掉JS的style设置，但对于变量的定义则没有这样的需求。<br>CSS属性名可以走变量吗？</p>
+<p>类似下面这样：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attr">--bc</span>: background-color;    </span><br><span class="line">    <span class="selector-tag">var</span>(<span class="attr">--bc</span>): <span class="number">#369</span>;</span><br><span class="line">&#125;</span><br><span class="line">答案是“不可以”，要是可以支持的话，那CSS的压缩可就要逆天了，估计所有的属性都会变成<span class="number">1</span>~<span class="number">2</span>个字符。</span><br></pre></td></tr></table></figure>
+<p>CSS变量支持同时多个声明吗？</p>
+<p>类似下面这样：<br>…<br>不好意思，类似不了，语法上就根本不支持。</p>
+<p>CSS变量使用完整语法<br>CSS变量使用的完整语法为：var( [, ]? )，用中文表示就是：var( &lt;自定义属性名&gt; [, &lt;默认值 ]? )，</p>
+<p>意思就是，如果我们使用的变量没有定义（注意，仅限于没有定义），则使用后面的值作为元素的属性值。举个例子：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  --<span class="number">1</span>: <span class="number">#369</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">var</span>(--<span class="number">1</span>, <span class="number">#cd0000</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/** 则此时的背景色是#cd0000 **/</span></span><br></pre></td></tr></table></figure>
+
+<p>CSS变量不合法的缺省特性</p>
+<p>请看下面这个例子：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attr">--color</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#369</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">var</span>(--color, <span class="number">#cd0000</span>);</span><br><span class="line">&#125;</span><br><span class="line">请问，此时&lt;<span class="selector-tag">body</span>&gt;的背景色是？</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">A</span>. transparent    <span class="selector-tag">B</span>. <span class="number">20px</span>     C. <span class="selector-id">#369</span>      D. <span class="selector-id">#cd0000</span></span><br><span class="line">答案是…………………………<span class="selector-tag">A</span>. transparent</span><br></pre></td></tr></table></figure>
+
+<p>不知大家答对了没有！</p>
+<p>这是CSS变量非常有意思的一个点，对于CSS变量，只要语法是正确的，就算变量里面的值是个乱七八糟的东西，也是会作为正常的声明解析，如果发现变量值是不合法的，例如上面背景色显然不能是20px，则使用背景色的缺省值，也就是默认值代替，于是，上面CSS等同于：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line"><span class="attr">--color</span>: <span class="number">20px</span>;</span><br><span class="line"><span class="attribute">background-color</span>: <span class="number">#369</span>;</span><br><span class="line"><span class="attribute">background-color</span>: transparent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>千万不能想当然得认为等同于background-color:20px，这也是为什么上面要强调CSS默认值的使用仅限于变量未定义的情况，并不包括变量不合法。</p>
+<p>CSS变量的空格尾随特性</p>
+<p>请看下面这个例子：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attr">--size</span>: <span class="number">20</span>;   </span><br><span class="line">  <span class="attribute">font-size</span>: <span class="built_in">var</span>(--size)px;</span><br><span class="line">&#125;</span><br><span class="line">请问，此时&lt;<span class="selector-tag">body</span>&gt;的<span class="attribute">font-size</span>大小是多少？</span><br></pre></td></tr></table></figure>
+<p>如果你以为是20px就太天真了，实际上，此处font-size:var(–size)px等同于font-size:20 px，注意，20后面有个空格，所以，这里的font-size使用的是<body>元素默认的大小。因此，就不要妄图取消就使用一个数值来贯穿全场，还是使用稳妥的做法：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attr">--size</span>: <span class="number">20px</span>;   </span><br><span class="line">  <span class="attribute">font-size</span>: <span class="built_in">var</span>(--size);</span><br><span class="line">&#125;</span><br><span class="line">或者使用CSS3 calc()计算：</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attr">--size</span>: <span class="number">20</span>;   </span><br><span class="line">  <span class="attribute">font-size</span>: <span class="built_in">calc</span>(<span class="built_in">var</span>(--size) * <span class="number">1px</span>);</span><br><span class="line">&#125;</span><br><span class="line">此时，&lt;<span class="selector-tag">body</span>&gt;的<span class="attribute">font-size</span>大小才是<span class="number">20px</span>，</span><br></pre></td></tr></table></figure>
+<p>CSS变量的相互传递特性</p>
+<p>就是说，我们在CSS变量定义的时候可以直接引入其他变量给自己使用，例如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attr">--green</span>: <span class="number">#4CAF50</span>;   </span><br><span class="line">  <span class="attr">--backgroundColor</span>: <span class="built_in">var</span>(--green);</span><br><span class="line">&#125;</span><br><span class="line">或者更复杂的使用CSS3 calc()计算，例如：</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attr">--columns</span>: <span class="number">4</span>;</span><br><span class="line">  <span class="attr">--margins</span>: <span class="built_in">calc</span>(<span class="number">24px</span> / <span class="built_in">var</span>(--columns));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于复杂布局，CSS变量的这种相互传递和直接引用特性可以简化我们的代码和实现成本，尤其和动态布局在一起的时候，无论是CSS的响应式后者是JS驱动的布局变化。</p>
+<p>我们来看一个CSS变量与响应式布局的例子，您可以狠狠地点击这里：CSS变量与响应式布局实例demo</p>
+<p>默认进去是4栏，如下图：</p>
+<p>随着浏览器宽度减小，4栏可能就变成3栏，2栏甚至1栏，我们实际开发的时候，显然不仅仅是栏目数量变化，宽度小，往往意味着访问设备尺寸有限，此时我们往往会缩小空白间距以及文字字号大小，这样，有限屏幕才能显示更多内容。</p>
+<p>也就是说，当我们响应式变化的时候，改变的CSS属性值不是1个，而是3个或者更多，如果我们有3个响应点，是不是就至少需要9个CSS声明？但是，由于我们有了CSS变量，同时，CSS变量可以传递，当我们遭遇响应点的时候，我们只需要改变一个CSS属性值就可以了。</p>
+<p>下面就是本demo核心CSS代码（只需要改变–columns这一个变量即可）：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">    <span class="attr">--columns</span>: <span class="number">4</span>;</span><br><span class="line">    <span class="attr">--margins</span>: <span class="built_in">calc</span>(<span class="number">24px</span> / <span class="built_in">var</span>(--columns));</span><br><span class="line">    <span class="attr">--space</span>: <span class="built_in">calc</span>(<span class="number">4px</span> * <span class="built_in">var</span>(--columns));</span><br><span class="line">    <span class="attr">--fontSize</span>: <span class="built_in">calc</span>(<span class="number">20px</span> - <span class="number">4</span> / <span class="built_in">var</span>(--columns));</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">max-width</span>: <span class="number">1200px</span>) &#123;</span><br><span class="line">    <span class="selector-class">.box</span> &#123;</span><br><span class="line">        <span class="attr">--columns</span>: <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">max-width</span>: <span class="number">900px</span>) &#123;</span><br><span class="line">    <span class="selector-class">.box</span> &#123;</span><br><span class="line">        <span class="attr">--columns</span>: <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@media</span> screen <span class="keyword">and</span> (<span class="attribute">max-width</span>: <span class="number">600px</span>) &#123;</span><br><span class="line">    <span class="selector-class">.box</span> &#123;</span><br><span class="line">        <span class="attr">--columns</span>: <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>于是，我们在2栏下的效果就是，字号，间距随着栏目数量的减小也一并减小了，然后每栏之间间距是扩大了;</p>
+<p>有没有觉得CSS越来越屌了呢！哈哈~</p>
+<p>三、结束语<br>由于目前几乎没有关于CSS3 var()的文章，因此，上面关于var()的语法特性等都是自己通过看规范文档，外加细致的测试得到的。但是，一个人的能力总是有限的，因此，必然还有很多var()变量有意思的点没发现，因此，就希望大家若是发现var()其他有意思的地方，欢迎评论告知，我们及时添加在文章中，方便你我他她它。</p>
+<p>多人合作项目我也会使用Less&#x2F;Sass之类的预编译工具，但是，基本上用到的就是变量，其他高级功能，几乎都不怎么使用。所以，如果浏览器全方位支持了原生的CSS变量，我十有八九就会抛弃Less&#x2F;Sass之类的工具。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/css/" rel="tag"># css</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/2016/11/25/html%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" rel="prev" title="html常见问题">
+                  <i class="fa fa-angle-left"></i> html常见问题
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blog/2016/11/30/JS%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%8C%E6%95%B0%E7%BB%84%E5%A4%84%E7%90%86/" rel="next" title="JS字符串控制">
+                  JS字符串控制 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">郭雪辉</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">215k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:15</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/sidebar.js"></script><script src="/blog/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/blog/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":100,"height":150},"mobile":{"show":true},"log":false});</script></body>
+</html>

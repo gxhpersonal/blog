@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.guoxh.com","root":"/blog/","images":"/blog/images","scheme":"Muse","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/blog/js/config.js"></script>
+
+    <meta name="description" content="如果table分页最后一页只有一条数据，删除这条会导致分页和数据展示不一致原因：如果需求要求记录当前table页，删除之后没有判断当前页是否还有数据，所以判断如果当前页只有一条&amp;&amp;当前页大于1，则重新请求时页数-1 12345678910111213onDeleteItem: id &#x3D;&gt; &amp;#123;    dispatch(&amp;#123;        type: &amp;#x27">
+<meta property="og:type" content="article">
+<meta property="og:title" content="antd记录">
+<meta property="og:url" content="https://www.guoxh.com/blog/2022/11/25/antd%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="blog station">
+<meta property="og:description" content="如果table分页最后一页只有一条数据，删除这条会导致分页和数据展示不一致原因：如果需求要求记录当前table页，删除之后没有判断当前页是否还有数据，所以判断如果当前页只有一条&amp;&amp;当前页大于1，则重新请求时页数-1 12345678910111213onDeleteItem: id &#x3D;&gt; &amp;#123;    dispatch(&amp;#123;        type: &amp;#x27">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-11-25T08:01:48.000Z">
+<meta property="article:modified_time" content="2026-02-05T07:34:27.069Z">
+<meta property="article:author" content="郭雪辉">
+<meta property="article:tag" content="React">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.guoxh.com/blog/2022/11/25/antd%E8%AE%B0%E5%BD%95/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.guoxh.com/blog/2022/11/25/antd%E8%AE%B0%E5%BD%95/","path":"2022/11/25/antd记录/","title":"antd记录"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>antd记录 | blog station</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">blog station</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E6%9E%9Ctable%E5%88%86%E9%A1%B5%E6%9C%80%E5%90%8E%E4%B8%80%E9%A1%B5%E5%8F%AA%E6%9C%89%E4%B8%80%E6%9D%A1%E6%95%B0%E6%8D%AE%EF%BC%8C%E5%88%A0%E9%99%A4%E8%BF%99%E6%9D%A1%E4%BC%9A%E5%AF%BC%E8%87%B4%E5%88%86%E9%A1%B5%E5%92%8C%E6%95%B0%E6%8D%AE%E5%B1%95%E7%A4%BA%E4%B8%8D%E4%B8%80%E8%87%B4"><span class="nav-number">1.</span> <span class="nav-text">如果table分页最后一页只有一条数据，删除这条会导致分页和数据展示不一致</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E8%BF%94%E5%9B%9E%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A1%AB%E5%85%85Form%EF%BC%8C%E6%9C%89%E6%97%B6%E4%BC%9A%E6%97%A0%E6%B3%95%E5%A1%AB%E5%85%85"><span class="nav-number">2.</span> <span class="nav-text">接口返回的数据填充Form，有时会无法填充</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E8%B7%AF%E7%94%B1%E4%B8%AD%E7%9A%84id"><span class="nav-number">3.</span> <span class="nav-text">获取路由中的id</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Form%E8%A1%A8%E5%8D%95%E4%B8%AD%E6%9C%89%E4%B8%8A%E4%BC%A0%E7%BB%84%E4%BB%B6Upload%EF%BC%8C%E6%97%A0%E6%B3%95%E5%9C%A8Form-Item%E7%9A%84name%E5%B1%9E%E6%80%A7%E7%BB%91%E5%AE%9A%E5%AF%B9%E5%BA%94%E5%80%BC%EF%BC%8C%E9%9C%80%E8%A6%81%E7%89%B9%E6%AE%8A%E5%A4%84%E7%90%86%E4%B8%8B"><span class="nav-number">4.</span> <span class="nav-text">Form表单中有上传组件Upload，无法在Form.Item的name属性绑定对应值，需要特殊处理下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Form%E8%A1%A8%E5%8D%95%E4%B8%AD%E7%9A%84Form-Item%E7%BB%84%E4%BB%B6name%E5%B1%9E%E6%80%A7%E4%B8%BA%E6%95%B0%E7%BB%84%E6%97%B6%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%81%9A%E5%B5%8C%E5%A5%97%E5%AF%B9%E8%B1%A1%E4%BD%BF%E7%94%A8"><span class="nav-number">5.</span> <span class="nav-text">Form表单中的Form.Item组件name属性为数组时，可以做嵌套对象使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#react%E8%B7%AF%E7%94%B1%E8%B7%B3%E8%BD%AC%E8%BF%9B%E5%85%A5%EF%BC%8C%E9%93%BE%E6%8E%A5%E5%8F%82%E6%95%B0%E4%B8%BA%E6%95%B0%E5%AD%97%EF%BC%8C%E5%88%B7%E6%96%B0%E5%90%8E%EF%BC%8C%E9%93%BE%E6%8E%A5%E5%8F%82%E6%95%B0%E5%8F%98%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">6.</span> <span class="nav-text">react路由跳转进入，链接参数为数字，刷新后，链接参数变字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tree%E7%BB%84%E4%BB%B6%E5%AE%9E%E7%8E%B0%E7%AD%9B%E9%80%89%E5%8F%AA%E4%BF%9D%E7%95%99%E7%9B%AE%E6%A0%87%E9%A1%B9%EF%BC%88%E8%80%8C%E4%B8%8D%E6%98%AF%E5%AE%98%E6%96%B9%E9%82%A3%E7%A7%8D%E6%90%9C%E7%B4%A2%E9%A1%B9%E9%AB%98%E4%BA%AE-%E5%B1%95%E5%BC%80%EF%BC%89"><span class="nav-number">7.</span> <span class="nav-text">tree组件实现筛选只保留目标项（而不是官方那种搜索项高亮+展开）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dispatch-%E2%80%A6-then-%E6%8A%A5%E9%94%99-is-not-a-function"><span class="nav-number">8.</span> <span class="nav-text">dispatch({…}).then(()&#x3D;&gt;{}) 报错 is not a function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8umi%E6%90%AD%E5%BB%BA%E7%9A%84%E9%A1%B9%E7%9B%AE%EF%BC%8C%E6%96%B0%E5%A2%9E%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">9.</span> <span class="nav-text">用umi搭建的项目，新增环境变量</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">郭雪辉</p>
+  <div class="site-description" itemprop="description">郭雪辉博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog/categories/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/blog/tags/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.guoxh.com/blog/2022/11/25/antd%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="郭雪辉">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog station">
+      <meta itemprop="description" content="郭雪辉博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="antd记录 | blog station">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          antd记录
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-11-25 16:01:48" itemprop="dateCreated datePublished" datetime="2022-11-25T16:01:48+08:00">2022-11-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-05 15:34:27" itemprop="dateModified" datetime="2026-02-05T15:34:27+08:00">2026-02-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/React/" itemprop="url" rel="index"><span itemprop="name">React</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="如果table分页最后一页只有一条数据，删除这条会导致分页和数据展示不一致"><a href="#如果table分页最后一页只有一条数据，删除这条会导致分页和数据展示不一致" class="headerlink" title="如果table分页最后一页只有一条数据，删除这条会导致分页和数据展示不一致"></a>如果table分页最后一页只有一条数据，删除这条会导致分页和数据展示不一致</h3><p>原因：如果需求要求记录当前table页，删除之后没有判断当前页是否还有数据，所以判断如果当前页只有一条&amp;&amp;当前页大于1，则重新请求时页数-1</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">onDeleteItem</span>: <span class="function"><span class="params">id</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">dispatch</span>(&#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;nodeManage/delete&#x27;</span>,</span><br><span class="line">        <span class="attr">payload</span>: &#123; id &#125;,</span><br><span class="line">    &#125;).<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">handleRefresh</span>(&#123;</span><br><span class="line">            <span class="attr">page</span>:</span><br><span class="line">                list.<span class="property">length</span> === <span class="number">1</span> &amp;&amp; pagination.<span class="property">current</span> &gt; <span class="number">1</span></span><br><span class="line">                ? pagination.<span class="property">current</span> - <span class="number">1</span></span><br><span class="line">                : pagination.<span class="property">current</span>,</span><br><span class="line">            &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+
+<h3 id="接口返回的数据填充Form，有时会无法填充"><a href="#接口返回的数据填充Form，有时会无法填充" class="headerlink" title="接口返回的数据填充Form，有时会无法填充"></a>接口返回的数据填充<code>Form</code>，有时会无法填充</h3><p>原因：接口返回比页面渲染慢，导致页面渲染完成还没有拿到数据<br>解决：保证接口返回数据再渲染页面</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如果用了状态管理</span></span><br><span class="line"><span class="attr">state</span>: &#123;</span><br><span class="line">    <span class="attr">loadSuccess</span>: <span class="literal">false</span>,</span><br><span class="line">&#125;,</span><br><span class="line"><span class="attr">effects</span>: &#123;</span><br><span class="line">    *<span class="title function_">query</span>(<span class="params">&#123; payload = &#123;&#125; &#125;, &#123; call, put &#125;</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> data = <span class="keyword">yield</span> <span class="title function_">call</span>(getTaskDetail, payload);</span><br><span class="line">        <span class="keyword">if</span> (data.<span class="property">success</span>) &#123;</span><br><span class="line">            <span class="keyword">yield</span> <span class="title function_">put</span>(&#123;</span><br><span class="line">                <span class="attr">type</span>: <span class="string">&#x27;save&#x27;</span>,</span><br><span class="line">                <span class="attr">payload</span>: &#123;</span><br><span class="line">                    <span class="attr">loadSuccess</span>: <span class="literal">true</span></span><br><span class="line">                &#125;,</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line"><span class="comment">//在jsx文件中：</span></span><br><span class="line"><span class="title function_">render</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">return</span>(</span><br><span class="line">        &#123;<span class="variable language_">this</span>.<span class="property">props</span>.<span class="property">loadSuccess</span> &amp;&amp; <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>&#125;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>应该有更好的解决方案，这种如果加载时间长会白屏很长时间，等有好的解决思路再补充。。。</p>
+</blockquote>
+<blockquote>
+<p>找到了，就是官方方法，在form标签上添加<code>fields=&#123;fields&#125;</code>属性，缺点是其中的<code>fields</code>值不是对象，而是包含<code>name</code>和<code>value</code>属性的对象数组，所以如果回显时，需要把对应的值遍历填充相应<code>value</code></p>
+</blockquote>
+<h3 id="获取路由中的id"><a href="#获取路由中的id" class="headerlink" title="获取路由中的id"></a>获取路由中的id</h3><p>dva.js store文件中无法使用react方法；</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//安装path-to-regexp插件</span></span><br><span class="line"><span class="keyword">const</span> &#123; pathToRegexp &#125; = <span class="built_in">require</span>(<span class="string">&quot;path-to-regexp&quot;</span>);</span><br><span class="line"><span class="attr">subscriptions</span>: &#123;</span><br><span class="line">    <span class="title function_">setup</span>(<span class="params">&#123; dispatch, history &#125;</span>) &#123;</span><br><span class="line">        history.<span class="title function_">listen</span>(<span class="function">(<span class="params">location</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> match = <span class="title function_">pathToRegexp</span>(<span class="string">&#x27;/marketing/node/:id&#x27;</span>).<span class="title function_">exec</span>(location.<span class="property">pathname</span>);</span><br><span class="line">            <span class="keyword">if</span> (match) &#123;</span><br><span class="line">                <span class="title function_">dispatch</span>(&#123; <span class="attr">type</span>: <span class="string">&#x27;query&#x27;</span>, <span class="attr">payload</span>: &#123; <span class="attr">id</span>: match[<span class="number">1</span>] &#125; &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="Form表单中有上传组件Upload，无法在Form-Item的name属性绑定对应值，需要特殊处理下"><a href="#Form表单中有上传组件Upload，无法在Form-Item的name属性绑定对应值，需要特殊处理下" class="headerlink" title="Form表单中有上传组件Upload，无法在Form.Item的name属性绑定对应值，需要特殊处理下"></a>Form表单中有上传组件<code>Upload</code>，无法在Form.Item的name属性绑定对应值，需要特殊处理下</h3><p>一般是回显时使用<code>defaultFileList</code>属性绑定值，新增时可以用自带的<code>onChange</code>方法</p>
+<h3 id="Form表单中的Form-Item组件name属性为数组时，可以做嵌套对象使用"><a href="#Form表单中的Form-Item组件name属性为数组时，可以做嵌套对象使用" class="headerlink" title="Form表单中的Form.Item组件name属性为数组时，可以做嵌套对象使用"></a>Form表单中的Form.Item组件<code>name</code>属性为数组时，可以做嵌套对象使用</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取相应值</span></span><br><span class="line">form.<span class="property">name</span>.<span class="property">secondname</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="react路由跳转进入，链接参数为数字，刷新后，链接参数变字符串"><a href="#react路由跳转进入，链接参数为数字，刷新后，链接参数变字符串" class="headerlink" title="react路由跳转进入，链接参数为数字，刷新后，链接参数变字符串"></a>react路由跳转进入，链接参数为数字，刷新后，链接参数变字符串</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; query &#125; = <span class="variable language_">this</span>.<span class="property">props</span>.<span class="property">location</span>;</span><br><span class="line"><span class="keyword">const</span> &#123; cityId &#125; = query;</span><br><span class="line"><span class="title function_">typeof</span>(cityId) <span class="comment">//&#x27;string&#x27;</span></span><br><span class="line"><span class="comment">//antd中Form表单initialValues默认值填充校验数据类型，所以要和你Form表单中value类型相同，才能回显</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="tree组件实现筛选只保留目标项（而不是官方那种搜索项高亮-展开）"><a href="#tree组件实现筛选只保留目标项（而不是官方那种搜索项高亮-展开）" class="headerlink" title="tree组件实现筛选只保留目标项（而不是官方那种搜索项高亮+展开）"></a>tree组件实现筛选只保留目标项（而不是官方那种搜索项高亮+展开）</h3><blockquote>
+<p><code>checkStrictly</code>是核心，可以使<code>checkedKeys</code>即选中的数组与<code>treeData</code>即树列表之间的绑定关系分离开，从<br>而做到筛选时暂时性的改变<code>treeData</code>数据不会影响<code>checkedKeys</code></p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 这里最重要的是需要有一个常量一个变量来存储原始数据和筛选后的数据`normListCopy`为筛选后的数据 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Input</span> <span class="attr">placeholder</span>=<span class="string">&quot;搜索&quot;</span> <span class="attr">onChange</span>=<span class="string">&#123;this.onChange&#125;/</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Tree</span></span></span><br><span class="line"><span class="tag">    <span class="attr">height</span>=<span class="string">&#123;278&#125;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">checkable</span></span></span><br><span class="line"><span class="tag">    <span class="attr">checkStrictly</span></span></span><br><span class="line"><span class="tag">    <span class="attr">onCheck</span>=<span class="string">&#123;this.onCheck&#125;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">checkedKeys</span>=<span class="string">&#123;checkedKeys&#125;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">fieldNames</span>=<span class="string">&#123;&#123;</span> <span class="attr">title:</span> &quot;<span class="attr">title</span>&quot;, <span class="attr">key:</span> &quot;<span class="attr">id</span>&quot; &#125;&#125;</span></span><br><span class="line"><span class="tag">    <span class="attr">treeData</span>=<span class="string">&#123;normListCopy&#125;</span></span></span><br><span class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">Tree</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="dispatch-…-then-报错-is-not-a-function"><a href="#dispatch-…-then-报错-is-not-a-function" class="headerlink" title="dispatch({…}).then(()&#x3D;&gt;{}) 报错 is not a function"></a>dispatch({…}).then(()&#x3D;&gt;{}) 报错 is not a function</h3><p>这种情况都是<code>dispatch</code>中的方法没找到，确认下方法是否声明，或者需要在调用的方法中<code>return</code>一个值；</p>
+<h3 id="用umi搭建的项目，新增环境变量"><a href="#用umi搭建的项目，新增环境变量" class="headerlink" title="用umi搭建的项目，新增环境变量"></a>用umi搭建的项目，新增环境变量</h3><p>因为用了umi框架，所以不考虑用<code>cross-env</code>控制变量；<br>umi官方推荐一个<code>UMI_ENV</code>变量，在项目根目录新建<code>config.$&#123;UMI_ENV&#125;.ts</code>文件，添加代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">define</span>: &#123;</span><br><span class="line">    <span class="comment">// 添加这个自定义的环境变量</span></span><br><span class="line">    <span class="string">&quot;process.env.UMI_ENV&quot;</span>: process.<span class="property">env</span>.<span class="property">UMI_ENV</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样，在任意页面代码中<code>process.env.UMI_ENV</code>就是当前环境变量值，这个和<code>vue-cli</code>中的<code>.env.&#123;mode&#125;</code>文件异曲同工，都是在环境配置文件输出环境变量</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/React/" rel="tag"># React</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/2022/11/25/elementUI/" rel="prev" title="element记录">
+                  <i class="fa fa-angle-left"></i> element记录
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blog/2022/12/05/canvas/" rel="next" title="canvas">
+                  canvas <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">郭雪辉</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">215k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:15</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/sidebar.js"></script><script src="/blog/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/blog/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":100,"height":150},"mobile":{"show":true},"log":false});</script></body>
+</html>

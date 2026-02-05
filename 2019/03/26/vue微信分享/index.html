@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.guoxh.com","root":"/blog/","images":"/blog/images","scheme":"Muse","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/blog/js/config.js"></script>
+
+    <meta name="description" content="vue微信分享1.页面中引入微信分享JS文件 或者 执行npm install weixin-js-sdk --save命令安装js包 123&lt;script src&#x3D;&quot;http:&#x2F;&#x2F;res.wx.qq.com&#x2F;open&#x2F;js&#x2F;jweixin-1.4.0.js&quot;&gt;&lt;&#x2F;script&gt;&lt;!-- or --&gt;&#96;npm install weixin-j">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue微信分享">
+<meta property="og:url" content="https://www.guoxh.com/blog/2019/03/26/vue%E5%BE%AE%E4%BF%A1%E5%88%86%E4%BA%AB/index.html">
+<meta property="og:site_name" content="blog station">
+<meta property="og:description" content="vue微信分享1.页面中引入微信分享JS文件 或者 执行npm install weixin-js-sdk --save命令安装js包 123&lt;script src&#x3D;&quot;http:&#x2F;&#x2F;res.wx.qq.com&#x2F;open&#x2F;js&#x2F;jweixin-1.4.0.js&quot;&gt;&lt;&#x2F;script&gt;&lt;!-- or --&gt;&#96;npm install weixin-j">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-03-26T03:54:07.000Z">
+<meta property="article:modified_time" content="2026-02-05T07:34:27.106Z">
+<meta property="article:author" content="郭雪辉">
+<meta property="article:tag" content="vue">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.guoxh.com/blog/2019/03/26/vue%E5%BE%AE%E4%BF%A1%E5%88%86%E4%BA%AB/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.guoxh.com/blog/2019/03/26/vue%E5%BE%AE%E4%BF%A1%E5%88%86%E4%BA%AB/","path":"2019/03/26/vue微信分享/","title":"vue微信分享"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>vue微信分享 | blog station</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">blog station</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#vue%E5%BE%AE%E4%BF%A1%E5%88%86%E4%BA%AB"><span class="nav-number">1.</span> <span class="nav-text">vue微信分享</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">郭雪辉</p>
+  <div class="site-description" itemprop="description">郭雪辉博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog/categories/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/blog/tags/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.guoxh.com/blog/2019/03/26/vue%E5%BE%AE%E4%BF%A1%E5%88%86%E4%BA%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="郭雪辉">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog station">
+      <meta itemprop="description" content="郭雪辉博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="vue微信分享 | blog station">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vue微信分享
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-03-26 11:54:07" itemprop="dateCreated datePublished" datetime="2019-03-26T11:54:07+08:00">2019-03-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-05 15:34:27" itemprop="dateModified" datetime="2026-02-05T15:34:27+08:00">2026-02-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="vue微信分享"><a href="#vue微信分享" class="headerlink" title="vue微信分享"></a>vue微信分享</h3><p>1.页面中引入微信分享JS文件 或者 执行<code>npm install weixin-js-sdk --save</code>命令安装js包</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;http://res.wx.qq.com/open/js/jweixin-1.4.0.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- or --&gt;</span></span><br><span class="line">`npm install weixin-js-sdk --save`安装</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>原有的 wx.onMenuShareTimeline、wx.onMenuShareAppMessage、wx.onMenuShareQQ、wx.onMenuShareQZone 接口，即将废弃。<br>请尽快迁移使用客户端6.7.2及JSSDK 1.4.0以上版本支持的 wx.updateAppMessageShareData、updateTimelineShareData 接口。</p>
+</blockquote>
+<p>2.微信分享方法相关配置，新建文件<code>wechat.js</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 微信分享</span></span><br><span class="line"><span class="keyword">import</span> wx <span class="keyword">from</span> <span class="string">&quot;weixin-js-sdk&quot;</span>;</span><br><span class="line"><span class="comment">//请求封装见[vue-axios请求-封装](http://www.guoxh.com/blog/2019/03/26/vue-axios%E8%AF%B7%E6%B1%82-%E5%B0%81%E8%A3%85/)</span></span><br><span class="line"><span class="keyword">import</span> &#123; request &#125; <span class="keyword">from</span> <span class="string">&#x27;../js/request&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> requestget = <span class="keyword">new</span> <span class="title function_">request</span>();</span><br><span class="line"><span class="comment">//判断环境，因为二次分享Android和ios有不同的bug//测试发现只有设置了路由会有问题，#/在微信中会被截断，导致分享链接和传入API的链接不一样</span></span><br><span class="line"><span class="keyword">let</span> href;</span><br><span class="line"><span class="keyword">var</span> ua = <span class="variable language_">window</span>.<span class="property">navigator</span>.<span class="property">userAgent</span>.<span class="title function_">toLowerCase</span>();</span><br><span class="line"><span class="keyword">if</span> (ua.<span class="title function_">match</span>(<span class="regexp">/MicroMessenger/i</span>) == <span class="string">&#x27;micromessenger&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (navigator.<span class="property">userAgent</span>.<span class="title function_">match</span>(<span class="regexp">/(iPhone|iPod|iPad);?/i</span>)) &#123;</span><br><span class="line">        href = <span class="built_in">encodeURIComponent</span>(<span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        href = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">    &#125;		</span><br><span class="line">    requestget.<span class="title class_">Get</span>(&#123; <span class="attr">url</span>: <span class="string">&#x27;/getWxConfig&#x27;</span>, <span class="attr">data</span>: &#123; <span class="string">&quot;url&quot;</span>: href &#125; &#125;).<span class="title function_">then</span>(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">        weixinConfigData = data.<span class="property">data</span>;</span><br><span class="line">        wx.<span class="title function_">config</span>(&#123;</span><br><span class="line">            <span class="attr">debug</span>: <span class="literal">false</span>, <span class="comment">// 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。</span></span><br><span class="line">            <span class="attr">appId</span>: weixinConfigData.<span class="property">appid</span>,<span class="comment">// 必填，公众号的唯一标识</span></span><br><span class="line">            <span class="attr">timestamp</span>: weixinConfigData.<span class="property">timestamp</span>,<span class="comment">// 必填，生成签名的时间戳</span></span><br><span class="line">            <span class="attr">nonceStr</span>: weixinConfigData.<span class="property">noncestr</span>,<span class="comment">// 必填，生成签名的随机串</span></span><br><span class="line">            <span class="attr">signature</span>: weixinConfigData.<span class="property">signature</span>,<span class="comment">// 必填，签名</span></span><br><span class="line">            <span class="attr">jsApiList</span>: [</span><br><span class="line">                <span class="string">&#x27;checkJsApi&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;updateAppMessageShareData&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;updateTimelineShareData&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;onMenuShareTimeline&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;onMenuShareAppMessage&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;onMenuShareQQ&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;onMenuShareWeibo&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;hideMenuItems&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;showMenuItems&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;hideAllNonBaseMenuItem&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;showAllNonBaseMenuItem&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;translateVoice&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;startRecord&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;stopRecord&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;onRecordEnd&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;playVoice&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;pauseVoice&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;stopVoice&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;uploadVoice&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;downloadVoice&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;chooseImage&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;previewImage&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;uploadImage&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;downloadImage&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;getNetworkType&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;openLocation&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;getLocation&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;hideOptionMenu&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;showOptionMenu&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;closeWindow&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;scanQRCode&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;chooseWXPay&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;openProductSpecificView&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;addCard&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;chooseCard&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;openCard&#x27;</span></span><br><span class="line">            ]</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;).<span class="title function_">catch</span>(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">wechatShareApi</span> &#123;</span><br><span class="line">    <span class="title function_">wxShare</span>(<span class="params">param</span>) &#123;</span><br><span class="line">        wx.<span class="title function_">ready</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            <span class="comment">// 分享给朋友及“分享到QQ</span></span><br><span class="line">            wx.<span class="title function_">updateAppMessageShareData</span>(&#123;</span><br><span class="line">                <span class="attr">desc</span>: param.<span class="property">descContent</span>,</span><br><span class="line">                <span class="attr">title</span>: param.<span class="property">shareTitle</span>,</span><br><span class="line">                <span class="attr">link</span>: param.<span class="property">lineLink</span>,</span><br><span class="line">                <span class="attr">imgUrl</span>: param.<span class="property">imgUrl</span>,</span><br><span class="line">                <span class="attr">trigger</span>: <span class="keyword">function</span> (<span class="params">res</span>) &#123;</span><br><span class="line">                    <span class="comment">//alert(&#x27;用户点击发送给朋友&#x27;);</span></span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">success</span>: <span class="keyword">function</span> (<span class="params">res</span>) &#123;</span><br><span class="line">                    <span class="comment">// alert(&#x27;已分享&#x27;);</span></span><br><span class="line"></span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">cancel</span>: <span class="keyword">function</span> (<span class="params">res</span>) &#123;</span><br><span class="line">                    <span class="comment">//alert(&#x27;已取消&#x27;);</span></span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">fail</span>: <span class="keyword">function</span> (<span class="params">res</span>) &#123;</span><br><span class="line">                    <span class="comment">//alert(JSON.stringify(res));</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 分享到朋友圈及“分享到QQ空间”</span></span><br><span class="line">            wx.<span class="title function_">updateTimelineShareData</span>(&#123;</span><br><span class="line">                <span class="attr">desc</span>: param.<span class="property">descContent</span>,</span><br><span class="line">                <span class="attr">title</span>: param.<span class="property">friendTitle</span> == <span class="literal">undefined</span> ? param.<span class="property">shareTitle</span> : param.<span class="property">friendTitle</span>,</span><br><span class="line">                <span class="attr">link</span>: param.<span class="property">lineLink</span>,</span><br><span class="line">                <span class="attr">imgUrl</span>: param.<span class="property">imgUrl</span>,</span><br><span class="line">                <span class="attr">trigger</span>: <span class="keyword">function</span> (<span class="params">res</span>) &#123;</span><br><span class="line">                    <span class="comment">//alert(&#x27;用户点击发送给朋友&#x27;);</span></span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">success</span>: <span class="keyword">function</span> (<span class="params">res</span>) &#123;</span><br><span class="line">                    <span class="comment">//alert(&#x27;已分享&#x27;);</span></span><br><span class="line"></span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">cancel</span>: <span class="keyword">function</span> (<span class="params">res</span>) &#123;</span><br><span class="line">                    <span class="comment">//alert(&#x27;已取消&#x27;);</span></span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">fail</span>: <span class="keyword">function</span> (<span class="params">res</span>) &#123;</span><br><span class="line">                    <span class="comment">// alert(JSON.stringify(res));</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">    wechatShareApi</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span>在指定组件中引入公共微信分享方法文件<span class="string">`wechat.js`</span>；就可以调用分享方法</span><br><span class="line"><span class="keyword">import</span> &#123;wechatShareApi&#125; <span class="keyword">from</span> <span class="string">&quot;../assets/js/wechat&quot;</span></span><br><span class="line"><span class="keyword">const</span> weApi = <span class="keyword">new</span> <span class="title function_">wechatShareApi</span>();</span><br><span class="line"><span class="comment">//微信分享参数</span></span><br><span class="line">weApi.<span class="title function_">wxShare</span>(&#123;</span><br><span class="line">    <span class="attr">shareTitle</span>: <span class="string">&quot;这是微信分享的标题&quot;</span>, </span><br><span class="line">    <span class="attr">descContent</span>: <span class="string">&quot;这是微信分享的描述文案&quot;</span>, </span><br><span class="line">    <span class="attr">lineLink</span>: location.<span class="property">href</span>, </span><br><span class="line">    <span class="attr">imgUrl</span>: <span class="string">&quot;这是微信分享的图片&quot;</span> </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>附录：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421141115">获取权限签名的算法</a></p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/vue/" rel="tag"># vue</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/2019/03/26/vue-axios%E8%AF%B7%E6%B1%82-%E5%B0%81%E8%A3%85/" rel="prev" title="vue-axios请求+封装">
+                  <i class="fa fa-angle-left"></i> vue-axios请求+封装
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blog/2019/03/26/vue%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" rel="next" title="vue文件上传">
+                  vue文件上传 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">郭雪辉</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">215k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:15</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/sidebar.js"></script><script src="/blog/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/blog/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":100,"height":150},"mobile":{"show":true},"log":false});</script></body>
+</html>

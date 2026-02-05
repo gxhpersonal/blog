@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.guoxh.com","root":"/blog/","images":"/blog/images","scheme":"Muse","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/blog/js/config.js"></script>
+
+    <meta name="description" content="新建项目项目配置1.开启 PreBundle 配置  开发环境热更新占用内存可以大大降低，热更新所需时间也将大幅减少；生产模式也可以通过提前编译依赖，大幅提升部署效率。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="taro">
+<meta property="og:url" content="https://www.guoxh.com/blog/2023/10/17/taro/index.html">
+<meta property="og:site_name" content="blog station">
+<meta property="og:description" content="新建项目项目配置1.开启 PreBundle 配置  开发环境热更新占用内存可以大大降低，热更新所需时间也将大幅减少；生产模式也可以通过提前编译依赖，大幅提升部署效率。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-10-17T06:52:19.000Z">
+<meta property="article:modified_time" content="2026-02-05T07:34:27.103Z">
+<meta property="article:author" content="郭雪辉">
+<meta property="article:tag" content="taro">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.guoxh.com/blog/2023/10/17/taro/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.guoxh.com/blog/2023/10/17/taro/","path":"2023/10/17/taro/","title":"taro"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>taro | blog station</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">blog station</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">新建项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">项目配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E4%BA%A7%E9%A2%84%E6%B8%B2%E6%9F%93"><span class="nav-number">3.</span> <span class="nav-text">生产预渲染</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%81%E4%B9%85%E5%8C%96%E7%BC%93%E5%AD%98%E5%8A%9F%E8%83%BD%EF%BC%8C%E6%8F%90%E5%8D%87%E4%BA%8C%E6%AC%A1%E7%BC%96%E8%AF%91%E9%80%9F%E5%BA%A6%EF%BC%8C%E6%8F%90%E5%8D%87%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87"><span class="nav-number">4.</span> <span class="nav-text">持久化缓存功能，提升二次编译速度，提升开发效率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8C%E6%97%B6%E6%89%93%E5%8C%85%E5%A4%9A%E7%AB%AF%E4%BB%A3%E7%A0%81%EF%BC%8C%E5%A4%9A%E7%AB%AF%E9%A1%B9%E7%9B%AE%E5%90%8C%E6%97%B6%E8%B0%83%E8%AF%95"><span class="nav-number">5.</span> <span class="nav-text">同时打包多端代码，多端项目同时调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%8A%E7%BC%96%E8%AF%91%E6%A8%A1%E5%BC%8F-%E2%80%94%E2%80%94-CompileMode-%E9%80%9A%E5%B8%B8%E7%94%A8%E4%BA%8E%E8%8A%82%E7%82%B9%E8%BE%83%E5%A4%9A%E7%9A%84%E5%88%97%E8%A1%A8"><span class="nav-number">6.</span> <span class="nav-text">半编译模式 —— CompileMode 通常用于节点较多的列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E4%B8%BB%E5%8C%85%E4%BD%93%E7%A7%AF%E5%A4%A7%E5%B0%8F"><span class="nav-number">7.</span> <span class="nav-text">优化主包体积大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E7%8E%AF%E5%A2%83%E5%AD%97%E6%AE%B5"><span class="nav-number">8.</span> <span class="nav-text">添加环境字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Uncaught-Error-Rendered-fewer-hooks-than-expected-This-may-be-caused-by-an-accidental-early-return-statement"><span class="nav-number">9.</span> <span class="nav-text">Uncaught Error: Rendered fewer hooks than expected. This may be caused by an accidental early return statement.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E9%A1%B5%E9%9D%A2%E5%BC%95%E7%94%A8%E5%90%8C%E4%B8%80%E4%B8%AA%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E6%97%B6%EF%BC%8C%E9%A1%B5%E9%9D%A2%E4%B8%8D%E6%98%BE%E7%A4%BA"><span class="nav-number">10.</span> <span class="nav-text">多个页面引用同一个自定义组件时，页面不显示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#useEffect"><span class="nav-number">11.</span> <span class="nav-text">useEffect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#alias"><span class="nav-number">12.</span> <span class="nav-text">alias</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mobx%E4%B8%AD%E8%AF%B7%E6%B1%82%E5%BC%82%E6%AD%A5%E8%B5%8B%E5%80%BC%E8%AD%A6%E5%91%8A"><span class="nav-number">13.</span> <span class="nav-text">mobx中请求异步赋值警告</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E8%AF%91taro%E8%AD%A6%E5%91%8AError-chunk-common-mini-css-extract-plugin"><span class="nav-number">14.</span> <span class="nav-text">编译taro警告Error: chunk common [mini-css-extract-plugin]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E6%BB%91%E5%8A%A0%E8%BD%BDpage%E4%B8%8D%E6%9B%B4%E6%96%B0%E9%97%AE%E9%A2%98"><span class="nav-number">15.</span> <span class="nav-text">上滑加载page不更新问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ios%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%8D%E6%94%AF%E6%8C%81%E7%9B%B4%E6%8E%A5%E5%86%99backdrop-filter%EF%BC%8C%E9%9C%80%E8%A6%81%E5%8A%A0%E4%B8%8A%E6%B5%8F%E8%A7%88%E5%99%A8%E5%89%8D%E7%BC%80-webkit-backdrop-filter"><span class="nav-number">16.</span> <span class="nav-text">ios小程序不支持直接写backdrop-filter，需要加上浏览器前缀-webkit-backdrop-filter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ios%E5%81%B6%E5%8F%91%E8%87%AA%E5%AE%9A%E4%B9%89tabbar%E7%82%B9%E5%87%BB%E6%B2%A1%E5%8F%8D%E5%BA%94%E9%97%AE%E9%A2%98"><span class="nav-number">17.</span> <span class="nav-text">ios偶发自定义tabbar点击没反应问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%B3%E8%BF%87%E7%BC%96%E8%AF%91%E6%9F%90%E4%B8%AAcss%E5%B1%9E%E6%80%A7"><span class="nav-number">18.</span> <span class="nav-text">跳过编译某个css属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%82%E9%85%8D%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%92%8CH5%E5%AE%89%E5%85%A8%E8%B7%9D%E7%A6%BB%E7%9A%84tabbar"><span class="nav-number">19.</span> <span class="nav-text">适配小程序和H5安全距离的tabbar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%AE%BE%E7%BD%AE%E6%94%BE%E5%A4%A7%E5%AD%97%E4%BD%93%EF%BC%8C%E5%AF%BC%E8%87%B4%E9%A1%B5%E9%9D%A2%E4%B9%9F%E8%A2%AB%E6%94%BE%E5%A4%A7%E6%98%BE%E7%A4%BA%E4%B8%8D%E5%85%A8"><span class="nav-number">20.</span> <span class="nav-text">解决移动端设置放大字体，导致页面也被放大显示不全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#compression-webpack-plugin%E5%BC%80%E5%90%AFgzip%E5%8E%8B%E7%BC%A9%EF%BC%88%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E5%85%B6%E5%AE%9E%E4%B9%9F%E5%8F%AF%E4%BB%A5%E5%BC%80%E5%90%AFgzip%EF%BC%8C%E6%97%A0%E9%9C%80%E5%89%8D%E7%AB%AF%E9%85%8D%E7%BD%AE%EF%BC%89"><span class="nav-number">21.</span> <span class="nav-text">compression-webpack-plugin开启gzip压缩（服务器端其实也可以开启gzip，无需前端配置）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Taro-setClipboardData"><span class="nav-number">22.</span> <span class="nav-text">Taro.setClipboardData</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E6%B3%A8%E5%85%A5-scss"><span class="nav-number">23.</span> <span class="nav-text">全局注入 scss</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#H5%E9%87%8C%E6%BB%91%E5%8A%A8%E5%BC%B9%E5%B1%82%E7%A6%81%E6%AD%A2%E5%BC%B9%E5%B1%82%E4%B8%8B%E9%9D%A2%E7%9A%84%E9%A1%B5%E9%9D%A2%E6%BB%9A%E5%8A%A8"><span class="nav-number">24.</span> <span class="nav-text">H5里滑动弹层禁止弹层下面的页面滚动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">25.</span> <span class="nav-text"></span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">郭雪辉</p>
+  <div class="site-description" itemprop="description">郭雪辉博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog/categories/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/blog/tags/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.guoxh.com/blog/2023/10/17/taro/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="郭雪辉">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog station">
+      <meta itemprop="description" content="郭雪辉博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="taro | blog station">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          taro
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-10-17 14:52:19" itemprop="dateCreated datePublished" datetime="2023-10-17T14:52:19+08:00">2023-10-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-05 15:34:27" itemprop="dateModified" datetime="2026-02-05T15:34:27+08:00">2026-02-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/taro/" itemprop="url" rel="index"><span itemprop="name">taro</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>7.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="新建项目"><a href="#新建项目" class="headerlink" title="新建项目"></a>新建项目</h3><h3 id="项目配置"><a href="#项目配置" class="headerlink" title="项目配置"></a>项目配置</h3><p>1.开启 PreBundle 配置</p>
+<blockquote>
+<p>开发环境热更新占用内存可以大大降低，热更新所需时间也将大幅减少；生产模式也可以通过提前编译依赖，大幅提升部署效率。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** config/index.js */</span></span><br><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">  <span class="attr">compiler</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;webpack5&#x27;</span>,</span><br><span class="line">    <span class="comment">// 仅 webpack5 支持依赖预编译配置</span></span><br><span class="line">    <span class="attr">prebundle</span>: &#123;</span><br><span class="line">      <span class="attr">enable</span>: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="生产预渲染"><a href="#生产预渲染" class="headerlink" title="生产预渲染"></a>生产预渲染</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// /config/prod.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span><br><span class="line">  <span class="attr">mini</span>: &#123;</span><br><span class="line">    <span class="attr">prerender</span>: &#123;</span><br><span class="line">      <span class="attr">match</span>: <span class="string">&#x27;pages/**&#x27;</span>, <span class="comment">// 所有以 `pages/` 开头的页面都参与预渲染 prerender</span></span><br><span class="line">      <span class="comment">// include: [&#x27;pages/index/index&#x27;], // 参与预渲染 prerender</span></span><br><span class="line">      <span class="attr">exclude</span>: [] <span class="comment">// 不参与预渲染 prerender</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>预渲染会增加包体积，所以除非万不得已，否则不应该使用，而且有可以替代预渲染的方案：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">SomePage</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Component</span> &#123;</span><br><span class="line">  state = &#123;</span><br><span class="line">    <span class="attr">mounted</span>: <span class="literal">false</span>,</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">componentDidMount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">/* 等待组件载入，先渲染了首屏我们再渲染其它内容，降低首次渲染的数据量</span></span><br><span class="line"><span class="comment">     当 mounted 为 true 时，CompA, B, C 的 DOM 树才会作为 data 参与小程序渲染</span></span><br><span class="line"><span class="comment">     注意我们需要在 `componentDidMount()` 这个周期做这件事（对应 Vue 的 `ready()`），</span></span><br><span class="line"><span class="comment">    更早的生命周期 `setState()` 会与首次渲染的数据一起合并更新</span></span><br><span class="line"><span class="comment">     使用 nextTick 确保本次 setState 不会和首次渲染合并更新 */</span></span><br><span class="line">    <span class="title class_">Taro</span>.<span class="title function_">nextTick</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123;</span><br><span class="line">        <span class="attr">mounted</span>: <span class="literal">true</span>,</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">View</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">FirstScreen</span> /&gt;</span> /* 假设我们知道这个组件会把用户的屏幕全部占据 */</span></span><br><span class="line"><span class="language-xml">        &#123;this.state.mounted &amp;&amp; (</span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">React.Fragment</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            &#123;&#x27; &#x27;&#125;</span></span><br><span class="line"><span class="language-xml">            /* CompA, B, C 一开始并不会在首屏中显示 */</span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">CompA</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">CompB</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">CompC</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;/<span class="name">React.Fragment</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        )&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="持久化缓存功能，提升二次编译速度，提升开发效率"><a href="#持久化缓存功能，提升二次编译速度，提升开发效率" class="headerlink" title="持久化缓存功能，提升二次编译速度，提升开发效率"></a>持久化缓存功能，提升二次编译速度，提升开发效率</h3><h3 id="同时打包多端代码，多端项目同时调试"><a href="#同时打包多端代码，多端项目同时调试" class="headerlink" title="同时打包多端代码，多端项目同时调试"></a>同时打包多端代码，多端项目同时调试</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//config/index.js</span></span><br><span class="line"><span class="keyword">const</span> baseConfig = &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="attr">outputRoot</span>: <span class="string">`dist/<span class="subst">$&#123;process.env.TARO_ENV&#125;</span>`</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="半编译模式-——-CompileMode-通常用于节点较多的列表"><a href="#半编译模式-——-CompileMode-通常用于节点较多的列表" class="headerlink" title="半编译模式 —— CompileMode 通常用于节点较多的列表"></a>半编译模式 —— CompileMode 通常用于节点较多的列表</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//config/index.js</span></span><br><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">  <span class="attr">mini</span>: &#123;</span><br><span class="line">    <span class="attr">experimental</span>: &#123;</span><br><span class="line">      <span class="attr">compileMode</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//然后只需要给 Taro 基础组件添加 compileMode 属性，该组件及其 children 将会被编译为单独的小程序模板：</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">GoodsItem</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">View</span> <span class="attr">compileMode</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      ...</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>常见问题：</p>
+<ol>
+<li>编译出的模板文件会增加包体积</li>
+<li>只能优化部分语法</li>
+</ol>
+<h3 id="优化主包体积大小"><a href="#优化主包体积大小" class="headerlink" title="优化主包体积大小"></a>优化主包体积大小</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//config/index.js</span></span><br><span class="line"><span class="comment">/*这样简单配置之后，可以避免主包没有引入的 module 被提取到commonChunks中，</span></span><br><span class="line"><span class="comment">该功能会在打包时分析 module 和 chunk 的依赖关系，</span></span><br><span class="line"><span class="comment">筛选出主包没有引用到的 module 把它提取到分包内*/</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="attr">mini</span>: &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="attr">optimizeMainPackage</span>: &#123;</span><br><span class="line">      <span class="attr">enable</span>: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加环境字段"><a href="#添加环境字段" class="headerlink" title="添加环境字段"></a>添加环境字段</h3><p>用taro init生成项目时，根目录下会发现有三个<code>.env.xxx</code>文件。<br>因为默认打包时查找的文件是<code>NODE_ENV</code>的值，所以需要把<code>.env.dev</code>和<code>.env.prod</code>文件改为<code>.env.development</code>和<code>.env.production</code>;<br>或者可以在<code>package.json</code>文件中修改命令<code>&quot;dev:weapp&quot;: taro build --type weapp --watch --mode dev</code>;<br>可以发现命令中不加<code>--mode dev</code>时默认<code>mode</code>为<code>development</code>;<br>两种方案皆可。<br>然后就可以在<code>.env.xxx</code>文件中添加对应环境变量字段：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 配置文档参考 https:<span class="comment">//taro-docs.jd.com/docs/next/env-mode-config</span></span><br><span class="line">TARO_APP_ID=<span class="string">&quot;开发环境小程序APPID&quot;</span></span><br><span class="line">TARO_APP_API=<span class="string">&quot;https://api-dev.com&quot;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果想用除<code>development</code>和<code>production</code>之外的环境变量，如<code>test</code>，则需要在对应<code>.env.test</code>环境变量配置文件中增加如<code>TARO_APP_ENV</code>字段来区分。<br>请注意，只有以<code>TARO_APP_</code>开头的变量将通过<code>webpack.DefinePlugin</code>静态地嵌入到客户端侧的代码中。这是为了避免和系统内置环境变量冲突。</p>
+</blockquote>
+<h3 id="Uncaught-Error-Rendered-fewer-hooks-than-expected-This-may-be-caused-by-an-accidental-early-return-statement"><a href="#Uncaught-Error-Rendered-fewer-hooks-than-expected-This-may-be-caused-by-an-accidental-early-return-statement" class="headerlink" title="Uncaught Error: Rendered fewer hooks than expected. This may be caused by an accidental early return statement."></a>Uncaught Error: Rendered fewer hooks than expected. This may be caused by an accidental early return statement.</h3><p>不要在循环，条件或嵌套函数中调用Hook。相反，始终在React函数的顶层使用Hooks。通过遵循此规则，您可以确保每次组件呈现时都以相同的顺序调用Hook。这就是允许React在多个useState和useEffect调用之间正确保留Hook状态的原因。</p>
+<p>选择在没有判断条件的顶层使用useContext、useState、useEffect、userHistory、useTransaction等，将获取的值，作为参数传给子组件使用。</p>
+<h3 id="多个页面引用同一个自定义组件时，页面不显示"><a href="#多个页面引用同一个自定义组件时，页面不显示" class="headerlink" title="多个页面引用同一个自定义组件时，页面不显示"></a>多个页面引用同一个自定义组件时，页面不显示</h3><p>开启<code>optimizeMainPackage</code>打包优化导致的。。。暂时不知道原因。。。估计是官方bug</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a>useEffect</h3><p>两个参数，第一个参数为函数，函数内执行初始化代码，可以返回一个函数，用来组件销毁时执行；<br>第二个参数为数组，传值则 Effect 在 初始渲染后以及依赖项变更的重新渲染后 运行；</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;, [a, b]); <span class="comment">// 如果 a 或 b 不同则会再次运行</span></span><br></pre></td></tr></table></figure>
+<p>传空数组，Effect 仅在 初始渲染后 运行；</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;, []); </span><br><span class="line"><span class="comment">// 不会再次运行（开发环境下除外）</span></span><br><span class="line"><span class="comment">/* 为了 帮助你发现 bug，在开发环境下，React 在运行 setup 之前会额外运行一次setup 和 cleanup。</span></span><br><span class="line"><span class="comment">这是一个压力测试，用于验证 Effect 逻辑是否正确实现。</span></span><br><span class="line"><span class="comment">如果这会导致可见的问题，那么你的 cleanup 函数就缺少一些逻辑。</span></span><br><span class="line"><span class="comment">cleanup 函数应该停止或撤消 setup 函数正在执行的任何操作 */</span></span><br></pre></td></tr></table></figure>
+<p>如果完全不传递依赖数组，则 Effect 会在组件的 每次单独渲染（和重新渲染）之后 运行。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;); <span class="comment">// 总是再次运行</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="alias"><a href="#alias" class="headerlink" title="alias"></a>alias</h3><p>用于配置目录别名，从而方便书写代码引用路径。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//config/index.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="attr">alias</span>: &#123;</span><br><span class="line">    <span class="string">&#x27;@/components&#x27;</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&#x27;..&#x27;</span>, <span class="string">&#x27;src/components&#x27;</span>),</span><br><span class="line">    <span class="string">&#x27;@/utils&#x27;</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&#x27;..&#x27;</span>, <span class="string">&#x27;src/utils&#x27;</span>),</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//index.jsx</span></span><br><span class="line"><span class="keyword">import</span> A <span class="keyword">from</span> <span class="string">&#x27;@/components/A&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>为了让编辑器（VS Code）不报错，并继续使用自动路径补全的功能（F12能定位到引用文件并打开）：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//项目根目录下新建文件 jsconfig.json</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;compilerOptions&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;baseUrl&quot;</span><span class="punctuation">:</span> <span class="string">&quot;.&quot;</span><span class="punctuation">,</span> <span class="comment">//根路径</span></span><br><span class="line">    <span class="attr">&quot;paths&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;@/components/*&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;./src/components/*&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span> <span class="comment">//相对路径，如果有更深引用，需要加 /*</span></span><br><span class="line">      <span class="attr">&quot;@/utils/*&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;./src/utils/*&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="mobx中请求异步赋值警告"><a href="#mobx中请求异步赋值警告" class="headerlink" title="mobx中请求异步赋值警告"></a>mobx中请求异步赋值警告</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; runInAction &#125; <span class="keyword">from</span> <span class="string">&#x27;mobx&#x27;</span>;</span><br><span class="line">getAdvData = <span class="title function_">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> data = <span class="keyword">await</span> api.<span class="title function_">http</span>(&#123; <span class="attr">url</span>: <span class="string">&#x27;/xjb/city/advList&#x27;</span> &#125;)</span><br><span class="line">  <span class="comment">//需要把赋值操作放在runInAction回调中</span></span><br><span class="line">  <span class="title function_">runInAction</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">banner</span> = data.<span class="property">result</span>.<span class="property">first_banner</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">cipian</span> = data.<span class="property">result</span>.<span class="property">first_cipian</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">jingang</span> = data.<span class="property">result</span>.<span class="property">first_jingang</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">address</span> = data.<span class="property">result</span>.<span class="property">jiabo_adress</span>[<span class="number">0</span>].<span class="property">image_url</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">yunying</span> = data.<span class="property">result</span>.<span class="property">first_yunying</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="编译taro警告Error-chunk-common-mini-css-extract-plugin"><a href="#编译taro警告Error-chunk-common-mini-css-extract-plugin" class="headerlink" title="编译taro警告Error: chunk common [mini-css-extract-plugin]"></a>编译taro警告<code>Error: chunk common [mini-css-extract-plugin]</code></h3><p>这是由于引用组件顺序不同，打包时会多打包一次，就会发出警告</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="attr">mini</span>: &#123;</span><br><span class="line">    <span class="attr">miniCssExtractPluginOptions</span>: &#123;</span><br><span class="line">      <span class="attr">ignoreOrder</span>: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="上滑加载page不更新问题"><a href="#上滑加载page不更新问题" class="headerlink" title="上滑加载page不更新问题"></a>上滑加载page不更新问题</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如果直接声明 let page = 1;在事件回调中page+=1;始终只能拿到page=2，应该是组件更新时，把page变量直接重置了；</span></span><br><span class="line"><span class="comment">//如果用useState钩子，不能在事件中更新值，因为不能及时拿到更新后的page，所以要提前更新page，放在接口调用方法中：</span></span><br><span class="line"><span class="keyword">const</span> [list, setList] = <span class="title function_">useState</span>([]);</span><br><span class="line"><span class="keyword">const</span> [hasData, setHasData] = <span class="title function_">useState</span>(<span class="literal">true</span>);</span><br><span class="line"><span class="keyword">const</span> [pages, setPages] = <span class="title function_">useState</span>(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">getData</span> = <span class="keyword">async</span> (<span class="params">page = <span class="number">1</span>, refresh = <span class="literal">true</span></span>) =&gt; &#123;</span><br><span class="line">  <span class="comment">//提前更新page</span></span><br><span class="line">  <span class="title function_">setPages</span>(page);</span><br><span class="line">  <span class="keyword">let</span> res = <span class="keyword">await</span> api.<span class="title function_">http</span>(&#123;</span><br><span class="line">    <span class="attr">url</span>: <span class="string">&#x27;/api/getdata&#x27;</span>,</span><br><span class="line">    <span class="attr">data</span>: &#123; page &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">if</span> (refresh) &#123;</span><br><span class="line">    <span class="title function_">setList</span>(res.<span class="property">data</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="title function_">setList</span>(list.<span class="title function_">concat</span>(res.<span class="property">data</span>));</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">setHasData</span>(res.<span class="property">data</span>?.<span class="property">length</span> &lt; <span class="number">10</span> ? <span class="literal">false</span> : <span class="literal">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 上滑触底</span></span><br><span class="line"><span class="title function_">useReachBottom</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (hasData) &#123;</span><br><span class="line">    <span class="title function_">getData</span>(currentTab, pages + <span class="number">1</span>, <span class="literal">false</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="ios小程序不支持直接写backdrop-filter，需要加上浏览器前缀-webkit-backdrop-filter"><a href="#ios小程序不支持直接写backdrop-filter，需要加上浏览器前缀-webkit-backdrop-filter" class="headerlink" title="ios小程序不支持直接写backdrop-filter，需要加上浏览器前缀-webkit-backdrop-filter"></a>ios小程序不支持直接写backdrop-filter，需要加上浏览器前缀-webkit-backdrop-filter</h3><h3 id="ios偶发自定义tabbar点击没反应问题"><a href="#ios偶发自定义tabbar点击没反应问题" class="headerlink" title="ios偶发自定义tabbar点击没反应问题"></a>ios偶发自定义tabbar点击没反应问题</h3><p>经过真机调试，发现自定义tabbar在来回切换，会有一定几率点不到，因为tabbar被挤出了页面，掉在最下面，虽然还能看到，导致点不到</p>
+<blockquote>
+<p>原因应该是我这个小程序其他页面都是自定义头部，就这个点不到的页面是原生头部，切换过快计算错误，导致掉下去</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//page show</span></span><br><span class="line"><span class="title function_">useDidShow</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">//触发一下滚动，解决ios偶发tabbar点不中bug</span></span><br><span class="line">  <span class="title class_">Taro</span>.<span class="title function_">pageScrollTo</span>(&#123;</span><br><span class="line">    <span class="attr">scrollTop</span>: <span class="number">1</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="跳过编译某个css属性"><a href="#跳过编译某个css属性" class="headerlink" title="跳过编译某个css属性"></a>跳过编译某个css属性</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">  <span class="comment">/* autoprefixer: ignore next */</span></span><br><span class="line">  -webkit-<span class="attribute">box-orient</span>: vertical;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 或者忽略段落： */</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">/* autoprefixer: off */</span></span><br><span class="line">  -webkit-<span class="attribute">box-orient</span>: vertical;</span><br><span class="line">  <span class="comment">/* autoprefixer: on */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="适配小程序和H5安全距离的tabbar"><a href="#适配小程序和H5安全距离的tabbar" class="headerlink" title="适配小程序和H5安全距离的tabbar"></a>适配小程序和H5安全距离的tabbar</h3><p>小程序：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.tabbar</span>&#123;</span><br><span class="line">  <span class="attribute">padding-bottom</span>: <span class="built_in">calc</span>(<span class="number">10px</span> + <span class="built_in">env</span>(safe-area-inset-bottom));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>H5：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width,initial-scale=1.0,viewport-fit=cover&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">viewport-fit参数有三个值：</span></span><br><span class="line"><span class="comment">contain：可视窗口完全包含网页内容</span></span><br><span class="line"><span class="comment">cover：网页内容完全覆盖可视窗口</span></span><br><span class="line"><span class="comment">auto：默认值，此值不影响初始布局视图端口，并且整个web页面都是可查看的 </span></span><br><span class="line"><span class="comment">--&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="解决移动端设置放大字体，导致页面也被放大显示不全"><a href="#解决移动端设置放大字体，导致页面也被放大显示不全" class="headerlink" title="解决移动端设置放大字体，导致页面也被放大显示不全"></a>解决移动端设置放大字体，导致页面也被放大显示不全</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// /config/index.js</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">h5</span>: &#123;</span><br><span class="line">    <span class="attr">postcss</span>: &#123;</span><br><span class="line">       <span class="attr">pxtransform</span>: &#123;</span><br><span class="line">        <span class="attr">enable</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">config</span>: &#123;</span><br><span class="line">          <span class="attr">baseFontSize</span>: <span class="number">50</span>, <span class="comment">//H5 字体尺寸大小基准值( Default: 20)。</span></span><br><span class="line">          <span class="attr">maxRootSize</span>: <span class="number">100</span> <span class="comment">//H5 根节点 font-size 的最大值(Default: 40)。</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样配置好处有2：<br>1.解决了手机设置了放大，页面也被放大显示不全的问题；<br>2.调试看元素尺寸清晰，设计稿标准尺寸下，比如元素350px，则布局中换算的为3.5rem，直观又不用手动换算。</p>
+<h3 id="compression-webpack-plugin开启gzip压缩（服务器端其实也可以开启gzip，无需前端配置）"><a href="#compression-webpack-plugin开启gzip压缩（服务器端其实也可以开启gzip，无需前端配置）" class="headerlink" title="compression-webpack-plugin开启gzip压缩（服务器端其实也可以开启gzip，无需前端配置）"></a>compression-webpack-plugin开启gzip压缩（服务器端其实也可以开启gzip，无需前端配置）</h3><h3 id="Taro-setClipboardData"><a href="#Taro-setClipboardData" class="headerlink" title="Taro.setClipboardData"></a>Taro.setClipboardData</h3><p>Taro.setClipboardData方法不能在异步回调中使用，ios浏览器H5会失效</p>
+<h3 id="全局注入-scss"><a href="#全局注入-scss" class="headerlink" title="全局注入 scss"></a>全局注入 scss</h3><ul>
+<li>config&#x2F;index.js文件中：<br>单文件路径形式<br>当只有 resource 字段时，可以传入 scss 文件的绝对路径。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="attr">sass</span>: &#123;</span><br><span class="line">    <span class="attr">resource</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&#x27;..&#x27;</span>, <span class="string">&#x27;src/styles/variable.scss&#x27;</span>),</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+多文件路径形式<br>当只有 resource 字段时，也可以传入一个路径数组。<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="attr">sass</span>: &#123;</span><br><span class="line">    <span class="attr">resource</span>: [</span><br><span class="line">      path.<span class="title function_">resolve</span>(__dirname, <span class="string">&#x27;..&#x27;</span>, <span class="string">&#x27;src/styles/variable.scss&#x27;</span>),</span><br><span class="line">      path.<span class="title function_">resolve</span>(__dirname, <span class="string">&#x27;..&#x27;</span>, <span class="string">&#x27;src/styles/mixins.scss&#x27;</span>),</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="H5里滑动弹层禁止弹层下面的页面滚动"><a href="#H5里滑动弹层禁止弹层下面的页面滚动" class="headerlink" title="H5里滑动弹层禁止弹层下面的页面滚动"></a>H5里滑动弹层禁止弹层下面的页面滚动</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">touchMove</span> = (<span class="params">e</span>) =&gt; &#123;</span><br><span class="line">  e.<span class="title function_">preventDefault</span>()</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="title class_">View</span> catchMove=&#123;<span class="literal">true</span>&#125; onTouchMove=&#123;<span class="function">(<span class="params">e</span>) =&gt;</span> <span class="title function_">touchMove</span>(e)&#125;&gt;</span><br><span class="line"></span><br><span class="line">&lt;/<span class="title class_">View</span>&gt;</span><br><span class="line"><span class="comment">// catchMove=&#123;true&#125; 作用在小程序环境里</span></span><br></pre></td></tr></table></figure>
+
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/taro/" rel="tag"># taro</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/2023/10/17/uni-app/" rel="prev" title="uni-app">
+                  <i class="fa fa-angle-left"></i> uni-app
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blog/2023/11/16/Nuxt3.8/" rel="next" title="Nuxt.js 3.8">
+                  Nuxt.js 3.8 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">郭雪辉</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">215k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:15</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/sidebar.js"></script><script src="/blog/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/blog/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":100,"height":150},"mobile":{"show":true},"log":false});</script></body>
+</html>

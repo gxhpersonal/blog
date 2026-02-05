@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.guoxh.com","root":"/blog/","images":"/blog/images","scheme":"Muse","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/blog/js/config.js"></script>
+
+    <meta name="description" content="1.hexo博客文件目录下安装live2D插件，执行下面命令：bash1npm install --save hexo-helper-live2d  2.下载live2D动画模型，下面展示了动画列表   live2d-widget-model-chitose    live2d-widget-model-z16    live2d-widget-model-epsilon2_1    live2d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo集成live2D动画">
+<meta property="og:url" content="https://www.guoxh.com/blog/2019/03/15/hexo%E9%9B%86%E6%88%90live2D%E5%8A%A8%E7%94%BB/index.html">
+<meta property="og:site_name" content="blog station">
+<meta property="og:description" content="1.hexo博客文件目录下安装live2D插件，执行下面命令：bash1npm install --save hexo-helper-live2d  2.下载live2D动画模型，下面展示了动画列表   live2d-widget-model-chitose    live2d-widget-model-z16    live2d-widget-model-epsilon2_1    live2d">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-03-15T02:12:47.000Z">
+<meta property="article:modified_time" content="2026-02-05T07:34:27.087Z">
+<meta property="article:author" content="郭雪辉">
+<meta property="article:tag" content="blog">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.guoxh.com/blog/2019/03/15/hexo%E9%9B%86%E6%88%90live2D%E5%8A%A8%E7%94%BB/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.guoxh.com/blog/2019/03/15/hexo%E9%9B%86%E6%88%90live2D%E5%8A%A8%E7%94%BB/","path":"2019/03/15/hexo集成live2D动画/","title":"hexo集成live2D动画"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>hexo集成live2D动画 | blog station</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">blog station</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-hexo%E5%8D%9A%E5%AE%A2%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%AE%89%E8%A3%85live2D%E6%8F%92%E4%BB%B6%EF%BC%8C%E6%89%A7%E8%A1%8C%E4%B8%8B%E9%9D%A2%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">1.hexo博客文件目录下安装live2D插件，执行下面命令：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%B8%8B%E8%BD%BDlive2D%E5%8A%A8%E7%94%BB%E6%A8%A1%E5%9E%8B%EF%BC%8C%E4%B8%8B%E9%9D%A2%E5%B1%95%E7%A4%BA%E4%BA%86%E5%8A%A8%E7%94%BB%E5%88%97%E8%A1%A8"><span class="nav-number">2.</span> <span class="nav-text">2.下载live2D动画模型，下面展示了动画列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%9C%80%E5%90%8E%EF%BC%8C%E4%BF%AE%E6%94%B9%E7%AB%99%E7%82%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-config-yml-%E6%B7%BB%E5%8A%A0%E4%B8%8B%E9%9D%A2%E9%85%8D%E7%BD%AE%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">3.最后，修改站点配置文件_config.yml,添加下面配置：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#hexo-d-g%E6%89%A7%E8%A1%8C%E5%8D%B3%E5%8F%AF"><span class="nav-number">3.1.</span> <span class="nav-text">hexo d -g执行即可</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">郭雪辉</p>
+  <div class="site-description" itemprop="description">郭雪辉博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog/categories/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/blog/tags/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.guoxh.com/blog/2019/03/15/hexo%E9%9B%86%E6%88%90live2D%E5%8A%A8%E7%94%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="郭雪辉">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog station">
+      <meta itemprop="description" content="郭雪辉博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="hexo集成live2D动画 | blog station">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          hexo集成live2D动画
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-03-15 10:12:47" itemprop="dateCreated datePublished" datetime="2019-03-15T10:12:47+08:00">2019-03-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-05 15:34:27" itemprop="dateModified" datetime="2026-02-05T15:34:27+08:00">2026-02-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/blog/" itemprop="url" rel="index"><span itemprop="name">blog</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="1-hexo博客文件目录下安装live2D插件，执行下面命令："><a href="#1-hexo博客文件目录下安装live2D插件，执行下面命令：" class="headerlink" title="1.hexo博客文件目录下安装live2D插件，执行下面命令："></a>1.hexo博客文件目录下安装live2D插件，执行下面命令：</h3><figure class="highlight plaintext"><figcaption><span>bash</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-helper-live2d</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-下载live2D动画模型，下面展示了动画列表"><a href="#2-下载live2D动画模型，下面展示了动画列表" class="headerlink" title="2.下载live2D动画模型，下面展示了动画列表"></a>2.下载live2D动画模型，下面展示了动画列表</h3><blockquote>
+<p>  live2d-widget-model-chitose<br>    live2d-widget-model-z16<br>    live2d-widget-model-epsilon2_1<br>    live2d-widget-model-gf<br>    live2d-widget-model-haru&#x2F;01<br>    live2d-widget-model-haru&#x2F;02<br>    live2d-widget-model-haruto<br>    live2d-widget-model-hibiki<br>    live2d-widget-model-hijiki<br>    live2d-widget-model-izumi<br>    live2d-widget-model-koharu<br>    live2d-widget-model-miku<br>    live2d-widget-model-ni-j<br>    live2d-widget-model-nico<br>    live2d-widget-model-nietzsche<br>    live2d-widget-model-nipsilon<br>    live2d-widget-model-nito<br>    live2d-widget-model-shizuku<br>    live2d-widget-model-tororo<br>    live2d-widget-model-tsumiki<br>    live2d-widget-model-unitychan<br>    live2d-widget-model-wanko</p>
+</blockquote>
+<p>执行下面命令，安装具体的动画模型包：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install [live2d-widget-model-wanko]</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://huaji8.top/post/live2d-plugin-2.0/">具体动画模型展示</a></p>
+<h3 id="3-最后，修改站点配置文件-config-yml-添加下面配置："><a href="#3-最后，修改站点配置文件-config-yml-添加下面配置：" class="headerlink" title="3.最后，修改站点配置文件_config.yml,添加下面配置："></a>3.最后，修改站点配置文件<code>_config.yml</code>,添加下面配置：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># Live2D</span><br><span class="line">## https://github.com/EYHN/hexo-helper-live2d</span><br><span class="line">live2d:</span><br><span class="line">  enable: true #隐藏/显示</span><br><span class="line">  pluginRootPath: live2dw/    #插件在站点上的根路径(相对)</span><br><span class="line">  pluginJsPath: lib/          #与插件根目录相关的JavaScript路径(相对)</span><br><span class="line">  pluginModelPath: assets/    #与插件根(相对)相关的模型路径</span><br><span class="line">  scriptFrom: local # Default</span><br><span class="line">  # scriptFrom: jsdelivr # jsdelivr CDN</span><br><span class="line">  # scriptFrom: unpkg # unpkg CDN</span><br><span class="line">  # scriptFrom: https://cdn.jsdelivr.net/npm/live2d-widget@3.x/lib/L2Dwidget.min.js # Your custom url</span><br><span class="line">  tagMode: false  #是否只替换live2d标签而不是注入到所有页面</span><br><span class="line">  log: false #是否在控制台显示日志</span><br><span class="line">  model:</span><br><span class="line">    use: live2d-widget-model-wanko #安装的模型包名称</span><br><span class="line">  display:  #设置位置和宽高（设置的宽高*2为实际像素，如：50=100px）</span><br><span class="line">    position: left </span><br><span class="line">    width: 50</span><br><span class="line">    height: 100</span><br><span class="line">  mobile:</span><br><span class="line">    show: false #是否在移动端上显示</span><br></pre></td></tr></table></figure>
+<h4 id="hexo-d-g执行即可"><a href="#hexo-d-g执行即可" class="headerlink" title="hexo d -g执行即可"></a>hexo d -g执行即可</h4><p><a target="_blank" rel="noopener" href="https://github.com/EYHN/hexo-helper-live2d">插件GitHub地址</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/blog/" rel="tag"># blog</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/2019/03/13/vue3.0/" rel="prev" title="VUE3.0">
+                  <i class="fa fa-angle-left"></i> VUE3.0
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blog/2019/03/20/%E5%89%8D%E7%AB%AF%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="next" title="前端开发工具使用">
+                  前端开发工具使用 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">郭雪辉</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">215k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:15</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/sidebar.js"></script><script src="/blog/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/blog/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":100,"height":150},"mobile":{"show":true},"log":false});</script></body>
+</html>

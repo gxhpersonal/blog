@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.guoxh.com","root":"/blog/","images":"/blog/images","scheme":"Muse","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/blog/js/config.js"></script>
+
+    <meta name="description" content="列表倒计时 find() 方法返回通过测试（函数内判断）的数组的第一个元素的值。find() 方法为数组中的每个元素都调用一次函数执行：当数组中的元素在测试条件时返回 true 时, find() 返回符合条件的元素，之后的值不会再调用执行函数。如果没有符合条件的元素返回 undefined注意: find() 对于空数组，函数是不会执行的。注意: find() 并没有改变数组的原始值。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小程序写点垃圾代码">
+<meta property="og:url" content="https://www.guoxh.com/blog/2020/06/04/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%86%99%E7%82%B9%E5%9E%83%E5%9C%BE%E4%BB%A3%E7%A0%81/index.html">
+<meta property="og:site_name" content="blog station">
+<meta property="og:description" content="列表倒计时 find() 方法返回通过测试（函数内判断）的数组的第一个元素的值。find() 方法为数组中的每个元素都调用一次函数执行：当数组中的元素在测试条件时返回 true 时, find() 返回符合条件的元素，之后的值不会再调用执行函数。如果没有符合条件的元素返回 undefined注意: find() 对于空数组，函数是不会执行的。注意: find() 并没有改变数组的原始值。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-04T06:11:20.000Z">
+<meta property="article:modified_time" content="2026-02-05T07:34:27.111Z">
+<meta property="article:author" content="郭雪辉">
+<meta property="article:tag" content="微信小程序">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.guoxh.com/blog/2020/06/04/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%86%99%E7%82%B9%E5%9E%83%E5%9C%BE%E4%BB%A3%E7%A0%81/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.guoxh.com/blog/2020/06/04/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%86%99%E7%82%B9%E5%9E%83%E5%9C%BE%E4%BB%A3%E7%A0%81/","path":"2020/06/04/小程序写点垃圾代码/","title":"小程序写点垃圾代码"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>小程序写点垃圾代码 | blog station</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">blog station</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%97%E8%A1%A8%E5%80%92%E8%AE%A1%E6%97%B6"><span class="nav-number">1.</span> <span class="nav-text">列表倒计时</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-view%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">web-view正确使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%B6%E5%AD%90%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%8F%82-%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A"><span class="nav-number">3.</span> <span class="nav-text">父子自定义组件传参+数据绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text"></span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">郭雪辉</p>
+  <div class="site-description" itemprop="description">郭雪辉博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog/categories/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/blog/tags/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.guoxh.com/blog/2020/06/04/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%86%99%E7%82%B9%E5%9E%83%E5%9C%BE%E4%BB%A3%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="郭雪辉">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog station">
+      <meta itemprop="description" content="郭雪辉博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="小程序写点垃圾代码 | blog station">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          小程序写点垃圾代码
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-06-04 14:11:20" itemprop="dateCreated datePublished" datetime="2020-06-04T14:11:20+08:00">2020-06-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-05 15:34:27" itemprop="dateModified" datetime="2026-02-05T15:34:27+08:00">2026-02-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" itemprop="url" rel="index"><span itemprop="name">微信小程序</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="列表倒计时"><a href="#列表倒计时" class="headerlink" title="列表倒计时"></a>列表倒计时</h3><blockquote>
+<p>find() 方法返回通过测试（函数内判断）的数组的第一个元素的值。<br>find() 方法为数组中的每个元素都调用一次函数执行：<br>当数组中的元素在测试条件时返回 true 时, find() 返回符合条件的元素，之后的值不会再调用执行函数。<br>如果没有符合条件的元素返回 undefined<br>注意: find() 对于空数组，函数是不会执行的。<br>注意: find() 并没有改变数组的原始值。</p>
+</blockquote>
+<span id="more"></span>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//添加倒计时参数res为接口返回数据列表</span></span><br><span class="line">res.<span class="title function_">find</span>(<span class="function">(<span class="params">v</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> nowTime = <span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getTime</span>();</span><br><span class="line">    <span class="comment">//expire_time为接口返回截止时间的时间戳</span></span><br><span class="line">    <span class="keyword">let</span> endDate = v.<span class="property">expire_time</span> * <span class="number">1000</span> - nowTime;</span><br><span class="line">    <span class="keyword">if</span> (endDate &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">//倒计时</span></span><br><span class="line">    <span class="keyword">let</span> stop = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">//days | hour 分别表示天和小时</span></span><br><span class="line">        <span class="comment">//days = Math.floor(time.t / 1000 / 60 / 60 / 24);</span></span><br><span class="line">        <span class="comment">//hour = Math.floor(time.t / 1000 / 60 / 60 % 24);</span></span><br><span class="line">        <span class="keyword">let</span> minute = <span class="title class_">Math</span>.<span class="title function_">floor</span>((endDate / <span class="number">1000</span> / <span class="number">60</span>) % <span class="number">60</span>);</span><br><span class="line">        <span class="keyword">let</span> second = <span class="title class_">Math</span>.<span class="title function_">floor</span>((endDate / <span class="number">1000</span>) % <span class="number">60</span>);</span><br><span class="line">        <span class="keyword">let</span> min = minute &lt; <span class="number">10</span> ? <span class="string">&quot;0&quot;</span> + minute : minute;</span><br><span class="line">        <span class="keyword">let</span> sec = second &lt; <span class="number">10</span> ? <span class="string">&quot;0&quot;</span> + second : second;</span><br><span class="line">        <span class="keyword">if</span> (endDate &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">          <span class="comment">//如果倒计时结束，改变当前订单状态，重新赋值orderList数据即可</span></span><br><span class="line">          v.<span class="property">status</span> = -<span class="number">1</span>;</span><br><span class="line">          <span class="variable language_">this</span>.<span class="title function_">setData</span>(&#123;</span><br><span class="line">            <span class="attr">orderList</span>: <span class="variable language_">this</span>.<span class="property">data</span>.<span class="property">orderList</span></span><br><span class="line">          &#125;)</span><br><span class="line">          <span class="built_in">clearInterval</span>(stop);</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          endDate -= <span class="number">1000</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        v.<span class="property">goods_time</span> = min + <span class="string">&quot;:&quot;</span> + sec;</span><br><span class="line">        <span class="comment">//每秒重新赋值orderList数据</span></span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">setData</span>(&#123;</span><br><span class="line">          <span class="attr">orderList</span>: <span class="variable language_">this</span>.<span class="property">data</span>.<span class="property">orderList</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">       v.<span class="property">status</span> = -<span class="number">1</span>;</span><br><span class="line">       <span class="variable language_">this</span>.<span class="title function_">setData</span>(&#123;</span><br><span class="line">         <span class="attr">orderList</span>: <span class="variable language_">this</span>.<span class="property">data</span>.<span class="property">orderList</span></span><br><span class="line">    &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里着重强调，其实最合理的还是把列表分成单个组件，在组件中写倒计时代码，这样避免遍历带来的各种问题，又不用考虑列表各模块互相影响</p>
+</blockquote>
+<h3 id="web-view正确使用"><a href="#web-view正确使用" class="headerlink" title="web-view正确使用"></a>web-view正确使用</h3><p>小程序页面：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">navigator</span> <span class="attr">wx:for</span>=<span class="string">&quot;&#123;&#123;imgUrlNew&#125;&#125;&quot;</span> <span class="attr">wx:key</span>=<span class="string">&quot;index&quot;</span> <span class="attr">url</span>=<span class="string">&quot;/pages/webview/webview?skipUrl=&#123;&#123;item.url&#125;&#125;&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">image</span> <span class="attr">src</span>=<span class="string">&#x27;&#123;&#123;item.img&#125;&#125;&#x27;</span> <span class="attr">mode</span>=<span class="string">&quot;widthFix&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">text</span>&gt;</span>&#123;&#123;item.name&#125;&#125;<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">navigator</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>封装webview的页面：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- webview.wxml --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">web-view</span> <span class="attr">src</span>=<span class="string">&quot;&#123;&#123;skipUrl&#125;&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">web-view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>然后在webview.js中：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">data</span>: &#123;</span><br><span class="line"><span class="attr">id</span>:<span class="string">&#x27;&#x27;</span>,</span><br><span class="line"><span class="attr">imgUrl</span>:<span class="string">&#x27;&#x27;</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="attr">onLoad</span>: <span class="keyword">function</span> (<span class="params">options</span>) &#123;</span><br><span class="line">    <span class="comment">//获取到链接中的webview链接参数,传入的链接要encode，否则如果链接有其他字符会被截断，然后赋值时再decode</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">setData</span>(&#123;</span><br><span class="line">      <span class="attr">skipUrl</span>: <span class="built_in">decodeURIComponent</span>(options.<span class="property">skipUrl</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="父子自定义组件传参-数据绑定"><a href="#父子自定义组件传参-数据绑定" class="headerlink" title="父子自定义组件传参+数据绑定"></a>父子自定义组件传参+数据绑定</h3><p>子组件：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">&quot;close&quot;</span> <span class="attr">bindtap</span>=<span class="string">&#x27;onClose&#x27;</span>&gt;</span><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 组件的方法列表</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="attr">methods</span>: &#123;</span><br><span class="line">    <span class="title function_">onClose</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="comment">//triggerEvent方法参数：事件名、detail对象和事件选项</span></span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">triggerEvent</span>(<span class="string">&quot;closeReserve&quot;</span>,&#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;我是子组件传给父组件的数据&quot;</span>&#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>父组件：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">hot-goods-popup</span> <span class="attr">wx:if</span>=<span class="string">&quot;&#123;&#123;reserveSuccess&#125;&#125;&quot;</span> <span class="attr">bindcloseReserve</span>=<span class="string">&quot;closeReserve&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 组件的方法列表</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="attr">methods</span>: &#123;</span><br><span class="line">    <span class="title function_">closeReserve</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">setData</span>(&#123;</span><br><span class="line">        <span class="attr">reserveSuccess</span>: <span class="literal">false</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag"># 微信小程序</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/2020/04/24/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Fcanvas2d%E5%AE%9E%E4%BE%8B/" rel="prev" title="微信小程序canvas2d实例">
+                  <i class="fa fa-angle-left"></i> 微信小程序canvas2d实例
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blog/2020/06/15/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9B%B4%E6%92%AD%E7%9B%B8%E5%85%B3/" rel="next" title="小程序直播相关">
+                  小程序直播相关 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">郭雪辉</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">215k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:15</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/sidebar.js"></script><script src="/blog/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/blog/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":100,"height":150},"mobile":{"show":true},"log":false});</script></body>
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.guoxh.com","root":"/blog/","images":"/blog/images","scheme":"Muse","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/blog/js/config.js"></script>
+
+    <meta name="description" content="运行npm install 出现thon Python is not set from command line or npm configuration解决方案管理员权限打开执行：npm install –global –production windows-build-tools 解决Error: ENOENT: no such file or directory, scandir 安装nod">
+<meta property="og:type" content="article">
+<meta property="og:title" content="discuz">
+<meta property="og:url" content="https://www.guoxh.com/blog/2021/11/05/discuz/index.html">
+<meta property="og:site_name" content="blog station">
+<meta property="og:description" content="运行npm install 出现thon Python is not set from command line or npm configuration解决方案管理员权限打开执行：npm install –global –production windows-build-tools 解决Error: ENOENT: no such file or directory, scandir 安装nod">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://www.guoxh.com/blog/img/Jenkins/1.png">
+<meta property="og:image" content="http://www.guoxh.com/blog/img/Jenkins/2.png">
+<meta property="article:published_time" content="2021-11-05T05:39:16.000Z">
+<meta property="article:modified_time" content="2026-02-05T07:34:27.076Z">
+<meta property="article:author" content="郭雪辉">
+<meta property="article:tag" content="discuz">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.guoxh.com/blog/img/Jenkins/1.png">
+
+
+<link rel="canonical" href="https://www.guoxh.com/blog/2021/11/05/discuz/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.guoxh.com/blog/2021/11/05/discuz/","path":"2021/11/05/discuz/","title":"discuz"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>discuz | blog station</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">blog station</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E8%A1%8Cnpm-install-%E5%87%BA%E7%8E%B0thon-Python-is-not-set-from-command-line-or-npm-configuration%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">1.</span> <span class="nav-text">运行npm install 出现thon Python is not set from command line or npm configuration解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3Error-ENOENT-no-such-file-or-directory-scandir-%E5%AE%89%E8%A3%85node-sass%E6%8A%A5%E9%94%99"><span class="nav-number">2.</span> <span class="nav-text">解决Error: ENOENT: no such file or directory, scandir 安装node-sass报错</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#npm-install-%E9%A1%B9%E7%9B%AE%E6%97%B6%EF%BC%8C%E6%8A%A5%EF%BC%9Agyp-ERR-stack-Error-gyp-failed-with-exit-code-1"><span class="nav-number">3.</span> <span class="nav-text">npm install 项目时，报：gyp ERR! stack Error: gyp failed with exit code: 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gyp-ERR-find-Python-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">4.</span> <span class="nav-text">gyp ERR! find Python 解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jenkins-node-js%E7%89%88%E6%9C%AC%E4%B8%8D%E5%AF%B9%E8%A7%A3%E5%86%B3"><span class="nav-number">5.</span> <span class="nav-text">jenkins node.js版本不对解决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#taro-UI%E6%8C%89%E9%9C%80%E5%BC%95%E7%94%A8%E6%A0%B7%E5%BC%8F%E6%96%87%E4%BB%B6%E6%8A%A5%E9%94%99%E5%BC%95%E7%94%A8taro-UI%E6%8A%A5%E9%94%99Error-Cannot-find-module-style-index-scss"><span class="nav-number">6.</span> <span class="nav-text">taro UI按需引用样式文件报错引用taro UI报错Error: Cannot find module &#39;.&#x2F;style&#x2F;index.scss&#39;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web%E7%AB%AF%E4%BB%A3%E7%A0%81%E4%B8%8D%E6%94%AF%E6%8C%81%E4%BF%AE%E6%94%B9NODE-ENV%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%EF%BC%8C%E5%9B%A0%E4%B8%BAnext%E6%89%93%E5%8C%85%E5%9F%BA%E4%BA%8Eproduction%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">7.</span> <span class="nav-text">web端代码不支持修改NODE_ENV环境变量，因为next打包基于production环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PC%E5%8F%91%E5%B8%83%E5%B8%96%E5%AD%90%EF%BC%8C%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%8D%E6%98%BE%E7%A4%BA"><span class="nav-number">8.</span> <span class="nav-text">PC发布帖子，小程序不显示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#taro%E5%AD%90%E7%BB%84%E4%BB%B6%E4%B8%8D%E8%83%BD%E7%9B%B4%E6%8E%A5%E8%B0%83%E7%94%A8onShow%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%EF%BC%8C%E6%89%80%E4%BB%A5%E9%9C%80%E8%A6%81"><span class="nav-number">9.</span> <span class="nav-text">taro子组件不能直接调用onShow生命周期，所以需要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%A0%E4%B8%BA%E5%BE%AE%E4%BF%A1%E6%96%B0%E5%A2%9E%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%9A%90%E7%A7%81%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%8E%9F%E5%9B%A0%EF%BC%8C%E5%8D%87%E7%BA%A7taro"><span class="nav-number">10.</span> <span class="nav-text">因为微信新增小程序隐私协议的原因，升级taro</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#tarojs-plugin-inject"><span class="nav-number">10.1.</span> <span class="nav-text">@tarojs&#x2F;plugin-inject</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E8%A6%81%E6%B1%82"><span class="nav-number">10.1.1.</span> <span class="nav-text">版本要求</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Taro-3-3"><span class="nav-number">10.1.1.1.</span> <span class="nav-text">Taro 3.3+</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Taro-3-1-3-2"><span class="nav-number">10.1.1.2.</span> <span class="nav-text">Taro 3.1&#x2F;3.2</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">10.1.2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-number">10.1.3.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%BC%95%E5%85%A5%E6%8F%92%E4%BB%B6"><span class="nav-number">10.1.3.1.</span> <span class="nav-text">引入插件</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#taro%E4%BD%BF%E7%94%A8%E5%8E%9F%E7%94%9F%E7%BB%84%E4%BB%B6"><span class="nav-number">11.</span> <span class="nav-text">taro使用原生组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#There-are-multiple-modules-with-names-that-only-differ-in-casing%E6%8A%A5%E9%94%99"><span class="nav-number">12.</span> <span class="nav-text">There are multiple modules with names that only differ in casing报错</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">郭雪辉</p>
+  <div class="site-description" itemprop="description">郭雪辉博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog/categories/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/blog/tags/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.guoxh.com/blog/2021/11/05/discuz/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="郭雪辉">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog station">
+      <meta itemprop="description" content="郭雪辉博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="discuz | blog station">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          discuz
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-11-05 13:39:16" itemprop="dateCreated datePublished" datetime="2021-11-05T13:39:16+08:00">2021-11-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-05 15:34:27" itemprop="dateModified" datetime="2026-02-05T15:34:27+08:00">2026-02-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/discuz/" itemprop="url" rel="index"><span itemprop="name">discuz</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="运行npm-install-出现thon-Python-is-not-set-from-command-line-or-npm-configuration解决方案"><a href="#运行npm-install-出现thon-Python-is-not-set-from-command-line-or-npm-configuration解决方案" class="headerlink" title="运行npm install 出现thon Python is not set from command line or npm configuration解决方案"></a>运行npm install 出现thon Python is not set from command line or npm configuration解决方案</h3><p>管理员权限打开执行：npm install –global –production windows-build-tools</p>
+<h3 id="解决Error-ENOENT-no-such-file-or-directory-scandir-安装node-sass报错"><a href="#解决Error-ENOENT-no-such-file-or-directory-scandir-安装node-sass报错" class="headerlink" title="解决Error: ENOENT: no such file or directory, scandir 安装node-sass报错"></a>解决Error: ENOENT: no such file or directory, scandir 安装node-sass报错</h3><p>npm rebuild node-sass</p>
+<h3 id="npm-install-项目时，报：gyp-ERR-stack-Error-gyp-failed-with-exit-code-1"><a href="#npm-install-项目时，报：gyp-ERR-stack-Error-gyp-failed-with-exit-code-1" class="headerlink" title="npm install 项目时，报：gyp ERR! stack Error: gyp failed with exit code: 1"></a>npm install 项目时，报：gyp ERR! stack Error: <code>gyp</code> failed with exit code: 1</h3><ol>
+<li><blockquote>
+<p>npm install -g <a href="mailto:&#99;&#x6e;&#x70;&#109;&#x40;&#x36;&#x2e;&#x30;&#46;&#x30;">&#99;&#x6e;&#x70;&#109;&#x40;&#x36;&#x2e;&#x30;&#46;&#x30;</a> –registry&#x3D;<a target="_blank" rel="noopener" href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a></p>
+</blockquote>
+</li>
+</ol>
+<p>其中的@6.0.0是指定cnpm的版本号，cnpm版本号一定要和npm版本（npm -v）一致，（如npm6.x.x则cnpm版本为6.x.x，大版本一致即可）</p>
+<ol start="2">
+<li><blockquote>
+<p>cnpm install</p>
+</blockquote>
+</li>
+</ol>
+<p>如果<code>cnpm install</code>失败，多构建几次尝试</p>
+<ol start="3">
+<li><blockquote>
+<p>npm install<br>会发现<code>npm install</code>也可以了</p>
+</blockquote>
+</li>
+<li><p>如果<code>npm run dev</code>报错，再执行一次<code>npm install</code>，可能cnpm有的插件没安装下来？</p>
+</li>
+</ol>
+<h3 id="gyp-ERR-find-Python-解决方案"><a href="#gyp-ERR-find-Python-解决方案" class="headerlink" title="gyp ERR! find Python 解决方案"></a>gyp ERR! find Python 解决方案</h3><p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000023271417">gyp ERR! find Python 解决方案</a></p>
+<p>1.安装node-gyp</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g node-gyp</span><br></pre></td></tr></table></figure>
+
+<p>2.安装python</p>
+<h3 id="jenkins-node-js版本不对解决"><a href="#jenkins-node-js版本不对解决" class="headerlink" title="jenkins node.js版本不对解决"></a>jenkins node.js版本不对解决</h3><p>1.管理Jenkins - 管理插件 - 下载NodeJS插件</p>
+<p>2.下载的插件在：$JENKINS_HOME&#x2F;plugins目录下</p>
+<p>3.管理Jenkins - Global Tool Configuration(全局工具配置) - 选择需要安装的nodejs版本（会从nodejs官网下载安装，nodejs安装包在：$JENKINS_HOME&#x2F;tools目录下）<br><img src="http://www.guoxh.com/blog/img/Jenkins/1.png"></p>
+<blockquote>
+<p>这里可以添加多个node版本，然后就可以实现不同项目使用不同的node版本，以实现项目代码对node版本的要求</p>
+</blockquote>
+<p>2.项目构建环境勾选<code>Provide Node &amp; npm bin/ folder to PATH</code>选项<br><img src="http://www.guoxh.com/blog/img/Jenkins/2.png"></p>
+<blockquote>
+<p>每次build，都会首先执行环境构建，环境构建无误后，才会开始真正的构建过程<br>会下载nodejs并安装配置，并把node添加到当前PATH环境变量中，这样就支持node和npm命令啦！</p>
+</blockquote>
+<h3 id="taro-UI按需引用样式文件报错引用taro-UI报错Error-Cannot-find-module-style-index-scss"><a href="#taro-UI按需引用样式文件报错引用taro-UI报错Error-Cannot-find-module-style-index-scss" class="headerlink" title="taro UI按需引用样式文件报错引用taro UI报错Error: Cannot find module &#39;./style/index.scss&#39;"></a>taro UI按需引用样式文件报错<code>引用taro UI报错Error: Cannot find module &#39;./style/index.scss&#39;</code></h3><p>安装tao-ui时,如果出现报错，可以尝试安装taro-ui版本，因为目前taro ui2.+和taro3.+版本不兼容,使用以下命令可解决</p>
+<p>npm install <a href="mailto:&#116;&#x61;&#114;&#x6f;&#45;&#117;&#105;&#x40;&#51;&#46;&#x30;&#46;&#x30;&#x2d;&#x61;&#108;&#x70;&#104;&#x61;&#x2e;&#x33;">&#116;&#x61;&#114;&#x6f;&#45;&#117;&#105;&#x40;&#51;&#46;&#x30;&#46;&#x30;&#x2d;&#x61;&#108;&#x70;&#104;&#x61;&#x2e;&#x33;</a></p>
+<h3 id="web端代码不支持修改NODE-ENV环境变量，因为next打包基于production环境变量"><a href="#web端代码不支持修改NODE-ENV环境变量，因为next打包基于production环境变量" class="headerlink" title="web端代码不支持修改NODE_ENV环境变量，因为next打包基于production环境变量"></a>web端代码不支持修改NODE_ENV环境变量，因为next打包基于production环境变量</h3><h3 id="PC发布帖子，小程序不显示"><a href="#PC发布帖子，小程序不显示" class="headerlink" title="PC发布帖子，小程序不显示"></a>PC发布帖子，小程序不显示</h3><p>需要再管理后台<code>全局</code>-<code>站点设置</code>-<code>功能设置</code>勾选<code>打赏、悬赏、红包、匿名、私信、商品、帖子付费、用户组付费、充值</code>选项</p>
+<h3 id="taro子组件不能直接调用onShow生命周期，所以需要"><a href="#taro子组件不能直接调用onShow生命周期，所以需要" class="headerlink" title="taro子组件不能直接调用onShow生命周期，所以需要"></a>taro子组件不能直接调用onShow生命周期，所以需要</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Taro</span>, &#123; eventCenter, getCurrentInstance &#125; <span class="keyword">from</span> <span class="string">&#x27;@tarojs/taro&#x27;</span>;</span><br><span class="line">$instance = <span class="title function_">getCurrentInstance</span>();</span><br><span class="line">  <span class="title function_">componentDidMount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> onShowEventId = <span class="variable language_">this</span>.<span class="property">$instance</span>.<span class="property">router</span>.<span class="property">onShow</span>;</span><br><span class="line">    eventCenter.<span class="title function_">on</span>(onShowEventId, <span class="variable language_">this</span>.<span class="property">onShow</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  onShow = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//这样就可以调用onShow了</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">componentWillUnmount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">//始终记得要在这个react组件卸载前生命周期方法里清除onShow事件，否则会一直累加</span></span><br><span class="line">    <span class="keyword">const</span> onShowEventId = <span class="variable language_">this</span>.<span class="property">$instance</span>.<span class="property">router</span>.<span class="property">onShow</span>;</span><br><span class="line">    eventCenter.<span class="title function_">off</span>(onShowEventId, <span class="variable language_">this</span>.<span class="property">onShow</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="因为微信新增小程序隐私协议的原因，升级taro"><a href="#因为微信新增小程序隐私协议的原因，升级taro" class="headerlink" title="因为微信新增小程序隐私协议的原因，升级taro"></a>因为微信新增小程序隐私协议的原因，升级taro</h3><ol>
+<li>全局安装Taro cli:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @tarojs/cli </span><br></pre></td></tr></table></figure></li>
+<li>查看Taro所有命令及帮助：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taro --help</span><br></pre></td></tr></table></figure></li>
+<li>更新taro版本：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taro updata self</span><br></pre></td></tr></table></figure></li>
+<li>更新项目中的Taro相关依赖：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taro update project</span><br></pre></td></tr></table></figure></li>
+<li>环境及依赖检测<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taro info</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>更多见官网说明：<a target="_blank" rel="noopener" href="https://taro-docs.jd.com/docs/cli">https://taro-docs.jd.com/docs/cli</a></p>
+<p>但是会有第三方插件不支持最新版taro的情况，所以可以另辟蹊径，采用taro官方补丁插件：</p>
+<h4 id="tarojs-plugin-inject"><a href="#tarojs-plugin-inject" class="headerlink" title="@tarojs&#x2F;plugin-inject"></a>@tarojs&#x2F;plugin-inject</h4><blockquote>
+<p>可以为小程序平台注入公共的组件、API 等逻辑</p>
+</blockquote>
+<h5 id="版本要求"><a href="#版本要求" class="headerlink" title="版本要求"></a>版本要求</h5><h6 id="Taro-3-3"><a href="#Taro-3-3" class="headerlink" title="Taro 3.3+"></a>Taro 3.3+</h6><p>请使用本插件的<code>1.0</code>或以上版本</p>
+<h6 id="Taro-3-1-3-2"><a href="#Taro-3-1-3-2" class="headerlink" title="Taro 3.1&#x2F;3.2"></a>Taro 3.1&#x2F;3.2</h6><p>请使用本插件的<code>0.0.2</code>或以上版本</p>
+<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><p>在 Taro 项目根目录下安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i @tarojs/plugin-inject --save</span><br></pre></td></tr></table></figure>
+<h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><h6 id="引入插件"><a href="#引入插件" class="headerlink" title="引入插件"></a>引入插件</h6><p>请确保<code>Taro CLI</code>已升级至<code>Taro 3.1.0</code>的最新版本。</p>
+<p>修改项目<code>config/index.js</code>中的<code>plugins</code>配置为如下:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    [</span><br><span class="line">      <span class="string">&#x27;@tarojs/plugin-inject&#x27;</span>,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="comment">// 配置需要新增的 API</span></span><br><span class="line">        <span class="attr">syncApis</span>: [<span class="string">&#x27;getPrivacySetting&#x27;</span>, <span class="string">&#x27;openPrivacyContract&#x27;</span>, <span class="string">&#x27;requirePrivacyAuthorize&#x27;</span>, <span class="string">&#x27;onNeedPrivacyAuthorization&#x27;</span>], <span class="comment">//同步API</span></span><br><span class="line">        <span class="attr">asyncApis</span>:[<span class="string">&#x27;&#x27;</span>],<span class="comment">//异步</span></span><br><span class="line">        <span class="attr">components</span>: &#123;</span><br><span class="line">          <span class="comment">// 配置组件新增 属性和事件</span></span><br><span class="line">          <span class="title class_">Button</span>: &#123;</span><br><span class="line">            <span class="string">&quot;open-type&quot;</span>: <span class="string">&quot;agreePrivacyAuthorization&quot;</span>, <span class="comment">//属性写法</span></span><br><span class="line">            <span class="attr">bindAgreePrivacyAuthorization</span>: <span class="string">&#x27;&#x27;</span>, <span class="comment">//事件写法（一定要写成小程序官方事件名，不能写成taro事件名）</span></span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  ],</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>官方文档：<a target="_blank" rel="noopener" href="https://github.com/NervJS/taro-plugin-inject">https://github.com/NervJS/taro-plugin-inject</a></p>
+</blockquote>
+<h3 id="taro使用原生组件"><a href="#taro使用原生组件" class="headerlink" title="taro使用原生组件"></a>taro使用原生组件</h3><ol>
+<li>在<code>app</code>或页面配置文件<code>page.config.js</code>中配置<code>usingComponents</code>属性：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">usingComponents</span>: &#123;</span><br><span class="line">    <span class="comment">// 定义需要引入的第三方组件</span></span><br><span class="line">    <span class="comment">// 1. key 值指定第三方组件名字，以小写开头</span></span><br><span class="line">    <span class="comment">// 2. value 值指定第三方组件 js 文件的相对路径</span></span><br><span class="line">    <span class="string">&#x27;ec-canvas&#x27;</span>: <span class="string">&#x27;../../components/ec-canvas/ec-canvas&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>使用组件：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; <span class="title class_">Component</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">View</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@tarojs/components&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">class</span> <span class="title class_">Index</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Component</span> &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">    <span class="attr">ec</span>: &#123;</span><br><span class="line">      <span class="attr">onInit</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">render</span> () &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">View</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">ec-canvas</span> <span class="attr">id</span>=<span class="string">&#x27;mychart-dom-area&#x27;</span> <span class="attr">canvas-id</span>=<span class="string">&#x27;mychart-area&#x27;</span> <span class="attr">ec</span>=<span class="string">&#123;this.state.ec&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="There-are-multiple-modules-with-names-that-only-differ-in-casing报错"><a href="#There-are-multiple-modules-with-names-that-only-differ-in-casing报错" class="headerlink" title="There are multiple modules with names that only differ in casing报错"></a>There are multiple modules with names that only differ in casing报错</h3><p>一般是组件文件夹名用了驼峰命名，改成<code>小写</code>加<code>-</code>即可</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/hsuna/taro-privacy-popup/blob/master/src/components/PrivacyPopup/index.jsx">https://github.com/hsuna/taro-privacy-popup/blob/master/src/components/PrivacyPopup/index.jsx</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/discuz/" rel="tag"># discuz</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/2021/06/15/%E8%87%AA%E8%B4%AD%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E7%BB%83%E6%89%8B/" rel="prev" title="自购服务器搭建前端项目练手">
+                  <i class="fa fa-angle-left"></i> 自购服务器搭建前端项目练手
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blog/2022/11/25/elementUI/" rel="next" title="element记录">
+                  element记录 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">郭雪辉</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">215k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:15</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/sidebar.js"></script><script src="/blog/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/blog/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":100,"height":150},"mobile":{"show":true},"log":false});</script></body>
+</html>

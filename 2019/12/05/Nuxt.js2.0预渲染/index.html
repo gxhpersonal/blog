@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.guoxh.com","root":"/blog/","images":"/blog/images","scheme":"Muse","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/blog/js/config.js"></script>
+
+    <meta name="description" content="个人认为这个框架有点鸡肋，起初以为它可以做到SSR，事实too young too naive,这个框架还是相当于封装了个prerender-spa-plugin插件，增加了一些独有的特性和方法，要想做到SSR还是得依赖node；nuxt基于vuejs的seo优化一、css单独打包在nuxt.config.js配置中加下面代码： 123build: &amp;#123;    extractCSS: tr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nuxt.js预渲染">
+<meta property="og:url" content="https://www.guoxh.com/blog/2019/12/05/Nuxt.js2.0%E9%A2%84%E6%B8%B2%E6%9F%93/index.html">
+<meta property="og:site_name" content="blog station">
+<meta property="og:description" content="个人认为这个框架有点鸡肋，起初以为它可以做到SSR，事实too young too naive,这个框架还是相当于封装了个prerender-spa-plugin插件，增加了一些独有的特性和方法，要想做到SSR还是得依赖node；nuxt基于vuejs的seo优化一、css单独打包在nuxt.config.js配置中加下面代码： 123build: &amp;#123;    extractCSS: tr">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-12-05T01:51:54.000Z">
+<meta property="article:modified_time" content="2026-02-05T07:34:27.051Z">
+<meta property="article:author" content="郭雪辉">
+<meta property="article:tag" content="Nuxt">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.guoxh.com/blog/2019/12/05/Nuxt.js2.0%E9%A2%84%E6%B8%B2%E6%9F%93/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.guoxh.com/blog/2019/12/05/Nuxt.js2.0%E9%A2%84%E6%B8%B2%E6%9F%93/","path":"2019/12/05/Nuxt.js2.0预渲染/","title":"Nuxt.js预渲染"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Nuxt.js预渲染 | blog station</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">blog station</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AA%E4%BA%BA%E8%AE%A4%E4%B8%BA%E8%BF%99%E4%B8%AA%E6%A1%86%E6%9E%B6%E6%9C%89%E7%82%B9%E9%B8%A1%E8%82%8B%EF%BC%8C%E8%B5%B7%E5%88%9D%E4%BB%A5%E4%B8%BA%E5%AE%83%E5%8F%AF%E4%BB%A5%E5%81%9A%E5%88%B0SSR%EF%BC%8C%E4%BA%8B%E5%AE%9Etoo-young-too-naive-%E8%BF%99%E4%B8%AA%E6%A1%86%E6%9E%B6%E8%BF%98%E6%98%AF%E7%9B%B8%E5%BD%93%E4%BA%8E%E5%B0%81%E8%A3%85%E4%BA%86%E4%B8%AAprerender-spa-plugin%E6%8F%92%E4%BB%B6%EF%BC%8C%E5%A2%9E%E5%8A%A0%E4%BA%86%E4%B8%80%E4%BA%9B%E7%8B%AC%E6%9C%89%E7%9A%84%E7%89%B9%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95%EF%BC%8C%E8%A6%81%E6%83%B3%E5%81%9A%E5%88%B0SSR%E8%BF%98%E6%98%AF%E5%BE%97%E4%BE%9D%E8%B5%96node%EF%BC%9B"><span class="nav-number">1.</span> <span class="nav-text">个人认为这个框架有点鸡肋，起初以为它可以做到SSR，事实too young too naive,这个框架还是相当于封装了个prerender-spa-plugin插件，增加了一些独有的特性和方法，要想做到SSR还是得依赖node；</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nuxt%E5%9F%BA%E4%BA%8Evuejs%E7%9A%84seo%E4%BC%98%E5%8C%96"><span class="nav-number">1.1.</span> <span class="nav-text">nuxt基于vuejs的seo优化</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">郭雪辉</p>
+  <div class="site-description" itemprop="description">郭雪辉博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog/categories/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/blog/tags/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.guoxh.com/blog/2019/12/05/Nuxt.js2.0%E9%A2%84%E6%B8%B2%E6%9F%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="郭雪辉">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog station">
+      <meta itemprop="description" content="郭雪辉博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Nuxt.js预渲染 | blog station">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Nuxt.js预渲染
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-12-05 09:51:54" itemprop="dateCreated datePublished" datetime="2019-12-05T09:51:54+08:00">2019-12-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-05 15:34:27" itemprop="dateModified" datetime="2026-02-05T15:34:27+08:00">2026-02-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/Nuxt/" itemprop="url" rel="index"><span itemprop="name">Nuxt</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="个人认为这个框架有点鸡肋，起初以为它可以做到SSR，事实too-young-too-naive-这个框架还是相当于封装了个prerender-spa-plugin插件，增加了一些独有的特性和方法，要想做到SSR还是得依赖node；"><a href="#个人认为这个框架有点鸡肋，起初以为它可以做到SSR，事实too-young-too-naive-这个框架还是相当于封装了个prerender-spa-plugin插件，增加了一些独有的特性和方法，要想做到SSR还是得依赖node；" class="headerlink" title="个人认为这个框架有点鸡肋，起初以为它可以做到SSR，事实too young too naive,这个框架还是相当于封装了个prerender-spa-plugin插件，增加了一些独有的特性和方法，要想做到SSR还是得依赖node；"></a>个人认为这个框架有点鸡肋，起初以为它可以做到SSR，事实too young too naive,这个框架还是相当于封装了个prerender-spa-plugin插件，增加了一些独有的特性和方法，要想做到SSR还是得依赖node；</h2><h3 id="nuxt基于vuejs的seo优化"><a href="#nuxt基于vuejs的seo优化" class="headerlink" title="nuxt基于vuejs的seo优化"></a>nuxt基于vuejs的seo优化</h3><p>一、css单独打包<br>在nuxt.config.js配置中加下面代码：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">build<span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    extractCSS<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>二、html中TDK自定义<br>page目录下的.vue文件中加下面代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">	<span class="title function_">head</span>(<span class="params"></span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">			<span class="attr">title</span>: <span class="string">&quot;title&quot;</span>,</span><br><span class="line">			<span class="attr">meta</span>: [</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="attr">hid</span>: <span class="string">&quot;description&quot;</span>,</span><br><span class="line">					<span class="attr">name</span>: <span class="string">&quot;description&quot;</span>,</span><br><span class="line">					<span class="attr">content</span>: <span class="string">&quot;desc&quot;</span></span><br><span class="line">				&#125;,</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="attr">hid</span>: <span class="string">&quot;keywords&quot;</span>,</span><br><span class="line">					<span class="attr">name</span>: <span class="string">&quot;keywords&quot;</span>,</span><br><span class="line">					<span class="attr">content</span>: <span class="string">&quot;key&quot;</span></span><br><span class="line">				&#125;</span><br><span class="line">			]</span><br><span class="line">		&#125;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>三、修改局域网配置<br>在package.json中新添加</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;config&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;nuxt&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;host&quot;</span><span class="punctuation">:</span> <span class="string">&quot;127.0.0.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;port&quot;</span><span class="punctuation">:</span> <span class="string">&quot;8080&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>四、插件引用<br>以生成二维码插件为例：<br>1.在<code>plugins</code>目录下新建<code>qrcode.js</code>文件:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Vue</span> <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> qrcode <span class="keyword">from</span> <span class="string">&quot;qrcodejs2&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">$qrcode</span> = qrcode;</span><br></pre></td></tr></table></figure>
+<p>2.在<code>nuxt.config.js</code>配置文件中：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">plugins</span>: [</span><br><span class="line">	&#123; <span class="attr">src</span>: <span class="string">&#x27;~/plugins/qrcode.js&#x27;</span>, <span class="attr">ssr</span>: <span class="literal">false</span> &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>这样就可以在全局.vue中使用了，<code>new this.$qrcode()</code></p>
+<p>五、环境配置<br>1.<code>nuxt.config.js</code>文件中添加配置项：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">env</span>: &#123;</span><br><span class="line">	<span class="attr">BASE_URL</span>: process.<span class="property">env</span>.<span class="property">BASE_URL</span>,</span><br><span class="line">	<span class="attr">NODE_ENV</span>: process.<span class="property">env</span>.<span class="property">NODE_ENV</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>2.<code>package.json</code>文件中修改：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;dev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cross-env BASE_URL=http://xxx NODE_ENV=development nuxt&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;test&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cross-env BASE_URL=http://xxx NODE_ENV=production nuxt generate&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;generate&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cross-env BASE_URL=http://xxx NODE_ENV=production nuxt generate&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+<p>这样，本地、测试、生产环境就都有了，执行对应命令即可如：npm run dev, npm run test, npm run generate</p>
+<p>3.在axios等请求中就可以使用不同的<code>process.env.BASE_URL</code>来使用接口域名</p>
+<p>六、asyncData 方法</p>
+<ul>
+<li>你可能想要在服务器端获取并渲染数据。Nuxt.js添加了asyncData方法使得你能够在渲染组件之前异步获取数据。</li>
+</ul>
+<p>七、css按需引入<br>通过阅读 nuxt 源码发现了端倪，发现在打包时将所有的公共css通过 splitChunks 进行分组，由于项目中组件都是动态引入的，这里直接在 nuxt.config.js 中修改webpack打包参数，将 splitChunks.cacheGroups.styles 配置删除，使用默认的 chunks: async 配置，即可实现按需引入。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/Nuxt/" rel="tag"># Nuxt</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/2019/12/05/vue%E9%A2%84%E6%B8%B2%E6%9F%93%E6%96%B9%E6%A1%88/" rel="prev" title="vue预渲染方案">
+                  <i class="fa fa-angle-left"></i> vue预渲染方案
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blog/2020/04/24/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Fcanvas2d%E5%AE%9E%E4%BE%8B/" rel="next" title="微信小程序canvas2d实例">
+                  微信小程序canvas2d实例 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">郭雪辉</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">215k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:15</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/sidebar.js"></script><script src="/blog/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/blog/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":100,"height":150},"mobile":{"show":true},"log":false});</script></body>
+</html>

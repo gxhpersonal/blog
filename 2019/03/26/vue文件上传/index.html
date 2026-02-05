@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.guoxh.com","root":"/blog/","images":"/blog/images","scheme":"Muse","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/blog/js/config.js"></script>
+
+    <meta name="description" content="文件上传（支持PDF格式文件上传）以文件流的形式上传到接口1&lt;input type&#x3D;&quot;file&quot; id&#x3D;&quot;CarDamageFile&quot; class&#x3D;&quot;g-core-image-upload-form&quot; value&#x3D;&quot;&quot; accept&#x3D;&quot;image&#x2F;gif,image&#x2F;jpeg,image&#x2F;jpg,ima">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue文件上传">
+<meta property="og:url" content="https://www.guoxh.com/blog/2019/03/26/vue%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/index.html">
+<meta property="og:site_name" content="blog station">
+<meta property="og:description" content="文件上传（支持PDF格式文件上传）以文件流的形式上传到接口1&lt;input type&#x3D;&quot;file&quot; id&#x3D;&quot;CarDamageFile&quot; class&#x3D;&quot;g-core-image-upload-form&quot; value&#x3D;&quot;&quot; accept&#x3D;&quot;image&#x2F;gif,image&#x2F;jpeg,image&#x2F;jpg,ima">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-03-26T05:56:08.000Z">
+<meta property="article:modified_time" content="2026-02-05T07:34:27.106Z">
+<meta property="article:author" content="郭雪辉">
+<meta property="article:tag" content="vue">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.guoxh.com/blog/2019/03/26/vue%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.guoxh.com/blog/2019/03/26/vue%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/","path":"2019/03/26/vue文件上传/","title":"vue文件上传"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>vue文件上传 | blog station</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">blog station</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%EF%BC%88%E6%94%AF%E6%8C%81PDF%E6%A0%BC%E5%BC%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%EF%BC%89%E4%BB%A5%E6%96%87%E4%BB%B6%E6%B5%81%E7%9A%84%E5%BD%A2%E5%BC%8F%E4%B8%8A%E4%BC%A0%E5%88%B0%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.</span> <span class="nav-text">文件上传（支持PDF格式文件上传）以文件流的形式上传到接口</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">郭雪辉</p>
+  <div class="site-description" itemprop="description">郭雪辉博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog/categories/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/blog/tags/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.guoxh.com/blog/2019/03/26/vue%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="郭雪辉">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog station">
+      <meta itemprop="description" content="郭雪辉博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="vue文件上传 | blog station">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vue文件上传
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-03-26 13:56:08" itemprop="dateCreated datePublished" datetime="2019-03-26T13:56:08+08:00">2019-03-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-05 15:34:27" itemprop="dateModified" datetime="2026-02-05T15:34:27+08:00">2026-02-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="文件上传（支持PDF格式文件上传）以文件流的形式上传到接口"><a href="#文件上传（支持PDF格式文件上传）以文件流的形式上传到接口" class="headerlink" title="文件上传（支持PDF格式文件上传）以文件流的形式上传到接口"></a>文件上传（支持PDF格式文件上传）以文件流的形式上传到接口</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> <span class="attr">id</span>=<span class="string">&quot;CarDamageFile&quot;</span> <span class="attr">class</span>=<span class="string">&quot;g-core-image-upload-form&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&quot;</span> <span class="attr">accept</span>=<span class="string">&quot;image/gif,image/jpeg,image/jpg,image/png,application/pdf&quot;</span> <span class="attr">data-type</span>=<span class="string">&quot;back-page&quot;</span> <span class="attr">name</span>=<span class="string">&quot;Pictures&quot;</span> <span class="attr">multiple</span>=<span class="string">&quot;multiple&quot;</span> @<span class="attr">change</span>=<span class="string">&quot;imagechanged($event,Udata[7])&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//文件上传</span></span><br><span class="line"><span class="title function_">wrongTip</span>(<span class="params">data</span>)&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(data)</span><br><span class="line">&#125;,</span><br><span class="line"><span class="title function_">imagechanged</span>(<span class="params">e, data</span>) &#123;</span><br><span class="line"><span class="comment">//参数e为当前上传的表单，data为要处理的数据</span></span><br><span class="line">    <span class="keyword">var</span> that = <span class="variable language_">this</span>,</span><br><span class="line">      _data = that.<span class="property">Udata</span>,</span><br><span class="line">      fileList = e.<span class="property">target</span>.<span class="property">files</span>;</span><br><span class="line">    data.<span class="property">count</span> = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (fileList.<span class="property">length</span> &gt; <span class="number">5</span>) &#123;</span><br><span class="line">      that.<span class="title function_">wrongTip</span>(<span class="string">&quot;每项最多上传5张&quot;</span>);</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (fileList) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; fileList.<span class="property">length</span>; i++) &#123;</span><br><span class="line">		<span class="comment">//遍历上传的文件，一个一个处理</span></span><br><span class="line">        that.<span class="title function_">readFile</span>(fileList.<span class="property">length</span>, fileList[i], data);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">readFile</span>(<span class="params">num, res, Sdata</span>) &#123;</span><br><span class="line"><span class="comment">//num为上传文件数量，res为上传文件数据，Sdata为要处理数据</span></span><br><span class="line">    <span class="keyword">var</span> that = <span class="variable language_">this</span>,</span><br><span class="line">      _data = that.<span class="property">Udata</span>,</span><br><span class="line">      <span class="title class_">Ename</span> = <span class="title class_">Sdata</span>.<span class="property">Ename</span>,</span><br><span class="line">      render = <span class="keyword">new</span> <span class="title class_">FileReader</span>();</span><br><span class="line">    <span class="keyword">if</span> (res.<span class="property">type</span> != <span class="string">&quot;application/pdf&quot;</span> &amp;&amp; res.<span class="property">size</span> / <span class="number">1024</span> &gt; <span class="number">10240</span>) &#123;</span><br><span class="line">      that.<span class="title function_">wrongTip</span>(</span><br><span class="line">        <span class="string">&quot;材料仅限pdf. jpg .gif .png格式，单个图片大小不超过10M，单个PDF大小不超过4.5M，每项最多上传5张。&quot;</span></span><br><span class="line">      );</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (res.<span class="property">type</span> == <span class="string">&quot;application/pdf&quot;</span> &amp;&amp; res.<span class="property">size</span> / <span class="number">1024</span> &gt; <span class="number">4608</span>) &#123;</span><br><span class="line">      that.<span class="title function_">wrongTip</span>(</span><br><span class="line">        <span class="string">&quot;材料仅限pdf. jpg .gif .png格式，单个图片大小不超过10M，单个PDF大小不超过4.5M，每项最多上传5张。&quot;</span></span><br><span class="line">      );</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      render.<span class="title function_">addEventListener</span>(</span><br><span class="line">        <span class="string">&quot;load&quot;</span>,</span><br><span class="line">        <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">          <span class="keyword">var</span> src = <span class="variable language_">this</span>.<span class="property">result</span>;</span><br><span class="line">          <span class="keyword">var</span> formData = <span class="keyword">new</span> <span class="title class_">FormData</span>();</span><br><span class="line">          <span class="keyword">var</span> index = <span class="variable language_">this</span>.<span class="property">index</span>;</span><br><span class="line">          <span class="keyword">var</span> _fileName = res.<span class="property">name</span>;</span><br><span class="line">          formData.<span class="title function_">append</span>(<span class="string">&quot;fileUrl&quot;</span>, res);</span><br><span class="line">          formData.<span class="title function_">append</span>(<span class="string">&quot;fileName&quot;</span>, _fileName);</span><br><span class="line">          <span class="title class_">Sdata</span>.<span class="property">loading</span> = <span class="literal">true</span>;</span><br><span class="line">          <span class="title class_">Basic</span>.<span class="title function_">ajaxReturnPromise</span>(&#123;</span><br><span class="line">            <span class="attr">type</span>: <span class="string">&quot;POST&quot;</span>,</span><br><span class="line">            <span class="attr">apiUrl</span>: <span class="string">&quot;/Comment/UploadImg&quot;</span>,</span><br><span class="line">            <span class="attr">customLoading</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">param</span>: formData,</span><br><span class="line">            <span class="attr">emulateJSON</span>: <span class="literal">false</span></span><br><span class="line">          &#125;).<span class="title function_">then</span>(</span><br><span class="line">            <span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">              <span class="keyword">if</span> (response.<span class="property">IsSuccess</span>) &#123;</span><br><span class="line">                ++<span class="title class_">Sdata</span>.<span class="property">count</span>;</span><br><span class="line">                <span class="keyword">var</span> data = response.<span class="property">data</span>;</span><br><span class="line">                <span class="keyword">if</span> (<span class="title class_">Sdata</span>.<span class="property">imgSrc</span>.<span class="property">length</span> + data.<span class="property">length</span> &lt; <span class="number">6</span>) &#123;</span><br><span class="line">                  <span class="title class_">Sdata</span>.<span class="property">curImg</span> = <span class="built_in">parseInt</span>(<span class="title class_">Sdata</span>.<span class="property">curImg</span> + <span class="number">1</span>);</span><br><span class="line">                  <span class="comment">// Sdata.imgSrc.shift();</span></span><br><span class="line">                  <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> data) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (data[i].<span class="property">BaseUrl</span>.<span class="title function_">toLowerCase</span>().<span class="title function_">indexOf</span>(<span class="string">&quot;.pdf&quot;</span>) != -<span class="number">1</span>) &#123;</span><br><span class="line">                      <span class="title class_">Sdata</span>.<span class="property">imgSrc</span>.<span class="title function_">unshift</span>(&#123;</span><br><span class="line">                        <span class="attr">picUrl</span>: <span class="string">&quot;https://h5-fe.huizuche.com/claim/PDF.png&quot;</span>,</span><br><span class="line">                        <span class="attr">url</span>: data[i].<span class="property">BaseUrl</span>,</span><br><span class="line">                        <span class="attr">name</span>: _fileName</span><br><span class="line">                      &#125;);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                      <span class="title class_">Sdata</span>.<span class="property">imgSrc</span>.<span class="title function_">unshift</span>(&#123;</span><br><span class="line">                        <span class="attr">picUrl</span>:</span><br><span class="line">                          data[i].<span class="property">BaseUrl</span> +</span><br><span class="line">                          <span class="string">&quot;?x-oss-process=image/resize,m_fill,h_78,w_78&quot;</span>,</span><br><span class="line">                        <span class="attr">url</span>: data[i].<span class="property">BaseUrl</span>,</span><br><span class="line">                        <span class="attr">name</span>: _fileName</span><br><span class="line">                      &#125;);</span><br><span class="line">                    &#125;</span><br><span class="line">                  &#125;</span><br><span class="line">                  that.<span class="property">$store</span>.<span class="title function_">dispatch</span>(<span class="title class_">Sdata</span>.<span class="property">store</span>, &#123;</span><br><span class="line">                    [<span class="title class_">Ename</span>]: <span class="title class_">Sdata</span>.<span class="property">imgSrc</span></span><br><span class="line">                  &#125;);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                  that.<span class="title function_">wrongTip</span>(<span class="string">&quot;每项最多上传5张&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="keyword">if</span> (<span class="title class_">Sdata</span>.<span class="property">count</span> == num) &#123;</span><br><span class="line">                <span class="title class_">Sdata</span>.<span class="property">loading</span> = <span class="literal">false</span>;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">              that.<span class="title function_">wrongTip</span>(<span class="string">&quot;文件上传失败，请重新上传&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">          );</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="literal">false</span></span><br><span class="line">      );</span><br><span class="line">      render.<span class="title function_">readAsDataURL</span>(res);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/vue/" rel="tag"># vue</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/2019/03/26/vue%E5%BE%AE%E4%BF%A1%E5%88%86%E4%BA%AB/" rel="prev" title="vue微信分享">
+                  <i class="fa fa-angle-left"></i> vue微信分享
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blog/2019/03/26/%E9%A1%B9%E7%9B%AE%E5%9B%BE%E7%89%87%E4%B8%80%E9%94%AE%E5%8E%8B%E7%BC%A9/" rel="next" title="项目图片一键压缩">
+                  项目图片一键压缩 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">郭雪辉</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">215k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:15</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/sidebar.js"></script><script src="/blog/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/blog/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":100,"height":150},"mobile":{"show":true},"log":false});</script></body>
+</html>

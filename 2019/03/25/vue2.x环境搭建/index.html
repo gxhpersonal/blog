@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.guoxh.com","root":"/blog/","images":"/blog/images","scheme":"Muse","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/blog/js/config.js"></script>
+
+    <meta name="description" content="1.全局安装 vue-cli1$ npm install --global vue-cli  2.创建一个基于 webpack 模板的新项目12345cli2.X快速构建项目：$ vue init webpack vue-projectcli3.0快速构建项目：vue create vue-project；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue2.x环境搭建">
+<meta property="og:url" content="https://www.guoxh.com/blog/2019/03/25/vue2.x%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:site_name" content="blog station">
+<meta property="og:description" content="1.全局安装 vue-cli1$ npm install --global vue-cli  2.创建一个基于 webpack 模板的新项目12345cli2.X快速构建项目：$ vue init webpack vue-projectcli3.0快速构建项目：vue create vue-project；">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://www.guoxh.com/blog/img/blog/node-sass.png">
+<meta property="article:published_time" content="2019-03-25T03:46:27.000Z">
+<meta property="article:modified_time" content="2026-02-05T07:34:27.105Z">
+<meta property="article:author" content="郭雪辉">
+<meta property="article:tag" content="vue">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.guoxh.com/blog/img/blog/node-sass.png">
+
+
+<link rel="canonical" href="https://www.guoxh.com/blog/2019/03/25/vue2.x%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.guoxh.com/blog/2019/03/25/vue2.x%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/","path":"2019/03/25/vue2.x环境搭建/","title":"vue2.x环境搭建"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>vue2.x环境搭建 | blog station</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">blog station</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%85%A8%E5%B1%80%E5%AE%89%E8%A3%85-vue-cli"><span class="nav-number">1.</span> <span class="nav-text">1.全局安装 vue-cli</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8E-webpack-%E6%A8%A1%E6%9D%BF%E7%9A%84%E6%96%B0%E9%A1%B9%E7%9B%AE"><span class="nav-number">2.</span> <span class="nav-text">2.创建一个基于 webpack 模板的新项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="nav-number">3.</span> <span class="nav-text">3.安装依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%AE%89%E8%A3%85scss-SCSS-%E6%98%AF-Sass-3-%E5%BC%95%E5%85%A5%E6%96%B0%E7%9A%84%E8%AF%AD%E6%B3%95-%E5%B9%B6%E4%B8%94%E7%BB%A7%E6%89%BF%E4%BA%86-Sass-%E7%9A%84%E5%BC%BA%E5%A4%A7%E5%8A%9F%E8%83%BD"><span class="nav-number">4.</span> <span class="nav-text">4.安装scss(SCSS 是 Sass 3 引入新的语法,并且继承了 Sass 的强大功能)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue%E6%89%93%E5%8C%85%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90js%EF%BC%8Ccss%E8%B7%AF%E5%BE%84%E4%B8%8D%E5%AF%B9%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">vue打包静态资源js，css路径不对的解决办法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-cli2-X%E4%B8%8D%E5%90%8C%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E4%B8%8D%E5%90%8Capi%E5%9F%9F%E5%90%8D"><span class="nav-number">6.</span> <span class="nav-text">vue-cli2.X不同环境配置不同api域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-cli-vue-cli3-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">7.</span> <span class="nav-text">@vue&#x2F;cli(vue-cli3)环境配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">8.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%BC%E5%AE%B9%E4%BD%8E%E7%89%88%E6%9C%AC%E5%AE%89%E5%8D%93ios%E7%B3%BB%E7%BB%9F%EF%BC%8Cios8%E4%BB%A5%E4%B8%8B"><span class="nav-number">9.</span> <span class="nav-text">兼容低版本安卓ios系统，ios8以下</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E9%9D%A2%E6%98%AF%E6%88%91%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="nav-number"></span> <span class="nav-text">下面是我遇到的一些问题：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E6%89%BE%E4%B8%8D%E5%88%B0-%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84%E6%89%BE%E4%B8%8D%E5%88%B0%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3"><span class="nav-number">1.</span> <span class="nav-text">路由找不到 || 文件路径找不到报错解决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#background%E8%AE%BE%E7%BD%AE%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87%EF%BC%8C%E6%89%93%E5%8C%85%E5%90%8E%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E4%B8%8D%E5%87%BA%E6%9D%A5"><span class="nav-number">2.</span> <span class="nav-text">background设置背景图片，打包后图片加载不出来</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">郭雪辉</p>
+  <div class="site-description" itemprop="description">郭雪辉博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog/categories/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/blog/tags/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.guoxh.com/blog/2019/03/25/vue2.x%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="郭雪辉">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog station">
+      <meta itemprop="description" content="郭雪辉博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="vue2.x环境搭建 | blog station">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vue2.x环境搭建
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-03-25 11:46:27" itemprop="dateCreated datePublished" datetime="2019-03-25T11:46:27+08:00">2019-03-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-05 15:34:27" itemprop="dateModified" datetime="2026-02-05T15:34:27+08:00">2026-02-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="1-全局安装-vue-cli"><a href="#1-全局安装-vue-cli" class="headerlink" title="1.全局安装 vue-cli"></a>1.全局安装 vue-cli</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --global vue-cli</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-创建一个基于-webpack-模板的新项目"><a href="#2-创建一个基于-webpack-模板的新项目" class="headerlink" title="2.创建一个基于 webpack 模板的新项目"></a>2.创建一个基于 webpack 模板的新项目</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cli2.X快速构建项目：</span><br><span class="line">$ vue init webpack vue-project</span><br><span class="line"></span><br><span class="line">cli3.<span class="number">0</span>快速构建项目：</span><br><span class="line">vue create vue-project；</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-安装依赖"><a href="#3-安装依赖" class="headerlink" title="3.安装依赖"></a>3.安装依赖</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//定位vue项目文件夹下</span><br><span class="line">$ cd vue-project</span><br><span class="line">//安装依赖</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-安装scss-SCSS-是-Sass-3-引入新的语法-并且继承了-Sass-的强大功能"><a href="#4-安装scss-SCSS-是-Sass-3-引入新的语法-并且继承了-Sass-的强大功能" class="headerlink" title="4.安装scss(SCSS 是 Sass 3 引入新的语法,并且继承了 Sass 的强大功能)"></a>4.安装scss(SCSS 是 Sass 3 引入新的语法,并且继承了 Sass 的强大功能)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//直接安装sass可以使用scss</span><br><span class="line">npm install --save-dev sass-loader</span><br><span class="line">//sass-loader依赖于node-sass</span><br><span class="line">npm install --save-dev node-sass</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;style lang=&quot;scss&quot; scope&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这里需要注意！！如果node版本14以上，node-sass会出现不支持情况，这里执行<code>npm rebuild node-sass</code>可以解决，如果还不能解决，可以看下node-sass版本号：<br><img src="http://www.guoxh.com/blog/img/blog/node-sass.png"></li>
+</ul>
+<h3 id="vue打包静态资源js，css路径不对的解决办法"><a href="#vue打包静态资源js，css路径不对的解决办法" class="headerlink" title="vue打包静态资源js，css路径不对的解决办法"></a>vue打包静态资源js，css路径不对的解决办法</h3><p>打开config&#x2F;index.js，将其中的build配置下的assetsPublicPath值改为’.&#x2F;’</p>
+<h3 id="vue-cli2-X不同环境配置不同api域名"><a href="#vue-cli2-X不同环境配置不同api域名" class="headerlink" title="vue-cli2.X不同环境配置不同api域名"></a>vue-cli2.X不同环境配置不同api域名</h3><p>1.安装cross-env</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i --save-dev cross-env</span><br></pre></td></tr></table></figure>
+
+<p>2.修改各环境下的参数<br>在config&#x2F;目录下添加test.env.js<br>修改prod.env.js里的内容，修改后的内容如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line"> <span class="attr">NODE_ENV</span>: <span class="string">&#x27;&quot;production&quot;&#x27;</span>,</span><br><span class="line"> <span class="attr">EVN_CONFIG</span>:<span class="string">&#x27;&quot;prod&quot;&#x27;</span>,</span><br><span class="line"> <span class="attr">API_ROOT</span>:<span class="string">&#x27;&quot;https://这里是正式域名.com&quot;&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3.修改test.env.js文件内容，如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line"> <span class="attr">NODE_ENV</span>: <span class="string">&#x27;&quot;testing&quot;&#x27;</span>,</span><br><span class="line"> <span class="attr">EVN_CONFIG</span>:<span class="string">&#x27;&quot;test&quot;&#x27;</span>,</span><br><span class="line"> <span class="attr">API_ROOT</span>:<span class="string">&#x27;&quot;https://这里是测试域名test.com/&quot;&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4.对dev.env.js文件内容进行修改，修改后的内容如下:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span></span><br><span class="line"><span class="keyword">const</span> merge = <span class="built_in">require</span>(<span class="string">&#x27;webpack-merge&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> prodEnv = <span class="built_in">require</span>(<span class="string">&#x27;./prod.env&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="title function_">merge</span>(prodEnv, &#123;</span><br><span class="line">  <span class="attr">NODE_ENV</span>: <span class="string">&#x27;&quot;development&quot;&#x27;</span>,</span><br><span class="line">  <span class="attr">VN_CONFIG</span>: <span class="string">&#x27;&quot;dev&quot;&#x27;</span>,</span><br><span class="line">  <span class="attr">API_ROOT</span>: <span class="string">&#x27;&quot;https://ticket-api.jia-expo.com/&quot;&#x27;</span></span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>dev环境配制了服务代理，API_ROOT是配制的代理地址</p>
+</blockquote>
+<p>5.修改项目package.json文件</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;dev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;webpack-dev-server --inline --progress --config build/webpack.dev.conf.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;start&quot;</span><span class="punctuation">:</span> <span class="string">&quot;npm run dev&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;build&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node build/build.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;build:test&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cross-env NODE_ENV=production env_config=test node build/build.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;build:prod&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cross-env NODE_ENV=production env_config=prod node build/build.js&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<p>6.修改config&#x2F;index.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">build</span>: &#123;</span><br><span class="line">    <span class="comment">// 添加test prod 环境的配制</span></span><br><span class="line">    <span class="attr">prodEnv</span>: <span class="built_in">require</span>(<span class="string">&#x27;./prod.env&#x27;</span>),</span><br><span class="line">    <span class="attr">testEnv</span>: <span class="built_in">require</span>(<span class="string">&#x27;./test.env&#x27;</span>),</span><br></pre></td></tr></table></figure>
+
+<p>7.在webpackage.prod.conf.js中使用构建环境参数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 个性env常量的定义</span></span><br><span class="line"><span class="keyword">const</span> env = config.<span class="property">build</span>[process.<span class="property">env</span>.<span class="property">env_config</span> + <span class="string">&#x27;Env&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>8.调整build&#x2F;build.js　</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">&#x27;./check-versions&#x27;</span>)()</span><br><span class="line"><span class="comment">// process.env.NODE_ENV = &#x27;production&#x27;  // 注释掉的代码</span></span><br><span class="line"><span class="keyword">const</span> ora = <span class="built_in">require</span>(<span class="string">&#x27;ora&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> rm = <span class="built_in">require</span>(<span class="string">&#x27;rimraf&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> chalk = <span class="built_in">require</span>(<span class="string">&#x27;chalk&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">&#x27;webpack&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> config = <span class="built_in">require</span>(<span class="string">&#x27;../config&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> webpackConfig = <span class="built_in">require</span>(<span class="string">&#x27;./webpack.prod.conf&#x27;</span>)</span><br><span class="line"><span class="comment">// 修改spinner的定义</span></span><br><span class="line"><span class="comment">// const spinner = ora(&#x27;building for production...&#x27;)</span></span><br><span class="line"><span class="keyword">var</span> spinner = <span class="title function_">ora</span>(<span class="string">&#x27;building for &#x27;</span> + process.<span class="property">env</span>.<span class="property">NODE_ENV</span> + <span class="string">&#x27; of &#x27;</span> + process.<span class="property">env</span>.<span class="property">env_config</span>+ <span class="string">&#x27; mode...&#x27;</span> )</span><br><span class="line">spinner.<span class="title function_">start</span>()</span><br><span class="line"><span class="comment">//其它内容不需要做任何调整 ...</span></span><br></pre></td></tr></table></figure>
+
+<p>9.大功告成<br>request中就可以区分接口域名了变量：process.env.API_ROOT<br>执行<code>npm run build:test</code>打包的就是测试环境<br>执行<code>npm run build:prod</code>打包的就是生产环境</p>
+<h3 id="vue-cli-vue-cli3-环境配置"><a href="#vue-cli-vue-cli3-环境配置" class="headerlink" title="@vue&#x2F;cli(vue-cli3)环境配置"></a>@vue&#x2F;cli(vue-cli3)环境配置</h3><p>这可就简单太多了，傻瓜操作<br>1.<code>package.json</code>文件同目录（项目根目录）下创建文件<code>.env.development</code>，<code>.env.staging</code>，<code>.env.production</code>；<br>2.<code>.env.development</code>文件（本地开发文件）中添加配置：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123; </span><br><span class="line">  <span class="variable constant_">NODE_ENV</span> = development</span><br><span class="line">  <span class="variable constant_">VUE_APP_BASE_API</span> = <span class="attr">http</span>:<span class="comment">//192.168.xxx/  //本地接口域名，无需加引号，项目中要把这行注释删掉！</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>.env.staging</code>文件（测试环境文件）中添加配置：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123; </span><br><span class="line">  <span class="variable constant_">NODE_ENV</span> = staging</span><br><span class="line">  <span class="variable constant_">VUE_APP_BASE_API</span> = <span class="attr">http</span>:<span class="comment">//192.168.xxx/  //测试接口域名，无需加引号，项目中要把这行注释删掉！</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>.env.production</code>文件（生产环境文件）中添加配置：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123; </span><br><span class="line">  <span class="variable constant_">NODE_ENV</span> = production</span><br><span class="line">  <span class="variable constant_">VUE_APP_BASE_API</span> = <span class="attr">http</span>:<span class="comment">//api.xxx.com/  //生产接口域名，无需加引号，项目中要把这行注释删掉！</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3.<code>package.json</code>文件中：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;serve&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vue-cli-service serve --mode development&quot;</span><span class="punctuation">,</span> <span class="comment">//对应本地开发环境 npm run serve</span></span><br><span class="line">    <span class="attr">&quot;test&quot;</span><span class="punctuation">:</span><span class="string">&quot;vue-cli-service build --mode staging&quot;</span><span class="punctuation">,</span>  <span class="comment">//对应测试环境打包命令  npm run test</span></span><br><span class="line">    <span class="attr">&quot;build&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vue-cli-service build --mode production&quot;</span> <span class="comment">//对应生产环境打包 npm run build</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+<p>4.request请求文件中通过<code>process.env.VUE_APP_BASE_API</code>就可以获取到不同环境的接口域名了</p>
+<p>OK，刚刚蛋蛋，大功告成</p>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="兼容低版本安卓ios系统，ios8以下"><a href="#兼容低版本安卓ios系统，ios8以下" class="headerlink" title="兼容低版本安卓ios系统，ios8以下"></a>兼容低版本安卓ios系统，ios8以下</h3><p>修改package.json文件中的<code>browserslist</code>配置项：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;browserslist&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">  <span class="string">&quot;&gt; 1%&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;last 2 versions&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;not ie &lt;= 8&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;iOS &gt;= 6&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;Android &gt; 4.1&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;Firefox &gt; 20&quot;</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="下面是我遇到的一些问题："><a href="#下面是我遇到的一些问题：" class="headerlink" title="下面是我遇到的一些问题："></a>下面是我遇到的一些问题：</h2><h3 id="路由找不到-文件路径找不到报错解决"><a href="#路由找不到-文件路径找不到报错解决" class="headerlink" title="路由找不到 || 文件路径找不到报错解决"></a>路由找不到 || 文件路径找不到报错解决</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//新建一个notFound.vue文件来指向*所有路径</span></span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> <span class="title class_">VueRouter</span>(&#123;</span><br><span class="line">  <span class="attr">mode</span>: <span class="string">&#x27;history&#x27;</span>,</span><br><span class="line">  <span class="attr">routes</span>: [</span><br><span class="line">    &#123; <span class="attr">path</span>: <span class="string">&#x27;*&#x27;</span>, <span class="attr">component</span>: <span class="title class_">NotFoundComponent</span> &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="background设置背景图片，打包后图片加载不出来"><a href="#background设置背景图片，打包后图片加载不出来" class="headerlink" title="background设置背景图片，打包后图片加载不出来"></a>background设置背景图片，打包后图片加载不出来</h3><p>首先可以肯定为路径问题<br>方法：<br>1.extract-text-webpack-plugin插件(作用：将捆绑包或捆绑包中的文本提取到单独的文件中)：</p>
+<blockquote>
+<p>在build&#x2F;utils.js文件下找到ExtractTextPlugin.extract参数<br>添加配置项：publicPath: ‘..&#x2F;..&#x2F;‘;<br>用的3.0.0版本；</p>
+</blockquote>
+<p>2.用了vue-cli构建项目，会在项目下有个static文件夹，把图片放到这个静态文件夹下，然后使用<code>/static/logo.png</code>相对路径引用，可以在本地和打包环境正常显示；</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/vue/" rel="tag"># vue</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/2019/03/20/%E5%89%8D%E7%AB%AF%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="prev" title="前端开发工具使用">
+                  <i class="fa fa-angle-left"></i> 前端开发工具使用
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blog/2019/03/26/vue-axios%E8%AF%B7%E6%B1%82-%E5%B0%81%E8%A3%85/" rel="next" title="vue-axios请求+封装">
+                  vue-axios请求+封装 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">郭雪辉</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">215k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:15</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/sidebar.js"></script><script src="/blog/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/blog/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":100,"height":150},"mobile":{"show":true},"log":false});</script></body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.guoxh.com","root":"/blog/","images":"/blog/images","scheme":"Muse","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/blog/js/config.js"></script>
+
+    <meta name="description" content="我用的是Windows server 2019系统服务器nginx安装">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自购服务器搭建前端项目练手">
+<meta property="og:url" content="https://www.guoxh.com/blog/2021/06/15/%E8%87%AA%E8%B4%AD%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E7%BB%83%E6%89%8B/index.html">
+<meta property="og:site_name" content="blog station">
+<meta property="og:description" content="我用的是Windows server 2019系统服务器nginx安装">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://www.guoxh.com/blog/img/blog/nginx1.png">
+<meta property="og:image" content="http://www.guoxh.com/blog/img/blog/nginx2.png">
+<meta property="og:image" content="http://www.guoxh.com/blog/img/blog/nginx3.png">
+<meta property="og:image" content="http://www.guoxh.com/blog/img/blog/nginx4.png">
+<meta property="og:image" content="http://www.guoxh.com/blog/img/blog/nginx5.png">
+<meta property="og:image" content="http://www.guoxh.com/blog/img/blog/nginx6.png">
+<meta property="og:image" content="http://www.guoxh.com/blog/img/blog/nginx7.png">
+<meta property="og:image" content="http://www.guoxh.com/blog/img/blog/nginx8.png">
+<meta property="og:image" content="http://www.guoxh.com/blog/img/blog/nginx9.png">
+<meta property="og:image" content="http://www.guoxh.com/blog/img/blog/nginx10.png">
+<meta property="og:image" content="http://www.guoxh.com/blog/img/blog/nginx12.png">
+<meta property="og:image" content="http://www.guoxh.com/blog/img/blog/nginx11.png">
+<meta property="article:published_time" content="2021-06-15T09:31:53.000Z">
+<meta property="article:modified_time" content="2026-02-05T07:34:27.114Z">
+<meta property="article:author" content="郭雪辉">
+<meta property="article:tag" content="服务器">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.guoxh.com/blog/img/blog/nginx1.png">
+
+
+<link rel="canonical" href="https://www.guoxh.com/blog/2021/06/15/%E8%87%AA%E8%B4%AD%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E7%BB%83%E6%89%8B/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.guoxh.com/blog/2021/06/15/%E8%87%AA%E8%B4%AD%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E7%BB%83%E6%89%8B/","path":"2021/06/15/自购服务器搭建前端项目练手/","title":"自购服务器搭建前端项目练手"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>自购服务器搭建前端项目练手 | blog station</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">blog station</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%88%91%E7%94%A8%E7%9A%84%E6%98%AFWindows-server-2019%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">我用的是Windows server 2019系统服务器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx%E5%AE%89%E8%A3%85"><span class="nav-number"></span> <span class="nav-text">nginx安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E4%B8%8B%E8%BD%BDnginx-%E5%9C%B0%E5%9D%80-%EF%BC%8C%E8%BF%99%E9%87%8C%E6%88%91%E4%B8%8B%E8%BD%BD%E7%9A%84%E6%98%AF%E7%A8%B3%E5%AE%9A%E7%89%88%E6%9C%AC%EF%BC%88stable-version%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">1、下载nginx 地址 ，这里我下载的是稳定版本（stable version）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E4%B8%8B%E8%BD%BDWindows-service-wrapper-%E5%9C%B0%E5%9D%80-%EF%BC%8C%E8%BF%99%E9%87%8C%E6%88%91%E4%B8%8B%E8%BD%BD%E7%9A%84%E6%9C%80%E6%96%B0%E7%9A%84%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">2、下载Windows service wrapper 地址 ，这里我下载的最新的：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E5%B0%86nginx%E5%8E%8B%E7%BC%A9%E5%8C%85%E8%A7%A3%E5%8E%8B%E8%87%B3C%E7%9B%98%E6%A0%B9%E7%9B%AE%E5%BD%95%EF%BC%8C%E5%B9%B6%E5%91%BD%E5%90%8D%E4%B8%BAnginx"><span class="nav-number">3.</span> <span class="nav-text">3、将nginx压缩包解压至C盘根目录，并命名为nginx</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4%E3%80%81%E5%B0%86winsw-bin-exe%E6%94%BE%E5%85%A5nginx%E7%9B%AE%E5%BD%95%E4%B8%8B%EF%BC%8C%E9%87%8D%E5%91%BD%E5%90%8D%E4%B8%BAnginx-service-exe%E3%80%82%E5%9C%A8%E6%AD%A4%E7%9B%AE%E5%BD%95%E4%B8%8B%E6%B7%BB%E5%8A%A0%E6%96%87%E4%BB%B6nginx-service-xml"><span class="nav-number">4.</span> <span class="nav-text">4、将winsw-bin.exe放入nginx目录下，重命名为nginx-service.exe。在此目录下添加文件nginx-service.xml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5%E3%80%81%E5%AE%89%E8%A3%85nginx%E7%B3%BB%E7%BB%9F%E6%9C%8D%E5%8A%A1%EF%BC%8C%E6%89%93%E5%BC%80cmd"><span class="nav-number">5.</span> <span class="nav-text">5、安装nginx系统服务，打开cmd</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6%E3%80%81%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%96%B9%E5%BC%8F%E6%93%8D%E4%BD%9Cnginx%E6%9C%8D%E5%8A%A1"><span class="nav-number">6.</span> <span class="nav-text">6、命令行方式操作nginx服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5http-localhost-%EF%BC%8C%E5%87%BA%E7%8E%B0%E4%B8%8B%E9%9D%A2%E9%A1%B5%E9%9D%A2%E5%8D%B3%E6%88%90%E5%8A%9F%EF%BC%9A"><span class="nav-number">7.</span> <span class="nav-text">7、浏览器中输入http:&#x2F;&#x2F;localhost&#x2F;，出现下面页面即成功：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8%E3%80%81%E5%8F%91%E5%B8%83%E5%89%8D%E7%AB%AFvue%E9%A1%B9%E7%9B%AE"><span class="nav-number">8.</span> <span class="nav-text">8、发布前端vue项目</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ssr"><span class="nav-number"></span> <span class="nav-text">ssr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jenkins%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="nav-number"></span> <span class="nav-text">jenkins删除文件操作</span></a></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">郭雪辉</p>
+  <div class="site-description" itemprop="description">郭雪辉博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog/categories/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/blog/tags/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.guoxh.com/blog/2021/06/15/%E8%87%AA%E8%B4%AD%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E7%BB%83%E6%89%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="郭雪辉">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog station">
+      <meta itemprop="description" content="郭雪辉博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="自购服务器搭建前端项目练手 | blog station">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          自购服务器搭建前端项目练手
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-06-15 17:31:53" itemprop="dateCreated datePublished" datetime="2021-06-15T17:31:53+08:00">2021-06-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-05 15:34:27" itemprop="dateModified" datetime="2026-02-05T15:34:27+08:00">2026-02-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url" rel="index"><span itemprop="name">服务器</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h4 id="我用的是Windows-server-2019系统服务器"><a href="#我用的是Windows-server-2019系统服务器" class="headerlink" title="我用的是Windows server 2019系统服务器"></a>我用的是Windows server 2019系统服务器</h4><h3 id="nginx安装"><a href="#nginx安装" class="headerlink" title="nginx安装"></a>nginx安装</h3><span id="more"></span>
+<h4 id="1、下载nginx-地址-，这里我下载的是稳定版本（stable-version）"><a href="#1、下载nginx-地址-，这里我下载的是稳定版本（stable-version）" class="headerlink" title="1、下载nginx 地址 ，这里我下载的是稳定版本（stable version）"></a>1、下载nginx <a target="_blank" rel="noopener" href="http://nginx.org/en/download.html">地址</a> ，这里我下载的是稳定版本（stable version）</h4><p><img src="http://www.guoxh.com/blog/img/blog/nginx1.png"></p>
+<h4 id="2、下载Windows-service-wrapper-地址-，这里我下载的最新的："><a href="#2、下载Windows-service-wrapper-地址-，这里我下载的最新的：" class="headerlink" title="2、下载Windows service wrapper 地址 ，这里我下载的最新的："></a>2、下载Windows service wrapper <a target="_blank" rel="noopener" href="https://repo.jenkins-ci.org/releases/com/sun/winsw/winsw/">地址</a> ，这里我下载的最新的：</h4><p><img src="http://www.guoxh.com/blog/img/blog/nginx2.png"></p>
+<h4 id="3、将nginx压缩包解压至C盘根目录，并命名为nginx"><a href="#3、将nginx压缩包解压至C盘根目录，并命名为nginx" class="headerlink" title="3、将nginx压缩包解压至C盘根目录，并命名为nginx"></a>3、将nginx压缩包解压至C盘根目录，并命名为nginx</h4><p><img src="http://www.guoxh.com/blog/img/blog/nginx3.png"></p>
+<h4 id="4、将winsw-bin-exe放入nginx目录下，重命名为nginx-service-exe。在此目录下添加文件nginx-service-xml"><a href="#4、将winsw-bin-exe放入nginx目录下，重命名为nginx-service-exe。在此目录下添加文件nginx-service-xml" class="headerlink" title="4、将winsw-bin.exe放入nginx目录下，重命名为nginx-service.exe。在此目录下添加文件nginx-service.xml"></a>4、将winsw-bin.exe放入nginx目录下，重命名为nginx-service.exe。在此目录下添加文件nginx-service.xml</h4><p><img src="http://www.guoxh.com/blog/img/blog/nginx4.png"></p>
+<p><code>nginx-service.xml</code>文件内容如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">service</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">id</span>&gt;</span>Nginx<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>Nginx<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">decription</span>&gt;</span>nginx<span class="tag">&lt;/<span class="name">decription</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">logpath</span>&gt;</span>C:\nginx\logs<span class="tag">&lt;/<span class="name">logpath</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">executable</span>&gt;</span>nginx.exe<span class="tag">&lt;/<span class="name">executable</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">stopexecutable</span>&gt;</span>nginx.exe<span class="tag">&lt;/<span class="name">stopexecutable</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">stopargument</span>&gt;</span>-s<span class="tag">&lt;/<span class="name">stopargument</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">stopargument</span>&gt;</span>stop<span class="tag">&lt;/<span class="name">stopargument</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">logmode</span>&gt;</span>rotate<span class="tag">&lt;/<span class="name">logmode</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">service</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="5、安装nginx系统服务，打开cmd"><a href="#5、安装nginx系统服务，打开cmd" class="headerlink" title="5、安装nginx系统服务，打开cmd"></a>5、安装nginx系统服务，打开cmd</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 注意要定位到nginx目录下</span></span><br><span class="line"><span class="comment"># 安装nginx服务</span></span><br><span class="line">C:\nginx&gt;nginx-service.exe install</span><br><span class="line"><span class="comment"># 卸载nginx服务</span></span><br><span class="line">C:\nginx&gt;nginx-service.exe uninstall</span><br></pre></td></tr></table></figure>
+
+<h4 id="6、命令行方式操作nginx服务"><a href="#6、命令行方式操作nginx服务" class="headerlink" title="6、命令行方式操作nginx服务"></a>6、命令行方式操作nginx服务</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 注意要定位到nginx目录下</span></span><br><span class="line"><span class="comment"># nginx服务启动</span></span><br><span class="line">C:\nginx&gt;net start nginx</span><br><span class="line"><span class="comment"># nginx服务停止</span></span><br><span class="line">C:\nginx&gt;net stop nginx</span><br></pre></td></tr></table></figure>
+
+<h4 id="7、浏览器中输入http-localhost-，出现下面页面即成功："><a href="#7、浏览器中输入http-localhost-，出现下面页面即成功：" class="headerlink" title="7、浏览器中输入http://localhost/，出现下面页面即成功："></a>7、浏览器中输入<code>http://localhost/</code>，出现下面页面即成功：</h4><p><img src="http://www.guoxh.com/blog/img/blog/nginx5.png"></p>
+<ul>
+<li>需要注意的是，如果<code>net start nginx</code>失败，则需要判断是否是端口号被占用，端口被占用两种方案，一种关闭被占用进程，一种修改nginx配置文件端口号</li>
+</ul>
+<blockquote>
+<p>查看端口占用情况cmd输入 <code>netstat -aon | findstr :80</code> 命令</p>
+</blockquote>
+<p>1、关闭被占用进程：<br><img src="http://www.guoxh.com/blog/img/blog/nginx6.png"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 输入最后的数字查找对应进程，例如：</span></span><br><span class="line">tasklist|findstr <span class="string">&quot;4&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后在计算机的服务里停止对应的服务，解除占用</p>
+<p>2、修改nginx配置文件端口号，推荐这种方式，简单粗暴：<br>打开<code>conf</code>文件夹中<code>nginx.conf</code>文件，修改文件中：<br><img src="http://www.guoxh.com/blog/img/blog/nginx7.png"><br>改为其他端口号，如：8080；<br>cmd命令打开，输入<code>nginx -t</code>测试，会显示测试成功；<br>然后就可以<code>net start nginx</code></p>
+<h4 id="8、发布前端vue项目"><a href="#8、发布前端vue项目" class="headerlink" title="8、发布前端vue项目"></a>8、发布前端vue项目</h4><p>1.本地<code>win + R</code>输入<code>mstsc</code>打开远程控制窗口，连接远程服务器；</p>
+<ul>
+<li>注意勾选显示选项：<br><img src="http://www.guoxh.com/blog/img/blog/nginx8.png"></li>
+<li>选择本地资源-详细信息-勾选驱动器，这样做的目的是可以在远程服务器访问本地磁盘文件：<br><img src="http://www.guoxh.com/blog/img/blog/nginx9.png"><br><img src="http://www.guoxh.com/blog/img/blog/nginx10.png"></li>
+</ul>
+<p>2.在远程服务器文件管理中我们可以看到<code>重定向的程序和文件夹</code>在里面我们可以找到本地项目，copy到远程服务器中，修改对应nginx配置root为项目路径：<br><img src="http://www.guoxh.com/blog/img/blog/nginx12.png"></p>
+<p>2.单页面项目配置history模式路由，nginx对应配置：<br>打开<code>conf</code>文件夹中<code>nginx.conf</code>文件，修改文件中：<br><img src="http://www.guoxh.com/blog/img/blog/nginx11.png"><br>我这个项目部署的是子目录，所以我这里加了<code>/vue-next/</code>子路径，如果是根目录部署，则不需要这个子路径；</p>
+<h3 id="ssr"><a href="#ssr" class="headerlink" title="ssr"></a>ssr</h3><h3 id="jenkins删除文件操作"><a href="#jenkins删除文件操作" class="headerlink" title="jenkins删除文件操作"></a>jenkins删除文件操作</h3><p>我们会遇到jenkins打包失败的情况，可能是因为安装的包不匹配导致，所以希望删除node_modules文件夹，然后重新安装，这样就可以解决问题了:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm -rf node_modules</span><br><span class="line">rm -rf package-lock.json //同时可以删除lock文件，防止锁定不一致的插件</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag"># 服务器</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/2021/06/04/vue3%E5%85%A8%E5%AE%B6%E6%A1%B6%E6%90%AD%E5%BB%BA/" rel="prev" title="vue3全家桶搭建">
+                  <i class="fa fa-angle-left"></i> vue3全家桶搭建
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blog/2021/11/05/discuz/" rel="next" title="discuz">
+                  discuz <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">郭雪辉</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">215k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:15</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/sidebar.js"></script><script src="/blog/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/blog/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":100,"height":150},"mobile":{"show":true},"log":false});</script></body>
+</html>

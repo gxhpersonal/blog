@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.guoxh.com","root":"/blog/","images":"/blog/images","scheme":"Muse","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/blog/js/config.js"></script>
+
+    <meta name="description" content="如何让css只在当前组件起作用这样写其他组件引用当前组件时当前组件中的css无法作用在其他组件（个人认为中小项目不需要加这个属性，因为组件之间的调用会很少很少）同级组件不加scope如果有相同类名，会相互影响（同级当前组件优先级高） 1&lt;style scoped&gt;&lt;&#x2F;style&gt;  v-for遍历数据中的v-bind:key（:key）问题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue记录">
+<meta property="og:url" content="https://www.guoxh.com/blog/2017/02/22/vue%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="blog station">
+<meta property="og:description" content="如何让css只在当前组件起作用这样写其他组件引用当前组件时当前组件中的css无法作用在其他组件（个人认为中小项目不需要加这个属性，因为组件之间的调用会很少很少）同级组件不加scope如果有相同类名，会相互影响（同级当前组件优先级高） 1&lt;style scoped&gt;&lt;&#x2F;style&gt;  v-for遍历数据中的v-bind:key（:key）问题">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://www.guoxh.com/blog/img/vue/propParentDOM.png">
+<meta property="og:image" content="http://www.guoxh.com/blog/img/vue/propChildDOM.png">
+<meta property="og:image" content="http://www.guoxh.com/blog/img/vue/$emitChildDOM.png">
+<meta property="og:image" content="http://www.guoxh.com/blog/img/vue/$emitChildJS.png">
+<meta property="og:image" content="http://www.guoxh.com/blog/img/vue/$emitParentDOM.png">
+<meta property="og:image" content="http://www.guoxh.com/blog/img/vue/$emitParentJS.png">
+<meta property="article:published_time" content="2017-02-22T03:34:59.000Z">
+<meta property="article:modified_time" content="2026-02-05T07:34:27.106Z">
+<meta property="article:author" content="郭雪辉">
+<meta property="article:tag" content="vue">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.guoxh.com/blog/img/vue/propParentDOM.png">
+
+
+<link rel="canonical" href="https://www.guoxh.com/blog/2017/02/22/vue%E8%AE%B0%E5%BD%95/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.guoxh.com/blog/2017/02/22/vue%E8%AE%B0%E5%BD%95/","path":"2017/02/22/vue记录/","title":"vue记录"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>vue记录 | blog station</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">blog station</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%AE%A9css%E5%8F%AA%E5%9C%A8%E5%BD%93%E5%89%8D%E7%BB%84%E4%BB%B6%E8%B5%B7%E4%BD%9C%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">如何让css只在当前组件起作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#v-for%E9%81%8D%E5%8E%86%E6%95%B0%E6%8D%AE%E4%B8%AD%E7%9A%84v-bind-key%EF%BC%88-key%EF%BC%89%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">v-for遍历数据中的v-bind:key（:key）问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%88%B6%E7%BB%84%E4%BB%B6%E4%B8%8E%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BA%92%E4%BC%A0%E6%95%B0%E6%8D%AE"><span class="nav-number">3.</span> <span class="nav-text">父组件与子组件互传数据</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%88%B6%E7%BB%84%E4%BB%B6%E8%B0%83%E7%94%A8%E5%AD%90%E7%BB%84%E4%BB%B6%E6%96%B9%E6%B3%95"><span class="nav-number">3.0.1.</span> <span class="nav-text">父组件调用子组件方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%84%E5%BC%9F%E7%BB%84%E4%BB%B6%E4%BC%A0%E5%80%BC"><span class="nav-number">4.</span> <span class="nav-text">兄弟组件传值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A5%96%E5%AD%99%E7%BB%84%E4%BB%B6%E4%B9%8B%E9%97%B4%E4%BC%A0%E9%80%92%E6%95%B0%E6%8D%AE%E5%92%8C%E7%BB%91%E5%AE%9A%E6%96%B9%E6%B3%95%EF%BC%88%E7%A5%96%E7%BB%84%E4%BB%B6%E4%BC%A0%E9%80%92%E7%BB%99%E5%AD%99%E7%BB%84%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E4%B8%8D%E8%83%BD%E4%B8%8E%E7%88%B6%E7%BB%84%E4%BB%B6%E5%85%AC%E7%94%A8%EF%BC%8C%E5%90%A6%E5%88%99%E4%BC%9A%E4%BC%A0%E9%80%92%E5%A4%B1%E8%B4%A5%EF%BC%8C%E5%AD%99%E7%BB%84%E4%BB%B6%E6%8B%BF%E4%B8%8D%E5%88%B0%E6%95%B0%E6%8D%AE%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">祖孙组件之间传递数据和绑定方法（祖组件传递给孙组件的数据不能与父组件公用，否则会传递失败，孙组件拿不到数据）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue%E4%B8%AD%E5%BC%95%E5%85%A5%E6%9C%AA%E5%AE%9A%E4%B9%89%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E7%BB%84%E4%BB%B6%E4%BC%9A%E6%8A%A5%E9%94%99%EF%BC%8C%E6%89%80%E4%BB%A5%E9%9C%80%E8%A6%81%E8%BF%87%E6%BB%A4%E6%8E%89"><span class="nav-number">6.</span> <span class="nav-text">vue中引入未定义的第三方组件会报错，所以需要过滤掉</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#this-set-%E8%AE%BE%E7%BD%AE%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B1%9E%E6%80%A7%EF%BC%8C%E8%BF%99%E4%B8%AA%E6%96%B9%E6%B3%95%E4%B8%BB%E8%A6%81%E7%94%A8%E4%BA%8E%E9%81%BF%E5%BC%80-Vue-%E4%B8%8D%E8%83%BD%E6%A3%80%E6%B5%8B%E5%B1%9E%E6%80%A7%E8%A2%AB%E6%B7%BB%E5%8A%A0%E7%9A%84%E9%99%90%E5%88%B6"><span class="nav-number">7.</span> <span class="nav-text">this.$set()设置对象的属性，这个方法主要用于避开 Vue 不能检测属性被添加的限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E5%85%A5%E6%A8%A1%E5%9D%97%E5%92%8C%E5%BC%95%E5%85%A5%E6%96%87%E4%BB%B6"><span class="nav-number">8.</span> <span class="nav-text">引入模块和引入文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E6%94%AF%E6%8C%81JS%E8%A1%A8%E8%BE%BE%E5%BC%8F-%E4%BB%A5%E5%90%8Ev-for%E7%9A%84%E6%97%B6%E5%80%99%E5%86%8D%E4%B9%9F%E4%B8%8D%E7%94%A8%E5%85%88%E5%9C%A8JS%E4%B8%AD%E5%A4%84%E7%90%86%E4%B8%80%E9%81%8D%E6%95%B0%E6%8D%AE%E5%86%8D%E7%BB%91%E5%AE%9A%E4%BA%86"><span class="nav-number">9.</span> <span class="nav-text">vue数据绑定支持JS表达式(以后v-for的时候再也不用先在JS中处理一遍数据再绑定了)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue%E4%B8%AD%E7%9A%84index%E7%B4%A2%E5%BC%95%E5%80%BC%E9%97%AE%E9%A2%98"><span class="nav-number">10.</span> <span class="nav-text">vue中的index索引值问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BC%A0%E6%A0%87%E5%8F%B3%E9%94%AE%E4%BA%8B%E4%BB%B6"><span class="nav-number">11.</span> <span class="nav-text">鼠标右键事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E6%89%80%E6%9C%89ajax%E5%AE%8C%E6%88%90%E5%90%8E%E6%89%A7%E8%A1%8C"><span class="nav-number">12.</span> <span class="nav-text">在所有ajax完成后执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3vue"><span class="nav-number">13.</span> <span class="nav-text">深入理解vue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6"><span class="nav-number">14.</span> <span class="nav-text">组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8v-html%E4%B8%AD%E4%BD%BF%E7%94%A8filters-%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="nav-number">15.</span> <span class="nav-text">在v-html中使用filters 的三种方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue%E8%B7%AF%E7%94%B1%E9%A2%91%E7%B9%81%E5%88%87%E6%8D%A2%E7%9A%84%E6%97%B6%E5%80%99%EF%BC%8C%E4%BC%9A%E6%9C%89%E9%83%A8%E5%88%86%E7%99%BD%E5%B1%8F%E9%97%AE%E9%A2%98%EF%BC%8C%E4%B8%8B%E6%8B%89%E5%90%8E%E6%81%A2%E5%A4%8D%E6%AD%A3%E5%B8%B8-%E7%94%A8%E4%BA%8E%E5%90%8C%E4%B8%80%E4%B8%AA%E9%A1%B5%E9%9D%A2%EF%BC%8C%E7%82%B9%E5%87%BB%E5%AF%BC%E8%88%AA%E6%A0%8F%E5%88%87%E6%8D%A2%E4%B8%8D%E5%90%8C%E8%B7%AF%E7%94%B1"><span class="nav-number">16.</span> <span class="nav-text">vue路由频繁切换的时候，会有部分白屏问题，下拉后恢复正常(用于同一个页面，点击导航栏切换不同路由)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue%E4%B8%AD%E5%AE%9E%E7%8E%B0%E6%8E%A5%E5%8F%A3%E5%88%B7%E6%96%B0%EF%BC%8C%E9%A1%B5%E9%9D%A2%E4%B8%8D%E5%88%B7%E6%96%B0%EF%BC%8C%E8%BF%99%E6%A0%B7%E5%8F%98%E7%9B%B8%E7%9A%84%E5%81%9A%E5%88%B0%E4%BA%86%E8%BF%94%E5%9B%9E%E5%AE%9A%E4%BD%8D%E5%88%B0%E4%B9%8B%E5%89%8D%E4%BD%8D%E7%BD%AE%EF%BC%8C%E5%B9%B6%E4%B8%94%E4%B8%8D%E4%BC%9A%E6%9C%89%E7%BC%93%E5%AD%98%E6%95%B0%E6%8D%AE%EF%BC%9A"><span class="nav-number">17.</span> <span class="nav-text">vue中实现接口刷新，页面不刷新，这样变相的做到了返回定位到之前位置，并且不会有缓存数据：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue%E4%B8%AD%E5%88%A9%E7%94%A8qrcodejs2%E6%8F%92%E4%BB%B6%E5%89%8D%E7%AB%AF%E7%94%9F%E6%88%90%E4%BA%8C%E7%BB%B4%E7%A0%81"><span class="nav-number">18.</span> <span class="nav-text">vue中利用qrcodejs2插件前端生成二维码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue%E8%AE%A2%E5%8D%95%E5%88%97%E8%A1%A8%E5%80%92%E8%AE%A1%E6%97%B6%EF%BC%88%E8%BF%99%E7%A7%8D%E6%96%B9%E5%BC%8F%E9%80%82%E5%90%88vue%E5%8D%95%E7%BB%84%E4%BB%B6%EF%BC%8C%E5%8D%B3%E4%B8%80%E4%B8%AA%E7%BB%84%E4%BB%B6%E4%B8%BA%E4%B8%80%E4%B8%AA%E8%AE%A2%E5%8D%95%EF%BC%8C%E4%B8%8D%E9%9C%80%E8%A6%81%E9%81%8D%E5%8E%86%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E6%93%8D%E4%BD%9C%EF%BC%8C%E7%88%B6%E7%BA%A7%E7%BB%84%E4%BB%B6%E5%B7%B2%E7%BB%8F%E9%81%8D%E5%8E%86%E5%A5%BD%EF%BC%8C%E6%96%B9%E4%BE%BF%E5%BF%AB%E6%8D%B7%E6%9A%B4%E5%8A%9B%EF%BC%89"><span class="nav-number">19.</span> <span class="nav-text">vue订单列表倒计时（这种方式适合vue单组件，即一个组件为一个订单，不需要遍历可以直接操作，父级组件已经遍历好，方便快捷暴力）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5%E4%B8%8D%E6%94%B9%EF%BC%8C%E7%89%88%E6%9C%AC%E8%BF%AD%E4%BB%A3%E4%BC%9A%E5%AF%BC%E8%87%B4%E5%86%8D%E5%BE%AE%E4%BF%A1%E5%86%85%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E9%A1%B5%E9%9D%A2%E7%BC%93%E5%AD%98%E4%B8%BA%E6%97%A7%E9%A1%B5%E9%9D%A2"><span class="nav-number">20.</span> <span class="nav-text">链接不改，版本迭代会导致再微信内浏览器中页面缓存为旧页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-resource%E5%AE%9E%E7%8E%B0vue%E5%BC%82%E6%AD%A5%E8%AF%B7%E6%B1%82"><span class="nav-number">21.</span> <span class="nav-text">vue-resource实现vue异步请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SPA%E5%8D%95%E9%A1%B5%E9%9D%A2%E9%A1%B9%E7%9B%AE%E8%AE%BE%E7%BD%AEhistory%E6%A8%A1%E5%BC%8F%E8%B7%AF%E7%94%B1%EF%BC%8Cios%E5%BE%AE%E4%BF%A1%E5%86%85%E8%B7%B3%E8%BD%AC%E9%A1%B5%E9%9D%A2%E4%B8%8D%E4%BC%9A%E6%94%B9%E5%8F%98%E9%A1%B5%E9%9D%A2%E8%B7%AF%E5%BE%84%EF%BC%8Csdk%E8%B0%83%E7%94%A8%E6%96%B9%E6%B3%95%E5%AF%BC%E8%87%B4%E6%8A%A5%E9%94%99"><span class="nav-number">22.</span> <span class="nav-text">SPA单页面项目设置history模式路由，ios微信内跳转页面不会改变页面路径，sdk调用方法导致报错</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-js%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="nav-number">23.</span> <span class="nav-text">vue.js源码分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%8E%E4%B8%BA%E6%B5%8F%E8%A7%88%E5%99%A8%E5%BE%AE%E4%BF%A1H5%E6%94%AF%E4%BB%98%EF%BC%8C%E5%9B%9E%E8%B7%B3%E9%93%BE%E6%8E%A5%E6%AD%A3%E7%A1%AE%EF%BC%8C%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E5%8D%B4%E9%94%99%E8%AF%AF"><span class="nav-number">24.</span> <span class="nav-text">华为浏览器微信H5支付，回跳链接正确，页面显示却错误</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">郭雪辉</p>
+  <div class="site-description" itemprop="description">郭雪辉博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog/categories/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/blog/tags/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.guoxh.com/blog/2017/02/22/vue%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="郭雪辉">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog station">
+      <meta itemprop="description" content="郭雪辉博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="vue记录 | blog station">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vue记录
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-02-22 11:34:59" itemprop="dateCreated datePublished" datetime="2017-02-22T11:34:59+08:00">2017-02-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-05 15:34:27" itemprop="dateModified" datetime="2026-02-05T15:34:27+08:00">2026-02-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>9.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>9 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="如何让css只在当前组件起作用"><a href="#如何让css只在当前组件起作用" class="headerlink" title="如何让css只在当前组件起作用"></a>如何让css只在当前组件起作用</h3><p>这样写其他组件引用当前组件时当前组件中的css无法作用在其他组件（个人认为中小项目不需要加这个属性，因为组件之间的调用会很少很少）<br>同级组件不加scope如果有相同类名，会相互影响（同级当前组件优先级高）</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span>&gt;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="v-for遍历数据中的v-bind-key（-key）问题"><a href="#v-for遍历数据中的v-bind-key（-key）问题" class="headerlink" title="v-for遍历数据中的v-bind:key（:key）问题"></a>v-for遍历数据中的v-bind:key（:key）问题</h3><blockquote>
+<p><em><strong>tips:</strong></em> 2.2.0+ 的版本里，当在组件中使用 v-for 时，key 现在是必须的。<br>在vue中用v-for最好搭配v-bind:key&#x3D;”key”来使用；<br>key的作用主要是为了高效的更新虚拟DOM<br>key值只能为string&#x2F;number，不能是对象或数组；<br>example: <el-carousel-item v-for="(item, index) in items" :key="index"></el-carousel-item><br>我们知道，vue和react都实现了一套虚拟DOM，使我们可以不直接操作DOM元素，只操作数据便可以重新渲染页面。而隐藏在背后的原理便是其高效的Diff算法。</p>
+</blockquote>
+<h3 id="父组件与子组件互传数据"><a href="#父组件与子组件互传数据" class="headerlink" title="父组件与子组件互传数据"></a>父组件与子组件互传数据</h3><ol>
+<li>props:{}用来接收父组件传过来的数据</li>
+</ol>
+<ul>
+<li>父组件：<br><img src="http://www.guoxh.com/blog/img/vue/propParentDOM.png"></li>
+<li>子组件：<br><img src="http://www.guoxh.com/blog/img/vue/propChildDOM.png"></li>
+</ul>
+<ol start="2">
+<li>this.$emit(自定义事件名，数据)向父组件传递数据</li>
+</ol>
+<ul>
+<li><p>子组件：<br><img src="http://www.guoxh.com/blog/img/vue/$emitChildDOM.png"><br><img src="http://www.guoxh.com/blog/img/vue/$emitChildJS.png"></p>
+</li>
+<li><p>父组件<br><img src="http://www.guoxh.com/blog/img/vue/$emitParentDOM.png"><br><img src="http://www.guoxh.com/blog/img/vue/$emitParentJS.png"><br>或者父组件中：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">data</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">a</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    <span class="attr">b</span>: <span class="string">&#x27;&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="title function_">mounted</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">//两种接收的方式    </span></span><br><span class="line">  <span class="keyword">var</span> _this = <span class="variable language_">this</span>;</span><br><span class="line">  <span class="title class_">Event</span>.$on(<span class="string">&#x27;transferUser&#x27;</span>, <span class="keyword">function</span> (<span class="params">a</span>) &#123;</span><br><span class="line">    _this.<span class="property">a</span> = a;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="title class_">Event</span>.$on(<span class="string">&#x27;transferUser&#x27;</span>, <span class="keyword">function</span> (<span class="params">b</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">b</span> = b;</span><br><span class="line">  &#125;.<span class="title function_">bind</span>(<span class="variable language_">this</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用watch侦听器,监听props中的数据实现控制当前子组件内容</span></span><br><span class="line"><span class="attr">props</span>: [<span class="string">&quot;orderInfo&quot;</span>],</span><br><span class="line">  <span class="attr">data</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">yetOrder</span>: <span class="literal">false</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">watch</span>: &#123;</span><br><span class="line">    <span class="attr">orderInfo</span>: <span class="keyword">function</span>(<span class="params">newVal, oldVal</span>) &#123;</span><br><span class="line">      <span class="comment">// newVal 为改变后的值</span></span><br><span class="line">      <span class="keyword">if</span> (newVal.<span class="property">reserve_id</span> &amp;&amp; newVal.<span class="property">reserve_id</span> != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">yetOrder</span> = <span class="literal">true</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+<p><code>1this.$emit(自定义事件,[])用来触发自定义事件increment1(或者函数名吧)，[]为参数</code></p>
+</li>
+</ul>
+<h5 id="父组件调用子组件方法"><a href="#父组件调用子组件方法" class="headerlink" title="父组件调用子组件方法"></a>父组件调用子组件方法</h5><p>父组件：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 更换手机号 --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- ref=&quot;changePhone&quot;是子组件在父组件中的名字 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">change-phone</span> <span class="attr">ref</span>=<span class="string">&quot;changePhone&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">change-phone</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">switchPhone</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">//this.$refs.changePhone 获取子组件实例</span></span><br><span class="line">  <span class="comment">//this.$refs.changePhone.switchPhone(&quot;这是实参&quot;) 在父组件的方法中调用子组件的方法</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">changePhone</span>.<span class="title function_">switchPhone</span>(<span class="string">&quot;这是实参&quot;</span>);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="兄弟组件传值"><a href="#兄弟组件传值" class="headerlink" title="兄弟组件传值"></a>兄弟组件传值</h3><p>1.新建文件<code>eventBus.js</code>,添加以下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Vue</span> <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> <span class="title class_">Vue</span>();</span><br></pre></td></tr></table></figure>
+<p>2.兄弟组件分别引入<code>eventBus.js</code>文件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> eventBus <span class="keyword">from</span> <span class="string">&quot;../js/eventBus.js&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p>3.传值：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 兄弟组件1传数据：</span></span><br><span class="line"><span class="title function_">tuikuan</span>(<span class="params"></span>) &#123;</span><br><span class="line">  eventBus.$emit(<span class="string">&quot;event&quot;</span>, <span class="string">&quot;sendData&quot;</span>);</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 兄弟组件2接受数据：</span></span><br><span class="line"><span class="title function_">mounted</span>(<span class="params"></span>) &#123;</span><br><span class="line">  eventBus.$on(<span class="string">&quot;event&quot;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(data)</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>4.如果多个父组件调用兄弟组件，则这种方法不适用，因为数据不经过父组件，导致多个父组件会出现数据混乱；</p>
+<h3 id="祖孙组件之间传递数据和绑定方法（祖组件传递给孙组件的数据不能与父组件公用，否则会传递失败，孙组件拿不到数据）"><a href="#祖孙组件之间传递数据和绑定方法（祖组件传递给孙组件的数据不能与父组件公用，否则会传递失败，孙组件拿不到数据）" class="headerlink" title="祖孙组件之间传递数据和绑定方法（祖组件传递给孙组件的数据不能与父组件公用，否则会传递失败，孙组件拿不到数据）"></a>祖孙组件之间传递数据和绑定方法（祖组件传递给孙组件的数据不能与父组件公用，否则会传递失败，孙组件拿不到数据）</h3><p>1.祖组件向下传递数据到孙组件：<br>祖组件：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">son</span> <span class="attr">:data</span>=<span class="string">&quot;data&quot;</span> @<span class="attr">pay</span>=<span class="string">&quot;pay&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">son</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>父组件：（必经过父组件）</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">grand-son</span> <span class="attr">v-bind</span>=<span class="string">&quot;$attrs&quot;</span> <span class="attr">v-on</span>=<span class="string">&quot;$listeners&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">grand-son</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>孙组件：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> @<span class="attr">click</span>=<span class="string">&quot;pay(payData)&quot;</span>&gt;</span>&#123;&#123;payData&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="attr">props</span>: [<span class="string">&quot;payData&quot;</span>],</span></span><br><span class="line"><span class="language-javascript">    <span class="attr">methods</span>:&#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="title function_">pay</span>(<span class="params">data</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">this</span>.$emit(<span class="string">&quot;pay&quot;</span>, data)</span></span><br><span class="line"><span class="language-javascript">      &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="vue中引入未定义的第三方组件会报错，所以需要过滤掉"><a href="#vue中引入未定义的第三方组件会报错，所以需要过滤掉" class="headerlink" title="vue中引入未定义的第三方组件会报错，所以需要过滤掉"></a>vue中引入未定义的第三方组件会报错，所以需要过滤掉</h3><p>在<code>main.js</code>中添加过滤元素：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="property">config</span>.<span class="property">ignoredElements</span> = [<span class="string">&#x27;wx-open-launch-weapp&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="this-set-设置对象的属性，这个方法主要用于避开-Vue-不能检测属性被添加的限制"><a href="#this-set-设置对象的属性，这个方法主要用于避开-Vue-不能检测属性被添加的限制" class="headerlink" title="this.$set()设置对象的属性，这个方法主要用于避开 Vue 不能检测属性被添加的限制"></a>this.$set()设置对象的属性，这个方法主要用于避开 Vue 不能检测属性被添加的限制</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line"><span class="attr">el</span>:<span class="string">&#x27;#app&#x27;</span>,</span><br><span class="line"><span class="attr">data</span>:&#123;</span><br><span class="line">  <span class="attr">arr</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br><span class="line">vm.<span class="property">arr</span>[<span class="number">0</span>] = <span class="number">4</span>;<span class="comment">//这样操作数据，dom不会更新数据</span></span><br><span class="line">vm.$set(vm.<span class="property">arr</span>,<span class="number">0</span>,<span class="number">4</span>) <span class="comment">//这样dom数据才会改变</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="引入模块和引入文件"><a href="#引入模块和引入文件" class="headerlink" title="引入模块和引入文件"></a>引入模块和引入文件</h3><p>*引入模块：import webview from “..&#x2F;..&#x2F;common&#x2F;webview.js”;<br>*引入文件：import “..&#x2F;..&#x2F;filter&#x2F;webpFilter.js”;</p>
+<h3 id="vue数据绑定支持JS表达式-以后v-for的时候再也不用先在JS中处理一遍数据再绑定了"><a href="#vue数据绑定支持JS表达式-以后v-for的时候再也不用先在JS中处理一遍数据再绑定了" class="headerlink" title="vue数据绑定支持JS表达式(以后v-for的时候再也不用先在JS中处理一遍数据再绑定了)"></a>vue数据绑定支持JS表达式(以后v-for的时候再也不用先在JS中处理一遍数据再绑定了)</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; number + <span class="number">1</span> &#125;&#125;</span><br><span class="line">&#123;&#123; ok ? <span class="string">&#x27;YES&#x27;</span> : <span class="string">&#x27;NO&#x27;</span> &#125;&#125;</span><br><span class="line">&#123;&#123; message.<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>).<span class="title function_">reverse</span>().<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>) &#125;&#125;</span><br><span class="line">&lt;div v-<span class="attr">bind</span>:id=<span class="string">&quot;&#x27;list-&#x27; + id&quot;</span>&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="vue中的index索引值问题"><a href="#vue中的index索引值问题" class="headerlink" title="vue中的index索引值问题"></a>vue中的index索引值问题</h3><p>vue 中$index $key 已经移除了<br>之前可以这样:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;example&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">&quot;item in items&quot;</span>&gt;</span></span><br><span class="line">        &#123;&#123;$index&#125;&#125;</span><br><span class="line">        &#123;&#123;$key&#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>现在已经移除,如果还用的话就会报错:Uncaught ReferenceError: $index is not defined;</p>
+<p>现在这样写:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;example&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">&quot;(item,index) in items&quot;</span>&gt;</span></span><br><span class="line">        &#123;&#123;item&#125;&#125;</span><br><span class="line">        &#123;&#123;index&#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>第一个参数是值,第二个参数是索引;目的是为了保持和原生的一致;</p>
+<h3 id="鼠标右键事件"><a href="#鼠标右键事件" class="headerlink" title="鼠标右键事件"></a>鼠标右键事件</h3><p>@contextmenu.prevent&#x3D;”alert(‘您点击的是鼠标右键’)”</p>
+<h3 id="在所有ajax完成后执行"><a href="#在所有ajax完成后执行" class="headerlink" title="在所有ajax完成后执行"></a>在所有ajax完成后执行</h3><p>这个时候用promise.all最合适了，比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">let p1 = new Promise(function (resolve, reject) &#123;</span><br><span class="line">  resolve(42)</span><br><span class="line">&#125;);</span><br><span class="line">let p2 = new Promise(function (resolve, reject) &#123;</span><br><span class="line">  resolve(43)</span><br><span class="line">&#125;);</span><br><span class="line">let p3 = new Promise(function (resolve, reject) &#123;</span><br><span class="line">  resolve(44)</span><br><span class="line">&#125;);</span><br><span class="line">let p4 = Promise.all([p1, p2, p3]);</span><br><span class="line">p4.then(function (v) &#123;</span><br><span class="line">  // 这个里面就是你需要做的事情</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="深入理解vue"><a href="#深入理解vue" class="headerlink" title="深入理解vue"></a>深入理解vue</h3><p>当你把一个普通的 JavaScript 对象传给 Vue 实例的 data 选项，Vue 将遍历此对象所有的属性，并使用 Object.defineProperty 把这些属性全部转为 getter&#x2F;setter。<br>每个组件实例都有相应的 watcher 实例对象，它会在组件渲染的过程中把属性记录为依赖，之后当依赖项的 setter 被调用时，会通知 watcher 重新计算，从而致使它关联的组件得以更新。</p>
+<h3 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h3><p>单文件组件：你完全可以自定义一个组件名，然后在父级组件中import组件，并且在components: {}中声明一下</p>
+<h3 id="在v-html中使用filters-的三种方法"><a href="#在v-html中使用filters-的三种方法" class="headerlink" title="在v-html中使用filters 的三种方法"></a>在v-html中使用filters 的三种方法</h3><p>1.在vue实例上定义全局方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">highlight</span>= <span class="keyword">function</span> (<span class="params">sTitle</span>) &#123;</span><br><span class="line">  <span class="comment">// to do</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//然后所有组件都可以使用方法</span></span><br><span class="line">v-html=<span class="string">&quot;highlight(option.title)&quot;</span></span><br></pre></td></tr></table></figure>
+<p>2.使用 $options.filters</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">v-html=<span class="string">&quot;$options.filters.highlight(option.title)&quot;</span></span><br><span class="line"><span class="keyword">var</span> appMain= <span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">    <span class="attr">el</span>: <span class="string">&#x27;#appMain&#x27;</span>,</span><br><span class="line">    <span class="attr">filters</span>:&#123;</span><br><span class="line">      <span class="attr">highlight</span>: <span class="keyword">function</span>(<span class="params">msg</span>) &#123;</span><br><span class="line">          <span class="keyword">return</span> msg.<span class="title function_">replace</span>(<span class="regexp">/\n/g</span>, <span class="string">&quot;&lt;br&gt;&quot;</span>) ;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">data</span>: &#123;</span><br><span class="line">     <span class="keyword">return</span>&#123;&#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>3.computed 计算属性</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> appMain= <span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">      <span class="attr">el</span>: <span class="string">&#x27;#appMain&#x27;</span>,</span><br><span class="line">      computed :&#123;</span><br><span class="line">         content： <span class="keyword">function</span> (<span class="params">msg</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> msg.<span class="title function_">replace</span>(<span class="string">&quot;\n&quot;</span>, <span class="string">&quot;&lt;br&gt;&quot;</span>)</span><br><span class="line">          &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">data</span>: &#123;</span><br><span class="line">        <span class="attr">content</span>: <span class="string">&quot;XXXXX&quot;</span></span><br><span class="line">     &#125;</span><br><span class="line">&#125;)</span><br><span class="line">页面上：</span><br><span class="line">&lt;div&gt;&#123;&#123;content&#125;&#125;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="vue路由频繁切换的时候，会有部分白屏问题，下拉后恢复正常-用于同一个页面，点击导航栏切换不同路由"><a href="#vue路由频繁切换的时候，会有部分白屏问题，下拉后恢复正常-用于同一个页面，点击导航栏切换不同路由" class="headerlink" title="vue路由频繁切换的时候，会有部分白屏问题，下拉后恢复正常(用于同一个页面，点击导航栏切换不同路由)"></a>vue路由频繁切换的时候，会有部分白屏问题，下拉后恢复正常(用于同一个页面，点击导航栏切换不同路由)</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">mounted</span>(<span class="params"></span>) &#123;</span><br><span class="line">   <span class="variable language_">this</span>.<span class="title function_">setPosition</span>(); </span><br><span class="line">&#125;,</span><br><span class="line"><span class="attr">method</span>:&#123;</span><br><span class="line">  <span class="title function_">setPosition</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> oTop = $(<span class="string">&quot;.page-center&quot;</span>).<span class="title function_">offset</span>().<span class="property">top</span>;</span><br><span class="line">        <span class="comment">//获取导航栏的高度，此高度用于保证内容的平滑过渡</span></span><br><span class="line">        <span class="keyword">var</span> martop = $(<span class="string">&#x27;.page-center&#x27;</span>).<span class="title function_">outerHeight</span>();</span><br><span class="line">        <span class="keyword">var</span> sTop = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 监听页面的滚动</span></span><br><span class="line">        $(<span class="variable language_">window</span>).<span class="title function_">scroll</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            <span class="comment">// 获取页面向上滚动的距离</span></span><br><span class="line">            sTop = $(<span class="variable language_">this</span>).<span class="title function_">scrollTop</span>();</span><br><span class="line">            <span class="comment">// 当导航栏到达屏幕顶端</span></span><br><span class="line">            <span class="keyword">if</span> (sTop &gt;= oTop) &#123;</span><br><span class="line">                <span class="comment">// 修改导航栏position属性，使之固定在屏幕顶端</span></span><br><span class="line">                $(<span class="string">&quot;.page-center&quot;</span>).<span class="title function_">css</span>(&#123; <span class="string">&quot;position&quot;</span>: <span class="string">&quot;fixed&quot;</span>, <span class="string">&quot;top&quot;</span>: <span class="string">&quot;0&quot;</span> &#125;);</span><br><span class="line">                <span class="comment">// 修改内容的margin-top值，保证平滑过渡</span></span><br><span class="line">                $(<span class="string">&quot;.page-bottom&quot;</span>).<span class="title function_">css</span>(&#123; <span class="string">&quot;margin-top&quot;</span>: martop &#125;);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 当导航栏脱离屏幕顶端时，回复原来的属性</span></span><br><span class="line">                $(<span class="string">&quot;.page-center&quot;</span>).<span class="title function_">css</span>(&#123; <span class="string">&quot;position&quot;</span>: <span class="string">&quot;static&quot;</span> &#125;);</span><br><span class="line">                $(<span class="string">&quot;.page-bottom&quot;</span>).<span class="title function_">css</span>(&#123; <span class="string">&quot;margin-top&quot;</span>: <span class="string">&quot;0&quot;</span> &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;,  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">参考自：[<span class="attr">https</span>:<span class="comment">//juejin.im/post/5be92ae2e51d4572fd18c4c6](https://juejin.im/post/5be92ae2e51d4572fd18c4c6)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="vue中实现接口刷新，页面不刷新，这样变相的做到了返回定位到之前位置，并且不会有缓存数据："><a href="#vue中实现接口刷新，页面不刷新，这样变相的做到了返回定位到之前位置，并且不会有缓存数据：" class="headerlink" title="vue中实现接口刷新，页面不刷新，这样变相的做到了返回定位到之前位置，并且不会有缓存数据："></a>vue中实现接口刷新，页面不刷新，这样变相的做到了返回定位到之前位置，并且不会有缓存数据：</h3><blockquote>
+<p>目前实在没找到bug，只能在项目中出真知，手动微微无奈😔？很慌<br>当组件在 <keep-alive> 内被切换，它的 <code>activated</code> 和 <code>deactivated</code> 这两个生命周期钩子函数将会被对应执行。</p>
+</blockquote>
+<p>引用上面句话，在 <keep-alive> 组件内把请求放在<code>activated</code>生命周期中，就可以做到刷新数据不刷新页面</p>
+<p><code>activated</code>钩子在 <code>keep-alive</code> 组件激活时调用(进入当前组件)<br><code>deactivated</code>钩子在 <code>keep-alive</code> 组件停用时调用(离开当前组件)</p>
+<blockquote>
+<p>在 2.2.0 及其更高版本中，activated 和 deactivated 将会在 <keep-alive> 树内的所有嵌套组件中触发。</p>
+</blockquote>
+<ul>
+<li><p>如果在父组件使用了<code>keep-alive</code>，子组件生命周期方法只能使用<code>activated</code>和<code>deactivated</code></p>
+</li>
+<li><p>因为用到了缓存，所以缓存组件中的vdom都会缓存，导致更新数据时vdom没有更新，暂时想到的办法是<br><code>deactivated</code>周期加个<code>v-if</code>来清除不想缓存的vdom，<code>activated</code>周期再显示出来</p>
+</li>
+</ul>
+<h3 id="vue中利用qrcodejs2插件前端生成二维码"><a href="#vue中利用qrcodejs2插件前端生成二维码" class="headerlink" title="vue中利用qrcodejs2插件前端生成二维码"></a>vue中利用qrcodejs2插件前端生成二维码</h3><p>1.安装qrcodejs2插件，在控制台输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install qrcodejs2 --save</span><br></pre></td></tr></table></figure>
+<p>2.template or 入口文件 引入插件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">QRCode</span> <span class="keyword">from</span> <span class="string">&quot;qrcodejs2&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p>3.html中加标签：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;qrcode&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>4.生成二维码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如果是props传入的二维码地址：</span></span><br><span class="line"><span class="attr">props</span>: [<span class="string">&quot;qrCodeLink&quot;</span>],</span><br><span class="line"><span class="attr">watch</span>: &#123;</span><br><span class="line">  <span class="title function_">qrCodeLink</span>(<span class="params">newValue, oldValue</span>) &#123;</span><br><span class="line">    <span class="comment">//生成二维码</span></span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">QRCode</span>(<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;qrcode&quot;</span>), newValue);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//如果是写死的，或者不是父组件传来的，直接new就好：</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">QRCode</span>(<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;qrcode&quot;</span>), qrCodeLink);</span><br><span class="line"><span class="comment">// 如果是点击生成二维码，会存在点一次生成一次的情况，所以要每次清除掉上次生成的二维码</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(id).<span class="property">innerHTML</span> = <span class="string">&quot;&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="vue订单列表倒计时（这种方式适合vue单组件，即一个组件为一个订单，不需要遍历可以直接操作，父级组件已经遍历好，方便快捷暴力）"><a href="#vue订单列表倒计时（这种方式适合vue单组件，即一个组件为一个订单，不需要遍历可以直接操作，父级组件已经遍历好，方便快捷暴力）" class="headerlink" title="vue订单列表倒计时（这种方式适合vue单组件，即一个组件为一个订单，不需要遍历可以直接操作，父级组件已经遍历好，方便快捷暴力）"></a>vue订单列表倒计时（这种方式适合vue单组件，即一个组件为一个订单，不需要遍历可以直接操作，父级组件已经遍历好，方便快捷暴力）</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> that = <span class="variable language_">this</span>;</span><br><span class="line"><span class="keyword">let</span> nowTime = <span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getTime</span>();</span><br><span class="line"><span class="comment">//expire_time为接口返回截止时间的时间戳</span></span><br><span class="line"><span class="keyword">let</span> endDate = v.<span class="property">expire_time</span> * <span class="number">1000</span> - nowTime;</span><br><span class="line"><span class="comment">// let endDate = 10000;</span></span><br><span class="line"><span class="keyword">if</span> (endDate &gt; <span class="number">0</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> stop = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//days | hour 分别表示天和小时</span></span><br><span class="line">    <span class="comment">//days = Math.floor(time.t / 1000 / 60 / 60 / 24);</span></span><br><span class="line">    <span class="comment">//hour = Math.floor(time.t / 1000 / 60 / 60 % 24);</span></span><br><span class="line">    <span class="keyword">let</span> minute = <span class="title class_">Math</span>.<span class="title function_">floor</span>((endDate / <span class="number">1000</span> / <span class="number">60</span>) % <span class="number">60</span>);</span><br><span class="line">    <span class="keyword">let</span> second = <span class="title class_">Math</span>.<span class="title function_">floor</span>((endDate / <span class="number">1000</span>) % <span class="number">60</span>);</span><br><span class="line">    <span class="keyword">let</span> min = minute &lt; <span class="number">10</span> ? <span class="string">&quot;0&quot;</span> + minute : minute;</span><br><span class="line">    <span class="keyword">let</span> sec = second &lt; <span class="number">10</span> ? <span class="string">&quot;0&quot;</span> + second : second;</span><br><span class="line">    <span class="keyword">if</span> (endDate &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="comment">//如果倒计时结束，直接改变当前订单的状态</span></span><br><span class="line">      that.<span class="property">overTime</span> = <span class="literal">true</span>;</span><br><span class="line">      <span class="built_in">clearInterval</span>(stop);</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      endDate -= <span class="number">1000</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    that.<span class="property">lastTime</span> = time.<span class="property">m</span> + <span class="string">&quot;:&quot;</span> + time.<span class="property">s</span>;</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">//</span></span><br><span class="line">  that.<span class="property">overTime</span> = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="链接不改，版本迭代会导致再微信内浏览器中页面缓存为旧页面"><a href="#链接不改，版本迭代会导致再微信内浏览器中页面缓存为旧页面" class="headerlink" title="链接不改，版本迭代会导致再微信内浏览器中页面缓存为旧页面"></a>链接不改，版本迭代会导致再微信内浏览器中页面缓存为旧页面</h3><p>详细：见<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/cce9511c0914">解决方法</a><br>其中：<br>设置nginx的缓存机制；直接将nginx的缓存设置成<code>&#123;expires-1;&#125;</code>，设置成永远不缓存；如果没有nginx，其他apache什么的通用这个方法。</p>
+<h3 id="vue-resource实现vue异步请求"><a href="#vue-resource实现vue异步请求" class="headerlink" title="vue-resource实现vue异步请求"></a>vue-resource实现vue异步请求</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">  <span class="attr">el</span>: <span class="string">&#x27;#app&#x27;</span>,</span><br><span class="line">  <span class="attr">data</span>: &#123;</span><br><span class="line">    <span class="attr">todos</span>: [</span><br><span class="line">      &#123; <span class="attr">text</span>: <span class="string">&#x27;学习 JavaScript&#x27;</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">text</span>: <span class="string">&#x27;学习 Vue&#x27;</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">text</span>: <span class="string">&#x27;整个牛项目&#x27;</span> &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">tftext</span>: <span class="string">&quot;这是一段24px大小的字体&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">created</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">//get请求</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">$http</span>.<span class="title function_">get</span>(<span class="string">&quot;/api/getapi&quot;</span>).<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params">data</span>) &#123;</span><br><span class="line">      <span class="comment">// console.log(data)</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">//post请求</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">$http</span>.<span class="title function_">post</span>(<span class="string">&quot;/api/postapi&quot;</span>,</span><br><span class="line">      &#123; <span class="attr">mobile</span>: xxxxxxxxx &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">headers</span>: &#123; <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/x-www-form-urlencoded;charset=UTF-8&#x27;</span> &#125;,</span><br><span class="line">        <span class="attr">emulateJSON</span>: <span class="literal">true</span></span><br><span class="line">      &#125;</span><br><span class="line">    ).<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params">data</span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(data)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">mounted</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">todos</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>上面例子中<br>get请求很好懂，如果要加参数，直接在api链接后面拼上即可，<br>而post中有几个注意点：<br>post(url, [body], [options])<br>1.post中第一个参数为请求的目标api url;<br>2.第二个参数为作为请求体发送的数据，类型可以为Object, FormData, string<br>3.第三个参数很多，较常用的有headers:请求头、emulateJSON:设置请求体的类型为application&#x2F;x-www-form-urlencoded<br>4.如果要改为formdata提交，第三个参数加<br>{<br>headers: { ‘Content-Type’: ‘application&#x2F;x-www-form-urlencoded;charset&#x3D;UTF-8’ },<br>emulateJSON: true<br>}<br>即可</li>
+</ul>
+<h3 id="SPA单页面项目设置history模式路由，ios微信内跳转页面不会改变页面路径，sdk调用方法导致报错"><a href="#SPA单页面项目设置history模式路由，ios微信内跳转页面不会改变页面路径，sdk调用方法导致报错" class="headerlink" title="SPA单页面项目设置history模式路由，ios微信内跳转页面不会改变页面路径，sdk调用方法导致报错"></a>SPA单页面项目设置history模式路由，ios微信内跳转页面不会改变页面路径，sdk调用方法导致报错</h3><ul>
+<li>具体表现：在IOS手机微信端，从A页面(<a target="_blank" rel="noopener" href="http://a.com/A">http://a.com/A</a>) 跳转到B页面(<a target="_blank" rel="noopener" href="http://a.com/B)%E5%90%8E%EF%BC%8CB%E9%A1%B5%E9%9D%A2%E8%BF%9B%E8%A1%8C%E5%BE%AE%E4%BF%A1%E5%86%85%E7%BD%AE%E6%96%B9%E6%B3%95%E6%93%8D%E4%BD%9C%E6%97%B6%E5%B0%B1%E4%BC%9A%E6%8A%A5%E7%AD%BE%E5%90%8D%EF%BC%88invalid">http://a.com/B)后，B页面进行微信内置方法操作时就会报签名（invalid</a> signature）错误，基本解决方案就是记录初始进入的页面路径，调用config接口时传入初始路径就可以解决；<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 记录进入 App 时的 URL</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="variable language_">window</span>.<span class="property">entryUrl</span> === <span class="string">&#x27;undefined&#x27;</span> || <span class="variable language_">window</span>.<span class="property">entryUrl</span> === <span class="string">&#x27;&#x27;</span>) &#123;</span><br><span class="line">    <span class="variable language_">window</span>.<span class="property">entryUrl</span> = location.<span class="property">href</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 获取签名的时候 Android 不用使用之前的链接，IOS 需要</span></span><br><span class="line"><span class="keyword">let</span> signLink =  <span class="regexp">/(Android)/i</span>.<span class="title function_">test</span>(navigator.<span class="property">userAgent</span>) ? location.<span class="property">href</span> : <span class="variable language_">window</span>.<span class="property">entryUrl</span>;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="vue-js源码分析"><a href="#vue-js源码分析" class="headerlink" title="vue.js源码分析"></a>vue.js源码分析</h3><p>1.Object.create(null)和{}区别；<br> 二者都是创建一个对象，前者去掉了原型链，后者保留原型链</p>
+<h3 id="华为浏览器微信H5支付，回跳链接正确，页面显示却错误"><a href="#华为浏览器微信H5支付，回跳链接正确，页面显示却错误" class="headerlink" title="华为浏览器微信H5支付，回跳链接正确，页面显示却错误"></a>华为浏览器微信H5支付，回跳链接正确，页面显示却错误</h3><p>初步分析原因可能有两个：<br>1.华为自带浏览器回跳未刷新页面，只是更改了路由链接，对vue路由不友好(也可能是我用了keep-alive组件，但是其他手机没问题)<br>2.未在微信公众后台配置回跳具体到路由参数的链接都会被拦截至首页</p>
+<p><a target="_blank" rel="noopener" href="https://juejin.im/post/6844903632815521799">https://juejin.im/post/6844903632815521799</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/vue/" rel="tag"># vue</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/2017/02/06/ES6/" rel="prev" title="ES6">
+                  <i class="fa fa-angle-left"></i> ES6
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blog/2017/11/17/GitHub/" rel="next" title="GitHub">
+                  GitHub <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">郭雪辉</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">215k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:15</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/sidebar.js"></script><script src="/blog/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/blog/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":100,"height":150},"mobile":{"show":true},"log":false});</script></body>
+</html>

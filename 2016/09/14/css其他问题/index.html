@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.guoxh.com","root":"/blog/","images":"/blog/images","scheme":"Muse","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/blog/js/config.js"></script>
+
+    <meta name="description" content="css相关能写一万年，考虑分开写了，太多了flex布局更多参见阮老师blog1.意为弹性布局，块元素：display:flex;行内元素：display:inline-flex;2.不同内核浏览器需要加前缀区分，如：display:-webkit-flex; &#x2F;Safari&#x2F;  非规范属性值：display:-webkit-box3.设为flex布局后，子元素的float,cl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="其他css问题">
+<meta property="og:url" content="https://www.guoxh.com/blog/2016/09/14/css%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="blog station">
+<meta property="og:description" content="css相关能写一万年，考虑分开写了，太多了flex布局更多参见阮老师blog1.意为弹性布局，块元素：display:flex;行内元素：display:inline-flex;2.不同内核浏览器需要加前缀区分，如：display:-webkit-flex; &#x2F;Safari&#x2F;  非规范属性值：display:-webkit-box3.设为flex布局后，子元素的float,cl">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-09-14T10:07:27.000Z">
+<meta property="article:modified_time" content="2026-02-05T07:34:27.072Z">
+<meta property="article:author" content="郭雪辉">
+<meta property="article:tag" content="css">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.guoxh.com/blog/2016/09/14/css%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.guoxh.com/blog/2016/09/14/css%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98/","path":"2016/09/14/css其他问题/","title":"其他css问题"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>其他css问题 | blog station</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">blog station</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#css%E7%9B%B8%E5%85%B3%E8%83%BD%E5%86%99%E4%B8%80%E4%B8%87%E5%B9%B4%EF%BC%8C%E8%80%83%E8%99%91%E5%88%86%E5%BC%80%E5%86%99%E4%BA%86%EF%BC%8C%E5%A4%AA%E5%A4%9A%E4%BA%86"><span class="nav-number">1.</span> <span class="nav-text">css相关能写一万年，考虑分开写了，太多了</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex%E5%B8%83%E5%B1%80"><span class="nav-number">2.</span> <span class="nav-text">flex布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#grid%E5%B8%83%E5%B1%80"><span class="nav-number">3.</span> <span class="nav-text">grid布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B8%85%E9%99%A4%E6%89%80%E6%9C%89a%E6%A0%87%E7%AD%BE%E5%9C%A8%E7%82%B9%E5%87%BB%E6%97%B6%E5%87%BA%E7%8E%B0%E7%9A%84%E7%89%B9%E6%95%88"><span class="nav-number">4.</span> <span class="nav-text">清除所有a标签在点击时出现的特效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E5%AD%97%E4%B8%8E%E5%9B%BE%E7%89%87%E4%B8%8D%E8%83%BD%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E5%AF%B9%E9%BD%90"><span class="nav-number">5.</span> <span class="nav-text">文字与图片不能垂直居中对齐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css%E5%AE%9E%E7%8E%B0%E7%A6%81%E6%AD%A2%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6"><span class="nav-number">6.</span> <span class="nav-text">css实现禁止点击事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#img%E6%A0%87%E7%AD%BE%E5%92%8C%E5%90%8C%E7%BA%A7div%E4%B9%8B%E9%97%B4%E7%9A%84%E9%97%B4%E9%9A%99%E5%A4%84%E7%90%86"><span class="nav-number">7.</span> <span class="nav-text">img标签和同级div之间的间隙处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%89%8B%E6%9C%BAAPP%E4%B8%AD%E7%A6%81%E6%AD%A2%E9%95%BF%E6%8C%89%E6%9D%A5%E9%98%BB%E6%AD%A2%E5%85%B6%E4%BB%96%E6%89%8B%E6%9C%BA%E8%87%AA%E5%B8%A6%E9%BB%98%E8%AE%A4%E4%BA%8B%E4%BB%B6%EF%BC%88%E5%A6%82%EF%BC%9AiPhone%E7%9A%843Dtouch%EF%BC%89"><span class="nav-number">8.</span> <span class="nav-text">在移动端手机APP中禁止长按来阻止其他手机自带默认事件（如：iPhone的3Dtouch）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E8%B6%85%E5%87%BA%E5%90%8E%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7"><span class="nav-number">9.</span> <span class="nav-text">文本超出后显示省略号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E9%BC%A0%E6%A0%87%E6%8C%87%E9%92%88"><span class="nav-number">10.</span> <span class="nav-text">自定义鼠标指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E5%AD%97%E7%AB%96%E6%8E%92%E6%8E%92%E5%88%97%E6%98%BE%E7%A4%BA%E6%96%B9%E6%A1%88"><span class="nav-number">11.</span> <span class="nav-text">文字竖排排列显示方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#webkit-overflow-scrolling"><span class="nav-number">12.</span> <span class="nav-text">-webkit-overflow-scrolling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#overscroll-behavior%E5%8F%AF%E4%BB%A5%E6%8E%A7%E5%88%B6%E5%8F%AA%E8%A7%A6%E5%8F%91%E5%BD%93%E5%89%8D%E5%B1%82%E7%9A%84%E6%BB%9A%E5%8A%A8%E6%95%88%E6%9E%9C"><span class="nav-number">13.</span> <span class="nav-text">overscroll-behavior可以控制只触发当前层的滚动效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#overflow-anchor%E5%B1%9E%E6%80%A7%E6%94%B9%E5%8F%98%E6%BB%9A%E5%8A%A8%E8%A1%8C%E4%B8%BA%E6%9D%A5%E6%8E%A7%E5%88%B6%E5%8F%AF%E8%A7%86%E5%8C%BA%E5%86%85%E5%AE%B9"><span class="nav-number">14.</span> <span class="nav-text">overflow-anchor属性改变滚动行为来控制可视区内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css3%E6%BB%A4%E9%95%9C%E6%95%88%E6%9E%9C%EF%BC%9A-webkit-filter"><span class="nav-number">15.</span> <span class="nav-text">css3滤镜效果：-webkit-filter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E4%BD%93%E6%8A%97%E9%94%AF%E9%BD%BF%E6%95%88%E6%9E%9C"><span class="nav-number">16.</span> <span class="nav-text">字体抗锯齿效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%B9%E5%B1%82%E5%87%BA%E7%8E%B0%E7%A6%81%E7%94%A8%E8%83%8C%E6%99%AFbody%E6%BB%9A%E5%8A%A8%E6%9D%A1"><span class="nav-number">17.</span> <span class="nav-text">弹层出现禁用背景body滚动条</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#will-change%E6%8F%90%E9%AB%98%E9%A1%B5%E9%9D%A2%E6%BB%9A%E5%8A%A8%E3%80%81%E5%8A%A8%E7%94%BB%E7%AD%89%E6%B8%B2%E6%9F%93%E6%80%A7%E8%83%BDcss3"><span class="nav-number">18.</span> <span class="nav-text">will-change提高页面滚动、动画等渲染性能css3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%AF%E6%8C%81webkit%E5%86%85%E6%A0%B8%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E6%BB%9A%E5%8A%A8%E6%9D%A1%E6%A0%B7%E5%BC%8F%E8%87%AA%E5%AE%9A%E4%B9%89"><span class="nav-number">19.</span> <span class="nav-text">支持webkit内核浏览器的滚动条样式自定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E5%8A%A0%E6%BB%A4%E9%95%9C"><span class="nav-number">20.</span> <span class="nav-text">页面加滤镜</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mask"><span class="nav-number">21.</span> <span class="nav-text">mask</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clip-%E5%9B%BE%E5%83%8F%E8%A3%81%E5%89%AA"><span class="nav-number">22.</span> <span class="nav-text">clip 图像裁剪</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BB%9A%E5%8A%A8%E5%8A%A8%E7%94%BB"><span class="nav-number">23.</span> <span class="nav-text">滚动动画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#box-shadow%E6%B7%BB%E5%8A%A0%E5%A4%9A%E4%B8%AA%E4%B8%8D%E5%90%8C%E7%9A%84%E9%98%B4%E5%BD%B1"><span class="nav-number">24.</span> <span class="nav-text">box-shadow添加多个不同的阴影</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E8%89%B2%E6%B8%90%E5%8F%98"><span class="nav-number">25.</span> <span class="nav-text">背景色渐变</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iphoenX%E9%80%82%E9%85%8D%E9%97%AE%E9%A2%98-%E5%88%A9%E7%94%A8media%E9%99%90%E5%88%B6iPhone-X%E5%B1%8F%E5%B9%95%E5%B0%BA%E5%AF%B8"><span class="nav-number">26.</span> <span class="nav-text">iphoenX适配问题(利用media限制iPhone X屏幕尺寸)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#position-sticky"><span class="nav-number">27.</span> <span class="nav-text">position:sticky</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css%E8%AE%BE%E7%BD%AE%E6%9A%97%E9%BB%91%E6%A8%A1%E5%BC%8F"><span class="nav-number">28.</span> <span class="nav-text">css设置暗黑模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS-all"><span class="nav-number">29.</span> <span class="nav-text">CSS all</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css%E8%AE%BE%E7%BD%AE%E5%9B%BE%E7%89%87img%E6%A0%87%E7%AD%BE%E6%98%BE%E7%A4%BA%E6%A0%B7%E5%BC%8F"><span class="nav-number">30.</span> <span class="nav-text">css设置图片img标签显示样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%A1%E7%89%87%E7%BF%BB%E8%BD%AC%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0"><span class="nav-number">31.</span> <span class="nav-text">卡片翻转效果实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#empty-%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">32.</span> <span class="nav-text">:empty 选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gap%E5%B1%9E%E6%80%A7"><span class="nav-number">33.</span> <span class="nav-text">gap属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#background-clip-%E5%AE%9E%E7%8E%B0%E6%96%87%E6%9C%AC%E8%83%8C%E6%99%AF%E5%9B%BE"><span class="nav-number">34.</span> <span class="nav-text">background-clip 实现文本背景图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#invalid-%E4%BC%AA%E7%B1%BB"><span class="nav-number">35.</span> <span class="nav-text">:invalid 伪类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#focus-within-%E4%BC%AA%E7%B1%BB"><span class="nav-number">36.</span> <span class="nav-text">:focus-within 伪类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mix-blend-mode-difference"><span class="nav-number">37.</span> <span class="nav-text">mix-blend-mode:difference</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#line-start%E5%92%8C-block-end%E7%9B%B8%E5%85%B3%E5%B1%9E%E6%80%A7"><span class="nav-number">38.</span> <span class="nav-text">*-line-start和*-block-end相关属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex-%E5%B8%83%E5%B1%80-%E5%AD%90%E5%85%83%E7%B4%A0%E4%B8%8D%E8%AE%BE%E7%BD%AE%E5%AE%BD%E9%AB%98%EF%BC%8C%E9%AB%98%E5%BA%A6%E6%92%91%E6%BB%A1%E7%88%B6%E5%85%83%E7%B4%A0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">39.</span> <span class="nav-text">flex 布局 子元素不设置宽高，高度撑满父元素的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E6%A0%87%E9%A2%98%E7%AB%96%E5%90%91%E6%8E%92%E5%88%97%EF%BC%8C%E6%9C%89%E4%B8%AD%E6%96%87%E6%89%A9%E5%8F%B7%E3%80%90%E3%80%8C%E5%AF%BC%E8%87%B4%E9%A1%B6%E7%AB%AF%E6%97%A0%E6%B3%95%E5%AF%B9%E9%BD%90%E8%A7%A3%E5%86%B3"><span class="nav-number">40.</span> <span class="nav-text">多个标题竖向排列，有中文扩号【「导致顶端无法对齐解决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E4%BD%BFposition-fixed%E5%85%83%E7%B4%A0%E7%9B%B8%E5%AF%B9%E4%BA%8E%E5%B1%8F%E5%B9%95%E8%A7%86%E5%8F%A3%E4%BD%8D%E7%BD%AE%E6%94%B9%E4%B8%BA%E7%9B%B8%E5%AF%B9%E4%BA%8E%E7%A5%96%E5%85%88%E5%85%83%E7%B4%A0%E4%BD%8D%E7%BD%AE"><span class="nav-number">41.</span> <span class="nav-text">怎么使position:fixed元素相对于屏幕视口位置改为相对于祖先元素位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E5%AE%9A%E9%AB%98%E5%85%83%E7%B4%A0%E8%AE%BE%E7%BD%AE%E9%AB%98%E5%BA%A6%E6%B8%90%E5%8F%98%E5%8A%A8%E7%94%BB"><span class="nav-number">42.</span> <span class="nav-text">不定高元素设置高度渐变动画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#white-space%E5%8F%82%E6%95%B0"><span class="nav-number">43.</span> <span class="nav-text">white-space参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inset"><span class="nav-number">44.</span> <span class="nav-text">inset</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E5%89%8D%E5%87%A0%E4%B8%AA%E5%85%83%E7%B4%A0"><span class="nav-number">45.</span> <span class="nav-text">选择前几个元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%86%E8%A7%89%E6%96%87%E6%A1%88%E5%B1%85%E4%B8%AD"><span class="nav-number">46.</span> <span class="nav-text">视觉文案居中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#backdrop-filter"><span class="nav-number">47.</span> <span class="nav-text">backdrop-filter</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">郭雪辉</p>
+  <div class="site-description" itemprop="description">郭雪辉博客</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/blog/archives/">
+          <span class="site-state-item-count">66</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/blog/categories/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/blog/tags/">
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.guoxh.com/blog/2016/09/14/css%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/blog/images/avatar.gif">
+      <meta itemprop="name" content="郭雪辉">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog station">
+      <meta itemprop="description" content="郭雪辉博客">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="其他css问题 | blog station">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          其他css问题
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-09-14 18:07:27" itemprop="dateCreated datePublished" datetime="2016-09-14T18:07:27+08:00">2016-09-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-02-05 15:34:27" itemprop="dateModified" datetime="2026-02-05T15:34:27+08:00">2026-02-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/blog/categories/css/" itemprop="url" rel="index"><span itemprop="name">css</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>11k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>10 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="css相关能写一万年，考虑分开写了，太多了"><a href="#css相关能写一万年，考虑分开写了，太多了" class="headerlink" title="css相关能写一万年，考虑分开写了，太多了"></a>css相关能写一万年，考虑分开写了，太多了</h3><h3 id="flex布局"><a href="#flex布局" class="headerlink" title="flex布局"></a>flex布局</h3><p><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool">更多参见阮老师blog</a><br>1.意为弹性布局，块元素：display:flex;行内元素：display:inline-flex;<br>2.不同内核浏览器需要加前缀区分，如：display:-webkit-flex; &#x2F;<em>Safari</em>&#x2F;  <code>非规范属性值：display:-webkit-box</code><br>3.设为flex布局后，子元素的float,clear,vertical-align属性将失效。  <code>非规范属性：-webkit-box-orient：vertical //垂直排列子元素</code><br>4.flex属性：<br>1）flex-direction:row（默认值）：主轴为水平方向，起点在左端。<br>                  row-reverse：主轴为水平方向，起点在右端。<br>                  column：主轴为垂直方向，起点在上沿。<br>                  column-reverse：主轴为垂直方向，起点在下沿<br>2)flex-wrap属性: nowrap（默认）：不换行。<br>                wrap：换行，第一行在上方。<br>                wrap-reverse：换行，第一行在下方。<br>3)flex-flow：属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。<br>4)justify-content:flex-start | flex-end | center | space-between | space-around<br>5)align-items: flex-start | flex-end | center | baseline | stretch;<br>6)当使用了<code>flex-direction:column</code>之后,未定宽的元素会自动适应宽度为100%；给元素加个非默认值<code>align-self:stretch</code>外的值就可以</p>
+<h3 id="grid布局"><a href="#grid布局" class="headerlink" title="grid布局"></a>grid布局</h3><p>grid布局比起flex布局更加灵活，flex布局只有横轴纵轴概念，grid布局则多了个网格概念，可以控制每个单元格样式</p>
+<h3 id="清除所有a标签在点击时出现的特效"><a href="#清除所有a标签在点击时出现的特效" class="headerlink" title="清除所有a标签在点击时出现的特效"></a>清除所有a标签在点击时出现的特效</h3><blockquote>
+<p>清除所有a标签在点击时出现的特效：a{ -webkit-tap-highlight-color:rgba(255,0,0,0);}</p>
+</blockquote>
+<h3 id="文字与图片不能垂直居中对齐"><a href="#文字与图片不能垂直居中对齐" class="headerlink" title="文字与图片不能垂直居中对齐"></a>文字与图片不能垂直居中对齐</h3><blockquote>
+<p>给图片添加css样式<br>vertical-align:text-bottom；<br>vertical-align只适用于行内块元素</p>
+</blockquote>
+<h3 id="css实现禁止点击事件"><a href="#css实现禁止点击事件" class="headerlink" title="css实现禁止点击事件"></a>css实现禁止点击事件</h3><blockquote>
+<p>pointer-events: none;<br>阻止点击事件，变为默认光标，阻止触发hover，active，阻止JS点击事件<br>none:<br>元素永远不会成为鼠标事件的target。但是，当其后代元素的pointer-events属性指定其他值时，鼠标事件可以指向后代元素，在这种情况下，鼠标事件将在捕获或冒泡阶段触发父元素的事件侦听器。</p>
+</blockquote>
+<ul>
+<li>扩展：如果有一个公共组件，里面有个可移动元素，父元素设置<code>pointer-events: none;</code>，并且子元素设置<code>pointer-events: auto;</code>，可以实现子元素移动同时父元素不可点击并且不影响被父元素遮盖的元素点击事件，比如小程序里可拖动组件如果全屏拖动必须area标签设置全屏，然后下面的元素就无法选中。</li>
+</ul>
+<h3 id="img标签和同级div之间的间隙处理"><a href="#img标签和同级div之间的间隙处理" class="headerlink" title="img标签和同级div之间的间隙处理"></a>img标签和同级div之间的间隙处理</h3><blockquote>
+<p>给img标签设置 vertical-align:middle;display:block;</p>
+</blockquote>
+<h3 id="在移动端手机APP中禁止长按来阻止其他手机自带默认事件（如：iPhone的3Dtouch）"><a href="#在移动端手机APP中禁止长按来阻止其他手机自带默认事件（如：iPhone的3Dtouch）" class="headerlink" title="在移动端手机APP中禁止长按来阻止其他手机自带默认事件（如：iPhone的3Dtouch）"></a>在移动端手机APP中禁止长按来阻止其他手机自带默认事件（如：iPhone的3Dtouch）</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">  <span class="comment">/* 当你触摸并按住触摸目标时候，禁止或显示系统默认菜单 */</span></span><br><span class="line">  touch-callout: none; </span><br><span class="line">  -webkit-touch-callout: none;</span><br><span class="line">  <span class="comment">/* 用户能否选中文本 */</span></span><br><span class="line">  -webkit-<span class="attribute">user-select</span>: none; </span><br><span class="line">  <span class="attribute">user-select</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="文本超出后显示省略号"><a href="#文本超出后显示省略号" class="headerlink" title="文本超出后显示省略号"></a>文本超出后显示省略号</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 一行 */</span></span><br><span class="line"><span class="selector-tag">p</span>&#123;</span><br><span class="line">   <span class="attribute">width</span>:<span class="number">40px</span>;</span><br><span class="line">   <span class="attribute">white-space</span>: nowrap;</span><br><span class="line">   <span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line">   <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 多行 */</span></span><br><span class="line"><span class="selector-tag">p</span>&#123;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;                <span class="comment">/* 超出部分隐藏 */</span></span><br><span class="line">    <span class="attribute">text-overflow</span>: ellipsis;         <span class="comment">/* 显示省略号来修饰被剪掉的文本 */</span></span><br><span class="line">    <span class="attribute">display</span>: box;</span><br><span class="line">    <span class="attribute">display</span>: -webkit-box;</span><br><span class="line">    <span class="selector-tag">line</span>-clamp: <span class="number">3</span>;        <span class="comment">/* 非规范属性，实现规定文本行数 火狐不支持这个属性 */</span></span><br><span class="line">    -webkit-<span class="selector-tag">line</span>-clamp: <span class="number">3</span>;</span><br><span class="line">    -webkit-<span class="attribute">box-orient</span>: vertical;    <span class="comment">/* 规定框的子元素应该被水平或垂直排列 */</span></span><br><span class="line">    -moz-<span class="attribute">box-orient</span>: vertical;       <span class="comment">/* 支持火狐的写法 */</span></span><br><span class="line">    <span class="attribute">word-break</span>: break-word;</span><br><span class="line">&#125; </span><br><span class="line">*<span class="selector-tag">line</span>-clamp*</span><br><span class="line">限制在一个块元素显示的文本的行数。</span><br><span class="line">-webkit-<span class="selector-tag">line</span>-clamp 是一个 不规范的属性（unsupported WebKit property），它没有出现在 CSS 规范草案中。</span><br><span class="line">为了实现该效果，它需要组合其他外来的WebKit属性。常见结合属性：</span><br><span class="line"><span class="attribute">display</span>: -webkit-box; 必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 。</span><br><span class="line">-webkit-<span class="attribute">box-orient</span> 必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。</span><br><span class="line"><span class="attribute">text-overflow</span>，可以用来多行文本的情况下，用省略号“...”隐藏超出范围的文本 。</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>升级版：<a target="_blank" rel="noopener" href="https://codepen.io/xboxyan/pen/VwpPNbm?fileGuid=YcHxPHhHvDtpqvDw">https://codepen.io/xboxyan/pen/VwpPNbm?fileGuid=YcHxPHhHvDtpqvDw</a></p>
+</blockquote>
+<p>word-break 已弃用，但是如果想单词不换行，只有特长单词一行放不下才换行，只能用这个值；</p>
+<h3 id="自定义鼠标指针"><a href="#自定义鼠标指针" class="headerlink" title="自定义鼠标指针"></a>自定义鼠标指针</h3><blockquote>
+<p>cursor: url(&#x2F;路径&#x2F;cursor.cur), url(two.svg) 5 5,auto; </p>
+</blockquote>
+<blockquote>
+<p>url(…)或者逗号分隔的url(…), url(…), …，指向图片文件。用大于一个url值提供后备，以防某些指针图片类型不被支持。最后必须提供一个非 URL 后备值。<br>可选 x，y 坐标。两个小于 32 的无单位非负数。</p>
+</blockquote>
+<h3 id="文字竖排排列显示方案"><a href="#文字竖排排列显示方案" class="headerlink" title="文字竖排排列显示方案"></a>文字竖排排列显示方案</h3><p>1.writing-mode:lr-tb或writing-mode:tb-rl<br>  参数：<br>    &lt;1&gt;、lr-tb：从左向右，从上往下<br>    &lt;2&gt;、tb-rl：从上往下，从右向左<br>    运行代码发现，IE显示正常，火狐、谷歌浏览器却不支持，所以不建议使用writing-mode属性。<br>2.对文字对象宽度设置只能排下一个文字的宽度距离，让文字一行排不下两个文字使其文字自动换行，就形成了竖立排版需求。<br>3.利用html <code>br</code> 换行标签实现文字换行，对每个文字后加上换行br标签让其竖列排版。</p>
+<h3 id="webkit-overflow-scrolling"><a href="#webkit-overflow-scrolling" class="headerlink" title="-webkit-overflow-scrolling"></a>-webkit-overflow-scrolling</h3><blockquote>
+<p>用来控制元素在移动设备上是否使用滚动回弹效果.<br>兼容安卓和IOS的写法如下</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-webkit-<span class="attribute">overflow</span>-scrolling: touch; <span class="comment">/* 当手指从触摸屏上移开，会保持一段时间的滚动 */</span> </span><br><span class="line">-webkit-<span class="attribute">overflow</span>-scrolling: auto; <span class="comment">/* 当手指从触摸屏上移开，滚动会立即停止 */</span> </span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Bug<br>当你给一个元素设置过position:absolute;或者position:relative;后再增加-webkit-overflow-scrolling: touch;属性后，你会发现，滑动几次后可滚动区域会卡主，不能在滑动，这时给元素增加个z-index值就可以了。</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-webkit-<span class="attribute">overflow</span>-scrolling: touch; </span><br><span class="line"><span class="attribute">position</span>:absolute; </span><br><span class="line"><span class="attribute">z-index</span>:<span class="number">1</span>; </span><br></pre></td></tr></table></figure>
+
+<h3 id="overscroll-behavior可以控制只触发当前层的滚动效果"><a href="#overscroll-behavior可以控制只触发当前层的滚动效果" class="headerlink" title="overscroll-behavior可以控制只触发当前层的滚动效果"></a>overscroll-behavior可以控制只触发当前层的滚动效果</h3><p>overscroll-behavior: auto | contain | none</p>
+<blockquote>
+<p>auto:（默认值），即滚动到边缘后继续滚动外部的可滚动容器<br>contain: 默认的滚动溢出行为只会表现在当前元素的内部（例如“反弹”效果或刷新），并且会阻止默认的滚动溢出行为<br>none:相邻的滚动区域不会发生滚动，并且会阻止默认的滚动溢出行为<br>contain和none的行为差异体现主要在移动端</p>
+</blockquote>
+<h3 id="overflow-anchor属性改变滚动行为来控制可视区内容"><a href="#overflow-anchor属性改变滚动行为来控制可视区内容" class="headerlink" title="overflow-anchor属性改变滚动行为来控制可视区内容"></a>overflow-anchor属性改变滚动行为来控制可视区内容</h3><p>overflow-anchor: auto | none</p>
+<blockquote>
+<p>auto:（默认值），即滚动时不会受内容变化影响。滚动条变化，可视内容不变<br>none:即滚动时会受内容变化影响，可视区插入内容会显示插入的内容。滚动条不变，可视内容变化</p>
+</blockquote>
+<h3 id="css3滤镜效果：-webkit-filter"><a href="#css3滤镜效果：-webkit-filter" class="headerlink" title="css3滤镜效果：-webkit-filter"></a>css3滤镜效果：-webkit-filter</h3><p><a href="">https://developer.mozilla.org/zh-CN/docs/Web/CSS/filter</a></p>
+<h3 id="字体抗锯齿效果"><a href="#字体抗锯齿效果" class="headerlink" title="字体抗锯齿效果"></a>字体抗锯齿效果</h3><p>Webkit在自己的引擎中支持了这一效果。<br>-webkit-font-smoothing<br>它有三个属性值：<br>none —— 对低像素的文本比较好<br>subpixel-antialiased——默认值<br>antialiased ——抗锯齿很好<br>.icon {<br>-webkit-font-smoothing: antialiased;<br>-moz-osx-font-smoothing: grayscale;  &#x2F;&#x2F;Gecko也推出了自己的抗锯齿效果的非标定义<br>}</p>
+<h3 id="弹层出现禁用背景body滚动条"><a href="#弹层出现禁用背景body滚动条" class="headerlink" title="弹层出现禁用背景body滚动条"></a>弹层出现禁用背景body滚动条</h3><p>height:100%;overscroll:hidden;<br>touch-action:none;&#x2F;&#x2F;禁止触发默认的手势操作。<br>pan-x：可以在父级元素(the nearest ancestor)内进行水平移动的手势操作。<br>pan-y：可以在父级元素内进行垂直移动的手势操作。<br>manipulation：允许手势水平&#x2F;垂直平移或持续的缩放。任何auto属性支持的额外操作都不支持；<br>注：touch-action只支持具有行内块，块级的元素</p>
+<h3 id="will-change提高页面滚动、动画等渲染性能css3"><a href="#will-change提高页面滚动、动画等渲染性能css3" class="headerlink" title="will-change提高页面滚动、动画等渲染性能css3"></a>will-change提高页面滚动、动画等渲染性能css3</h3><p>参考张鑫旭blog:<br><a href="">http://www.zhangxinxu.com/wordpress/2015/11/css3-will-change-improve-paint/</a></p>
+<h3 id="支持webkit内核浏览器的滚动条样式自定义"><a href="#支持webkit内核浏览器的滚动条样式自定义" class="headerlink" title="支持webkit内核浏览器的滚动条样式自定义"></a>支持webkit内核浏览器的滚动条样式自定义</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">::-webkit-scrollbar&#123;<span class="attribute">width</span>: <span class="number">5px</span>;<span class="attribute">height</span>: <span class="number">8px</span>;<span class="attribute">background-color</span>: <span class="number">#aaa</span>&#125; <span class="comment">/*滚动条垂直方向的宽度与水平方向的高度*/</span> </span><br><span class="line">::-webkit-scrollbar-button&#123;<span class="attribute">background-color</span>: <span class="number">#aaa</span>&#125; <span class="comment">/*滚动条按钮*/</span> </span><br><span class="line">::-webkit-scrollbar-track&#123;<span class="attribute">background-color</span>: <span class="number">#aaa</span>&#125; <span class="comment">/*滚动条轨道*/</span> </span><br><span class="line">::-webkit-scrollbar-track-piece&#123;<span class="attribute">background-color</span>: <span class="number">#aaa</span>&#125; <span class="comment">/*滚动条垂直方向轨道件*/</span> </span><br><span class="line">::-webkit-scrollbar-thumb&#123;<span class="attribute">background-color</span>: <span class="number">#aaa</span>&#125; <span class="comment">/*滚动条轨道上的按钮*/</span> </span><br><span class="line">::-webkit-scrollbar-corner&#123;<span class="attribute">background-color</span>: <span class="number">#aaa</span>&#125; <span class="comment">/*滚动条轨道上的滚动角*/</span> </span><br></pre></td></tr></table></figure>
+
+<h3 id="页面加滤镜"><a href="#页面加滤镜" class="headerlink" title="页面加滤镜"></a>页面加滤镜</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 高斯模糊 */</span></span><br><span class="line"><span class="attribute">filter</span>: <span class="built_in">blur</span>(px)；</span><br><span class="line"><span class="comment">/* 转换为灰度图像 */</span></span><br><span class="line">filter: <span class="built_in">grayscale</span>(<span class="number">100%</span>);</span><br><span class="line">-webkit-<span class="attribute">filter</span>: <span class="built_in">grayscale</span>(<span class="number">100%</span>);</span><br><span class="line">-moz-<span class="attribute">filter</span>: <span class="built_in">grayscale</span>(<span class="number">100%</span>);</span><br><span class="line">-ms-<span class="attribute">filter</span>: <span class="built_in">grayscale</span>(<span class="number">100%</span>);</span><br><span class="line">-o-<span class="attribute">filter</span>: <span class="built_in">grayscale</span>(<span class="number">100%</span>);</span><br><span class="line"><span class="attribute">filter</span>: progid:DXImageTransform.Microsoft.<span class="built_in">BasicImage</span>(grayscale=<span class="number">1</span>);</span><br><span class="line">-webkit-<span class="attribute">filter</span>: <span class="built_in">grayscale</span>(<span class="number">1</span>);    </span><br></pre></td></tr></table></figure>
+
+<h3 id="mask"><a href="#mask" class="headerlink" title="mask"></a>mask</h3><p>css的mask属性允许使用者通过部分或者完全隐藏一个元素的可见区域。这种效果可以通过遮罩或者裁切特定区域的图片。<br>mask-reference:设置遮罩图片的路径<br>masking-mode:设置遮罩图片的模式<br>position:设置遮罩图片的位置<br>bg-size:设置遮罩的大小<br>repeat-style:设置遮罩图片的重复性<br>compositing-operator:设置遮罩图层的组合操作</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.anothertarget</span> &#123;</span><br><span class="line">  <span class="attribute">mask</span>: <span class="built_in">url</span>(<span class="string">resources.svg#c1</span>) <span class="number">50px</span> <span class="number">30px</span>/<span class="number">10px</span> <span class="number">10px</span> repeat-x exclude;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="clip-图像裁剪"><a href="#clip-图像裁剪" class="headerlink" title="clip 图像裁剪"></a>clip 图像裁剪</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">  <span class="attribute">clip</span>:<span class="built_in">rect</span>(<span class="number">0px</span>,<span class="number">0px</span>,<span class="number">0px</span>,<span class="number">0px</span>) //四个值分别对应上右下左</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="滚动动画"><a href="#滚动动画" class="headerlink" title="滚动动画"></a>滚动动画</h3><p>html, body { scroll-behavior:smooth; }<br>凡是需要滚动的地方都加一句scroll-behavior:smooth就好了！<br>如：<a href="#">返回顶部</a></p>
+<blockquote>
+<p>js处理：<br>target.scrollIntoView({<br>    behavior: “smooth”<br>});<br>我们随便打开一个有链接的页面，把首个链接滚动到屏幕外，然后控制台输入类似下面代码，我们就可以看到页面平滑滚动定位了：</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="property">links</span>[<span class="number">0</span>].<span class="title function_">scrollIntoView</span>(&#123;</span><br><span class="line">    <span class="attr">behavior</span>: <span class="string">&quot;smooth&quot;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="box-shadow添加多个不同的阴影"><a href="#box-shadow添加多个不同的阴影" class="headerlink" title="box-shadow添加多个不同的阴影"></a>box-shadow添加多个不同的阴影</h3><blockquote>
+<p>用逗号分隔即可<br>如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*&#123;<span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">3px</span> <span class="number">3px</span> <span class="number">0</span> <span class="built_in">rgba</span>(<span class="number">243</span>,<span class="number">132</span>,<span class="number">0</span>, <span class="number">0.35</span>), <span class="number">0</span> -<span class="number">6px</span> <span class="number">2px</span> <span class="number">0</span> <span class="built_in">rgba</span>(<span class="number">244</span>, <span class="number">149</span>, <span class="number">0</span>,<span class="number">0.35</span>) inset;&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="背景色渐变"><a href="#背景色渐变" class="headerlink" title="背景色渐变"></a>背景色渐变</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">*&#123;</span><br><span class="line"><span class="comment">/* 渐变轴为45度，从蓝色渐变到红色 */</span></span><br><span class="line"><span class="attribute">background-image</span>:<span class="built_in">linear-gradient</span>(<span class="number">45deg</span>, blue, red);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 从右下到左上、从蓝色渐变到红色 */</span></span><br><span class="line"><span class="attribute">background-image</span>:<span class="built_in">linear-gradient</span>(to left top, blue, red);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 从下到上，从蓝色开始渐变、到高度40%位置是绿色渐变开始、最后以红色结束 */</span></span><br><span class="line"><span class="attribute">background-image</span>:<span class="built_in">linear-gradient</span>(<span class="number">0deg</span>, blue, green <span class="number">40%</span>, red);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="iphoenX适配问题-利用media限制iPhone-X屏幕尺寸"><a href="#iphoenX适配问题-利用media限制iPhone-X屏幕尺寸" class="headerlink" title="iphoenX适配问题(利用media限制iPhone X屏幕尺寸)"></a>iphoenX适配问题(利用media限制iPhone X屏幕尺寸)</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* css部分，利用media做你想要的适配，我这里通过一个白色div留出安全距离防挡 */</span></span><br><span class="line"><span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">device-width</span>: <span class="number">375px</span>) <span class="keyword">and</span> (<span class="attribute">device-height</span>: <span class="number">812px</span>) <span class="keyword">and</span> (<span class="attribute">-webkit-device-pixel-ratio</span>: <span class="number">3</span>) &#123;</span><br><span class="line">  <span class="selector-class">.adapt</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: fixed;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">34px</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#fff</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="position-sticky"><a href="#position-sticky" class="headerlink" title="position:sticky"></a>position:sticky</h3><p>1.父级元素不能有任何overflow:visible以为的overflow设置，否则没有粘滞效果。因为改变了滚动容器（即使没有出现滚动条）。因此，如果你的position:sticky无效，看看是不是某一个祖先元素设置了overflow:hidden，移除之即可。<br>2.同一个父容器中的sticky元素，如果定位值相等，则会重叠；如果属于不同父元素，则会鸠占鹊巢，挤开原来的元素，形成依次占位的效果。<br>3.sticky定位，不仅可以设置top，基于滚动容器上边缘定位；还可以设置bottom，也就是相对底部粘滞。如果是水平滚动，也可以设置left和right值。</p>
+<h3 id="css设置暗黑模式"><a href="#css设置暗黑模式" class="headerlink" title="css设置暗黑模式"></a>css设置暗黑模式</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@media</span> (<span class="attribute">prefers-color-scheme</span>: dark) &#123;</span><br><span class="line">    <span class="selector-tag">body</span> &#123;</span><br><span class="line">        <span class="attribute">color</span>: white;</span><br><span class="line">        <span class="attribute">background</span>: black;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="CSS-all"><a href="#CSS-all" class="headerlink" title="CSS all"></a>CSS all</h3><blockquote>
+<p>CSS <code>all</code> 简写属性 将除却 <code>unicode-bidi</code> 与 <code>direction</code> 之外的所有属性重设至其初始值，或继承值。</p>
+</blockquote>
+<ul>
+<li>取值<br>initial<br>该关键字代表改变该元素或其父元素的所有属性至初始值。<br>inherit<br>该关键字代表改变该元素或其父元素的所有属性的值至他们的父元素属性的值。inherited values<br>unset<br>该关键字代表如果该元素的属性的值是可继承的，则改变该元素或该元素的父元素的所有属性的值为他们父元素的属性值，反之则改变为初始值。</li>
+</ul>
+<h3 id="css设置图片img标签显示样式"><a href="#css设置图片img标签显示样式" class="headerlink" title="css设置图片img标签显示样式"></a>css设置图片<code>img</code>标签显示样式</h3><p><code>object-fit</code>属性</p>
+<ul>
+<li>支持：chrome: &gt;&#x3D; 31.0; IE: &gt;&#x3D; 16.0; firefox: &gt;&#x3D; 36.0; safari: &gt;&#x3D; 7.1;<blockquote>
+<p>值	     描述 <br/><br>fill	   默认，不保证保持原有的比例，内容拉伸填充整个内容容器。 <br/><br>contain	 保持原有尺寸比例。内容被缩放。 <br/><br>cover	   保持原有尺寸比例。但部分内容可能被剪切。 <br/><br>none	   保留原有元素内容的长度和宽度，也就是说内容不会被重置。 <br/><br>scale-down	保持原有尺寸比例。内容的尺寸与 none 或 contain 中的一个相同，取决于它们两个之间谁得到的对象尺寸会更小一些。 <br/><br>initial	 设置为默认值 <br/><br>inherit	 从该元素的父元素继承属性。</p>
+</blockquote>
+</li>
+</ul>
+<p><code>object-position</code>属性</p>
+<blockquote>
+<p>object-position 属性与 object-fit 属性一起使用，指定图像或视频应如何在其内容框中使用 x&#x2F;y 坐标进行定位。</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">  <span class="attribute">object-fit</span>: cover;</span><br><span class="line">  <span class="attribute">object-position</span>: bottom right;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="卡片翻转效果实现"><a href="#卡片翻转效果实现" class="headerlink" title="卡片翻转效果实现"></a>卡片翻转效果实现</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">  <span class="selector-class">.box</span>&#123;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">width</span>: <span class="number">50px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">height</span>: <span class="number">50px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">transition</span>: <span class="number">0.6s</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">transform-style</span>: preserve-<span class="number">3</span>d;<span class="comment">/*子元素将保留其 3D 位置*/</span></span></span><br><span class="line"><span class="language-css">  &#125;</span></span><br><span class="line"><span class="language-css">  <span class="selector-class">.box</span><span class="selector-class">.rotate</span> &#123;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">transform</span>: <span class="built_in">rotateY</span>(<span class="number">180deg</span>);</span></span><br><span class="line"><span class="language-css">  &#125;</span></span><br><span class="line"><span class="language-css">  <span class="selector-class">.front</span>&#123;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">width</span>: <span class="number">50px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">height</span>: <span class="number">50px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">background</span>: green;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">backface-visibility</span>: hidden;<span class="comment">/* 定义当元素不面向屏幕时是否可见，hidden：背面是不可见的 */</span></span></span><br><span class="line"><span class="language-css">  &#125;</span></span><br><span class="line"><span class="language-css">  <span class="selector-class">.back</span> &#123;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">backface-visibility</span>: hidden;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">position</span>: absolute;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">top</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">left</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">transform</span>: <span class="built_in">rotateY</span>(<span class="number">180deg</span>);</span></span><br><span class="line"><span class="language-css">    <span class="attribute">width</span>: <span class="number">50px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">height</span>: <span class="number">50px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">background</span>: red;</span></span><br><span class="line"><span class="language-css">  &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;front&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;back&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="empty-选择器"><a href="#empty-选择器" class="headerlink" title=":empty 选择器"></a>:empty 选择器</h3><blockquote>
+<p><code>:empty</code>代表没有子元素的元素。子元素只可以是元素节点或文本（包括空格）。注释或处理指令都不会产生影响。</p>
+</blockquote>
+<ul>
+<li>之前判断数据为空显示<code>暂无数据</code>需要判断数据length为0显示一个包裹暂无数据文案的标签，而用了<code>:empty</code>伪类选择器，只需要在外层div加一个伪类就可以实现；<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">400px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">400px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: skyblue;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">justify-content</span>: center;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.container</span><span class="selector-pseudo">:empty</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&quot;—— 没有更多了 ——&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="gap属性"><a href="#gap属性" class="headerlink" title="gap属性"></a>gap属性</h3><p>当我们需要每个子元素之间距离等分而又除不尽时，就可以用到<code>gap</code>属性，<code>gap</code>属性它适用于<code>Grid</code>布局、<code>Flex</code>布局以及多列布局，并不一定只是<code>Grid</code>布局中可以使用。<br>比如我们要让每个元素之间隔开<code>20px</code>， 那么使用<code>gap</code>我们可以这样：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.wrap</span>&#123;</span><br><span class="line">  <span class="attribute">display</span>: flex | grid；</span><br><span class="line">  gap: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="background-clip-实现文本背景图"><a href="#background-clip-实现文本背景图" class="headerlink" title="background-clip 实现文本背景图"></a>background-clip 实现文本背景图</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.text</span>&#123;</span><br><span class="line">  <span class="attribute">background-clip</span>: text;</span><br><span class="line">  -webkit-<span class="attribute">background-clip</span>: text;</span><br><span class="line">  <span class="attribute">color</span>: <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="invalid-伪类"><a href="#invalid-伪类" class="headerlink" title=":invalid 伪类"></a>:invalid 伪类</h3><blockquote>
+<p>选择任何未通过验证的<code>&lt;form&gt;</code>、<code>&lt;fieldset&gt;</code>、<code>&lt;input&gt;</code>或其他表单元素。</p>
+</blockquote>
+<h3 id="focus-within-伪类"><a href="#focus-within-伪类" class="headerlink" title=":focus-within 伪类"></a>:focus-within 伪类</h3><blockquote>
+<p>当元素或其任意后代元素被聚焦时，将匹配该元素。换言之，它表示<code>:focus</code>伪类匹配到该元素自身或它的后代时，该伪类生效。</p>
+</blockquote>
+<h3 id="mix-blend-mode-difference"><a href="#mix-blend-mode-difference" class="headerlink" title="mix-blend-mode:difference"></a>mix-blend-mode:difference</h3><blockquote>
+<p><code>mix-blend-mode</code>属性描述了元素的内容应该与元素的直系父元素的内容和元素的背景如何混合。其中，difference 表示差值。</p>
+</blockquote>
+<h3 id="line-start和-block-end相关属性"><a href="#line-start和-block-end相关属性" class="headerlink" title="*-line-start和*-block-end相关属性"></a><code>*-line-start</code>和<code>*-block-end</code>相关属性</h3><p>其中 inline 和 block 表示方向， start 和 end 表示起止方位。</p>
+<p>在中文和英文网页环境中，inline元素（文字、图片、按钮等）的默认是从左往右水平排列的；block元素（如<code>&lt;div&gt;</code>、<code>&lt;p&gt;</code>元素等）默认是从上往下垂直排列的。</p>
+<p>因此，<code>margin-inline-start</code>就表示内联元素排列方向的起始位置，就是“左侧”，<code>margin-inline-end</code>就表示内联元素排列方向的终止位置，就是“右侧”；<code>margin-block-start</code>就表示块级元素排列方向的起始位置，就是“上面”，<code>margin-block-end</code>就表示块级元素排列方向的终止位置，就是“下面”。</p>
+<blockquote>
+<p>由此拓展出的<code>border-inline</code>和<code>border-block</code>相信可以举一反三了；</p>
+</blockquote>
+<h3 id="flex-布局-子元素不设置宽高，高度撑满父元素的问题"><a href="#flex-布局-子元素不设置宽高，高度撑满父元素的问题" class="headerlink" title="flex 布局 子元素不设置宽高，高度撑满父元素的问题"></a>flex 布局 子元素不设置宽高，高度撑满父元素的问题</h3><p>在 <code>flex</code> 布局中，我们通过 <code>align-items</code> 来控制元素在交叉轴上的对齐方式。</p>
+<p>它可能取5个值：<br>flex-start: 交叉轴的起点对齐<br>flex-end: 交叉轴的终点对齐<br>center: 交叉轴的中点对齐。<br>baseline: 项目的第一行文字的基线对齐。<br>stretch (默认值）: 如果子元素未设置高度或者高度为auto，将占满整个容器的高度。</p>
+<p>当我们没有给子元素增加高度的时候，其在交叉轴方向的对齐方式就是默认值 <code>stretch</code>，因此他的高度与父元素的高度一致。<br>所以如果想要自适应高度，子元素需单独设置<code>align-self:flex-start</code>，或者父元素不设置高度，靠子元素撑开;</p>
+<h3 id="多个标题竖向排列，有中文扩号【「导致顶端无法对齐解决"><a href="#多个标题竖向排列，有中文扩号【「导致顶端无法对齐解决" class="headerlink" title="多个标题竖向排列，有中文扩号【「导致顶端无法对齐解决"></a>多个标题竖向排列，有中文扩号<code>【「</code>导致顶端无法对齐解决</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">  <span class="selector-tag">p</span><span class="selector-attr">[title^=<span class="string">&quot;【&quot;</span>]</span>,<span class="selector-tag">p</span><span class="selector-attr">[title^=<span class="string">&quot;「&quot;</span>]</span>&#123;</span></span><br><span class="line"><span class="language-css">      <span class="attribute">text-indent</span>: -<span class="number">0.5em</span>;</span></span><br><span class="line"><span class="language-css">  &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">title</span>=<span class="string">&quot;【你好，晚安，早安，午安】&quot;</span>&gt;</span>【你好，晚安，早安，午安】<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>你好，晚安，早安，午安<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">title</span>=<span class="string">&quot;「你好，晚安，早安，午安」&quot;</span>&gt;</span>「你好，晚安，早安，午安」<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>你好，晚安，早安，午安<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>扩展：</p>
+<blockquote>
+<p>[attribute^&#x3D;value]  p[title^&#x3D;”【”]  选择其<code>title</code>属性值以<code>【 </code>开头的每个<code>&lt;p&gt;</code>元素。<br>[attribute<del>&#x3D;value]  [title</del>&#x3D;flower] 选择带有包含<code>flower</code>一词(而且必须是前后都有空格才可以，当然中文亦可以)的<code>title</code>属性的所有元素。</p>
+</blockquote>
+<h3 id="怎么使position-fixed元素相对于屏幕视口位置改为相对于祖先元素位置"><a href="#怎么使position-fixed元素相对于屏幕视口位置改为相对于祖先元素位置" class="headerlink" title="怎么使position:fixed元素相对于屏幕视口位置改为相对于祖先元素位置"></a>怎么使position:fixed元素相对于屏幕视口位置改为相对于祖先元素位置</h3><blockquote>
+<p>当元素设置<code>position:fixed</code>元素会被移出正常文档流，并不为元素预留空间，而是通过指定元素相对于屏幕视口（viewport）的位置来指定元素位置。元素的位置在屏幕滚动时不会改变。打印时，元素会出现在的每页的固定位置。<code>fixed</code>属性会创建新的层叠上下文。当元素祖先的<code>transform</code>、<code>perspective</code>、<code>filter</code>或<code>backdrop-filter</code>属性非<code>none</code>时，容器由视口改为该祖先。</p>
+</blockquote>
+<p>所以只需要祖先元素设置任意其中的一个值非<code>none</code>，就会使元素重回文档流，当然同时也意味着元素失去<code>fixed</code>浮动的特性。</p>
+<h3 id="不定高元素设置高度渐变动画"><a href="#不定高元素设置高度渐变动画" class="headerlink" title="不定高元素设置高度渐变动画"></a>不定高元素设置高度渐变动画</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 因为不定高，无法设置高度动画，所以换个方式，设置最大值，保证最大值不会小于实际高度 */</span></span><br><span class="line"><span class="comment">/* 如果还是不放心，可以包一个子元素，子元素设置相同max-height,并且设置滚动条 */</span></span><br><span class="line"><span class="selector-class">.autoDiv</span>&#123;</span><br><span class="line">  <span class="attribute">max-height</span>:<span class="number">0</span>;</span><br><span class="line">  &amp;<span class="selector-class">.act</span>&#123;</span><br><span class="line">    <span class="attribute">max-height</span>:<span class="number">1000px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.childDiv</span>&#123;</span><br><span class="line">    <span class="attribute">max-height</span>:<span class="number">1000px</span>;</span><br><span class="line">    <span class="attribute">overflow-y</span>:scroll;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="white-space参数"><a href="#white-space参数" class="headerlink" title="white-space参数"></a>white-space参数</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">white-space</span>: normal;  <span class="comment">/* 连续的空白符会被合并 */</span></span><br><span class="line">  <span class="attribute">white-space</span>: nowrap;  <span class="comment">/* 和 normal 一样合并空白符，但阻止文本换行 */</span></span><br><span class="line">  <span class="attribute">white-space</span>: pre;     <span class="comment">/* 连续的空白符会被保留。仅在遇到换行符或 &lt;br&gt; 元素时才会换行。*/</span></span><br><span class="line">  <span class="attribute">white-space</span>: pre-wrap;<span class="comment">/* 连续的空白符会被保留。在遇到换行符或 &lt;br&gt; 元素时，或者根据填充行框盒子的需要换行。*/</span></span><br><span class="line">  <span class="attribute">white-space</span>: pre-line;<span class="comment">/* 连续的空白符会被合并。在遇到换行符或 &lt;br&gt; 元素时，或者根据填充行框盒子的需要换行。*/</span></span><br><span class="line">  <span class="attribute">white-space</span>: break-spaces;<span class="comment">/* 与 pre-wrap 的行为相同，但空白占空间并且可被截断 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="inset"><a href="#inset" class="headerlink" title="inset"></a>inset</h3><p>在处理位置时，您可以使用 inset 属性，而不是使用 top、right、bottom、left 属性。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">25px</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">16px</span>;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">23px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*可以这样替代上面写法*/</span></span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">inset</span>: <span class="number">20px</span> <span class="number">25px</span> <span class="number">16px</span> <span class="number">23px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="选择前几个元素"><a href="#选择前几个元素" class="headerlink" title="选择前几个元素"></a>选择前几个元素</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&amp;<span class="selector-pseudo">:nth-child</span>(-n + <span class="number">4</span>) &#123;</span><br><span class="line">  <span class="attribute">margin-bottom</span>: <span class="number">0.2rem</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="视觉文案居中"><a href="#视觉文案居中" class="headerlink" title="视觉文案居中"></a>视觉文案居中</h3><p>我们知道，中文标点字符基本和中文字符占同样的像素宽，就导致视觉上文案会偏左（如果标点符号在结尾时）；所以就有了下面的方案：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 利用了绝对定位不占父元素空间的特点 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">  <span class="selector-tag">p</span>&#123;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">position</span>:relative;</span></span><br><span class="line"><span class="language-css">  &#125;</span></span><br><span class="line"><span class="language-css">  <span class="selector-tag">span</span>&#123;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">position</span>:absolute;</span></span><br><span class="line"><span class="language-css">  &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>智能加成，加亮加实力<span class="tag">&lt;<span class="name">span</span>&gt;</span>。<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="backdrop-filter"><a href="#backdrop-filter" class="headerlink" title="backdrop-filter"></a>backdrop-filter</h3><p>简直就是神仙属性,可以在父元素设置模糊作用到子元素上</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/blog/tags/css/" rel="tag"># css</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/blog/2016/09/14/%E5%85%B3%E4%BA%8Eem%20rem%20px/" rel="prev" title="关于em rem px">
+                  <i class="fa fa-angle-left"></i> 关于em rem px
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/blog/2016/09/14/css%E5%85%B3%E4%BA%8E%E8%A1%A8%E5%8D%95/" rel="next" title="关于表单">
+                  关于表单 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">郭雪辉</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">215k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:15</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/blog/js/comments.js"></script><script src="/blog/js/utils.js"></script><script src="/blog/js/motion.js"></script><script src="/blog/js/sidebar.js"></script><script src="/blog/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+<script src="/blog/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/blog/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":100,"height":150},"mobile":{"show":true},"log":false});</script></body>
+</html>
