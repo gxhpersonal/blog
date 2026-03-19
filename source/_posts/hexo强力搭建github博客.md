@@ -108,7 +108,7 @@ provide shell access.
 * [Git](http://git-scm.com/)
 如果您的电脑中已经安装上述必备程序，那么恭喜您！接下来只需要使用 npm 即可完成 Hexo 的安装。
 ```bash
-$ npm install -g hexo-cli
+$ npm install hexo-cli
 ```
 
 ### 2.4.2 使用Hexo建站
