@@ -34,7 +34,7 @@ uni.hideNavigationBarLoading();
 ```
 
 ### 滚动一屏，sticky失效
-需要把 sticky元素放在 一个 view 中，不能放在 template 中  
+需要把 sticky元素放在 一个 view 中，不能放在 template 中  ,scoll-view也同理，不能直接放在scroll-view中，需要在里面再套一个view，才能生效
 
 ### app端选择地图导航
 ```js
