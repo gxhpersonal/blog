@@ -617,3 +617,7 @@ getBLEDeviceCharacteristics1(deviceId, serviceId) {
 }
 </style>
 ```
+
+### 小程序中富文本宽度限制100%
+富文本中的图片需要有class,没有的话手动添加一个
+然后在scss中添加样式且不能用scoped
