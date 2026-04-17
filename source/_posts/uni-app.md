@@ -592,3 +592,28 @@ getBLEDeviceCharacteristics1(deviceId, serviceId) {
   })
 },
 ```
+### input在安卓中页面过长导致输入框错位，没有把页面顶上去
+需要更改布局，最外层改为flex布局，内部滚动，设置高度为100vh
+```html
+<view class="container">
+        <view class="index_containe">
+		</view>
+</view>
+<style lang="scss">
+.container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    background: #ffffff;
+    font-size: 16px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+.index_containe {
+    flex: 1;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+</style>
+```
